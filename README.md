@@ -6,7 +6,22 @@ Common repository for example datasets used by vega related projects. Keep chang
 
 ## How to use it
 
-Use git subtree to add these datasets to a project. Add data git `subtree add` like:
+### NPM
+
+Add this to your package.json:
+```json
+"vega-datasets": "vega/vega-datasets#gh-pages"
+```
+
+### HTTP
+
+You can also get the data directly via HTTP served by Github like:
+
+https://vega.github.io/vega-datasets/cars.json
+
+### Git subtree
+
+You can use git subtree to add these datasets to a project. Add data git `subtree add` like:
 
 ```
 git subtree add --prefix path-to-data git@github.com:vega/vega-datasets.git gh-pages
@@ -17,10 +32,6 @@ Update to the latest version of vega-data with
 ```
 git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-pages
 ```
-
-You can also get the data directly via HTTP served by Github like:
-
-https://vega.github.io/vega-datasets/cars.json
 
 ## Changelog
 
