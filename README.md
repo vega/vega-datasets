@@ -17,7 +17,7 @@ Add this to your package.json:
 
 You can also get the data directly via HTTP served by Github like:
 
-https://vega.github.io/vega-datasets/cars.json
+https://vega.github.io/vega-datasets/data/cars.json
 
 ### Git subtree
 
