@@ -35,6 +35,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.1
+
+* Add `seattle-weather` dataset. Transformed with https://gist.github.com/domoritz/acb8c13d5dadeb19636c
+
 ### Version 1.0, October 8, 2015
 
 * Initial import from vega and vega-lite
