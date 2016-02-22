@@ -35,6 +35,11 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.2
+
+* Decode origins in cars dataset
+* Add Unemployment Across Industries in US
+
 ### Version 1.1.1
 
 * Fixed the date parsing on the CrossFilter datasets -- an older version of the data was copied over on initial import. A script is now available via `npm run flights N` to re-sample `N` records from the original `flights-3m.csv` dataset. 
