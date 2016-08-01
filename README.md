@@ -35,6 +35,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.6
+
+* Fix `cars.json` date format
+
 ### Version 1.5
 
 * Add [Gapminder Health v.s. Income](data/gapminder-health-income.csv) dataset
