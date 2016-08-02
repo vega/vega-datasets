@@ -35,6 +35,11 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.7
+
+* Dates in `movies.json` are all recognized as date types by datalib
+* Dates in `crimea.json` are now in ISO format (YYYY-MM-DD)
+
 ### Version 1.6
 
 * Fix `cars.json` date format
