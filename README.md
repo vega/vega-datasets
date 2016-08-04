@@ -35,6 +35,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.8
+
+- Remove all tabs in `github.csv` to prevent incorrect field name parsing. 
+
 ### Version 1.7
 
 * Dates in `movies.json` are all recognized as date types by datalib
