@@ -4,6 +4,8 @@ This data lives at https://github.com/vega/vega-datasets
 
 Common repository for example datasets used by vega related projects. Keep changes to this repository minimal as other projects (vega, vega-editor, vega-lite, polestar, voyager) use this data in their tests and for examples.
 
+The list of sources is in [sources.md](https://github.com/vega/vega-datasets/blob/gh-pages/sources.md).
+
 ## How to use it
 
 ### NPM
