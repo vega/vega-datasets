@@ -37,6 +37,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.9
+
+- Add income, zipcodes, lookup data, and a dataset with three independent geo variables
+
 ### Version 1.8
 
 - Remove all tabs in `github.csv` to prevent incorrect field name parsing. 
