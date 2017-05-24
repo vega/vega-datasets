@@ -44,6 +44,10 @@ Transformed using /scripts/flights.js
 
 Generated using /scripts/github.py
 
+## `population_engineers_hurricanes.csv`
+
+Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data from http://www.nhc.noaa.gov/paststate.shtml. Income data from https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table. 
+
 ## `iris.json`
 
 ## `jobs.json`
