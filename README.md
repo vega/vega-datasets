@@ -37,31 +37,35 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.10
+
+- Add weather data for Seattle and New York.
+
 ### Version 1.9
 
-- Add income, zipcodes, lookup data, and a dataset with three independent geo variables
+- Add income, zipcodes, lookup data, and a dataset with three independent geo variables.
 
 ### Version 1.8
 
-- Remove all tabs in `github.csv` to prevent incorrect field name parsing. 
+- Remove all tabs in `github.csv` to prevent incorrect field name parsing.
 
 ### Version 1.7
 
-* Dates in `movies.json` are all recognized as date types by datalib
-* Dates in `crimea.json` are now in ISO format (YYYY-MM-DD)
+* Dates in `movies.json` are all recognized as date types by datalib.
+* Dates in `crimea.json` are now in ISO format (YYYY-MM-DD).
 
 ### Version 1.6
 
-* Fix `cars.json` date format
+* Fix `cars.json` date format.
 
 ### Version 1.5
 
-* Add [Gapminder Health v.s. Income](data/gapminder-health-income.csv) dataset
-* Add generated Github contributions data for punch card visualization
+* Add [Gapminder Health v.s. Income](data/gapminder-health-income.csv) dataset.
+* Add generated Github contributions data for punch card visualization.
 
 ### Version 1.4
 
-* Add Anscombe's Quartet dataset
+* Add Anscombe's Quartet dataset.
 
 ### Version 1.3
 
@@ -69,8 +73,8 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ### Version 1.2
 
-* Decode origins in cars dataset
-* Add Unemployment Across Industries in US
+* Decode origins in cars dataset.
+* Add Unemployment Across Industries in US.
 
 ### Version 1.1.1
 
@@ -78,9 +82,9 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ### Version 1.1
 
-* Add `seattle-weather` dataset. Transformed with https://gist.github.com/domoritz/acb8c13d5dadeb19636c
+* Add `seattle-weather` dataset. Transformed with https://gist.github.com/domoritz/acb8c13d5dadeb19636c.
 
 ### Version 1.0, October 8, 2015
 
-* Initial import from vega and vega-lite
-* Change field names in `cars.json` to be more descriptive (`hp` to `Horsepower`)
+* Initial import from Vega and Vega-Lite.
+* Change field names in `cars.json` to be more descriptive (`hp` to `Horsepower`).

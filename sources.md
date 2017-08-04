@@ -80,6 +80,10 @@ Transformed using /scripts/weather.py
 
 ## `weather.json`
 
+## `weather.csv`
+
+NOAA
+
 ## `weball26.json`
 
 ## `wheat.json`
