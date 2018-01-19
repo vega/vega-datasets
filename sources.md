@@ -24,7 +24,7 @@ From http://wildlife.faa.gov
 
 ## `cars.json`
 
-Source here: https://archive.ics.uci.edu/ml/datasets/auto+mpg
+Source here: http://lib.stat.cmu.edu/datasets/
 
 ## `climate.json`
 
