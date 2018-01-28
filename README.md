@@ -39,6 +39,14 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.12
+
+- Add 0 padding in zipcode dataset.
+
+### Version 1.11
+
+- Add U district cuisine data
+
 ### Version 1.10
 
 - Add weather data for Seattle and New York.
