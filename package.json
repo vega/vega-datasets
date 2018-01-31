@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "repository": {
     "type": "git",

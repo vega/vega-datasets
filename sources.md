@@ -93,3 +93,7 @@ NOAA
 ## `wheat.json`
 
 ## `world-110m.json`
+
+## `zipcodes.csv`
+
+GeoNames.org
