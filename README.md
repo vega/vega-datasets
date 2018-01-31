@@ -39,6 +39,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.11
+
+- Added `disasters.csv` with disaster type, year and deaths.
+
 ### Version 1.10
 
 - Add weather data for Seattle and New York.

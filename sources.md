@@ -32,6 +32,8 @@ Source here: http://lib.stat.cmu.edu/datasets/
 
 ## `crimea.json`
 
+## `disasters.csv`
+
 ## `driving.json`
 
 ## `flare.json`
