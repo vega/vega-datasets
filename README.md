@@ -39,6 +39,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.13
+
+- Added `disasters.csv` with disaster type, year and deaths.
+
 ### Version 1.12
 
 - Add 0 padding in zipcode dataset.

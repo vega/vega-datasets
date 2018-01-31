@@ -32,6 +32,10 @@ Source here: http://lib.stat.cmu.edu/datasets/
 
 ## `crimea.json`
 
+## `disasters.csv`
+
+Source here: https://ourworldindata.org/natural-catastrophes
+
 ## `driving.json`
 
 ## `flare.json`
