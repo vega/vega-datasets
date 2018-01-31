@@ -14,7 +14,7 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `birdstrikes.json`
 
-From http://wildlife.faa.gov
+http://wildlife.faa.gov
 
 ## `budget.json`
 
@@ -24,7 +24,7 @@ From http://wildlife.faa.gov
 
 ## `cars.json`
 
-Source here: http://lib.stat.cmu.edu/datasets/
+http://lib.stat.cmu.edu/datasets/
 
 ## `climate.json`
 
@@ -34,7 +34,7 @@ Source here: http://lib.stat.cmu.edu/datasets/
 
 ## `disasters.csv`
 
-Source here: https://ourworldindata.org/natural-catastrophes
+https://ourworldindata.org/natural-catastrophes
 
 ## `driving.json`
 
