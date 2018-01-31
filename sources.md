@@ -34,6 +34,8 @@ Source here: http://lib.stat.cmu.edu/datasets/
 
 ## `disasters.csv`
 
+Source here: https://bl.ocks.org/domoritz/8afa8f0ce5e03b43497e821f7a9cf216/
+
 ## `driving.json`
 
 ## `flare.json`
