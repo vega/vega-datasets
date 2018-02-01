@@ -10,6 +10,7 @@
     "name": "UW Interactive Data Lab",
     "url": "http://idl.cs.washington.edu"
   },
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "datalib": "^1.5.9"
   },
