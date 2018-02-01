@@ -1,6 +1,6 @@
 # Sources
 
-Still incomplete. See https://github.com/vega/vega-datasets/issues/15
+Still incomplete. See <https://github.com/vega/vega-datasets/issues/15>
 
 ## `7zip.png`, `ffox.png`, `gimp.png`
 
@@ -14,7 +14,7 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `birdstrikes.json`
 
-http://wildlife.faa.gov
+<http://wildlife.faa.gov>
 
 ## `budget.json`
 
@@ -24,7 +24,7 @@ http://wildlife.faa.gov
 
 ## `cars.json`
 
-http://lib.stat.cmu.edu/datasets/
+<http://lib.stat.cmu.edu/datasets/>
 
 ## `climate.json`
 
@@ -34,7 +34,7 @@ http://lib.stat.cmu.edu/datasets/
 
 ## `disasters.csv`
 
-https://ourworldindata.org/natural-catastrophes
+<https://ourworldindata.org/natural-catastrophes>
 
 ## `driving.json`
 
@@ -52,7 +52,11 @@ Generated using /scripts/github.py
 
 ## `population_engineers_hurricanes.csv`
 
-Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data from http://www.nhc.noaa.gov/paststate.shtml. Income data from https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table. 
+Data about engineers from <https://www.bls.gov/oes/tables.htm>. Hurricane data from <http://www.nhc.noaa.gov/paststate.shtml>. Income data from <https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table>.
+
+## graticule.json
+
+Generated using the `-graticule` console option of <http://mapshaper.org>
 
 ## `iris.json`
 
@@ -70,7 +74,7 @@ Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data fro
 
 ## `seattle-temps.csv`, `sf-temps.csv`, `seattle-weather.csv`
 
-Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). 
+Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
 
 Transformed using /scripts/weather.py
 
