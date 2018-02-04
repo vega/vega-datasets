@@ -39,9 +39,13 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.14
+
+- Add `graticule.json`, London borough boundaries, borough centroids and tube (metro) rail lines
+
 ### Version 1.13
 
-- Added `disasters.csv` with disaster type, year and deaths.
+- Add `disasters.csv` with disaster type, year and deaths.
 
 ### Version 1.12
 
