@@ -1,6 +1,6 @@
 # Sources
 
-Still incomplete. See <https://github.com/vega/vega-datasets/issues/15>
+Still incomplete. See https://github.com/vega/vega-datasets/issues/15
 
 ## `7zip.png`, `ffox.png`, `gimp.png`
 
@@ -14,7 +14,7 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `birdstrikes.json`
 
-<http://wildlife.faa.gov>
+http://wildlife.faa.gov
 
 ## `budget.json`
 
@@ -24,7 +24,7 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `cars.json`
 
-<http://lib.stat.cmu.edu/datasets/>
+http://lib.stat.cmu.edu/datasets/
 
 ## `climate.json`
 
@@ -34,7 +34,7 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `disasters.csv`
 
-<https://ourworldindata.org/natural-catastrophes>
+https://ourworldindata.org/natural-catastrophes
 
 ## `driving.json`
 
@@ -52,11 +52,11 @@ Generated using /scripts/github.py
 
 ## `population_engineers_hurricanes.csv`
 
-Data about engineers from <https://www.bls.gov/oes/tables.htm>. Hurricane data from <http://www.nhc.noaa.gov/paststate.shtml>. Income data from <https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table>.
+Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data from http://www.nhc.noaa.gov/paststate.shtml. Income data from https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table.
 
 ## graticule.json
 
-Generated using the `-graticule` console option of <http://mapshaper.org>
+Generated using the `-graticule` console option of http://mapshaper.org
 
 ## `iris.json`
 
@@ -64,7 +64,7 @@ Generated using the `-graticule` console option of <http://mapshaper.org>
 
 ## londonBoroughs.json
 
-Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile held at <https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london>. Original data "contains National Statistics data © Crown copyright and database right (2015)" and "Contains Ordnance Survey data © Crown copyright and database right [2015].
+Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile held at https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london. Original data "contains National Statistics data © Crown copyright and database right (2015)" and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 
 ## londonCentroids.json
 
@@ -72,7 +72,7 @@ Calculated from `londongBoroughs.json` using `d3.geoCentroid`.
 
 ## londonTubeLines.json
 
-Selected rail lines simplified from `tfl_lines.json` at <https://github.com/oobrien/vis/tree/master/tube/data>
+Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobrien/vis/tree/master/tube/data
 
 ## `miserables.json`
 
