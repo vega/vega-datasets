@@ -38,6 +38,11 @@ https://ourworldindata.org/natural-catastrophes
 
 ## `driving.json`
 
+## `earthquakes.json`
+
+https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
+(Feb 6, 2018)
+
 ## `flare.json`
 
 ## `flights-?k.json`, `flights-airport.csv`

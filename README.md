@@ -39,9 +39,13 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.15
+
+- Add `earthquakes.json`.
+
 ### Version 1.14
 
-- Add `graticule.json`, London borough boundaries, borough centroids and tube (metro) rail lines
+- Add `graticule.json`, London borough boundaries, borough centroids and tube (metro) rail lines.
 
 ### Version 1.13
 
@@ -96,7 +100,7 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ### Version 1.1.1
 
-* Fixed the date parsing on the CrossFilter datasets -- an older version of the data was copied over on initial import. A script is now available via `npm run flights N` to re-sample `N` records from the original `flights-3m.csv` dataset. 
+* Fixed the date parsing on the CrossFilter datasets -- an older version of the data was copied over on initial import. A script is now available via `npm run flights N` to re-sample `N` records from the original `flights-3m.csv` dataset.
 
 ### Version 1.1
 
