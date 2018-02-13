@@ -8,10 +8,6 @@ Still incomplete. See https://github.com/vega/vega-datasets/issues/15
 
 ## `anscombe.json`
 
-Data from http://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date and CO2 for month with valid data.
-
-## `co2-concentration.csv`
-
 Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `barley.json`
@@ -31,6 +27,10 @@ http://wildlife.faa.gov
 http://lib.stat.cmu.edu/datasets/
 
 ## `climate.json`
+
+## `co2-concentration.csv`
+
+http://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date and CO2 for month with valid data.
 
 ## `countries.json`
 
