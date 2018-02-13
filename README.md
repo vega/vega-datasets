@@ -39,6 +39,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.16
+
+- Add `co2-concentration.csv`.
+
 ### Version 1.15
 
 - Add `earthquakes.json`.
