@@ -4,6 +4,8 @@ Still incomplete. See https://github.com/vega/vega-datasets/issues/15
 
 ## `7zip.png`, `ffox.png`, `gimp.png`
 
+Application icons from open-source software projects.
+
 ## `airports.csv`
 
 ## `anscombe.json`
@@ -41,6 +43,8 @@ http://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modif
 https://ourworldindata.org/natural-catastrophes
 
 ## `driving.json`
+
+https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html
 
 ## `earthquakes.json`
 
