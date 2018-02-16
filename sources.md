@@ -55,6 +55,8 @@ https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
 
 ## `flights-?k.json`, `flights-airport.csv`
 
+Flight delay statistics from U.S. Bureau of Transportation Statistics, https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp.
+
 Transformed using /scripts/flights.js
 
 ## `gapminder-health-income.csv`, `gapminder.json`
