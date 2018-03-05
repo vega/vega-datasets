@@ -39,6 +39,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.18
+
+- Fix typo in city name in `us-state-capitals.json`
+
 ### Version 1.17
 
 - Made data consistent with respect to origin by making them originated from a unix platform.
