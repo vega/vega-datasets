@@ -39,6 +39,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.17
+
+- Made data consistent with respect to origin by making them originated from a unix platform.
+
 ### Version 1.16
 
 - Add `co2-concentration.csv`.
