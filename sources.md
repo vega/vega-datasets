@@ -77,6 +77,10 @@ Generated using the `-graticule` console option of http://mapshaper.org
 
 ## `jobs.json`
 
+## `la-riots.json`
+
+More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles for five days starting April 29, 1992. This file contains the point where each person died, formatted as GeoJSON. It was compiled and published by the [Los Angeles Times](http://spreadsheets.latimes.com/la-riots-deaths/).
+
 ## londonBoroughs.json
 
 Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile held at https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london. Original data "contains National Statistics data © Crown copyright and database right (2015)" and "Contains Ordnance Survey data © Crown copyright and database right [2015].
