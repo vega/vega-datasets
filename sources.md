@@ -77,9 +77,9 @@ Generated using the `-graticule` console option of http://mapshaper.org
 
 ## `jobs.json`
 
-## `la-riots.json`
+## `la-riots.csv`
 
-More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles for five days starting April 29, 1992. This file contains the point where each person died, formatted as GeoJSON. It was compiled and published by the [Los Angeles Times](http://spreadsheets.latimes.com/la-riots-deaths/).
+More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic coordinates of their death. It was compiled and published by the [Los Angeles Times Data Desk](http://spreadsheets.latimes.com/la-riots-deaths/).
 
 ## londonBoroughs.json
 
