@@ -73,6 +73,12 @@ Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data fro
 
 Generated using the `-graticule` console option of http://mapshaper.org
 
+
+# iowa-electricity.csv
+
+The state of Iowa has dramatically increased its production of wind power. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. It was compiled by the [U.S. Energy Information Administration](https://www.nytimes.com/2017/06/06/climate/renewable-energy-push-is-strongest-in-the-reddest-states.html) and downloaded on May 6, 2018.
+
+
 ## `iris.json`
 
 ## `jobs.json`
