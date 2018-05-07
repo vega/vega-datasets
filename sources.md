@@ -76,7 +76,7 @@ Generated using the `-graticule` console option of http://mapshaper.org
 
 # iowa-electricity.csv
 
-The state of Iowa has dramatically increased its production of wind power. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. It was compiled by the [U.S. Energy Information Administration](https://www.nytimes.com/2017/06/06/climate/renewable-energy-push-is-strongest-in-the-reddest-states.html) and downloaded on May 6, 2018.
+The state of Iowa has dramatically increased its production of renewable wind power in recent years. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. The dataset was compiled by the [U.S. Energy Information Administration](https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin=) and downloaded on May 6, 2018. It is useful for illustrating stacked area charts.
 
 
 ## `iris.json`
