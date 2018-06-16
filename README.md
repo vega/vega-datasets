@@ -6,7 +6,7 @@ Common repository for example datasets used by vega related projects. Keep chang
 
 The list of sources is in [sources.md](https://github.com/vega/vega-datasets/blob/gh-pages/sources.md).
 
-To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/jakevdp/vega_datasets).
+To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/jakevdp/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
 
 ## How to use it
 
