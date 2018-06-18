@@ -28,6 +28,12 @@ http://wildlife.faa.gov
 
 http://lib.stat.cmu.edu/datasets/
 
+## `chem_experiment_pre_aggregated.csv`
+
+## `chem_experiment.csv`
+
+A relation of time for an acid to completely react with NaOH vs concentration of the acid (uM)
+
 ## `climate.json`
 
 ## `co2-concentration.csv`
