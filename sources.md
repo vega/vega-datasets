@@ -125,6 +125,12 @@ Transformed using /scripts/weather.py
 
 ## `us-10m.json`
 
+## `us-employment.csv`
+
+In the late 2000s the global economy was gripped by a crippling recession. One result: Massive job losses across the United States. The huge downturn in employment, and the slow recovery in hiring that followed, was tracked each month by the [Current Employment Statisics](https://www.bls.gov/ces/) program at the U.S. Bureau of Labor Statistics.
+
+This file contains the seasonally adjusted monthly total of non-farm employees from January 2007 through December 2016. The data series is known at the bureau as CES0000000001. It was downloaded on Oct. 13, 2018, and reformatted for use in this library. It is useful for illustrating bar charts, particular those that report both negative and positive values.
+
 ## `weather.json`
 
 ## `weather.csv`
