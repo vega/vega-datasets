@@ -123,6 +123,16 @@ Transformed using /scripts/weather.py
 
 ## `us-10m.json`
 
+## `us-employment.csv`
+
+In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job losses across the United States. The downturn in employment, and the slow recovery in hiring that followed, was tracked each month by the [Current Employment Statistics](https://www.bls.gov/ces/) program at the U.S. Bureau of Labor Statistics.
+
+This file contains the monthly employment total in a variety of job categories from January 2006 through December 2015. The numbers are seasonally adjusted and reported in thousands. The data were downloaded on Nov. 11, 2018, and reformatted for use in this library.
+
+Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/time.series/ce/ce.supersector) tracked by the BLS. The "nonfarm" total is the category typically used by economists and journalists as a stand-in for the country's employment total.
+
+A calculated "nonfarm_change" column has been appended with the month-to-month change in that supersector's employment. It is useful for illustrating how to make bar charts that report both negative and positive values.
+
 ## `weather.json`
 
 ## `weather.csv`
