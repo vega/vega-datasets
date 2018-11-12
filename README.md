@@ -1,5 +1,7 @@
 # Vega Datasets
 
+[![npm version](https://img.shields.io/npm/v/vega-datasets.svg)](https://www.npmjs.com/package/vega-datasets)
+
 Collection of datasets used in Vega and Vega-Lite examples. This data lives at https://github.com/vega/vega-datasets.
 
 Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
