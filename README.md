@@ -2,7 +2,7 @@
 
 Collection of datasets used in Vega and Vega-Lite examples. This data lives at https://github.com/vega/vega-datasets.
 
-Common repository for example datasets used by vega related projects. Keep changes to this repository minimal as other projects (vega, vega-editor, vega-lite, polestar, voyager) use this data in their tests and for examples.
+Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
 
 The list of sources is in [sources.md](https://github.com/vega/vega-datasets/blob/gh-pages/sources.md).
 
@@ -19,7 +19,7 @@ Add this to your package.json:
 
 ### HTTP
 
-You can also get the data directly via HTTP served by Github like:
+You can also get the data directly via HTTP served by GitHub like:
 
 https://vega.github.io/vega-datasets/data/cars.json
 
@@ -39,9 +39,13 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.20
+
+- Add `us-unemployment.csv`. Thanks to @palewire!
+
 ### Version 1.19
 
-- Remove time in `weather.csv` .
+- Remove time in `weather.csv`.
 
 ### Version 1.18
 
@@ -49,7 +53,7 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ### Version 1.17
 
-- Made data consistent with respect to origin by making them originated from a unix platform.
+- Made data consistent with respect to origin by making them originated from a Unix platform.
 
 ### Version 1.16
 
