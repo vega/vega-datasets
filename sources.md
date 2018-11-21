@@ -143,6 +143,8 @@ NOAA
 
 ## `wheat.json`
 
+Often credited as the founder of statistical graphics, William Playfair published this elegant chart in 1822 in a letter to Parliament. It shows 250 years of the price of wheat, typical weekly wages, and the reigning monarch. He intended to demonstrate that “never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time.”
+
 ## `world-110m.json`
 
 ## `zipcodes.csv`
