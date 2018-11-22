@@ -14,6 +14,8 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 ## `barley.json`
 
+The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varities of barley at six different sites. It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption." R.A. Fisher's popularized its use in the field of statistics when he included in his book ["The Design of Experiments."](https://en.wikipedia.org/wiki/The_Design_of_Experiments) Since then it has been used to demonstrate new statistical techniques, including the [trellis charts](http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf) developed by Richard Becker, William Cleveland and others in the 1990s.
+
 ## `birdstrikes.json`
 
 http://wildlife.faa.gov
