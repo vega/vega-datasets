@@ -8,19 +8,19 @@
     "Genus": "other"
   },
   {
+    "Bacteria":"Bacillus anthracis",
+    "Penicilin":0.001,
+    "Streptomycin":0.01,
+    "Neomycin":0.007,
+    "Gram_Staining":"positive",
+    "Genus": "other"
+  },
+  {
     "Bacteria":"Brucella abortus",
     "Penicilin":1,
     "Streptomycin":2,
     "Neomycin":0.02,
     "Gram_Staining":"negative",
-    "Genus": "other"
-  },
-  {
-    "Bacteria":"Brucella anthracis",
-    "Penicilin":0.001,
-    "Streptomycin":0.01,
-    "Neomycin":0.007,
-    "Gram_Staining":"positive",
     "Genus": "other"
   },
   {
