@@ -14,9 +14,29 @@ To access these datasets from Python, you can use the [Vega datasets python pack
 
 ### NPM
 
-Add this to your package.json:
-```json
-"vega-datasets": "vega/vega-datasets#master"
+#### Get the actual data
+
+```
+npm i vega-datasets
+```
+
+Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
+
+#### Get the URLs
+
+```
+npm i vega-datasets
+```
+
+Now you can import `data = require('vega-datasets')` and access the URls of any dataset with `data[NAME]`. e.g. `data['cars.csv']`. 
+
+Here is a full example
+
+```ts
+import data from 'vega-datasets';
+
+const cars = await fetch(data['cars.csv']);
+console.log(cars);
 ```
 
 ### HTTP
