@@ -16,7 +16,7 @@ To access these datasets from Python, you can use the [Vega datasets python pack
 
 Add this to your package.json:
 ```json
-"vega-datasets": "vega/vega-datasets#gh-pages"
+"vega-datasets": "vega/vega-datasets#master"
 ```
 
 ### HTTP
