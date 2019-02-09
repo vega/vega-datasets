@@ -5,5 +5,6 @@ index.ts
 node_modules
 rollup.config.js
 scripts
+src
 tsconfig.json
 yarn.lock

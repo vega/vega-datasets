@@ -1,3 +1,5 @@
+import resolve from 'rollup-plugin-node-resolve';
+
 export default {
   input: "build/index.js",
   output: {
@@ -6,5 +8,6 @@ export default {
     sourcemap: true,
     name: "vegaDatasets",
     exports: "named"
-  }
+  },
+  plugins: [ resolve() ]
 };
