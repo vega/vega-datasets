@@ -28,14 +28,17 @@ Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
 npm i vega-datasets
 ```
 
-Now you can import `data = require('vega-datasets')` and access the URls of any dataset with `data[NAME]`. e.g. `data['cars.csv']`. 
+Now you can import `data = require('vega-datasets')` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. 
 
 Here is a full example
 
 ```ts
 import data from 'vega-datasets';
 
-const cars = await fetch(data['cars.csv']);
+const cars = await data['cars.csv']();
+// equivalent to 
+// const cars = await fetch(data['cars.csv'].url);
+
 console.log(cars);
 ```
 

@@ -22,7 +22,7 @@
     "rollup": "^1.1.2"
   },
   "scripts": {
-    "index": "./scripts/make-index.sh > index.ts",
+    "index": "./scripts/make-url-index.sh > src/urls.ts",
     "prebuild": "npm run index && tsc",
     "build": "rollup -c",
     "postbuild": "terser build/vega-datasets.js -cm > build/vega-datasets.min.js",

@@ -8,5 +8,5 @@
     "outDir": "./build",
     "inlineSourceMap": true
   },
-  "files": ["index.ts"]
+  "files": ["src/index.ts"]
 }
