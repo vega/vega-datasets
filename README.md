@@ -22,7 +22,7 @@ npm i vega-datasets
 
 Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
 
-#### Get the URLs
+#### Get the URLs or Data via URL
 
 ```
 npm i vega-datasets
