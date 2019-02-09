@@ -14,7 +14,7 @@ To access these datasets from Python, you can use the [Vega datasets python pack
 
 ### NPM
 
-#### Get the actual data
+#### Get the data on disk
 
 ```
 npm i vega-datasets
