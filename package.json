@@ -2,6 +2,11 @@
   "name": "vega-datasets",
   "version": "1.20.0",
   "description": "Common repository for example datasets used by Vega related projects.",
+  "main": "build/vega-datasets",
+  "module": "build/index",
+  "unpkg": "build/vega-datasets.min.js",
+  "jsdelivr": "build/vega-datasets.min.js",
+  "typings": "build/index.d.ts",
   "repository": {
     "type": "git",
     "url": "http://github.com/vega/vega-datasets.git"
@@ -11,9 +16,16 @@
     "url": "http://idl.cs.washington.edu"
   },
   "devDependencies": {
-    "datalib": "^1.5.9"
+    "datalib": "^1.9.2",
+    "typescript": "^3.3.3",
+    "terser": "^3.16.1",
+    "rollup": "^1.1.2"
   },
   "scripts": {
+    "index": "./scripts/make-index.sh > index.ts",
+    "prebuild": "npm run index && tsc",
+    "build": "rollup -c",
+    "postbuild": "terser build/vega-datasets.js -cm > build/vega-datasets.min.js",
     "flights": "node scripts/flights.js",
     "github": "python scripts/github.py"
   }

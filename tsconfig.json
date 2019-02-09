@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": true,
+    "strict": true,
+    "outDir": "./build",
+    "inlineSourceMap": true
+  },
+  "files": ["index.ts"]
+}
