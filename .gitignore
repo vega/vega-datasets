@@ -1,2 +1,4 @@
-node_modules
 .DS_Store
+.mypy_cache
+build
+node_modules
