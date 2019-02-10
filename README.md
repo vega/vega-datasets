@@ -1,7 +1,7 @@
 # Vega Datasets
 
 [![npm version](https://img.shields.io/npm/v/vega-datasets.svg)](https://www.npmjs.com/package/vega-datasets)
-[![Build Status](https://travis-ci.com/vega/vega-datasets.svg?branch=master)](https://travis-ci.com/vega/vega-datasets)
+[![Build Status](https://travis-ci.com/vega/vega-datasets.svg?branch=master)](https://travis-ci.com/vega/vega-datasets) [![Greenkeeper badge](https://badges.greenkeeper.io/vega/vega-datasets.svg)](https://greenkeeper.io/)
 
 Collection of datasets used in Vega and Vega-Lite examples. This data lives at https://github.com/vega/vega-datasets.
 
