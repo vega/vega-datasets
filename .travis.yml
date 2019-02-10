@@ -1,0 +1,13 @@
+language: node_js
+script:
+- yarn build
+cache: yarn
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: domoritz@gmail.com
+  on:
+    tags: true
+    repo: vega/vega-datasets
+  api_key:
+    secure: BwAMYYldWqTApUKacjhDOQKllDxAqjZwJDhHf9tF4TKfM2M23bAmrqX5rkYyzFAqYklJoXQX3rh0Ptbmv7WAPCO/eZfi/hCJYiBCVuzI1boTpzP7eqoPs2mSFwXGIgugdSDyE49tH0KNFDnz85barN7r3JySEDP4Lt6KbQ1RtPLv/YiExVMT+trd3qlEQUGGdheZQSl3/px5YkuqOkGe6pfN0yLudk+W0Ofl/Nj6Z/exE0/KeVmUzJqady/XwEZ5WcZGgNnkvT3AYbQwG32ozVxZoq7m2kDJ0tuKsiTLjemdwTVPr6RdXxPLI6Y0K/sYSM+7An/IiVYIUJfDq5a/A1rdEVTFs21DOboJfYveHIidx9uLiBYwyhIS88w5XKHQHC2dNmpX8e24J8ALjGm873WsywN8BJbsskEoMIA5H62uz1tZTumGiyhnj4XEByPZeSkY4G9WxQZosbi/Qc1A5QL431MT6lKhlTpTXV2Zhuh/hyr0uPxsGf6sssNGLEmRJ+UN4PI7Y2xJg7ezBjhA0/YhqR/BLLFoVEFkGgYQvPal/gm8izPc/u5lwH6BqQ2hMXxyDWDTFjgBMeMwji+ITRy37GzyG5T5I2TNjkY7fkbN22psMYh5O+BP9C5YguWUcdKr+Z2ubFNkHCTdcd+Y6PFY/y/yL+6Rz80+bP28RcA=
