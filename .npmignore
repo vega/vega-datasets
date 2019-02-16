@@ -1,6 +1,7 @@
 .DS_Store
 .github
 .mypy_cache
+.travis.yml
 index.ts
 node_modules
 rollup.config.js
