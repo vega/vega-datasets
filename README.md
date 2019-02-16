@@ -29,7 +29,7 @@ Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
 npm i vega-datasets
 ```
 
-Now you can import `data = require('vega-datasets')` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files. 
+Now you can import `data = require('vega-datasets')` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files.
 
 Here is a full example
 
@@ -37,7 +37,7 @@ Here is a full example
 import data from 'vega-datasets';
 
 const cars = await data['cars.json']();
-// equivalent to 
+// equivalent to
 // const cars = await (await fetch(data['cars.json'].url)).json();
 
 console.log(cars);
@@ -64,6 +64,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 ```
 
 ## Changelog
+
+### Version 1.22
+
+- Add `windvectors.csv`. Thanks to @jwoLondon!
 
 ### Version 1.20
 
