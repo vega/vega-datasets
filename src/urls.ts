@@ -14,7 +14,6 @@ export default {
   'flare-dependencies.json': 'https://vega.github.io/vega-datasets/data/flare-dependencies.json',
   'flare.json': 'https://vega.github.io/vega-datasets/data/flare.json',
   'flights-10k.json': 'https://vega.github.io/vega-datasets/data/flights-10k.json',
-  'flights-200k.arrow': 'https://vega.github.io/vega-datasets/data/flights-200k.arrow',
   'flights-200k.json': 'https://vega.github.io/vega-datasets/data/flights-200k.json',
   'flights-20k.json': 'https://vega.github.io/vega-datasets/data/flights-20k.json',
   'flights-2k.json': 'https://vega.github.io/vega-datasets/data/flights-2k.json',
@@ -63,4 +62,5 @@ export default {
   'weather.csv': 'https://vega.github.io/vega-datasets/data/weather.csv',
   'windvectors.csv': 'https://vega.github.io/vega-datasets/data/windvectors.csv',
   'zipcodes.csv': 'https://vega.github.io/vega-datasets/data/zipcodes.csv',
+  'flights-200k.arrow': 'https://vega.github.io/vega-datasets/data/flights-200k.arrow',
 }
