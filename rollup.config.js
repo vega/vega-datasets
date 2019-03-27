@@ -6,8 +6,7 @@ export default {
     file: "build/vega-datasets.js",
     format: "umd",
     sourcemap: true,
-    name: "vegaDatasets",
-    exports: "named"
+    name: "vegaDatasets"
   },
   plugins: [ resolve() ]
 };
