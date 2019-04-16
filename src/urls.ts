@@ -62,5 +62,6 @@ export default {
   'weather.csv': 'https://vega.github.io/vega-datasets/data/weather.csv',
   'windvectors.csv': 'https://vega.github.io/vega-datasets/data/windvectors.csv',
   'zipcodes.csv': 'https://vega.github.io/vega-datasets/data/zipcodes.csv',
+  'unemployment.tsv': 'https://vega.github.io/vega-datasets/data/unemployment.tsv',
   'flights-200k.arrow': 'https://vega.github.io/vega-datasets/data/flights-200k.arrow',
 }
