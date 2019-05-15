@@ -20,7 +20,7 @@
     "d3-dsv": "^1.1.1",
     "datalib": "^1.9.2",
     "rollup": "^1.10.0",
-    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-node-resolve": "^5.0.0",
     "terser": "^3.17.0",
     "typescript": "^3.4.3"
   },
