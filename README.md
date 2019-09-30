@@ -1,13 +1,13 @@
 # Vega Datasets
 
 [![npm version](https://img.shields.io/npm/v/vega-datasets.svg)](https://www.npmjs.com/package/vega-datasets)
-[![Build Status](https://travis-ci.com/vega/vega-datasets.svg?branch=master)](https://travis-ci.com/vega/vega-datasets) [![Greenkeeper badge](https://badges.greenkeeper.io/vega/vega-datasets.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/vega/vega-datasets.svg?branch=master)](https://travis-ci.com/vega/vega-datasets)
 
 Collection of datasets used in Vega and Vega-Lite examples. This data lives at https://github.com/vega/vega-datasets.
 
 Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
 
-The list of sources is in [sources.md](https://github.com/vega/vega-datasets/blob/gh-pages/sources.md).
+The list of sources is in [sources.md](https://github.com/vega/vega-datasets/blob/master/sources.md).
 
 To access the data in Observable, you can import `vega-dataset`. Try our [example notebook](https://beta.observablehq.com/@domoritz/vega-datasets). To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/jakevdp/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
 
