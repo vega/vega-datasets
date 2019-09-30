@@ -65,6 +65,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.26
+
+- Add `uniform-2d.json`.
+
 ### Version 1.22
 
 - Add `windvectors.csv`. Thanks to @jwoLondon!

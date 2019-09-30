@@ -35,6 +35,7 @@ export default {
   'population.json': 'https://vega.github.io/vega-datasets/data/population.json',
   'udistrict.json': 'https://vega.github.io/vega-datasets/data/udistrict.json',
   'unemployment-across-industries.json': 'https://vega.github.io/vega-datasets/data/unemployment-across-industries.json',
+  'uniform-2d.json': 'https://vega.github.io/vega-datasets/data/uniform-2d.json',
   'us-10m.json': 'https://vega.github.io/vega-datasets/data/us-10m.json',
   'us-state-capitals.json': 'https://vega.github.io/vega-datasets/data/us-state-capitals.json',
   'weather.json': 'https://vega.github.io/vega-datasets/data/weather.json',
