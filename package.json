@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "version": "1.25.0",
+  "version": "1.26.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "main": "build/vega-datasets",
   "module": "build/data",
@@ -19,10 +19,10 @@
     "@types/d3-dsv": "^1.0.36",
     "d3-dsv": "^1.1.1",
     "datalib": "^1.9.2",
-    "rollup": "^1.10.0",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "terser": "^3.17.0",
-    "typescript": "^3.4.3"
+    "rollup": "^1.22.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "terser": "^4.3.4",
+    "typescript": "^3.6.3"
   },
   "scripts": {
     "index": "./scripts/make-url-index.sh > src/urls.ts",
