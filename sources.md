@@ -135,6 +135,10 @@ Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/tim
 
 A calculated "nonfarm_change" column has been appended with the month-to-month change in that supersector's employment. It is useful for illustrating how to make bar charts that report both negative and positive values.
 
+## `volcano.json`
+
+Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a topographic map by Ross Ihaka, adapted from [R datasets](https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html). These data should not be regarded as accurate.
+
 ## `weather.json`
 
 ## `weather.csv`

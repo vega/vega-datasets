@@ -38,6 +38,7 @@ export default {
   'uniform-2d.json': 'https://vega.github.io/vega-datasets/data/uniform-2d.json',
   'us-10m.json': 'https://vega.github.io/vega-datasets/data/us-10m.json',
   'us-state-capitals.json': 'https://vega.github.io/vega-datasets/data/us-state-capitals.json',
+  'volcano.json': 'https://vega.github.io/vega-datasets/data/volcano.json',
   'weather.json': 'https://vega.github.io/vega-datasets/data/weather.json',
   'weball26.json': 'https://vega.github.io/vega-datasets/data/weball26.json',
   'wheat.json': 'https://vega.github.io/vega-datasets/data/wheat.json',
