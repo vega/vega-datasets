@@ -105,6 +105,8 @@ Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobri
 
 ## `movies.json`
 
+The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data.
+
 ## `points.json`
 
 ## `population.json`
@@ -114,6 +116,8 @@ Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobri
 Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
 
 Transformed using /scripts/weather.py
+
+We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes. 
 
 ## `sp500.csv`
 
