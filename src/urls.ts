@@ -1,4 +1,5 @@
 export default {
+  'annual-precip.json': 'https://vega.github.io/vega-datasets/data/annual-precip.json',
   'anscombe.json': 'https://vega.github.io/vega-datasets/data/anscombe.json',
   'barley.json': 'https://vega.github.io/vega-datasets/data/barley.json',
   'birdstrikes.json': 'https://vega.github.io/vega-datasets/data/birdstrikes.json',

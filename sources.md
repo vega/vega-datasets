@@ -6,6 +6,10 @@ Still incomplete. See https://github.com/vega/vega-datasets/issues/15
 
 Application icons from open-source software projects.
 
+## `annual-precip.json`
+
+A raster grid of global annual precipitation for the year 2016 at a resolution 1 degree of lon/lat per cell, from [CFSv2](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/climate-forecast-system-version2-cfsv2).
+
 ## `airports.csv`
 
 ## `anscombe.json`
@@ -117,7 +121,7 @@ Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
 
 Transformed using /scripts/weather.py
 
-We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes. 
+We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
 ## `sp500.csv`
 
