@@ -65,6 +65,14 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.28
+
+- Add `annual-precip.json`. Thanks to @mattijn!
+
+### Version 1.27
+
+- Add `volcano.json`.
+
 ### Version 1.26
 
 - Add `uniform-2d.json`.
