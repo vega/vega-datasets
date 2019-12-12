@@ -32,6 +32,7 @@ export default {
   'movies.json': 'https://vega.github.io/vega-datasets/data/movies.json',
   'normal-2d.json': 'https://vega.github.io/vega-datasets/data/normal-2d.json',
   'obesity.json': 'https://vega.github.io/vega-datasets/data/obesity.json',
+  'ohlc.json': 'https://vega.github.io/vega-datasets/data/ohlc.json',
   'points.json': 'https://vega.github.io/vega-datasets/data/points.json',
   'population.json': 'https://vega.github.io/vega-datasets/data/population.json',
   'udistrict.json': 'https://vega.github.io/vega-datasets/data/udistrict.json',
