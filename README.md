@@ -65,6 +65,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.29
+
+- Add `ohlc.json`. Thanks to @eitanlees!
+
 ### Version 1.28
 
 - Add `annual-precip.json`. Thanks to @mattijn!
