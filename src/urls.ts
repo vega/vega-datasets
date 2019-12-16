@@ -19,6 +19,7 @@ export default {
   'flights-20k.json': 'https://vega.github.io/vega-datasets/data/flights-20k.json',
   'flights-2k.json': 'https://vega.github.io/vega-datasets/data/flights-2k.json',
   'flights-5k.json': 'https://vega.github.io/vega-datasets/data/flights-5k.json',
+  'football.csv': 'https://vega.github.io/vega-datasets/data/football.csv',
   'gapminder.json': 'https://vega.github.io/vega-datasets/data/gapminder.json',
   'graticule.json': 'https://vega.github.io/vega-datasets/data/graticule.json',
   'income.json': 'https://vega.github.io/vega-datasets/data/income.json',

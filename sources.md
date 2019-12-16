@@ -65,6 +65,10 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics, https://w
 
 Transformed using /scripts/flights.js
 
+## `football.csv`
+
+This dataset contains football statistics calculated by [@jburnmurdoch](https://github.com/johnburnmurdoch) for his project [goal-lines](https://johnburnmurdoch.github.io/projects/goal-lines/all-comps/). The source for the data is reported to have come from worldfootball.net .
+
 ## `gapminder-health-income.csv`, `gapminder.json`
 
 ## `github.csv`
