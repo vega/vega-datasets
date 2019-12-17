@@ -11,7 +11,7 @@ The list of sources is in [sources.md](https://github.com/vega/vega-datasets/blo
 
 To access the data in Observable, you can import `vega-dataset`. Try our [example notebook](https://beta.observablehq.com/@domoritz/vega-datasets). To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/jakevdp/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
 
-The [vega datasets preview notebook](https://observablehq.com/@randomfractals/vega-datasets) offers a quick way to browse the content of the available datasets.
+The [Vega datasets preview notebook](https://observablehq.com/@randomfractals/vega-datasets) offers a quick way to browse the content of the available datasets.
 
 ## How to use it
 
