@@ -65,6 +65,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.30
+
+- Update `seattle-temps` with better sourced data.
+
 ### Version 1.29
 
 - Add `ohlc.json`. Thanks to @eitanlees!
