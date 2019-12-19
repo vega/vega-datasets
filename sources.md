@@ -119,7 +119,15 @@ This dataset contains the performance of the Chicago Board Options Exchange [Vol
 
 ## `population.json`
 
-## `seattle-temps.csv`, `sf-temps.csv`, `seattle-weather.csv`
+## `seattle-temps.csv`
+
+30-year temperature averages recorded hourly from the Seattle Tacoma International Airport weather station.  Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets/NORMAL_HLY/stations/GHCND:USW00024233/detail).
+
+## `sf-temps.csv`
+
+Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
+
+## `seattle-weather.csv`
 
 Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
 
