@@ -1,11 +1,11 @@
 language: node_js
-node_js: '12'
+node_js: '13'
 script:
   - yarn build
 cache: yarn
 deploy:
   provider: npm
-  skip_cleanup: true
+  edge: true
   email: domoritz@gmail.com
   on:
     tags: true
