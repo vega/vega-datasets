@@ -67,6 +67,10 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 ## Changelog
 
+### Version 1.31
+
+- Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain.
+
 ### Version 1.30
 
 - Update `seattle-temps` with better sourced data.
