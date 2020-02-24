@@ -65,6 +65,10 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics, https://w
 
 Transformed using /scripts/flights.js
 
+## `football.json`
+
+Football match outcomes across multiple divisions. This dataset is a subset of a larger dataset found at https://github.com/openfootball/football.json
+
 ## `gapminder-health-income.csv`, `gapminder.json`
 
 ## `github.csv`
