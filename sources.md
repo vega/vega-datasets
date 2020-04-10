@@ -67,7 +67,7 @@ Transformed using /scripts/flights.js
 
 ## `football.json`
 
-Football match outcomes across multiple divisions. This dataset is a subset of a larger dataset found at https://github.com/openfootball/football.json
+Football match outcomes across multiple divisions from 2013 to 2017. This dataset is a subset of a larger dataset found from https://github.com/openfootball/football.json . The subset was made such that there are records for all five chosen divisions over the time period.
 
 ## `gapminder-health-income.csv`, `gapminder.json`
 
