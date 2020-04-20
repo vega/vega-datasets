@@ -71,6 +71,7 @@ git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-
 
 - Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain.
 - Removed `graticule.json`.
+- Add `football.json`.
 
 ### Version 1.30
 
