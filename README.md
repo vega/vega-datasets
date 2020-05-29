@@ -51,19 +51,9 @@ You can also get the data directly via HTTP served by GitHub like:
 
 https://vega.github.io/vega-datasets/data/cars.json
 
-### Git subtree
+## Development process
 
-You can use git subtree to add these datasets to a project. Add data git `subtree add` like:
-
-```
-git subtree add --prefix path-to-data git@github.com:vega/vega-datasets.git gh-pages
-```
-
-Update to the latest version of vega-data with
-
-```
-git subtree pull --prefix path-to-data git@github.com:vega/vega-datasets.git gh-pages
-```
+Install dependencies with `yarn`. To make a release, create a new tagged version with `yarn version` and then push the tag. The CI will automatically make a release. 
 
 ## Changelog
 
