@@ -3,6 +3,7 @@
 - Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain.
 - Remove `graticule.json`.
 - Add `football.json`.
+- Add `penguins_size.csv`.
 
 ### Version 1.30
 

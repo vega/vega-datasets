@@ -1,6 +1,6 @@
 # Sources
 
-Still incomplete. See https://github.com/vega/vega-datasets/issues/15
+Still incomplete. See https://github.com/vega/vega-datasets/issues/15.
 
 ## `7zip.png`, `ffox.png`, `gimp.png`
 
