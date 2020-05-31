@@ -56,9 +56,9 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "14.0.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
-  integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
+  version "14.0.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.9.tgz#43896ab87fc82bda1dfd600cdf44a0c8a64e11d2"
+  integrity sha512-0sCTiXKXELOBxvZLN4krQ0FPOAA7ij+6WwvD0k/PHd9/KAkr4dXel5J9fh6F4x1FwAQILqAWkmpeuS6mjf1iKA==
 
 "@types/node@^10.0.3":
   version "10.17.24"
@@ -533,7 +533,7 @@ resolve@^1.14.2:
   dependencies:
     path-parse "^1.0.6"
 
-rollup@^2.11.2:
+rollup@^2.12.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.15.0.tgz#1324633188c7f82138bd3bdc99416009ee541f48"
   integrity sha512-HAk4kyXiV5sdNDnbKWk5zBPnkX/DAgx09Kbp8rRIRDVsTUVN3vnSowR7ZHkV6/lAiE6c2TQ8HtYb72aCPGW4Jw==
