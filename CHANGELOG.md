@@ -4,6 +4,7 @@
 - Remove `graticule.json`.
 - Add `football.json`.
 - Add `penguins_size.csv`.
+- Update co2-concentration data and add adjusted CO2.
 
 ### Version 1.30
 

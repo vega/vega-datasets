@@ -38,7 +38,7 @@ http://lib.stat.cmu.edu/datasets/
 
 ## `co2-concentration.csv`
 
-https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date and CO2 for months with valid data.
+https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date, CO2, seasonally adjusted CO2 and only include rows with valid data.
 
 ## `countries.json`
 
