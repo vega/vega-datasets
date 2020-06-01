@@ -10,7 +10,7 @@
 - Convert `birdstrikes.json` to `birdstrikes.csv` and use ISO 8601 dates.
 - Convert `movies.json` to `movies.csv` and use ISO 8601 dates.
 - Remove `climate.json`.
-- Remove `seattle-temps.csv` with hourly temperatures. Use `seattle-weather.csv` with daily weather data instead.
+- Replace `seattle-temps.csv` with more general `seattle-weather-hourly.csv`.
 - Remove `sf-temps.csv`.
 - Remove `graticule.json`. Use graticule generator instead.
 - Remove `points.json`. 
