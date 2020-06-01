@@ -20,7 +20,7 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
 
 The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varieties of barley at six different sites. It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption." R.A. Fisher's popularized its use in the field of statistics when he included it in his book ["The Design of Experiments."](https://en.wikipedia.org/wiki/The_Design_of_Experiments) Since then it has been used to demonstrate new statistical techniques, including the [trellis charts](http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf) developed by Richard Becker, William Cleveland and others in the 1990s.
 
-## `birdstrikes.json`
+## `birdstrikes.csv`
 
 http://wildlife.faa.gov
 
@@ -107,7 +107,7 @@ Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobri
 
 ## `monarchs.json`
 
-## `movies.json`
+## `movies.csv`
 
 The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data.
 
@@ -119,25 +119,17 @@ This dataset contains the performance of the Chicago Board Options Exchange [Vol
 
 Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). For more information visit [allisonhorst/penguins](https://github.com/allisonhorst/penguins) on GitHub.
 
-## `points.json`
+## `political-contributions.json`
 
 ## `population.json`
 
-## `seattle-temps.csv`
-
-30-year temperature averages recorded hourly from the Seattle Tacoma International Airport weather station.  Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets/NORMAL_HLY/stations/GHCND:USW00024233/detail).
-
-## `sf-temps.csv`
-
-30-year temperature averages recorded hourly from the San Francisco International Airport weather station.  Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets/NORMAL_HLY/stations/GHCND:USW00023234/detail).
-
 ## `seattle-weather.csv`
 
-Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
+Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). Daily weather normals. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
-Transformed using /scripts/weather.py
+## `seattle-weather-hourly.csv`
 
-We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
+Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). Hourly weather normals. We only included temperature, wind, and pressure and updated the format to be easier to parse.
 
 ## `sp500.csv`
 
@@ -167,9 +159,7 @@ Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field
 
 ## `weather.csv`
 
-NOAA
-
-## `weball26.json`
+Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
 ## `wheat.json`
 

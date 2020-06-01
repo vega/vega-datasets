@@ -1,10 +1,23 @@
 ### Version 2.0
 
-- Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain.
-- Remove `graticule.json`.
-- Add `football.json`.
-- Add `penguins_size.csv`.
-- Update co2-concentration data and add adjusted CO2.
+- Add `football.json`. Thanks to @eitanlees!
+- Add `seattle-weather-hourly.csv`.
+- Add `penguins_size.csv`. Thanks to @eitanlees!
+- Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain. Thanks to @visnup!
+- Update co2-concentration data and add seasonally adjusted CO2 field.
+- Switch to ISO 8601 dates in `seattle-weather.csv`.
+- Rename `weball26.json` to `political-contributions.json`.
+- Convert `birdstrikes.json` to `birdstrikes.csv` and use ISO 8601 dates.
+- Convert `movies.json` to `movies.csv` and use ISO 8601 dates.
+- Remove `climate.json`.
+- Remove `seattle-temps.csv` with hourly temperatures. Use `seattle-weather.csv` with daily weather data instead.
+- Remove `sf-temps.csv`.
+- Remove `graticule.json`. Use graticule generator instead.
+- Remove `points.json`. 
+
+### Version 1.31
+
+- Strip BOM from `windvectors.csv`.
 
 ### Version 1.30
 
