@@ -2,8 +2,9 @@
 
 [![npm version](https://img.shields.io/npm/v/vega-datasets.svg)](https://www.npmjs.com/package/vega-datasets)
 [![Build Status](https://github.com/vega/vega-datasets/workflows/Test/badge.svg)](https://github.com/vega/vega-datasets/actions)
+[![](https://data.jsdelivr.com/v1/package/npm/vega-datasets/badge?style=rounded)](https://www.jsdelivr.com/package/npm/vega-datasets)
 
-Collection of datasets used in Vega and Vega-Lite examples. This data lives at https://github.com/vega/vega-datasets.
+Collection of datasets used in Vega and Vega-Lite examples. This data lives at https://github.com/vega/vega-datasets and https://cdn.jsdelivr.net/npm/vega-dataset.
 
 Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
 
@@ -53,9 +54,9 @@ console.log(cars);
 
 ### HTTP
 
-You can also get the data directly via HTTP served by GitHub like:
+You can also get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN) like:
 
-https://vega.github.io/vega-datasets/data/cars.json
+https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@1.31/data/cars.json.
 
 ## Development process
 
