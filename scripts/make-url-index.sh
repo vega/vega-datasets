@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "import version from '../package.json';"
+echo "import {version} from '../package.json';"
 echo 'export default {'
 echo ''
 

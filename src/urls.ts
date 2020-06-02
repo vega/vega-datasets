@@ -1,4 +1,4 @@
-import version from '../package.json';
+import {version} from '../package.json';
 export default {
 
   'annual-precip.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/annual-precip.json`,
