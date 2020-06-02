@@ -14,7 +14,7 @@ A raster grid of global annual precipitation for the year 2016 at a resolution 1
 
 ## `anscombe.json`
 
-Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
+Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician.
 
 ## `barley.json`
 
@@ -73,7 +73,7 @@ Football match outcomes across multiple divisions from 2013 to 2017. This datase
 
 ## `github.csv`
 
-Generated using /scripts/github.py
+Generated using `/scripts/github.py`.
 
 ## `population_engineers_hurricanes.csv`
 
@@ -125,11 +125,11 @@ Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr
 
 ## `seattle-weather.csv`
 
-Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/records). Daily weather records. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
+Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/records). Daily weather records with metric units. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
 ## `seattle-weather-hourly-normals.csv`
 
-Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly weather normals. The 1981-2010 Climate Normals are NCDC's three-decade averages of climatological variables, including temperature and precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure and updated the format to be easier to parse.
+Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly weather normals with metric units. The 1981-2010 Climate Normals are NCDC's three-decade averages of climatological variables, including temperature and precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure and updated the format to be easier to parse.
 
 ## `sp500.csv`
 
@@ -156,6 +156,8 @@ A calculated "nonfarm_change" column has been appended with the month-to-month c
 Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a topographic map by Ross Ihaka, adapted from [R datasets](https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html). These data should not be regarded as accurate.
 
 ## `weather.json`
+
+Instructional dataset showing actual and predicted temperature data.
 
 ## `weather.csv`
 
