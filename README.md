@@ -13,9 +13,13 @@ To access the data in Observable, you can import `vega-dataset`. Try our [exampl
 
 The [Vega datasets preview notebook](https://observablehq.com/@randomfractals/vega-datasets) offers a quick way to browse the content of the available datasets.
 
-## How to use it
+## Versioning
 
-Note that when you get data via URL, the data may change in the future as we don't fully guarantee backwards compatibility.
+We use semantic versioning. However, since this package serve datasets we have additional rules about how we version data.
+
+We do not change data in patch releases except to resolve formatting issues. Minor releases may change the data but only update datasets in ways that do not change field names or file names. Minor releases may also add datasets. Major versions may change file names, file contents, and remove or update files. 
+
+## How to use it
 
 ### NPM
 
