@@ -125,11 +125,11 @@ Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr
 
 ## `seattle-weather.csv`
 
-Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). Daily weather normals. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
+Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/records). Daily weather records. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
-## `seattle-weather-hourly.csv`
+## `seattle-weather-hourly-normals.csv`
 
-Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). Hourly weather normals. We only included temperature, wind, and pressure and updated the format to be easier to parse.
+Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly weather normals. The 1981-2010 Climate Normals are NCDC's three-decade averages of climatological variables, including temperature and precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure and updated the format to be easier to parse.
 
 ## `sp500.csv`
 

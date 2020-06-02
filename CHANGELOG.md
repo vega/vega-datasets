@@ -1,8 +1,8 @@
 ### Version 2.0
 
 - Add `football.json`. Thanks to @eitanlees!
-- Add `seattle-weather-hourly.csv`.
 - Add `penguins_size.csv`. Thanks to @eitanlees!
+- Add `seattle-weather-hourly-normals.csv`.
 - Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain. Thanks to @visnup!
 - Update co2-concentration data and add seasonally adjusted CO2 field.
 - Switch to ISO 8601 dates in `seattle-weather.csv`.
@@ -10,7 +10,7 @@
 - Convert `birdstrikes.json` to `birdstrikes.csv` and use ISO 8601 dates.
 - Convert `movies.json` to `movies.csv` and use ISO 8601 dates.
 - Remove `climate.json`.
-- Replace `seattle-temps.csv` with more general `seattle-weather-hourly.csv`.
+- Replace `seattle-temps.csv` with more general `seattle-weather-hourly-normals.csv`.
 - Remove `sf-temps.csv`.
 - Remove `graticule.json`. Use graticule generator instead.
 - Remove `points.json`. 
