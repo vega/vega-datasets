@@ -3,10 +3,10 @@
   "version": "1.30.4",
   "description": "Common repository for example datasets used by Vega related projects.",
   "main": "build/vega-datasets",
-  "module": "build/data",
+  "module": "build/src/data",
   "unpkg": "build/vega-datasets.min.js",
   "jsdelivr": "build/vega-datasets.min.js",
-  "typings": "build/data.d.ts",
+  "typings": "build/src/data.d.ts",
   "repository": {
     "type": "git",
     "url": "http://github.com/vega/vega-datasets.git"
@@ -16,6 +16,7 @@
     "url": "http://idl.cs.washington.edu"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.0.3",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@types/d3-dsv": "^1.0.36",
     "d3-dsv": "^1.2.0",

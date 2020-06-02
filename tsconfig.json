@@ -6,7 +6,9 @@
     "declaration": true,
     "strict": true,
     "outDir": "./build",
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "files": ["src/index.ts"]
 }
