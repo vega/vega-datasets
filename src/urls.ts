@@ -33,6 +33,7 @@ export default {
   'normal-2d.json': 'https://vega.github.io/vega-datasets/data/normal-2d.json',
   'obesity.json': 'https://vega.github.io/vega-datasets/data/obesity.json',
   'ohlc.json': 'https://vega.github.io/vega-datasets/data/ohlc.json',
+  'penguins_size.csv': 'https://vega.github.io/vega-datasets/data/penguins_size.csv',
   'points.json': 'https://vega.github.io/vega-datasets/data/points.json',
   'population.json': 'https://vega.github.io/vega-datasets/data/population.json',
   'udistrict.json': 'https://vega.github.io/vega-datasets/data/udistrict.json',
