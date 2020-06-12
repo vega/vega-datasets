@@ -13,7 +13,8 @@
 - Replace `seattle-temps.csv` with more general `seattle-weather-hourly-normals.csv`.
 - Remove `sf-temps.csv`.
 - Remove `graticule.json`. Use graticule generator instead.
-- Remove `points.json`. 
+- Remove `points.json`.
+- Remove `iris.json`. Use `penguins_size.csv` instead.
 
 ### Version 1.31
 
