@@ -56,6 +56,7 @@ export default {
   'lookup_groups.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/lookup_groups.csv`,
   'lookup_people.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/lookup_people.csv`,
   'movies.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/movies.csv`,
+  'penguins_size.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/penguins_size.csv`,
   'population_engineers_hurricanes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/population_engineers_hurricanes.csv`,
   'seattle-weather-hourly-normals.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather-hourly-normals.csv`,
   'seattle-weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather.csv`,
