@@ -2,15 +2,15 @@ species,island,culmen_length_mm,culmen_depth_mm,flipper_length_mm,body_mass_g,se
 Adelie,Torgersen,39.1,18.7,181,3750,MALE
 Adelie,Torgersen,39.5,17.4,186,3800,FEMALE
 Adelie,Torgersen,40.3,18,195,3250,FEMALE
-Adelie,Torgersen,NA,NA,NA,NA,NA
+Adelie,Torgersen,,,,,
 Adelie,Torgersen,36.7,19.3,193,3450,FEMALE
 Adelie,Torgersen,39.3,20.6,190,3650,MALE
 Adelie,Torgersen,38.9,17.8,181,3625,FEMALE
 Adelie,Torgersen,39.2,19.6,195,4675,MALE
-Adelie,Torgersen,34.1,18.1,193,3475,NA
-Adelie,Torgersen,42,20.2,190,4250,NA
-Adelie,Torgersen,37.8,17.1,186,3300,NA
-Adelie,Torgersen,37.8,17.3,180,3700,NA
+Adelie,Torgersen,34.1,18.1,193,3475,
+Adelie,Torgersen,42,20.2,190,4250,
+Adelie,Torgersen,37.8,17.1,186,3300,
+Adelie,Torgersen,37.8,17.3,180,3700,
 Adelie,Torgersen,41.1,17.6,182,3200,FEMALE
 Adelie,Torgersen,38.6,21.2,191,3800,MALE
 Adelie,Torgersen,34.6,21.1,198,4400,MALE
@@ -46,7 +46,7 @@ Adelie,Dream,44.1,19.7,196,4400,MALE
 Adelie,Dream,37,16.9,185,3000,FEMALE
 Adelie,Dream,39.6,18.8,190,4600,MALE
 Adelie,Dream,41.1,19,182,3425,MALE
-Adelie,Dream,37.5,18.9,179,2975,NA
+Adelie,Dream,37.5,18.9,179,2975,
 Adelie,Dream,36,17.9,190,3450,FEMALE
 Adelie,Dream,42.3,21.2,191,4150,MALE
 Adelie,Biscoe,39.6,17.7,186,3500,FEMALE
@@ -245,7 +245,7 @@ Gentoo,Biscoe,46.5,14.5,213,4400,FEMALE
 Gentoo,Biscoe,46.3,15.8,215,5050,MALE
 Gentoo,Biscoe,42.9,13.1,215,5000,FEMALE
 Gentoo,Biscoe,46.1,15.1,215,5100,MALE
-Gentoo,Biscoe,44.5,14.3,216,4100,NA
+Gentoo,Biscoe,44.5,14.3,216,4100,
 Gentoo,Biscoe,47.8,15,215,5650,MALE
 Gentoo,Biscoe,48.2,14.3,210,4600,FEMALE
 Gentoo,Biscoe,50,15.3,220,5550,MALE
@@ -285,7 +285,7 @@ Gentoo,Biscoe,45.7,13.9,214,4400,FEMALE
 Gentoo,Biscoe,54.3,15.7,231,5650,MALE
 Gentoo,Biscoe,45.8,14.2,219,4700,FEMALE
 Gentoo,Biscoe,49.8,16.8,230,5700,MALE
-Gentoo,Biscoe,46.2,14.4,214,4650,NA
+Gentoo,Biscoe,46.2,14.4,214,4650,
 Gentoo,Biscoe,49.5,16.2,229,5800,MALE
 Gentoo,Biscoe,43.5,14.2,220,4700,FEMALE
 Gentoo,Biscoe,50.7,15,223,5550,MALE
@@ -323,7 +323,7 @@ Gentoo,Biscoe,48.5,15,219,4850,FEMALE
 Gentoo,Biscoe,55.9,17,228,5600,MALE
 Gentoo,Biscoe,47.2,15.5,215,4975,FEMALE
 Gentoo,Biscoe,49.1,15,228,5500,MALE
-Gentoo,Biscoe,47.3,13.8,216,4725,NA
+Gentoo,Biscoe,47.3,13.8,216,4725,
 Gentoo,Biscoe,46.8,16.1,215,5500,MALE
 Gentoo,Biscoe,41.7,14.7,210,4700,FEMALE
 Gentoo,Biscoe,53.4,15.8,219,5500,MALE
@@ -338,7 +338,7 @@ Gentoo,Biscoe,55.1,16,230,5850,MALE
 Gentoo,Biscoe,44.5,15.7,217,4875,.
 Gentoo,Biscoe,48.8,16.2,222,6000,MALE
 Gentoo,Biscoe,47.2,13.7,214,4925,FEMALE
-Gentoo,Biscoe,NA,NA,NA,NA,NA
+Gentoo,Biscoe,,,,,
 Gentoo,Biscoe,46.8,14.3,215,4850,FEMALE
 Gentoo,Biscoe,50.4,15.7,222,5750,MALE
 Gentoo,Biscoe,45.2,14.8,212,5200,FEMALE
