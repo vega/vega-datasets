@@ -1,26 +1,29 @@
-import urls from './urls';
-import * as d3 from 'd3-dsv';
+import * as d3 from "d3-dsv";
+import { version } from "../package.json";
+import urls from "./urls";
 
 type Name = keyof typeof urls;
 
-const data: {[key in Name]: () => Promise<any | any[] | string> & {url: string}} = {} as any;
+const data: {
+  [key in Name]: () => Promise<any | any[] | string> & { url: string };
+} & { version: string } = { version } as any;
 
-for (const name of (Object.keys(urls) as Name[])) {
-    const url = urls[name];
-    const f: any = async function() {
-        const result = await fetch(url);
+for (const name of Object.keys(urls) as Name[]) {
+  const url = urls[name];
+  const f: any = async function () {
+    const result = await fetch(url);
 
-        if (name.endsWith('.json')) {
-            return await result.json();
-        } else if (name.endsWith('.csv')) {
-            // TODO: remove "as any" once @types/d3-dsv has been updated
-            return d3.csvParse(await result.text(), (d3 as any).autoType);
-        } else {
-            return await result.text();
-        }
+    if (name.endsWith(".json")) {
+      return await result.json();
+    } else if (name.endsWith(".csv")) {
+      // TODO: remove "as any" once @types/d3-dsv has been updated
+      return d3.csvParse(await result.text(), (d3 as any).autoType);
+    } else {
+      return await result.text();
     }
-    f.url = url;
-    data[name] = f;
+  };
+  f.url = url;
+  data[name] = f;
 }
 
 export default data;
