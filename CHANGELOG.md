@@ -1,7 +1,7 @@
 ### Version 2.0
 
 - Add `football.json`. Thanks to @eitanlees!
-- Add `penguins_size.csv`. Thanks to @eitanlees!
+- Add `palmerpenguins.json`.
 - Add `seattle-weather-hourly-normals.csv`.
 - Update `weather.csv` and `seattle-weather.csv` with better encoded weather condition, indicating more rain. Thanks to @visnup!
 - Update co2-concentration data and add seasonally adjusted CO2 field.
@@ -14,7 +14,7 @@
 - Remove `sf-temps.csv`.
 - Remove `graticule.json`. Use graticule generator instead.
 - Remove `points.json`.
-- Remove `iris.json`. Use `penguins_size.csv` instead.
+- Remove `iris.json`. Use `palmerpenguins.json` instead.
 
 ### Version 1.31
 
