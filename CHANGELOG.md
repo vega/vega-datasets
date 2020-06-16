@@ -1,3 +1,7 @@
+### Version 2.1
+
+- Add `version` property to js module.
+
 ### Version 2.0
 
 - Add `football.json`. Thanks to @eitanlees!
