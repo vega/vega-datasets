@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "version": "2.0.0-beta.6",
+  "version": "2.0.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "main": "build/vega-datasets",
   "module": "build/src/data",
