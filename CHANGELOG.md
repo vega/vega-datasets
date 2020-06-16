@@ -8,7 +8,7 @@
 - Switch to ISO 8601 dates in `seattle-weather.csv`.
 - Rename `weball26.json` to `political-contributions.json`.
 - Convert `birdstrikes.json` to `birdstrikes.csv` and use ISO 8601 dates.
-- Convert `movies.json` to `movies.csv` and use ISO 8601 dates.
+- Convert `movies.json` to use column names with spaces use ISO 8601 dates.
 - Remove `climate.json`.
 - Replace `seattle-temps.csv` with more general `seattle-weather-hourly-normals.csv`.
 - Remove `sf-temps.csv`.

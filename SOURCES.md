@@ -105,7 +105,7 @@ Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobri
 
 ## `monarchs.json`
 
-## `movies.csv`
+## `movies.json`
 
 The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data.
 
