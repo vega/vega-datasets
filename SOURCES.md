@@ -1,6 +1,6 @@
 # Sources
 
-Still incomplete. See https://github.com/vega/vega-datasets/issues/15
+Still incomplete. See https://github.com/vega/vega-datasets/issues/15.
 
 ## `7zip.png`, `ffox.png`, `gimp.png`
 
@@ -14,13 +14,13 @@ A raster grid of global annual precipitation for the year 2016 at a resolution 1
 
 ## `anscombe.json`
 
-Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician
+Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician.
 
 ## `barley.json`
 
 The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varieties of barley at six different sites. It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption." R.A. Fisher's popularized its use in the field of statistics when he included it in his book ["The Design of Experiments."](https://en.wikipedia.org/wiki/The_Design_of_Experiments) Since then it has been used to demonstrate new statistical techniques, including the [trellis charts](http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf) developed by Richard Becker, William Cleveland and others in the 1990s.
 
-## `birdstrikes.json`
+## `birdstrikes.csv`
 
 http://wildlife.faa.gov
 
@@ -38,7 +38,7 @@ http://lib.stat.cmu.edu/datasets/
 
 ## `co2-concentration.csv`
 
-https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date and CO2 for months with valid data.
+https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date, CO2, seasonally adjusted CO2 and only include rows with valid data.
 
 ## `countries.json`
 
@@ -73,7 +73,7 @@ Football match outcomes across multiple divisions from 2013 to 2017. This datase
 
 ## `github.csv`
 
-Generated using /scripts/github.py
+Generated using `/scripts/github.py`.
 
 ## `population_engineers_hurricanes.csv`
 
@@ -82,8 +82,6 @@ Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data fro
 ## `iowa-electricity.csv`
 
 The state of Iowa has dramatically increased its production of renewable wind power in recent years. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. The dataset was compiled by the [U.S. Energy Information Administration](https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin=) and downloaded on May 6, 2018. It is useful for illustrating stacked area charts.
-
-## `iris.json`
 
 ## `jobs.json`
 
@@ -115,29 +113,21 @@ The dataset has well known and intentionally included errors. This dataset is us
 
 This dataset contains the performance of the Chicago Board Options Exchange [Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX?ltr=1#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjgsInZvbHVtZVVuZGVybGF5Ijp0cnVlLCJhZGoiOnRydWUsImNyb3NzaGFpciI6dHJ1ZSwiY2hhcnRUeXBlIjoibGluZSIsImV4dGVuZGVkIjpmYWxzZSwibWFya2V0U2Vzc2lvbnMiOnt9LCJhZ2dyZWdhdGlvblR5cGUiOiJvaGxjIiwiY2hhcnRTY2FsZSI6ImxpbmVhciIsInN0dWRpZXMiOnsidm9sIHVuZHIiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoidm9sIHVuZHIiLCJkaXNwbGF5Ijoidm9sIHVuZHIifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjRkYzMzNBIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCJ9fX0sInBhbmVscyI6eyJjaGFydCI6eyJwZXJjZW50IjoxLCJkaXNwbGF5IjoiXlZJWCIsImNoYXJ0TmFtZSI6ImNoYXJ0IiwidG9wIjowfX0sInNldFNwYW4iOnt9LCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsImV2ZW50cyI6dHJ1ZSwiY29sb3IiOiIjMDA4MWYyIiwiZXZlbnRNYXAiOnsiY29ycG9yYXRlIjp7ImRpdnMiOnRydWUsInNwbGl0cyI6dHJ1ZX0sInNpZ0RldiI6e319LCJzeW1ib2xzIjpbeyJzeW1ib2wiOiJeVklYIiwic3ltYm9sT2JqZWN0Ijp7InN5bWJvbCI6Il5WSVgifSwicGVyaW9kaWNpdHkiOjEsImludGVydmFsIjoiZGF5IiwidGltZVVuaXQiOm51bGwsInNldFNwYW4iOnt9fV19)) in the summer of 2009.
 
-## `penguins_size.csv`
+## `penguins.json`
 
 Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). For more information visit [allisonhorst/penguins](https://github.com/allisonhorst/penguins) on GitHub.
 
-## `points.json`
+## `political-contributions.json`
 
 ## `population.json`
 
-## `seattle-temps.csv`
-
-30-year temperature averages recorded hourly from the Seattle Tacoma International Airport weather station.  Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets/NORMAL_HLY/stations/GHCND:USW00024233/detail).
-
-## `sf-temps.csv`
-
-30-year temperature averages recorded hourly from the San Francisco International Airport weather station.  Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datasets/NORMAL_HLY/stations/GHCND:USW00023234/detail).
-
 ## `seattle-weather.csv`
 
-Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation).
+Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/records). Daily weather records with metric units. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
-Transformed using /scripts/weather.py
+## `seattle-weather-hourly-normals.csv`
 
-We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
+Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly weather normals with metric units. The 1981-2010 Climate Normals are NCDC's three-decade averages of climatological variables, including temperature and precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure and updated the format to be easier to parse.
 
 ## `sp500.csv`
 
@@ -165,11 +155,11 @@ Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field
 
 ## `weather.json`
 
+Instructional dataset showing actual and predicted temperature data.
+
 ## `weather.csv`
 
-NOAA
-
-## `weball26.json`
+Data from [NOAA](http://www.ncdc.noaa.gov/cdo-web/datatools/findstation). Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
 
 ## `wheat.json`
 
