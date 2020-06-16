@@ -32,7 +32,7 @@ export default {
   'normal-2d.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/normal-2d.json`,
   'obesity.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/obesity.json`,
   'ohlc.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/ohlc.json`,
-  'palmerpenguins.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/palmerpenguins.json`,
+  'penguins.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/penguins.json`,
   'points.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/points.json`,
   'political-contributions.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/political-contributions.json`,
   'population.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/population.json`,
