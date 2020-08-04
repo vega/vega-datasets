@@ -22,7 +22,7 @@
     "d3-dsv": "^1.2.0",
     "datalib": "^1.9.2",
     "rollup": "^2.16.1",
-    "terser": "^4.8.0",
+    "terser": "^5.0.0",
     "typescript": "^3.9.5"
   },
   "scripts": {
