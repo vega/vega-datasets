@@ -60,6 +60,7 @@ export default {
   'population_engineers_hurricanes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/population_engineers_hurricanes.csv`,
   'seattle-weather-hourly-normals.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather-hourly-normals.csv`,
   'seattle-weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather.csv`,
+  'sp500-2000.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500-2000.csv`,
   'sp500.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500.csv`,
   'stocks.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/stocks.csv`,
   'us-employment.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/us-employment.csv`,

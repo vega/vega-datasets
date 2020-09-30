@@ -131,6 +131,10 @@ Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly we
 
 ## `sp500.csv`
 
+## `sp500-2000.csv`
+
+S&amp;P 500 index values from 2000 to 2020, retrieved from [Yahoo Finance](https://finance.yahoo.com/quote/%5EDJI/history/).
+
 ## `stocks.csv`
 
 ## `unemployment-across-industries.json`
