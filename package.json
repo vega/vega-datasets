@@ -19,7 +19,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/d3-dsv": "^1.0.36",
-    "d3-dsv": "^1.2.0",
+    "d3-dsv": "^2.0.0",
     "datalib": "^1.9.2",
     "rollup": "^2.16.1",
     "terser": "^5.0.0",
