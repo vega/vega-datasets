@@ -38,9 +38,9 @@
     "@types/node" "*"
 
 "@types/d3-dsv@^1.0.36":
-  version "1.0.36"
-  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-1.0.36.tgz#e91129d7c02b1b814838d001e921e8b9a67153d0"
-  integrity sha512-jbIWQ27QJcBNMZbQv0NSQMHnBDCmxghAxePxgyiPH1XPCRkOsTBei7jcdi3fDrUCGpCV3lKrSZFSlOkhUQVClA==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-1.1.0.tgz#f8347a6e5e4afbeebb37e960a552001d4faaa742"
+  integrity sha512-Mjd4hhZSOqB2FFw4J0V1ixDayb7HawJ6T5uB3pfjEvQ3pOVQrI1AB+WphozoxbgPCXhSi76fTwkDkwcVWAKYJA==
 
 "@types/estree@0.0.39":
   version "0.0.39"
