@@ -37,10 +37,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/d3-dsv@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-1.1.0.tgz#f8347a6e5e4afbeebb37e960a552001d4faaa742"
-  integrity sha512-Mjd4hhZSOqB2FFw4J0V1ixDayb7HawJ6T5uB3pfjEvQ3pOVQrI1AB+WphozoxbgPCXhSi76fTwkDkwcVWAKYJA==
+"@types/d3-dsv@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-2.0.0.tgz#c9fb8b2f0f7168d21a6bbd29492141bfd1b8db16"
+  integrity sha512-wYqy7T8tQ/DmocwxmlPujllLI5fg3lb6/FrVVWkLUD+NsRV+kcE4nbRZg10G9yjJ8pK2ZXqu+VP5jQbN13uNRQ==
 
 "@types/estree@0.0.39":
   version "0.0.39"
