@@ -20,6 +20,14 @@ We do not change data in patch releases except to resolve formatting issues. Min
 
 ## How to use it
 
+### HTTP
+
+You can also get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN) like:
+
+https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@2/data/cars.json.
+
+You can find a full listing of the available datasets at https://cdn.jsdelivr.net/npm/vega-datasets/data/.
+
 ### NPM
 
 #### Get the data on disk
@@ -49,12 +57,6 @@ const cars = await data['cars.json']();
 
 console.log(cars);
 ```
-
-### HTTP
-
-You can also get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN) like:
-
-https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@2/data/cars.json.
 
 ## Development process
 
