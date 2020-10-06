@@ -54,7 +54,7 @@ console.log(cars);
 
 You can also get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN) like:
 
-https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@1.31/data/cars.json.
+https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@2/data/cars.json.
 
 ## Development process
 
