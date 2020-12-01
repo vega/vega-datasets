@@ -13,7 +13,7 @@ function getRandomSubarray(arr, size) {
 }
 
 function formatDate(d) {
-  return "2001/"+d.substring(0, 2)+"/"+d.substring(2, 4)+" "+d.substring(4, 6)+":"+d.substring(6, 8);
+  return `2001/${d.substring(0, 2)}/${d.substring(2, 4)} ${d.substring(4, 6)}:${d.substring(6, 8)}`;
 }
 
 const flights = dl.csv('data/flights-3m.csv', {
