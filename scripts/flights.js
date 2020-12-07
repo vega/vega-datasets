@@ -1,8 +1,11 @@
-const fs = require('fs'),
-      dl = require('datalib');
+const fs = require('fs');
+const dl = require('datalib');
 
 function getRandomSubarray(arr, size) {
-  let shuffled = arr.slice(0), i = arr.length, temp, index;
+  let shuffled = arr.slice(0);
+  let i = arr.length;
+  let temp;
+  let index;
   while (i--) {
     index = Math.floor((i + 1) * Math.random());
     temp = shuffled[index];
@@ -20,8 +23,8 @@ const flights = dl.csv('data/flights-3m.csv', {
     parse: {date: 'string', 'delay': 'number', 'distance': 'number'}
 });
 
-const N = +process.argv[2] || 2000,
-      fmt = dl.format.auto.number('s');
+const N = +process.argv[2] || 2000;
+const fmt = dl.format.auto.number('s');
 
 const randFlights = getRandomSubarray(flights, N).map(function(d) {
   return (d.date = formatDate(d.date), d);
