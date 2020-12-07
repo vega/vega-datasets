@@ -27,4 +27,4 @@ const randFlights = getRandomSubarray(flights, N).map(function(d) {
   return (d.date = formatDate(d.date), d);
 });
 
-fs.writeFileSync('data/flights-'+fmt(N)+'.json', JSON.stringify(randFlights));
+fs.writeFileSync(`data/flights-${fmt(N)}.json`, JSON.stringify(randFlights));
