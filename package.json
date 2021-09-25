@@ -35,6 +35,7 @@
     "build": "rollup -c",
     "postbuild": "terser build/vega-datasets.js -cm > build/vega-datasets.min.js",
     "flights": "node scripts/flights.js",
-    "github": "python scripts/github.py"
+    "github": "python scripts/github.py",
+    "release": "auto shipit"
   }
 }
