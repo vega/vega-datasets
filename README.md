@@ -8,7 +8,7 @@ Collection of datasets used in Vega and Vega-Lite examples. This data lives at h
 
 Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
 
-The list of sources is in [SOURCES.md](https://github.com/vega/vega-datasets/blob/master/SOURCES.md).
+The list of sources is in [SOURCES.md](https://github.com/vega/vega-datasets/blob/next/SOURCES.md).
 
 To access the data in Observable, you can import `vega-dataset`. Try our [example notebook](https://observablehq.com/@vega/vega-datasets). To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/altair-viz/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
 
@@ -16,7 +16,7 @@ To access the data in Observable, you can import `vega-dataset`. Try our [exampl
 
 We use semantic versioning. However, since this package serve datasets we have additional rules about how we version data.
 
-We do not change data in patch releases except to resolve formatting issues. Minor releases may change the data but only update datasets in ways that do not change field names or file names. Minor releases may also add datasets. Major versions may change file names, file contents, and remove or update files. 
+We do not change data in patch releases except to resolve formatting issues. Minor releases may change the data but only update datasets in ways that do not change field names or file names. Minor releases may also add datasets. Major versions may change file names, file contents, and remove or update files.
 
 ## How to use it
 
@@ -60,4 +60,13 @@ console.log(cars);
 
 ## Development process
 
-Install dependencies with `yarn`. To make a release, create a new tagged version with `yarn version` and then push the tag. The CI will automatically make a release. 
+Install dependencies with `yarn`.
+
+## Release Process
+
+Publishing is handled by a 2-branch [pre-release process](https://intuit.github.io/auto/docs/generated/shipit#next-branch-default), configured in `publish.yml`. All changes should be based off the default `next` branch, and are published automatically.
+
+- PRs made into the default branch that [would trigger a version bump](https://intuit.github.io/auto/docs/generated/conventional-commits) are auto-deployed to the `next` pre-release tag on NPM. The result can be installed with `npm install vega-datasets/@next`.
+  - When merging into `next`, please use the `squash and merge` strategy.
+- To release a new stable version, open a PR from `next` into `stable` using this [compare link](https://github.com/vega/vega-datasets/compare/stable...next).
+  - When merging from `next` into `stable`, please use the `create a merge commit` strategy.
