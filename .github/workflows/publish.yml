@@ -19,7 +19,7 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/setup-node@v3
         with:
           registry-url: 'https://registry.npmjs.org'
 
