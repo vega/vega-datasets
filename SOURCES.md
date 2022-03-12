@@ -178,3 +178,7 @@ Simulated wind patterns over northwestern Europe.
 ## `zipcodes.csv`
 
 GeoNames.org
+
+## `platformer-terrain.txt`
+
+From https://github.com/vega/vega/pull/2999.

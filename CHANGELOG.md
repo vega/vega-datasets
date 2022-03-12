@@ -1,3 +1,7 @@
+### Version 2.3
+
+- Add `platformer-terrain.txt`.
+
 ### Version 2.2
 
 - Add `sp500-2000.csv`.
