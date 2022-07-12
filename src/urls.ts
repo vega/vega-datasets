@@ -33,6 +33,7 @@ export default {
   'obesity.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/obesity.json`,
   'ohlc.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/ohlc.json`,
   'penguins.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/penguins.json`,
+  'platformer-terrain.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/platformer-terrain.json`,
   'points.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/points.json`,
   'political-contributions.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/political-contributions.json`,
   'population.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/population.json`,
@@ -69,5 +70,4 @@ export default {
   'zipcodes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/zipcodes.csv`,
   'unemployment.tsv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/unemployment.tsv`,
   'flights-200k.arrow': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-200k.arrow`,
-  'platformer-terrain.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/platformer-terrain.json`,
 }
