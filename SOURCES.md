@@ -117,6 +117,10 @@ This dataset contains the performance of the Chicago Board Options Exchange [Vol
 
 Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). For more information visit [allisonhorst/penguins](https://github.com/allisonhorst/penguins) on GitHub.
 
+## `platformer-terrain.json`
+
+Assets from the video game [Celeste](http://www.celestegame.com/).
+
 ## `political-contributions.json`
 
 ## `population.json`
