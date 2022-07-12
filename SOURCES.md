@@ -119,7 +119,7 @@ Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr
 
 ## `platformer-terrain.json`
 
-Assets from the video game [Celeste] (http://www.celestegame.com/)
+Assets from the video game [Celeste](http://www.celestegame.com/).
 
 ## `political-contributions.json`
 
