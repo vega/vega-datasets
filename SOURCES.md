@@ -117,6 +117,10 @@ This dataset contains the performance of the Chicago Board Options Exchange [Vol
 
 Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). For more information visit [allisonhorst/penguins](https://github.com/allisonhorst/penguins) on GitHub.
 
+## `platformer-terrain.json`
+
+Assets from the video game [Celeste](http://www.celestegame.com/).
+
 ## `political-contributions.json`
 
 ## `population.json`
@@ -130,6 +134,10 @@ Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/records). Daily wea
 Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly weather normals with metric units. The 1981-2010 Climate Normals are NCDC's three-decade averages of climatological variables, including temperature and precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure and updated the format to be easier to parse.
 
 ## `sp500.csv`
+
+## `sp500-2000.csv`
+
+S&amp;P 500 index values from 2000 to 2020, retrieved from [Yahoo Finance](https://finance.yahoo.com/quote/%5EDJI/history/).
 
 ## `stocks.csv`
 

@@ -1,3 +1,15 @@
+### Version 2.4
+
+- Add `platformer-terrain.json`.
+
+### Version 2.2
+
+- Add `sp500-2000.csv`.
+
+### Version 2.1
+
+- Add `version` property to js module.
+
 ### Version 2.0
 
 - Add `football.json`. Thanks to @eitanlees!
@@ -8,7 +20,7 @@
 - Switch to ISO 8601 dates in `seattle-weather.csv`.
 - Rename `weball26.json` to `political-contributions.json`.
 - Convert `birdstrikes.json` to `birdstrikes.csv` and use ISO 8601 dates.
-- Convert `movies.json` to use column names with spaces use ISO 8601 dates.
+- Convert `movies.json` to use column names with spaces and use ISO 8601 dates.
 - Remove `climate.json`.
 - Replace `seattle-temps.csv` with more general `seattle-weather-hourly-normals.csv`.
 - Remove `sf-temps.csv`.

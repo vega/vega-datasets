@@ -2,6 +2,7 @@
   "name": "vega-datasets",
   "version": "2.3.1",
   "description": "Common repository for example datasets used by Vega related projects.",
+  "license": "BSD-3-Clause",
   "main": "build/vega-datasets",
   "module": "build/src/data",
   "unpkg": "build/vega-datasets.min.js",
@@ -16,14 +17,17 @@
     "url": "http://idl.cs.washington.edu"
   },
   "devDependencies": {
+    "@auto-it/conventional-commits": "^10.37.1",
+    "@auto-it/first-time-contributor": "^10.37.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^8.0.1",
-    "@types/d3-dsv": "^1.0.36",
-    "d3-dsv": "^1.2.0",
-    "datalib": "^1.9.2",
-    "rollup": "^2.16.1",
-    "terser": "^4.8.0",
-    "typescript": "^3.9.5"
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/d3-dsv": "^2.0.0",
+    "auto": "^10.37.1",
+    "d3-dsv": "^2.0.0",
+    "datalib": "^1.9.3",
+    "rollup": "^2.76.0",
+    "terser": "^5.14.1",
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "index": "./scripts/make-url-index.sh > src/urls.ts",
@@ -31,6 +35,7 @@
     "build": "rollup -c",
     "postbuild": "terser build/vega-datasets.js -cm > build/vega-datasets.min.js",
     "flights": "node scripts/flights.js",
-    "github": "python scripts/github.py"
+    "github": "python scripts/github.py",
+    "release": "auto shipit"
   }
 }
