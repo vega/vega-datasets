@@ -16,8 +16,7 @@ for (const name of Object.keys(urls) as Name[]) {
     if (name.endsWith(".json")) {
       return await result.json();
     } else if (name.endsWith(".csv")) {
-      // TODO: remove "as any" once @types/d3-dsv has been updated
-      return d3.csvParse(await result.text(), (d3 as any).autoType);
+      return d3.csvParse(await result.text(), d3.autoType);
     } else {
       return await result.text();
     }
