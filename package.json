@@ -3,11 +3,11 @@
   "version": "2.4.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
-  "main": "build/vega-datasets",
-  "module": "build/src/data",
+  "main": "build/vega-datasets.js",
+  "module": "build/vega-datasets.module.js",
   "unpkg": "build/vega-datasets.min.js",
   "jsdelivr": "build/vega-datasets.min.js",
-  "typings": "build/src/data.d.ts",
+  "types": "build/vega-datasets.module.d.ts",
   "repository": {
     "type": "git",
     "url": "http://github.com/vega/vega-datasets.git"
@@ -16,26 +16,35 @@
     "name": "UW Interactive Data Lab",
     "url": "http://idl.cs.washington.edu"
   },
+  "files": [
+    "src",
+    "build"
+  ],
   "devDependencies": {
-    "@auto-it/conventional-commits": "^10.37.1",
-    "@auto-it/first-time-contributor": "^10.37.1",
+    "@auto-it/conventional-commits": "^10.37.6",
+    "@auto-it/first-time-contributor": "^10.37.6",
+    "@babel/core": "^7.19.3",
+    "@babel/plugin-transform-runtime": "^7.19.1",
+    "@babel/preset-env": "^7.19.3",
+    "@babel/preset-typescript": "^7.18.6",
+    "@babel/runtime": "^7.19.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@types/d3-dsv": "^2.0.0",
-    "auto": "^10.37.1",
-    "d3-dsv": "^2.0.0",
+    "@types/d3-dsv": "^3.0.0",
+    "auto": "^10.37.6",
+    "d3-dsv": "^3.0.1",
     "datalib": "^1.9.3",
-    "rollup": "^2.76.0",
-    "terser": "^5.14.1",
-    "typescript": "^4.7.4"
+    "rollup": "^2.79.1",
+    "rollup-plugin-bundle-size": "^1.0.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^3.0.2",
+    "terser": "^5.15.0",
+    "typescript": "^4.8.4"
   },
   "scripts": {
-    "index": "./scripts/make-url-index.sh > src/urls.ts",
-    "prebuild": "npm run index && tsc",
+    "prebuild": "./scripts/make-url-index.sh > src/urls.ts",
     "build": "rollup -c",
-    "postbuild": "terser build/vega-datasets.js -cm > build/vega-datasets.min.js",
     "flights": "node scripts/flights.js",
     "github": "python scripts/github.py",
-    "release": "auto shipit"
+    "release": "yarn build && auto shipit"
   }
 }

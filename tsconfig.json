@@ -4,6 +4,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "declaration": true,
+    "declarationMap": true,
     "strict": true,
     "outDir": "./build",
     "inlineSourceMap": true,
