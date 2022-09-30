@@ -45,6 +45,6 @@
     "build": "rollup -c",
     "flights": "node scripts/flights.js",
     "github": "python scripts/github.py",
-    "release": "auto shipit"
+    "release": "yarn build && auto shipit"
   }
 }
