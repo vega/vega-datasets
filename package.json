@@ -3,11 +3,11 @@
   "version": "2.3.1",
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
-  "main": "build/vega-datasets",
-  "module": "build/src/data",
+  "main": "build/vega-datasets.js",
+  "module": "build/vega-datasets.module.js",
   "unpkg": "build/vega-datasets.min.js",
   "jsdelivr": "build/vega-datasets.min.js",
-  "typings": "build/src/data.d.ts",
+  "types": "build/vega-datasets.module.d.ts",
   "repository": {
     "type": "git",
     "url": "http://github.com/vega/vega-datasets.git"
