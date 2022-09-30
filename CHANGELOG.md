@@ -1,3 +1,31 @@
+# v2.5.0 (Fri Sep 30 2022)
+
+#### 🚀 Enhancement
+
+
+#### 🐛 Bug Fix
+
+- feat: refactor builds and include sourcemaps and ts support [#388](https://github.com/vega/vega-datasets/pull/388) ([@domoritz](https://github.com/domoritz))
+- chore: simplify token setup, update deps [#384](https://github.com/vega/vega-datasets/pull/384) ([@domoritz](https://github.com/domoritz))
+
+#### 🔩 Dependency Updates
+
+- chore(deps-dev): bump terser from 5.14.2 to 5.15.0 [#385](https://github.com/vega/vega-datasets/pull/385) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump rollup from 2.77.3 to 2.79.0 [#386](https://github.com/vega/vega-datasets/pull/386) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump typescript from 4.7.4 to 4.8.2 [#387](https://github.com/vega/vega-datasets/pull/387) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump @auto-it/conventional-commits from 10.37.1 to 10.37.4 [#380](https://github.com/vega/vega-datasets/pull/380) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump @auto-it/first-time-contributor from 10.37.1 to 10.37.4 [#381](https://github.com/vega/vega-datasets/pull/381) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump auto from 10.37.1 to 10.37.4 [#382](https://github.com/vega/vega-datasets/pull/382) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump rollup from 2.76.0 to 2.77.2 [#383](https://github.com/vega/vega-datasets/pull/383) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps-dev): bump terser from 5.14.1 to 5.14.2 [#379](https://github.com/vega/vega-datasets/pull/379) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Dominik Moritz ([@domoritz](https://github.com/domoritz))
+
+---
+
 # v2.4.0 (Thu Jul 14 2022)
 
 :tada: This release contains work from new contributors! :tada:
