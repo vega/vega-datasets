@@ -1,3 +1,14 @@
+# v2.5.1 (Sat Oct 01 2022)
+
+#### 🐛 Bug Fix
+
+
+#### Authors: 1
+
+- Dominik Moritz ([@domoritz](https://github.com/domoritz))
+
+---
+
 # v2.5.0 (Fri Sep 30 2022)
 
 #### 🚀 Enhancement
