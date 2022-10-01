@@ -18,7 +18,8 @@
   },
   "files": [
     "src",
-    "build"
+    "build",
+    "data"
   ],
   "devDependencies": {
     "@auto-it/conventional-commits": "^10.37.6",
