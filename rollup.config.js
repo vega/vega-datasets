@@ -39,7 +39,7 @@ const outputs = [
       },
       {
         file: "build/vega-datasets.min.js",
-        format: "iife",
+        format: "umd",
         sourcemap: true,
         name: "vegaDatasets",
         plugins: [terser()],
