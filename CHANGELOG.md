@@ -1,3 +1,15 @@
+# v2.5.2 (Sun Oct 09 2022)
+
+#### 🐛 Bug Fix
+
+- fix: switch back to UMD bundles [#393](https://github.com/vega/vega-datasets/pull/393) ([@domoritz](https://github.com/domoritz))
+
+#### Authors: 1
+
+- Dominik Moritz ([@domoritz](https://github.com/domoritz))
+
+---
+
 # v2.5.1 (Sat Oct 01 2022)
 
 #### 🐛 Bug Fix
