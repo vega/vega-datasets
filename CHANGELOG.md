@@ -1,3 +1,15 @@
+# v2.5.3 (Sun Oct 09 2022)
+
+#### 🐛 Bug Fix
+
+- fix: add resolve to include d3 dependency [#395](https://github.com/vega/vega-datasets/pull/395) ([@domoritz](https://github.com/domoritz))
+
+#### Authors: 1
+
+- Dominik Moritz ([@domoritz](https://github.com/domoritz))
+
+---
+
 # v2.5.2 (Sun Oct 09 2022)
 
 #### 🐛 Bug Fix
