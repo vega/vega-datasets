@@ -1,9 +1,13 @@
 import json from "@rollup/plugin-json";
-import ts from "rollup-plugin-ts";
+import resolve from '@rollup/plugin-node-resolve';
 import bundleSize from "rollup-plugin-bundle-size";
 import { terser } from "rollup-plugin-terser";
+import ts from "rollup-plugin-ts";
+
+const pkg = require('./package.json');
 
 const plugins = (browserslist, declaration) => [
+  resolve(),
   json(),
   ts({
     tsconfig: (resolvedConfig) => ({
@@ -22,7 +26,7 @@ const outputs = [
   {
     input: "src/index.ts",
     output: {
-      file: "build/vega-datasets.module.js",
+      file: pkg.module,
       format: "esm",
       sourcemap: true,
     },
@@ -32,13 +36,13 @@ const outputs = [
     input: "src/index.ts",
     output: [
       {
-        file: "build/vega-datasets.js",
+        file: pkg.main,
         format: "umd",
         sourcemap: true,
         name: "vegaDatasets",
       },
       {
-        file: "build/vega-datasets.min.js",
+        file: pkg.unpkg,
         format: "umd",
         sourcemap: true,
         name: "vegaDatasets",
