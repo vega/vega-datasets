@@ -1305,12 +1305,12 @@
   dependencies:
     "@octokit/openapi-types" "^12.11.0"
 
-"@rollup/plugin-json@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-4.1.0.tgz#54e09867ae6963c593844d8bd7a9c718294496f3"
-  integrity sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==
+"@rollup/plugin-json@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-5.0.1.tgz#d5cd67cc83ede42967447dfabbe1be45a091f5b7"
+  integrity sha512-QCwhZZLvM8nRcTHyR1vOgyTMiAnjiNj1ebD/BMRvbO1oc/z14lZH6PfxXeegee2B6mky/u9fia4fxRM4TqrUaw==
   dependencies:
-    "@rollup/pluginutils" "^3.0.8"
+    "@rollup/pluginutils" "^5.0.1"
 
 "@rollup/plugin-node-resolve@^15.0.1":
   version "15.0.1"
@@ -1323,15 +1323,6 @@
     is-builtin-module "^3.2.0"
     is-module "^1.0.0"
     resolve "^1.22.1"
-
-"@rollup/pluginutils@^3.0.8":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.1.0.tgz#706b4524ee6dc8b103b3c995533e5ad680c02b9b"
-  integrity sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==
-  dependencies:
-    "@types/estree" "0.0.39"
-    estree-walker "^1.0.1"
-    picomatch "^2.2.2"
 
 "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
@@ -1391,11 +1382,6 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-3.0.0.tgz#f3c61fb117bd493ec0e814856feb804a14cfc311"
   integrity sha512-o0/7RlMl9p5n6FQDptuJVMxDf/7EDEv2SYEO/CwdG2tr1hTfUVi0Iavkk2ax+VpaQ/1jVhpnj5rq1nj8vwhn2A==
-
-"@types/estree@0.0.39":
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
-  integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
 "@types/estree@^1.0.0":
   version "1.0.0"
@@ -2300,11 +2286,6 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==
-
-estree-walker@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
-  integrity sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
 
 estree-walker@^2.0.1, estree-walker@^2.0.2:
   version "2.0.2"
