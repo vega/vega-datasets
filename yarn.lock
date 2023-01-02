@@ -1376,9 +1376,9 @@
     "@types/node" "*"
 
 "@types/d3-dsv@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-3.0.0.tgz#f3c61fb117bd493ec0e814856feb804a14cfc311"
-  integrity sha512-o0/7RlMl9p5n6FQDptuJVMxDf/7EDEv2SYEO/CwdG2tr1hTfUVi0Iavkk2ax+VpaQ/1jVhpnj5rq1nj8vwhn2A==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/d3-dsv/-/d3-dsv-3.0.1.tgz#c51a3505cee42653454b74a00f8713dc3548c362"
+  integrity sha512-76pBHCMTvPLt44wFOieouXcGXWOF0AJCceUvaFkxSZEu4VDUdv93JfpMa6VGNFs01FHfuP4a5Ou68eRG1KBfTw==
 
 "@types/estree@^1.0.0":
   version "1.0.0"
