@@ -62,11 +62,6 @@ console.log(cars);
 
 Install dependencies with `yarn`.
 
-## Release Process
+## Release process
 
-Publishing is handled by a 2-branch [pre-release process](https://intuit.github.io/auto/docs/generated/shipit#next-branch-default), configured in `publish.yml`. All changes should be based off the default `next` branch, and are published automatically.
-
-- PRs made into the default branch that [would trigger a version bump](https://intuit.github.io/auto/docs/generated/conventional-commits) are auto-deployed to the `next` pre-release tag on NPM. The result can be installed with `npm install vega-datasets/@next`.
-  - When merging into `next`, please use the `squash and merge` strategy.
-- To release a new stable version, open a PR from `next` into `stable` using this [compare link](https://github.com/vega/vega-datasets/compare/stable...next).
-  - When merging from `next` into `stable`, please use the `create a merge commit` strategy.
+To make a release, run `npm run release`.
