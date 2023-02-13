@@ -9,6 +9,8 @@
     "after:bump": "yarn build"
   },
   "plugins": {
-    "@release-it/conventional-changelog": {}
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md"
+    }
   }
 }

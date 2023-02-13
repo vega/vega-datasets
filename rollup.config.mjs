@@ -4,7 +4,7 @@ import bundleSize from "rollup-plugin-bundle-size";
 import { terser } from "rollup-plugin-terser";
 import ts from "rollup-plugin-ts";
 
-const pkg = require('./package.json');
+import pkg from './package.json' assert { type: 'json' };
 
 const plugins = (browserslist, declaration) => [
   resolve(),

@@ -1,4 +1,4 @@
-# v2.5.3 (Sun Oct 09 2022)
+### v2.5.3 (Sun Oct 09 2022)
 
 #### 🐛 Bug Fix
 
@@ -10,7 +10,7 @@
 
 ---
 
-# v2.5.2 (Sun Oct 09 2022)
+### v2.5.2 (Sun Oct 09 2022)
 
 #### 🐛 Bug Fix
 
@@ -22,7 +22,7 @@
 
 ---
 
-# v2.5.1 (Sat Oct 01 2022)
+### v2.5.1 (Sat Oct 01 2022)
 
 #### 🐛 Bug Fix
 
@@ -33,7 +33,7 @@
 
 ---
 
-# v2.5.0 (Fri Sep 30 2022)
+### v2.5.0 (Fri Sep 30 2022)
 
 #### 🚀 Enhancement
 
@@ -61,7 +61,7 @@
 
 ---
 
-# v2.4.0 (Thu Jul 14 2022)
+### v2.4.0 (Thu Jul 14 2022)
 
 :tada: This release contains work from new contributors! :tada:
 
