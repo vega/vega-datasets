@@ -1,3 +1,38 @@
+
+
+## <small>2.5.4 (2023-02-13)</small>
+
+* ci: no releases ([7566172](https://github.com/vega/vega-datasets/commit/7566172))
+* ci: test on main ([ca722ab](https://github.com/vega/vega-datasets/commit/ca722ab))
+* chore: remove auto and use release-it instead ([e28c69b](https://github.com/vega/vega-datasets/commit/e28c69b))
+* chore: switch to esm rollup, update deps, fix style of changelog ([d15549f](https://github.com/vega/vega-datasets/commit/d15549f))
+* chore: upgrade deps ([b07a963](https://github.com/vega/vega-datasets/commit/b07a963))
+* chore(deps-dev): bump @babel/core from 7.19.3 to 7.19.6 (#397) ([5e1db00](https://github.com/vega/vega-datasets/commit/5e1db00)), closes [#397](https://github.com/vega/vega-datasets/issues/397)
+* chore(deps-dev): bump @babel/core from 7.19.6 to 7.20.5 (#403) ([f1d5945](https://github.com/vega/vega-datasets/commit/f1d5945)), closes [#403](https://github.com/vega/vega-datasets/issues/403)
+* chore(deps-dev): bump @babel/core from 7.20.5 to 7.20.7 (#413) ([d99a2d0](https://github.com/vega/vega-datasets/commit/d99a2d0)), closes [#413](https://github.com/vega/vega-datasets/issues/413)
+* chore(deps-dev): bump @babel/core from 7.20.7 to 7.20.12 (#419) ([3e4d7be](https://github.com/vega/vega-datasets/commit/3e4d7be)), closes [#419](https://github.com/vega/vega-datasets/issues/419)
+* chore(deps-dev): bump @babel/plugin-transform-runtime (#402) ([934b54d](https://github.com/vega/vega-datasets/commit/934b54d)), closes [#402](https://github.com/vega/vega-datasets/issues/402)
+* chore(deps-dev): bump @babel/preset-env from 7.19.3 to 7.19.4 (#400) ([98bad58](https://github.com/vega/vega-datasets/commit/98bad58)), closes [#400](https://github.com/vega/vega-datasets/issues/400)
+* chore(deps-dev): bump @babel/preset-env from 7.19.4 to 7.20.2 (#405) ([c4d46a2](https://github.com/vega/vega-datasets/commit/c4d46a2)), closes [#405](https://github.com/vega/vega-datasets/issues/405)
+* chore(deps-dev): bump @babel/runtime from 7.19.0 to 7.20.1 (#401) ([a1b206d](https://github.com/vega/vega-datasets/commit/a1b206d)), closes [#401](https://github.com/vega/vega-datasets/issues/401)
+* chore(deps-dev): bump @babel/runtime from 7.20.1 to 7.20.6 (#406) ([a0d7294](https://github.com/vega/vega-datasets/commit/a0d7294)), closes [#406](https://github.com/vega/vega-datasets/issues/406)
+* chore(deps-dev): bump @babel/runtime from 7.20.6 to 7.20.7 (#411) ([31b3851](https://github.com/vega/vega-datasets/commit/31b3851)), closes [#411](https://github.com/vega/vega-datasets/issues/411)
+* chore(deps-dev): bump @babel/runtime from 7.20.7 to 7.20.13 (#421) ([45cda33](https://github.com/vega/vega-datasets/commit/45cda33)), closes [#421](https://github.com/vega/vega-datasets/issues/421)
+* chore(deps-dev): bump @rollup/plugin-json from 4.1.0 to 5.0.1 (#398) ([6cb8333](https://github.com/vega/vega-datasets/commit/6cb8333)), closes [#398](https://github.com/vega/vega-datasets/issues/398)
+* chore(deps-dev): bump @rollup/plugin-json from 5.0.1 to 5.0.2 (#408) ([d8e651e](https://github.com/vega/vega-datasets/commit/d8e651e)), closes [#408](https://github.com/vega/vega-datasets/issues/408)
+* chore(deps-dev): bump @rollup/plugin-json from 5.0.2 to 6.0.0 (#414) ([01bcdd6](https://github.com/vega/vega-datasets/commit/01bcdd6)), closes [#414](https://github.com/vega/vega-datasets/issues/414)
+* chore(deps-dev): bump @rollup/plugin-node-resolve from 14.1.0 to 15.0.1 ([ed2c9d1](https://github.com/vega/vega-datasets/commit/ed2c9d1))
+* chore(deps-dev): bump @types/d3-dsv from 3.0.0 to 3.0.1 (#410) ([4f15a6a](https://github.com/vega/vega-datasets/commit/4f15a6a)), closes [#410](https://github.com/vega/vega-datasets/issues/410)
+* chore(deps-dev): bump rollup-plugin-ts from 3.0.2 to 3.2.0 (#418) ([25620f7](https://github.com/vega/vega-datasets/commit/25620f7)), closes [#418](https://github.com/vega/vega-datasets/issues/418)
+* chore(deps-dev): bump terser from 5.15.1 to 5.16.0 (#407) ([7700f40](https://github.com/vega/vega-datasets/commit/7700f40)), closes [#407](https://github.com/vega/vega-datasets/issues/407)
+* chore(deps-dev): bump terser from 5.16.0 to 5.16.1 (#409) ([f1775b8](https://github.com/vega/vega-datasets/commit/f1775b8)), closes [#409](https://github.com/vega/vega-datasets/issues/409)
+* chore(deps-dev): bump terser from 5.16.1 to 5.16.2 (#420) ([164b546](https://github.com/vega/vega-datasets/commit/164b546)), closes [#420](https://github.com/vega/vega-datasets/issues/420)
+* chore(deps-dev): bump typescript from 4.8.4 to 4.9.3 (#404) ([43e0e34](https://github.com/vega/vega-datasets/commit/43e0e34)), closes [#404](https://github.com/vega/vega-datasets/issues/404)
+* chore(deps-dev): bump typescript from 4.9.3 to 4.9.4 (#412) ([8f4b829](https://github.com/vega/vega-datasets/commit/8f4b829)), closes [#412](https://github.com/vega/vega-datasets/issues/412)
+* chore(deps-dev): bump typescript from 4.9.4 to 4.9.5 (#417) ([6b776f4](https://github.com/vega/vega-datasets/commit/6b776f4)), closes [#417](https://github.com/vega/vega-datasets/issues/417)
+* chore(deps): bump json5 from 2.2.1 to 2.2.3 (#415) ([32fe2e7](https://github.com/vega/vega-datasets/commit/32fe2e7)), closes [#415](https://github.com/vega/vega-datasets/issues/415)
+* chore(deps): bump ua-parser-js from 1.0.2 to 1.0.33 (#416) ([c91a047](https://github.com/vega/vega-datasets/commit/c91a047)), closes [#416](https://github.com/vega/vega-datasets/issues/416)
+
 ### v2.5.3 (Sun Oct 09 2022)
 
 #### 🐛 Bug Fix
