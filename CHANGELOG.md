@@ -1,5 +1,12 @@
 
 
+# [2.7.0](https://github.com/vega/vega-datasets/compare/v2.5.4...v2.7.0) (2023-03-13)
+
+
+### Features
+
+* add continents to gapminder-health-income dataset ([1476696](https://github.com/vega/vega-datasets/commit/1476696d85540e3801c2bf1eb483157b560a1297))
+
 ## <small>2.5.4 (2023-02-13)</small>
 
 * ci: no releases ([7566172](https://github.com/vega/vega-datasets/commit/7566172))
