@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "version": "2.5.4",
+  "version": "2.6.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
   "main": "build/vega-datasets.js",
