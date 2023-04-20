@@ -16,7 +16,6 @@ const plugins = (browserslist, declaration) => [
       declarationMap: declaration,
     }),
     transpiler: "babel",
-    babelConfig: { presets: ["@babel/preset-env"] },
     browserslist,
   }),
   bundleSize(),
@@ -30,7 +29,7 @@ const outputs = [
       format: "esm",
       sourcemap: true,
     },
-    plugins: plugins(undefined, true)
+    plugins: plugins(false, true)
   },
   {
     input: "src/index.ts",
@@ -49,7 +48,7 @@ const outputs = [
         plugins: [terser()],
       },
     ],
-    plugins: plugins("defaults and not IE 11", false)
+    plugins: plugins("defaults", false)
   },
 ];
 
