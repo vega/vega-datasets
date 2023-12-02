@@ -39,7 +39,7 @@
     "d3-dsv": "^3.0.1",
     "datalib": "^1.9.3",
     "release-it": "^16.1.5",
-    "rollup": "^3.23.0",
+    "rollup": "^4.6.1",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-ts": "^3.2.0",
     "terser": "^5.17.7",
