@@ -75,6 +75,10 @@ Football match outcomes across multiple divisions from 2013 to 2017. This datase
 
 Generated using `/scripts/github.py`.
 
+## `global-temp.csv`
+
+Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocean Temperature Index, L-OTI), 1880-2023. Source: NASA's Goddard Institute for Space Studies https://data.giss.nasa.gov/gistemp/
+
 ## `population_engineers_hurricanes.csv`
 
 Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data from http://www.nhc.noaa.gov/paststate.shtml. Income data from https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table.
