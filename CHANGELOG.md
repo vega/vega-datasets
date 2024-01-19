@@ -1,5 +1,19 @@
 
 
+# [2.8.0](https://github.com/vega/vega-datasets/compare/v2.7.0...v2.8.0) (2024-01-19)
+
+
+### Bug Fixes
+
+* add missing babel plugins ([bca14bb](https://github.com/vega/vega-datasets/commit/bca14bbc5336d975253288fbaa27f374b4d1838b))
+* correct browserlists for module and smaller builds ([e1f1f0b](https://github.com/vega/vega-datasets/commit/e1f1f0b87e538122b61a0cc7c97351ad5830a563))
+
+
+### Features
+
+* data file for Vega Warming Stripes ([#530](https://github.com/vega/vega-datasets/issues/530)) ([cfe9e5d](https://github.com/vega/vega-datasets/commit/cfe9e5d0a61be27eda0b803074a3a7722004b6e3))
+* update es versions ([#441](https://github.com/vega/vega-datasets/issues/441)) ([415952c](https://github.com/vega/vega-datasets/commit/415952cd98d7afe4bb959e382e4b9d5e21082cbb))
+
 # [2.7.0](https://github.com/vega/vega-datasets/compare/v2.5.4...v2.7.0) (2023-03-13)
 
 
