@@ -54,6 +54,7 @@ export default {
   'flights-airport.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-airport.csv`,
   'gapminder-health-income.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/gapminder-health-income.csv`,
   'github.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/github.csv`,
+  'global-temp.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/global-temp.csv`,
   'iowa-electricity.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/iowa-electricity.csv`,
   'la-riots.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/la-riots.csv`,
   'lookup_groups.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/lookup_groups.csv`,
