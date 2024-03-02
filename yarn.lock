@@ -749,12 +749,12 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-runtime@^7.23.7":
-  version "7.23.9"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.23.9.tgz#2c64d0680fc8e09e1dfe8fd5c646fe72abd82004"
-  integrity sha512-A7clW3a0aSjm3ONU9o2HAILSegJCYlEZmOhmBRReVtIpY/Z/p7yIZ+wR41Z+UipwdGuqwtID/V/dOdZXjwi9gQ==
+  version "7.24.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.24.0.tgz#e308fe27d08b74027d42547081eefaf4f2ffbcc9"
+  integrity sha512-zc0GA5IitLKJrSfXlXmp8KDqLrnGECK7YRfQBmEKg1NmBOQ7e+KuclBEKJgzifQeUYLdNiAw4B4bjyvzWVLiSA==
   dependencies:
     "@babel/helper-module-imports" "^7.22.15"
-    "@babel/helper-plugin-utils" "^7.22.5"
+    "@babel/helper-plugin-utils" "^7.24.0"
     babel-plugin-polyfill-corejs2 "^0.4.8"
     babel-plugin-polyfill-corejs3 "^0.9.0"
     babel-plugin-polyfill-regenerator "^0.5.5"
