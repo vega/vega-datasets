@@ -63,7 +63,7 @@ https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
 
 Flight delay statistics from U.S. Bureau of Transportation Statistics, https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp.
 
-Transformed using /scripts/flights.js
+Transformed using `/scripts/flights.js`. Arrow file generated with [json2arrow](https://github.com/domoritz/arrow-tools/tree/main/crates/json2arrow).
 
 ## `football.json`
 
