@@ -22,11 +22,11 @@
     "data"
   ],
   "devDependencies": {
-    "@babel/core": "^7.23.7",
-    "@babel/plugin-transform-runtime": "^7.23.7",
-    "@babel/preset-env": "^7.23.8",
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-transform-runtime": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
     "@babel/preset-typescript": "^7.23.3",
-    "@babel/runtime": "^7.23.8",
+    "@babel/runtime": "^7.24.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -34,11 +34,11 @@
     "@types/d3-dsv": "^3.0.7",
     "d3-dsv": "^3.0.1",
     "datalib": "^1.9.3",
-    "release-it": "^17.0.1",
-    "rollup": "^4.9.5",
+    "release-it": "^17.1.1",
+    "rollup": "^4.12.1",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-ts": "^3.4.5",
-    "terser": "^5.27.0",
+    "terser": "^5.29.1",
     "typescript": "^5.3.3"
   },
   "scripts": {
