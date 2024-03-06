@@ -1,5 +1,12 @@
 
 
+## [2.8.1](https://github.com/vega/vega-datasets/compare/v2.8.0...v2.8.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* write missing arrow footer ([1d17d58](https://github.com/vega/vega-datasets/commit/1d17d588cb9b165fe419b6ed1f4814fc926fc6e5)), closes [#545](https://github.com/vega/vega-datasets/issues/545)
+
 # [2.8.0](https://github.com/vega/vega-datasets/compare/v2.7.0...v2.8.0) (2024-01-19)
 
 
