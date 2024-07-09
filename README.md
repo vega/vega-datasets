@@ -12,9 +12,13 @@ The list of sources is in [SOURCES.md](https://github.com/vega/vega-datasets/blo
 
 To access the data in Observable, you can import `vega-dataset`. Try our [example notebook](https://observablehq.com/@vega/vega-datasets). To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/altair-viz/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
 
+## Data Usage Note
+
+These datasets are intended only for instructional and demonstration purposes. Datasets may contain intentional inconsistencies or errors to provide opportunities for data cleaning exercises and to illustrate common data quality issues.
+
 ## Versioning
 
-We use semantic versioning. However, since this package serve datasets we have additional rules about how we version data.
+We use semantic versioning. However, since this package serves datasets we have additional rules about how we version data.
 
 We do not change data in patch releases except to resolve formatting issues. Minor releases may change the data but only update datasets in ways that do not change field names or file names. Minor releases may also add datasets. Major versions may change file names, file contents, and remove or update files.
 
