@@ -5,7 +5,7 @@ This script updates the gapminder.json file in the vega-datasets repository
 in a manner consistent with a minor release. It fetches current data from the source, 
 processes it, and then filters the results to match the countries and years in the 
 existing dataset. To ensure reproducibility and data consistency, the script fetches 
-the existig gapminder dataset from a specific commit.
+the existing gapminder dataset from a specific commit.
 
 The generated dataset is used in the following PR:
 https://github.com/vega/vega-datasets/pull/580
