@@ -69,7 +69,36 @@ Transformed using `/scripts/flights.js`. Arrow file generated with [json2arrow](
 
 Football match outcomes across multiple divisions from 2013 to 2017. This dataset is a subset of a larger dataset from https://github.com/openfootball/football.json. The subset was made such that there are records for all five chosen divisions over the time period.
 
-## `gapminder-health-income.csv`, `gapminder.json`
+## `gapminder.json`
+### Source
+- **Original Data**: [Gapminder Foundation](https://www.gapminder.org/)
+- **URLs**: 
+  - Life Expectancy (v14): [Data](https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676) | [Reference](https://www.gapminder.org/data/documentation/gd004/)
+  - Population (v7): [Data](https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676) | [Reference](https://www.gapminder.org/data/documentation/gd003/)
+  - Fertility (v14): [Data](https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676) | [Reference](https://www.gapminder.org/data/documentation/gd008/) 
+  - Data Geographies (v2): [Data](https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158) | [Reference](https://www.gapminder.org/data/geo/)
+
+- **Date Accessed**: July 11, 2024
+- **License**: Creative Commons Attribution 4.0 International (CC BY 4.0) | [Reference](https://www.gapminder.org/free-material/)
+
+### Description
+This dataset combines key demographic indicators (life expectancy at birth, population, and fertility rate measured as babies per woman) for various countries from 1955 to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable grouping countries. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) notes that its philosophy is to fill data gaps with estimates and use current geographic boundaries for historical data. Gapminder states that it aims to "show people the big picture" rather than support detailed numeric analysis.
+
+#### Columns:
+1. `year` (type: integer): Years from 1955 to 2005 at 5-year intervals
+2. `country` (type: string): Name of the country
+3. `cluster` (type: integer): A categorical variable (values 0-5) grouping countries. See Revision Notes for details.
+4. `pop` (type: integer): Population of the country
+5. `life_expect` (type: float): Life expectancy in years
+6. `fertility` (type: float): Fertility rate (average number of children per woman)
+
+### Revision Notes
+1. Country Selection: The set of countries in this file matches the version of this dataset originally added to this collection in 2015. The specific criteria for country selection in that version are not known. Data for Aruba are no longer available in the new version. Hong Kong has been revised to Hong Kong, China in the new version.
+2. Data Precision: The precision of float values may have changed from the original version. These changes reflect the most recent source data used for each indicator.
+3. Regional Groupings: The 'cluster' column represents a regional mapping of countries corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To preserve continuity with previous versions of this dataset, we have retained the column name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are:
+`0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.
+
+## `gapminder-health-income.csv`
 
 ## `github.csv`
 
