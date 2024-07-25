@@ -29,7 +29,7 @@ def generate_budget_data():
 
     # Write the JSON data to a file
     with open(output_file, 'w') as f:
-        json.dump(budget_data, f, indent=2, separators=(',', ':')) # separators specified to match original dataset format
+        json.dump(budget_data, f, indent=2)
 
     print(f"Budget data has been generated and saved to {output_file}")
 
