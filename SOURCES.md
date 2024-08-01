@@ -45,13 +45,32 @@ The caption of the original 1951 [visualization](https://graphicdesignarchives.o
 
 http://lib.stat.cmu.edu/datasets/
 
-## `climate.json`
-
 ## `co2-concentration.csv`
 
 https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record but modified to only include date, CO2, seasonally adjusted CO2 and only include rows with valid data.
 
 ## `countries.json`
+### Source
+- **Original Data**: [Gapminder Foundation](https://www.gapminder.org/)
+- **URLs**: 
+  - Life Expectancy (v14): [Data](https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676) | [Reference](https://www.gapminder.org/data/documentation/gd004/)
+  - Fertility (v14): [Data](https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676) | [Reference](https://www.gapminder.org/data/documentation/gd008/) 
+
+- **Date Accessed**: July 31, 2024
+- **License**: Creative Commons Attribution 4.0 International (CC BY 4.0) | [Reference](https://www.gapminder.org/free-material/)
+
+### Description
+This dataset combines key demographic indicators (life expectancy at birth and fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year intervals. It includes both current values and adjacent time period values (previous and next) for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) notes that its philosophy is to fill data gaps with estimates and use current geographic boundaries for historical data. Gapminder states that it aims to "show people the big picture" rather than support detailed numeric analysis.
+
+#### Columns:
+1. `year` (type: integer): Years from 1955 to 2000 at 5-year intervals
+2. `country` (type: string): Name of the country
+3. `fertility` (type: float): Fertility rate (average number of children per woman) for the given year
+4. `life_expect` (type: float): Life expectancy in years for the given year
+5. `p_fertility` (type: float): Fertility rate for the previous 5-year interval
+6. `n_fertility` (type: float): Fertility rate for the next 5-year interval
+7. `p_life_expect` (type: float): Life expectancy for the previous 5-year interval
+8. `n_life_expect` (type: float): Life expectancy for the next 5-year interval
 
 ## `crimea.json`
 
