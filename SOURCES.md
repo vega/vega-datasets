@@ -133,7 +133,7 @@ This dataset combines key demographic indicators (life expectancy at birth, popu
 
 **Description** Per-capita income, life expectancy, population and regional grouping. Dataset does not specify the reference year for the data. Gapminder historical data is subject to revisions.
 
-Gapminder (v30, 2023) defines per-capital income as follows: 
+Gapminder (v30, 2023) defines per-capita income as follows: 
 
 >"This is real GDP per capita (gross domestic product per person adjusted for inflation) converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States." | [Source](https://docs.google.com/spreadsheets/d/1i5AEui3WZNZqh7MQ4AKkJuCz4rRxGR_pw_9gtbcBOqQ/edit?gid=501532268#gid=501532268)
 
