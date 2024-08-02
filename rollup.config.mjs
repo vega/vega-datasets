@@ -1,10 +1,11 @@
+import { readFile } from 'fs/promises';
 import json from "@rollup/plugin-json";
 import resolve from '@rollup/plugin-node-resolve';
 import terser from "@rollup/plugin-terser";
 import bundleSize from "rollup-plugin-bundle-size";
 import ts from "rollup-plugin-ts";
 
-import pkg from './package.json' assert { type: 'json' };
+const pkg = JSON.parse(await readFile('./package.json'));
 
 const plugins = (browserslist, declaration) => [
   resolve(),
