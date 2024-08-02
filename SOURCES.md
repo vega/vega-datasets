@@ -129,6 +129,15 @@ This dataset combines key demographic indicators (life expectancy at birth, popu
 `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.
 
 ## `gapminder-health-income.csv`
+**Original Data**: [Gapminder Foundation](https://www.gapminder.org/)
+
+**Description** Per-capita income, life expectancy, population and regional grouping. Dataset does not specify the reference year for the data. Gapminder historical data is subject to revisions.
+
+Gapminder (v30, 2023) defines per-capital income as follows: 
+
+>"This is real GDP per capita (gross domestic product per person adjusted for inflation) converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States." | [Source](https://docs.google.com/spreadsheets/d/1i5AEui3WZNZqh7MQ4AKkJuCz4rRxGR_pw_9gtbcBOqQ/edit?gid=501532268#gid=501532268)
+
+**License**: Creative Commons Attribution 4.0 International (CC BY 4.0) | [Reference](https://www.gapminder.org/free-material/)
 
 ## `github.csv`
 
