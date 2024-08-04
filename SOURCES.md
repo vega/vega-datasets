@@ -156,6 +156,15 @@ Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data fro
 The state of Iowa has dramatically increased its production of renewable wind power in recent years. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. The dataset was compiled by the [U.S. Energy Information Administration](https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin=) and downloaded on May 6, 2018. It is useful for illustrating stacked area charts.
 
 ## `jobs.json`
+Derived from U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The data currently lacks accompanying generation scripts or clear documentation of its provenance. However, comprehensive census data, including on occupation, is available from [IPUMS USA](https://usa.ipums.org/usa/), which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.)
+
+### Data Structure
+The dataset is structured as follows:
+- job: The occupation title
+- sex: Gender (men/women)
+- year: Census year
+- count: Number of individuals in the occupation
+- perc: Percentage of the workforce in the occupation
 
 ## `la-riots.csv`
 
