@@ -156,6 +156,38 @@ Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data fro
 The state of Iowa has dramatically increased its production of renewable wind power in recent years. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. The dataset was compiled by the [U.S. Energy Information Administration](https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin=) and downloaded on May 6, 2018. It is useful for illustrating stacked area charts.
 
 ## `jobs.json`
+U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
+
+Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
+
+### Notes on Data Origin
+Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of [IPUMS USA](https://usa.ipums.org/usa/), according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
+
+### Data Structure
+The dataset is structured as follows:
+- job: The occupation title
+- sex: Sex (men/women)
+- year: Census year
+- count: Number of individuals in the occupation
+- perc: Percentage of the workforce in the occupation
+
+### Redistribution
+IPUMS USA confirmed in 2024 correspondence that hosting this dataset on vega-datasets is permissible, stating:
+
+>We're excited to hear that this dataset made its way to this repository and is being used by students for data visualization. We allow for these types of redistributions of summary data so long as the underlying microdata records are not shared.
+
+This dataset contains only summary statistics and does not include any underlying microdata records.
+
+### Usage Notes
+1. This dataset represents summary data. The underlying microdata records are not included.
+2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) (person weight) variable as an expansion factor when working with IPUMS USA extracts.
+3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current IPUMS USA data exactly.
+
+### Terms of Use and Citation
+When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/terms.shtml). The organization requests use of the following citation for this json file: 
+
+Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0
+
 
 ## `la-riots.csv`
 
