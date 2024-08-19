@@ -209,6 +209,26 @@ Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobri
 
 ## `monarchs.json`
 
+A chronological dataset of English and British monarchs from Elizabeth I (1558) through George IV (1830). Each entry includes:
+
+- `name`: The ruler's name or identifier (e.g., "W&M" for William and Mary, "Cromwell" for the period of interregnum)
+- `start`: The year their rule began
+- `end`: The year their rule ended
+- `index`: A [zero-based sequential number](https://en.wikipedia.org/wiki/Zero-based_numbering) assigned to each entry, representing the chronological order of rulers
+- `commonwealth`: A Boolean flag (true) for the period from 1649 to 1660. This field is omitted for all other entries. The *commonwealth* field name is retained for backwards compatibility with existing visualizations, despite covering the broader period known as interregnum, including the Commonwealth of England (1649-1653), the Protectorate under Oliver and Richard Cromwell (1653-1659), and the brief period of instability leading to the Restoration in 1660.
+
+The accuracy of this data can be verified against the [kings & queens](https://www.royal.uk/kings-and-queens-1066
+) and [interregnum](https://www.royal.uk/interregnum-1649-1660
+) [official website of the British royal family](https://www.royal.uk) pages of the official Web site of the British royal family (retrieved in Aug. 2024). Content on the site is protected by Crown Copyright. Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+
+The entry "W&M" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
+
+The original dataset in this repository was revised in Aug. 2024 with the following corrections:
+
+* Elizabeth I's reign now correctly starts in 1558 (previously 1565),  and her name is updated to include the [regnal number](https://en.wikipedia.org/wiki/Regnal_number) "I"
+* James II's reign now ends in 1688 (previously 1689)
+* George IV's reign now ends in 1830 (previously 1820)
+
 ## `movies.json`
 
 The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data.
