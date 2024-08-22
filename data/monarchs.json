@@ -1,5 +1,5 @@
 [
-{"name":"Elizabeth I","start":1558,"end":1603,"index":0},
+{"name":"Elizabeth I","start":1565,"end":1603,"index":0},
 {"name":"James I","start":1603,"end":1625,"index":1},
 {"name":"Charles I","start":1625,"end":1649,"index":2},
 {"name":"Cromwell","start":1649,"end":1660,"commonwealth":true,"index":3},
@@ -10,5 +10,5 @@
 {"name":"George I","start":1714,"end":1727,"index":8},
 {"name":"George II","start":1727,"end":1760,"index":9},
 {"name":"George III","start":1760,"end":1820,"index":10},
-{"name":"George IV","start":1820,"end":1830,"index":11}
+{"name":"George IV","start":1820,"end":1820,"index":11}
 ]
