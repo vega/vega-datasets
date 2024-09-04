@@ -228,6 +228,22 @@ Assets from the video game [Celeste](http://www.celestegame.com/).
 ## `political-contributions.json`
 
 ## `population.json`
+United States population statistics by sex and age group across decades between 1850 and 2000. The dataset was obtained from [IPUMS USA](https://usa.ipums.org/usa/), which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
+
+### Data Structure
+The dataset is structured as follows:
+- year: four-digit year of the survey. - [IPUMS description](https://usa.ipums.org/usa-action/variables/YEAR#description_section)
+- age: age group in 5-year intervals (0 represents ages 0-4, 5 represents 5-9, 10 represents 10-14, etc., up to 90 representing 90 and above) - [IPUMS description](https://usa.ipums.org/usa-action/variables/AGE#description_section)
+- sex: Sex (men = 1 / women = 2) - [IPUMS description](https://usa.ipums.org/usa-action/variables/SEX#description_section)
+- people: Number of individuals, equivalent to IPUMS variable name [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section).
+
+### Notes on Data Origin
+IPUMS updates and revises datasets over time, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
+
+### Terms of Use and Citation
+When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/terms.shtml). The organization requests the use of the following citation for this json file: 
+
+Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0
 
 ## `seattle-weather.csv`
 
