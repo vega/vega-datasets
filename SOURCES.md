@@ -227,6 +227,19 @@ Assets from the video game [Celeste](http://www.celestegame.com/).
 
 ## `political-contributions.json`
 
+Summary financial information on contributions to candidates for U.S. elections. An updated version of this datset is available from the "all candidates" files (in pipe-delimited format) on the [bulk data download](https://www.fec.gov/data/browse-data/?tab=bulk-data) page of the U.S. Federal Election Commission, or, alternatively, via [OpenFEC](https://api.open.fec.gov/developers/). Information on each of the 25 columns is available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/). The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
+
+### Terms of Use
+
+FEC data is subject to the commission's:
+- [Sale or Use Policy](https://www.fec.gov/updates/sale-or-use-contributor-information/)
+- [Privacy and Security Policy](https://www.fec.gov/about/privacy-and-security-policy/)
+- [Acceptable Use Policy](https://github.com/fecgov/FEC/blob/master/ACCEPTABLE-USE-POLICY.md)
+
+Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:
+
+> This project is in the public domain within the United States, and we waive worldwide copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/) dedication. Read more on our license page. A few restrictions limit the way you can use FEC data. For example, you can't use contributor lists for commercial purposes or to solicit donations. Learn more on [FEC.gov](https://www.fec.gov/).
+
 ## `population.json`
 United States population statistics by sex and age group across decades between 1850 and 2000. The dataset was obtained from [IPUMS USA](https://usa.ipums.org/usa/), which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
 
