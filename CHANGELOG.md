@@ -1,5 +1,13 @@
 
 
+# [2.9.0](https://github.com/vega/vega-datasets/compare/v2.8.1...v2.9.0) (2024-09-06)
+
+
+### Features
+
+*  correct monarchs.json and add source information ([#596](https://github.com/vega/vega-datasets/issues/596)) ([2f62800](https://github.com/vega/vega-datasets/commit/2f6280027feed79574fb978a3b7007ea40485826))
+* update gapminder.json and add source information ([#580](https://github.com/vega/vega-datasets/issues/580)) ([76feaab](https://github.com/vega/vega-datasets/commit/76feaab74a7f5f2bee8ede28ddcf865241681e64))
+
 ## [2.8.1](https://github.com/vega/vega-datasets/compare/v2.8.0...v2.8.1) (2024-03-06)
 
 
