@@ -236,10 +236,7 @@ The `commonwealth` field is used to flag the period from 1649 to 1660, which inc
 
 #### Recent updates
 
-The dataset was revised in Aug. 2024 with the following corrections:
-
-* Elizabeth I's name is updated to include the [regnal number](https://en.wikipedia.org/wiki/Regnal_number) "I"
-* James II's reign now ends in 1688 (previously 1689)
+The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
 
  
  ### Data Source and Licensing
