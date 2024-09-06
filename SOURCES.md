@@ -209,6 +209,43 @@ Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobri
 
 ## `monarchs.json`
 
+A chronological list of English and British monarchs from Elizabeth I through George IV. 
+### Data Structure
+Each entry includes:
+
+- `name`: The ruler's name or identifier (e.g., "W&M" for William and Mary, "Cromwell" for the period of interregnum)
+- `start`: The year their rule began.
+- `end`: The year their rule ended
+- `index`: A [zero-based sequential number](https://en.wikipedia.org/wiki/Zero-based_numbering) assigned to each entry, representing the chronological order of rulers
+- `commonwealth`: A Boolean flag (true) for the period from 1649 to 1660. This field is omitted for all other entries. 
+
+### Known Inaccuracies  and Special Notes
+
+#### Start and end dates
+The dataset contains two intentional inaccuracies to maintain compatibility with the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization: 
+1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558; 
+2. the end date for the reign of George IV is shown as 1820, instead of 1830. 
+
+These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
+
+#### William & Mary's Reign
+The entry "W&M" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
+
+#### Interregnum Period
+The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, and the period leading to the Restoration. While historically more accurate to call this the "interregnum," the field name of `commonwealth` from the original dataset is retained for backwards compatibility.
+
+#### Recent updates
+
+The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
+
+ 
+ ### Data Source and Licensing
+ Source data has been verified against the [kings & queens](https://www.royal.uk/kings-and-queens-1066
+) and [interregnum](https://www.royal.uk/interregnum-1649-1660
+) [official website of the British royal family](https://www.royal.uk) pages of the official Web site of the British royal family (retrieved in Aug. 2024). Content on the site is protected by Crown Copyright. Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+
+
+
 ## `movies.json`
 
 The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data.
