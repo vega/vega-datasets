@@ -182,8 +182,8 @@ def main(api_key, output_file):
     json_output = json.dumps(reordered_data, separators=(',', ':'))
 
     # Save JSON file
-    with open(output_path, 'w') as f:
-        f.write(json_output)
+    with open(output_path, 'w', newline='') as f:
+        f.write(json_output + '\n')
 
     print(f"Data has been processed and saved to '{output_path}'")
 
