@@ -313,6 +313,25 @@ S&amp;P 500 index values from 2000 to 2020, retrieved from [Yahoo Finance](https
 
 ## `unemployment-across-industries.json`
 
+Industry-level unemployment statistics from the [Current Population Survey](https://www.census.gov/programs-surveys/cps.html) (CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons and unemployment rate across 11 private industries, as well as agricultural, government, and self-employed workers. Covers January 2000 through February 2010. Industry classification follows format of CPS [Table A-31](https://www.bls.gov/web/empsit/cpseea31.htm).
+
+### Data Structure
+Each entry in the JSON file contains:
+- `series`: Industry name
+- `year`: Year (2000-2010)
+- `month`: Month (1-12)
+- `count`: Number of unemployed persons (in thousands)
+- `rate`: Unemployment rate (percentage)
+- `date`: [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)-formatted date string (e.g., "2000-01-01T08:00:00.000Z")
+
+The dataset can be replicated using the BLS API. For more, see the `scripts` folder of this repository.
+
+### Citing Data
+The BLS Web site states:
+> "Users of the public API should cite the date that data were accessed or retrieved using the API. Users must clearly state that “BLS.gov cannot vouch for the data or analyses derived from these data after the data have been retrieved from BLS.gov.” The BLS.gov logo may not be used by persons who are not BLS employees or on products (including web pages) that are not BLS-sponsored."
+
+See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.htm).
+
 ## `unemployment.tsv`
 
 ## `us-10m.json`
