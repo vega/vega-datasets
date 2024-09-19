@@ -334,6 +334,42 @@ See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.ht
 
 ## `unemployment.tsv`
 
+This dataset contains county-level unemployment rates in the United States, with data generally consistent with levels reported in 2009. The dataset is structured as tab-separated values with two columns:
+
+1. `id`: The combined [state and county FIPS code](https://www.census.gov/library/reference/code-lists/ansi.html)
+2. `rate`: The unemployment rate for the county
+
+The unemployment rate represents the number of unemployed persons as a percentage of the labor force. According to the [Bureau of Labor Statistics (BLS) glossary](https://www.bls.gov/opub/hom/glossary.htm#U):
+
+> Unemployed persons (Current Population Survey) [are] persons aged 16 years and older who had no employment during the reference week, were available for work, except for temporary illness, and had made specific efforts to find employment sometime during the 4-week period ending with the reference week. Persons who were waiting to be recalled to a job from which they had been laid off need not have been looking for work to be classified as unemployed.
+
+The labor force includes all persons classified as employed or unemployed in accordance with the BLS definitions.
+
+### Data Source
+
+This dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, a federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). The LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions, states, counties, metropolitan areas, and many cities and towns.
+
+### Accessing Current LAUS Data
+
+For the most up-to-date LAUS data:
+
+1. **Monthly and Annual Data Downloads**: 
+   - Visit the [LAUS Data Tools](https://www.bls.gov/lau/data.htm) page for [monthly](https://www.bls.gov/lau/tables.htm#mcounty) and [annual](https://www.bls.gov/lau/tables.htm#cntyaa) county data.
+
+2. **BLS Public Data API**:
+   - The BLS provides an [API for developers](https://www.bls.gov/developers/) to access various datasets, including LAUS data.
+   - To use the API for LAUS data, refer to the [LAUS Series ID Formats](https://www.bls.gov/help/hlpforma.htm#LA) to construct your query.
+   - API documentation and examples are available on the [BLS Developers](https://www.bls.gov/developers/) page.
+
+### Terms of Use
+
+When using BLS public data API and datasets, users should adhere to the [BLS Terms of Service](https://www.bls.gov/developers/termsOfService.htm), which includes the following guidelines:
+
+1. Cite the date that data were accessed or retrieved.
+2. Acknowledge that "BLS.gov cannot vouch for the data or analyses derived from these data after the data have been retrieved from BLS.gov."
+3. Do not use the BLS logo without permission.
+
+For detailed methodology and technical information about LAUS estimates, refer to the [BLS Handbook of Methods](https://www.bls.gov/opub/hom/lau/home.htm).
 ## `us-10m.json`
 
 ## `us-employment.csv`
