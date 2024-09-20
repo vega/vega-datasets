@@ -87,7 +87,7 @@ https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02met
 https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
 (Feb 6, 2018)
 
-## `flare.json`
+## `flare.json`, `flare-dependencies.json`
 
 ## `flights-?k.json`, `flights-200k.arrow`, `flights-airport.csv`
 
