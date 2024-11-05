@@ -64,7 +64,7 @@ console.log(cars);
 
 ## Development process
 
-Install dependencies with `yarn`.
+Install dependencies with `npm install`.
 
 ## Release process
 
