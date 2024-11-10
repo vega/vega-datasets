@@ -1,5 +1,5 @@
 """
-Process U.S. DOT On-Time Flight Performance data into a simplified CSV format.
+Process U.S. DOT On-Time Flight Performance data into a simplified CSV/JSON format.
 
 This script processes user-downloaded ZIP files containing Bureau of Transportation 
 Statistics (BTS) On-Time Flight Performance data, combining and transforming them 
@@ -8,8 +8,9 @@ properly handles date boundary cases where flights depart on a different date th
 scheduled due to delays or early departures. BTS is a statistical agency within 
 the U.S. Department of Transportation (DOT).
 
-Data Source (valid as of November 2024): 
-1) Visit https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr
+Data Source: 
+1) Visit https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr 
+         (link valid as of November 2024)
 2) Download prezipped files, one per month.
 
 Input Data Requirements:
