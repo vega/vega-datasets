@@ -25,11 +25,11 @@ Input Data Requirements:
         * Origin: Origin airport code
         * Dest: Destination airport code
         * Cancelled: Boolean indicating if flight was cancelled
-
 Usage:
     ./flights.py INPUT_DIR [-o OUTPUT] [-n NUM_ROWS] [-s SEED] 
                           [-d DATETIME_FORMAT] [-f OUTPUT_FORMAT] [-c COLUMNS]
-                          [-v] [--flag-date-changes]
+                          [-v] [--flag-date-changes] [--start-date START_DATE]
+                          [--end-date END_DATE]
 
 Arguments:
     INPUT_DIR           Directory containing flight data zip files (required)
@@ -39,12 +39,12 @@ Arguments:
     -d, --datetime-format DateTime format: 'mmddhhmm', 'iso', or 'decimal' (optional, defaults to 'mmddhhmm')
     -f, --format        Output format: 'csv' or 'json' (optional, defaults to 'csv')
     -c, --columns       Comma-separated list of columns to include in output and their order
-                       (optional, defaults to all columns)
+                         If not specified, defaults to: date/time (datetime-format dependent),
+                         delay, distance, origin, destination.
     -v, --verbose       Show detailed statistics about the dataset
     --flag-date-changes Add column indicating when actual departure date differs from scheduled
     --start-date        Start date (inclusive) in YYYY-MM-DD format to filter actual departures
     --end-date          End date (inclusive) in YYYY-MM-DD format to filter actual departures
-
 
 Available Columns:
     time                Decimal hours.minutes when using decimal format (e.g., 6.5 for 6:30)
