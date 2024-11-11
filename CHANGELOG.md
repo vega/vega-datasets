@@ -1,5 +1,12 @@
 
 
+# [2.10.0](https://github.com/vega/vega-datasets/compare/v2.9.0...v2.10.0) (2024-11-11)
+
+
+### Bug Fixes
+
+* correct timestamp calculations in flight datasets & add generation script ([#626](https://github.com/vega/vega-datasets/issues/626)) ([f617597](https://github.com/vega/vega-datasets/commit/f61759719966cec696e643318ad13c52fa1c0801))
+
 # [2.9.0](https://github.com/vega/vega-datasets/compare/v2.8.1...v2.9.0) (2024-09-06)
 
 
