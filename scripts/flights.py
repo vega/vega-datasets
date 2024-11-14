@@ -1,5 +1,5 @@
 """
-Process U.S. DOT On-Time Flight Performance data into a simplified CSV/JSON format.
+Process U.S. DOT On-Time Flight Performance data into a simplified CSV/JSON/Parquet format.
 
 This script processes user-downloaded ZIP files containing Bureau of Transportation 
 Statistics (BTS) On-Time Flight Performance data, combining and transforming them 
@@ -37,7 +37,7 @@ Arguments:
     -n, --num-rows      Number of rows to include in output (optional, defaults to all rows)
     -s, --seed          Random seed for row sampling (optional, defaults to 42)
     -d, --datetime-format DateTime format: 'mmddhhmm', 'iso', or 'decimal' (optional, defaults to 'mmddhhmm')
-    -f, --format        Output format: 'csv' or 'json' (optional, defaults to 'csv')
+    -f, --format        Output format: 'csv', 'json', or 'parquet' (optional, defaults to 'csv')
     -c, --columns       Comma-separated list of columns to include in output and their order
                          If not specified, defaults to: date/time (datetime-format dependent),
                          delay, distance, origin, destination.
@@ -45,6 +45,21 @@ Arguments:
     --flag-date-changes Add column indicating when actual departure date differs from scheduled
     --start-date        Start date (inclusive) in YYYY-MM-DD format to filter actual departures
     --end-date          End date (inclusive) in YYYY-MM-DD format to filter actual departures
+
+    Parquet-specific options:
+        --parquet-compression      Compression codec for Parquet files: 'zstd', 'snappy', 'gzip', 
+                                or 'none' (default: zstd)
+        --parquet-compression-level  Compression level for ZSTD (1-22, default: 3)
+                                    Higher values give better compression but slower speed
+        --parquet-row-group-size    Row group size in MB (default: 128)
+                                    Larger values improve compression but use more memory
+        --parquet-disable-dictionary Disable dictionary encoding for string columns
+                                    Dictionary encoding improves compression for repeated values
+        --parquet-dictionary-page-size  Dictionary page size in KB (default: 1024)
+                                    Larger values may improve compression for string columns
+        --parquet-disable-statistics    Disable writing statistics to Parquet file
+                                    Statistics help with query planning but increase file size 
+
 
 Available Columns:
     time                Decimal hours.minutes when using decimal format (e.g., 6.5 for 6:30)
@@ -65,6 +80,12 @@ Output Formats:
         - iso: "2023/06/14 23:30"
         - decimal: "6.5" (6:30), "6.25" (6:15), "23.75" (23:45)
 
+    Output Format Details:
+    - CSV:     Human-readable comma-separated values
+    - JSON:    Compact JSON array of records, useful for APIs
+    - Parquet: Columnar storage with compression, ideal for large datasets
+              Supports ZSTD, SNAPPY, or GZIP compression
+
 Examples:
     # Basic usage - process all rows, output as CSV with default columns
     python flights.py ./flight_data
@@ -81,6 +102,9 @@ Examples:
     # Filter flights between specific dates
     python flights.py ./flight_data --start-date 2023-01-01 --end-date 2023-01-31
 
+    # Output as Parquet with custom compression settings
+    python flights.py ./flight_data -f parquet --parquet-compression zstd --parquet-compression-level 7
+
 
 Notes:
     - Input ZIP files should match the pattern 'On_Time_Reporting*.zip'
@@ -96,14 +120,26 @@ import pandas as pd
 import zipfile
 import glob
 import json
-from typing import List, Optional, Literal, Dict, Any, Set
+from typing import List, Optional, Union, Literal, Dict, Any, Set
 import logging
 from pathlib import Path
 import argparse
 import numpy as np
 from enum import Enum
+import pyarrow as pa
+if pa.__version__ < '14.0.0':
+    logging.warning(f"Using pyarrow version {pa.__version__}. Some Parquet features may not be available. Consider upgrading to 14.0.0 or later.")
+import pyarrow.parquet as pq
+from dataclasses import dataclass
+import os
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+class CompressionCodec(str, Enum):
+    ZSTD = 'zstd'
+    SNAPPY = 'snappy'
+    GZIP = 'gzip'
+    NONE = 'none'
 
 class DateTimeFormat(str, Enum):
     MMDDHHMM = 'mmddhhmm'
@@ -113,6 +149,28 @@ class DateTimeFormat(str, Enum):
 class OutputFormat(str, Enum):
     CSV = 'csv'
     JSON = 'json'
+    PARQUET = 'parquet'
+
+@dataclass
+class ParquetConfig:
+    compression: str = 'zstd'
+    compression_level: int = 3
+    row_group_size: int = 128 * 1024 * 1024  # 128MB default
+    enable_dictionary: bool = True
+    dictionary_page_size: int = 1024 * 1024  # 1MB default
+    write_statistics: bool = True
+    
+    @classmethod
+    def from_args(cls, args: argparse.Namespace) -> 'ParquetConfig':
+        """Create ParquetConfig from command line arguments."""
+        return cls(
+            compression=args.parquet_compression,
+            compression_level=args.parquet_compression_level,
+            row_group_size=args.parquet_row_group_size * 1024 * 1024,
+            enable_dictionary=not args.parquet_disable_dictionary,
+            dictionary_page_size=args.parquet_dictionary_page_size * 1024,
+            write_statistics=not args.parquet_disable_statistics
+        )
 
 # Define valid columns and their dependencies
 VALID_COLUMNS = {
@@ -388,11 +446,79 @@ def print_verbose_stats(stats: Dict[str, Any]) -> None:
             logging.info(f"  {', '.join(stats['airports']['destinations'])}")
     logging.info("\n")
 
+def save_output(
+    df: pd.DataFrame,
+    output_format: OutputFormat,
+    base_filename: str,
+    datetime_format: DateTimeFormat,
+    verbose: bool = False,
+    parquet_config: Optional[ParquetConfig] = None
+) -> None:
+    """Save the DataFrame in the specified format and optionally show statistics."""
+    if verbose:
+        stats = get_dataset_stats(df, datetime_format)
+        print_verbose_stats(stats)
+    
+    if output_format == OutputFormat.CSV:
+        output_file = f"{base_filename}.csv"
+        df.to_csv(output_file, index=False, encoding='utf-8')
+    elif output_format == OutputFormat.JSON:
+        output_file = f"{base_filename}.json"
+        records = df.to_dict(orient='records')
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(records, f, separators=(',', ':'))
+    else:  # PARQUET
+        if parquet_config is None:
+            parquet_config = ParquetConfig()
+        output_file = f"{base_filename}.parquet"
+        save_as_parquet(df, output_file, parquet_config)
+    
+    logging.info(f"Successfully created {output_file} with {len(df)} rows")
+
+def add_parquet_arguments(parser: argparse.ArgumentParser) -> None:
+    """Add Parquet-specific arguments to the parser."""
+    parquet_group = parser.add_argument_group('Parquet options')
+    parquet_group.add_argument(
+        '--parquet-compression',
+        choices=[codec.value for codec in CompressionCodec],
+        default='zstd',
+        help='Compression codec for Parquet output (default: %(default)s)'
+    )
+    parquet_group.add_argument(
+        '--parquet-compression-level',
+        type=int,
+        default=3,
+        choices=range(1, 23),
+        help='Compression level for ZSTD (1-22, default: %(default)s)'
+    )
+    parquet_group.add_argument(
+        '--parquet-row-group-size',
+        type=int,
+        default=128,
+        help='Row group size in MB (default: %(default)s)'
+    )
+    parquet_group.add_argument(
+        '--parquet-disable-dictionary',
+        action='store_true',
+        help='Disable dictionary encoding'
+    )
+    parquet_group.add_argument(
+        '--parquet-dictionary-page-size',
+        type=int,
+        default=1024,
+        help='Dictionary page size in KB (default: %(default)s)'
+    )
+    parquet_group.add_argument(
+        '--parquet-disable-statistics',
+        action='store_true',
+        help='Disable writing statistics to Parquet file'
+    )
+
 def parse_args() -> argparse.Namespace:
     """Parse and validate command line arguments."""
     parser = argparse.ArgumentParser(
         description='''
-Process BTS On-Time Flight Performance data into a simplified CSV/JSON format.
+Process BTS On-Time Flight Performance data into a simplified CSV/JSON/Parquet format.
 
 This script processes ZIP files containing Bureau of Transportation Statistics (BTS)
 On-Time Flight Performance data, combining and transforming them into a specified
@@ -427,6 +553,8 @@ Notes:
     - Column names are case-sensitive
     - Source data URL and format may change after November 2024
     ''')
+
+    add_parquet_arguments(parser)
 
     parser.add_argument('input_dir', 
                        help='Directory containing flight data zip files downloaded from BTS')
@@ -472,8 +600,8 @@ Notes:
                        type=str,
                        choices=[format.value for format in OutputFormat],
                        default=OutputFormat.CSV.value,
-                       help='Output format (default: %(default)s)')
-    
+                       help='Output format: csv, json, or parquet (default: %(default)s)')
+  
     columns_help = '''
     Comma-separated list of columns to include and their order. Available columns:
     time, date, delay, distance, DepDelay, origin, destination, ScheduledFlightDate, ScheduledFlightTime, date_changed
@@ -523,12 +651,50 @@ def load_zip_files(pattern: str) -> pd.DataFrame:
     return pd.concat(dfs, ignore_index=True)
 
 
+def save_as_parquet(
+    df: pd.DataFrame,
+    filename: str,
+    config: ParquetConfig
+) -> None:
+    """Save DataFrame as Parquet file with specified configuration."""
+    # Convert pandas DataFrame to Arrow Table
+    table = pa.Table.from_pandas(df)
+    
+    # Prepare write options
+    write_options = {
+        'compression': config.compression,
+        'use_dictionary': config.enable_dictionary,
+        'write_statistics': config.write_statistics,
+    }
+    
+    # Add ZSTD compression level if using ZSTD
+    if config.compression == 'zstd':
+        write_options['compression_level'] = config.compression_level
+    
+    # Write the Parquet file
+    pq.write_table(
+        table,
+        filename,
+        **write_options
+    )
+    
+    # Get and log file statistics
+    file_stats = os.stat(filename)
+    parquet_file = pq.ParquetFile(filename)
+    logging.info(f"Parquet file statistics:")
+    logging.info(f"  - File size: {file_stats.st_size / (1024*1024):.2f} MB")
+    logging.info(f"  - Number of row groups: {parquet_file.num_row_groups}")
+    logging.info(f"  - Compression: {config.compression}" + 
+                (f" (level {config.compression_level})" if config.compression == 'zstd' else ""))
+    logging.info(f"  - Row group size: {config.row_group_size / (1024*1024):.0f} MB")
+
 def save_output(
     df: pd.DataFrame,
     output_format: OutputFormat,
     base_filename: str,
     datetime_format: DateTimeFormat,
-    verbose: bool = False
+    verbose: bool = False,
+    parquet_config: Optional[ParquetConfig] = None
 ) -> None:
     """Save the DataFrame in the specified format and optionally show statistics."""
     if verbose:
@@ -538,17 +704,22 @@ def save_output(
     if output_format == OutputFormat.CSV:
         output_file = f"{base_filename}.csv"
         df.to_csv(output_file, index=False, encoding='utf-8')
-    else:  # JSON
+    elif output_format == OutputFormat.JSON:
         output_file = f"{base_filename}.json"
-        # Convert to dictionary format with records orientation and output in compact format
         records = df.to_dict(orient='records')
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(records, f, separators=(',', ':'))
+    else:  # PARQUET
+        if parquet_config is None:
+            parquet_config = ParquetConfig()
+        output_file = f"{base_filename}.parquet"
+        save_as_parquet(df, output_file, parquet_config)
     
     logging.info(f"Successfully created {output_file} with {len(df)} rows")
 
 def main():
     args = parse_args()
+    parquet_config = ParquetConfig.from_args(args) if args.format == 'parquet' else None
     base_filename = args.output
     zip_pattern = str(Path(args.input_dir) / '*On_Time_Reporting*.zip')
     
@@ -573,7 +744,8 @@ def main():
             output_format=OutputFormat(args.format),
             base_filename=base_filename,
             datetime_format=DateTimeFormat(args.datetime_format),
-            verbose=args.verbose
+            verbose=args.verbose,
+            parquet_config=parquet_config
         )
         
     except Exception as e:
