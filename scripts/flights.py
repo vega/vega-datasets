@@ -658,7 +658,7 @@ def save_as_parquet(
 ) -> None:
     """Save DataFrame as Parquet file with specified configuration."""
     # Convert pandas DataFrame to Arrow Table
-    table = pa.Table.from_pandas(df)
+    table = pa.Table.from_pandas(df, preserve_index=False)
     
     # Prepare write options
     write_options = {
