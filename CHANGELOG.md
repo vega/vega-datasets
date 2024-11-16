@@ -1,5 +1,12 @@
 
 
+# [2.11.0](https://github.com/vega/vega-datasets/compare/v2.10.0...v2.11.0) (2024-11-16)
+
+
+### Bug Fixes
+
+* replace data/flights-3m.csv with data/flights-3m.parquet ([#628](https://github.com/vega/vega-datasets/issues/628)) ([12644bf](https://github.com/vega/vega-datasets/commit/12644bfc150902035501637bbdc39f9393630b79))
+
 # [2.10.0](https://github.com/vega/vega-datasets/compare/v2.9.0...v2.10.0) (2024-11-11)
 
 

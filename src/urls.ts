@@ -50,7 +50,6 @@ export default {
   'birdstrikes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/birdstrikes.csv`,
   'co2-concentration.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/co2-concentration.csv`,
   'disasters.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/disasters.csv`,
-  'flights-3m.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-3m.csv`,
   'flights-airport.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-airport.csv`,
   'gapminder-health-income.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/gapminder-health-income.csv`,
   'github.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/github.csv`,
