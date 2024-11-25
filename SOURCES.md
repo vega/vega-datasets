@@ -147,9 +147,7 @@ Generated using `/scripts/github.py`.
 
 Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocean Temperature Index, L-OTI), 1880-2023. Source: NASA's Goddard Institute for Space Studies https://data.giss.nasa.gov/gistemp/
 
-## `population_engineers_hurricanes.csv`
-
-Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data from http://www.nhc.noaa.gov/paststate.shtml. Income data from https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table.
+## `income.json`
 
 ## `iowa-electricity.csv`
 
@@ -205,6 +203,8 @@ Calculated from `londongBoroughs.json` using `d3.geoCentroid`.
 
 Selected rail lines simplified from `tfl_lines.json` at https://github.com/oobrien/vis/tree/master/tube/data
 
+## `lookup_groups.csv`, `lookup_people.csv`
+
 ## `miserables.json`
 
 ## `monarchs.json`
@@ -237,18 +237,19 @@ The `commonwealth` field is used to flag the period from 1649 to 1660, which inc
 #### Recent updates
 
 The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
-
  
  ### Data Source and Licensing
  Source data has been verified against the [kings & queens](https://www.royal.uk/kings-and-queens-1066
 ) and [interregnum](https://www.royal.uk/interregnum-1649-1660
 ) [official website of the British royal family](https://www.royal.uk) pages of the official Web site of the British royal family (retrieved in Aug. 2024). Content on the site is protected by Crown Copyright. Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 
-
-
 ## `movies.json`
 
 The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data.
+
+## `normal-2d.json`
+
+## `obesity.json`
 
 ## `ohlc.json`
 
@@ -261,6 +262,8 @@ Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr
 ## `platformer-terrain.json`
 
 Assets from the video game [Celeste](http://www.celestegame.com/).
+
+## `points.json`
 
 ## `political-contributions.json`
 
@@ -295,6 +298,10 @@ When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ip
 
 Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0
 
+## `population_engineers_hurricanes.csv`
+
+Data about engineers from https://www.bls.gov/oes/tables.htm. Hurricane data from http://www.nhc.noaa.gov/paststate.shtml. Income data from https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table.
+
 ## `seattle-weather.csv`
 
 Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/records). Daily weather records with metric units. Transformed using `/scripts/weather.py`. We synthesized the categorical "weather" field from multiple fields in the original dataset. This data is intended for instructional purposes.
@@ -310,6 +317,8 @@ Data from [NOAA](https://www.ncdc.noaa.gov/cdo-web/datatools/normals). Hourly we
 S&amp;P 500 index values from 2000 to 2020, retrieved from [Yahoo Finance](https://finance.yahoo.com/quote/%5EDJI/history/).
 
 ## `stocks.csv`
+
+## `udistrict.json`
 
 ## `unemployment-across-industries.json`
 
@@ -370,6 +379,9 @@ When using BLS public data API and datasets, users should adhere to the [BLS Ter
 3. Do not use the BLS logo without permission.
 
 For detailed methodology and technical information about LAUS estimates, refer to the [BLS Handbook of Methods](https://www.bls.gov/opub/hom/lau/home.htm).
+
+## `uniform-2d.json`
+
 ## `us-10m.json`
 
 ## `us-employment.csv`
@@ -381,6 +393,8 @@ This file contains the monthly employment total in a variety of job categories f
 Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/time.series/ce/ce.supersector) tracked by the BLS. The "nonfarm" total is the category typically used by economists and journalists as a stand-in for the country's employment total.
 
 A calculated "nonfarm_change" column has been appended with the month-to-month change in that supersector's employment. It is useful for illustrating how to make bar charts that report both negative and positive values.
+
+## `us-state-capitals.json`
 
 ## `volcano.json`
 
