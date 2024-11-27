@@ -57,6 +57,7 @@ if TYPE_CHECKING:
 
 
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
 
@@ -159,10 +160,8 @@ def infer_json_constructor(source: Path, /) -> ResourceConstructor:
     if any(tp.is_nested() for tp in df.schema.dtypes()):
         if df.columns[0] == "type":
             return TopoResource if df.item(0, 0) == "Topology" else GeoResource
-        else:
-            return JsonResource
-    else:
-        return TableResource
+        return JsonResource
+    return TableResource
 
 
 def iter_resources(data_root: Path, /) -> Iterator[Resource]:
@@ -202,20 +201,20 @@ def main(
     os.chdir(data_dir)
     pkg_meta = extract_package_metadata(repo_dir)
 
-    logging.info(
+    logger.info(
         f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     )
     pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)
-    logging.info(f"Collected {len(pkg.resources)} resources")
-    logging.info("Inferring metadata ...")
+    logger.info(f"Collected {len(pkg.resources)} resources")
+    logger.info("Inferring metadata ...")
     pkg.infer()
     if output_format in {"json", "both"}:
         p = (repo_dir / f"{stem}.json").as_posix()
-        logging.info(f"Writing {p!r}")
+        logger.info(f"Writing {p!r}")
         pkg.to_json(p)
     if output_format in {"yaml", "both"}:
         p = (repo_dir / f"{stem}.yaml").as_posix()
-        logging.info(f"Writing {p!r}")
+        logger.info(f"Writing {p!r}")
         pkg.to_yaml(p)
 
 
