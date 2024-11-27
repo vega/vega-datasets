@@ -21,7 +21,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-11-27T15:57:37.349824+00:00",
+  "created": "2024-11-27T17:26:02.512635+00:00",
   "resources": [
     {
       "name": "7zip",
@@ -915,6 +915,30 @@
           {
             "name": "destination",
             "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-200k",
+      "type": "table",
+      "path": "flights-200k.arrow",
+      "scheme": "file",
+      "format": "arrow",
+      "mediatype": "application/vnd.apache.arrow.file",
+      "schema": {
+        "fields": [
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "time",
+            "type": "number"
           }
         ]
       }

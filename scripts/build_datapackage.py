@@ -42,7 +42,21 @@ from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, NotRequired, Required, TypedDict
 
+import frictionless as fl
 import polars as pl
+from frictionless.fields import (
+    AnyField,
+    ArrayField,
+    BooleanField,
+    DateField,
+    DatetimeField,
+    DurationField,
+    IntegerField,
+    NumberField,
+    ObjectField,
+    StringField,
+    TimeField,
+)
 from frictionless.resources import (
     JsonResource,
     MapResource,
@@ -53,13 +67,59 @@ from frictionless.resources import (
 
 if TYPE_CHECKING:
     from collections.abc import Callable, Iterator, Sequence
-    from typing import Literal
+    from typing import ClassVar, Literal
 
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
+type PathMeta = Literal["name", "path", "format", "scheme", "mediatype"]
+type PythonDataType = (
+    type[
+        int
+        | float
+        | bool
+        | str
+        | dict
+        | list
+        | tuple
+        | dt.date
+        | dt.datetime
+        | dt.time
+        | dt.timedelta
+        | object
+        | bytes
+    ]
+    | None
+)
+
+
+POLARS_PY_TO_FL_FIELD: Mapping[PythonDataType, type[fl.Field]] = {
+    int: IntegerField,
+    float: NumberField,
+    bool: BooleanField,
+    str: StringField,
+    None: AnyField,  # NOTE: Unclear why this isn't represented with a class
+    dict: ObjectField,
+    list: ArrayField,
+    tuple: ArrayField,
+    dt.date: DateField,
+    dt.datetime: DatetimeField,
+    dt.time: TimeField,
+    dt.timedelta: DurationField,
+    object: AnyField,
+    bytes: AnyField,
+}
+"""
+Maps `polars python`_ type repr to ``datapackage`` `Field Types`_.
+
+
+.. _polars python:
+    https://github.com/pola-rs/polars/blob/85d078c066860e012f5e7e611558e6382b811b82/py-polars/polars/datatypes/convert.py#L167-L197
+.. _Field Types:
+    https://datapackage.org/standard/table-schema/#field-types
+"""
 
 TopoResource: ResourceConstructor = partial(
     MapResource, format="topojson", datatype="map"
@@ -68,10 +128,72 @@ GeoResource: ResourceConstructor = partial(
     MapResource, format="geojson", datatype="map"
 )
 
-SUFFIX_IMAGE: set[str] = {".png"}
-SUFFIX_TABULAR_SAFE: set[str] = {".csv", ".tsv", ".parquet"}
-SUFFIX_JSON: Literal[".json"] = ".json"
-SUFFIX_UNSUPPORTED: set[Literal[".arrow"]] = {".arrow"}
+
+class ResourceAdapter:
+    mediatype: ClassVar[Mapping[str, str]] = {
+        ".arrow": "application/vnd.apache.arrow.file"
+    }
+    """https://www.iana.org/assignments/media-types/application/vnd.apache.arrow.file"""
+
+    @classmethod
+    def from_path(cls, source: Path, /) -> Resource:
+        suffix = source.suffix
+        match suffix:
+            case ".csv" | ".tsv" | ".parquet":
+                return cls.from_tabular_safe(source)
+            case ".json":
+                return cls.from_json(source)
+            case ".png":
+                return cls.from_image(source)
+            case ".arrow":
+                return cls.from_arrow(source)
+            case _:
+                return None
+
+    @classmethod
+    def infer_as(cls, source: Path, tp: ResourceConstructor, /) -> Resource:
+        resource = tp(source.name)
+        resource.infer()
+        return resource
+
+    @classmethod
+    def from_arrow(cls, source: Path, /) -> Resource:
+        file_meta = cls._extract_file_parts(source)
+        return TableResource(**file_meta, schema=frame_to_schema(pl.scan_ipc(source)))
+
+    @classmethod
+    def from_tabular_safe(cls, source: Path, /) -> Resource:
+        return cls.infer_as(source, TableResource)
+
+    @classmethod
+    def from_image(cls, source: Path, /) -> Resource:
+        return cls.infer_as(source, Resource)
+
+    @classmethod
+    def from_json(cls, source: Path, /) -> Resource:
+        """Identifies *non-tabular* files, adds basic tag for spatial data."""
+        df: pl.DataFrame = pl.read_json(source)
+        if any(tp.is_nested() for tp in df.schema.dtypes()):
+            if df.columns[0] == "type":
+                tp = TopoResource if df.item(0, 0) == "Topology" else GeoResource
+            else:
+                tp = JsonResource
+        else:
+            tp = TableResource
+        return cls.infer_as(source, tp)
+
+    @classmethod
+    def _extract_file_parts(cls, source: Path, /) -> dict[PathMeta, str]:
+        """Metadata that can be inferred from the file path *alone*."""
+        parts = {
+            "name": source.stem,
+            "path": source.name,
+            "format": source.suffix[1:],
+            "scheme": "file",
+        }
+        if mediatype := cls.mediatype.get(source.suffix):
+            parts["mediatype"] = mediatype
+        return parts
 
 
 class Source(TypedDict, total=False):
@@ -121,6 +243,13 @@ class PackageMeta(TypedDict):
     created: str
 
 
+def frame_to_schema(frame: pl.LazyFrame | pl.DataFrame, /) -> fl.Schema:
+    py_schema = frame.lazy().collect_schema().to_python()
+    return fl.Schema(
+        fields=[POLARS_PY_TO_FL_FIELD[tp](name=name) for name, tp in py_schema.items()]
+    )
+
+
 def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
     """Repurpose `package.json`_ for the `Data Package`_ standard.
 
@@ -155,36 +284,17 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
     )
 
 
-def infer_json_constructor(source: Path, /) -> ResourceConstructor:
-    """Identifies *non-tabular* files, adds basic tag for spatial data."""
-    df: pl.DataFrame = pl.read_json(source)
-    if any(tp.is_nested() for tp in df.schema.dtypes()):
-        if df.columns[0] == "type":
-            return TopoResource if df.item(0, 0) == "Topology" else GeoResource
-        return JsonResource
-    return TableResource
-
-
 def iter_resources(data_root: Path, /) -> Iterator[Resource]:
     """Yield all parseable resources, selecting the most appropriate ``Resource`` class."""
-    tp: ResourceConstructor
     for fp in data_root.iterdir():
-        suffix: str = fp.suffix
         if not fp.is_file():
             continue
-        if suffix in SUFFIX_UNSUPPORTED:
-            continue
-        elif suffix in SUFFIX_IMAGE:
-            tp = Resource
-        elif suffix in SUFFIX_TABULAR_SAFE:
-            tp = TableResource
-        elif suffix == SUFFIX_JSON:
-            tp = infer_json_constructor(fp)
+        if resource := ResourceAdapter.from_path(fp):
+            yield resource
         else:
-            msg = f"Skipping unexpected extension {suffix!r}\n\n{fp!r}"
+            msg = f"Skipping unexpected extension {fp.suffix!r}\n\n{fp!r}"
             warnings.warn(msg, stacklevel=2)
             continue
-        yield tp(fp.name)
 
 
 def main(
@@ -201,14 +311,11 @@ def main(
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
     pkg_meta = extract_package_metadata(repo_dir)
-
     logger.info(
         f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     )
     pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)
     logger.info(f"Collected {len(pkg.resources)} resources")
-    logger.info("Inferring metadata ...")
-    pkg.infer()
     if output_format in {"json", "both"}:
         p = (repo_dir / f"{stem}.json").as_posix()
         logger.info(f"Writing {p!r}")
