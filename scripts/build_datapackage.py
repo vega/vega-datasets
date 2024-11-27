@@ -140,6 +140,7 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
         version=m["version"],
         homepage=m["repository"]["url"],
         description=m["description"],
+        contributors=[Contributor(title=m["author"]["name"], path=m["author"]["url"])],
         licenses=[
             License(
                 name=m["license"],
@@ -189,7 +190,7 @@ def iter_resources(data_root: Path, /) -> Iterator[Resource]:
 def main(
     *,
     stem: str = "datapackage",
-    output_format: Literal["json", "yaml", "both"] = "both",
+    output_format: Literal["json", "yaml", "both"] = "json",
 ) -> None:
     if output_format not in {"json", "yaml", "both"}:
         msg = f"Expected one of {["json", "yaml", "both"]!r} but got {output_format!r}"
