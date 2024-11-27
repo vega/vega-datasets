@@ -21,57 +21,16 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-11-27T17:26:02.512635+00:00",
+  "created": "2024-11-27T20:10:38.655412+00:00",
   "resources": [
     {
-      "name": "7zip",
-      "type": "file",
-      "path": "7zip.png",
+      "name": "earthquakes",
+      "type": "json",
+      "path": "earthquakes.json",
       "scheme": "file",
-      "format": "png",
-      "mediatype": "image/png",
+      "format": "geojson",
+      "mediatype": "text/geojson",
       "encoding": "utf-8"
-    },
-    {
-      "name": "airports",
-      "type": "table",
-      "path": "airports.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "iata",
-            "type": "string"
-          },
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "city",
-            "type": "string"
-          },
-          {
-            "name": "state",
-            "type": "string"
-          },
-          {
-            "name": "country",
-            "type": "string"
-          },
-          {
-            "name": "latitude",
-            "type": "number"
-          },
-          {
-            "name": "longitude",
-            "type": "number"
-          }
-        ]
-      }
     },
     {
       "name": "annual-precip",
@@ -83,9 +42,34 @@
       "encoding": "utf-8"
     },
     {
-      "name": "anscombe",
+      "name": "iowa-electricity",
       "type": "table",
-      "path": "anscombe.json",
+      "path": "iowa-electricity.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "year",
+            "type": "date"
+          },
+          {
+            "name": "source",
+            "type": "string"
+          },
+          {
+            "name": "net_generation",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "population",
+      "type": "table",
+      "path": "population.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
@@ -98,16 +82,20 @@
       "schema": {
         "fields": [
           {
-            "name": "Series",
-            "type": "string"
-          },
-          {
-            "name": "X",
+            "name": "year",
             "type": "integer"
           },
           {
-            "name": "Y",
-            "type": "number"
+            "name": "age",
+            "type": "integer"
+          },
+          {
+            "name": "sex",
+            "type": "integer"
+          },
+          {
+            "name": "people",
+            "type": "integer"
           }
         ]
       }
@@ -147,9 +135,9 @@
       }
     },
     {
-      "name": "birdstrikes",
+      "name": "disasters",
       "type": "table",
-      "path": "birdstrikes.csv",
+      "path": "disasters.csv",
       "scheme": "file",
       "format": "csv",
       "mediatype": "text/csv",
@@ -157,60 +145,1108 @@
       "schema": {
         "fields": [
           {
-            "name": "Airport Name",
+            "name": "Entity",
             "type": "string"
           },
           {
-            "name": "Aircraft Make Model",
+            "name": "Year",
+            "type": "integer"
+          },
+          {
+            "name": "Deaths",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "anscombe",
+      "type": "table",
+      "path": "anscombe.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "Series",
             "type": "string"
           },
           {
-            "name": "Effect Amount of damage",
+            "name": "X",
+            "type": "integer"
+          },
+          {
+            "name": "Y",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "burtin",
+      "type": "table",
+      "path": "burtin.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "Bacteria",
             "type": "string"
           },
           {
-            "name": "Flight Date",
+            "name": "Penicillin",
+            "type": "number"
+          },
+          {
+            "name": "Streptomycin",
+            "type": "number"
+          },
+          {
+            "name": "Neomycin",
+            "type": "number"
+          },
+          {
+            "name": "Gram_Staining",
+            "type": "string"
+          },
+          {
+            "name": "Genus",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "la-riots",
+      "type": "table",
+      "path": "la-riots.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "string"
+          },
+          {
+            "name": "last_name",
+            "type": "string"
+          },
+          {
+            "name": "age",
+            "type": "integer"
+          },
+          {
+            "name": "gender",
+            "type": "string"
+          },
+          {
+            "name": "race",
+            "type": "string"
+          },
+          {
+            "name": "death_date",
             "type": "date"
           },
           {
-            "name": "Aircraft Airline Operator",
+            "name": "address",
             "type": "string"
           },
           {
-            "name": "Origin State",
+            "name": "neighborhood",
             "type": "string"
           },
           {
-            "name": "Phase of flight",
+            "name": "type",
             "type": "string"
           },
           {
-            "name": "Wildlife Size",
+            "name": "longitude",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "movies",
+      "type": "table",
+      "path": "movies.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "Title",
             "type": "string"
           },
           {
-            "name": "Wildlife Species",
-            "type": "string"
-          },
-          {
-            "name": "Time of day",
-            "type": "string"
-          },
-          {
-            "name": "Cost Other",
+            "name": "US Gross",
             "type": "integer"
           },
           {
-            "name": "Cost Repair",
+            "name": "Worldwide Gross",
             "type": "integer"
           },
           {
-            "name": "Cost Total $",
+            "name": "US DVD Sales",
             "type": "integer"
           },
           {
-            "name": "Speed IAS in knots",
+            "name": "Production Budget",
             "type": "integer"
+          },
+          {
+            "name": "Release Date",
+            "type": "string"
+          },
+          {
+            "name": "MPAA Rating",
+            "type": "string"
+          },
+          {
+            "name": "Running Time min",
+            "type": "integer"
+          },
+          {
+            "name": "Distributor",
+            "type": "string"
+          },
+          {
+            "name": "Source",
+            "type": "string"
+          },
+          {
+            "name": "Major Genre",
+            "type": "string"
+          },
+          {
+            "name": "Creative Type",
+            "type": "string"
+          },
+          {
+            "name": "Director",
+            "type": "string"
+          },
+          {
+            "name": "Rotten Tomatoes Rating",
+            "type": "integer"
+          },
+          {
+            "name": "IMDB Rating",
+            "type": "number"
+          },
+          {
+            "name": "IMDB Votes",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unemployment",
+      "type": "table",
+      "path": "unemployment.tsv",
+      "scheme": "file",
+      "format": "tsv",
+      "mediatype": "text/tsv",
+      "encoding": "utf-8",
+      "dialect": {
+        "csv": {
+          "delimiter": "\t"
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "rate",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "us-10m",
+      "type": "json",
+      "path": "us-10m.json",
+      "scheme": "file",
+      "format": "topojson",
+      "mediatype": "text/topojson",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "population_engineers_hurricanes",
+      "type": "table",
+      "path": "population_engineers_hurricanes.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "population",
+            "type": "integer"
+          },
+          {
+            "name": "engineers",
+            "type": "number"
+          },
+          {
+            "name": "hurricanes",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "crimea",
+      "type": "table",
+      "path": "crimea.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "date"
+          },
+          {
+            "name": "wounds",
+            "type": "integer"
+          },
+          {
+            "name": "other",
+            "type": "integer"
+          },
+          {
+            "name": "disease",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "seattle-weather-hourly-normals",
+      "type": "table",
+      "path": "seattle-weather-hourly-normals.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "datetime"
+          },
+          {
+            "name": "pressure",
+            "type": "number"
+          },
+          {
+            "name": "temperature",
+            "type": "number"
+          },
+          {
+            "name": "wind",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-airport",
+      "type": "table",
+      "path": "flights-airport.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
+            "type": "string"
+          },
+          {
+            "name": "count",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-20k",
+      "type": "table",
+      "path": "flights-20k.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "londoncentroids",
+      "type": "table",
+      "path": "londonCentroids.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "cx",
+            "type": "number"
+          },
+          {
+            "name": "cy",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-200k",
+      "type": "table",
+      "path": "flights-200k.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "time",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-200k",
+      "type": "table",
+      "path": "flights-200k.arrow",
+      "scheme": "file",
+      "format": "arrow",
+      "mediatype": "application/vnd.apache.arrow.file",
+      "schema": {
+        "fields": [
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "time",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "obesity",
+      "type": "table",
+      "path": "obesity.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "rate",
+            "type": "number"
+          },
+          {
+            "name": "state",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "windvectors",
+      "type": "table",
+      "path": "windvectors.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "longitude",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "type": "number"
+          },
+          {
+            "name": "dir",
+            "type": "integer"
+          },
+          {
+            "name": "dirCat",
+            "type": "integer"
+          },
+          {
+            "name": "speed",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cars",
+      "type": "table",
+      "path": "cars.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "name": "Miles_per_Gallon",
+            "type": "integer"
+          },
+          {
+            "name": "Cylinders",
+            "type": "integer"
+          },
+          {
+            "name": "Displacement",
+            "type": "number"
+          },
+          {
+            "name": "Horsepower",
+            "type": "integer"
+          },
+          {
+            "name": "Weight_in_lbs",
+            "type": "integer"
+          },
+          {
+            "name": "Acceleration",
+            "type": "number"
+          },
+          {
+            "name": "Year",
+            "type": "date"
+          },
+          {
+            "name": "Origin",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "seattle-weather",
+      "type": "table",
+      "path": "seattle-weather.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "date"
+          },
+          {
+            "name": "precipitation",
+            "type": "number"
+          },
+          {
+            "name": "temp_max",
+            "type": "number"
+          },
+          {
+            "name": "temp_min",
+            "type": "number"
+          },
+          {
+            "name": "wind",
+            "type": "number"
+          },
+          {
+            "name": "weather",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "countries",
+      "type": "table",
+      "path": "countries.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "_comment",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "type": "integer"
+          },
+          {
+            "name": "fertility",
+            "type": "number"
+          },
+          {
+            "name": "life_expect",
+            "type": "number"
+          },
+          {
+            "name": "n_fertility",
+            "type": "number"
+          },
+          {
+            "name": "n_life_expect",
+            "type": "number"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "platformer-terrain",
+      "type": "table",
+      "path": "platformer-terrain.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "x",
+            "type": "integer"
+          },
+          {
+            "name": "y",
+            "type": "integer"
+          },
+          {
+            "name": "lumosity",
+            "type": "number"
+          },
+          {
+            "name": "saturation",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "color",
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "co2-concentration",
+      "type": "table",
+      "path": "co2-concentration.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "Date",
+            "type": "date"
+          },
+          {
+            "name": "CO2",
+            "type": "number"
+          },
+          {
+            "name": "adjusted CO2",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "londontubelines",
+      "type": "json",
+      "path": "londonTubeLines.json",
+      "scheme": "file",
+      "format": "topojson",
+      "mediatype": "text/topojson",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "ohlc",
+      "type": "table",
+      "path": "ohlc.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "date"
+          },
+          {
+            "name": "open",
+            "type": "number"
+          },
+          {
+            "name": "high",
+            "type": "number"
+          },
+          {
+            "name": "low",
+            "type": "number"
+          },
+          {
+            "name": "close",
+            "type": "number"
+          },
+          {
+            "name": "signal",
+            "type": "string"
+          },
+          {
+            "name": "ret",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "7zip",
+      "type": "file",
+      "path": "7zip.png",
+      "scheme": "file",
+      "format": "png",
+      "mediatype": "image/png",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "points",
+      "type": "table",
+      "path": "points.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "uniform-2d",
+      "type": "table",
+      "path": "uniform-2d.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "u",
+            "type": "number"
+          },
+          {
+            "name": "v",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "github",
+      "type": "table",
+      "path": "github.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "time",
+            "type": "string"
+          },
+          {
+            "name": "count",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unemployment-across-industries",
+      "type": "table",
+      "path": "unemployment-across-industries.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "series",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "type": "integer"
+          },
+          {
+            "name": "month",
+            "type": "integer"
+          },
+          {
+            "name": "count",
+            "type": "integer"
+          },
+          {
+            "name": "rate",
+            "type": "number"
+          },
+          {
+            "name": "date",
+            "type": "datetime"
+          }
+        ]
+      }
+    },
+    {
+      "name": "lookup_people",
+      "type": "table",
+      "path": "lookup_people.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "age",
+            "type": "integer"
+          },
+          {
+            "name": "height",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flare-dependencies",
+      "type": "table",
+      "path": "flare-dependencies.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "source",
+            "type": "integer"
+          },
+          {
+            "name": "target",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "world-110m",
+      "type": "json",
+      "path": "world-110m.json",
+      "scheme": "file",
+      "format": "topojson",
+      "mediatype": "text/topojson",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "gapminder",
+      "type": "table",
+      "path": "gapminder.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "year",
+            "type": "integer"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "cluster",
+            "type": "integer"
+          },
+          {
+            "name": "pop",
+            "type": "integer"
+          },
+          {
+            "name": "life_expect",
+            "type": "number"
+          },
+          {
+            "name": "fertility",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "weather",
+      "type": "json",
+      "path": "weather.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "flights-2k",
+      "type": "table",
+      "path": "flights-2k.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
+            "type": "string"
           }
         ]
       }
@@ -522,1402 +1558,6 @@
       }
     },
     {
-      "name": "budgets",
-      "type": "table",
-      "path": "budgets.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "budgetYear",
-            "type": "integer"
-          },
-          {
-            "name": "forecastYear",
-            "type": "integer"
-          },
-          {
-            "name": "value",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "burtin",
-      "type": "table",
-      "path": "burtin.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "Bacteria",
-            "type": "string"
-          },
-          {
-            "name": "Penicillin",
-            "type": "number"
-          },
-          {
-            "name": "Streptomycin",
-            "type": "number"
-          },
-          {
-            "name": "Neomycin",
-            "type": "number"
-          },
-          {
-            "name": "Gram_Staining",
-            "type": "string"
-          },
-          {
-            "name": "Genus",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "cars",
-      "type": "table",
-      "path": "cars.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "Name",
-            "type": "string"
-          },
-          {
-            "name": "Miles_per_Gallon",
-            "type": "integer"
-          },
-          {
-            "name": "Cylinders",
-            "type": "integer"
-          },
-          {
-            "name": "Displacement",
-            "type": "number"
-          },
-          {
-            "name": "Horsepower",
-            "type": "integer"
-          },
-          {
-            "name": "Weight_in_lbs",
-            "type": "integer"
-          },
-          {
-            "name": "Acceleration",
-            "type": "number"
-          },
-          {
-            "name": "Year",
-            "type": "date"
-          },
-          {
-            "name": "Origin",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "co2-concentration",
-      "type": "table",
-      "path": "co2-concentration.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "Date",
-            "type": "date"
-          },
-          {
-            "name": "CO2",
-            "type": "number"
-          },
-          {
-            "name": "adjusted CO2",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "countries",
-      "type": "table",
-      "path": "countries.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "_comment",
-            "type": "string"
-          },
-          {
-            "name": "year",
-            "type": "integer"
-          },
-          {
-            "name": "fertility",
-            "type": "number"
-          },
-          {
-            "name": "life_expect",
-            "type": "number"
-          },
-          {
-            "name": "n_fertility",
-            "type": "number"
-          },
-          {
-            "name": "n_life_expect",
-            "type": "number"
-          },
-          {
-            "name": "country",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "crimea",
-      "type": "table",
-      "path": "crimea.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "date"
-          },
-          {
-            "name": "wounds",
-            "type": "integer"
-          },
-          {
-            "name": "other",
-            "type": "integer"
-          },
-          {
-            "name": "disease",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "disasters",
-      "type": "table",
-      "path": "disasters.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "Entity",
-            "type": "string"
-          },
-          {
-            "name": "Year",
-            "type": "integer"
-          },
-          {
-            "name": "Deaths",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "driving",
-      "type": "table",
-      "path": "driving.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "side",
-            "type": "string"
-          },
-          {
-            "name": "year",
-            "type": "integer"
-          },
-          {
-            "name": "miles",
-            "type": "integer"
-          },
-          {
-            "name": "gas",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "earthquakes",
-      "type": "json",
-      "path": "earthquakes.json",
-      "scheme": "file",
-      "format": "geojson",
-      "mediatype": "text/geojson",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "ffox",
-      "type": "file",
-      "path": "ffox.png",
-      "scheme": "file",
-      "format": "png",
-      "mediatype": "image/png",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "flare-dependencies",
-      "type": "table",
-      "path": "flare-dependencies.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "source",
-            "type": "integer"
-          },
-          {
-            "name": "target",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flare",
-      "type": "table",
-      "path": "flare.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "id",
-            "type": "integer"
-          },
-          {
-            "name": "name",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-10k",
-      "type": "table",
-      "path": "flights-10k.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "origin",
-            "type": "string"
-          },
-          {
-            "name": "destination",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-200k",
-      "type": "table",
-      "path": "flights-200k.arrow",
-      "scheme": "file",
-      "format": "arrow",
-      "mediatype": "application/vnd.apache.arrow.file",
-      "schema": {
-        "fields": [
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "time",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-200k",
-      "type": "table",
-      "path": "flights-200k.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "time",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-20k",
-      "type": "table",
-      "path": "flights-20k.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "origin",
-            "type": "string"
-          },
-          {
-            "name": "destination",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-2k",
-      "type": "table",
-      "path": "flights-2k.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "origin",
-            "type": "string"
-          },
-          {
-            "name": "destination",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-3m",
-      "type": "table",
-      "path": "flights-3m.parquet",
-      "scheme": "file",
-      "format": "parquet",
-      "mediatype": "application/parquet",
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "integer"
-          },
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "origin",
-            "type": "string"
-          },
-          {
-            "name": "destination",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-5k",
-      "type": "table",
-      "path": "flights-5k.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "string"
-          },
-          {
-            "name": "delay",
-            "type": "integer"
-          },
-          {
-            "name": "distance",
-            "type": "integer"
-          },
-          {
-            "name": "origin",
-            "type": "string"
-          },
-          {
-            "name": "destination",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "flights-airport",
-      "type": "table",
-      "path": "flights-airport.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "origin",
-            "type": "string"
-          },
-          {
-            "name": "destination",
-            "type": "string"
-          },
-          {
-            "name": "count",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "football",
-      "type": "table",
-      "path": "football.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "date"
-          },
-          {
-            "name": "division",
-            "type": "string"
-          },
-          {
-            "name": "home_team",
-            "type": "string"
-          },
-          {
-            "name": "away_team",
-            "type": "string"
-          },
-          {
-            "name": "home_score",
-            "type": "integer"
-          },
-          {
-            "name": "away_score",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "gapminder-health-income",
-      "type": "table",
-      "path": "gapminder-health-income.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "country",
-            "type": "string"
-          },
-          {
-            "name": "income",
-            "type": "integer"
-          },
-          {
-            "name": "health",
-            "type": "number"
-          },
-          {
-            "name": "population",
-            "type": "integer"
-          },
-          {
-            "name": "region",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "gapminder",
-      "type": "table",
-      "path": "gapminder.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "year",
-            "type": "integer"
-          },
-          {
-            "name": "country",
-            "type": "string"
-          },
-          {
-            "name": "cluster",
-            "type": "integer"
-          },
-          {
-            "name": "pop",
-            "type": "integer"
-          },
-          {
-            "name": "life_expect",
-            "type": "number"
-          },
-          {
-            "name": "fertility",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "gimp",
-      "type": "file",
-      "path": "gimp.png",
-      "scheme": "file",
-      "format": "png",
-      "mediatype": "image/png",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "github",
-      "type": "table",
-      "path": "github.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "time",
-            "type": "string"
-          },
-          {
-            "name": "count",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "global-temp",
-      "type": "table",
-      "path": "global-temp.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "year",
-            "type": "integer"
-          },
-          {
-            "name": "temp",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "income",
-      "type": "table",
-      "path": "income.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "region",
-            "type": "string"
-          },
-          {
-            "name": "id",
-            "type": "integer"
-          },
-          {
-            "name": "pct",
-            "type": "number"
-          },
-          {
-            "name": "total",
-            "type": "integer"
-          },
-          {
-            "name": "group",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "iowa-electricity",
-      "type": "table",
-      "path": "iowa-electricity.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "year",
-            "type": "date"
-          },
-          {
-            "name": "source",
-            "type": "string"
-          },
-          {
-            "name": "net_generation",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "jobs",
-      "type": "table",
-      "path": "jobs.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "job",
-            "type": "string"
-          },
-          {
-            "name": "sex",
-            "type": "string"
-          },
-          {
-            "name": "year",
-            "type": "integer"
-          },
-          {
-            "name": "count",
-            "type": "integer"
-          },
-          {
-            "name": "perc",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "la-riots",
-      "type": "table",
-      "path": "la-riots.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "first_name",
-            "type": "string"
-          },
-          {
-            "name": "last_name",
-            "type": "string"
-          },
-          {
-            "name": "age",
-            "type": "integer"
-          },
-          {
-            "name": "gender",
-            "type": "string"
-          },
-          {
-            "name": "race",
-            "type": "string"
-          },
-          {
-            "name": "death_date",
-            "type": "date"
-          },
-          {
-            "name": "address",
-            "type": "string"
-          },
-          {
-            "name": "neighborhood",
-            "type": "string"
-          },
-          {
-            "name": "type",
-            "type": "string"
-          },
-          {
-            "name": "longitude",
-            "type": "number"
-          },
-          {
-            "name": "latitude",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "londonboroughs",
-      "type": "json",
-      "path": "londonBoroughs.json",
-      "scheme": "file",
-      "format": "topojson",
-      "mediatype": "text/topojson",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "londoncentroids",
-      "type": "table",
-      "path": "londonCentroids.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "cx",
-            "type": "number"
-          },
-          {
-            "name": "cy",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "londontubelines",
-      "type": "json",
-      "path": "londonTubeLines.json",
-      "scheme": "file",
-      "format": "topojson",
-      "mediatype": "text/topojson",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "lookup_groups",
-      "type": "table",
-      "path": "lookup_groups.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "group",
-            "type": "integer"
-          },
-          {
-            "name": "person",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "lookup_people",
-      "type": "table",
-      "path": "lookup_people.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "age",
-            "type": "integer"
-          },
-          {
-            "name": "height",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "miserables",
-      "type": "json",
-      "path": "miserables.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "monarchs",
-      "type": "table",
-      "path": "monarchs.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "start",
-            "type": "integer"
-          },
-          {
-            "name": "end",
-            "type": "integer"
-          },
-          {
-            "name": "index",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "movies",
-      "type": "table",
-      "path": "movies.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "Title",
-            "type": "string"
-          },
-          {
-            "name": "US Gross",
-            "type": "integer"
-          },
-          {
-            "name": "Worldwide Gross",
-            "type": "integer"
-          },
-          {
-            "name": "US DVD Sales",
-            "type": "integer"
-          },
-          {
-            "name": "Production Budget",
-            "type": "integer"
-          },
-          {
-            "name": "Release Date",
-            "type": "string"
-          },
-          {
-            "name": "MPAA Rating",
-            "type": "string"
-          },
-          {
-            "name": "Running Time min",
-            "type": "integer"
-          },
-          {
-            "name": "Distributor",
-            "type": "string"
-          },
-          {
-            "name": "Source",
-            "type": "string"
-          },
-          {
-            "name": "Major Genre",
-            "type": "string"
-          },
-          {
-            "name": "Creative Type",
-            "type": "string"
-          },
-          {
-            "name": "Director",
-            "type": "string"
-          },
-          {
-            "name": "Rotten Tomatoes Rating",
-            "type": "integer"
-          },
-          {
-            "name": "IMDB Rating",
-            "type": "number"
-          },
-          {
-            "name": "IMDB Votes",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "normal-2d",
-      "type": "table",
-      "path": "normal-2d.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "u",
-            "type": "number"
-          },
-          {
-            "name": "v",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "obesity",
-      "type": "table",
-      "path": "obesity.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "id",
-            "type": "integer"
-          },
-          {
-            "name": "rate",
-            "type": "number"
-          },
-          {
-            "name": "state",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "ohlc",
-      "type": "table",
-      "path": "ohlc.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "date"
-          },
-          {
-            "name": "open",
-            "type": "number"
-          },
-          {
-            "name": "high",
-            "type": "number"
-          },
-          {
-            "name": "low",
-            "type": "number"
-          },
-          {
-            "name": "close",
-            "type": "number"
-          },
-          {
-            "name": "signal",
-            "type": "string"
-          },
-          {
-            "name": "ret",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "penguins",
-      "type": "table",
-      "path": "penguins.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "Species",
-            "type": "string"
-          },
-          {
-            "name": "Island",
-            "type": "string"
-          },
-          {
-            "name": "Beak Length (mm)",
-            "type": "number"
-          },
-          {
-            "name": "Beak Depth (mm)",
-            "type": "number"
-          },
-          {
-            "name": "Flipper Length (mm)",
-            "type": "integer"
-          },
-          {
-            "name": "Body Mass (g)",
-            "type": "integer"
-          },
-          {
-            "name": "Sex",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "platformer-terrain",
-      "type": "table",
-      "path": "platformer-terrain.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "x",
-            "type": "integer"
-          },
-          {
-            "name": "y",
-            "type": "integer"
-          },
-          {
-            "name": "lumosity",
-            "type": "number"
-          },
-          {
-            "name": "saturation",
-            "type": "integer"
-          },
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "id",
-            "type": "string"
-          },
-          {
-            "name": "color",
-            "type": "string"
-          },
-          {
-            "name": "key",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "points",
-      "type": "table",
-      "path": "points.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
       "name": "political-contributions",
       "type": "table",
       "path": "political-contributions.json",
@@ -2036,43 +1676,9 @@
       }
     },
     {
-      "name": "population",
+      "name": "weather",
       "type": "table",
-      "path": "population.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "year",
-            "type": "integer"
-          },
-          {
-            "name": "age",
-            "type": "integer"
-          },
-          {
-            "name": "sex",
-            "type": "integer"
-          },
-          {
-            "name": "people",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "population_engineers_hurricanes",
-      "type": "table",
-      "path": "population_engineers_hurricanes.csv",
+      "path": "weather.csv",
       "scheme": "file",
       "format": "csv",
       "mediatype": "text/csv",
@@ -2080,67 +1686,9 @@
       "schema": {
         "fields": [
           {
-            "name": "state",
+            "name": "location",
             "type": "string"
           },
-          {
-            "name": "id",
-            "type": "integer"
-          },
-          {
-            "name": "population",
-            "type": "integer"
-          },
-          {
-            "name": "engineers",
-            "type": "number"
-          },
-          {
-            "name": "hurricanes",
-            "type": "integer"
-          }
-        ]
-      }
-    },
-    {
-      "name": "seattle-weather-hourly-normals",
-      "type": "table",
-      "path": "seattle-weather-hourly-normals.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "date",
-            "type": "datetime"
-          },
-          {
-            "name": "pressure",
-            "type": "number"
-          },
-          {
-            "name": "temperature",
-            "type": "number"
-          },
-          {
-            "name": "wind",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "seattle-weather",
-      "type": "table",
-      "path": "seattle-weather.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
           {
             "name": "date",
             "type": "date"
@@ -2169,9 +1717,18 @@
       }
     },
     {
-      "name": "sp500-2000",
+      "name": "volcano",
+      "type": "json",
+      "path": "volcano.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "lookup_groups",
       "type": "table",
-      "path": "sp500-2000.csv",
+      "path": "lookup_groups.csv",
       "scheme": "file",
       "format": "csv",
       "mediatype": "text/csv",
@@ -2179,32 +1736,320 @@
       "schema": {
         "fields": [
           {
-            "name": "date",
-            "type": "date"
-          },
-          {
-            "name": "open",
-            "type": "number"
-          },
-          {
-            "name": "high",
-            "type": "number"
-          },
-          {
-            "name": "low",
-            "type": "number"
-          },
-          {
-            "name": "close",
-            "type": "number"
-          },
-          {
-            "name": "adjclose",
-            "type": "number"
-          },
-          {
-            "name": "volume",
+            "name": "group",
             "type": "integer"
+          },
+          {
+            "name": "person",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "budgets",
+      "type": "table",
+      "path": "budgets.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "budgetYear",
+            "type": "integer"
+          },
+          {
+            "name": "forecastYear",
+            "type": "integer"
+          },
+          {
+            "name": "value",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "londonboroughs",
+      "type": "json",
+      "path": "londonBoroughs.json",
+      "scheme": "file",
+      "format": "topojson",
+      "mediatype": "text/topojson",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "airports",
+      "type": "table",
+      "path": "airports.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "iata",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "type": "number"
+          },
+          {
+            "name": "longitude",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "normal-2d",
+      "type": "table",
+      "path": "normal-2d.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "u",
+            "type": "number"
+          },
+          {
+            "name": "v",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "us-state-capitals",
+      "type": "table",
+      "path": "us-state-capitals.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "lon",
+            "type": "number"
+          },
+          {
+            "name": "lat",
+            "type": "number"
+          },
+          {
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "penguins",
+      "type": "table",
+      "path": "penguins.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "Species",
+            "type": "string"
+          },
+          {
+            "name": "Island",
+            "type": "string"
+          },
+          {
+            "name": "Beak Length (mm)",
+            "type": "number"
+          },
+          {
+            "name": "Beak Depth (mm)",
+            "type": "number"
+          },
+          {
+            "name": "Flipper Length (mm)",
+            "type": "integer"
+          },
+          {
+            "name": "Body Mass (g)",
+            "type": "integer"
+          },
+          {
+            "name": "Sex",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "miserables",
+      "type": "json",
+      "path": "miserables.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "zipcodes",
+      "type": "table",
+      "path": "zipcodes.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "zip_code",
+            "type": "integer"
+          },
+          {
+            "name": "latitude",
+            "type": "number"
+          },
+          {
+            "name": "longitude",
+            "type": "number"
+          },
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "name": "county",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "driving",
+      "type": "table",
+      "path": "driving.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "side",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "type": "integer"
+          },
+          {
+            "name": "miles",
+            "type": "integer"
+          },
+          {
+            "name": "gas",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ffox",
+      "type": "file",
+      "path": "ffox.png",
+      "scheme": "file",
+      "format": "png",
+      "mediatype": "image/png",
+      "encoding": "utf-8"
+    },
+    {
+      "name": "gapminder-health-income",
+      "type": "table",
+      "path": "gapminder-health-income.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "name": "income",
+            "type": "integer"
+          },
+          {
+            "name": "health",
+            "type": "number"
+          },
+          {
+            "name": "population",
+            "type": "integer"
+          },
+          {
+            "name": "region",
+            "type": "string"
           }
         ]
       }
@@ -2231,9 +2076,47 @@
       }
     },
     {
-      "name": "stocks",
+      "name": "flights-10k",
       "type": "table",
-      "path": "stocks.csv",
+      "path": "flights-10k.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "birdstrikes",
+      "type": "table",
+      "path": "birdstrikes.csv",
       "scheme": "file",
       "format": "csv",
       "mediatype": "text/csv",
@@ -2241,24 +2124,68 @@
       "schema": {
         "fields": [
           {
-            "name": "symbol",
+            "name": "Airport Name",
             "type": "string"
           },
           {
-            "name": "date",
+            "name": "Aircraft Make Model",
             "type": "string"
           },
           {
-            "name": "price",
-            "type": "number"
+            "name": "Effect Amount of damage",
+            "type": "string"
+          },
+          {
+            "name": "Flight Date",
+            "type": "date"
+          },
+          {
+            "name": "Aircraft Airline Operator",
+            "type": "string"
+          },
+          {
+            "name": "Origin State",
+            "type": "string"
+          },
+          {
+            "name": "Phase of flight",
+            "type": "string"
+          },
+          {
+            "name": "Wildlife Size",
+            "type": "string"
+          },
+          {
+            "name": "Wildlife Species",
+            "type": "string"
+          },
+          {
+            "name": "Time of day",
+            "type": "string"
+          },
+          {
+            "name": "Cost Other",
+            "type": "integer"
+          },
+          {
+            "name": "Cost Repair",
+            "type": "integer"
+          },
+          {
+            "name": "Cost Total $",
+            "type": "integer"
+          },
+          {
+            "name": "Speed IAS in knots",
+            "type": "integer"
           }
         ]
       }
     },
     {
-      "name": "udistrict",
+      "name": "monarchs",
       "type": "table",
-      "path": "udistrict.json",
+      "path": "monarchs.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
@@ -2271,20 +2198,28 @@
       "schema": {
         "fields": [
           {
-            "name": "key",
+            "name": "name",
             "type": "string"
           },
           {
-            "name": "lat",
-            "type": "number"
+            "name": "start",
+            "type": "integer"
+          },
+          {
+            "name": "end",
+            "type": "integer"
+          },
+          {
+            "name": "index",
+            "type": "integer"
           }
         ]
       }
     },
     {
-      "name": "unemployment-across-industries",
+      "name": "income",
       "type": "table",
-      "path": "unemployment-across-industries.json",
+      "path": "income.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
@@ -2297,92 +2232,31 @@
       "schema": {
         "fields": [
           {
-            "name": "series",
+            "name": "name",
             "type": "string"
           },
           {
-            "name": "year",
-            "type": "integer"
+            "name": "region",
+            "type": "string"
           },
-          {
-            "name": "month",
-            "type": "integer"
-          },
-          {
-            "name": "count",
-            "type": "integer"
-          },
-          {
-            "name": "rate",
-            "type": "number"
-          },
-          {
-            "name": "date",
-            "type": "datetime"
-          }
-        ]
-      }
-    },
-    {
-      "name": "unemployment",
-      "type": "table",
-      "path": "unemployment.tsv",
-      "scheme": "file",
-      "format": "tsv",
-      "mediatype": "text/tsv",
-      "encoding": "utf-8",
-      "dialect": {
-        "csv": {
-          "delimiter": "\t"
-        }
-      },
-      "schema": {
-        "fields": [
           {
             "name": "id",
             "type": "integer"
           },
           {
-            "name": "rate",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "uniform-2d",
-      "type": "table",
-      "path": "uniform-2d.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "u",
+            "name": "pct",
             "type": "number"
           },
           {
-            "name": "v",
-            "type": "number"
+            "name": "total",
+            "type": "integer"
+          },
+          {
+            "name": "group",
+            "type": "string"
           }
         ]
       }
-    },
-    {
-      "name": "us-10m",
-      "type": "json",
-      "path": "us-10m.json",
-      "scheme": "file",
-      "format": "topojson",
-      "mediatype": "text/topojson",
-      "encoding": "utf-8"
     },
     {
       "name": "us-employment",
@@ -2494,9 +2368,9 @@
       }
     },
     {
-      "name": "us-state-capitals",
+      "name": "football",
       "type": "table",
-      "path": "us-state-capitals.json",
+      "path": "football.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
@@ -2509,37 +2383,147 @@
       "schema": {
         "fields": [
           {
-            "name": "lon",
-            "type": "number"
+            "name": "date",
+            "type": "date"
           },
           {
-            "name": "lat",
-            "type": "number"
-          },
-          {
-            "name": "state",
+            "name": "division",
             "type": "string"
           },
           {
-            "name": "city",
+            "name": "home_team",
+            "type": "string"
+          },
+          {
+            "name": "away_team",
+            "type": "string"
+          },
+          {
+            "name": "home_score",
+            "type": "integer"
+          },
+          {
+            "name": "away_score",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-5k",
+      "type": "table",
+      "path": "flights-5k.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
             "type": "string"
           }
         ]
       }
     },
     {
-      "name": "volcano",
-      "type": "json",
-      "path": "volcano.json",
+      "name": "gimp",
+      "type": "file",
+      "path": "gimp.png",
       "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
+      "format": "png",
+      "mediatype": "image/png",
       "encoding": "utf-8"
     },
     {
-      "name": "weather",
+      "name": "jobs",
       "type": "table",
-      "path": "weather.csv",
+      "path": "jobs.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "job",
+            "type": "string"
+          },
+          {
+            "name": "sex",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "type": "integer"
+          },
+          {
+            "name": "count",
+            "type": "integer"
+          },
+          {
+            "name": "perc",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "udistrict",
+      "type": "table",
+      "path": "udistrict.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "text/json",
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "lat",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "global-temp",
+      "type": "table",
+      "path": "global-temp.csv",
       "scheme": "file",
       "format": "csv",
       "mediatype": "text/csv",
@@ -2547,44 +2531,114 @@
       "schema": {
         "fields": [
           {
-            "name": "location",
+            "name": "year",
+            "type": "integer"
+          },
+          {
+            "name": "temp",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-3m",
+      "type": "table",
+      "path": "flights-3m.parquet",
+      "scheme": "file",
+      "format": "parquet",
+      "mediatype": "application/parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "integer"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
             "type": "string"
           },
           {
-            "name": "date",
-            "type": "date"
-          },
-          {
-            "name": "precipitation",
-            "type": "number"
-          },
-          {
-            "name": "temp_max",
-            "type": "number"
-          },
-          {
-            "name": "temp_min",
-            "type": "number"
-          },
-          {
-            "name": "wind",
-            "type": "number"
-          },
-          {
-            "name": "weather",
+            "name": "destination",
             "type": "string"
           }
         ]
       }
     },
     {
-      "name": "weather",
-      "type": "json",
-      "path": "weather.json",
+      "name": "flare",
+      "type": "table",
+      "path": "flare.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "dialect": {
+        "json": {
+          "keyed": true
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sp500-2000",
+      "type": "table",
+      "path": "sp500-2000.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "date"
+          },
+          {
+            "name": "open",
+            "type": "number"
+          },
+          {
+            "name": "high",
+            "type": "number"
+          },
+          {
+            "name": "low",
+            "type": "number"
+          },
+          {
+            "name": "close",
+            "type": "number"
+          },
+          {
+            "name": "adjclose",
+            "type": "number"
+          },
+          {
+            "name": "volume",
+            "type": "integer"
+          }
+        ]
+      }
     },
     {
       "name": "wheat",
@@ -2617,9 +2671,9 @@
       }
     },
     {
-      "name": "windvectors",
+      "name": "stocks",
       "type": "table",
-      "path": "windvectors.csv",
+      "path": "stocks.csv",
       "scheme": "file",
       "format": "csv",
       "mediatype": "text/csv",
@@ -2627,70 +2681,16 @@
       "schema": {
         "fields": [
           {
-            "name": "longitude",
-            "type": "number"
-          },
-          {
-            "name": "latitude",
-            "type": "number"
-          },
-          {
-            "name": "dir",
-            "type": "integer"
-          },
-          {
-            "name": "dirCat",
-            "type": "integer"
-          },
-          {
-            "name": "speed",
-            "type": "number"
-          }
-        ]
-      }
-    },
-    {
-      "name": "world-110m",
-      "type": "json",
-      "path": "world-110m.json",
-      "scheme": "file",
-      "format": "topojson",
-      "mediatype": "text/topojson",
-      "encoding": "utf-8"
-    },
-    {
-      "name": "zipcodes",
-      "type": "table",
-      "path": "zipcodes.csv",
-      "scheme": "file",
-      "format": "csv",
-      "mediatype": "text/csv",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "zip_code",
-            "type": "integer"
-          },
-          {
-            "name": "latitude",
-            "type": "number"
-          },
-          {
-            "name": "longitude",
-            "type": "number"
-          },
-          {
-            "name": "city",
+            "name": "symbol",
             "type": "string"
           },
           {
-            "name": "state",
+            "name": "date",
             "type": "string"
           },
           {
-            "name": "county",
-            "type": "string"
+            "name": "price",
+            "type": "number"
           }
         ]
       }
