@@ -43,7 +43,7 @@
     "typescript": "^5.6.3"
   },
   "scripts": {
-    "prebuild": "./scripts/make-url-index.sh > src/urls.ts",
+    "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
     "build": "rollup -c",
     "flights": "node scripts/flights.js",
     "github": "python scripts/github.py",
