@@ -40,7 +40,7 @@ import warnings
 from collections.abc import Mapping
 from functools import partial
 from pathlib import Path
-from typing import TYPE_CHECKING, NotRequired, Required, TypedDict
+from typing import TYPE_CHECKING, NotRequired, Required, TypedDict, Unpack
 
 import frictionless as fl
 import polars as pl
@@ -194,6 +194,13 @@ class ResourceAdapter:
         if mediatype := cls.mediatype.get(source.suffix):
             parts["mediatype"] = mediatype
         return parts
+
+    @staticmethod
+    def with_extras(resource: Resource, /, **extras: Unpack[ResourceMeta]) -> Resource:
+        """TODO: Use as part of https://github.com/vega/vega-datasets/pull/631#issuecomment-2503760452"""
+        for name, value in extras.items():
+            setattr(resource, name, value)
+        return resource
 
 
 class Source(TypedDict, total=False):
