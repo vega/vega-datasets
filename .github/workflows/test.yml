@@ -23,6 +23,12 @@ jobs:
           cache: 'npm'
           node-version: 20
 
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: ">=0.5.0"
+          enable-cache: true
+          cache-dependency-glob: "**/pyproject.toml"
+
       - name: Install Node dependencies
         run: npm ci
 
