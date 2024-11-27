@@ -40,7 +40,7 @@ import warnings
 from collections.abc import Mapping
 from functools import partial
 from pathlib import Path
-from typing import TYPE_CHECKING, TypedDict
+from typing import TYPE_CHECKING, NotRequired, Required, TypedDict
 
 import polars as pl
 from frictionless.resources import (
@@ -70,7 +70,36 @@ GeoResource: ResourceConstructor = partial(
 SUFFIX_IMAGE: set[str] = {".png"}
 SUFFIX_TABULAR_SAFE: set[str] = {".csv", ".tsv", ".parquet"}
 SUFFIX_JSON: Literal[".json"] = ".json"
-SUFFIX_UNSUPPORTED: set[str] = {".arrow"}
+SUFFIX_UNSUPPORTED: set[Literal[".arrow"]] = {".arrow"}
+
+
+class Source(TypedDict, total=False):
+    title: str
+    path: Required[str]
+    email: str
+    version: str
+
+
+class License(TypedDict):
+    name: str
+    path: str
+    title: NotRequired[str]
+
+
+class Contributor(TypedDict, total=False):
+    title: str
+    givenName: str
+    familyName: str
+    path: str
+    email: str
+    roles: Sequence[str]
+    organization: str
+
+
+class ResourceMeta(TypedDict, total=False):
+    description: str
+    sources: Sequence[Source]
+    licenses: Sequence[License]
 
 
 class PackageMeta(TypedDict):
@@ -85,9 +114,9 @@ class PackageMeta(TypedDict):
     version: str
     homepage: str
     description: str
-    licenses: Sequence[Mapping[Literal["name", "path", "title"], str]]
-    contributors: Sequence[Mapping[Literal["title", "path", "email", "role"], str]]
-    sources: Sequence[Mapping[Literal["title", "path", "email"], str]]
+    licenses: Sequence[License]
+    contributors: Sequence[Contributor]
+    sources: Sequence[Source]
     created: str
 
 
@@ -103,26 +132,25 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
     with fp.open(encoding="utf-8") as f:
         m = json.load(f)
     if not isinstance(m, Mapping):
-        msg = f"Unexpected type returned from {fp!r}\n" f"{type(m).__name__!r}"
+        msg = f"Unexpected type returned from {fp!r}\n{type(m).__name__!r}"
         raise TypeError(msg)
-    return {
-        "name": m["name"],
-        "version": m["version"],
-        "homepage": m["repository"]["url"],
-        "description": m["description"],
-        "contributors": [{"title": m["author"]["name"], "path": m["author"]["url"]}],
-        "licenses": [
-            {
-                "name": m["license"],
-                "path": "https://opensource.org/license/bsd-3-clause",
-                "title": "The 3-Clause BSD License",
-            }
+    return PackageMeta(
+        name=m["name"],
+        version=m["version"],
+        homepage=m["repository"]["url"],
+        description=m["description"],
+        licenses=[
+            License(
+                name=m["license"],
+                path="https://opensource.org/license/bsd-3-clause",
+                title="The 3-Clause BSD License",
+            )
         ],
-        "sources": [
-            {"path": "https://github.com/vega/vega-datasets/blob/next/SOURCES.md"}
+        sources=[
+            Source(path="https://github.com/vega/vega-datasets/blob/next/SOURCES.md")
         ],
-        "created": dt.datetime.now(dt.UTC).isoformat(),
-    }
+        created=dt.datetime.now(dt.UTC).isoformat(),
+    )
 
 
 def infer_json_constructor(source: Path, /) -> ResourceConstructor:
