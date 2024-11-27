@@ -19,7 +19,8 @@
   "files": [
     "src",
     "build",
-    "data"
+    "data",
+    "datapackage.json"
   ],
   "devDependencies": {
     "@babel/core": "^7.26.0",
