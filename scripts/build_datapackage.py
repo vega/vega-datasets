@@ -76,7 +76,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
-type PathMeta = Literal["name", "path", "format", "scheme", "mediatype"]
+type PathMeta = Literal["name", "path", "scheme", "mediatype"]
 type PythonDataType = (
     type[
         int
@@ -154,14 +154,16 @@ class ResourceAdapter:
 
     @classmethod
     def infer_as(cls, source: Path, tp: ResourceConstructor, /) -> Resource:
-        resource = tp(source.name)
+        resource = tp(source.name, **cls._extract_file_parts(source))
         resource.infer()
         return resource
 
     @classmethod
     def from_arrow(cls, source: Path, /) -> Resource:
         file_meta = cls._extract_file_parts(source)
-        return TableResource(**file_meta, schema=frame_to_schema(pl.scan_ipc(source)))
+        return TableResource(
+            **file_meta, format=".arrow", schema=frame_to_schema(pl.scan_ipc(source))
+        )
 
     @classmethod
     def from_tabular_safe(cls, source: Path, /) -> Resource:
@@ -188,9 +190,8 @@ class ResourceAdapter:
     def _extract_file_parts(cls, source: Path, /) -> dict[PathMeta, str]:
         """Metadata that can be inferred from the file path *alone*."""
         parts: dict[PathMeta, str] = {
-            "name": source.stem,
+            "name": source.name.lower(),
             "path": source.name,
-            "format": source.suffix[1:],
             "scheme": "file",
         }
         if mediatype := cls.mediatype.get(source.suffix):
