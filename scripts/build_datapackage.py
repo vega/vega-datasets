@@ -295,7 +295,7 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
 
 def iter_resources(data_root: Path, /) -> Iterator[Resource]:
     """Yield all parseable resources, selecting the most appropriate ``Resource`` class."""
-    for fp in data_root.iterdir():
+    for fp in sorted(data_root.iterdir()):
         if not fp.is_file():
             continue
         if resource := ResourceAdapter.from_path(fp):
