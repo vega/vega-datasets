@@ -138,7 +138,7 @@ class ResourceAdapter:
     """https://www.iana.org/assignments/media-types/application/vnd.apache.arrow.file"""
 
     @classmethod
-    def from_path(cls, source: Path, /) -> Resource:
+    def from_path(cls, source: Path, /) -> Resource | None:
         suffix = source.suffix
         match suffix:
             case ".csv" | ".tsv" | ".parquet":
@@ -187,7 +187,7 @@ class ResourceAdapter:
     @classmethod
     def _extract_file_parts(cls, source: Path, /) -> dict[PathMeta, str]:
         """Metadata that can be inferred from the file path *alone*."""
-        parts = {
+        parts: dict[PathMeta, str] = {
             "name": source.stem,
             "path": source.name,
             "format": source.suffix[1:],
@@ -323,7 +323,7 @@ def main(
     logger.info(
         f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     )
-    pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)
+    pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)  # type: ignore[arg-type]
     logger.info(f"Collected {len(pkg.resources)} resources")
     if output_format in {"json", "both"}:
         p = (repo_dir / f"{stem}.json").as_posix()
