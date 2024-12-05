@@ -446,35 +446,6 @@ def print_verbose_stats(stats: Dict[str, Any]) -> None:
             logging.info(f"  {', '.join(stats['airports']['destinations'])}")
     logging.info("\n")
 
-def save_output(
-    df: pd.DataFrame,
-    output_format: OutputFormat,
-    base_filename: str,
-    datetime_format: DateTimeFormat,
-    verbose: bool = False,
-    parquet_config: Optional[ParquetConfig] = None
-) -> None:
-    """Save the DataFrame in the specified format and optionally show statistics."""
-    if verbose:
-        stats = get_dataset_stats(df, datetime_format)
-        print_verbose_stats(stats)
-    
-    if output_format == OutputFormat.CSV:
-        output_file = f"{base_filename}.csv"
-        df.to_csv(output_file, index=False, encoding='utf-8')
-    elif output_format == OutputFormat.JSON:
-        output_file = f"{base_filename}.json"
-        records = df.to_dict(orient='records')
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(records, f, separators=(',', ':'))
-    else:  # PARQUET
-        if parquet_config is None:
-            parquet_config = ParquetConfig()
-        output_file = f"{base_filename}.parquet"
-        save_as_parquet(df, output_file, parquet_config)
-    
-    logging.info(f"Successfully created {output_file} with {len(df)} rows")
-
 def add_parquet_arguments(parser: argparse.ArgumentParser) -> None:
     """Add Parquet-specific arguments to the parser."""
     parquet_group = parser.add_argument_group('Parquet options')
