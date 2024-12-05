@@ -76,7 +76,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
-type PathMeta = Literal["name", "path", "format", "scheme", "mediatype"]
+type PathMeta = Literal["name", "path", "scheme", "mediatype"]
 type PythonDataType = (
     type[
         int
@@ -138,7 +138,7 @@ class ResourceAdapter:
     """https://www.iana.org/assignments/media-types/application/vnd.apache.arrow.file"""
 
     @classmethod
-    def from_path(cls, source: Path, /) -> Resource:
+    def from_path(cls, source: Path, /) -> Resource | None:
         suffix = source.suffix
         match suffix:
             case ".csv" | ".tsv" | ".parquet":
@@ -154,14 +154,16 @@ class ResourceAdapter:
 
     @classmethod
     def infer_as(cls, source: Path, tp: ResourceConstructor, /) -> Resource:
-        resource = tp(source.name)
+        resource = tp(source.name, **cls._extract_file_parts(source))
         resource.infer()
         return resource
 
     @classmethod
     def from_arrow(cls, source: Path, /) -> Resource:
         file_meta = cls._extract_file_parts(source)
-        return TableResource(**file_meta, schema=frame_to_schema(pl.scan_ipc(source)))
+        return TableResource(
+            **file_meta, format=".arrow", schema=frame_to_schema(pl.scan_ipc(source))
+        )
 
     @classmethod
     def from_tabular_safe(cls, source: Path, /) -> Resource:
@@ -187,10 +189,9 @@ class ResourceAdapter:
     @classmethod
     def _extract_file_parts(cls, source: Path, /) -> dict[PathMeta, str]:
         """Metadata that can be inferred from the file path *alone*."""
-        parts = {
-            "name": source.stem,
+        parts: dict[PathMeta, str] = {
+            "name": source.name.lower(),
             "path": source.name,
-            "format": source.suffix[1:],
             "scheme": "file",
         }
         if mediatype := cls.mediatype.get(source.suffix):
@@ -295,7 +296,7 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
 
 def iter_resources(data_root: Path, /) -> Iterator[Resource]:
     """Yield all parseable resources, selecting the most appropriate ``Resource`` class."""
-    for fp in data_root.iterdir():
+    for fp in sorted(data_root.iterdir()):
         if not fp.is_file():
             continue
         if resource := ResourceAdapter.from_path(fp):
@@ -323,7 +324,7 @@ def main(
     logger.info(
         f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     )
-    pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)
+    pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)  # type: ignore[arg-type]
     logger.info(f"Collected {len(pkg.resources)} resources")
     if output_format in {"json", "both"}:
         p = (repo_dir / f"{stem}.json").as_posix()
