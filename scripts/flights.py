@@ -666,29 +666,23 @@ def save_output(
     output_format: OutputFormat,
     base_filename: str,
     datetime_format: DateTimeFormat,
+    parquet_config: ParquetConfig,
     verbose: bool = False,
-    parquet_config: Optional[ParquetConfig] = None
 ) -> None:
     """Save the DataFrame in the specified format and optionally show statistics."""
     if verbose:
         stats = get_dataset_stats(df, datetime_format)
         print_verbose_stats(stats)
-    
+    output_filename = f"{base_filename}.{output_format.value}"
     if output_format == OutputFormat.CSV:
-        output_file = f"{base_filename}.csv"
-        df.to_csv(output_file, index=False, encoding='utf-8')
+        df.to_csv(output_filename, index=False)
     elif output_format == OutputFormat.JSON:
-        output_file = f"{base_filename}.json"
-        records = df.to_dict(orient='records')
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(records, f, separators=(',', ':'))
+        s = json.dumps(df.to_dict(orient="records"), separators=(",", ":"))
+        Path(output_filename).write_text(s, encoding="utf-8")
     else:  # PARQUET
-        if parquet_config is None:
-            parquet_config = ParquetConfig()
-        output_file = f"{base_filename}.parquet"
-        save_as_parquet(df, output_file, parquet_config)
-    
-    logging.info(f"Successfully created {output_file} with {len(df)} rows")
+        save_as_parquet(df, output_filename, parquet_config)
+
+    logging.info(f"Successfully created {output_filename} with {len(df)} rows")
 
 def main():
     args = parse_args()
