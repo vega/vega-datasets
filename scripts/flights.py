@@ -252,6 +252,7 @@ def process_flights_data(
    df: pd.DataFrame,
    num_rows: Optional[int] = None,
    random_seed: int = 42,
+   datetime_convert: bool = True,
    datetime_format: DateTimeFormat = DateTimeFormat.MMDDHHMM,
    flag_date_changes: bool = False,
    columns: Optional[List[str]] = None,
@@ -345,7 +346,8 @@ def process_flights_data(
        result['date_changed'] = df['date_changed']
    
    # Format datetime according to specified format
-   result = format_datetime(result, datetime_format)
+   if datetime_convert:
+       result = format_datetime(result, datetime_format)
    
    # Handle sampling if requested
    if num_rows is not None and num_rows < len(result):
@@ -690,7 +692,8 @@ def save_output(
 
 def main():
     args = parse_args()
-    parquet_config = ParquetConfig.from_args(args) if args.format == 'parquet' else None
+    is_parquet = args.format == 'parquet'
+    parquet_config = ParquetConfig.from_args(args) if is_parquet else ParquetConfig()
     base_filename = args.output
     zip_pattern = str(Path(args.input_dir) / '*On_Time_Reporting*.zip')
     
@@ -699,11 +702,13 @@ def main():
         columns = args.columns.split(',') if args.columns else None
         
         raw_df = load_zip_files(zip_pattern)
+        datetime_format = DateTimeFormat(args.datetime_format)
         processed_df = process_flights_data(
             raw_df,
             num_rows=args.num_rows,
             random_seed=args.seed,
-            datetime_format=DateTimeFormat(args.datetime_format),
+            datetime_convert=not is_parquet,
+            datetime_format=datetime_format,
             flag_date_changes=args.flag_date_changes,
             columns=columns,
             start_date=args.start_date,
@@ -714,7 +719,7 @@ def main():
             processed_df,
             output_format=OutputFormat(args.format),
             base_filename=base_filename,
-            datetime_format=DateTimeFormat(args.datetime_format),
+            datetime_format=datetime_format,
             verbose=args.verbose,
             parquet_config=parquet_config
         )
