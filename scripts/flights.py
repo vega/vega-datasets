@@ -624,42 +624,30 @@ def load_zip_files(pattern: str) -> pd.DataFrame:
     return pd.concat(dfs, ignore_index=True)
 
 
-def save_as_parquet(
-    df: pd.DataFrame,
-    filename: str,
-    config: ParquetConfig
-) -> None:
+def save_as_parquet(df: pd.DataFrame, filename: str, config: ParquetConfig) -> None:
     """Save DataFrame as Parquet file with specified configuration."""
-    # Convert pandas DataFrame to Arrow Table
-    table = pa.Table.from_pandas(df, preserve_index=False)
-    
-    # Prepare write options
-    write_options = {
-        'compression': config.compression,
-        'use_dictionary': config.enable_dictionary,
-        'write_statistics': config.write_statistics,
-    }
-    
-    # Add ZSTD compression level if using ZSTD
-    if config.compression == 'zstd':
-        write_options['compression_level'] = config.compression_level
-    
-    # Write the Parquet file
-    pq.write_table(
-        table,
+    is_zstd = config.compression == "zstd"
+    kwds = {"compression_level": config.compression_level} if is_zstd else {}
+    df.to_parquet(
         filename,
-        **write_options
+        compression=config.compression,
+        index=False,
+        use_dictionary=config.enable_dictionary,
+        write_statistics=config.write_statistics,
+        **kwds,
     )
-    
+
     # Get and log file statistics
     file_stats = os.stat(filename)
-    parquet_file = pq.ParquetFile(filename)
-    logging.info(f"Parquet file statistics:")
-    logging.info(f"  - File size: {file_stats.st_size / (1024*1024):.2f} MB")
-    logging.info(f"  - Number of row groups: {parquet_file.num_row_groups}")
-    logging.info(f"  - Compression: {config.compression}" + 
-                (f" (level {config.compression_level})" if config.compression == 'zstd' else ""))
-    logging.info(f"  - Row group size: {config.row_group_size / (1024*1024):.0f} MB")
+    level = f" (level {config.compression_level})" if is_zstd else ""
+    msg = (
+        f"Parquet file statistics:\n"
+        f"  - File size: {file_stats.st_size / (1024*1024):.2f} MB\n"
+        f"  - Number of row groups: {pq.ParquetFile(filename).num_row_groups}\n"
+        f"  - Compression: {config.compression}{level}\n"
+        f"  - Row group size: {config.row_group_size / (1024*1024):.0f} MB"
+    )
+    logging.info(msg)
 
 def save_output(
     df: pd.DataFrame,
