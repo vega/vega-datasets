@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pandas",
+#     "pyarrow>=14.0.0",
+# ]
+# ///
 """
 Process U.S. DOT On-Time Flight Performance data into a simplified CSV/JSON/Parquet format.
 
