@@ -610,14 +610,10 @@ For the most up-to-date LAUS data:
 When using BLS public data API and datasets, users should adhere to the [BLS Terms of Service](https://www.bls.gov/developers/termsOfService.htm)."""
 
 [resources.schema]
-[[resources.schema.fields]]
-name        = "id"
-description = "The combined state and county FIPS code"
-
-[[resources.schema.fields]]
-name        = "rate"
-description = "The unemployment rate for the county"
-
+fields = [
+  { name = "id", description = "The combined state and county FIPS code" },
+  { name = "rate", description = "The unemployment rate for the county" },
+]
 [[resources.sources]]
 title = "BLS Developers API"
 path  = "https://www.bls.gov/developers/"
