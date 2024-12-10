@@ -49,12 +49,23 @@ path = "budgets.json"
 
 [[resources]] # Path: burtin.json
 path = "burtin.json"
-description = """The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine. The dataset compares the performance of three antibiotics against 16 different bacteria. The numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness. The dataset was featured as an example in the Protovis project, a precursor to D3.js. The Protovis example notes that, \"Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin.\" The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction  (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
+description = """The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine.
+The dataset compares the performance of three antibiotics against 16 different bacteria.
+The numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness.
+The dataset was featured as an example in the Protovis project, a precursor to D3.js.
+The Protovis example notes that, \"Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin\".
+The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction  (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
 The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) reads as follows:
 > ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
-
 >
-> The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in red and gram- in blue) with their sensitivities to penicillin, and streptomycin. The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits the test organism. High dilutions are toward the periphery; consequently the length of the colored bar is proportional to the effectiveness. It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. vulgaris, S. schottmuelleri and M. tuberculosis. Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to neomycin, although the majority of these are sensitive to neomycin. It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is not understood."""
+>
+> The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
+> The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits the test organism.
+> High dilutions are toward the periphery; consequently the length of the colored bar is proportional to the effectiveness.
+> It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. vulgaris, S. schottmuelleri and M. tuberculosis.
+> Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to neomycin, although the majority of these are sensitive to neomycin.
+> It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is not understood.
+"""
 
 [[resources.sources]]
 title = "Scope Magazine"
