@@ -1,11 +1,11 @@
-[[resources]]  # Path: 7zip.png
+[[resources]] # Path: 7zip.png
 path = "7zip.png"
 description = """Application icons from open-source software projects."""
 
-[[resources]]  # Path: airports.csv
+[[resources]] # Path: airports.csv
 path = "airports.csv"
 
-[[resources]]  # Path: annual-precip.json
+[[resources]] # Path: annual-precip.json
 path = "annual-precip.json"
 description = """A raster grid of global annual precipitation for the year 2016 at a resolution 1 degree of lon/lat per cell."""
 
@@ -13,11 +13,11 @@ description = """A raster grid of global annual precipitation for the year 2016 
 title = "Climate Forecast System Version 2"
 path = "https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/climate-forecast-system-version2-cfsv2"
 
-[[resources]]  # Path: anscombe.json
+[[resources]] # Path: anscombe.json
 path = "anscombe.json"
 description = """Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician."""
 
-[[resources]]  # Path: barley.json
+[[resources]] # Path: barley.json
 path = "barley.json"
 description = """The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varieties of barley at six different sites. It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper \"Statistical Determination of Barley Varietal Adaption.\" R.A. Fisher's popularized its use in the field of statistics when he included it in his book \"The Design of Experiments.\" Since then it has been used to demonstrate new statistical techniques, including the trellis charts developed by Richard Becker, William Cleveland and others in the 1990s."""
 
@@ -28,7 +28,7 @@ path = "https://en.wikipedia.org/wiki/The_Design_of_Experiments"
 title = "Trellis Charts Paper"
 path = "http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf"
 
-[[resources]]  # Path: birdstrikes.csv
+[[resources]] # Path: birdstrikes.csv
 path = "birdstrikes.csv"
 description = "Records of reported wildlife strikes received by the U.S. FAA"
 
@@ -36,7 +36,7 @@ description = "Records of reported wildlife strikes received by the U.S. FAA"
 title = "FAA Wildlife Strike Database"
 path = "http://wildlife.faa.gov"
 
-[[resources]]  # Path: budget.json
+[[resources]] # Path: budget.json
 path = "budget.json"
 description = """Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. Office of Management and Budget."""
 
@@ -44,10 +44,10 @@ description = """Historical and forecasted federal revenue/receipts produced in 
 title = "Office of Management and Budget - Budget FY 2016 - Receipts"
 path = "https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3"
 
-[[resources]]  # Path: budgets.json
+[[resources]] # Path: budgets.json
 path = "budgets.json"
 
-[[resources]]  # Path: burtin.json
+[[resources]] # Path: burtin.json
 path = "burtin.json"
 description = """The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine. The dataset compares the performance of three antibiotics against 16 different bacteria. The numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness. The dataset was featured as an example in the Protovis project, a precursor to D3.js. The Protovis example notes that, \"Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin.\" The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction  (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
 The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) reads as follows:
@@ -63,7 +63,7 @@ path = "https://graphicdesignarchives.org/projects/scope-magazine-vol-iii-5/"
 title = "Protovis Antibiotics Example"
 path = "https://mbostock.github.io/protovis/ex/antibiotics-burtin.html"
 
-[[resources]]  # Path: cars.json
+[[resources]] # Path: cars.json
 path = "cars.json"
 description = "Collection of car specifications and performance metrics from various automobile manufacturers."
 
@@ -71,7 +71,7 @@ description = "Collection of car specifications and performance metrics from var
 title = "StatLib Datasets Archive"
 path = "http://lib.stat.cmu.edu/datasets/"
 
-[[resources]]  # Path: co2-concentration.csv
+[[resources]] # Path: co2-concentration.csv
 path = "co2-concentration.csv"
 description = """Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. Only includes rows with valid data."""
 
@@ -79,7 +79,7 @@ description = """Scripps CO2 program data ut modified to only include date, CO2,
 title = "Scripps CO2 Program"
 path = "https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record"
 
-[[resources]]  # Path: countries.json
+[[resources]] # Path: countries.json
 path = "countries.json"
 description = """This dataset combines key demographic indicators (life expectancy at birth and fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year intervals. It includes both current values and adjacent time period values (previous and next) for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) notes that its philosophy is to fill data gaps with estimates and use current geographic boundaries for historical data. Gapminder states that it aims to \"show people the big picture\" rather than support detailed numeric analysis."""
 
@@ -131,10 +131,10 @@ title = "Creative Commons Attribution 4.0 International"
 path = "https://www.gapminder.org/free-material/"
 
 
-[[resources]]  # Path: crimea.json
+[[resources]] # Path: crimea.json
 path = "crimea.json"
 
-[[resources]]  # Path: disasters.csv
+[[resources]] # Path: disasters.csv
 path = "disasters.csv"
 description = "Annual number of deaths from disasters."
 
@@ -142,14 +142,14 @@ description = "Annual number of deaths from disasters."
 title = "Our World in Data - Natural Catastrophes"
 path = "https://ourworldindata.org/natural-catastrophes"
 
-[[resources]]  # Path: driving.json
+[[resources]] # Path: driving.json
 path = "driving.json"
 
 [[resources.sources]]
 title = "New York Times"
 path = "https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html"
 
-[[resources]]  # Path: earthquakes.json
+[[resources]] # Path: earthquakes.json
 path = "earthquakes.json"
 description = """Earthquake data retrieved Feb 6, 2018"""
 
@@ -157,17 +157,17 @@ description = """Earthquake data retrieved Feb 6, 2018"""
 title = "USGS Earthquake Feed"
 path = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
-[[resources]]  # Path: ffox.png
+[[resources]] # Path: ffox.png
 path = "ffox.png"
 description = """Application icons from open-source software projects."""
 
-[[resources]]  # Path: flare-dependencies.json
+[[resources]] # Path: flare-dependencies.json
 path = "flare-dependencies.json"
 
-[[resources]]  # Path: flare.json
+[[resources]] # Path: flare.json
 path = "flare.json"
 
-[[resources]]  # Path: flights-10k.json
+[[resources]] # Path: flights-10k.json
 path = "flights-10k.json"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -175,7 +175,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-200k.arrow
+[[resources]] # Path: flights-200k.arrow
 path = "flights-200k.arrow"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -183,7 +183,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-200k.json
+[[resources]] # Path: flights-200k.json
 path = "flights-200k.json"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -191,7 +191,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-20k.json
+[[resources]] # Path: flights-20k.json
 path = "flights-20k.json"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -199,7 +199,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-2k.json
+[[resources]] # Path: flights-2k.json
 path = "flights-2k.json"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -207,7 +207,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-3m.parquet
+[[resources]] # Path: flights-3m.parquet
 path = "flights-3m.parquet"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -215,7 +215,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-5k.json
+[[resources]] # Path: flights-5k.json
 path = "flights-5k.json"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -223,7 +223,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: flights-airport.csv
+[[resources]] # Path: flights-airport.csv
 path = "flights-airport.csv"
 description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
 
@@ -231,7 +231,7 @@ description = """Flight delay statistics from U.S. Bureau of Transportation Stat
 title = "U.S. Bureau of Transportation Statistics"
 path = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
-[[resources]]  # Path: football.json
+[[resources]] # Path: football.json
 path = "football.json"
 description = """Football match outcomes across multiple divisions from 2013 to 2017, part of a larger dataset from OpenFootball. The subset was made such that there are records for all five chosen divisions over the time period."""
 
@@ -239,7 +239,7 @@ description = """Football match outcomes across multiple divisions from 2013 to 
 title = "OpenFootball"
 path = "https://github.com/openfootball/football.json"
 
-[[resources]]  # Path: gapminder-health-income.csv
+[[resources]] # Path: gapminder-health-income.csv
 path = "gapminder-health-income.csv"
 description = """Per-capita income, life expectancy, population and regional grouping. Dataset does not specify the reference year for the data. Gapminder historical data is subject to revisions.
 
@@ -331,15 +331,15 @@ title = "Gapminder Data Documentation"
 path = "https://www.gapminder.org/data/documentation/"
 
 
-[[resources]]  # Path: gimp.png
+[[resources]] # Path: gimp.png
 path = "gimp.png"
 description = """Application icons from open-source software projects."""
 
-[[resources]]  # Path: github.csv
+[[resources]] # Path: github.csv
 path = "github.csv"
 description = """Generated using `/scripts/github.py`."""
 
-[[resources]]  # Path: global-temp.csv
+[[resources]] # Path: global-temp.csv
 path = "global-temp.csv"
 description = """Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocean Temperature Index, L-OTI), 1880-2023."""
 
@@ -347,10 +347,10 @@ description = """Combined Land-Surface Air and Sea-Surface Water Temperature Ano
 title = "NASA Goddard Institute for Space Studies"
 path = "https://data.giss.nasa.gov/gistemp/"
 
-[[resources]]  # Path: income.json
+[[resources]] # Path: income.json
 path = "income.json"
 
-[[resources]]  # Path: iowa-electricity.csv
+[[resources]] # Path: iowa-electricity.csv
 path = "iowa-electricity.csv"
 description = """The state of Iowa has dramatically increased its production of renewable wind power in recent years. This file contains the annual net generation of electricity in the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. It is useful for illustrating stacked area charts."""
 
@@ -358,7 +358,7 @@ description = """The state of Iowa has dramatically increased its production of 
 title = "U.S. Energy Information Administration"
 path = "https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin="
 
-[[resources]]  # Path: jobs.json
+[[resources]] # Path: jobs.json
 path = "jobs.json"
 description = """U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which \"collects, preserves and harmonizes U.S. census microdata\" from as early as 1790.
 Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
@@ -384,7 +384,7 @@ title = "IPUMS USA"
 path = "https://usa.ipums.org/usa/"
 version = "6.0"
 
-[[resources]]  # Path: la-riots.csv
+[[resources]] # Path: la-riots.csv
 path = "la-riots.csv"
 description = """More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic coordinates of their death. Compiled and published by the Los Angeles Times Data Desk."""
 
@@ -392,7 +392,7 @@ description = """More than 60 people lost their lives amid the looting and fires
 title = "LA Riots Deaths, Los Angeles Times Data Desk"
 path = "http://spreadsheets.latimes.com/la-riots-deaths/"
 
-[[resources]]  # Path: londonBoroughs.json
+[[resources]] # Path: londonBoroughs.json
 path = "londonBoroughs.json"
 description = """Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. Original data \"contains National Statistics data © Crown copyright and database right (2015)\" and \"Contains Ordnance Survey data © Crown copyright and database right [2015]."""
 
@@ -400,11 +400,11 @@ description = """Boundaries of London boroughs reprojected and simplified from `
 title = "Statistical GIS Boundary Files, London Datastore"
 path = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
 
-[[resources]]  # Path: londonCentroids.json
+[[resources]] # Path: londonCentroids.json
 path = "londonCentroids.json"
 description = """Calculated from `londongBoroughs.json` using `d3.geoCentroid`."""
 
-[[resources]]  # Path: londonTubeLines.json
+[[resources]] # Path: londonTubeLines.json
 path = "londonTubeLines.json"
 description = """Selected rail lines simplified from source."""
 
@@ -412,16 +412,16 @@ description = """Selected rail lines simplified from source."""
 title = "London Tube Data"
 path = "https://github.com/oobrien/vis/tree/master/tube/data"
 
-[[resources]]  # Path: lookup_groups.csv
+[[resources]] # Path: lookup_groups.csv
 path = "lookup_groups.csv"
 
-[[resources]]  # Path: lookup_people.csv
+[[resources]] # Path: lookup_people.csv
 path = "lookup_people.csv"
 
-[[resources]]  # Path: miserables.json
+[[resources]] # Path: miserables.json
 path = "miserables.json"
 
-[[resources]]  # Path: monarchs.json
+[[resources]] # Path: monarchs.json
 path = "monarchs.json"
 description = """A chronological list of English and British monarchs from Elizabeth I through George IV.
 Each entry includes:
@@ -449,17 +449,17 @@ title = "The Royal Family - Interregnum"
 path = "https://www.royal.uk/interregnum-1649-1660"
 
 
-[[resources]]  # Path: movies.json
+[[resources]] # Path: movies.json
 path = "movies.json"
 description = """The dataset has well known and intentionally included errors. This dataset is used for instructional purposes, including the need to reckon with dirty data."""
 
-[[resources]]  # Path: normal-2d.json
+[[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
 
-[[resources]]  # Path: obesity.json
+[[resources]] # Path: obesity.json
 path = "obesity.json"
 
-[[resources]]  # Path: ohlc.json
+[[resources]] # Path: ohlc.json
 path = "ohlc.json"
 description = """This dataset contains the performance of the Chicago Board Options Exchange [Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX?ltr=1#eyJpbnRlcnZhbCI6ImRheSIsInBlcmlvZGljaXR5IjoxLCJ0aW1lVW5pdCI6bnVsbCwiY2FuZGxlV2lkdGgiOjgsInZvbHVtZVVuZGVybGF5Ijp0cnVlLCJhZGoiOnRydWUsImNyb3NzaGFpciI6dHJ1ZSwiY2hhcnRUeXBlIjoibGluZSIsImV4dGVuZGVkIjpmYWxzZSwibWFya2V0U2Vzc2lvbnMiOnt9LCJhZ2dyZWdhdGlvblR5cGUiOiJvaGxjIiwiY2hhcnRTY2FsZSI6ImxpbmVhciIsInN0dWRpZXMiOnsidm9sIHVuZHIiOnsidHlwZSI6InZvbCB1bmRyIiwiaW5wdXRzIjp7ImlkIjoidm9sIHVuZHIiLCJkaXNwbGF5Ijoidm9sIHVuZHIifSwib3V0cHV0cyI6eyJVcCBWb2x1bWUiOiIjMDBiMDYxIiwiRG93biBWb2x1bWUiOiIjRkYzMzNBIn0sInBhbmVsIjoiY2hhcnQiLCJwYXJhbWV0ZXJzIjp7IndpZHRoRmFjdG9yIjowLjQ1LCJjaGFydE5hbWUiOiJjaGFydCJ9fX0sInBhbmVscyI6eyJjaGFydCI6eyJwZXJjZW50IjoxLCJkaXNwbGF5IjoiXlZJWCIsImNoYXJ0TmFtZSI6ImNoYXJ0IiwidG9wIjowfX0sInNldFNwYW4iOnt9LCJsaW5lV2lkdGgiOjIsInN0cmlwZWRCYWNrZ3JvdWQiOnRydWUsImV2ZW50cyI6dHJ1ZSwiY29sb3IiOiIjMDA4MWYyIiwiZXZlbnRNYXAiOnsiY29ycG9yYXRlIjp7ImRpdnMiOnRydWUsInNwbGl0cyI6dHJ1ZX0sInNpZ0RldiI6e319LCJzeW1ib2xzIjpbeyJzeW1ib2wiOiJeVklYIiwic3ltYm9sT2JqZWN0Ijp7InN5bWJvbCI6Il5WSVgifSwicGVyaW9kaWNpdHkiOjEsImludGVydmFsIjoiZGF5IiwidGltZVVuaXQiOm51bGwsInNldFNwYW4iOnt9fV19)) in the summer of 2009."""
 
@@ -467,7 +467,7 @@ description = """This dataset contains the performance of the Chicago Board Opti
 title = "Yahoo Finance VIX Data"
 path = "https://finance.yahoo.com/chart/%5EVIX"
 
-[[resources]]  # Path: penguins.json
+[[resources]] # Path: penguins.json
 path = "penguins.json"
 description = """Palmer Archipelago (Antarctica) penguin data collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research Network](https://lternet.edu/)."""
 
@@ -478,7 +478,7 @@ path = "https://pal.lternet.edu/"
 title = "Allison Horst's Penguins Repository"
 path = "https://github.com/allisonhorst/penguins"
 
-[[resources]]  # Path: platformer-terrain.json
+[[resources]] # Path: platformer-terrain.json
 path = "platformer-terrain.json"
 description = """Assets from the video game Celeste."""
 
@@ -486,10 +486,10 @@ description = """Assets from the video game Celeste."""
 title = "Celeste Game"
 path = "http://www.celestegame.com/"
 
-[[resources]]  # Path: points.json
+[[resources]] # Path: points.json
 path = "points.json"
 
-[[resources]]  # Path: political-contributions.json
+[[resources]] # Path: political-contributions.json
 path = "political-contributions.json"
 description = """Summary financial information on contributions to candidates for U.S. elections. An updated version of this datset is available from the \"all candidates\" files (in pipe-delimited format) on the bulk data download page of the U.S. Federal Election Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/). The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
 FEC data is subject to the commission's:
@@ -506,7 +506,7 @@ path = "https://www.fec.gov/data/browse-data/?tab=bulk-data"
 title = "OpenFEC API"
 path = "https://api.open.fec.gov/developers/"
 
-[[resources]]  # Path: population.json
+[[resources]] # Path: population.json
 path = "population.json"
 description = """United States population statistics by sex and age group across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which \"collects, preserves and harmonizes U.S. census microdata\" from as early as 1790.
 The dataset is structured as follows:
@@ -522,7 +522,7 @@ Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. 
 title = "IPUMS USA"
 path = "https://usa.ipums.org/usa/"
 
-[[resources]]  # Path: population_engineers_hurricanes.csv
+[[resources]] # Path: population_engineers_hurricanes.csv
 path = "population_engineers_hurricanes.csv"
 description = """Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example, [Three Choropleths Representing Disjoint DAta from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
 
@@ -536,7 +536,7 @@ path = "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.
 title = "NOAA National Climatic Data Center"
 path = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
 
-[[resources]]  # Path: seattle-weather-hourly-normals.csv
+[[resources]] # Path: seattle-weather-hourly-normals.csv
 path = "seattle-weather-hourly-normals.csv"
 description = """Hourly weather normals with metric units. The 1981-2010 Climate Normals are NCDC's three-decade averages of climatological variables, including temperature and precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure and updated the format to be easier to parse."""
 
@@ -544,7 +544,7 @@ description = """Hourly weather normals with metric units. The 1981-2010 Climate
 title = "NOAA National Climatic Data Center (NCDC)"
 path = "https://www.ncdc.noaa.gov/cdo-web/datatools/normals"
 
-[[resources]]  # Path: seattle-weather.csv
+[[resources]] # Path: seattle-weather.csv
 path = "seattle-weather.csv"
 description = """Daily weather records with metric units. Transformed using `/scripts/weather.py`. The categorical \"weather\" field is synthesized from multiple fields in the original dataset. This data is intended for instructional purposes."""
 
@@ -552,7 +552,7 @@ description = """Daily weather records with metric units. Transformed using `/sc
 title = "NOAA National Climatic Data Center"
 path = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
 
-[[resources]]  # Path: sp500-2000.csv
+[[resources]] # Path: sp500-2000.csv
 path = "sp500-2000.csv"
 description = """S&amp;P 500 index values from 2000 to 2020."""
 
@@ -560,16 +560,16 @@ description = """S&amp;P 500 index values from 2000 to 2020."""
 title = "Yahoo Finance"
 path = "https://finance.yahoo.com/quote/%5EDJI/history/"
 
-[[resources]]  # Path: sp500.csv
+[[resources]] # Path: sp500.csv
 path = "sp500.csv"
 
-[[resources]]  # Path: stocks.csv
+[[resources]] # Path: stocks.csv
 path = "stocks.csv"
 
-[[resources]]  # Path: udistrict.json
+[[resources]] # Path: udistrict.json
 path = "udistrict.json"
 
-[[resources]]  # Path: unemployment-across-industries.json
+[[resources]] # Path: unemployment-across-industries.json
 path = "unemployment-across-industries.json"
 description = """Industry-level unemployment statistics from the Current Population Survey (CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons and unemployment rate across 11 private industries, as well as agricultural, government, and self-employed workers. Covers January 2000 through February 2010. Industry classification follows format of CPS Table A-31.
 Each entry in the JSON file contains:
@@ -594,7 +594,7 @@ path = "https://www.bls.gov/lau/data.htm"
 title = "Bureau of Labor Statistics Table A-31"
 path = "https://www.bls.gov/web/empsit/cpseea31.htm"
 
-[[resources]]  # Path: unemployment.tsv
+[[resources]] # Path: unemployment.tsv
 path = "unemployment.tsv"
 description = """This dataset contains county-level unemployment rates in the United States, with data generally consistent with levels reported in 2009. The dataset is structured as tab-separated values.
 
@@ -630,13 +630,13 @@ path = "https://www.bls.gov/developers/"
 title = "BLS Handbook of Methods"
 path = "https://www.bls.gov/opub/hom/lau/home.htm"
 
-[[resources]]  # Path: uniform-2d.json
+[[resources]] # Path: uniform-2d.json
 path = "uniform-2d.json"
 
-[[resources]]  # Path: us-10m.json
+[[resources]] # Path: us-10m.json
 path = "us-10m.json"
 
-[[resources]]  # Path: us-employment.csv
+[[resources]] # Path: us-employment.csv
 path = "us-employment.csv"
 description = """In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job losses across the United States. The downturn in employment, and the slow recovery in hiring that followed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau of Labor Statistics.
 This file contains the monthly employment total in a variety of job categories from January 2006 through December 2015. The numbers are seasonally adjusted and reported in thousands. The data were downloaded on Nov. 11, 2018, and reformatted for use in this library.
@@ -647,10 +647,10 @@ A calculated \"nonfarm_change\" column has been appended with the month-to-month
 title = "U.S. Bureau of Labor Statistics Current Employment Statistics"
 path = "https://www.bls.gov/ces/"
 
-[[resources]]  # Path: us-state-capitals.json
+[[resources]] # Path: us-state-capitals.json
 path = "us-state-capitals.json"
 
-[[resources]]  # Path: volcano.json
+[[resources]] # Path: volcano.json
 path = "volcano.json"
 description = """Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate."""
 
@@ -658,7 +658,7 @@ description = """Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckla
 title = "R Datasets"
 path = "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html"
 
-[[resources]]  # Path: weather.csv
+[[resources]] # Path: weather.csv
 path = "weather.csv"
 description = """NOAA data transformed using `/scripts/weather.py`. Categorical \"weather\" field synthesized from multiple fields in the original dataset. This data is intended for instructional purposes."""
 
@@ -666,11 +666,11 @@ description = """NOAA data transformed using `/scripts/weather.py`. Categorical 
 title = "NOAA Climate Data Online"
 path = "http://www.ncdc.noaa.gov/cdo-web/datatools/findstation"
 
-[[resources]]  # Path: weather.json
+[[resources]] # Path: weather.json
 path = "weather.json"
 description = """Instructional dataset showing actual and predicted temperature data."""
 
-[[resources]]  # Path: wheat.json
+[[resources]] # Path: wheat.json
 path = "wheat.json"
 description = """In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair), a Scottish engineer who is often credited as the founder of statistical graphics, published an elegant chart on the price of wheat. It plots 250 years of prices alongside weekly wages and the reigning monarch. He intended to demonstrate that “never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time.”"""
 
@@ -678,14 +678,14 @@ description = """In an 1822 letter to Parliament, [William Playfair](https://en.
 title = "1822 Playfair Chart"
 path = "http://dh101.humanities.ucla.edu/wp-content/uploads/2014/08/Vis_2.jpg"
 
-[[resources]]  # Path: windvectors.csv
+[[resources]] # Path: windvectors.csv
 path = "windvectors.csv"
 description = """Simulated wind patterns over northwestern Europe."""
 
-[[resources]]  # Path: world-110m.json
+[[resources]] # Path: world-110m.json
 path = "world-110m.json"
 
-[[resources]]  # Path: zipcodes.csv
+[[resources]] # Path: zipcodes.csv
 path = "zipcodes.csv"
 description = """GeoNames.org"""
 
