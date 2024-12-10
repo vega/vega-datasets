@@ -256,8 +256,7 @@ title = "Creative Commons Attribution 4.0 International"
 path = "https://www.gapminder.org/free-material/"
 
 
-[[resources]]  # Path: gapminder.json
-[[resources]]
+[[resources]] # Path: gapminder.json
 path = "gapminder.json"
 description = """This dataset combines key demographic indicators (life expectancy at birth, population, and fertility rate measured as babies per woman) for various countries from 1955 to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable grouping countries. Gapminder's data documentation notes that its philosophy is to fill data gaps with estimates and use current geographic boundaries for historical data. Gapminder states that it aims to "show people the big picture" rather than support detailed numeric analysis.
 
