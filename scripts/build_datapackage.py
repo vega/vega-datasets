@@ -39,10 +39,10 @@ import json
 import logging
 import os
 import warnings
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from functools import partial
 from pathlib import Path
-from typing import TYPE_CHECKING, NotRequired, Required, TypedDict, Unpack
+from typing import TYPE_CHECKING, Any, NotRequired, Required, TypedDict, Unpack, cast
 
 import frictionless as fl
 import polars as pl
@@ -68,7 +68,7 @@ from frictionless.resources import (
 )
 
 if TYPE_CHECKING:
-    from collections.abc import Callable, Iterator, Sequence
+    from collections.abc import Callable, Iterator
     from typing import ClassVar, Literal
 
 
@@ -200,10 +200,30 @@ class ResourceAdapter:
 
     @staticmethod
     def with_extras(resource: Resource, /, **extras: Unpack[ResourceMeta]) -> Resource:
-        """TODO: Use as part of https://github.com/vega/vega-datasets/pull/631#issuecomment-2503760452"""
+        """Supplement inferred metadata with manually defined ``extras``."""
+        if "schema" in extras:
+            resource.schema = merge_schemas(resource, extra=extras.pop("schema"))
         for name, value in extras.items():
             setattr(resource, name, value)
         return resource
+
+
+def merge_schemas(resource: Resource, *, extra: Schema) -> fl.Schema:
+    if schema := resource.schema:
+        inferred = _flatten_schema(cast("Schema", schema.to_dict()))
+    else:
+        return fl.Schema.from_descriptor(cast("dict[str, Any]", extra))
+    overrides = _flatten_schema(extra)
+    fields = []
+    for name, field in inferred.items():
+        if name in overrides:
+            field.update(overrides[name])
+        fields.append(field)
+    return fl.Schema.from_descriptor({"fields": fields})
+
+
+def _flatten_schema(schema: Schema, /) -> dict[str, Field]:
+    return {field["name"]: field for field in schema["fields"]}
 
 
 class Source(TypedDict, total=False):
@@ -229,10 +249,25 @@ class Contributor(TypedDict, total=False):
     organization: str
 
 
+class Field(TypedDict, total=False):
+    """https://datapackage.org/standard/table-schema/#field."""
+
+    name: Required[str]
+    type: str
+    description: str
+
+
+class Schema(TypedDict):
+    """https://datapackage.org/standard/table-schema/#properties."""
+
+    fields: Sequence[Field]
+
+
 class ResourceMeta(TypedDict, total=False):
     description: str
     sources: Sequence[Source]
     licenses: Sequence[License]
+    schema: Schema
 
 
 class PackageMeta(TypedDict):
@@ -294,17 +329,62 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
     )
 
 
-def iter_resources(data_root: Path, /) -> Iterator[Resource]:
-    """Yield all parseable resources, selecting the most appropriate ``Resource`` class."""
+def extract_overrides(mapping: Mapping[str, Any], /) -> dict[str, ResourceMeta]:
+    if (resources := mapping.get("resources")) and isinstance(resources, Sequence):
+        return dict(iter_parse_resources(resources))
+    else:
+        raise TypeError(resources)
+
+
+def iter_parse_resources(
+    seq: Sequence[ResourceMeta], /
+) -> Iterator[tuple[str, ResourceMeta]]:
+    for resource in seq:
+        if (name := resource.get("path")) and isinstance(name, str):
+            m: Any = {k: v for k, v in resource.items() if k != "path"}
+            # NOTE: Drops entries that only provide `path`
+            if m:
+                yield name, m
+        else:
+            raise TypeError(seq)
+
+
+def iter_data_dir(data_root: Path, /) -> Iterator[Path]:
+    """Yield files in the root of the ``/data/`` directory."""
     for fp in sorted(data_root.iterdir()):
-        if not fp.is_file():
-            continue
+        if fp.is_file():
+            yield fp
+
+
+def iter_resources(
+    root: Path, /, overrides: dict[str, ResourceMeta]
+) -> Iterator[Resource]:
+    """
+    Yield all parseable resources, constructing with the most appropriate ``Resource`` class.
+
+    Parameters
+    ----------
+    root
+        Directory storing datasets.
+    overrides
+        Additional metadata, with a higher precedence than inferred.
+    """
+    for fp in iter_data_dir(root):
         if resource := ResourceAdapter.from_path(fp):
+            name = fp.name
+            if name in overrides:
+                resource = ResourceAdapter.with_extras(resource, **overrides[name])
             yield resource
         else:
             msg = f"Skipping unexpected extension {fp.suffix!r}\n\n{fp!r}"
             warnings.warn(msg, stacklevel=2)
             continue
+
+
+def read_toml(fp: Path, /) -> Mapping[str, Any]:
+    import tomllib
+
+    return tomllib.loads(fp.read_text("utf-8"))
 
 
 def main(
@@ -317,6 +397,11 @@ def main(
         raise TypeError(msg)
     repo_dir: Path = Path(__file__).parent.parent
     data_dir: Path = repo_dir / "data"
+    sources_toml: Path = repo_dir / "SOURCES.toml"
+
+    sources = read_toml(sources_toml)
+    # NOTE: Package metadata is expected to be stored in `sources` in the future
+    overrides = extract_overrides(sources)
     # NOTE: Forcing base directory here
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
@@ -324,7 +409,7 @@ def main(
     logger.info(
         f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     )
-    pkg = Package(resources=list(iter_resources(data_dir)), **pkg_meta)  # type: ignore[arg-type]
+    pkg = Package(resources=list(iter_resources(data_dir, overrides)), **pkg_meta)  # type: ignore[arg-type]
     logger.info(f"Collected {len(pkg.resources)} resources")
     if output_format in {"json", "both"}:
         p = (repo_dir / f"{stem}.json").as_posix()
