@@ -21,7 +21,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-06T16:14:38.044099+00:00",
+  "created": "2024-12-11T17:47:50.504616+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -899,6 +899,39 @@
           {
             "name": "date",
             "type": "string"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "flights-1k.csv",
+      "type": "table",
+      "path": "flights-1k.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "datetime"
           },
           {
             "name": "delay",
