@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import datetime as dt
 import logging
+import tomllib
 import warnings
 import zipfile
 from collections import defaultdict, deque
@@ -110,19 +111,17 @@ COLUMNS_DEFAULT: Sequence[Columns] = (
 )
 """Copied default from ``flights.py``."""
 
-SCAN_SCHEMA: pl.Schema = pl.Schema(
-    {
-        "FlightDate": pl.Date,
-        "CRSDepTime": pl.String,
-        "DepTime": pl.String,
-        "DepDelay": pl.Float64,
-        "ArrDelay": pl.Float64,
-        "Distance": pl.Float64,
-        "Origin": pl.String,
-        "Dest": pl.String,
-        "Cancelled": pl.Float64,
-    }
-)
+SCAN_SCHEMA: pl.Schema = pl.Schema({
+    "FlightDate": pl.Date,
+    "CRSDepTime": pl.String,
+    "DepTime": pl.String,
+    "DepDelay": pl.Float64,
+    "ArrDelay": pl.Float64,
+    "Distance": pl.Float64,
+    "Origin": pl.String,
+    "Dest": pl.String,
+    "Cancelled": pl.Float64,
+})
 
 
 def _approx_latest(*, months_ago: int) -> dt.date:
@@ -135,12 +134,11 @@ def _approx_latest(*, months_ago: int) -> dt.date:
 
 def _into_date(obj: IntoDate, /) -> dt.date:
     """Normalize date input."""
-
     if isinstance(obj, dt.datetime):
         return obj.date()
-    elif isinstance(obj, dt.date):
+    if isinstance(obj, dt.date):
         return obj
-    elif isinstance(obj, Sequence):
+    if isinstance(obj, Sequence):
         match obj:
             case int(year), int(month), int(day):
                 return dt.date(year, month, day)
@@ -242,7 +240,7 @@ class Spec:
     ) -> None:
         if {"date", "time"}.isdisjoint(columns):
             msg = (
-                f"Must specify one of {["date", "time"]!r} columns, "
+                f"Must specify one of {['date', 'time']!r} columns, "
                 f"but got:\n{columns!r}"
             )
             raise TypeError(msg)
@@ -301,7 +299,8 @@ class Spec:
     def write(self, df: pl.DataFrame, output_dir: Path, /) -> None:
         fp: Path = output_dir / self.name
         fp.touch()
-        logger.info(f"Writing {fp.as_posix()!r} ...")
+        msg = f"Writing {fp.as_posix()!r} ..."
+        logger.info(msg)
         match self.suffix:
             case ".arrow":
                 df.write_ipc(fp, compression="zstd")
@@ -399,10 +398,9 @@ class Flights:
         output_dir: str | Path | None,
     ) -> Flights:
         """Construct from a toml file."""
-        import tomllib
-
         fp = Path(source)
-        logger.info(f"Reading specs from {fp.as_posix()!r}")
+        msg = f"Reading specs from {fp.as_posix()!r}"
+        logger.info(msg)
         mapping = tomllib.loads(fp.read_text("utf-8"))
         if specs_array := mapping.get("specs"):
             return cls(
@@ -410,12 +408,11 @@ class Flights:
                 input_dir=input_dir or mapping["input_dir"],
                 output_dir=output_dir or mapping["output_dir"],
             )
-        else:
-            msg = (
-                f"Expected to find an array of tables keyed to `'specs'`, but got\n"
-                f"{mapping!r}"
-            )
-            raise TypeError(msg)
+        msg = (
+            f"Expected to find an array of tables keyed to `'specs'`, but got\n"
+            f"{mapping!r}"
+        )
+        raise TypeError(msg)
 
     def __iter__(self) -> Iterator[Spec]:
         yield from self.specs
@@ -440,13 +437,15 @@ class Flights:
         )
 
     def _download_zip(self, name: str, /) -> Path:
-        """Request a single month's data and write"""
+        """Request a single month's data and write."""
         fp = self.input_dir / name
-        logger.debug(f"Requesting {name!r} ...")
+        msg = f"Requesting {name!r} ..."
+        logger.debug(msg)
         with request.urlopen(f"{ROUTE_ZIP}{name}") as response:
             fp.touch()
             fp.write_bytes(response.read())
-        logger.debug(f"Downloaded {name!r}.")
+        msg = f"Downloaded {name!r}."
+        logger.debug(msg)
         return fp
 
     def download_sources(self) -> None:
@@ -455,7 +454,7 @@ class Flights:
         existing = {fp.name for fp in self.input_dir.glob(PATTERN_ZIP)}
         missing = self._required_names - existing
         if missing:
-            msg_missing = f"Missing:\n  {"\n  ".join(sorted(missing))}"
+            msg_missing = f"Missing:\n  {'\n  '.join(sorted(missing))}"
             logger.info(msg_missing)
             if len(missing) >= 5:
                 warnings.warn("Downloads may exceed 100MB", stacklevel=2)
@@ -507,7 +506,7 @@ def _clean_source(ldf: pl.LazyFrame, /) -> pl.LazyFrame:
     )
     convert_types: Sequence[pl.Expr] = wrap_times, cs.float().cast(int)
     # NOTE: Filter cancelled flights and drop nulls/empty values first
-    drop_rows = pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null())
+    drop_rows = pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null())  # noqa: PLC1901
     flight_date_corrected: pl.Expr = (
         pl.when(dep_time != pl.time(0, 0, 0, 0))
         .then(flight_date.dt.combine(dep_time))
