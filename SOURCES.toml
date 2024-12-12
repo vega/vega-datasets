@@ -80,8 +80,8 @@ The vega-datsets version is largely consistent with the Protovis version of the 
 correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a \
 new column, 'Genus', to group related bacterial species together.
 
-The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/\
-wmgda_8616c.jpg) reads as follows:
+The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
+reads as follows:
 
 > ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
 >
@@ -135,8 +135,8 @@ path        = "countries.json"
 description = """This dataset combines key demographic indicators (life expectancy at birth and
 fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
 intervals. It includes both current values and adjacent time period values (previous and next)
-for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/
-documentation/) notes that its philosophy is to fill data gaps with estimates and use current
+for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) 
+notes that its philosophy is to fill data gaps with estimates and use current
 geographic boundaries for historical data. Gapminder states that it aims to "show people the
 big picture" rather than support detailed numeric analysis."""
 
@@ -341,8 +341,7 @@ Notes:
    corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
    preserve continuity with previous versions of this dataset, we have retained the column 
    name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
-   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 
-   4: east_asia_pacific, 5: middle_east_north_africa`."""
+   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`."""
 
 [resources.schema]
 [[resources.schema.fields]]
@@ -447,9 +446,8 @@ sex and year across decades between 1850 and 2000. The dataset was obtained from
 "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
 
 Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, \
-Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/\
-bdata_ch12.pdf). The dataset is also referenced in this vega [example](https://vega.github.io/vega/\
-examples/job-voyager/).
+Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). 
+The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
 
 Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) \
 variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of \
@@ -467,18 +465,16 @@ underlying microdata records are not shared.
 This dataset contains only summary statistics and does not include any underlying microdata records.
 
 1. This dataset represents summary data. The underlying microdata records are not included.
-2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/\
-usa-action/variables/PERWT#description_section) (person weight) variable as an expansion factor when \
-working with IPUMS USA extracts.
+2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) 
+(person weight) variable as an expansion factor when working with IPUMS USA extracts.
 3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current \
 IPUMS USA data exactly.
 
-When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/\
-terms.shtml). The organization requests use of the following citation for this json file:
+When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/terms.shtml).
+The organization requests use of the following citation for this json file:
 
 Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use \
-Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/\
-D010.V6.0
+Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0
 """
 
 [resources.schema]
@@ -651,9 +647,8 @@ description = """Summary financial information on contributions to candidates fo
 elections. An updated version of this datset is available from the "all candidates" files 
 (in pipe-delimited format) on the bulk data download page of the U.S. Federal Election 
 Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is 
-available from the [FEC All Candidates File Description](https://www.fec.gov/
-campaign-finance-data/all-candidates-file-description/). The sample dataset in 
-`political-contributions.json` contains 58 records with dates from 2015.
+available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
+The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
 
 FEC data is subject to the commission's:
 - [Sale or Use Policy](https://www.fec.gov/updates/sale-or-use-contributor-information/)
@@ -732,8 +727,8 @@ path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
 path        = "seattle-weather-hourly-normals.csv"
 description = """Hourly weather normals with metric units. The 1981-2010 Climate Normals are 
 NCDC's three-decade averages of climatological variables, including temperature and 
-precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/
-documentation/NORMAL_HLY_documentation.pdf). We only included temperature, wind, and pressure 
+precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf).
+We only included temperature, wind, and pressure 
 and updated the format to be easier to parse."""
 
 [[resources.sources]]
@@ -887,8 +882,8 @@ This file contains the monthly employment total in a variety of job categories f
 through December 2015. The numbers are seasonally adjusted and reported in thousands. The data 
 were downloaded on Nov. 11, 2018, and reformatted for use in this library.
 
-Totals are included for the [22 \"supersectors\"](https://download.bls.gov/pub/time.series/ce/
-ce.supersector) tracked by the BLS. The \"nonfarm\" total is the category typically used by 
+Totals are included for the [22 \"supersectors\"](https://download.bls.gov/pub/time.series/ce/ce.supersector)
+tracked by the BLS. The \"nonfarm\" total is the category typically used by 
 economists and journalists as a stand-in for the country's employment total.
 
 A calculated \"nonfarm_change\" column has been appended with the month-to-month change in that 
@@ -927,12 +922,11 @@ description = """Instructional dataset showing actual and predicted temperature 
 
 [[resources]] # Path: wheat.json
 path        = "wheat.json"
-description = """In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/
-wiki/William_Playfair), a Scottish engineer who is often credited as the founder of 
-statistical graphics, published an elegant chart on the price of wheat. It plots 250 years 
-of prices alongside weekly wages and the reigning monarch. He intended to demonstrate that 
-"never at any former period was wheat so cheap, in proportion to mechanical labour, as it 
-is at the present time.""""
+description = """In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),
+a Scottish engineer who is often credited as the founder of statistical graphics, 
+published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
+weekly wages and the reigning monarch. He intended to demonstrate that "never at any former period 
+was wheat so cheap, in proportion to mechanical labour, as it is at the present time.""""
 
 [[resources.sources]]
 title = "1822 Playfair Chart"
