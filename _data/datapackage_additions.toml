@@ -122,7 +122,7 @@ title = "StatLib Datasets Archive"
 path  = "http://lib.stat.cmu.edu/datasets/"
 
 [[resources]] # Path: co2-concentration.csv
-path        = "co2-concentration.csv"
+path = "co2-concentration.csv"
 description = """Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. 
 Only includes rows with valid data."""
 
@@ -131,7 +131,7 @@ title = "Scripps CO2 Program"
 path  = "https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record"
 
 [[resources]] # Path: countries.json
-path        = "countries.json"
+path = "countries.json"
 description = """This dataset combines key demographic indicators (life expectancy at birth and
 fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
 intervals. It includes both current values and adjacent time period values (previous and next)
@@ -288,7 +288,7 @@ title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
 [[resources]] # Path: football.json
-path        = "football.json"
+path = "football.json"
 description = """Football match outcomes across multiple divisions from 2013 to 2017, part of a
 larger dataset from OpenFootball. The subset was made such that there are records for all five
 chosen divisions over the time period."""
@@ -428,7 +428,7 @@ path  = "https://data.giss.nasa.gov/gistemp/"
 path = "income.json"
 
 [[resources]] # Path: iowa-electricity.csv
-path        = "iowa-electricity.csv"
+path = "iowa-electricity.csv"
 description = """The state of Iowa has dramatically increased its production of renewable 
 wind power in recent years. This file contains the annual net generation of electricity in 
 the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
@@ -504,7 +504,7 @@ path    = "https://usa.ipums.org/usa/"
 version = "6.0"
 
 [[resources]] # Path: la-riots.csv
-path        = "la-riots.csv"
+path = "la-riots.csv"
 description = """More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles 
 for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic 
 coordinates of their death. Compiled and published by the Los Angeles Times Data Desk."""
@@ -514,7 +514,7 @@ title = "LA Riots Deaths, Los Angeles Times Data Desk"
 path  = "http://spreadsheets.latimes.com/la-riots-deaths/"
 
 [[resources]] # Path: londonBoroughs.json
-path        = "londonBoroughs.json"
+path = "londonBoroughs.json"
 description = """Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. 
 Original data \"contains National Statistics data © Crown copyright and database right (2015)\" 
 and \"Contains Ordnance Survey data © Crown copyright and database right [2015]."""
@@ -596,7 +596,7 @@ title = "The Royal Family - Interregnum"
 path  = "https://www.royal.uk/interregnum-1649-1660"
 
 [[resources]] # Path: movies.json
-path        = "movies.json"
+path = "movies.json"
 description = """The dataset has well known and intentionally included errors. 
 This dataset is provided for instructional purposes, including the need to reckon with dirty data."""
 
@@ -607,7 +607,7 @@ path = "normal-2d.json"
 path = "obesity.json"
 
 [[resources]] # Path: ohlc.json
-path        = "ohlc.json"
+path = "ohlc.json"
 description = """This dataset contains the performance of the Chicago Board Options Exchange 
 [Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/
 %5EVIX#overview)) in the summer of 2009."""
@@ -617,7 +617,7 @@ title = "Yahoo Finance VIX Data"
 path  = "https://finance.yahoo.com/chart/%5EVIX"
 
 [[resources]] # Path: penguins.json
-path        = "penguins.json"
+path = "penguins.json"
 description = """Palmer Archipelago (Antarctica) penguin data collected and made available by 
 [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) 
 and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research 
@@ -709,7 +709,7 @@ title = "IPUMS USA"
 path  = "https://usa.ipums.org/usa/"
 
 [[resources]] # Path: population_engineers_hurricanes.csv
-path        = "population_engineers_hurricanes.csv"
+path = "population_engineers_hurricanes.csv"
 description = """Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint DAta from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
 
@@ -724,7 +724,7 @@ title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
 
 [[resources]] # Path: seattle-weather-hourly-normals.csv
-path        = "seattle-weather-hourly-normals.csv"
+path = "seattle-weather-hourly-normals.csv"
 description = """Hourly weather normals with metric units. The 1981-2010 Climate Normals are 
 NCDC's three-decade averages of climatological variables, including temperature and 
 precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf).
@@ -736,7 +736,7 @@ title = "NOAA National Climatic Data Center (NCDC)"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/normals"
 
 [[resources]] # Path: seattle-weather.csv
-path        = "seattle-weather.csv"
+path = "seattle-weather.csv"
 description = """Daily weather records with metric units. Transformed using `/scripts/weather.py`. 
 The categorical \"weather\" field is synthesized from multiple fields in the original dataset. 
 This data is intended for instructional purposes."""
@@ -898,7 +898,7 @@ path  = "https://www.bls.gov/ces/"
 path = "us-state-capitals.json"
 
 [[resources]] # Path: volcano.json
-path        = "volcano.json"
+path = "volcano.json"
 description = """Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. 
 This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a 
 topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate."""
@@ -908,7 +908,7 @@ title = "R Datasets"
 path  = "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html"
 
 [[resources]] # Path: weather.csv
-path        = "weather.csv"
+path = "weather.csv"
 description = """NOAA data transformed using `/scripts/weather.py`. Categorical \"weather\" field synthesized 
 from multiple fields in the original dataset. This data is intended for instructional purposes."""
 
@@ -921,7 +921,7 @@ path        = "weather.json"
 description = """Instructional dataset showing actual and predicted temperature data."""
 
 [[resources]] # Path: wheat.json
-path        = "wheat.json"
+path = "wheat.json"
 description = """In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),
 a Scottish engineer who is often credited as the founder of statistical graphics, 
 published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
