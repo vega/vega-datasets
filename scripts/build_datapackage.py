@@ -323,9 +323,6 @@ def _extract_npm_metadata(m: Mapping[str, Any], /) -> PackageMeta:
         homepage=m["repository"]["url"],
         description=m["description"],
         contributors=[Contributor(title=m["author"]["name"], path=m["author"]["url"])],
-        sources=[
-            Source(path="https://github.com/vega/vega-datasets/blob/next/SOURCES.md")
-        ],
         created=dt.datetime.now(dt.UTC).isoformat(),
     )
 

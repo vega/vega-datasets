@@ -9,11 +9,6 @@
       "title": "The 3-Clause BSD License"
     }
   ],
-  "sources": [
-    {
-      "path": "https://github.com/vega/vega-datasets/blob/next/SOURCES.md"
-    }
-  ],
   "contributors": [
     {
       "title": "UW Interactive Data Lab",
@@ -21,7 +16,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-13T12:17:23.415170+00:00",
+  "created": "2024-12-13T12:21:52.733563+00:00",
   "resources": [
     {
       "name": "7zip.png",
