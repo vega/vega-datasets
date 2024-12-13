@@ -397,7 +397,7 @@ def main(
         raise TypeError(msg)
     repo_dir: Path = Path(__file__).parent.parent
     data_dir: Path = repo_dir / "data"
-    sources_toml: Path = repo_dir / "SOURCES.toml"
+    sources_toml: Path = repo_dir / "_data" / "datapackage_additions.toml"
 
     sources = read_toml(sources_toml)
     # NOTE: Package metadata is expected to be stored in `sources` in the future
