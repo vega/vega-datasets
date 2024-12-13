@@ -476,8 +476,8 @@ def main(
     *,
     output_format: Literal["json", "yaml"] = "json",
 ) -> None:
-    if output_format not in {"json", "yaml", "both"}:
-        msg = f"Expected one of {['json', 'yaml', 'both']!r} but got {output_format!r}"
+    if output_format not in {"json", "yaml"}:
+        msg = f"Expected one of {['json', 'yaml']!r} but got {output_format!r}"
         raise TypeError(msg)
     repo_dir: Path = Path(__file__).parent.parent
     data_dir: Path = repo_dir / "data"
