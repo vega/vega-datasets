@@ -47,6 +47,7 @@ from pathlib import Path
 from typing import (
     TYPE_CHECKING,
     Any,
+    Concatenate,
     LiteralString,
     NotRequired,
     Required,
@@ -87,6 +88,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
+type PackageMethod[**P] = Callable[Concatenate[Package, P], Any]
 type PathMeta = Literal["name", "path", "scheme", "mediatype"]
 type PythonDataType = (
     type[
@@ -107,8 +109,11 @@ type PythonDataType = (
     | None
 )
 
+type OutputFormat = Literal["json", "yaml", "md", "md-tabular"]
+
 ADDITIONS_TOML: LiteralString = "datapackage_additions.toml"
 NPM_PACKAGE: Literal["package.json"] = "package.json"
+DATAPACKAGE: Literal["datapackage"] = "datapackage"
 
 POLARS_PY_TO_FL_FIELD: Mapping[PythonDataType, type[fl.Field]] = {
     int: IntegerField,
@@ -451,10 +456,25 @@ def read_json(fp: Path, /) -> Any:
         return json.load(f)
 
 
+def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
+    """Write the final datapackage in one or more formats."""
+    configs: dict[OutputFormat, tuple[str, PackageMethod[str]]] = {
+        "json": (".json", partial(Package.to_json)),
+        "yaml": (".yaml", partial(Package.to_yaml)),
+        "md": (".md", partial(Package.to_markdown)),
+        "md-tabular": ("-tabular.md", partial(Package.to_markdown, table=True)),
+    }
+    for fmt in formats:
+        postfix, fn = configs[fmt]
+        p = (repo_dir / f"{DATAPACKAGE}{postfix}").as_posix()
+        msg = f"Writing {p!r}"
+        logger.info(msg)
+        fn(pkg, p)
+
+
 def main(
     *,
-    stem: str = "datapackage",
-    output_format: Literal["json", "yaml", "both"] = "json",
+    output_format: Literal["json", "yaml"] = "json",
 ) -> None:
     if output_format not in {"json", "yaml", "both"}:
         msg = f"Expected one of {['json', 'yaml', 'both']!r} but got {output_format!r}"
@@ -476,15 +496,8 @@ def main(
     pkg = Package(resources=list(iter_resources(data_dir, overrides)), **pkg_meta)  # type: ignore[arg-type]
     msg = f"Collected {len(pkg.resources)} resources"
     logger.info(msg)
-    if output_format in {"json", "both"}:
-        p = (repo_dir / f"{stem}.json").as_posix()
-        logger.info(msg)
-        pkg.to_json(p)
-    if output_format in {"yaml", "both"}:
-        p = (repo_dir / f"{stem}.yaml").as_posix()
-        msg = f"Writing {p!r}"
-        logger.info(msg)
-        pkg.to_yaml(p)
+    DEBUG_MARKDOWN = "md", "md-tabular"
+    write_package(pkg, repo_dir, output_format, *DEBUG_MARKDOWN)
 
 
 if __name__ == "__main__":
