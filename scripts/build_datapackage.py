@@ -71,6 +71,7 @@ from frictionless.fields import (
     StringField,
     TimeField,
 )
+from frictionless.formats.markdown import mapper as fl_markdown
 from frictionless.resources import (
     JsonResource,
     MapResource,
@@ -147,6 +148,45 @@ TopoResource: ResourceConstructor = partial(
 GeoResource: ResourceConstructor = partial(
     MapResource, format="geojson", datatype="map"
 )
+
+
+def render_markdown_patch(path: str, data: dict[str, Any]) -> str:
+    """
+    Patch to `frictionless.formats.markdown.mapper.render_markdown`_ to support template overrides.
+
+    Declare a template with the same name as a default to override it:
+
+        # Override directory:
+        vega-datasets/_data/templates/
+
+        # Default directory:
+        frictionless/assets/templates/
+
+    .. _frictionless.formats.markdown.mapper.render_markdown:
+        https://github.com/frictionlessdata/frictionless-py/blob/6b72909ee38403df7c0245f408f3881bfa56ad6f/frictionless/formats/markdown/mapper.py#L13-L43
+
+    Original doc
+    ------------
+    Render any JSON-like object as Markdown, using jinja2 template.
+    """
+    import jinja2  # noqa: PLC0415
+
+    # Create environ
+    default_dir: Path = Path(fl_markdown.__file__).parent / "../../assets/templates"
+    override_dir: Path = Path(__file__).parent.parent / "_data" / "templates"
+    searchpath = override_dir, default_dir
+    loader = jinja2.FileSystemLoader(searchpath)
+    environ = jinja2.Environment(loader=loader, lstrip_blocks=True, trim_blocks=True)
+
+    # Render data
+    environ.filters["filter_dict"] = fl_markdown.filter_dict
+    environ.filters["dict_to_markdown"] = fl_markdown.dict_to_markdown
+    environ.filters["tabulate"] = fl_markdown.dicts_to_markdown_table
+    template = environ.get_template(path)
+    return template.render(**data)
+
+
+fl_markdown.render_markdown = render_markdown_patch
 
 
 class ResourceAdapter:
