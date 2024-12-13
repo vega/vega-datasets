@@ -13,10 +13,14 @@
     {
       "title": "UW Interactive Data Lab",
       "path": "http://idl.cs.washington.edu"
+    },
+    {
+      "title": "vega-datasets contributors",
+      "path": "https://github.com/vega/vega-datasets/graphs/contributors"
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-13T18:29:45.637443+00:00",
+  "created": "2024-12-13T18:37:59.958722+00:00",
   "resources": [
     {
       "name": "7zip.png",

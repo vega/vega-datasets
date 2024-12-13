@@ -3,6 +3,10 @@ name  = "BSD-3-Clause"
 path  = "https://opensource.org/license/bsd-3-clause"
 title = "The 3-Clause BSD License"
 
+[[contributors]]
+title = "vega-datasets contributors"
+path  = "https://github.com/vega/vega-datasets/graphs/contributors"
+
 [[resources]] # Path: 7zip.png
 path        = "7zip.png"
 description = """Application icons from open-source software projects."""

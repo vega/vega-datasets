@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | ([GitHub](http://github.com/vega/vega-datasets.git)) | (2024-12-13T18:29:45.637443+00:00)
+`2.11.0` | ([GitHub](http://github.com/vega/vega-datasets.git)) | (2024-12-13T18:37:59.958722+00:00)
 
 Common repository for example datasets used by Vega related projects.
 
@@ -9,9 +9,10 @@ Common repository for example datasets used by Vega related projects.
 | BSD-3-Clause | https://opensource.org/license/bsd-3-clause | The 3-Clause BSD License |
 
 ## contributors
-| title                   | path                         |
-|:------------------------|:-----------------------------|
-| UW Interactive Data Lab | http://idl.cs.washington.edu |
+| title                      | path                                                      |
+|:---------------------------|:----------------------------------------------------------|
+| UW Interactive Data Lab    | http://idl.cs.washington.edu                              |
+| vega-datasets contributors | https://github.com/vega/vega-datasets/graphs/contributors |
 
 # resources
 ## `7zip.png`
