@@ -109,7 +109,7 @@ type PythonDataType = (
     | None
 )
 
-type OutputFormat = Literal["json", "yaml", "md", "md-tabular"]
+type OutputFormat = Literal["json", "yaml", "md"]
 
 ADDITIONS_TOML: LiteralString = "datapackage_additions.toml"
 NPM_PACKAGE: Literal["package.json"] = "package.json"
@@ -472,8 +472,7 @@ def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
     configs: dict[OutputFormat, tuple[str, PackageMethod[str]]] = {
         "json": (".json", partial(Package.to_json)),
         "yaml": (".yaml", partial(Package.to_yaml)),
-        "md": (".md", partial(Package.to_markdown)),
-        "md-tabular": ("-tabular.md", partial(Package.to_markdown, table=True)),
+        "md": ("-tabular.md", partial(Package.to_markdown, table=True)),
     }
     for fmt in formats:
         postfix, fn = configs[fmt]
@@ -507,7 +506,7 @@ def main(
     pkg = Package(resources=list(iter_resources(data_dir, overrides)), **pkg_meta)  # type: ignore[arg-type]
     msg = f"Collected {len(pkg.resources)} resources"
     logger.info(msg)
-    DEBUG_MARKDOWN = "md", "md-tabular"
+    DEBUG_MARKDOWN = ("md",)
     write_package(pkg, repo_dir, output_format, *DEBUG_MARKDOWN)
 
 
