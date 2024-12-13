@@ -6,7 +6,7 @@
 {% endif %}
 {% if resource.description %}
 ### description
-{{ resource.description | indent(4, False) }}
+{{ resource.description }}
 {% endif %}
 {% if resource.schema %}
 ### schema

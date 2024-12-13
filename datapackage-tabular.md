@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-13 21:05:54 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-13 21:17:21 [UTC]
 
 Common repository for example datasets used by Vega related projects.
 
@@ -61,11 +61,11 @@ barley.json
 ### description
 The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varieties of barley at six different sites.
 
-    It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption".
+It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption".
 
-    R.A. Fisher's popularized its use in the field of statistics when he included it in his book "The Design of Experiments".
+R.A. Fisher's popularized its use in the field of statistics when he included it in his book "The Design of Experiments".
 
-    Since then it has been used to demonstrate new statistical techniques, including the trellis charts developed by Richard Becker, William Cleveland and others in the 1990s.
+Since then it has been used to demonstrate new statistical techniques, including the trellis charts developed by Richard Becker, William Cleveland and others in the 1990s.
 
 ### schema
     
@@ -208,33 +208,33 @@ burtin.json
 ### description
 The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine.
 
-    The dataset compares the performance of three antibiotics against 16 different bacteria.
+The dataset compares the performance of three antibiotics against 16 different bacteria.
 
-    Numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness.
+Numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness.
 
-    The dataset was featured as an example in the Protovis project, a precursor to D3.js.
+The dataset was featured as an example in the Protovis project, a precursor to D3.js.
 
-    As noted in the Protovis example, "Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin".
+As noted in the Protovis example, "Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin".
 
-    The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
+The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
 
-    The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
-    reads as follows:
+The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
+reads as follows:
 
-    > ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
-    >
-    >
-    > The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in > red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
-    >
-    > The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits > the test organism.
-    >
-    > High dilutions are toward the periphery; consequently the length of the colored bar is proportional > to the effectiveness.
-    >
-    > It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. > fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. > vulgaris, S. schottmuelleri and M. tuberculosis.
-    >
-    > Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to > neomycin, although the majority of these are sensitive to neomycin.
-    >
-    > It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is > not understood.
+> ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
+>
+>
+> The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in > red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
+>
+> The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits > the test organism.
+>
+> High dilutions are toward the periphery; consequently the length of the colored bar is proportional > to the effectiveness.
+>
+> It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. > fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. > vulgaris, S. schottmuelleri and M. tuberculosis.
+>
+> Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to > neomycin, although the majority of these are sensitive to neomycin.
+>
+> It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is > not understood.
 
 ### schema
     
@@ -278,7 +278,7 @@ Collection of car specifications and performance metrics from various automobile
 co2-concentration.csv
 ### description
 Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. 
-    Only includes rows with valid data.
+Only includes rows with valid data.
 ### schema
     
 | name         | type   |
@@ -295,12 +295,12 @@ Scripps CO2 program data ut modified to only include date, CO2, seasonally adjus
 countries.json
 ### description
 This dataset combines key demographic indicators (life expectancy at birth and
-    fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
-    intervals. It includes both current values and adjacent time period values (previous and next)
-    for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) 
-    notes that its philosophy is to fill data gaps with estimates and use current
-    geographic boundaries for historical data. Gapminder states that it aims to "show people the
-    big picture" rather than support detailed numeric analysis.
+fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
+intervals. It includes both current values and adjacent time period values (previous and next)
+for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) 
+notes that its philosophy is to fill data gaps with estimates and use current
+geographic boundaries for historical data. Gapminder states that it aims to "show people the
+big picture" rather than support detailed numeric analysis.
 ### schema
     
 | name          | type    | description                                                              |
@@ -538,8 +538,8 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 football.json
 ### description
 Football match outcomes across multiple divisions from 2013 to 2017, part of a
-    larger dataset from OpenFootball. The subset was made such that there are records for all five
-    chosen divisions over the time period.
+larger dataset from OpenFootball. The subset was made such that there are records for all five
+chosen divisions over the time period.
 ### schema
     
 | name       | type    |
@@ -559,12 +559,12 @@ Football match outcomes across multiple divisions from 2013 to 2017, part of a
 gapminder-health-income.csv
 ### description
 Per-capita income, life expectancy, population and regional grouping. Dataset does not specify 
-    the reference year for the data. Gapminder historical data is subject to revisions.
+the reference year for the data. Gapminder historical data is subject to revisions.
 
-    Gapminder (v30, 2023) defines per-capita income as follows:
-    >"This is real GDP per capita (gross domestic product per person adjusted for inflation) 
-    >converted to international dollars using purchasing power parity rates. An international dollar 
-    >has the same purchasing power over GDP as the U.S. dollar has in the United States."
+Gapminder (v30, 2023) defines per-capita income as follows:
+>"This is real GDP per capita (gross domestic product per person adjusted for inflation) 
+>converted to international dollars using purchasing power parity rates. An international dollar 
+>has the same purchasing power over GDP as the U.S. dollar has in the United States."
 
 ### schema
     
@@ -589,27 +589,27 @@ Per-capita income, life expectancy, population and regional grouping. Dataset do
 gapminder.json
 ### description
 This dataset combines key demographic indicators (life expectancy at birth, 
-    population, and fertility rate measured as babies per woman) for various countries from 1955 
-    to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable 
-    grouping countries. Gapminder's data documentation notes that its philosophy is to fill data 
-    gaps with estimates and use current geographic boundaries for historical data. Gapminder 
-    states that it aims to "show people the big picture" rather than support detailed numeric 
-    analysis.
+population, and fertility rate measured as babies per woman) for various countries from 1955 
+to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable 
+grouping countries. Gapminder's data documentation notes that its philosophy is to fill data 
+gaps with estimates and use current geographic boundaries for historical data. Gapminder 
+states that it aims to "show people the big picture" rather than support detailed numeric 
+analysis.
 
-    Notes:
-    1. Country Selection: The set of countries in this file matches the version of this dataset 
-       originally added to this collection in 2015. The specific criteria for country selection 
-       in that version are not known. Data for Aruba are no longer available in the new version. 
-       Hong Kong has been revised to Hong Kong, China in the new version.
+Notes:
+1. Country Selection: The set of countries in this file matches the version of this dataset 
+   originally added to this collection in 2015. The specific criteria for country selection 
+   in that version are not known. Data for Aruba are no longer available in the new version. 
+   Hong Kong has been revised to Hong Kong, China in the new version.
 
-    2. Data Precision: The precision of float values may have changed from the original version. 
-       These changes reflect the most recent source data used for each indicator.
+2. Data Precision: The precision of float values may have changed from the original version. 
+   These changes reflect the most recent source data used for each indicator.
 
-    3. Regional Groupings: The 'cluster' column represents a regional mapping of countries 
-       corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
-       preserve continuity with previous versions of this dataset, we have retained the column 
-       name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
-       `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.
+3. Regional Groupings: The 'cluster' column represents a regional mapping of countries 
+   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
+   preserve continuity with previous versions of this dataset, we have retained the column 
+   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
+   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.
 ### schema
     
 | name        | type    | description                                                      |
@@ -681,9 +681,9 @@ income.json
 iowa-electricity.csv
 ### description
 The state of Iowa has dramatically increased its production of renewable 
-    wind power in recent years. This file contains the annual net generation of electricity in 
-    the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
-    It is useful for illustrating stacked area charts.
+wind power in recent years. This file contains the annual net generation of electricity in 
+the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
+It is useful for illustrating stacked area charts.
 ### schema
     
 | name           | type    |
@@ -701,25 +701,25 @@ jobs.json
 ### description
 U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
 
-    Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). 
-    The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
+Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). 
+The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
 
-    Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
+Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
 
-    IPUMS USA confirmed in 2024 correspondence that hosting this dataset on vega-datasets is permissible, stating:
-    >We're excited to hear that this dataset made its way to this repository and is being used by students for data visualization. We allow for these types of redistributions of summary data so long as the underlying microdata records are not shared.
+IPUMS USA confirmed in 2024 correspondence that hosting this dataset on vega-datasets is permissible, stating:
+>We're excited to hear that this dataset made its way to this repository and is being used by students for data visualization. We allow for these types of redistributions of summary data so long as the underlying microdata records are not shared.
 
-    This dataset contains only summary statistics and does not include any underlying microdata records.
+This dataset contains only summary statistics and does not include any underlying microdata records.
 
-    1. This dataset represents summary data. The underlying microdata records are not included.
-    2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) 
-    (person weight) variable as an expansion factor when working with IPUMS USA extracts.
-    3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current IPUMS USA data exactly.
+1. This dataset represents summary data. The underlying microdata records are not included.
+2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) 
+(person weight) variable as an expansion factor when working with IPUMS USA extracts.
+3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current IPUMS USA data exactly.
 
-    When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/terms.shtml).
-    The organization requests use of the following citation for this json file:
+When using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/terms.shtml).
+The organization requests use of the following citation for this json file:
 
-    Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0
+Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0
 
 ### schema
     
@@ -739,8 +739,8 @@ U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC
 la-riots.csv
 ### description
 More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles 
-    for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic 
-    coordinates of their death. Compiled and published by the Los Angeles Times Data Desk.
+for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic 
+coordinates of their death. Compiled and published by the Los Angeles Times Data Desk.
 ### schema
     
 | name         | type    |
@@ -765,8 +765,8 @@ More than 60 people lost their lives amid the looting and fires that ravaged Los
 londonBoroughs.json
 ### description
 Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. 
-    Original data "contains National Statistics data © Crown copyright and database right (2015)" 
-    and "Contains Ordnance Survey data © Crown copyright and database right [2015].
+Original data "contains National Statistics data © Crown copyright and database right (2015)" 
+and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 ### sources
 | title                                            | path                                                                     |
 |:-------------------------------------------------|:-------------------------------------------------------------------------|
@@ -819,23 +819,23 @@ miserables.json
 monarchs.json
 ### description
 A chronological list of English and British monarchs from Elizabeth I through George IV.
-    Each entry includes:
+Each entry includes:
 
-    The dataset contains two intentional inaccuracies to maintain compatibility with 
-    the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
-    1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
-    2. the end date for the reign of George IV is shown as 1820, instead of 1830.
-    These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
-    The entry "W&M" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, 
-    the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
-    The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
-    and the period leading to the Restoration. While historically more accurate to call this the "interregnum," the field name of `commonwealth` 
-    from the original dataset is retained for backwards compatibility.
-    The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
-    Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
-    Content on the site is protected by Crown Copyright. 
-    Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most 
-    Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+The dataset contains two intentional inaccuracies to maintain compatibility with 
+the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
+1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
+2. the end date for the reign of George IV is shown as 1820, instead of 1830.
+These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
+The entry "W&M" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, 
+the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
+The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
+and the period leading to the Restoration. While historically more accurate to call this the "interregnum," the field name of `commonwealth` 
+from the original dataset is retained for backwards compatibility.
+The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
+Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
+Content on the site is protected by Crown Copyright. 
+Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most 
+Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 ### schema
     
 | name   | type    | description                                                                                                 |
@@ -854,7 +854,7 @@ A chronological list of English and British monarchs from Elizabeth I through Ge
 movies.json
 ### description
 The dataset has well known and intentionally included errors. 
-    This dataset is provided for instructional purposes, including the need to reckon with dirty data.
+This dataset is provided for instructional purposes, including the need to reckon with dirty data.
 ### schema
     
 | name                   | type    |
@@ -899,8 +899,8 @@ obesity.json
 ohlc.json
 ### description
 This dataset contains the performance of the Chicago Board Options Exchange 
-    [Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/
-    %5EVIX#overview)) in the summer of 2009.
+[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/
+%5EVIX#overview)) in the summer of 2009.
 ### schema
     
 | name   | type   |
@@ -921,9 +921,9 @@ This dataset contains the performance of the Chicago Board Options Exchange
 penguins.json
 ### description
 Palmer Archipelago (Antarctica) penguin data collected and made available by 
-    [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) 
-    and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research 
-    Network](https://lternet.edu/).
+[Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) 
+and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research 
+Network](https://lternet.edu/).
 ### schema
     
 | name                | type    |
@@ -975,24 +975,24 @@ points.json
 political-contributions.json
 ### description
 Summary financial information on contributions to candidates for U.S. 
-    elections. An updated version of this datset is available from the "all candidates" files 
-    (in pipe-delimited format) on the bulk data download page of the U.S. Federal Election 
-    Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is 
-    available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
-    The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
+elections. An updated version of this datset is available from the "all candidates" files 
+(in pipe-delimited format) on the bulk data download page of the U.S. Federal Election 
+Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is 
+available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
+The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
 
-    FEC data is subject to the commission's:
-    - [Sale or Use Policy](https://www.fec.gov/updates/sale-or-use-contributor-information/)
-    - [Privacy and Security Policy](https://www.fec.gov/about/privacy-and-security-policy/)
-    - [Acceptable Use Policy](https://github.com/fecgov/FEC/blob/master/ACCEPTABLE-USE-POLICY.md)
+FEC data is subject to the commission's:
+- [Sale or Use Policy](https://www.fec.gov/updates/sale-or-use-contributor-information/)
+- [Privacy and Security Policy](https://www.fec.gov/about/privacy-and-security-policy/)
+- [Acceptable Use Policy](https://github.com/fecgov/FEC/blob/master/ACCEPTABLE-USE-POLICY.md)
 
-    Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:
-    > This project is in the public domain within the United States, and we waive worldwide 
-    > copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/)
-    > dedication. Read more on our license page.
-    > A few restrictions limit the way you can use FEC data. For example, you can't use 
-    > contributor lists for commercial purposes or to solicit donations. Learn more on 
-    > [FEC.gov](https://www.fec.gov/).
+Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:
+> This project is in the public domain within the United States, and we waive worldwide 
+> copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/)
+> dedication. Read more on our license page.
+> A few restrictions limit the way you can use FEC data. For example, you can't use 
+> contributor lists for commercial purposes or to solicit donations. Learn more on 
+> [FEC.gov](https://www.fec.gov/).
 ### schema
     
 | name                                          | type    |
@@ -1032,17 +1032,17 @@ Summary financial information on contributions to candidates for U.S.
 population.json
 ### description
 United States population statistics by sex and age group across decades between 1850 and 2000. 
-    The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census 
-    microdata" from as early as 1790.
+The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census 
+microdata" from as early as 1790.
 
-    IPUMS updates and revises datasets over time, which may result in discrepancies between this 
-    dataset and current IPUMS data. Details on data revisions are available here.
+IPUMS updates and revises datasets over time, which may result in discrepancies between this 
+dataset and current IPUMS data. Details on data revisions are available here.
 
-    When using this dataset, please refer to IPUMS USA terms of use. The organization requests the 
-    use of the following citation for this json file:
-    Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated 
-    Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. 
-    http://doi.org/10.18128/D010.V6.0
+When using this dataset, please refer to IPUMS USA terms of use. The organization requests the 
+use of the following citation for this json file:
+Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated 
+Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. 
+http://doi.org/10.18128/D010.V6.0
 
 ### schema
     
@@ -1061,7 +1061,7 @@ United States population statistics by sex and age group across decades between 
 population_engineers_hurricanes.csv
 ### description
 Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
-    [Three Choropleths Representing Disjoint DAta from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)
+[Three Choropleths Representing Disjoint DAta from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)
 ### schema
     
 | name       | type    |
@@ -1082,10 +1082,10 @@ Per-state data on population, number of engineers, and hurricanes. Used in Vega-
 seattle-weather-hourly-normals.csv
 ### description
 Hourly weather normals with metric units. The 1981-2010 Climate Normals are 
-    NCDC's three-decade averages of climatological variables, including temperature and 
-    precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf).
-    We only included temperature, wind, and pressure 
-    and updated the format to be easier to parse.
+NCDC's three-decade averages of climatological variables, including temperature and 
+precipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf).
+We only included temperature, wind, and pressure 
+and updated the format to be easier to parse.
 ### schema
     
 | name        | type     |
@@ -1103,8 +1103,8 @@ Hourly weather normals with metric units. The 1981-2010 Climate Normals are
 seattle-weather.csv
 ### description
 Daily weather records with metric units. Transformed using `/scripts/weather.py`. 
-    The categorical "weather" field is synthesized from multiple fields in the original dataset. 
-    This data is intended for instructional purposes.
+The categorical "weather" field is synthesized from multiple fields in the original dataset. 
+This data is intended for instructional purposes.
 ### schema
     
 | name          | type   |
@@ -1172,22 +1172,22 @@ udistrict.json
 unemployment-across-industries.json
 ### description
 Industry-level unemployment statistics from the Current Population Survey 
-    (CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons 
-    and unemployment rate across 11 private industries, as well as agricultural, government, and 
-    self-employed workers. Covers January 2000 through February 2010. Industry classification 
-    follows format of CPS Table A-31.
+(CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons 
+and unemployment rate across 11 private industries, as well as agricultural, government, and 
+self-employed workers. Covers January 2000 through February 2010. Industry classification 
+follows format of CPS Table A-31.
 
-    The dataset can be replicated using the BLS API. For more, see the `scripts` folder of this 
-    repository.
+The dataset can be replicated using the BLS API. For more, see the `scripts` folder of this 
+repository.
 
-    The BLS Web site states:
-    > "Users of the public API should cite the date that data were accessed or retrieved using 
-    > the API. Users must clearly state that "BLS.gov cannot vouch for the data or analyses 
-    > derived from these data after the data have been retrieved from BLS.gov." The BLS.gov logo 
-    > may not be used by persons who are not BLS employees or on products (including web pages) 
-    > that are not BLS-sponsored."
+The BLS Web site states:
+> "Users of the public API should cite the date that data were accessed or retrieved using 
+> the API. Users must clearly state that "BLS.gov cannot vouch for the data or analyses 
+> derived from these data after the data have been retrieved from BLS.gov." The BLS.gov logo 
+> may not be used by persons who are not BLS employees or on products (including web pages) 
+> that are not BLS-sponsored."
 
-    See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.htm).
+See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.htm).
 ### schema
     
 | name   | type     | description                                                       |
@@ -1209,31 +1209,31 @@ Industry-level unemployment statistics from the Current Population Survey
 unemployment.tsv
 ### description
 This dataset contains county-level unemployment rates in the United States, with data generally
-    consistent with levels reported in 2009. The dataset is structured as tab-separated values.
-    The unemployment rate represents the number of unemployed persons as a percentage of the labor
-    force. According to the Bureau of Labor Statistics (BLS) glossary:
+consistent with levels reported in 2009. The dataset is structured as tab-separated values.
+The unemployment rate represents the number of unemployed persons as a percentage of the labor
+force. According to the Bureau of Labor Statistics (BLS) glossary:
 
-    Unemployed persons (Current Population Survey) [are] persons aged 16 years and older who had
-    no employment during the reference week, were available for work, except for temporary
-    illness, and had made specific efforts to find employment sometime during the 4-week period
-    ending with the reference week. Persons who were waiting to be recalled to a job from which
-    they had been laid off need not have been looking for work to be classified as unemployed.
+Unemployed persons (Current Population Survey) [are] persons aged 16 years and older who had
+no employment during the reference week, were available for work, except for temporary
+illness, and had made specific efforts to find employment sometime during the 4-week period
+ending with the reference week. Persons who were waiting to be recalled to a job from which
+they had been laid off need not have been looking for work to be classified as unemployed.
 
-    This dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
-    a federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). 
-    The LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,
-    states, counties, metropolitan areas, and many cities and towns.
+This dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
+a federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). 
+The LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,
+states, counties, metropolitan areas, and many cities and towns.
 
-    For the most up-to-date LAUS data:
-    1. **Monthly and Annual Data Downloads**:
-    - Visit the [LAUS Data Tools](https://www.bls.gov/lau/data.htm) page for [monthly](https://www.bls.gov/lau/tables.htm#mcounty) 
-    and [annual](https://www.bls.gov/lau/tables.htm#cntyaa) county data.
-    2. **BLS Public Data API**:
-    - The BLS provides an API for developers to access various datasets, including LAUS data.
-    - To use the API for LAUS data, refer to the [LAUS Series ID Formats](https://www.bls.gov/help/hlpforma.htm#LA) to construct your query.
-    - API documentation and examples are available on the BLS Developers page.
+For the most up-to-date LAUS data:
+1. **Monthly and Annual Data Downloads**:
+- Visit the [LAUS Data Tools](https://www.bls.gov/lau/data.htm) page for [monthly](https://www.bls.gov/lau/tables.htm#mcounty) 
+and [annual](https://www.bls.gov/lau/tables.htm#cntyaa) county data.
+2. **BLS Public Data API**:
+- The BLS provides an API for developers to access various datasets, including LAUS data.
+- To use the API for LAUS data, refer to the [LAUS Series ID Formats](https://www.bls.gov/help/hlpforma.htm#LA) to construct your query.
+- API documentation and examples are available on the BLS Developers page.
 
-    When using BLS public data API and datasets, users should adhere to the [BLS Terms of Service](https://www.bls.gov/developers/termsOfService.htm).
+When using BLS public data API and datasets, users should adhere to the [BLS Terms of Service](https://www.bls.gov/developers/termsOfService.htm).
 ### schema
     
 | name   | type    | description                             |
@@ -1262,21 +1262,21 @@ us-10m.json
 us-employment.csv
 ### description
 In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job 
-    losses across the United States. The downturn in employment, and the slow recovery in hiring that 
-    followed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau 
-    of Labor Statistics.
+losses across the United States. The downturn in employment, and the slow recovery in hiring that 
+followed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau 
+of Labor Statistics.
 
-    This file contains the monthly employment total in a variety of job categories from January 2006 
-    through December 2015. The numbers are seasonally adjusted and reported in thousands. The data 
-    were downloaded on Nov. 11, 2018, and reformatted for use in this library.
+This file contains the monthly employment total in a variety of job categories from January 2006 
+through December 2015. The numbers are seasonally adjusted and reported in thousands. The data 
+were downloaded on Nov. 11, 2018, and reformatted for use in this library.
 
-    Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/time.series/ce/ce.supersector)
-    tracked by the BLS. The "nonfarm" total is the category typically used by 
-    economists and journalists as a stand-in for the country's employment total.
+Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/time.series/ce/ce.supersector)
+tracked by the BLS. The "nonfarm" total is the category typically used by 
+economists and journalists as a stand-in for the country's employment total.
 
-    A calculated "nonfarm_change" column has been appended with the month-to-month change in that 
-    supersector's employment. It is useful for illustrating how to make bar charts that report both 
-    negative and positive values.
+A calculated "nonfarm_change" column has been appended with the month-to-month change in that 
+supersector's employment. It is useful for illustrating how to make bar charts that report both 
+negative and positive values.
 
 ### schema
     
@@ -1326,8 +1326,8 @@ us-state-capitals.json
 volcano.json
 ### description
 Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. 
-    This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a 
-    topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate.
+This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a 
+topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate.
 ### sources
 | title      | path                                                                       |
 |:-----------|:---------------------------------------------------------------------------|
@@ -1337,7 +1337,7 @@ Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field
 weather.csv
 ### description
 NOAA data transformed using `/scripts/weather.py`. Categorical "weather" field synthesized 
-    from multiple fields in the original dataset. This data is intended for instructional purposes.
+from multiple fields in the original dataset. This data is intended for instructional purposes.
 ### schema
     
 | name          | type   |
@@ -1363,10 +1363,10 @@ Instructional dataset showing actual and predicted temperature data.
 wheat.json
 ### description
 In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),
-    a Scottish engineer who is often credited as the founder of statistical graphics, 
-    published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
-    weekly wages and the reigning monarch. He intended to demonstrate that "never at any former period 
-    was wheat so cheap, in proportion to mechanical labour, as it is at the present time."
+a Scottish engineer who is often credited as the founder of statistical graphics, 
+published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
+weekly wages and the reigning monarch. He intended to demonstrate that "never at any former period 
+was wheat so cheap, in proportion to mechanical labour, as it is at the present time."
 ### schema
     
 | name   | type    |
