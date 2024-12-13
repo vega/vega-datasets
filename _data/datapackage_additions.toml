@@ -618,8 +618,8 @@ path = "obesity.json"
 [[resources]] # Path: ohlc.json
 path = "ohlc.json"
 description = """This dataset contains the performance of the Chicago Board Options Exchange 
-[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/
-%5EVIX#overview)) in the summer of 2009."""
+[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX#overview))
+in the summer of 2009."""
 
 [[resources.sources]]
 title = "Yahoo Finance VIX Data"
@@ -720,7 +720,7 @@ path  = "https://usa.ipums.org/usa/"
 [[resources]] # Path: population_engineers_hurricanes.csv
 path = "population_engineers_hurricanes.csv"
 description = """Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
-[Three Choropleths Representing Disjoint DAta from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
+[Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
 
 [[resources.sources]]
 title = "Bureau of Labor Statistics"
@@ -934,8 +934,9 @@ path = "wheat.json"
 description = """In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),
 a Scottish engineer who is often credited as the founder of statistical graphics, 
 published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
-weekly wages and the reigning monarch. He intended to demonstrate that "never at any former period 
-was wheat so cheap, in proportion to mechanical labour, as it is at the present time.""""
+weekly wages and the reigning monarch. He intended to demonstrate that:
+> "never at any former period was wheat so cheap, in proportion to mechanical labour, \
+as it is at the present time.""""
 
 [[resources.sources]]
 title = "1822 Playfair Chart"
