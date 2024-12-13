@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-13 21:17:21 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-13 21:19:02 [UTC]
 
 Common repository for example datasets used by Vega related projects.
 
@@ -224,17 +224,17 @@ reads as follows:
 > ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
 >
 >
-> The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in > red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
+> The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
 >
-> The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits > the test organism.
+> The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits the test organism.
 >
-> High dilutions are toward the periphery; consequently the length of the colored bar is proportional > to the effectiveness.
+> High dilutions are toward the periphery; consequently the length of the colored bar is proportional to the effectiveness.
 >
-> It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. > fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. > vulgaris, S. schottmuelleri and M. tuberculosis.
+> It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. vulgaris, S. schottmuelleri and M. tuberculosis.
 >
-> Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to > neomycin, although the majority of these are sensitive to neomycin.
+> Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to neomycin, although the majority of these are sensitive to neomycin.
 >
-> It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is > not understood.
+> It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is not understood.
 
 ### schema
     
