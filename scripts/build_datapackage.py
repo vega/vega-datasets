@@ -34,6 +34,7 @@ Related
 
 from __future__ import annotations
 
+import copy
 import datetime as dt
 import json
 import logging
@@ -43,7 +44,16 @@ import warnings
 from collections.abc import Mapping, Sequence
 from functools import partial
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, NotRequired, Required, TypedDict, Unpack, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    LiteralString,
+    NotRequired,
+    Required,
+    TypedDict,
+    Unpack,
+    cast,
+)
 
 import frictionless as fl
 import polars as pl
@@ -97,6 +107,8 @@ type PythonDataType = (
     | None
 )
 
+ADDITIONS_TOML: LiteralString = "datapackage_additions.toml"
+NPM_PACKAGE: Literal["package.json"] = "package.json"
 
 POLARS_PY_TO_FL_FIELD: Mapping[PythonDataType, type[fl.Field]] = {
     int: IntegerField,
@@ -283,9 +295,9 @@ class PackageMeta(TypedDict):
     version: str
     homepage: str
     description: str
-    licenses: Sequence[License]
+    licenses: NotRequired[Sequence[License]]
     contributors: Sequence[Contributor]
-    sources: Sequence[Source]
+    sources: NotRequired[Sequence[Source]]
     created: str
 
 
@@ -296,7 +308,7 @@ def frame_to_schema(frame: pl.LazyFrame | pl.DataFrame, /) -> fl.Schema:
     )
 
 
-def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
+def _extract_npm_metadata(m: Mapping[str, Any], /) -> PackageMeta:
     """
     Repurpose `package.json`_ for the `Data Package`_ standard.
 
@@ -305,25 +317,12 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
     .. _Data Package:
         https://datapackage.org/standard/data-package/#properties
     """
-    fp: Path = repo_root / "package.json"
-    with fp.open(encoding="utf-8") as f:
-        m = json.load(f)
-    if not isinstance(m, Mapping):
-        msg = f"Unexpected type returned from {fp!r}\n{type(m).__name__!r}"
-        raise TypeError(msg)
     return PackageMeta(
         name=m["name"],
         version=m["version"],
         homepage=m["repository"]["url"],
         description=m["description"],
         contributors=[Contributor(title=m["author"]["name"], path=m["author"]["url"])],
-        licenses=[
-            License(
-                name=m["license"],
-                path="https://opensource.org/license/bsd-3-clause",
-                title="The 3-Clause BSD License",
-            )
-        ],
         sources=[
             Source(path="https://github.com/vega/vega-datasets/blob/next/SOURCES.md")
         ],
@@ -331,10 +330,74 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
     )
 
 
-def extract_overrides(mapping: Mapping[str, Any], /) -> dict[str, ResourceMeta]:
-    if (resources := mapping.get("resources")) and isinstance(resources, Sequence):
+def _merge_package_metadata(
+    pkg_meta: PackageMeta, additions: Mapping[str, Any], /
+) -> PackageMeta:
+    # defined in frictionless spec
+    spec_keys = PackageMeta.__optional_keys__.union(PackageMeta.__required_keys__)
+
+    if unknown_keys := set(additions).difference(spec_keys):
+        msg = (
+            f"`additions` contains keys that are out of spec:\n"
+            f"{sorted(unknown_keys)!r}\n\n"
+            f"Try updating {PackageMeta.__name__!r} or remove them from {ADDITIONS_TOML!r}"
+        )
+        raise TypeError(msg)
+
+    additions = dict(copy.deepcopy(additions))
+
+    # relevant from `datapackage_additions.toml`
+    incoming_keys = spec_keys.intersection(additions)
+
+    # In both `package.json` & `datapackage_additions.toml`
+    overlapping_keys = incoming_keys.intersection(pkg_meta)
+
+    changes = dict[str, Any](copy.deepcopy(pkg_meta))
+
+    # Extract and handle colliding content
+    for k in overlapping_keys:
+        item = pkg_meta[k]
+        extra = additions.pop(k)
+        if type(item) is not type(extra):
+            msg = (
+                f"Mismatched types for overlapping key {k!r}:\n"
+                f"Current   : {type(item).__name__!r}, {item!r}\n"
+                f"Incoming  : {type(extra).__name__!r}, {extra!r}"
+            )
+            raise TypeError(msg)
+        if isinstance(item, str) or not isinstance(item, Sequence | Mapping):
+            msg = f"Overriding overlapping key {k!r}\nCurrent   : {item!r}\nIncoming  : {extra!r}"
+            logger.warning(msg, stacklevel=2)
+            changes[k] = extra
+        elif isinstance(item, Sequence):
+            changes[k] = [*item, extra]
+        else:
+            msg = (
+                f"Expected only lists of mappings or single values, "
+                f"but got:{type(item).__name__!r}\n{item!r}\n\n{extra!r}"
+            )
+            raise NotImplementedError(msg)
+
+    # Remaining are in-spec and only in `datapackage_additions.toml`
+    changes |= additions
+    return PackageMeta(**changes)
+
+
+def extract_package_metadata(
+    npm: Mapping[str, Any], sources: Mapping[str, Any], /
+) -> PackageMeta:
+    pkg_meta = _extract_npm_metadata(npm)
+    return _merge_package_metadata(pkg_meta, sources)
+
+
+def extract_overrides(resources: Any, /) -> dict[str, ResourceMeta]:
+    if isinstance(resources, Sequence):
         return dict(iter_parse_resources(resources))
-    raise TypeError(resources)
+    msg = (
+        f"Expected `resources` to be an array of tables, but got:"
+        f"\n{type(resources).__name__!r}\n\n{resources!r}"
+    )
+    raise TypeError(msg)
 
 
 def iter_parse_resources(
@@ -382,8 +445,13 @@ def iter_resources(
             continue
 
 
-def read_toml(fp: Path, /) -> Mapping[str, Any]:
+def read_toml(fp: Path, /) -> dict[str, Any]:
     return tomllib.loads(fp.read_text("utf-8"))
+
+
+def read_json(fp: Path, /) -> Any:
+    with fp.open(encoding="utf-8") as f:
+        return json.load(f)
 
 
 def main(
@@ -396,15 +464,16 @@ def main(
         raise TypeError(msg)
     repo_dir: Path = Path(__file__).parent.parent
     data_dir: Path = repo_dir / "data"
-    sources_toml: Path = repo_dir / "_data" / "datapackage_additions.toml"
+    sources_toml: Path = repo_dir / "_data" / ADDITIONS_TOML
+    npm_json = repo_dir / NPM_PACKAGE
 
+    npm_package = read_json(npm_json)
     sources = read_toml(sources_toml)
-    # NOTE: Package metadata is expected to be stored in `sources` in the future
-    overrides = extract_overrides(sources)
+    overrides = extract_overrides(sources.pop("resources"))
     # NOTE: Forcing base directory here
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
-    pkg_meta = extract_package_metadata(repo_dir)
+    pkg_meta = extract_package_metadata(npm_package, sources)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
     pkg = Package(resources=list(iter_resources(data_dir, overrides)), **pkg_meta)  # type: ignore[arg-type]
