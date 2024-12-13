@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | ([GitHub](http://github.com/vega/vega-datasets.git)) | (2024-12-13T18:45:28.671592+00:00)
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-13 21:05:54 [UTC]
 
 Common repository for example datasets used by Vega related projects.
 

@@ -150,6 +150,19 @@ GeoResource: ResourceConstructor = partial(
 )
 
 
+def fmt_date(s: str, /) -> str:
+    """
+    Reformat `package.created` at a lower resolution.
+
+    Use a friendlier date format for markdown.
+    """
+    datetime = dt.datetime.fromisoformat(s)
+    dt_fmt = datetime.replace(tzinfo=None).isoformat(sep=" ", timespec="seconds")
+    if tzname := datetime.tzname():
+        return f"{dt_fmt} [{tzname}]"
+    return dt_fmt
+
+
 def render_markdown_patch(path: str, data: dict[str, Any]) -> str:
     """
     Patch to `frictionless.formats.markdown.mapper.render_markdown`_ to support template overrides.
@@ -182,6 +195,7 @@ def render_markdown_patch(path: str, data: dict[str, Any]) -> str:
     environ.filters["filter_dict"] = fl_markdown.filter_dict
     environ.filters["dict_to_markdown"] = fl_markdown.dict_to_markdown
     environ.filters["tabulate"] = fl_markdown.dicts_to_markdown_table
+    environ.filters["fmt_date"] = fmt_date
     template = environ.get_template(path)
     return template.render(**data)
 

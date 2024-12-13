@@ -1,5 +1,5 @@
 # {{ package.name }}
-`{{ package.version }}` | ([GitHub]({{ package.homepage }})) | ({{ package.created }})
+`{{ package.version }}` | [GitHub]({{ package.homepage }}) | {{ package.created  | fmt_date()}}
 
 {{ package.description }}
 
