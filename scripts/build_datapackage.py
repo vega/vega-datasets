@@ -423,7 +423,7 @@ def _merge_package_metadata(
             logger.warning(msg, stacklevel=2)
             changes[k] = extra
         elif isinstance(item, Sequence):
-            changes[k] = [*item, extra]
+            changes[k] = [*item, *extra]
         else:
             msg = (
                 f"Expected only lists of mappings or single values, "
