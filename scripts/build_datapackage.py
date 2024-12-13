@@ -156,19 +156,30 @@ class ResourceAdapter:
     """https://www.iana.org/assignments/media-types/application/vnd.apache.arrow.file"""
 
     @classmethod
-    def from_path(cls, source: Path, /) -> Resource | None:
-        suffix = source.suffix
-        match suffix:
+    def is_supported(cls, source: Path, /) -> bool:
+        return source.suffix in {
+            ".csv",
+            ".tsv",
+            ".json",
+            ".parquet",
+            ".png",
+            ".jpg",
+            ".arrow",
+        }
+
+    @classmethod
+    def from_path(cls, source: Path, /) -> Resource:
+        match source.suffix:
             case ".csv" | ".tsv" | ".parquet":
                 return cls.from_tabular_safe(source)
             case ".json":
                 return cls.from_json(source)
-            case ".png":
+            case ".png" | ".jpg":
                 return cls.from_image(source)
             case ".arrow":
                 return cls.from_arrow(source)
             case _:
-                return None
+                raise TypeError(source.suffix)
 
     @classmethod
     def infer_as(cls, source: Path, tp: ResourceConstructor, /) -> Resource:
@@ -436,15 +447,15 @@ def iter_resources(
         Additional metadata, with a higher precedence than inferred.
     """
     for fp in iter_data_dir(root):
-        if resource := ResourceAdapter.from_path(fp):
-            name = fp.name
-            if name in overrides:
-                resource = ResourceAdapter.with_extras(resource, **overrides[name])
-            yield resource
-        else:
+        if not ResourceAdapter.is_supported(fp):
             msg = f"Skipping unexpected extension {fp.suffix!r}\n\n{fp!r}"
             warnings.warn(msg, stacklevel=2)
             continue
+        resource = ResourceAdapter.from_path(fp)
+        name = fp.name
+        if name in overrides:
+            resource = ResourceAdapter.with_extras(resource, **overrides[name])
+        yield resource
 
 
 def read_toml(fp: Path, /) -> dict[str, Any]:
