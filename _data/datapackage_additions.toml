@@ -534,7 +534,7 @@ path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-londo
 
 [[resources]] # Path: londonCentroids.json
 path        = "londonCentroids.json"
-description = """Calculated from `londongBoroughs.json` using `d3.geoCentroid`."""
+description = """Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid)."""
 
 [[resources]] # Path: londonTubeLines.json
 path        = "londonTubeLines.json"

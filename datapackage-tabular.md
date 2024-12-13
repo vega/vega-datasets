@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | ([GitHub](http://github.com/vega/vega-datasets.git)) | (2024-12-13T18:37:59.958722+00:00)
+`2.11.0` | ([GitHub](http://github.com/vega/vega-datasets.git)) | (2024-12-13T18:45:28.671592+00:00)
 
 Common repository for example datasets used by Vega related projects.
 
@@ -775,7 +775,7 @@ Boundaries of London boroughs reprojected and simplified from `London_Borough_Ex
 ### path
 londonCentroids.json
 ### description
-Calculated from `londongBoroughs.json` using `d3.geoCentroid`.
+Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid).
 ### schema
     
 | name   | type   |
