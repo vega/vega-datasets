@@ -38,6 +38,7 @@ import datetime as dt
 import json
 import logging
 import os
+import tomllib
 import warnings
 from collections.abc import Mapping, Sequence
 from functools import partial
@@ -296,7 +297,8 @@ def frame_to_schema(frame: pl.LazyFrame | pl.DataFrame, /) -> fl.Schema:
 
 
 def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
-    """Repurpose `package.json`_ for the `Data Package`_ standard.
+    """
+    Repurpose `package.json`_ for the `Data Package`_ standard.
 
     .. _package.json:
         https://github.com/vega/vega-datasets/blob/main/package.json
@@ -332,8 +334,7 @@ def extract_package_metadata(repo_root: Path, /) -> PackageMeta:
 def extract_overrides(mapping: Mapping[str, Any], /) -> dict[str, ResourceMeta]:
     if (resources := mapping.get("resources")) and isinstance(resources, Sequence):
         return dict(iter_parse_resources(resources))
-    else:
-        raise TypeError(resources)
+    raise TypeError(resources)
 
 
 def iter_parse_resources(
@@ -382,8 +383,6 @@ def iter_resources(
 
 
 def read_toml(fp: Path, /) -> Mapping[str, Any]:
-    import tomllib
-
     return tomllib.loads(fp.read_text("utf-8"))
 
 
@@ -393,7 +392,7 @@ def main(
     output_format: Literal["json", "yaml", "both"] = "json",
 ) -> None:
     if output_format not in {"json", "yaml", "both"}:
-        msg = f"Expected one of {["json", "yaml", "both"]!r} but got {output_format!r}"
+        msg = f"Expected one of {['json', 'yaml', 'both']!r} but got {output_format!r}"
         raise TypeError(msg)
     repo_dir: Path = Path(__file__).parent.parent
     data_dir: Path = repo_dir / "data"
@@ -406,18 +405,19 @@ def main(
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
     pkg_meta = extract_package_metadata(repo_dir)
-    logger.info(
-        f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
-    )
+    msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
+    logger.info(msg)
     pkg = Package(resources=list(iter_resources(data_dir, overrides)), **pkg_meta)  # type: ignore[arg-type]
-    logger.info(f"Collected {len(pkg.resources)} resources")
+    msg = f"Collected {len(pkg.resources)} resources"
+    logger.info(msg)
     if output_format in {"json", "both"}:
         p = (repo_dir / f"{stem}.json").as_posix()
-        logger.info(f"Writing {p!r}")
+        logger.info(msg)
         pkg.to_json(p)
     if output_format in {"yaml", "both"}:
         p = (repo_dir / f"{stem}.yaml").as_posix()
-        logger.info(f"Writing {p!r}")
+        msg = f"Writing {p!r}"
+        logger.info(msg)
         pkg.to_yaml(p)
 
 
