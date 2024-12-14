@@ -13,11 +13,7 @@ requires-python = ">=3.12"
 version = "2.11.0"
 
 [dependency-groups]
-dev = [
-    "ipython[kernel]>=8.30.0",
-    "ruff>=0.8.2",
-    "taplo>=0.9.3",
-]
+dev = ["ipython[kernel]>=8.30.0", "ruff>=0.8.2", "taplo>=0.9.3"]
 
 [tool.ruff]
 extend-exclude = [
@@ -30,7 +26,7 @@ extend-exclude = [
   "scripts/update_gapminder.py",
   "scripts/weather.py",
   # TEMPORARY
-  # "scripts/build_datapackage.py",
+  "scripts/build_datapackage.py",
 ]
 target-version = "py312"
 
