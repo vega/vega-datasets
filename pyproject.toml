@@ -28,180 +28,87 @@ extend-exclude = [
   # TEMPORARY
   "scripts/build_datapackage.py",
 ]
+format = { docstring-code-format = true, preview = true }
 target-version = "py312"
-
-[tool.ruff.format]
-docstring-code-format      = true
-docstring-code-line-length = 88
-preview                    = true
 
 [tool.ruff.lint]
 extend-safe-fixes = [
-  # unnecessary-comprehension-in-call
-  "C419",
-  # unnecessary-dict-comprehension-for-iterable
-  "C420",
-  # literal-membership
-  "PLR6201",
-  # unsorted-dunder-all
-  "RUF022",
-  # trailing-whitespace
-  "W291",
-  # blank line contains whitespace
-  "W293",
-  # annotations #
-  # ----------- #
-  "ANN204",
-  "TC",
-  "UP006",
-  "UP008",
-  # pydocstyle #
-  # ---------- #
-  # fits-on-one-line
-  "D200",
-  # escape-sequence-in-docstring
-  "D301",
-  # ends-in-period
-  "D400",
-  # assign exception msg to variable #
-  # -------------------------------- #
-  "EM101",
-  "EM102",
+  # https://docs.astral.sh/ruff/linter/#fix-safety
+  "C4",      # flake8-comprehensions
+  "D",       # pydocstyle 
+  "EM",      # flake8-errmsg
+  "PLC",     # pylint (Convention)
+  "PLR6201", # literal-membership (https://docs.astral.sh/ruff/rules/literal-membership/#fix-safety)
+  "TC",      # flake8-type-checking
+  "UP",      # pyupgrade
 ]
 extend-select = [
-  # root-logger-call
-  "LOG015",
-  # refurb
-  "FURB",
-  # pylint (preview) autofix #
-  # ------------------------ #
-  # unnecessary-dunder-call 
-  "PLC2801",
-  # unnecessary-dict-index-lookup
-  "PLR1733",
-  # unnecessary-list-index-lookup
-  "PLR1736",
-  # literal-membership
-  "PLR6201",
-  # unspecified-encoding
-  "PLW1514",
+  # https://docs.astral.sh/ruff/preview/#using-rules-that-are-in-preview
+  "FURB",    # refurb
+  "LOG015",  # root-logger-call
+  "PLR1733", # unnecessary-dict-index-lookup
+  "PLR1736", # unnecessary-list-index-lookup
+  "PLR6201", # literal-membership
+  "PLW1514", # unspecified-encoding
 ]
 ignore = [
-  # Whitespace before ':'
-  "E203",
-  # Line too long
-  "E501",
-  # mutable-class-default
-  "RUF012",
-  # pydocstyle/ https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules #
-  # ------------------------------------------------------------------------- #
-  # undocumented-public-module
-  "D100",
-  # undocumented-public-class
-  "D101",
-  # undocumented-public-method  
-  "D102",
-  # undocumented-public-function  
-  "D103",
-  # undocumented-public-package   
-  "D104",
-  # undocumented-magic-method 
-  "D105",
-  # undocumented-public-init  
-  "D107",
-  # indent-with-spaces
-  "D206",
-  # multi-line-summary-first-line ((D213) is the opposite of this)
-  "D212",
-  # Imperative mood   
-  "D401",
-  # Blank line after last section 
-  "D413",
-  # doc-line-too-long
-  "W505",
-  # Any as annotation
-  "ANN401",
+  "ANN401", # any-type
+  "D100",   # undocumented-public-module
+  "D101",   # undocumented-public-class
+  "D102",   # undocumented-public-method  
+  "D103",   # undocumented-public-function  
+  "D104",   # undocumented-public-package  
+  "D105",   # undocumented-magic-method 
+  "D107",   # undocumented-public-init 
+  "D206",   # indent-with-spaces (https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules)
+  "D212",   # multi-line-summary-first-line (conflicts w/ select = D213)
+  "D401",   # non-imperative-mood
+  "D413",   # blank-line-after-last-section
+  "E501",   # line-too-long (https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules)
+  "W505",   # doc-line-too-long (no auto-fix)
 ]
+isort = { split-on-trailing-comma = false }
 preview = true
 pydocstyle = { convention = "numpy" }
 select = [
-  # flake8-annotations
-  "ANN",
-  # flake8-bugbear
-  "B",
-  # flake8-comprehensions
-  "C4",
-  # complex-structure
-  "C901",
-  # pydocstyle
-  "D",
-  # multi-line-summary-second-line
-  "D213",
-  # pycodestyle-error
-  "E",
-  # flake8-errmsg
-  "EM",
-  # pyflakes
-  "F",
-  # flake8-future-annotations
-  "FA",
-  # flynt
-  "FLY",
-  # logging-f-string
-  "G004",
-  # unsorted-imports
-  "I001",
-  # flake8-logging
-  "LOG",
-  # flake8-pie
-  "PIE",
-  # pylint (Convention)
-  "PLC",
-  # flake8-use-pathlib
-  "PTH",
-  # unnecessary-type-union
-  "PYI055",
-  # unnecessary-assign
-  "RET504",
-  # superfluous-else-return
-  "RET505",
-  # Ruff-specific rules
-  "RUF",
-  # flake8-simplify
-  "SIM",
-  # flake8-type-checking
-  "TC",
-  # flake8-tidy-imports
-  "TID",
-  # pyupgrade
-  "UP",
-  # pycodestyle-warning
-  "W",
-  # pylint (stable) autofix #
-  # ----------------------- #
-  # manual-from-import
-  "PLR0402",
-  # useless-return
-  "PLR1711",
-  # repeated-equality-comparison
-  "PLR1714",
-  # collapsible-else-if
-  "PLR5501",
-  # useless-else-on-loop
-  "PLW0120",
-  # subprocess-run-without-check
-  "PLW1510",
-  # nested-min-max
-  "PLW3301",
+  "ANN",     # flake8-annotations
+  "B",       # flake8-bugbear
+  "C4",      # flake8-comprehensions
+  "C90",     # mccabe (complex-structure)
+  "D",       # pydocstyle
+  "D213",    # multi-line-summary-second-line
+  "E",       # pycodestyle-error
+  "EM",      # flake8-errmsg
+  "F",       # pyflakes
+  "FA",      # flake8-future-annotations
+  "FLY",     # flynt
+  "G004",    # logging-f-string
+  "I",       # isort
+  "LOG",     # flake8-logging
+  "PIE",     # flake8-pie
+  "PLC",     # pylint (Convention)
+  "PLR0402", # manual-from-import
+  "PLR1711", # useless-return
+  "PLR1714", # repeated-equality-comparison
+  "PLR5501", # collapsible-else-if
+  "PLW0120", # useless-else-on-loop
+  "PLW1510", # subprocess-run-without-check
+  "PLW3301", # nested-min-max
+  "PTH",     # flake8-use-pathlib
+  "PYI055",  # unnecessary-type-union
+  "RET504",  # unnecessary-assign
+  "RET505",  # superfluous-else-return
+  "RUF",     # Ruff-specific rules
+  "SIM",     # flake8-simplify
+  "TC",      # flake8-type-checking
+  "TID",     # flake8-tidy-imports
+  "UP",      # pyupgrade
+  "W",       # pycodestyle-warning
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb"      = ["ANN", "F401", "W391"]
 "*/**/*.ipynb" = ["ANN", "F401", "W391"]
-
-[tool.ruff.lint.isort]
-extra-standard-library  = ["typing_extensions"]
-split-on-trailing-comma = false
 
 [tool.pyright]
 enableExperimentalFeatures = true
