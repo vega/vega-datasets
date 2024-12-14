@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-13 21:28:31 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-14 15:02:06 [UTC]
 
 Common repository for example datasets used by Vega related projects.
 
@@ -1367,6 +1367,7 @@ a Scottish engineer who is often credited as the founder of statistical graphics
 published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
 weekly wages and the reigning monarch. He intended to demonstrate that:
 > "never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time."
+
 ### schema
     
 | name   | type    |

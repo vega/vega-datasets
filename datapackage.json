@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-13T21:28:31.574330+00:00",
+  "created": "2024-12-14T15:02:06.096232+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -3028,7 +3028,7 @@
     {
       "name": "wheat.json",
       "type": "table",
-      "description": "In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),\na Scottish engineer who is often credited as the founder of statistical graphics, \npublished an elegant chart on the price of wheat. It plots 250 years of prices alongside \nweekly wages and the reigning monarch. He intended to demonstrate that:\n> \"never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time.\"",
+      "description": "In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),\na Scottish engineer who is often credited as the founder of statistical graphics, \npublished an elegant chart on the price of wheat. It plots 250 years of prices alongside \nweekly wages and the reigning monarch. He intended to demonstrate that:\n> \"never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time.\"\n",
       "sources": [
         {
           "title": "1822 Playfair Chart",

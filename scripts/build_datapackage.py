@@ -526,7 +526,7 @@ def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
     configs: dict[OutputFormat, tuple[str, PackageMethod[str]]] = {
         "json": (".json", partial(Package.to_json)),
         "yaml": (".yaml", partial(Package.to_yaml)),
-        "md": ("-tabular.md", partial(Package.to_markdown, table=True)),
+        "md": (".md", partial(Package.to_markdown, table=True)),
     }
     for fmt in formats:
         postfix, fn = configs[fmt]
