@@ -364,7 +364,7 @@ class PackageMeta(TypedDict):
     name: str
     version: str
     homepage: str
-    description: str
+    description: NotRequired[str]
     licenses: NotRequired[Sequence[License]]
     contributors: Sequence[Contributor]
     sources: NotRequired[Sequence[Source]]
@@ -391,7 +391,6 @@ def _extract_npm_metadata(m: Mapping[str, Any], /) -> PackageMeta:
         name=m["name"],
         version=m["version"],
         homepage=m["repository"]["url"],
-        description=m["description"],
         contributors=[Contributor(title=m["author"]["name"], path=m["author"]["url"])],
         created=dt.datetime.now(dt.UTC).isoformat(),
     )
