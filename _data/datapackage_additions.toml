@@ -1,3 +1,10 @@
+description = """
+Common repository for example datasets used by Vega related projects. 
+BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
+complies with the license terms of the original sources. Dataset license information, where included, 
+is a reference starting point only and is provided without any warranty of accuracy or completeness.
+"""
+
 [[licenses]]
 name  = "BSD-3-Clause"
 path  = "https://opensource.org/license/bsd-3-clause"

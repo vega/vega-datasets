@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "description": "Common repository for example datasets used by Vega related projects.",
+  "description": "Common repository for example datasets used by Vega related projects. \nBSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets \ncomplies with the license terms of the original sources. Dataset license information, where included, \nis a reference starting point only and is provided without any warranty of accuracy or completeness.\n",
   "homepage": "http://github.com/vega/vega-datasets.git",
   "licenses": [
     {
@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-14T15:02:06.096232+00:00",
+  "created": "2024-12-14T16:23:18.638262+00:00",
   "resources": [
     {
       "name": "7zip.png",
