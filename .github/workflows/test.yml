@@ -28,6 +28,9 @@ jobs:
           version: ">=0.5.0"
           enable-cache: true
 
+      - name: Format toml
+        run: uvx taplo fmt
+
       - name: Install Node dependencies
         run: npm ci
 
