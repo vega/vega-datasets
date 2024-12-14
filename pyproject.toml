@@ -1,0 +1,217 @@
+#:schema https://json.schemastore.org/pyproject.json
+[project]
+dependencies = [
+  "frictionless[json,parquet]>=5.18.0",
+  "niquests>=3.11.2",
+  "polars>=1.17.1",
+  "tomli-w>=1.1.0",
+]
+description = "Common repository for example datasets used by Vega related projects."
+name = "vega-datasets"
+readme = "README.md"
+requires-python = ">=3.12"
+version = "2.11.0"
+
+[dependency-groups]
+dev = [
+    "ipython[kernel]>=8.30.0",
+    "ruff>=0.8.2",
+    "taplo>=0.9.3",
+]
+
+[tool.ruff]
+extend-exclude = [
+  ".venv",
+  "scripts/budget.py",
+  "scripts/flights.py",
+  "scripts/github.py",
+  "scripts/make-unemployment-across-industries.py",
+  "scripts/update_countries_json.py",
+  "scripts/update_gapminder.py",
+  "scripts/weather.py",
+  # TEMPORARY
+  # "scripts/build_datapackage.py",
+]
+target-version = "py312"
+
+[tool.ruff.format]
+docstring-code-format      = true
+docstring-code-line-length = 88
+preview                    = true
+
+[tool.ruff.lint]
+extend-safe-fixes = [
+  # unnecessary-comprehension-in-call
+  "C419",
+  # unnecessary-dict-comprehension-for-iterable
+  "C420",
+  # literal-membership
+  "PLR6201",
+  # unsorted-dunder-all
+  "RUF022",
+  # trailing-whitespace
+  "W291",
+  # blank line contains whitespace
+  "W293",
+  # annotations #
+  # ----------- #
+  "ANN204",
+  "TC",
+  "UP006",
+  "UP008",
+  # pydocstyle #
+  # ---------- #
+  # fits-on-one-line
+  "D200",
+  # escape-sequence-in-docstring
+  "D301",
+  # ends-in-period
+  "D400",
+  # assign exception msg to variable #
+  # -------------------------------- #
+  "EM101",
+  "EM102",
+]
+extend-select = [
+  # root-logger-call
+  "LOG015",
+  # refurb
+  "FURB",
+  # pylint (preview) autofix #
+  # ------------------------ #
+  # unnecessary-dunder-call 
+  "PLC2801",
+  # unnecessary-dict-index-lookup
+  "PLR1733",
+  # unnecessary-list-index-lookup
+  "PLR1736",
+  # literal-membership
+  "PLR6201",
+  # unspecified-encoding
+  "PLW1514",
+]
+ignore = [
+  # Whitespace before ':'
+  "E203",
+  # Line too long
+  "E501",
+  # mutable-class-default
+  "RUF012",
+  # pydocstyle/ https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules #
+  # ------------------------------------------------------------------------- #
+  # undocumented-public-module
+  "D100",
+  # undocumented-public-class
+  "D101",
+  # undocumented-public-method  
+  "D102",
+  # undocumented-public-function  
+  "D103",
+  # undocumented-public-package   
+  "D104",
+  # undocumented-magic-method 
+  "D105",
+  # undocumented-public-init  
+  "D107",
+  # indent-with-spaces
+  "D206",
+  # multi-line-summary-first-line ((D213) is the opposite of this)
+  "D212",
+  # Imperative mood   
+  "D401",
+  # Blank line after last section 
+  "D413",
+  # doc-line-too-long
+  "W505",
+  # Any as annotation
+  "ANN401",
+]
+preview = true
+pydocstyle = { convention = "numpy" }
+select = [
+  # flake8-annotations
+  "ANN",
+  # flake8-bugbear
+  "B",
+  # flake8-comprehensions
+  "C4",
+  # complex-structure
+  "C901",
+  # pydocstyle
+  "D",
+  # multi-line-summary-second-line
+  "D213",
+  # pycodestyle-error
+  "E",
+  # flake8-errmsg
+  "EM",
+  # pyflakes
+  "F",
+  # flake8-future-annotations
+  "FA",
+  # flynt
+  "FLY",
+  # logging-f-string
+  "G004",
+  # unsorted-imports
+  "I001",
+  # flake8-logging
+  "LOG",
+  # flake8-pie
+  "PIE",
+  # pylint (Convention)
+  "PLC",
+  # flake8-use-pathlib
+  "PTH",
+  # unnecessary-type-union
+  "PYI055",
+  # unnecessary-assign
+  "RET504",
+  # superfluous-else-return
+  "RET505",
+  # Ruff-specific rules
+  "RUF",
+  # flake8-simplify
+  "SIM",
+  # flake8-type-checking
+  "TC",
+  # flake8-tidy-imports
+  "TID",
+  # pyupgrade
+  "UP",
+  # pycodestyle-warning
+  "W",
+  # pylint (stable) autofix #
+  # ----------------------- #
+  # manual-from-import
+  "PLR0402",
+  # useless-return
+  "PLR1711",
+  # repeated-equality-comparison
+  "PLR1714",
+  # collapsible-else-if
+  "PLR5501",
+  # useless-else-on-loop
+  "PLW0120",
+  # subprocess-run-without-check
+  "PLW1510",
+  # nested-min-max
+  "PLW3301",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"*.ipynb"      = ["ANN", "F401", "W391"]
+"*/**/*.ipynb" = ["ANN", "F401", "W391"]
+
+[tool.ruff.lint.isort]
+extra-standard-library  = ["typing_extensions"]
+split-on-trailing-comma = false
+
+[tool.pyright]
+enableExperimentalFeatures = true
+ignore                     = ["../../../**/Lib", ".venv"]
+include                    = ["./scripts/build_datapackage.py", "./scripts/flights2.py"]
+pythonPlatform             = "All"
+pythonVersion              = "3.12"
+reportUnusedExpression     = "none"
+typeCheckingMode           = "basic"
