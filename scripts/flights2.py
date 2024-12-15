@@ -443,13 +443,13 @@ class Flights:
     def _existing_stems(self) -> set[str]:
         return {_without_suffixes(fp.name) for fp in app.input_dir.glob(PATTERN_GZIP)}
 
-    async def _download_into_gzip(self, names: Iterable[str], /) -> list[Path]:
+    async def _download_sources_async(self, names: Iterable[str], /) -> list[Path]:
         """Request, write missing data."""
-        it = (
-            _write_rezip_async(self.input_dir, buf)
-            for buf in await _request_all_async(names)
-        )
-        return await asyncio.gather(*it)
+        session = niquests.AsyncSession(base_url=ROUTE_ZIP)
+        aws = (_request_async(session, name) for name in names)
+        buffers = await asyncio.gather(*aws)
+        writes = (_write_rezip_async(self.input_dir, buf) for buf in buffers)
+        return await asyncio.gather(*writes)
 
     def download_sources(self) -> None:
         """Detect and download any missing monthly flights data - which are required by specs."""
@@ -461,7 +461,7 @@ class Flights:
                 logger.warning("Downloads may exceed 100MB")
             if len(missing) >= 11:
                 logger.warning("Total number of rows will exceed 5_000_000")
-            asyncio.run(self._download_into_gzip(missing))
+            asyncio.run(self._download_sources_async(missing))
             logger.info("Successfully downloaded all missing sources.")
         else:
             logger.info("Sources already downloaded.")
@@ -499,15 +499,6 @@ async def _request_async(session: niquests.AsyncSession, name: str, /) -> io.Byt
         raise NotImplementedError(msg)
 
 
-async def _request_all_async(names: Iterable[str], /) -> list[io.BytesIO]:
-    session = niquests.AsyncSession(base_url=ROUTE_ZIP)
-    return await asyncio.gather(*(_request_async(session, name) for name in names))
-
-
-async def _write_rezip_async(input_dir: Path, buf: io.BytesIO, /) -> Path:
-    return await asyncio.to_thread(_write_rezip, input_dir, buf)
-
-
 def _write_rezip(input_dir: Path, buf: io.BytesIO, /) -> Path:
     """
     Extract inner csv from a zip file, writing to a gzipped csv of the same name.
@@ -527,6 +518,16 @@ def _write_rezip(input_dir: Path, buf: io.BytesIO, /) -> Path:
     with gzip.GzipFile(gzipped, mode="wb", mtime=0) as f:
         f.write(zip_csv.read_bytes())
     return gzipped
+
+
+async def _write_rezip_async(input_dir: Path, buf: io.BytesIO, /) -> Path:
+    """
+    Wraps ``_write_rezip`` to run in a separate thread.
+
+    - **Greatly** reduces the cost of the decompress > compress operations
+    - During testing, each write would block for ~10s
+    """
+    return await asyncio.to_thread(_write_rezip, input_dir, buf)
 
 
 def _file_stem_source[T: (str, pl.Expr)](year: T, month: T, /) -> pl.Expr:
