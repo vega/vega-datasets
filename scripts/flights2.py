@@ -51,9 +51,14 @@ type Rows = Literal[
     500_000_000,
     1_000_000_000,
 ]
+"""Number of rows to include in the output."""
+
 type Extension = Literal[".arrow", ".csv", ".json", ".parquet"]
-type Columns = Literal[
+"""File extension/output format."""
+
+type Column = Literal[
     "date",
+    "time",
     "delay",
     "distance",
     "origin",
@@ -61,15 +66,47 @@ type Columns = Literal[
     "ScheduledFlightDate",
     "ScheduledFlightTime",
     "DepDelay",
-    "time",
 ]
+"""
+Columns available for ``flights`` datasets.
+
+Descriptions
+------------
+*date*
+    Either a **datetime-typed** value, or a formatted datetime string
+*time*
+    Either a **time-typed** value, or decimal hours.minutes when using decimal format (e.g., 6.5 for 6:30)
+*distance*
+    Flight distance in miles (integer)
+*delay*
+    Arrival delay in minutes (integer)
+*origin*
+    Origin airport code
+*destination*
+    Destination airport code
+*ScheduledFlightDate*
+    Original scheduled flight date (YYYY-MM-DD)
+*ScheduledFlightTime*
+    Original scheduled departure time (HHMM)
+*DepDelay*
+    Departure delay in minutes (integer)
+
+See Also
+--------
+- https://www.bts.gov/topics/airlines-and-airports/world-airport-codes
+- https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
+"""
+
 type YearMonthDay = tuple[int, int, int] | Sequence[int]
 """Arguments passed to ``datetime.date(...)``."""
 
 type IntoDate = dt.date | dt.datetime | YearMonthDay
 """Anything that can be converted into a ``datetime.date``."""
 
-type Dates = tuple[IntoDate, IntoDate] | Mapping[Literal["start", "end"], IntoDate]
+type IntoDateRange = (
+    tuple[IntoDate, IntoDate] | Mapping[Literal["start", "end"], IntoDate]
+)
+"""Anything that can be converted into a ``DateRange``."""
 
 
 type PlScanCsv = (
@@ -106,7 +143,7 @@ ZIP: Literal[".zip"] = ".zip"
 GZIP: Literal[".csv.gz"] = ".csv.gz"
 PATTERN_GZIP: LiteralString = f"*{REPORTING_PREFIX}*{GZIP}"
 
-COLUMNS_DEFAULT: Sequence[Columns] = (
+COLUMNS_DEFAULT: Sequence[Column] = (
     "date",
     "delay",
     "distance",
@@ -194,7 +231,7 @@ class DateRange:
         self.end: pl.Expr = pl.lit(end)
 
     @classmethod
-    def from_dates(cls, dates: Dates, /) -> DateRange:
+    def from_dates(cls, dates: IntoDateRange, /) -> DateRange:
         match dates:
             case (start, end):
                 return cls(start, end)
@@ -230,15 +267,31 @@ class DateRange:
 
 
 class Spec:
-    """Describes a target output file, based on flights data."""
+    """
+    Describes a target output file, based on flights data.
+
+    Parameters
+    ----------
+    range
+        Time period used for source data.
+        The end date is rounded up to the end of the month.
+    n_rows
+        Number of rows to include in the output.
+    suffix
+        File extension/output format.
+    dt_format
+        Datetime format, see ``DateTimeFormat``, ``DTF_TO_FMT``.
+    columns
+        Columns included in the output.
+    """
 
     def __init__(
         self,
-        range: DateRange | Dates,
+        range: DateRange | IntoDateRange,
         n_rows: Rows,
         suffix: Extension,
         dt_format: DateTimeFormat | None = None,
-        columns: Sequence[Columns] = COLUMNS_DEFAULT,
+        columns: Sequence[Column] = COLUMNS_DEFAULT,
     ) -> None:
         if {"date", "time"}.isdisjoint(columns):
             msg = (
@@ -252,7 +305,7 @@ class Spec:
         self.n_rows: Rows = n_rows
         self.suffix: Extension = suffix
         self.dt_format: DateTimeFormat | None = dt_format
-        self.columns: Sequence[Columns] = columns
+        self.columns: Sequence[Column] = columns
 
     @classmethod
     def from_dict(cls, mapping: Mapping[str, Any], /) -> Spec:
@@ -423,7 +476,7 @@ class Flights:
 
     @property
     def ranges(self) -> pl.LazyFrame:
-        return pl.select(pl.concat(spec.range.monthly for spec in self)).lazy()
+        return pl.select(pl.concat(spec.range.monthly for spec in self), eager=False)
 
     @property
     def _required_stems(self) -> set[str]:
