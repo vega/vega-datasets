@@ -29,7 +29,7 @@ jobs:
           enable-cache: true
 
       - name: Format toml
-        run: uvx taplo fmt --check
+        run: uvx taplo fmt --check --diff
 
       - name: Format and lint (python)
         run: |
