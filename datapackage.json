@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "description": "Common repository for example datasets used by Vega related projects.",
+  "description": "Common repository for example datasets used by Vega related projects. \nBSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets \ncomplies with the license terms of the original sources. Dataset license information, where included, \nis a reference starting point only and is provided without any warranty of accuracy or completeness.\n",
   "homepage": "http://github.com/vega/vega-datasets.git",
   "licenses": [
     {
@@ -9,23 +9,23 @@
       "title": "The 3-Clause BSD License"
     }
   ],
-  "sources": [
-    {
-      "path": "https://github.com/vega/vega-datasets/blob/next/SOURCES.md"
-    }
-  ],
   "contributors": [
     {
       "title": "UW Interactive Data Lab",
       "path": "http://idl.cs.washington.edu"
+    },
+    {
+      "title": "vega-datasets contributors",
+      "path": "https://github.com/vega/vega-datasets/graphs/contributors"
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-06T16:14:38.044099+00:00",
+  "created": "2024-12-14T19:35:54.935236+00:00",
   "resources": [
     {
       "name": "7zip.png",
       "type": "file",
+      "description": "Application icons from open-source software projects.",
       "path": "7zip.png",
       "scheme": "file",
       "format": "png",
@@ -76,6 +76,13 @@
     {
       "name": "annual-precip.json",
       "type": "json",
+      "description": "A raster grid of global annual precipitation for the year 2016 at a resolution 1 degree of lon/lat per cell.",
+      "sources": [
+        {
+          "title": "Climate Forecast System Version 2",
+          "path": "https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/climate-forecast-system-version2-cfsv2"
+        }
+      ],
       "path": "annual-precip.json",
       "scheme": "file",
       "format": "json",
@@ -85,6 +92,7 @@
     {
       "name": "anscombe.json",
       "type": "table",
+      "description": "Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician.",
       "path": "anscombe.json",
       "scheme": "file",
       "format": "json",
@@ -115,6 +123,17 @@
     {
       "name": "barley.json",
       "type": "table",
+      "description": "The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varieties of barley at six different sites.\n\nIt was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper \"Statistical Determination of Barley Varietal Adaption\".\n\nR.A. Fisher's popularized its use in the field of statistics when he included it in his book \"The Design of Experiments\".\n\nSince then it has been used to demonstrate new statistical techniques, including the trellis charts developed by Richard Becker, William Cleveland and others in the 1990s.\n",
+      "sources": [
+        {
+          "title": "The Design of Experiments Reference",
+          "path": "https://en.wikipedia.org/wiki/The_Design_of_Experiments"
+        },
+        {
+          "title": "Trellis Charts Paper",
+          "path": "http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf"
+        }
+      ],
       "path": "barley.json",
       "scheme": "file",
       "format": "json",
@@ -149,6 +168,13 @@
     {
       "name": "birdstrikes.csv",
       "type": "table",
+      "description": "Records of reported wildlife strikes received by the U.S. FAA",
+      "sources": [
+        {
+          "title": "FAA Wildlife Strike Database",
+          "path": "http://wildlife.faa.gov"
+        }
+      ],
       "path": "birdstrikes.csv",
       "scheme": "file",
       "format": "csv",
@@ -218,6 +244,13 @@
     {
       "name": "budget.json",
       "type": "table",
+      "description": "Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. Office of Management and Budget.",
+      "sources": [
+        {
+          "title": "Office of Management and Budget - Budget FY 2016 - Receipts",
+          "path": "https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3"
+        }
+      ],
       "path": "budget.json",
       "scheme": "file",
       "format": "json",
@@ -554,6 +587,17 @@
     {
       "name": "burtin.json",
       "type": "table",
+      "description": "The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine.\n\nThe dataset compares the performance of three antibiotics against 16 different bacteria.\n\nNumerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness.\n\nThe dataset was featured as an example in the Protovis project, a precursor to D3.js.\n\nAs noted in the Protovis example, \"Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin\".\n\nThe vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.\n\nThe caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) \nreads as follows:\n\n> ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin\n>\n>\n> The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in red and gram- in blue) with their sensitivities to penicillin, and streptomycin.\n>\n> The effectiveness of the antibiotics is expressed as the highest dilution in μ/ml. which inhibits the test organism.\n>\n> High dilutions are toward the periphery; consequently the length of the colored bar is proportional to the effectiveness.\n>\n> It is apparent that neomycin is especially effective against Staph. albus and aureus, Streph. fecalis, A. aerogenes, S. typhosa, E. coli, Ps. aeruginosa, Br. abortus, K. pneumoniae, Pr. vulgaris, S. schottmuelleri and M. tuberculosis.\n>\n> Unfortunately, some strains of proteus, pseudomonas and hemolytic streptococcus are resistant to neomycin, although the majority of these are sensitive to neomycin.\n>\n> It also inhibits actinomycetes, but is inactive against viruses and fungi. Its mode of action is not understood.\n",
+      "sources": [
+        {
+          "title": "Scope Magazine",
+          "path": "https://graphicdesignarchives.org/projects/scope-magazine-vol-iii-5/"
+        },
+        {
+          "title": "Protovis Antibiotics Example",
+          "path": "https://mbostock.github.io/protovis/ex/antibiotics-burtin.html"
+        }
+      ],
       "path": "burtin.json",
       "scheme": "file",
       "format": "json",
@@ -596,6 +640,13 @@
     {
       "name": "cars.json",
       "type": "table",
+      "description": "Collection of car specifications and performance metrics from various automobile manufacturers.",
+      "sources": [
+        {
+          "title": "StatLib Datasets Archive",
+          "path": "http://lib.stat.cmu.edu/datasets/"
+        }
+      ],
       "path": "cars.json",
       "scheme": "file",
       "format": "json",
@@ -650,6 +701,13 @@
     {
       "name": "co2-concentration.csv",
       "type": "table",
+      "description": "Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. \nOnly includes rows with valid data.",
+      "sources": [
+        {
+          "title": "Scripps CO2 Program",
+          "path": "https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record"
+        }
+      ],
       "path": "co2-concentration.csv",
       "scheme": "file",
       "format": "csv",
@@ -675,6 +733,25 @@
     {
       "name": "countries.json",
       "type": "table",
+      "description": "This dataset combines key demographic indicators (life expectancy at birth and\nfertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year\nintervals. It includes both current values and adjacent time period values (previous and next)\nfor each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) \nnotes that its philosophy is to fill data gaps with estimates and use current\ngeographic boundaries for historical data. Gapminder states that it aims to \"show people the\nbig picture\" rather than support detailed numeric analysis.",
+      "licenses": [
+        {
+          "title": "Creative Commons Attribution 4.0 International",
+          "path": "https://www.gapminder.org/free-material/"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gapminder Foundation - Life Expectancy",
+          "path": "https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676",
+          "version": "14"
+        },
+        {
+          "title": "Gapminder Foundation - Fertility",
+          "path": "https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676",
+          "version": "14"
+        }
+      ],
       "path": "countries.json",
       "scheme": "file",
       "format": "json",
@@ -693,27 +770,33 @@
           },
           {
             "name": "year",
-            "type": "integer"
+            "type": "integer",
+            "description": "Years from 1955 to 2000 at 5-year intervals"
           },
           {
             "name": "fertility",
-            "type": "number"
+            "type": "number",
+            "description": "Fertility rate (average number of children per woman) for the given year"
           },
           {
             "name": "life_expect",
-            "type": "number"
+            "type": "number",
+            "description": "Life expectancy in years for the given year"
           },
           {
             "name": "n_fertility",
-            "type": "number"
+            "type": "number",
+            "description": "Fertility rate for the next 5-year interval"
           },
           {
             "name": "n_life_expect",
-            "type": "number"
+            "type": "number",
+            "description": "Life expectancy for the next 5-year interval"
           },
           {
             "name": "country",
-            "type": "string"
+            "type": "string",
+            "description": "Name of the country"
           }
         ]
       }
@@ -755,6 +838,13 @@
     {
       "name": "disasters.csv",
       "type": "table",
+      "description": "Annual number of deaths from disasters.",
+      "sources": [
+        {
+          "title": "Our World in Data - Natural Catastrophes",
+          "path": "https://ourworldindata.org/natural-catastrophes"
+        }
+      ],
       "path": "disasters.csv",
       "scheme": "file",
       "format": "csv",
@@ -780,6 +870,12 @@
     {
       "name": "driving.json",
       "type": "table",
+      "sources": [
+        {
+          "title": "New York Times",
+          "path": "https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html"
+        }
+      ],
       "path": "driving.json",
       "scheme": "file",
       "format": "json",
@@ -814,6 +910,13 @@
     {
       "name": "earthquakes.json",
       "type": "json",
+      "description": "Earthquake data retrieved Feb 6, 2018",
+      "sources": [
+        {
+          "title": "USGS Earthquake Feed",
+          "path": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+        }
+      ],
       "path": "earthquakes.json",
       "scheme": "file",
       "format": "geojson",
@@ -823,6 +926,7 @@
     {
       "name": "ffox.png",
       "type": "file",
+      "description": "Application icons from open-source software projects.",
       "path": "ffox.png",
       "scheme": "file",
       "format": "png",
@@ -884,6 +988,13 @@
     {
       "name": "flights-10k.json",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-10k.json",
       "scheme": "file",
       "format": "json",
@@ -922,6 +1033,13 @@
     {
       "name": "flights-200k.arrow",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-200k.arrow",
       "scheme": "file",
       "format": ".arrow",
@@ -946,6 +1064,13 @@
     {
       "name": "flights-200k.json",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-200k.json",
       "scheme": "file",
       "format": "json",
@@ -976,6 +1101,13 @@
     {
       "name": "flights-20k.json",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-20k.json",
       "scheme": "file",
       "format": "json",
@@ -1014,6 +1146,13 @@
     {
       "name": "flights-2k.json",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-2k.json",
       "scheme": "file",
       "format": "json",
@@ -1052,6 +1191,13 @@
     {
       "name": "flights-3m.parquet",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-3m.parquet",
       "scheme": "file",
       "format": "parquet",
@@ -1084,6 +1230,13 @@
     {
       "name": "flights-5k.json",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-5k.json",
       "scheme": "file",
       "format": "json",
@@ -1122,6 +1275,13 @@
     {
       "name": "flights-airport.csv",
       "type": "table",
+      "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Transportation Statistics",
+          "path": "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+        }
+      ],
       "path": "flights-airport.csv",
       "scheme": "file",
       "format": "csv",
@@ -1147,6 +1307,13 @@
     {
       "name": "football.json",
       "type": "table",
+      "description": "Football match outcomes across multiple divisions from 2013 to 2017, part of a\nlarger dataset from OpenFootball. The subset was made such that there are records for all five\nchosen divisions over the time period.",
+      "sources": [
+        {
+          "title": "OpenFootball",
+          "path": "https://github.com/openfootball/football.json"
+        }
+      ],
       "path": "football.json",
       "scheme": "file",
       "format": "json",
@@ -1189,6 +1356,23 @@
     {
       "name": "gapminder-health-income.csv",
       "type": "table",
+      "description": "Per-capita income, life expectancy, population and regional grouping. Dataset does not specify \nthe reference year for the data. Gapminder historical data is subject to revisions.\n\nGapminder (v30, 2023) defines per-capita income as follows:\n>\"This is real GDP per capita (gross domestic product per person adjusted for inflation) \n>converted to international dollars using purchasing power parity rates. An international dollar \n>has the same purchasing power over GDP as the U.S. dollar has in the United States.\"\n",
+      "licenses": [
+        {
+          "title": "Creative Commons Attribution 4.0 International",
+          "path": "https://www.gapminder.org/free-material/"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gapminder Foundation",
+          "path": "https://www.gapminder.org"
+        },
+        {
+          "title": "Gapminder GDP Per Capita Data",
+          "path": "https://docs.google.com/spreadsheets/d/1i5AEui3WZNZqh7MQ4AKkJuCz4rRxGR_pw_9gtbcBOqQ/edit?gid=501532268#gid=501532268"
+        }
+      ],
       "path": "gapminder-health-income.csv",
       "scheme": "file",
       "format": "csv",
@@ -1222,6 +1406,49 @@
     {
       "name": "gapminder.json",
       "type": "table",
+      "description": "This dataset combines key demographic indicators (life expectancy at birth, \npopulation, and fertility rate measured as babies per woman) for various countries from 1955 \nto 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable \ngrouping countries. Gapminder's data documentation notes that its philosophy is to fill data \ngaps with estimates and use current geographic boundaries for historical data. Gapminder \nstates that it aims to \"show people the big picture\" rather than support detailed numeric \nanalysis.\n\nNotes:\n1. Country Selection: The set of countries in this file matches the version of this dataset \n   originally added to this collection in 2015. The specific criteria for country selection \n   in that version are not known. Data for Aruba are no longer available in the new version. \n   Hong Kong has been revised to Hong Kong, China in the new version.\n\n2. Data Precision: The precision of float values may have changed from the original version. \n   These changes reflect the most recent source data used for each indicator.\n\n3. Regional Groupings: The 'cluster' column represents a regional mapping of countries \n   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To \n   preserve continuity with previous versions of this dataset, we have retained the column \n   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: \n   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.",
+      "sources": [
+        {
+          "title": "Gapminder Foundation - Life Expectancy (Data)",
+          "path": "https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676",
+          "version": "14"
+        },
+        {
+          "title": "Gapminder Foundatio - Life Expectancy (Documentation)",
+          "path": "https://www.gapminder.org/data/documentation/gd004/"
+        },
+        {
+          "title": "Gapminder Foundation - Population (Data)",
+          "path": "https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676",
+          "version": "7"
+        },
+        {
+          "title": "Gapminder Foundation - Population (Documentation)",
+          "path": "https://www.gapminder.org/data/documentation/gd003/"
+        },
+        {
+          "title": "Gapminder Foundation - Fertility (Data)",
+          "path": "https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676",
+          "version": "14"
+        },
+        {
+          "title": "Gapminder Foundation - Fertility Documentation (Documentation)",
+          "path": "https://www.gapminder.org/data/documentation/gd008/"
+        },
+        {
+          "title": "Gapminder Foundation - Data Geographies (Data)",
+          "path": "https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158",
+          "version": "2"
+        },
+        {
+          "title": "Gapminder Foundation - Data Geographies (Documentation)",
+          "path": "https://www.gapminder.org/data/geo/"
+        },
+        {
+          "title": "Gapminder Data Documentation",
+          "path": "https://www.gapminder.org/data/documentation/"
+        }
+      ],
       "path": "gapminder.json",
       "scheme": "file",
       "format": "json",
@@ -1236,27 +1463,33 @@
         "fields": [
           {
             "name": "year",
-            "type": "integer"
+            "type": "integer",
+            "description": "Years from 1955 to 2005 at 5-year intervals"
           },
           {
             "name": "country",
-            "type": "string"
+            "type": "string",
+            "description": "Name of the country"
           },
           {
             "name": "cluster",
-            "type": "integer"
+            "type": "integer",
+            "description": "A categorical variable (values 0-5) grouping countries by region"
           },
           {
             "name": "pop",
-            "type": "integer"
+            "type": "integer",
+            "description": "Population of the country"
           },
           {
             "name": "life_expect",
-            "type": "number"
+            "type": "number",
+            "description": "Life expectancy in years"
           },
           {
             "name": "fertility",
-            "type": "number"
+            "type": "number",
+            "description": "Fertility rate (average number of children per woman"
           }
         ]
       }
@@ -1264,6 +1497,7 @@
     {
       "name": "gimp.png",
       "type": "file",
+      "description": "Application icons from open-source software projects.",
       "path": "gimp.png",
       "scheme": "file",
       "format": "png",
@@ -1273,6 +1507,7 @@
     {
       "name": "github.csv",
       "type": "table",
+      "description": "Generated using `/scripts/github.py`.",
       "path": "github.csv",
       "scheme": "file",
       "format": "csv",
@@ -1294,6 +1529,13 @@
     {
       "name": "global-temp.csv",
       "type": "table",
+      "description": "Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocean Temperature Index, L-OTI), 1880-2023.",
+      "sources": [
+        {
+          "title": "NASA Goddard Institute for Space Studies",
+          "path": "https://data.giss.nasa.gov/gistemp/"
+        }
+      ],
       "path": "global-temp.csv",
       "scheme": "file",
       "format": "csv",
@@ -1357,6 +1599,13 @@
     {
       "name": "iowa-electricity.csv",
       "type": "table",
+      "description": "The state of Iowa has dramatically increased its production of renewable \nwind power in recent years. This file contains the annual net generation of electricity in \nthe state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. \nIt is useful for illustrating stacked area charts.",
+      "sources": [
+        {
+          "title": "U.S. Energy Information Administration",
+          "path": "https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin="
+        }
+      ],
       "path": "iowa-electricity.csv",
       "scheme": "file",
       "format": "csv",
@@ -1382,6 +1631,14 @@
     {
       "name": "jobs.json",
       "type": "table",
+      "description": "U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which \"collects, preserves and harmonizes U.S. census microdata\" from as early as 1790.\n\nOriginally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). \nThe dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).\n\nData is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).\n\nIPUMS USA confirmed in 2024 correspondence that hosting this dataset on vega-datasets is permissible, stating:\n>We're excited to hear that this dataset made its way to this repository and is being used by students for data visualization. We allow for these types of redistributions of summary data so long as the underlying microdata records are not shared.\n\nThis dataset contains only summary statistics and does not include any underlying microdata records.\n\n1. This dataset represents summary data. The underlying microdata records are not included.\n2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) \n(person weight) variable as an expansion factor when working with IPUMS USA extracts.\n3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current IPUMS USA data exactly.\n\nWhen using this dataset, please refer to IPUMS USA [terms of use](https://usa.ipums.org/usa/terms.shtml).\nThe organization requests use of the following citation for this json file:\n\nSteven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated Public Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. http://doi.org/10.18128/D010.V6.0\n",
+      "sources": [
+        {
+          "title": "IPUMS USA",
+          "path": "https://usa.ipums.org/usa/",
+          "version": "6.0"
+        }
+      ],
       "path": "jobs.json",
       "scheme": "file",
       "format": "json",
@@ -1396,23 +1653,28 @@
         "fields": [
           {
             "name": "job",
-            "type": "string"
+            "type": "string",
+            "description": "The occupation title"
           },
           {
             "name": "sex",
-            "type": "string"
+            "type": "string",
+            "description": "Sex (men/women)"
           },
           {
             "name": "year",
-            "type": "integer"
+            "type": "integer",
+            "description": "Census year"
           },
           {
             "name": "count",
-            "type": "integer"
+            "type": "integer",
+            "description": "Number of individuals in the occupation"
           },
           {
             "name": "perc",
-            "type": "number"
+            "type": "number",
+            "description": "Percentage of the workforce in the occupation"
           }
         ]
       }
@@ -1420,6 +1682,13 @@
     {
       "name": "la-riots.csv",
       "type": "table",
+      "description": "More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles \nfor five days starting on April 29, 1992. This file contains metadata about each person, including the geographic \ncoordinates of their death. Compiled and published by the Los Angeles Times Data Desk.",
+      "sources": [
+        {
+          "title": "LA Riots Deaths, Los Angeles Times Data Desk",
+          "path": "http://spreadsheets.latimes.com/la-riots-deaths/"
+        }
+      ],
       "path": "la-riots.csv",
       "scheme": "file",
       "format": "csv",
@@ -1477,6 +1746,13 @@
     {
       "name": "londonboroughs.json",
       "type": "json",
+      "description": "Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. \nOriginal data \"contains National Statistics data © Crown copyright and database right (2015)\" \nand \"Contains Ordnance Survey data © Crown copyright and database right [2015].",
+      "sources": [
+        {
+          "title": "Statistical GIS Boundary Files, London Datastore",
+          "path": "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
+        }
+      ],
       "path": "londonBoroughs.json",
       "scheme": "file",
       "format": "topojson",
@@ -1486,6 +1762,7 @@
     {
       "name": "londoncentroids.json",
       "type": "table",
+      "description": "Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid).",
       "path": "londonCentroids.json",
       "scheme": "file",
       "format": "json",
@@ -1516,6 +1793,13 @@
     {
       "name": "londontubelines.json",
       "type": "json",
+      "description": "Selected rail lines simplified from source.",
+      "sources": [
+        {
+          "title": "London Tube Data",
+          "path": "https://github.com/oobrien/vis/tree/master/tube/data"
+        }
+      ],
       "path": "londonTubeLines.json",
       "scheme": "file",
       "format": "topojson",
@@ -1580,6 +1864,17 @@
     {
       "name": "monarchs.json",
       "type": "table",
+      "description": "A chronological list of English and British monarchs from Elizabeth I through George IV.\nEach entry includes:\n\nThe dataset contains two intentional inaccuracies to maintain compatibility with \nthe [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:\n1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;\n2. the end date for the reign of George IV is shown as 1820, instead of 1830.\nThese discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.\nThe entry \"W&M\" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, \nthe official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.\nThe `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, \nand the period leading to the Restoration. While historically more accurate to call this the \"interregnum,\" the field name of `commonwealth` \nfrom the original dataset is retained for backwards compatibility.\nThe dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).\nSource data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).\nContent on the site is protected by Crown Copyright. \nUnder the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most \nCrown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).",
+      "sources": [
+        {
+          "title": "The Royal Family - Kings & Queens",
+          "path": "https://www.royal.uk/kings-and-queens-1066"
+        },
+        {
+          "title": "The Royal Family - Interregnum",
+          "path": "https://www.royal.uk/interregnum-1649-1660"
+        }
+      ],
       "path": "monarchs.json",
       "scheme": "file",
       "format": "json",
@@ -1594,19 +1889,23 @@
         "fields": [
           {
             "name": "name",
-            "type": "string"
+            "type": "string",
+            "description": "The ruler's name or identifier (e.g., \"W&M\" for William and Mary, \"Cromwell\" for the period of interregnum)"
           },
           {
             "name": "start",
-            "type": "integer"
+            "type": "integer",
+            "description": "The year their rule began"
           },
           {
             "name": "end",
-            "type": "integer"
+            "type": "integer",
+            "description": "The year their rule ended"
           },
           {
             "name": "index",
-            "type": "integer"
+            "type": "integer",
+            "description": "A zero-based sequential number assigned to each entry, representing the chronological order of rulers"
           }
         ]
       }
@@ -1614,6 +1913,7 @@
     {
       "name": "movies.json",
       "type": "table",
+      "description": "The dataset has well known and intentionally included errors. \nThis dataset is provided for instructional purposes, including the need to reckon with dirty data.",
       "path": "movies.json",
       "scheme": "file",
       "format": "json",
@@ -1752,6 +2052,13 @@
     {
       "name": "ohlc.json",
       "type": "table",
+      "description": "This dataset contains the performance of the Chicago Board Options Exchange \n[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX#overview))\nin the summer of 2009.",
+      "sources": [
+        {
+          "title": "Yahoo Finance VIX Data",
+          "path": "https://finance.yahoo.com/chart/%5EVIX"
+        }
+      ],
       "path": "ohlc.json",
       "scheme": "file",
       "format": "json",
@@ -1798,6 +2105,17 @@
     {
       "name": "penguins.json",
       "type": "table",
+      "description": "Palmer Archipelago (Antarctica) penguin data collected and made available by \n[Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) \nand the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research \nNetwork](https://lternet.edu/).",
+      "sources": [
+        {
+          "title": "Palmer Station Antarctica LTER",
+          "path": "https://pal.lternet.edu/"
+        },
+        {
+          "title": "Allison Horst's Penguins Repository",
+          "path": "https://github.com/allisonhorst/penguins"
+        }
+      ],
       "path": "penguins.json",
       "scheme": "file",
       "format": "json",
@@ -1844,6 +2162,13 @@
     {
       "name": "platformer-terrain.json",
       "type": "table",
+      "description": "Assets from the video game Celeste.",
+      "sources": [
+        {
+          "title": "Celeste Game",
+          "path": "http://www.celestegame.com/"
+        }
+      ],
       "path": "platformer-terrain.json",
       "scheme": "file",
       "format": "json",
@@ -1920,6 +2245,17 @@
     {
       "name": "political-contributions.json",
       "type": "table",
+      "description": "Summary financial information on contributions to candidates for U.S. \nelections. An updated version of this datset is available from the \"all candidates\" files \n(in pipe-delimited format) on the bulk data download page of the U.S. Federal Election \nCommission, or, alternatively, via OpenFEC. Information on each of the 25 columns is \navailable from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).\nThe sample dataset in `political-contributions.json` contains 58 records with dates from 2015.\n\nFEC data is subject to the commission's:\n- [Sale or Use Policy](https://www.fec.gov/updates/sale-or-use-contributor-information/)\n- [Privacy and Security Policy](https://www.fec.gov/about/privacy-and-security-policy/)\n- [Acceptable Use Policy](https://github.com/fecgov/FEC/blob/master/ACCEPTABLE-USE-POLICY.md)\n\nAdditionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:\n> This project is in the public domain within the United States, and we waive worldwide \n> copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/)\n> dedication. Read more on our license page.\n> A few restrictions limit the way you can use FEC data. For example, you can't use \n> contributor lists for commercial purposes or to solicit donations. Learn more on \n> [FEC.gov](https://www.fec.gov/).",
+      "sources": [
+        {
+          "title": "Federal Election Commission Bulk Data",
+          "path": "https://www.fec.gov/data/browse-data/?tab=bulk-data"
+        },
+        {
+          "title": "OpenFEC API",
+          "path": "https://api.open.fec.gov/developers/"
+        }
+      ],
       "path": "political-contributions.json",
       "scheme": "file",
       "format": "json",
@@ -2038,6 +2374,13 @@
     {
       "name": "population.json",
       "type": "table",
+      "description": "United States population statistics by sex and age group across decades between 1850 and 2000. \nThe dataset was obtained from IPUMS USA, which \"collects, preserves and harmonizes U.S. census \nmicrodata\" from as early as 1790.\n\nIPUMS updates and revises datasets over time, which may result in discrepancies between this \ndataset and current IPUMS data. Details on data revisions are available here.\n\nWhen using this dataset, please refer to IPUMS USA terms of use. The organization requests the \nuse of the following citation for this json file:\nSteven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. Integrated \nPublic Use Microdata Series: Version 6.0. Minneapolis: University of Minnesota, 2015. \nhttp://doi.org/10.18128/D010.V6.0\n",
+      "sources": [
+        {
+          "title": "IPUMS USA",
+          "path": "https://usa.ipums.org/usa/"
+        }
+      ],
       "path": "population.json",
       "scheme": "file",
       "format": "json",
@@ -2052,19 +2395,23 @@
         "fields": [
           {
             "name": "year",
-            "type": "integer"
+            "type": "integer",
+            "description": "Four-digit year of the survey"
           },
           {
             "name": "age",
-            "type": "integer"
+            "type": "integer",
+            "description": "Age group in 5-year intervals (0=0-4, 5=5-9, 10=10-14, ..., 90=90+)"
           },
           {
             "name": "sex",
-            "type": "integer"
+            "type": "integer",
+            "description": "Sex (1=men, 2=women)"
           },
           {
             "name": "people",
-            "type": "integer"
+            "type": "integer",
+            "description": "Number of individuals (IPUMS PERWT)"
           }
         ]
       }
@@ -2072,6 +2419,21 @@
     {
       "name": "population_engineers_hurricanes.csv",
       "type": "table",
+      "description": "Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,\n[Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)",
+      "sources": [
+        {
+          "title": "Bureau of Labor Statistics",
+          "path": "https://www.bls.gov/oes/tables.htm"
+        },
+        {
+          "title": "American Community Survey",
+          "path": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table"
+        },
+        {
+          "title": "NOAA National Climatic Data Center",
+          "path": "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+        }
+      ],
       "path": "population_engineers_hurricanes.csv",
       "scheme": "file",
       "format": "csv",
@@ -2105,6 +2467,13 @@
     {
       "name": "seattle-weather-hourly-normals.csv",
       "type": "table",
+      "description": "Hourly weather normals with metric units. The 1981-2010 Climate Normals are \nNCDC's three-decade averages of climatological variables, including temperature and \nprecipitation. Learn more in the [documentation](https://www1.ncdc.noaa.gov/pub/data/cdo/documentation/NORMAL_HLY_documentation.pdf).\nWe only included temperature, wind, and pressure \nand updated the format to be easier to parse.",
+      "sources": [
+        {
+          "title": "NOAA National Climatic Data Center (NCDC)",
+          "path": "https://www.ncdc.noaa.gov/cdo-web/datatools/normals"
+        }
+      ],
       "path": "seattle-weather-hourly-normals.csv",
       "scheme": "file",
       "format": "csv",
@@ -2134,6 +2503,13 @@
     {
       "name": "seattle-weather.csv",
       "type": "table",
+      "description": "Daily weather records with metric units. Transformed using `/scripts/weather.py`. \nThe categorical \"weather\" field is synthesized from multiple fields in the original dataset. \nThis data is intended for instructional purposes.",
+      "sources": [
+        {
+          "title": "NOAA National Climatic Data Center",
+          "path": "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+        }
+      ],
       "path": "seattle-weather.csv",
       "scheme": "file",
       "format": "csv",
@@ -2171,6 +2547,13 @@
     {
       "name": "sp500-2000.csv",
       "type": "table",
+      "description": "S&amp;P 500 index values from 2000 to 2020.",
+      "sources": [
+        {
+          "title": "Yahoo Finance",
+          "path": "https://finance.yahoo.com/quote/%5EDJI/history/"
+        }
+      ],
       "path": "sp500-2000.csv",
       "scheme": "file",
       "format": "csv",
@@ -2284,6 +2667,21 @@
     {
       "name": "unemployment-across-industries.json",
       "type": "table",
+      "description": "Industry-level unemployment statistics from the Current Population Survey \n(CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons \nand unemployment rate across 11 private industries, as well as agricultural, government, and \nself-employed workers. Covers January 2000 through February 2010. Industry classification \nfollows format of CPS Table A-31.\n\nThe dataset can be replicated using the BLS API. For more, see the `scripts` folder of this \nrepository.\n\nThe BLS Web site states:\n> \"Users of the public API should cite the date that data were accessed or retrieved using \n> the API. Users must clearly state that \"BLS.gov cannot vouch for the data or analyses \n> derived from these data after the data have been retrieved from BLS.gov.\" The BLS.gov logo \n> may not be used by persons who are not BLS employees or on products (including web pages) \n> that are not BLS-sponsored.\"\n\nSee full BLS [terms of service](https://www.bls.gov/developers/termsOfService.htm).",
+      "sources": [
+        {
+          "title": "U.S. Census Bureau Current Population Survey",
+          "path": "https://www.census.gov/programs-surveys/cps.html"
+        },
+        {
+          "title": "BLS LAUS Data Tools",
+          "path": "https://www.bls.gov/lau/data.htm"
+        },
+        {
+          "title": "Bureau of Labor Statistics Table A-31",
+          "path": "https://www.bls.gov/web/empsit/cpseea31.htm"
+        }
+      ],
       "path": "unemployment-across-industries.json",
       "scheme": "file",
       "format": "json",
@@ -2298,27 +2696,33 @@
         "fields": [
           {
             "name": "series",
-            "type": "string"
+            "type": "string",
+            "description": "Industry name"
           },
           {
             "name": "year",
-            "type": "integer"
+            "type": "integer",
+            "description": "Year (2000-2010)"
           },
           {
             "name": "month",
-            "type": "integer"
+            "type": "integer",
+            "description": "Month (1-12)"
           },
           {
             "name": "count",
-            "type": "integer"
+            "type": "integer",
+            "description": "Number of unemployed persons (in thousands)"
           },
           {
             "name": "rate",
-            "type": "number"
+            "type": "number",
+            "description": "Unemployment rate (percentage)"
           },
           {
             "name": "date",
-            "type": "datetime"
+            "type": "datetime",
+            "description": "ISO 8601-formatted date string (e.g., \"2000-01-01T08:00:00.000Z\")"
           }
         ]
       }
@@ -2326,6 +2730,17 @@
     {
       "name": "unemployment.tsv",
       "type": "table",
+      "description": "This dataset contains county-level unemployment rates in the United States, with data generally\nconsistent with levels reported in 2009. The dataset is structured as tab-separated values.\nThe unemployment rate represents the number of unemployed persons as a percentage of the labor\nforce. According to the Bureau of Labor Statistics (BLS) glossary:\n\nUnemployed persons (Current Population Survey) [are] persons aged 16 years and older who had\nno employment during the reference week, were available for work, except for temporary\nillness, and had made specific efforts to find employment sometime during the 4-week period\nending with the reference week. Persons who were waiting to be recalled to a job from which\nthey had been laid off need not have been looking for work to be classified as unemployed.\n\nThis dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, \na federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). \nThe LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,\nstates, counties, metropolitan areas, and many cities and towns.\n\nFor the most up-to-date LAUS data:\n1. **Monthly and Annual Data Downloads**:\n- Visit the [LAUS Data Tools](https://www.bls.gov/lau/data.htm) page for [monthly](https://www.bls.gov/lau/tables.htm#mcounty) \nand [annual](https://www.bls.gov/lau/tables.htm#cntyaa) county data.\n2. **BLS Public Data API**:\n- The BLS provides an API for developers to access various datasets, including LAUS data.\n- To use the API for LAUS data, refer to the [LAUS Series ID Formats](https://www.bls.gov/help/hlpforma.htm#LA) to construct your query.\n- API documentation and examples are available on the BLS Developers page.\n\nWhen using BLS public data API and datasets, users should adhere to the [BLS Terms of Service](https://www.bls.gov/developers/termsOfService.htm).",
+      "sources": [
+        {
+          "title": "BLS Developers API",
+          "path": "https://www.bls.gov/developers/"
+        },
+        {
+          "title": "BLS Handbook of Methods",
+          "path": "https://www.bls.gov/opub/hom/lau/home.htm"
+        }
+      ],
       "path": "unemployment.tsv",
       "scheme": "file",
       "format": "tsv",
@@ -2340,11 +2755,13 @@
         "fields": [
           {
             "name": "id",
-            "type": "integer"
+            "type": "integer",
+            "description": "The combined state and county FIPS code"
           },
           {
             "name": "rate",
-            "type": "number"
+            "type": "number",
+            "description": "The unemployment rate for the county"
           }
         ]
       }
@@ -2387,6 +2804,13 @@
     {
       "name": "us-employment.csv",
       "type": "table",
+      "description": "In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job \nlosses across the United States. The downturn in employment, and the slow recovery in hiring that \nfollowed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau \nof Labor Statistics.\n\nThis file contains the monthly employment total in a variety of job categories from January 2006 \nthrough December 2015. The numbers are seasonally adjusted and reported in thousands. The data \nwere downloaded on Nov. 11, 2018, and reformatted for use in this library.\n\nTotals are included for the [22 \"supersectors\"](https://download.bls.gov/pub/time.series/ce/ce.supersector)\ntracked by the BLS. The \"nonfarm\" total is the category typically used by \neconomists and journalists as a stand-in for the country's employment total.\n\nA calculated \"nonfarm_change\" column has been appended with the month-to-month change in that \nsupersector's employment. It is useful for illustrating how to make bar charts that report both \nnegative and positive values.\n",
+      "sources": [
+        {
+          "title": "U.S. Bureau of Labor Statistics Current Employment Statistics",
+          "path": "https://www.bls.gov/ces/"
+        }
+      ],
       "path": "us-employment.csv",
       "scheme": "file",
       "format": "csv",
@@ -2530,6 +2954,13 @@
     {
       "name": "volcano.json",
       "type": "json",
+      "description": "Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. \nThis data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a \ntopographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate.",
+      "sources": [
+        {
+          "title": "R Datasets",
+          "path": "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html"
+        }
+      ],
       "path": "volcano.json",
       "scheme": "file",
       "format": "json",
@@ -2539,6 +2970,13 @@
     {
       "name": "weather.csv",
       "type": "table",
+      "description": "NOAA data transformed using `/scripts/weather.py`. Categorical \"weather\" field synthesized \nfrom multiple fields in the original dataset. This data is intended for instructional purposes.",
+      "sources": [
+        {
+          "title": "NOAA Climate Data Online",
+          "path": "http://www.ncdc.noaa.gov/cdo-web/datatools/findstation"
+        }
+      ],
       "path": "weather.csv",
       "scheme": "file",
       "format": "csv",
@@ -2580,6 +3018,7 @@
     {
       "name": "weather.json",
       "type": "json",
+      "description": "Instructional dataset showing actual and predicted temperature data.",
       "path": "weather.json",
       "scheme": "file",
       "format": "json",
@@ -2589,6 +3028,13 @@
     {
       "name": "wheat.json",
       "type": "table",
+      "description": "In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),\na Scottish engineer who is often credited as the founder of statistical graphics, \npublished an elegant chart on the price of wheat. It plots 250 years of prices alongside \nweekly wages and the reigning monarch. He intended to demonstrate that:\n> \"never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time.\"\n",
+      "sources": [
+        {
+          "title": "1822 Playfair Chart",
+          "path": "http://dh101.humanities.ucla.edu/wp-content/uploads/2014/08/Vis_2.jpg"
+        }
+      ],
       "path": "wheat.json",
       "scheme": "file",
       "format": "json",
@@ -2619,6 +3065,7 @@
     {
       "name": "windvectors.csv",
       "type": "table",
+      "description": "Simulated wind patterns over northwestern Europe.",
       "path": "windvectors.csv",
       "scheme": "file",
       "format": "csv",
@@ -2661,6 +3108,13 @@
     {
       "name": "zipcodes.csv",
       "type": "table",
+      "description": "GeoNames.org",
+      "sources": [
+        {
+          "title": "GeoNames",
+          "path": "https://www.geonames.org"
+        }
+      ],
       "path": "zipcodes.csv",
       "scheme": "file",
       "format": "csv",
