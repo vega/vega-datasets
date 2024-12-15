@@ -20,6 +20,7 @@ extend-exclude = [
   ".venv",
   "scripts/budget.py",
   "scripts/flights.py",
+
   "scripts/github.py",
   "scripts/make-unemployment-across-industries.py",
   "scripts/update_countries_json.py",
@@ -37,7 +38,7 @@ extend-safe-fixes = [
   "C4",      # flake8-comprehensions
   "D",       # pydocstyle 
   "EM",      # flake8-errmsg
-  "PLC",     # pylint (Convention)
+    "PLC",     # pylint (Convention)
   "PLR6201", # literal-membership (https://docs.astral.sh/ruff/rules/literal-membership/#fix-safety)
   "TC",      # flake8-type-checking
   "UP",      # pyupgrade
@@ -108,6 +109,7 @@ select = [
 
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb"      = ["ANN", "F401", "W391"]
+
 "*/**/*.ipynb" = ["ANN", "F401", "W391"]
 
 [tool.pyright]
