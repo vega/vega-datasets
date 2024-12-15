@@ -26,6 +26,15 @@ jobs:
       - uses: astral-sh/setup-uv@v4
         with:
           version: ">=0.5.0"
+          enable-cache: true
+
+      - name: Format toml
+        run: uvx taplo fmt --check --diff
+
+      - name: Format and lint (python)
+        run: |
+          uvx ruff check
+          uvx ruff format --check
 
       - name: Install Node dependencies
         run: npm ci

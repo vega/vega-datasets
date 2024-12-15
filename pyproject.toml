@@ -1,0 +1,118 @@
+#:schema https://json.schemastore.org/pyproject.json
+[project]
+dependencies = [
+  "frictionless[json,parquet]>=5.18.0",
+  "niquests>=3.11.2",
+  "polars>=1.17.1",
+  "tomli-w>=1.1.0",
+]
+description = "Common repository for example datasets used by Vega related projects."
+name = "vega-datasets"
+readme = "README.md"
+requires-python = ">=3.12"
+version = "2.11.0"
+
+[dependency-groups]
+dev = ["ipython[kernel]>=8.30.0", "ruff>=0.8.2", "taplo>=0.9.3"]
+
+[tool.ruff]
+extend-exclude = [
+  ".venv",
+  "scripts/budget.py",
+  "scripts/flights.py",
+  "scripts/github.py",
+  "scripts/make-unemployment-across-industries.py",
+  "scripts/update_countries_json.py",
+  "scripts/update_gapminder.py",
+  "scripts/weather.py",
+]
+format = { docstring-code-format = true, preview = true }
+target-version = "py312"
+
+[tool.ruff.lint]
+extend-safe-fixes = [
+  # https://docs.astral.sh/ruff/linter/#fix-safety
+  "C4",      # flake8-comprehensions
+  "D",       # pydocstyle 
+  "EM",      # flake8-errmsg
+  "PLC",     # pylint (Convention)
+  "PLR6201", # literal-membership (https://docs.astral.sh/ruff/rules/literal-membership/#fix-safety)
+  "TC",      # flake8-type-checking
+  "UP",      # pyupgrade
+]
+extend-select = [
+  # https://docs.astral.sh/ruff/preview/#using-rules-that-are-in-preview
+  "FURB",    # refurb
+  "LOG015",  # root-logger-call
+  "PLR1733", # unnecessary-dict-index-lookup
+  "PLR1736", # unnecessary-list-index-lookup
+  "PLR6201", # literal-membership
+  "PLW1514", # unspecified-encoding
+]
+ignore = [
+  "ANN401", # any-type
+  "D100",   # undocumented-public-module
+  "D101",   # undocumented-public-class
+  "D102",   # undocumented-public-method  
+  "D103",   # undocumented-public-function  
+  "D104",   # undocumented-public-package  
+  "D105",   # undocumented-magic-method 
+  "D107",   # undocumented-public-init 
+  "D206",   # indent-with-spaces (https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules)
+  "D212",   # multi-line-summary-first-line (conflicts w/ select = D213)
+  "D401",   # non-imperative-mood
+  "D413",   # blank-line-after-last-section
+  "E501",   # line-too-long (https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules)
+  "W505",   # doc-line-too-long (no auto-fix)
+]
+isort = { split-on-trailing-comma = false }
+preview = true
+pydocstyle = { convention = "numpy" }
+select = [
+  "ANN",     # flake8-annotations
+  "B",       # flake8-bugbear
+  "C4",      # flake8-comprehensions
+  "C90",     # mccabe (complex-structure)
+  "D",       # pydocstyle
+  "D213",    # multi-line-summary-second-line
+  "E",       # pycodestyle-error
+  "EM",      # flake8-errmsg
+  "F",       # pyflakes
+  "FA",      # flake8-future-annotations
+  "FLY",     # flynt
+  "G004",    # logging-f-string
+  "I",       # isort
+  "LOG",     # flake8-logging
+  "PIE",     # flake8-pie
+  "PLC",     # pylint (Convention)
+  "PLR0402", # manual-from-import
+  "PLR1711", # useless-return
+  "PLR1714", # repeated-equality-comparison
+  "PLR5501", # collapsible-else-if
+  "PLW0120", # useless-else-on-loop
+  "PLW1510", # subprocess-run-without-check
+  "PLW3301", # nested-min-max
+  "PTH",     # flake8-use-pathlib
+  "PYI055",  # unnecessary-type-union
+  "RET504",  # unnecessary-assign
+  "RET505",  # superfluous-else-return
+  "RUF",     # Ruff-specific rules
+  "SIM",     # flake8-simplify
+  "TC",      # flake8-type-checking
+  "TID",     # flake8-tidy-imports
+  "UP",      # pyupgrade
+  "W",       # pycodestyle-warning
+]
+
+[tool.ruff.lint.per-file-ignores]
+"*.ipynb"      = ["ANN", "F401", "W391"]
+"*/**/*.ipynb" = ["ANN", "F401", "W391"]
+
+[tool.pyright]
+enableExperimentalFeatures = true
+ignore                     = ["../../../**/Lib", ".venv"]
+include                    = ["./scripts/build_datapackage.py", "./scripts/flights2.py"]
+pythonPlatform             = "All"
+pythonVersion              = "3.12"
+reportUnusedExpression     = "none"
+typeCheckingMode           = "basic"
