@@ -232,6 +232,7 @@ class DateRange:
 
     @classmethod
     def from_dates(cls, dates: IntoDateRange, /) -> DateRange:
+        """Construct from a sequence/mapping defined time period."""
         match dates:
             case (start, end):
                 return cls(start, end)
@@ -242,6 +243,7 @@ class DateRange:
 
     @property
     def monthly(self) -> pl.Expr:
+        """Generate a date range expression, with a monthly interval."""
         return pl.date_range(self.start, self.end, interval="1mo").alias("date")
 
     @cached_property
@@ -309,7 +311,7 @@ class Spec:
 
     @classmethod
     def from_dict(cls, mapping: Mapping[str, Any], /) -> Spec:
-        """From a toml table definition."""
+        """Construct from a toml table definition."""
         match mapping:
             case {"range": (start, end), **rest} if {"start", "end"}.isdisjoint(rest):
                 range = start, end
@@ -340,7 +342,7 @@ class Spec:
         return f"flights-{s}{self.suffix}"
 
     @property
-    def sort_by(self) -> str:
+    def sort_by(self) -> Column:
         return "time" if "time" in self.columns else "date"
 
     def transform(self, ldf: pl.LazyFrame, /) -> pl.DataFrame:
