@@ -287,6 +287,8 @@ class Spec:
         Columns included in the output.
     """
 
+    _name_prefix: ClassVar[Literal["flights-"]] = "flights-"
+
     def __init__(
         self,
         range: DateRange | IntoDateRange,
@@ -339,7 +341,7 @@ class Spec:
             s = f"{frac}k"
         else:
             raise TypeError(self.n_rows)
-        return f"flights-{s}{self.suffix}"
+        return f"{self._name_prefix}{s}{self.suffix}"
 
     @property
     def sort_by(self) -> Column:
