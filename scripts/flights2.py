@@ -549,7 +549,7 @@ class Flights:
 
     @property
     def _existing_stems(self) -> set[str]:
-        return {_without_suffixes(fp.name) for fp in app.input_dir.glob(PATTERN_GZIP)}
+        return {_without_suffixes(fp.name) for fp in self.input_dir.glob(PATTERN_GZIP)}
 
     @property
     def missing_stems(self) -> set[str]:
