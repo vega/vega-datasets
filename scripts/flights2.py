@@ -199,6 +199,7 @@ class DateRange:
 
     - Validates provided dates are in range of known data
     - Converts (start, end) to monthly file names
+    - Acts as a key, for detecting unique periods
 
     Notes
     -----
@@ -331,7 +332,19 @@ class Spec:
 
     @property
     def name(self) -> str:
-        """Encodes a short form of ``n_rows`` into the file name."""
+        """
+        Encodes a short form of ``n_rows`` into the file name.
+
+        Examples
+        --------
+        Note that the final name depends on ``suffix``:
+
+            | n_rows         | stem          |
+            | -------------- | ------------- |
+            | 10_000         | "flights-10k" |
+            | 1_000_000      | "flights-1m"  |
+            | 12_000_000_000 | "flights-12b" |
+        """
         frac = self.n_rows // 1_000
         if frac >= 1_000_000:
             s = f"{frac // 1_000_000}b"
@@ -345,9 +358,18 @@ class Spec:
 
     @property
     def sort_by(self) -> Column:
+        """Temporal column used to sort the transformed data."""
         return "time" if "time" in self.columns else "date"
 
     def transform(self, ldf: pl.LazyFrame, /) -> pl.DataFrame:
+        """
+        Materialize the spec for export.
+
+        Parameters
+        ----------
+        ldf
+            Cleaned source data, spanning ``self.range``.
+        """
         if dt_format := self.dt_format:
             ldf = _transform_temporal(ldf, dt_format)
         ldf = ldf.select(self.columns)
@@ -356,6 +378,16 @@ class Spec:
         return ldf.sort(self.sort_by).collect()
 
     def write(self, df: pl.DataFrame, output_dir: Path, /) -> None:
+        """
+        Export the materialized spec..
+
+        Parameters
+        ----------
+        df
+            Materialized spec data, the result of ``self.transform(...)``.
+        output_dir
+            Output directory.
+        """
         fp: Path = output_dir / self.name
         fp.touch()
         msg = f"Writing {fp.as_posix()!r} ..."
@@ -390,19 +422,38 @@ class SourceMap:
         self._frames: dict[DateRange, pl.LazyFrame] = {}
 
     def add_dependency(self, spec: Spec, /) -> None:
+        """Adds a spec, detecting any shared resources."""
         d_range: DateRange = spec.range
         if d_range not in self._mapping:
             self._frames[d_range] = self._scan(d_range).pipe(_clean_source)
         self._mapping[d_range].append(spec)
 
     def iter_tasks(self) -> Iterator[tuple[Spec, pl.LazyFrame]]:
+        """Yields each spec, with its respective clean source data."""
+        if not len(self):
+            msg = (
+                "Dependent specs have not yet been added.\n\n"
+                f"Try calling {self.add_dependency.__qualname__}(...) first."
+            )
+            raise TypeError(msg)
         for d_range, frame in self._frames.items():
             for spec in self._mapping[d_range]:
                 yield spec, frame
 
     def _scan(self, d_range: DateRange, /) -> pl.LazyFrame:
-        """Lazily read all required files."""
-        # NOTE: files from `2001` have unused columns that break reading losslessly
+        """
+        Lazily read all required files into a single table.
+
+        Parameters
+        ----------
+        d_range
+            Target time period, spanning multiple monthly files.
+
+        Notes
+        -----
+        - Only the subset of columns defined in ``SCAN_SCHEMA`` are preserved.
+        - Some of the unused columns contain invalid utf8 values.
+        """
         return pl.scan_csv(
             [self.input_dir / f"{stem}{GZIP}" for stem in d_range.file_stems],
             try_parse_dates=True,
