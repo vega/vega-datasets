@@ -496,6 +496,18 @@ class Flights:
     def _existing_stems(self) -> set[str]:
         return {_without_suffixes(fp.name) for fp in app.input_dir.glob(PATTERN_GZIP)}
 
+    @property
+    def missing_stems(self) -> set[str]:
+        missing = self._required_stems - self._existing_stems
+        if n := len(missing):
+            msg = f"Missing {n} sources"
+            logger.info(msg)
+            if n >= 5:
+                logger.warning("Downloads may exceed 100MB")
+            if n >= 11:
+                logger.warning("Total number of rows will exceed 5_000_000")
+        return missing
+
     async def _download_sources_async(self, names: Iterable[str], /) -> list[Path]:
         """Request, write missing data."""
         session = niquests.AsyncSession(base_url=ROUTE_ZIP)
@@ -505,15 +517,16 @@ class Flights:
         return await asyncio.gather(*writes)
 
     def download_sources(self) -> None:
-        """Detect and download any missing monthly flights data - which are required by specs."""
+        """
+        Ensure all required source data is saved to ``self.input_dir``.
+
+        Any month(s) that are missing will be requested from `transtats`_.
+
+        .. _transtats:
+            https://www.transtats.bts.gov
+        """
         logger.info("Detecting required sources ...")
-        if missing := self._required_stems - self._existing_stems:
-            msg = f"Missing {len(missing)} sources"
-            logger.info(msg)
-            if len(missing) >= 5:
-                logger.warning("Downloads may exceed 100MB")
-            if len(missing) >= 11:
-                logger.warning("Total number of rows will exceed 5_000_000")
+        if missing := self.missing_stems:
             asyncio.run(self._download_sources_async(missing))
             logger.info("Successfully downloaded all missing sources.")
         else:
