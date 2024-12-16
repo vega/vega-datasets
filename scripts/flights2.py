@@ -756,15 +756,17 @@ def _clean_source(ldf: pl.LazyFrame, /) -> pl.LazyFrame:
     )
 
 
-if __name__ == "__main__":
+def main() -> None:
     logging.basicConfig(level=logging.INFO)
     repo_root = Path(__file__).parent.parent
     source_toml = repo_root / "_data" / "flights.toml"
-    temp_out = repo_root / "data" / "_flights"
-    real_out = repo_root / "data"
     app = Flights.from_toml(
         source_toml,
         input_dir=Path.home() / ".vega_datasets",
-        output_dir=real_out,
+        output_dir=repo_root / "data",
     )
     app.run()
+
+
+if __name__ == "__main__":
+    main()
