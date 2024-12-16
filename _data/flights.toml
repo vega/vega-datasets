@@ -4,35 +4,35 @@
 range     = [2001-01-01, 2001-03-31]
 n_rows    = 1_000
 suffix    = ".csv"
-dt_format = "ISO"
+dt_format = "iso"
 
 [[specs]]
 start     = 2001-01-01
 end       = 2001-03-31
 n_rows    = 2_000
 suffix    = ".json"
-dt_format = "iso"
+dt_format = "%Y/%m/%d %H:%M"
 
 [[specs]]
 start     = 2001-01-01
 end       = 2001-03-31
 n_rows    = 5_000
 suffix    = ".json"
-dt_format = "iso"
+dt_format = "%Y/%m/%d %H:%M"
 
 [[specs]]
 start     = 2001-01-01
 end       = 2001-03-31
 n_rows    = 10_000
 suffix    = ".json"
-dt_format = "iso"
+dt_format = "%Y/%m/%d %H:%M"
 
 [[specs]]
 start     = 2001-01-01
 end       = 2001-03-31
 n_rows    = 20_000
 suffix    = ".json"
-dt_format = "iso"
+dt_format = "%Y/%m/%d %H:%M"
 
 [[specs]]
 start     = 2001-01-01

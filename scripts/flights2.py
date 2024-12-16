@@ -16,10 +16,9 @@ import tomllib
 import zipfile
 from collections import defaultdict, deque
 from collections.abc import Iterable, Sequence
-from enum import StrEnum
 from functools import cached_property
 from pathlib import Path
-from typing import IO, TYPE_CHECKING
+from typing import IO, TYPE_CHECKING, Annotated, Literal
 
 import niquests
 import polars as pl
@@ -27,8 +26,14 @@ from polars import col
 from polars import selectors as cs
 
 if TYPE_CHECKING:
+    import sys
     from collections.abc import Iterator, Mapping
-    from typing import Any, ClassVar, Literal, LiteralString
+    from typing import Any, ClassVar, LiteralString
+
+    if sys.version_info >= (3, 13):
+        from typing import TypeIs
+    else:
+        from typing_extensions import TypeIs
 
 
 logger = logging.getLogger(__name__)
@@ -123,16 +128,54 @@ type PlScanCsv = (
 )
 
 
-class DateTimeFormat(StrEnum):
-    ISO = "iso"
-    DECIMAL = "decimal"
-    ACTUALLY_ISO = "ISO"
+def is_chrono_str(s: Any) -> TypeIs[_ChronoFormat]:
+    return s == "%Y/%m/%d %H:%M" or (isinstance(s, str) and s.startswith("%"))
 
 
-DTF_TO_FMT: Mapping[DateTimeFormat, LiteralString] = {
-    DateTimeFormat.ISO: "%Y/%m/%d %H:%M",
-    DateTimeFormat.ACTUALLY_ISO: "iso",
-}
+def is_datetime_format(s: Any) -> TypeIs[DateTimeFormat]:
+    return s in {"iso", "iso:strict", "decimal"} or is_chrono_str(s)
+
+
+type _ChronoFormat = Literal["%Y/%m/%d %H:%M"] | Annotated[LiteralString, is_chrono_str]
+"""https://docs.rs/chrono/latest/chrono/format/strftime/index.html"""
+
+type DateTimeFormat = Literal["iso", "iso:strict", "decimal"] | _ChronoFormat
+"""
+Anything that is resolvable to a date/time column transform.
+
+Examples
+--------
+Each example will use the same input datetime:
+
+    from datetime import datetime
+    datetime(2020, 3, 1, 6, 30, 0)
+
+**"iso"**, **"iso:strict"**: variants of `ISO 6801`_ used in `pl.Expr.dt.to_string`_:
+
+    "2020-03-01 06:30:00.000000"
+    "2020-03-01T06:30:00.000000"
+
+**"decimal"**: represents **time only** with fractional minutes::
+
+    6.5 # stored as a float
+
+A format string using `chrono`_ specifiers:
+
+    "%Y/%m/%d %H:%M" -> "2020/03/01 06:30"
+    "%s"             -> "1583044200"               # UNIX timestamp
+    "%c"             -> "Sun Mar  1 06:30:00 2020"
+    "%T"             -> "06:30:00"
+    "%Y-%B-%d"       -> "2020-March-01"
+    "%e-%b-%Y"       -> " 1-Mar-2020"
+
+.. _ISO 6801:
+    https://en.wikipedia.org/wiki/ISO_8601
+.. _pl.Expr.dt.to_string:
+    https://docs.pola.rs/api/python/stable/reference/expressions/api/polars.Expr.dt.to_string.html
+.. _chrono:
+    https://docs.rs/chrono/latest/chrono/format/strftime/index.html
+"""
+
 
 BASE_URL: LiteralString = "https://www.transtats.bts.gov/"
 ROUTE_ZIP: LiteralString = f"{BASE_URL}PREZIP/"
@@ -283,7 +326,8 @@ class Spec:
     suffix
         File extension/output format.
     dt_format
-        Datetime format, see ``DateTimeFormat``, ``DTF_TO_FMT``.
+        Datetime conversion for semi-structured outputs,
+        see ``DateTimeFormat`` doc.
     columns
         Columns included in the output.
     """
@@ -304,6 +348,10 @@ class Spec:
                 f"but got:\n{columns!r}"
             )
             raise TypeError(msg)
+        if dt_format and not is_datetime_format(dt_format):
+            msg = f"Unrecognized datetime format: {dt_format!r}"
+            raise TypeError(msg)
+
         self.range: DateRange = (
             range if isinstance(range, DateRange) else DateRange.from_dates(range)
         )
@@ -370,12 +418,13 @@ class Spec:
         ldf
             Cleaned source data, spanning ``self.range``.
         """
-        if dt_format := self.dt_format:
-            ldf = _transform_temporal(ldf, dt_format)
-        ldf = ldf.select(self.columns)
-        if n_rows := self.n_rows:
-            return ldf.collect().sample(n_rows).sort(self.sort_by)
-        return ldf.sort(self.sort_by).collect()
+        return (
+            self._transform_temporal(ldf)
+            .select(self.columns)
+            .collect()
+            .sample(self.n_rows)
+            .sort(self.sort_by)
+        )
 
     def write(self, df: pl.DataFrame, output_dir: Path, /) -> None:
         """
@@ -411,6 +460,16 @@ class Spec:
                 fp.unlink()
                 msg = f"Unexpected extension {self.suffix!r}"
                 raise NotImplementedError(msg)
+
+    def _transform_temporal(self, ldf: pl.LazyFrame, /) -> pl.LazyFrame:
+        if not self.dt_format:
+            return ldf
+        date: pl.Expr = col("date")
+        if self.dt_format == "decimal":
+            return ldf.select(
+                (date.dt.hour() + date.dt.minute() / 60).alias("time"), cs.exclude(date)
+            )
+        return ldf.with_columns(date.dt.to_string(self.dt_format))
 
 
 class SourceMap:
@@ -695,22 +754,6 @@ def _clean_source(ldf: pl.LazyFrame, /) -> pl.LazyFrame:
             "DepDelay",
         )
     )
-
-
-def _transform_temporal(
-    ldf: pl.LazyFrame, dt_format: DateTimeFormat, /
-) -> pl.LazyFrame:
-    """Either converting a datetime to a string format, or replacing with a decimal time."""
-    date: pl.Expr = col("date")
-    match dt_format:
-        case DateTimeFormat.DECIMAL:
-            return ldf.select(
-                (date.dt.hour() + date.dt.minute() / 60).alias("time"), cs.exclude(date)
-            )
-        case DateTimeFormat.ISO | DateTimeFormat.ACTUALLY_ISO:
-            return ldf.with_columns(date.dt.to_string(DTF_TO_FMT[dt_format]))
-        case _:
-            raise TypeError(dt_format)
 
 
 if __name__ == "__main__":
