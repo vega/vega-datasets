@@ -241,14 +241,15 @@ class DateRange:
     Matching a time period w/ required files.
 
     - Validates provided dates are in range of known data
-    - Converts (start, end) to monthly file names
+    - Converts (*start*, *end*) to monthly file names
     - Acts as a key, for detecting unique periods
 
     Notes
     -----
-    - Latest Available Data: August 2024 (in December 2024)
-        - 2024-12-07 -> max 2024-08-31
-    - https://www.transtats.bts.gov/releaseinfo.asp
+    `Latest Available Data`_ extends to roughly 2-4 months before current date
+
+    .. _Latest Available Data:
+        https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
     """
 
     _EARLIEST: ClassVar[dt.date] = dt.date(1987, 10, 1)
