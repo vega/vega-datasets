@@ -718,6 +718,16 @@ class Flights:
             logger.info("Sources already downloaded.")
 
     def scan_sources(self) -> SourceMap:
+        """
+        Group specs by common data, scanning a `pl.LazyFrame`_ per-group.
+
+        See Also
+        --------
+        ``SourceMap``
+
+        .. _pl.LazyFrame:
+            https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html
+        """
         logger.info("Scanning dependencies ...")
         for spec in self:
             self.sources.add_dependency(spec)
