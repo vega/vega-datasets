@@ -614,6 +614,34 @@ class Flights:
     - Extracting & concatenating
     - Transforms to meet a given spec
     - Writing to target formats
+
+    Examples
+    --------
+    Specs can be defined programatically:
+
+    >>> from pathlib import Path
+    >>> input_dir = Path.cwd()
+    >>> output_dir = Path.cwd() / "output"
+    >>> date_range = DateRange((2001, 1), (2001, 12))
+    >>> prog = Flights([
+    ...     Spec(date_range, 5_000, ".csv", dt_format="iso:strict"),
+    ...     Spec(date_range, 20_000, ".parquet"),
+    ...     Spec(
+    ...         date_range,
+    ...         200_000,
+    ...         ".json",
+    ...         dt_format="%Y/%m/%d %H:%M",
+    ...         columns=("date", "origin", "destination"),
+    ...     ),
+    ...     Spec(((2001, 1, 1), (2001, 3, 31)), 100_000, ".arrow"),
+    ... ])
+    >>> prog.run()  # doctest: +SKIP
+
+    Or they can be loaded in from a ``.toml`` file:
+
+    >>> source = Path.cwd() / "source.toml"
+    >>> decl = Flights.from_toml(source, input_dir, output_dir)  # doctest: +SKIP
+    >>> decl.run()  # doctest: +SKIP
     """
 
     def __init__(
@@ -736,6 +764,7 @@ class Flights:
         return self.sources
 
     def run(self) -> None:
+        """Top-level command providing fully managed data collection, transformation and export."""
         logger.info("Starting job ...")
         self.download_sources()
         for spec, frame in self.scan_sources().iter_tasks():
