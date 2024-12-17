@@ -7,6 +7,7 @@
 # ///
 from __future__ import annotations
 
+# ruff: noqa: PLC1901
 import asyncio
 import datetime as dt
 import io
@@ -430,7 +431,7 @@ class Spec:
 
     def write(self, df: pl.DataFrame, output_dir: Path, /) -> None:
         """
-        Export the materialized spec..
+        Export the materialized spec.
 
         Parameters
         ----------
@@ -496,7 +497,7 @@ class SourceMap:
         d_range: DateRange = spec.range
         if d_range not in self._mapping:
             paths = d_range.paths(self.input_dir)
-            self._frames[d_range] = pl.scan_parquet(paths).pipe(_clean_source)
+            self._frames[d_range] = self.clean(pl.scan_parquet(paths))
         self._mapping[d_range].append(spec)
 
     def iter_tasks(self) -> Iterator[tuple[Spec, pl.LazyFrame]]:
@@ -510,6 +511,83 @@ class SourceMap:
         for d_range, frame in self._frames.items():
             for spec in self._mapping[d_range]:
                 yield spec, frame
+
+    @staticmethod
+    def clean(ldf: pl.LazyFrame, /) -> pl.LazyFrame:
+        """
+        Fix *known* dataset issues, coerce types, rename columns.
+
+        Parameters
+        ----------
+        ldf
+            Monthly datasets, concatenated as a single table.
+
+        Notes
+        -----
+        - Rows containing cancelled flights or null values are dropped (~3.16%)
+        - Non compliant* `ISO-8601`_ times are corrected
+
+        *Invalid midnight representation prior to `ISO-8601-1-2019-Amd-1-2022`_
+
+        **Input schema**:
+
+            {
+                "FlightDate": datetime.date,
+                "CRSDepTime": str,
+                "DepTime": str,
+                "DepDelay": float,
+                "ArrDelay": float,
+                "Distance": float,
+                "Origin": str,
+                "Dest": str,
+                "Cancelled": float,
+            }
+
+        **Output schema**:
+
+            {
+                "date": datetime.datetime,
+                "delay": int,
+                "distance": int,
+                "origin": str,
+                "destination": str,
+                "ScheduledFlightDate": datetime.date,
+                "ScheduledFlightTime": datetime.time,
+                "DepDelay": int,
+            }
+
+        .. _ISO-8601:
+            https://en.wikipedia.org/wiki/ISO_8601
+        .. _ISO-8601-1-2019-Amd-1-2022:
+            https://cdn.standards.iteh.ai/samples/81801/f527872a9fe34281ae3a4af8e730f3f8/ISO-8601-1-2019-Amd-1-2022.pdf#page=8
+        """
+        cancelled = col("Cancelled").cast(bool)
+        flight_date = col("FlightDate")
+        dep_time = col("DepTime")
+        times = cs.ends_with("DepTime")
+
+        wrap_midnight = times.str.replace("2400", "0000").str.to_time("%H%M")
+        datetime = flight_date.dt.combine(dep_time)
+        flight_date_corrected = (
+            pl.when(dep_time == pl.time(0, 0, 0, 0))
+            .then(datetime.dt.offset_by("1d"))
+            .otherwise(datetime)
+        )
+        return (
+            ldf.filter(
+                ~pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null())
+            )
+            .with_columns(wrap_midnight, cs.float().cast(int))
+            .select(
+                flight_date_corrected.alias("date"),
+                col("ArrDelay").alias("delay"),
+                col("Distance", "Origin").name.to_lowercase(),
+                col("Dest").alias("destination"),
+                flight_date.alias("ScheduledFlightDate"),
+                col("CRSDepTime").alias("ScheduledFlightTime"),
+                "DepDelay",
+            )
+        )
 
     def __len__(self) -> int:
         return len(self._frames)
@@ -744,40 +822,6 @@ def _without_suffixes[T: (str, Path)](source: T, /) -> T:
     if isinstance(source, str):
         return source.removesuffix("".join(Path(source).suffixes))
     return Path(str(source).removesuffix("".join(source.suffixes)))
-
-
-def _clean_source(ldf: pl.LazyFrame, /) -> pl.LazyFrame:
-    """Parsing data types, dropping invalid data, dropping unused columns, fixing a datetime issue."""
-    cancelled: pl.Expr = col("Cancelled")
-    flight_date: pl.Expr = col("FlightDate")
-    dep_time: pl.Expr = col("DepTime")
-    # NOTE: Replace invalid midnight, convert to time
-    wrap_times: pl.Expr = (
-        cs.ends_with("DepTime").str.replace("2400", "0000").str.to_time("%H%M")
-    )
-    convert_types: Sequence[pl.Expr] = wrap_times, cs.float().cast(int)
-    # NOTE: Filter cancelled flights and drop nulls/empty values first
-    drop_rows = pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null())  # noqa: PLC1901
-    flight_date_corrected: pl.Expr = (
-        pl.when(dep_time != pl.time(0, 0, 0, 0))
-        .then(flight_date.dt.combine(dep_time))
-        .otherwise(flight_date.dt.offset_by("1d").dt.combine(dep_time))
-    )
-    return (
-        ldf.with_columns(cancelled.cast(bool))
-        .filter(~drop_rows)
-        .with_columns(*convert_types)
-        .select(
-            flight_date_corrected.alias("date"),
-            col("ArrDelay").alias("delay"),
-            col("Distance").alias("distance"),
-            col("Origin").alias("origin"),
-            col("Dest").alias("destination"),
-            flight_date.alias("ScheduledFlightDate"),
-            col("CRSDepTime").alias("ScheduledFlightTime"),
-            "DepDelay",
-        )
-    )
 
 
 def main() -> None:
