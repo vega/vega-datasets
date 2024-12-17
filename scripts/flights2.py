@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import asyncio
 import datetime as dt
-import gzip
 import io
 import logging
 import tomllib
@@ -183,8 +182,8 @@ REPORTING_PREFIX: LiteralString = (
     "On_Time_Reporting_Carrier_On_Time_Performance_1987_present_"
 )
 ZIP: Literal[".zip"] = ".zip"
-GZIP: Literal[".csv.gz"] = ".csv.gz"
-PATTERN_GZIP: LiteralString = f"*{REPORTING_PREFIX}*{GZIP}"
+PARQUET: Literal[".parquet"] = ".parquet"
+PATTERN_PARQUET: LiteralString = f"*{REPORTING_PREFIX}*{PARQUET}"
 
 COLUMNS_DEFAULT: Sequence[Column] = (
     "date",
@@ -303,6 +302,9 @@ class DateRange:
             .to_series()
             .to_list()
         )
+
+    def paths(self, input_dir: Path, /) -> list[Path]:
+        return [input_dir / f"{stem}{PARQUET}" for stem in self.file_stems]
 
     def __eq__(self, other: Any, /) -> bool:
         """Two ``DateRange``s are equivalent if they would require the same files."""
@@ -481,10 +483,20 @@ class SourceMap:
         self._frames: dict[DateRange, pl.LazyFrame] = {}
 
     def add_dependency(self, spec: Spec, /) -> None:
-        """Adds a spec, detecting any shared resources."""
+        """
+        Adds a spec, detecting and loading any shared resources.
+
+        Required files for each unique ``DateRange`` are lazily read into a single table.
+
+        Parameters
+        ----------
+        spec
+            Describes a target output file.
+        """
         d_range: DateRange = spec.range
         if d_range not in self._mapping:
-            self._frames[d_range] = self._scan(d_range).pipe(_clean_source)
+            paths = d_range.paths(self.input_dir)
+            self._frames[d_range] = pl.scan_parquet(paths).pipe(_clean_source)
         self._mapping[d_range].append(spec)
 
     def iter_tasks(self) -> Iterator[tuple[Spec, pl.LazyFrame]]:
@@ -499,27 +511,6 @@ class SourceMap:
             for spec in self._mapping[d_range]:
                 yield spec, frame
 
-    def _scan(self, d_range: DateRange, /) -> pl.LazyFrame:
-        """
-        Lazily read all required files into a single table.
-
-        Parameters
-        ----------
-        d_range
-            Target time period, spanning multiple monthly files.
-
-        Notes
-        -----
-        - Only the subset of columns defined in ``SCAN_SCHEMA`` are preserved.
-        - Some of the unused columns contain invalid utf8 values.
-        """
-        return pl.scan_csv(
-            [self.input_dir / f"{stem}{GZIP}" for stem in d_range.file_stems],
-            try_parse_dates=True,
-            schema_overrides=SCAN_SCHEMA,
-            encoding="utf8-lossy",
-        ).select(SCAN_SCHEMA.names())
-
     def __len__(self) -> int:
         return len(self._frames)
 
@@ -533,7 +524,7 @@ class Flights:
     specs
         Target dataset definitions.
     input_dir
-        Directory to store zip files.
+        Directory to store monthly input files.
     output_dir
         Directory to write realised specs to.
 
@@ -608,7 +599,8 @@ class Flights:
 
     @property
     def _existing_stems(self) -> set[str]:
-        return {_without_suffixes(fp.name) for fp in self.input_dir.glob(PATTERN_GZIP)}
+        it = self.input_dir.glob(PATTERN_PARQUET)
+        return {_without_suffixes(fp.name) for fp in it}
 
     @property
     def missing_stems(self) -> set[str]:
@@ -627,7 +619,7 @@ class Flights:
         session = niquests.AsyncSession(base_url=ROUTE_ZIP)
         aws = (_request_async(session, name) for name in names)
         buffers = await asyncio.gather(*aws)
-        writes = (_write_rezip_async(self.input_dir, buf) for buf in buffers)
+        writes = (_write_zip_to_parquet_async(self.input_dir, buf) for buf in buffers)
         return await asyncio.gather(*writes)
 
     def download_sources(self) -> None:
@@ -679,35 +671,67 @@ async def _request_async(session: niquests.AsyncSession, name: str, /) -> io.Byt
         raise NotImplementedError(msg)
 
 
-def _write_rezip(input_dir: Path, buf: io.BytesIO, /) -> Path:
+def _write_zip_to_parquet(input_dir: Path, buf: io.BytesIO, /) -> Path:
     """
-    Extract inner csv from a zip file, writing to a gzipped csv of the same name.
+    Extract inner ``.csv`` from ``.zip``, write to ``.parquet``of the same name.
+
+    Parameters
+    ----------
+    input_dir
+        Directory to store monthly input files.
+    buf
+        Buffer containing the zipped response.
 
     Notes
     -----
-    - ``.read_bytes()`` is the only expensive op here
-    - End result (gzip, single file) can be scanned in parallel by ``polars``
-        - And slightly smaller than zipped directory
+    - We pay the *decompress*->*compress* cost only **once** per-download
+    - Only the subset of columns defined in ``SCAN_SCHEMA`` are preserved
+        - Further reduces file size
+        - Also, some unused columns contain invalid utf8 values
+
+    Original file:
+
+        On_Time_Reporting_Carrier_On_Time_Performance_1987_present_YYYY_M.zip
+        ├──On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_YYYY_M.csv
+        └──readme.html
+
+    Result file:
+
+        On_Time_Reporting_Carrier_On_Time_Performance_1987_present_YYYY_M.parquet
+
+    Size comparison:
+
+        | format   | min (KB) | max  (KB) |
+        | -------- | -------- | --------- |
+        | .parquet | 1_800    | 3_000     |
+        | .zip     | 15_000   | 30_000    |
+        | .csv     | 200_000  | 250_000   |
     """
     zip_csv = next(zipfile.Path(zipfile.ZipFile(buf)).glob("*.csv"))
     stem = zip_csv.at.replace("(", "").replace(")", "")
-    gzipped: Path = (input_dir / stem).with_suffix(".csv.gz")
-    gzipped.touch()
-    msg = f"Writing {gzipped.as_posix()!r}"
+    output = (input_dir / stem).with_suffix(".parquet")
+    output.touch()
+    msg = f"Writing {output.as_posix()!r}"
     logger.debug(msg)
-    with gzip.GzipFile(gzipped, mode="wb", mtime=0) as f:
-        f.write(zip_csv.read_bytes())
-    return gzipped
+    with zip_csv.open("rb") as strm:
+        ldf = pl.scan_csv(
+            strm,
+            try_parse_dates=True,
+            schema_overrides=SCAN_SCHEMA,
+            encoding="utf8-lossy",
+        ).select(SCAN_SCHEMA.names())
+    ldf.collect().write_parquet(output, compression="zstd", compression_level=17)
+    return output
 
 
-async def _write_rezip_async(input_dir: Path, buf: io.BytesIO, /) -> Path:
+async def _write_zip_to_parquet_async(input_dir: Path, buf: io.BytesIO, /) -> Path:
     """
-    Wraps ``_write_rezip`` to run in a separate thread.
+    Wraps ``_write_zip_to_parquet`` to run in a separate thread.
 
     - **Greatly** reduces the cost of the decompress > compress operations
     - During testing, each write would block for ~10s
     """
-    return await asyncio.to_thread(_write_rezip, input_dir, buf)
+    return await asyncio.to_thread(_write_zip_to_parquet, input_dir, buf)
 
 
 def _file_stem_source[T: (str, pl.Expr)](year: T, month: T, /) -> pl.Expr:
