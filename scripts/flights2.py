@@ -33,7 +33,7 @@ from collections import defaultdict, deque
 from collections.abc import Iterable, Sequence
 from functools import cached_property
 from pathlib import Path
-from typing import IO, TYPE_CHECKING, Annotated, Literal
+from typing import TYPE_CHECKING, Annotated, Literal
 
 import niquests
 import polars as pl
@@ -126,20 +126,6 @@ type IntoDateRange = (
     tuple[IntoDate, IntoDate] | Mapping[Literal["start", "end"], IntoDate]
 )
 """Anything that can be converted into a ``DateRange``."""
-
-
-type PlScanCsv = (
-    str
-    | Path
-    | IO[str]
-    | IO[bytes]
-    | bytes
-    | list[str]
-    | list[Path]
-    | list[IO[str]]
-    | list[IO[bytes]]
-    | list[bytes]
-)
 
 
 def is_chrono_str(s: Any) -> TypeIs[_ChronoFormat]:
