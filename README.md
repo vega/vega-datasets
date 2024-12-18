@@ -8,8 +8,8 @@ Collection of datasets used in Vega and Vega-Lite examples. This data lives at h
 
 Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
 
-The list of sources is in [datapackage.md](https://github.com/vega/vega-datasets/blob/next/datapackage.md#resources).
-This metadata is also available in a machine-readable format at [datapackage.json](https://github.com/vega/vega-datasets/blob/next/datapackage.json).
+The list of sources is in [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md#resources).
+This metadata is also available in a machine-readable format at [datapackage.json](https://github.com/vega/vega-datasets/blob/main/datapackage.json).
 
 
 To access the data in Observable, you can import `vega-dataset`. Try our [example notebook](https://observablehq.com/@vega/vega-datasets). To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/altair-viz/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
