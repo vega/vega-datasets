@@ -12,6 +12,7 @@ See Also
 --------
 ``Flights``
 ``Spec``
+``DateTimeFormat``
 
 .. _BTS:
     https://www.transtats.bts.gov/Homepage.asp
@@ -146,15 +147,22 @@ def is_chrono_str(s: Any) -> TypeIs[_ChronoFormat]:
 
 
 def is_datetime_format(s: Any) -> TypeIs[DateTimeFormat]:
-    return s in {"iso", "iso:strict", "decimal"} or is_chrono_str(s)
+    return s in {"iso", "iso:strict", "decimal"} or is_chrono_str(s) or s is None
 
 
 type _ChronoFormat = Literal["%Y/%m/%d %H:%M"] | Annotated[LiteralString, is_chrono_str]
 """https://docs.rs/chrono/latest/chrono/format/strftime/index.html"""
 
-type DateTimeFormat = Literal["iso", "iso:strict", "decimal"] | _ChronoFormat
+type DateTimeFormat = Literal["iso", "iso:strict", "decimal"] | _ChronoFormat | None
 """
 Anything that is resolvable to a date/time column transform.
+
+Notes
+-----
+When not provided:
+- {``.arrow``, ``.parquet``} preserve temporal data types on write
+- ``.json`` defaults to **"iso"**
+- ``.csv`` defaults to **"iso:strict"**
 
 Examples
 --------
@@ -163,7 +171,7 @@ Each example will use the same input datetime:
     from datetime import datetime
     datetime(2020, 3, 1, 6, 30, 0)
 
-**"iso"**, **"iso:strict"**: variants of `ISO 6801`_ used in `pl.Expr.dt.to_string`_:
+**"iso"**, **"iso:strict"**: variants of `ISO 8601`_ used in `pl.Expr.dt.to_string`_:
 
     "2020-03-01 06:30:00.000000"
     "2020-03-01T06:30:00.000000"
@@ -181,7 +189,7 @@ A format string using `chrono`_ specifiers:
     "%Y-%B-%d"       -> "2020-March-01"
     "%e-%b-%Y"       -> " 1-Mar-2020"
 
-.. _ISO 6801:
+.. _ISO 8601:
     https://en.wikipedia.org/wiki/ISO_8601
 .. _pl.Expr.dt.to_string:
     https://docs.pola.rs/api/python/stable/reference/expressions/api/polars.Expr.dt.to_string.html
@@ -356,7 +364,7 @@ class Spec:
         range: DateRange | IntoDateRange,
         n_rows: Rows,
         suffix: Extension,
-        dt_format: DateTimeFormat | None = None,
+        dt_format: DateTimeFormat = None,
         columns: Sequence[Column] = COLUMNS_DEFAULT,
     ) -> None:
         if {"date", "time"}.isdisjoint(columns):
@@ -365,7 +373,7 @@ class Spec:
                 f"but got:\n{columns!r}"
             )
             raise TypeError(msg)
-        if dt_format and not is_datetime_format(dt_format):
+        if not is_datetime_format(dt_format):
             msg = f"Unrecognized datetime format: {dt_format!r}"
             raise TypeError(msg)
 
@@ -374,7 +382,7 @@ class Spec:
         )
         self.n_rows: Rows = n_rows
         self.suffix: Extension = suffix
-        self.dt_format: DateTimeFormat | None = dt_format
+        self.dt_format: DateTimeFormat = dt_format
         self.columns: Sequence[Column] = columns
 
     @classmethod
