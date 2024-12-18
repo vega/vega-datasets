@@ -5,6 +5,20 @@
 #     "polars",
 # ]
 # ///
+"""
+Retrieve, extract, transform, and export  `BTS`_ (U.S.) `On-Time Flight Performance`_-derived datasets.
+
+See Also
+--------
+``Flights``
+``Spec``
+
+.. _BTS:
+    https://www.transtats.bts.gov/Homepage.asp
+.. _On-Time Flight Performance:
+    https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
+"""
+
 from __future__ import annotations
 
 # ruff: noqa: PLC1901
@@ -37,7 +51,6 @@ if TYPE_CHECKING:
 
 
 logger = logging.getLogger(__name__)
-
 
 type Rows = Literal[
     1_000,
