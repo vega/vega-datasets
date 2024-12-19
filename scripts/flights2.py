@@ -34,6 +34,7 @@ from collections.abc import Iterable, Sequence
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, Annotated, Literal
+from typing import get_args as _typing_get_args
 
 import niquests
 import polars as pl
@@ -53,27 +54,14 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
-type Rows = Literal[
-    1_000,
-    2_000,
-    5_000,
-    10_000,
-    20_000,
-    100_000,
-    200_000,
-    500_000,
-    1_000_000,
-    3_000_000,
-    5_000_000,
-    10_000_000,
-    100_000_000,
-    500_000_000,
-    1_000_000_000,
-]
-"""Number of rows to include in the output."""
 
 type Extension = Literal[".arrow", ".csv", ".json", ".parquet"]
 """File extension/output format."""
+
+
+def is_extension(obj: Any) -> TypeIs[Extension]:
+    return obj in _get_args(Extension)
+
 
 type Column = Literal[
     "date",
@@ -116,6 +104,13 @@ See Also
 - https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
 """
 
+
+def is_columns(obj: Any) -> TypeIs[Sequence[Column]]:
+    return obj is COLUMNS_DEFAULT or (
+        isinstance(obj, Sequence) and set(_get_args(Column)).issuperset(obj)
+    )
+
+
 type YearMonthDay = tuple[int, int, int] | Sequence[int]
 """Arguments passed to ``datetime.date(...)``."""
 
@@ -126,6 +121,59 @@ type IntoDateRange = (
     tuple[IntoDate, IntoDate] | Mapping[Literal["start", "end"], IntoDate]
 )
 """Anything that can be converted into a ``DateRange``."""
+
+THOUSAND: Literal[1_000] = 1_000
+MILLION: Literal[1_000_000] = 1_000_000
+BILLION: Literal[1_000_000_000] = 1_000_000_000
+
+
+def is_rows(obj: Any) -> TypeIs[Rows]:
+    match obj:
+        case int(n) if 1 <= n < THOUSAND:
+            return True
+        case int(n) if THOUSAND <= n < MILLION:
+            return n % THOUSAND == 0
+        case int(n) if MILLION <= n < BILLION:
+            return n % MILLION == 0
+        case int(n) if BILLION <= n < BILLION * THOUSAND:
+            return n % BILLION == 0
+        case _:
+            return False
+
+
+type Rows = Annotated[int, is_rows]
+"""
+Number of rows to include in the output.
+
+Constraints
+-----------
+- Positive integer
+- Either
+    - 1 <= n_rows < 1_000
+    - Representable as thousands, millions, or billions **without** a remainder
+
+Examples
+--------
+Ok:
+
+    30
+    123
+    1_000
+    20_000
+    55_000_000
+    999_000_000_000
+
+Not ok:
+
+    -30               # Negative
+    1_230             # Remainder: 230
+    1_001             # Remainder: 1
+    20_502            # Remainder: 502
+    55_555_000        # Remainder: 555_000
+    1_000_000_000_000 # Trillions
+
+---
+"""
 
 
 def is_chrono_str(s: Any) -> TypeIs[_ChronoFormat]:
@@ -353,18 +401,11 @@ class Spec:
         dt_format: DateTimeFormat = None,
         columns: Sequence[Column] = COLUMNS_DEFAULT,
     ) -> None:
-        if {"date", "time"}.isdisjoint(columns):
-            msg = (
-                f"Must specify one of {['date', 'time']!r} columns, "
-                f"but got:\n{columns!r}"
-            )
-            raise TypeError(msg)
-        if not is_datetime_format(dt_format):
-            msg = f"Unrecognized datetime format: {dt_format!r}"
-            raise TypeError(msg)
-
         self.range: DateRange = (
             range if isinstance(range, DateRange) else DateRange.from_dates(range)
+        )
+        n_rows, suffix, dt_format, columns = self._validate(
+            n_rows, suffix, dt_format, columns
         )
         self.n_rows: Rows = n_rows
         self.suffix: Extension = suffix
@@ -404,15 +445,15 @@ class Spec:
             | 1_000_000      | "flights-1m"  |
             | 12_000_000_000 | "flights-12b" |
         """
-        frac = self.n_rows // 1_000
-        if frac >= 1_000_000:
-            s = f"{frac // 1_000_000}b"
-        elif frac >= 1_000:
-            s = f"{frac // 1_000}m"
+        frac = self.n_rows // THOUSAND
+        if frac >= MILLION:
+            s = f"{frac // MILLION}b"
+        elif frac >= THOUSAND:
+            s = f"{frac // THOUSAND}m"
         elif frac >= 1:
             s = f"{frac}k"
         else:
-            raise TypeError(self.n_rows)
+            s = f"{self.n_rows}"
         return f"{self._name_prefix}{s}{self.suffix}"
 
     @property
@@ -481,6 +522,40 @@ class Spec:
                 (date.dt.hour() + date.dt.minute() / 60).alias("time"), cs.exclude(date)
             )
         return ldf.with_columns(date.dt.to_string(self.dt_format))
+
+    @staticmethod
+    def _validate(
+        n_rows: Any, suffix: Any, dt_format: Any, columns: Any, /
+    ) -> tuple[Rows, Extension, DateTimeFormat, Sequence[Column]]:
+        if not is_columns(columns):
+            msg = f"`columns` contains unrecognized names:\n{columns!r}"
+            raise TypeError(msg)
+
+        if {"date", "time"}.isdisjoint(columns):
+            msg = (
+                f"Must specify one of {['date', 'time']!r} columns, "
+                f"but got: {columns!r}"
+            )
+            raise TypeError(msg)
+
+        if not is_datetime_format(dt_format):
+            msg = f"Unrecognized datetime format: {dt_format!r}"
+            raise TypeError(msg)
+
+        if not is_rows(n_rows):
+            msg = (
+                "Number of rows must be either:\n"
+                "  - 1 <= n_rows < 1_000\n"
+                "  - Representable as thousands, millions, or billions without a remainder\n\n"
+                f"But got: {n_rows!r}"
+            )
+            raise TypeError(msg)
+
+        if not is_extension(suffix):
+            msg = f"Unexpected extension {suffix!r}"
+            raise TypeError(msg)
+
+        return n_rows, suffix, dt_format, columns
 
 
 class SourceMap:
@@ -882,6 +957,11 @@ def _without_suffixes[T: (str, Path)](source: T, /) -> T:
     if isinstance(source, str):
         return source.removesuffix("".join(Path(source).suffixes))
     return Path(str(source).removesuffix("".join(source.suffixes)))
+
+
+def _get_args(tp: Any, /) -> tuple[Any, ...]:
+    unwrapped = getattr(tp, "__value__", tp)
+    return _typing_get_args(unwrapped)
 
 
 def main() -> None:
