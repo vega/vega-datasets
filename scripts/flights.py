@@ -396,7 +396,8 @@ class Spec:
         Columns included in the output.
     """
 
-    _name_prefix: ClassVar[Literal["flights-"]] = "flights-"
+    _PREFIX: ClassVar[Literal["flights-"]] = "flights-"
+    _RANDOM_SEED: ClassVar[Literal[42]] = 42
 
     def __init__(
         self,
@@ -459,7 +460,7 @@ class Spec:
             s = f"{frac}k"
         else:
             s = f"{self.n_rows}"
-        return f"{self._name_prefix}{s}{self.suffix}"
+        return f"{self._PREFIX}{s}{self.suffix}"
 
     @property
     def sort_by(self) -> Column:
@@ -479,7 +480,7 @@ class Spec:
             self._transform_temporal(ldf)
             .select(self.columns)
             .collect()
-            .sample(self.n_rows)
+            .sample(self.n_rows, seed=self._RANDOM_SEED)
             .sort(self.sort_by)
         )
 
