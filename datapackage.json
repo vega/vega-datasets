@@ -1031,6 +1031,39 @@
       }
     },
     {
+      "name": "flights-1k.csv",
+      "type": "table",
+      "path": "flights-1k.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "datetime"
+          },
+          {
+            "name": "delay",
+            "type": "integer"
+          },
+          {
+            "name": "distance",
+            "type": "integer"
+          },
+          {
+            "name": "origin",
+            "type": "string"
+          },
+          {
+            "name": "destination",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
       "name": "flights-200k.arrow",
       "type": "table",
       "description": "Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`",
