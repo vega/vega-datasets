@@ -1,727 +1,985 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "pandas",
-#     "pyarrow>=14.0.0",
+#     "niquests",
+#     "polars",
 # ]
 # ///
 """
-Process U.S. DOT On-Time Flight Performance data into a simplified CSV/JSON/Parquet format.
+Retrieve, extract, transform, and export  `BTS`_ (U.S.) `On-Time Flight Performance`_-derived datasets.
 
-This script processes user-downloaded ZIP files containing Bureau of Transportation 
-Statistics (BTS) On-Time Flight Performance data, combining and transforming them 
-into a specified output format with essential flight delay information. The script 
-properly handles date boundary cases where flights depart on a different date than 
-scheduled due to delays or early departures. BTS is a statistical agency within 
-the U.S. Department of Transportation (DOT).
+See Also
+--------
+``Flights``
+``Spec``
+``DateTimeFormat``
 
-Data Source: 
-1) Visit https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr 
-         (link valid as of November 2024)
-2) Download prezipped files, one per month.
-
-Input Data Requirements:
-    - ZIP files containing BTS On-Time Performance data CSVs
-    - Required columns in CSVs:
-        * FlightDate: Scheduled departure date (YYYY-MM-DD)
-        * CRSDepTime: Scheduled departure time (HHMM, 24-hour format)
-        * DepTime: Actual departure time (HHMM, 24-hour format)
-        * DepDelay: Departure delay in minutes
-        * ArrDelay: Arrival delay in minutes
-        * Distance: Flight distance in miles
-        * Origin: Origin airport code
-        * Dest: Destination airport code
-        * Cancelled: Boolean indicating if flight was cancelled
-Usage:
-    ./flights.py INPUT_DIR [-o OUTPUT] [-n NUM_ROWS] [-s SEED] 
-                          [-d DATETIME_FORMAT] [-f OUTPUT_FORMAT] [-c COLUMNS]
-                          [-v] [--flag-date-changes] [--start-date START_DATE]
-                          [--end-date END_DATE]
-
-Arguments:
-    INPUT_DIR           Directory containing flight data zip files (required)
-    -o, --output        Output filename without extension (default: flights)
-    -n, --num-rows      Number of rows to include in output (optional, defaults to all rows)
-    -s, --seed          Random seed for row sampling (optional, defaults to 42)
-    -d, --datetime-format DateTime format: 'mmddhhmm', 'iso', or 'decimal' (optional, defaults to 'mmddhhmm')
-    -f, --format        Output format: 'csv', 'json', or 'parquet' (optional, defaults to 'csv')
-    -c, --columns       Comma-separated list of columns to include in output and their order
-                         If not specified, defaults to: date/time (datetime-format dependent),
-                         delay, distance, origin, destination.
-    -v, --verbose       Show detailed statistics about the dataset
-    --flag-date-changes Add column indicating when actual departure date differs from scheduled
-    --start-date        Start date (inclusive) in YYYY-MM-DD format to filter actual departures
-    --end-date          End date (inclusive) in YYYY-MM-DD format to filter actual departures
-
-    Parquet-specific options:
-        --parquet-compression      Compression codec for Parquet files: 'zstd', 'snappy', 'gzip', 
-                                or 'none' (default: zstd)
-        --parquet-compression-level  Compression level for ZSTD (1-22, default: 3)
-                                    Higher values give better compression but slower speed
-        --parquet-row-group-size    Row group size in MB (default: 128)
-                                    Larger values improve compression but use more memory
-        --parquet-disable-dictionary Disable dictionary encoding for string columns
-                                    Dictionary encoding improves compression for repeated values
-        --parquet-dictionary-page-size  Dictionary page size in KB (default: 1024)
-                                    Larger values may improve compression for string columns
-        --parquet-disable-statistics    Disable writing statistics to Parquet file
-                                    Statistics help with query planning but increase file size 
-
-
-Available Columns:
-    time                Decimal hours.minutes when using decimal format (e.g., 6.5 for 6:30)
-    date                Formatted datetime when using mmddhhmm or iso format
-    delay               Arrival delay in minutes (integer)
-    distance            Flight distance in miles (integer)
-    origin             Origin airport code
-    destination        Destination airport code
-    date_changed       Boolean indicating if actual departure date differs from scheduled
-                       (only available with --flag-date-changes)
-    ScheduledFlightDate Original scheduled flight date (YYYY-MM-DD)
-    ScheduledFlightTime Original scheduled departure time (HHMM)
-    DepDelay           Departure delay in minutes (integer)
-
-Output Formats:
-    datetime formats:
-        - mmddhhmm: "06142330" (June 14, 23:30)
-        - iso: "2023/06/14 23:30"
-        - decimal: "6.5" (6:30), "6.25" (6:15), "23.75" (23:45)
-
-    Output Format Details:
-    - CSV:     Human-readable comma-separated values
-    - JSON:    Compact JSON array of records, useful for APIs
-    - Parquet: Columnar storage with compression, ideal for large datasets
-              Supports ZSTD, SNAPPY, or GZIP compression
-
-Examples:
-    # Basic usage - process all rows, output as CSV with default columns
-    python flights.py ./flight_data
-
-    # Process 1000 rows with specific columns in decimal time format
-    python flights.py ./flight_data -n 1000 -d decimal -c time,delay,distance
-
-    # Output as JSON with ISO dates and scheduled information
-    python flights.py ./flight_data -f json -d iso -c ScheduledFlightDate,ScheduledFlightTime,date,delay
-
-    # Include date change flag and custom column selection
-    python flights.py ./flight_data --flag-date-changes -c date,delay,date_changed,DepDelay
-
-    # Filter flights between specific dates
-    python flights.py ./flight_data --start-date 2023-01-01 --end-date 2023-01-31
-
-    # Output as Parquet with custom compression settings
-    python flights.py ./flight_data -f parquet --parquet-compression zstd --parquet-compression-level 7
-
-
-Notes:
-    - Input ZIP files should match the pattern 'On_Time_Reporting*.zip'
-    - Files are expected to use ISO-8859-1 encoding
-    - The script automatically handles date changes due to delays
-    - Invalid or problematic rows are logged but excluded from the output
-    - Column names are case-sensitive
-    - When using decimal format, 'time' must be used instead of 'date'
-    - When using mmddhhmm or iso format, 'date' must be used instead of 'time'
+.. _BTS:
+    https://www.transtats.bts.gov/Homepage.asp
+.. _On-Time Flight Performance:
+    https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
 """
 
-import pandas as pd
-import zipfile
-import glob
-import json
-from typing import List, Optional, Union, Literal, Dict, Any, Set
+from __future__ import annotations
+
+# ruff: noqa: PLC1901
+import asyncio
+import datetime as dt
+import io
 import logging
+import tomllib
+import zipfile
+from collections import defaultdict, deque
+from collections.abc import Iterable, Sequence
+from functools import cached_property
 from pathlib import Path
-import argparse
-import numpy as np
-from enum import Enum
-import pyarrow as pa
-if pa.__version__ < '14.0.0':
-    logging.warning(f"Using pyarrow version {pa.__version__}. Some Parquet features may not be available. Consider upgrading to 14.0.0 or later.")
-import pyarrow.parquet as pq
-from dataclasses import dataclass
-import os
+from typing import TYPE_CHECKING, Annotated, Literal
+from typing import get_args as _typing_get_args
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+import niquests
+import polars as pl
+from polars import col
+from polars import selectors as cs
 
-class CompressionCodec(str, Enum):
-    ZSTD = 'zstd'
-    SNAPPY = 'snappy'
-    GZIP = 'gzip'
-    NONE = 'none'
+if TYPE_CHECKING:
+    import sys
+    from collections.abc import Iterator, Mapping
+    from typing import Any, ClassVar, LiteralString
 
-class DateTimeFormat(str, Enum):
-    MMDDHHMM = 'mmddhhmm'
-    ISO = 'iso'
-    DECIMAL = 'decimal'
-
-class OutputFormat(str, Enum):
-    CSV = 'csv'
-    JSON = 'json'
-    PARQUET = 'parquet'
-
-@dataclass
-class ParquetConfig:
-    compression: str = 'zstd'
-    compression_level: int = 3
-    row_group_size: int = 128 * 1024 * 1024  # 128MB default
-    enable_dictionary: bool = True
-    dictionary_page_size: int = 1024 * 1024  # 1MB default
-    write_statistics: bool = True
-    
-    @classmethod
-    def from_args(cls, args: argparse.Namespace) -> 'ParquetConfig':
-        """Create ParquetConfig from command line arguments."""
-        return cls(
-            compression=args.parquet_compression,
-            compression_level=args.parquet_compression_level,
-            row_group_size=args.parquet_row_group_size * 1024 * 1024,
-            enable_dictionary=not args.parquet_disable_dictionary,
-            dictionary_page_size=args.parquet_dictionary_page_size * 1024,
-            write_statistics=not args.parquet_disable_statistics
-        )
-
-# Define valid columns and their dependencies
-VALID_COLUMNS = {
-    'time', 'date', 'delay', 'distance', 'origin', 'destination',
-    'date_changed', 'ScheduledFlightDate', 'ScheduledFlightTime', 'DepDelay'
-}
-
-# Columns that require the --flag-date-changes option
-FLAG_DEPENDENT_COLUMNS = {'date_changed'}
-
-# Columns that are format-dependent
-FORMAT_DEPENDENT_COLUMNS = {
-    DateTimeFormat.DECIMAL: {'time'},  # must use 'time' with decimal format
-    DateTimeFormat.ISO: {'date'},      # must use 'date' with iso format
-    DateTimeFormat.MMDDHHMM: {'date'}  # must use 'date' with mmddhhmm format
-}
-
-# Helper functions
-def convert_hhmm_to_minutes(time_hhmm: float) -> Optional[int]:
-    """Convert HHMM format to minutes since midnight."""
-    if pd.isnull(time_hhmm):
-        return None
-    time_hhmm = int(time_hhmm)
-    if time_hhmm == 2400:  # Handle special case
-        return 0
-    hours = time_hhmm // 100
-    minutes = time_hhmm % 100
-    if not (0 <= hours < 24 and 0 <= minutes < 60):
-        return None
-    return hours * 60 + minutes
-
-def convert_to_decimal_time(dt: pd.Timestamp) -> float:
-    """Convert datetime to decimal time format (e.g., 6:30 -> 6.5)."""
-    return dt.hour + (dt.minute / 60)
-
-def validate_columns(
-    columns: List[str],
-    datetime_format: DateTimeFormat,
-    flag_date_changes: bool
-) -> None:
-    """Validate requested columns against format and flags."""
-    column_set = set(columns)
-    
-    # Check all columns are valid
-    invalid_columns = column_set - VALID_COLUMNS
-    if invalid_columns:
-        raise ValueError(f"Invalid columns: {', '.join(invalid_columns)}")
-    
-    # Check flag-dependent columns
-    if not flag_date_changes and (column_set & FLAG_DEPENDENT_COLUMNS):
-        raise ValueError("date_changed column requires --flag-date-changes option")
-    
-    # Check format-dependent columns
-    if datetime_format == DateTimeFormat.DECIMAL:
-        if 'date' in column_set:
-            raise ValueError("Use 'time' instead of 'date' with decimal format")
+    if sys.version_info >= (3, 13):
+        from typing import TypeIs
     else:
-        if 'time' in column_set:
-            raise ValueError(f"Use 'date' instead of 'time' with {datetime_format.value} format")
+        from typing_extensions import TypeIs
 
-def format_datetime(
-    df: pd.DataFrame,
-    datetime_format: DateTimeFormat
-) -> pd.DataFrame:
-    """Format datetime column according to specified format."""
-    df = df.copy()
-    
-    if datetime_format == DateTimeFormat.DECIMAL:
-        df['time'] = df['date'].apply(convert_to_decimal_time)
-        df = df.drop('date', axis=1)
-    elif datetime_format == DateTimeFormat.MMDDHHMM:
-        df['date'] = df['date'].dt.strftime('%m%d%H%M')
-    else:  # ISO format
-        df['date'] = df['date'].dt.strftime('%Y/%m/%d %H:%M')
-    
-    return df
 
-def process_flights_data(
-   df: pd.DataFrame,
-   num_rows: Optional[int] = None,
-   random_seed: int = 42,
-   datetime_convert: bool = True,
-   datetime_format: DateTimeFormat = DateTimeFormat.MMDDHHMM,
-   flag_date_changes: bool = False,
-   columns: Optional[List[str]] = None,
-   start_date: Optional[str] = None,
-   end_date: Optional[str] = None
-) -> pd.DataFrame:
-   """Process flight data with specified columns and format."""
-   # Set random seed for reproducibility
-   np.random.seed(random_seed)
-   
-   # Filter cancelled flights and drop NA values first
-   df = df[~df.Cancelled].dropna(subset=['ArrDelay', 'DepDelay', 'CRSDepTime'])
+logger = logging.getLogger(__name__)
 
-   # Add MMDDHHMM format check
-   if datetime_format == DateTimeFormat.MMDDHHMM:
-       unique_years = pd.to_datetime(df['FlightDate']).dt.year.unique()
-       if len(unique_years) > 1:
-           raise ValueError(
-               f"MMDDHHMM format cannot be used with data spanning multiple years. "
-               f"Found data from years: {sorted(unique_years)}. "
-               "Please use ISO format (-d iso) for multi-year data."
-           )
 
-   # Calculate scheduled minutes and actual minutes for validation
-   scheduled_minutes = (df['CRSDepTime'].astype(int) // 100 * 60 + 
-                       df['CRSDepTime'].astype(int) % 100)
-   actual_minutes = scheduled_minutes + df['DepDelay'].astype(int)
+type Extension = Literal[".arrow", ".csv", ".json", ".parquet"]
+"""File extension/output format."""
 
-   # Vectorized validation
-   dep_time_minutes = (df['DepTime'] // 100 * 60 + df['DepTime'] % 100).where(df['DepTime'] != 2400, 0)
-   
-   # Handle midnight crossing
-   time_diff = np.abs(dep_time_minutes - actual_minutes % 1440)
-   time_diff = np.minimum(time_diff, 1440 - time_diff)
-   
-   # Check consistency with 1-minute tolerance
-   all_consistent = (~pd.isnull(df['DepTime'])) & (time_diff <= 1)
-   
-   logging.info(
-       "All reported departure times are consistent with delays"
-       if all_consistent.all()
-       else "Some reported departure times are inconsistent with delays"
-   )
-   
-   # Calculate actual datetime
-   flight_dates = pd.to_datetime(df['FlightDate'])
-   df['actual_datetime'] = (flight_dates + 
-                          pd.to_timedelta(scheduled_minutes, unit='m') + 
-                          pd.to_timedelta(df['DepDelay'], unit='m'))
-   
-   # Special handling for 2400 DepTime (midnight next day)
-   mask_2400 = df['DepTime'] == 2400
-   if mask_2400.any():
-       df.loc[mask_2400, 'actual_datetime'] = flight_dates[mask_2400] + pd.Timedelta(days=1)
 
-   # Store scheduled dates before filtering
-   df['scheduled_date'] = flight_dates.dt.date
+def is_extension(obj: Any) -> TypeIs[Extension]:
+    return obj in _get_args(Extension)
 
-   # Filter by date range if specified
-   if start_date or end_date:
-       if start_date:
-           start_dt = pd.to_datetime(start_date)
-           df = df[df['actual_datetime'].dt.date >= start_dt.date()]
-       if end_date:
-           end_dt = pd.to_datetime(end_date)
-           df = df[df['actual_datetime'].dt.date <= end_dt.date()]
-       
-       if len(df) == 0:
-           logging.warning(f"No flights found within specified date range")
-       else:
-           logging.info(f"Found {len(df)} flights within specified date range")
 
-   # Calculate date changes if requested
-   if flag_date_changes:
-       df['date_changed'] = df['scheduled_date'] != df['actual_datetime'].dt.date
-       df = df.drop('scheduled_date', axis=1)  # Clean up temporary column
+type Column = Literal[
+    "date",
+    "time",
+    "delay",
+    "distance",
+    "origin",
+    "destination",
+    "ScheduledFlightDate",
+    "ScheduledFlightTime",
+    "DepDelay",
+]
+"""
+Columns available for ``flights`` datasets.
 
-   # Create result DataFrame with all possible columns
-   result = pd.DataFrame({
-       'date': df['actual_datetime'],
-       'delay': df['ArrDelay'].astype(int),
-       'distance': df['Distance'].astype(int),
-       'origin': df['Origin'],
-       'destination': df['Dest'],
-       'ScheduledFlightDate': df['FlightDate'],
-       'ScheduledFlightTime': df['CRSDepTime'],
-       'DepDelay': df['DepDelay'].astype(int)
-   })
-   
-   if flag_date_changes:
-       result['date_changed'] = df['date_changed']
-   
-   # Format datetime according to specified format
-   if datetime_convert:
-       result = format_datetime(result, datetime_format)
-   
-   # Handle sampling if requested
-   if num_rows is not None and num_rows < len(result):
-       result = result.sample(n=num_rows, random_state=random_seed)
-       result = result.sort_values('time' if datetime_format == DateTimeFormat.DECIMAL else 'date')
-       logging.info(f"Randomly sampled {num_rows} rows from {len(df)} total rows")
-   
-   # Select and order columns if specified
-   if columns:
-       validate_columns(columns, datetime_format, flag_date_changes)
-       result = result[columns]
-   else:
-       default_cols = ['time' if datetime_format == DateTimeFormat.DECIMAL else 'date',
-                      'delay', 'distance', 'origin', 'destination']
-       result = result[default_cols]
-   
-   return result
+Descriptions
+------------
+*date*
+    Either a **datetime-typed** value, or a formatted datetime string
+*time*
+    Either a **time-typed** value, or decimal hours.minutes when using decimal format (e.g., 6.5 for 6:30)
+*distance*
+    Flight distance in miles (integer)
+*delay*
+    Arrival delay in minutes (integer)
+*origin*
+    Origin airport code
+*destination*
+    Destination airport code
+*ScheduledFlightDate*
+    Original scheduled flight date (YYYY-MM-DD)
+*ScheduledFlightTime*
+    Original scheduled departure time (HHMM)
+*DepDelay*
+    Departure delay in minutes (integer)
 
-def get_dataset_stats(df: pd.DataFrame, datetime_format: DateTimeFormat) -> Dict[str, Any]:
-    """Calculate and return detailed statistics about the dataset."""
-    time_col = 'time' if datetime_format == DateTimeFormat.DECIMAL else 'date'
-    
-    if datetime_format == DateTimeFormat.DECIMAL:
-        stats = {
-            'time_range': {
-                'min': f"{df[time_col].min():.4f}",
-                'max': f"{df[time_col].max():.4f}"
-            }
-        }
-    elif datetime_format == DateTimeFormat.MMDDHHMM:
-        stats = {
-            'date_range': {
-                'min': df[time_col].min(),
-                'max': df[time_col].max()
-            }
-        }
-    else:  # ISO format
-        stats = {
-            'date_range': {
-                'min': df[time_col].min(),
-                'max': df[time_col].max()
-            }
-        }
-    
-    numeric_columns = df.select_dtypes(include=[np.number]).columns
-    stats.update({
-        col + '_stats': {
-            'min': int(df[col].min()) if col in ['delay', 'distance', 'DepDelay'] else df[col].min(),
-            'max': int(df[col].max()) if col in ['delay', 'distance', 'DepDelay'] else df[col].max(),
-            'mean': round(df[col].mean(), 2) if col in ['delay', 'distance', 'DepDelay'] else None
-        } for col in numeric_columns if col != time_col
-    })
-    
-    if 'origin' in df.columns or 'destination' in df.columns:
-        stats['airports'] = {
-            'origins': sorted(df['origin'].unique().tolist()) if 'origin' in df.columns else [],
-            'destinations': sorted(df['destination'].unique().tolist()) if 'destination' in df.columns else [],
-            'total_origins': len(df['origin'].unique()) if 'origin' in df.columns else 0,
-            'total_destinations': len(df['destination'].unique()) if 'destination' in df.columns else 0
-        }
-    
-    return stats
+See Also
+--------
+- https://www.bts.gov/topics/airlines-and-airports/world-airport-codes
+- https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
+"""
 
-def print_verbose_stats(stats: Dict[str, Any]) -> None:
-    """Print detailed statistics in a formatted way."""
-    logging.info("\nDataset Statistics:")
-    logging.info("===================")
-    
-    if 'time_range' in stats:
-        logging.info("\nTime Range:")
-        logging.info(f"  From: {stats['time_range']['min']}")
-        logging.info(f"  To:   {stats['time_range']['max']}")
-    elif 'date_range' in stats:
-        logging.info("\nDate Range:")
-        logging.info(f"  From: {stats['date_range']['min']}")
-        logging.info(f"  To:   {stats['date_range']['max']}")
-    
-    for stat_name, stat_values in stats.items():
-        if stat_name.endswith('_stats'):
-            col_name = stat_name.replace('_stats', '')
-            logging.info(f"\n{col_name.title()} Statistics:")
-            if 'min' in stat_values:
-                logging.info(f"  Minimum: {stat_values['min']}")
-            if 'max' in stat_values:
-                logging.info(f"  Maximum: {stat_values['max']}")
-            if 'mean' in stat_values and stat_values['mean'] is not None:
-                logging.info(f"  Mean:    {stat_values['mean']}")
-    
-    if 'airports' in stats:
-        logging.info("\nAirports:")
-        if stats['airports']['total_origins']:
-            logging.info(f"  Total Origin Airports:      {stats['airports']['total_origins']}")
-            logging.info("\nOrigin Airports:")
-            logging.info(f"  {', '.join(stats['airports']['origins'])}")
-        if stats['airports']['total_destinations']:
-            logging.info(f"  Total Destination Airports: {stats['airports']['total_destinations']}")
-            logging.info("\nDestination Airports:")
-            logging.info(f"  {', '.join(stats['airports']['destinations'])}")
-    logging.info("\n")
 
-def add_parquet_arguments(parser: argparse.ArgumentParser) -> None:
-    """Add Parquet-specific arguments to the parser."""
-    parquet_group = parser.add_argument_group('Parquet options')
-    parquet_group.add_argument(
-        '--parquet-compression',
-        choices=[codec.value for codec in CompressionCodec],
-        default='zstd',
-        help='Compression codec for Parquet output (default: %(default)s)'
-    )
-    parquet_group.add_argument(
-        '--parquet-compression-level',
-        type=int,
-        default=3,
-        choices=range(1, 23),
-        help='Compression level for ZSTD (1-22, default: %(default)s)'
-    )
-    parquet_group.add_argument(
-        '--parquet-row-group-size',
-        type=int,
-        default=128,
-        help='Row group size in MB (default: %(default)s)'
-    )
-    parquet_group.add_argument(
-        '--parquet-disable-dictionary',
-        action='store_true',
-        help='Disable dictionary encoding'
-    )
-    parquet_group.add_argument(
-        '--parquet-dictionary-page-size',
-        type=int,
-        default=1024,
-        help='Dictionary page size in KB (default: %(default)s)'
-    )
-    parquet_group.add_argument(
-        '--parquet-disable-statistics',
-        action='store_true',
-        help='Disable writing statistics to Parquet file'
+def is_columns(obj: Any) -> TypeIs[Sequence[Column]]:
+    return obj is COLUMNS_DEFAULT or (
+        isinstance(obj, Sequence) and set(_get_args(Column)).issuperset(obj)
     )
 
-def parse_args() -> argparse.Namespace:
-    """Parse and validate command line arguments."""
-    parser = argparse.ArgumentParser(
-        description='''
-Process BTS On-Time Flight Performance data into a simplified CSV/JSON/Parquet format.
 
-This script processes ZIP files containing Bureau of Transportation Statistics (BTS)
-On-Time Flight Performance data, combining and transforming them into a specified
-output format with essential flight delay information.
+type YearMonthDay = tuple[int, int, int] | Sequence[int]
+"""Arguments passed to ``datetime.date(...)``."""
 
-Data Source (valid as of November 2024):
-    1. Visit https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr
-    2. Select "Prezipped File" option
-    3. Download one zip file per month into your input directory
-    4. Each file should follow the pattern 'On_Time_Reporting*.zip'
-        ''',
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog='''
-Examples:
-    # Basic usage - process all rows, output as CSV with default columns
-    %(prog)s ./flight_data
+type IntoDate = dt.date | dt.datetime | YearMonthDay
+"""Anything that can be converted into a ``datetime.date``."""
 
-    # Process 1000 rows with specific columns in decimal time format
-    %(prog)s ./flight_data -n 1000 -d decimal -c time,delay,distance
+type IntoDateRange = (
+    tuple[IntoDate, IntoDate] | Mapping[Literal["start", "end"], IntoDate]
+)
+"""Anything that can be converted into a ``DateRange``."""
 
-    # Output as JSON with ISO dates and scheduled information
-    %(prog)s ./flight_data -f json -d iso -c ScheduledFlightDate,ScheduledFlightTime,date,delay
-
-    # Include date change flag and custom column selection
-    %(prog)s ./flight_data --flag-date-changes -c date,delay,date_changed,DepDelay
-
-Notes:
-    - Input ZIP files should match the pattern 'On_Time_Reporting*.zip'
-    - Files are expected to use ISO-8859-1 encoding
-    - The script automatically handles date changes due to delays
-    - Invalid rows are logged but excluded from the output
-    - Column names are case-sensitive
-    - Source data URL and format may change after November 2024
-    ''')
-
-    add_parquet_arguments(parser)
-
-    parser.add_argument('input_dir', 
-                       help='Directory containing flight data zip files downloaded from BTS')
-    
-    parser.add_argument('-o', '--output', 
-                       default='flights',
-                       help='Output filename without extension (default: %(default)s)')
-    
-    parser.add_argument('-n', '--num-rows', 
-                       type=int,
-                       metavar='N',
-                       help='Number of rows to include in output (default: all rows)')
-    
-    parser.add_argument('-s', '--seed', 
-                       type=int, 
-                       default=42,
-                       help='Random seed for row sampling (default: %(default)s)')
-
-    parser.add_argument('--start-date',
-                   type=str,
-                   help='Start date (inclusive) in YYYY-MM-DD format to filter actual departures')
-    parser.add_argument('--end-date',
-                   type=str,
-                   help='End date (inclusive) in YYYY-MM-DD format to filter actual departures')
-    
-    datetime_help = '''
-    DateTime format for output (default: %(default)s)
-    
-    Available formats:
-      mmddhhmm: "06142330" (June 14, 23:30)
-      iso:      "2023/06/14 23:30"
-      decimal:  "6.5" (6:30), "23.75" (23:45)
-    
-    Note: Use 'time' column with decimal format, 'date' with others
-    '''
-    parser.add_argument('-d', '--datetime-format',
-                       type=str,
-                       choices=[format.value for format in DateTimeFormat],
-                       default=DateTimeFormat.MMDDHHMM.value,
-                       help=datetime_help)
-    
-    parser.add_argument('-f', '--format',
-                       type=str,
-                       choices=[format.value for format in OutputFormat],
-                       default=OutputFormat.CSV.value,
-                       help='Output format: csv, json, or parquet (default: %(default)s)')
-  
-    columns_help = '''
-    Comma-separated list of columns to include and their order. Available columns:
-    time, date, delay, distance, DepDelay, origin, destination, ScheduledFlightDate, ScheduledFlightTime, date_changed
-    [Note: time may be selected only with decimal format.] Default is date,delay,distance,origin,destination.
-
-    Example: -c date,delay,distance,origin,destination
-    '''
-    parser.add_argument('-c', '--columns',
-                       type=str,
-                       metavar='COLS',
-                       help=columns_help)
-    
-    parser.add_argument('-v', '--verbose',
-                       action='store_true',
-                       help='Show detailed statistics about the dataset')
-    
-    parser.add_argument('--flag-date-changes',
-                       action='store_true',
-                       help='Add column indicating when actual departure date differs from scheduled')
-    
-    return parser.parse_args()
-
-# I/O functions
-
-def load_zip_files(pattern: str) -> pd.DataFrame:
-    """Load and combine CSV files from matching zip files."""
-    zip_files = glob.glob(pattern)
-    if not zip_files:
-        raise FileNotFoundError(f"No zip files found matching pattern: {pattern}")
-    
-    dfs: List[pd.DataFrame] = []
-    needed_cols = ['FlightDate', 'CRSDepTime', 'DepTime', 'DepDelay', 'ArrDelay', 'Distance', 
-                  'Origin', 'Dest', 'Cancelled']
-
-    for zip_file in zip_files:
-        logging.info(f"Processing {zip_file}")
-        with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-            csv_files = [f for f in zip_ref.namelist() if f.endswith('.csv')]
-            for csv_file in csv_files:
-                with zip_ref.open(csv_file) as f:
-                    df = pd.read_csv(f, 
-                                   encoding='iso-8859-1',
-                                   usecols=needed_cols,
-                                   dtype={'Cancelled': 'bool'})
-                    dfs.append(df)
-    
-    return pd.concat(dfs, ignore_index=True)
+THOUSAND: Literal[1_000] = 1_000
+MILLION: Literal[1_000_000] = 1_000_000
+BILLION: Literal[1_000_000_000] = 1_000_000_000
 
 
-def save_as_parquet(df: pd.DataFrame, filename: str, config: ParquetConfig) -> None:
-    """Save DataFrame as Parquet file with specified configuration."""
-    is_zstd = config.compression == "zstd"
-    kwds = {"compression_level": config.compression_level} if is_zstd else {}
-    df.to_parquet(
-        filename,
-        compression=config.compression,
-        index=False,
-        use_dictionary=config.enable_dictionary,
-        write_statistics=config.write_statistics,
-        **kwds,
-    )
+def is_rows(obj: Any) -> TypeIs[Rows]:
+    match obj:
+        case int(n) if 1 <= n < THOUSAND:
+            return True
+        case int(n) if THOUSAND <= n < MILLION:
+            return n % THOUSAND == 0
+        case int(n) if MILLION <= n < BILLION:
+            return n % MILLION == 0
+        case int(n) if BILLION <= n < BILLION * THOUSAND:
+            return n % BILLION == 0
+        case _:
+            return False
 
-    # Get and log file statistics
-    file_stats = os.stat(filename)
-    level = f" (level {config.compression_level})" if is_zstd else ""
-    msg = (
-        f"Parquet file statistics:\n"
-        f"  - File size: {file_stats.st_size / (1024*1024):.2f} MB\n"
-        f"  - Number of row groups: {pq.ParquetFile(filename).num_row_groups}\n"
-        f"  - Compression: {config.compression}{level}\n"
-        f"  - Row group size: {config.row_group_size / (1024*1024):.0f} MB"
-    )
-    logging.info(msg)
 
-def save_output(
-    df: pd.DataFrame,
-    output_format: OutputFormat,
-    base_filename: str,
-    datetime_format: DateTimeFormat,
-    parquet_config: ParquetConfig,
-    verbose: bool = False,
-) -> None:
-    """Save the DataFrame in the specified format and optionally show statistics."""
-    if verbose:
-        stats = get_dataset_stats(df, datetime_format)
-        print_verbose_stats(stats)
-    output_filename = f"{base_filename}.{output_format.value}"
-    if output_format == OutputFormat.CSV:
-        df.to_csv(output_filename, index=False)
-    elif output_format == OutputFormat.JSON:
-        s = json.dumps(df.to_dict(orient="records"), separators=(",", ":"))
-        Path(output_filename).write_text(s, encoding="utf-8")
-    else:  # PARQUET
-        save_as_parquet(df, output_filename, parquet_config)
+type Rows = Annotated[int, is_rows]
+"""
+Number of rows to include in the output.
 
-    logging.info(f"Successfully created {output_filename} with {len(df)} rows")
+Constraints
+-----------
+- Positive integer
+- Either
+    - 1 <= n_rows < 1_000
+    - Representable as thousands, millions, or billions **without** a remainder
 
-def main():
-    args = parse_args()
-    is_parquet = args.format == 'parquet'
-    parquet_config = ParquetConfig.from_args(args) if is_parquet else ParquetConfig()
-    base_filename = args.output
-    zip_pattern = str(Path(args.input_dir) / '*On_Time_Reporting*.zip')
-    
-    try:
-        # Parse columns if provided
-        columns = args.columns.split(',') if args.columns else None
-        
-        raw_df = load_zip_files(zip_pattern)
-        datetime_format = DateTimeFormat(args.datetime_format)
-        processed_df = process_flights_data(
-            raw_df,
-            num_rows=args.num_rows,
-            random_seed=args.seed,
-            datetime_convert=not is_parquet,
-            datetime_format=datetime_format,
-            flag_date_changes=args.flag_date_changes,
-            columns=columns,
-            start_date=args.start_date,
-            end_date=args.end_date
+Examples
+--------
+Ok:
+
+    30
+    123
+    1_000
+    20_000
+    55_000_000
+    999_000_000_000
+
+Not ok:
+
+    -30               # Negative
+    1_230             # Remainder: 230
+    1_001             # Remainder: 1
+    20_502            # Remainder: 502
+    55_555_000        # Remainder: 555_000
+    1_000_000_000_000 # Trillions
+
+---
+"""
+
+
+def is_chrono_str(s: Any) -> TypeIs[_ChronoFormat]:
+    return s == "%Y/%m/%d %H:%M" or (isinstance(s, str) and s.startswith("%"))
+
+
+def is_datetime_format(s: Any) -> TypeIs[DateTimeFormat]:
+    return s in {"iso", "iso:strict", "decimal"} or is_chrono_str(s) or s is None
+
+
+type _ChronoFormat = Literal["%Y/%m/%d %H:%M"] | Annotated[LiteralString, is_chrono_str]
+"""https://docs.rs/chrono/latest/chrono/format/strftime/index.html"""
+
+type DateTimeFormat = Literal["iso", "iso:strict", "decimal"] | _ChronoFormat | None
+"""
+Anything that is resolvable to a date/time column transform.
+
+Notes
+-----
+When not provided:
+- {``.arrow``, ``.parquet``} preserve temporal data types on write
+- ``.json`` defaults to **"iso"**
+- ``.csv`` defaults to **"iso:strict"**
+
+Examples
+--------
+Each example will use the same input datetime:
+
+    from datetime import datetime
+    datetime(2020, 3, 1, 6, 30, 0)
+
+**"iso"**, **"iso:strict"**: variants of `ISO 8601`_ used in `pl.Expr.dt.to_string`_:
+
+    "2020-03-01 06:30:00.000000"
+    "2020-03-01T06:30:00.000000"
+
+**"decimal"**: represents **time only** with fractional minutes::
+
+    6.5 # stored as a float
+
+A format string using `chrono`_ specifiers:
+
+    "%Y/%m/%d %H:%M" -> "2020/03/01 06:30"
+    "%s"             -> "1583044200"               # UNIX timestamp
+    "%c"             -> "Sun Mar  1 06:30:00 2020"
+    "%T"             -> "06:30:00"
+    "%Y-%B-%d"       -> "2020-March-01"
+    "%e-%b-%Y"       -> " 1-Mar-2020"
+
+.. _ISO 8601:
+    https://en.wikipedia.org/wiki/ISO_8601
+.. _pl.Expr.dt.to_string:
+    https://docs.pola.rs/api/python/stable/reference/expressions/api/polars.Expr.dt.to_string.html
+.. _chrono:
+    https://docs.rs/chrono/latest/chrono/format/strftime/index.html
+"""
+
+
+BASE_URL: LiteralString = "https://www.transtats.bts.gov/"
+ROUTE_ZIP: LiteralString = f"{BASE_URL}PREZIP/"
+REPORTING_PREFIX: LiteralString = (
+    "On_Time_Reporting_Carrier_On_Time_Performance_1987_present_"
+)
+ZIP: Literal[".zip"] = ".zip"
+PARQUET: Literal[".parquet"] = ".parquet"
+PATTERN_PARQUET: LiteralString = f"*{REPORTING_PREFIX}*{PARQUET}"
+
+COLUMNS_DEFAULT: Sequence[Column] = (
+    "date",
+    "delay",
+    "distance",
+    "origin",
+    "destination",
+)
+"""
+Copied default from `previous flights.py`_.
+
+.. _previous flights.py:
+    https://github.com/vega/vega-datasets/blob/14cc1461c7120004886f25c0b4b0a611976f2e52/scripts/flights.py#L370-L371
+"""
+
+SCAN_SCHEMA: pl.Schema = pl.Schema({
+    "FlightDate": pl.Date,
+    "CRSDepTime": pl.String,
+    "DepTime": pl.String,
+    "DepDelay": pl.Float64,
+    "ArrDelay": pl.Float64,
+    "Distance": pl.Float64,
+    "Origin": pl.String,
+    "Dest": pl.String,
+    "Cancelled": pl.Float64,
+})
+
+
+def _approx_latest(*, months_ago: int) -> dt.date:
+    # Very loose, aiming for the last day of `today - months_ago`
+    # In December, months_ago = 3 -> (2024, 8, 31)
+    weeks_ago = dt.timedelta(weeks=months_ago * 4)
+    current_month_start = dt.date.today().replace(day=1)
+    return (current_month_start - weeks_ago).replace(day=1) - dt.timedelta(days=1)
+
+
+def _into_date(obj: IntoDate, /) -> dt.date:
+    """Normalize date input."""
+    if isinstance(obj, dt.datetime):
+        return obj.date()
+    if isinstance(obj, dt.date):
+        return obj
+    if isinstance(obj, Sequence):
+        match obj:
+            case int(year), int(month), int(day):
+                return dt.date(year, month, day)
+            case int(year), int(month):
+                return dt.date(year, month, 1)
+            case (int(year),):
+                return dt.date(year, 1, 1)
+            case _:
+                raise TypeError(type(obj))
+    else:
+        raise TypeError(type(obj))
+
+
+class DateRange:
+    """
+    Matching a time period w/ required files.
+
+    - Validates provided dates are in range of known data
+    - Converts (*start*, *end*) to monthly file names
+    - Acts as a key, for detecting unique periods
+
+    Notes
+    -----
+    `Latest Available Data`_ extends to roughly 2-4 months before current date
+
+    .. _Latest Available Data:
+        https://www.transtats.bts.gov/TableInfo.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr&V0s1_b0yB=D
+    """
+
+    _EARLIEST: ClassVar[dt.date] = dt.date(1987, 10, 1)
+    _LATEST: ClassVar[dt.date] = _approx_latest(months_ago=3)
+
+    def __init__(self, start: IntoDate, end: IntoDate, /) -> None:
+        start = _into_date(start)
+        end = _into_date(end)
+        if start >= end:
+            msg = (
+                f"Unable to generate negative date range:\n"
+                f"{start!r} - {end!r}\n\n"
+                f"Try reversing `start`, `end`."
+            )
+            raise TypeError(msg)
+        elif start < self._EARLIEST or end > self._LATEST:
+            msg = (
+                f"Unable to request data for date range:\n"
+                f"{start!r} - {end!r}\n\n"
+                f"Available data spans {self._EARLIEST!r} - {self._LATEST!r}."
+            )
+            raise TypeError(msg)
+        self.start: pl.Expr = pl.lit(start)
+        self.end: pl.Expr = pl.lit(end)
+
+    @classmethod
+    def from_dates(cls, dates: IntoDateRange, /) -> DateRange:
+        """Construct from a sequence/mapping defined time period."""
+        match dates:
+            case (start, end):
+                return cls(start, end)
+            case {"start": start, "end": end}:
+                return cls(start, end)
+            case _:
+                raise TypeError(type(dates))
+
+    @property
+    def monthly(self) -> pl.Expr:
+        """Generate a date range expression, with a monthly interval."""
+        return pl.date_range(self.start, self.end, interval="1mo").alias("date")
+
+    @cached_property
+    def file_stems(self) -> Sequence[str]:
+        """Returns the file stems of all sources the input would require."""
+        date = col("date")
+        year, month = (date.dt.year().alias("year"), date.dt.month().alias("month"))
+        return tuple(
+            pl.select(self.monthly)
+            .lazy()
+            .select(_file_stem_source(year, month).sort_by(date))
+            .collect()
+            .to_series()
+            .to_list()
         )
-        
-        save_output(
-            processed_df,
-            output_format=OutputFormat(args.format),
-            base_filename=base_filename,
-            datetime_format=datetime_format,
-            verbose=args.verbose,
-            parquet_config=parquet_config
-        )
-        
-    except Exception as e:
-        logging.error(f"Error processing flight data: {str(e)}")
-        if isinstance(e, ValueError) and "column" in str(e).lower():
-            # Provide more helpful error message for column-related errors
-            logging.error("\nValid columns are:")
-            logging.error(f"- When using decimal format: {', '.join(sorted(VALID_COLUMNS - {'date'}))}")
-            logging.error(f"- When using other formats: {', '.join(sorted(VALID_COLUMNS - {'time'}))}")
-            logging.error("\nNote: 'date_changed' requires --flag-date-changes option")
-        raise
 
-if __name__ == '__main__':
+    def paths(self, input_dir: Path, /) -> list[Path]:
+        return [input_dir / f"{stem}{PARQUET}" for stem in self.file_stems]
+
+    def __eq__(self, other: Any, /) -> bool:
+        """Two ``DateRange``s are equivalent if they would require the same files."""
+        return isinstance(other, DateRange) and self.file_stems == other.file_stems
+
+    def __hash__(self) -> int:
+        return hash(self.file_stems)
+
+
+class Spec:
+    """
+    Describes a target output file, based on flights data.
+
+    Parameters
+    ----------
+    range
+        Time period used for source data.
+        The end date is rounded up to the end of the month.
+    n_rows
+        Number of rows to include in the output.
+    suffix
+        File extension/output format.
+    dt_format
+        Datetime conversion for semi-structured outputs,
+        see ``DateTimeFormat`` doc.
+    columns
+        Columns included in the output.
+    """
+
+    _name_prefix: ClassVar[Literal["flights-"]] = "flights-"
+
+    def __init__(
+        self,
+        range: DateRange | IntoDateRange,
+        n_rows: Rows,
+        suffix: Extension,
+        dt_format: DateTimeFormat = None,
+        columns: Sequence[Column] = COLUMNS_DEFAULT,
+    ) -> None:
+        self.range: DateRange = (
+            range if isinstance(range, DateRange) else DateRange.from_dates(range)
+        )
+        n_rows, suffix, dt_format, columns = self._validate(
+            n_rows, suffix, dt_format, columns
+        )
+        self.n_rows: Rows = n_rows
+        self.suffix: Extension = suffix
+        self.dt_format: DateTimeFormat = dt_format
+        self.columns: Sequence[Column] = columns
+
+    @classmethod
+    def from_dict(cls, mapping: Mapping[str, Any], /) -> Spec:
+        """Construct from a toml table definition."""
+        match mapping:
+            case {"range": (start, end), **rest} if {"start", "end"}.isdisjoint(rest):
+                range = start, end
+            case {"start": start, "end": end, **rest} if {"range"}.isdisjoint(rest):
+                range = start, end
+            case _:
+                msg = (
+                    "Must provide start/end dates as either:\n"
+                    "  - {'range': (..., ...)}\n"
+                    "  - {'start': ..., 'end': ...}\n\n"
+                    f"But got:\n{mapping!r}"
+                )
+                raise TypeError(msg)
+        return cls(range, **rest)
+
+    @property
+    def name(self) -> str:
+        """
+        Encodes a short form of ``n_rows`` into the file name.
+
+        Examples
+        --------
+        Note that the final name depends on ``suffix``:
+
+            | n_rows         | stem          |
+            | -------------- | ------------- |
+            | 10_000         | "flights-10k" |
+            | 1_000_000      | "flights-1m"  |
+            | 12_000_000_000 | "flights-12b" |
+        """
+        frac = self.n_rows // THOUSAND
+        if frac >= MILLION:
+            s = f"{frac // MILLION}b"
+        elif frac >= THOUSAND:
+            s = f"{frac // THOUSAND}m"
+        elif frac >= 1:
+            s = f"{frac}k"
+        else:
+            s = f"{self.n_rows}"
+        return f"{self._name_prefix}{s}{self.suffix}"
+
+    @property
+    def sort_by(self) -> Column:
+        """Temporal column used to sort the transformed data."""
+        return "time" if "time" in self.columns else "date"
+
+    def transform(self, ldf: pl.LazyFrame, /) -> pl.DataFrame:
+        """
+        Materialize the spec for export.
+
+        Parameters
+        ----------
+        ldf
+            Cleaned source data, spanning ``self.range``.
+        """
+        return (
+            self._transform_temporal(ldf)
+            .select(self.columns)
+            .collect()
+            .sample(self.n_rows)
+            .sort(self.sort_by)
+        )
+
+    def write(self, df: pl.DataFrame, output_dir: Path, /) -> None:
+        """
+        Export the materialized spec.
+
+        Parameters
+        ----------
+        df
+            Materialized spec data, the result of ``self.transform(...)``.
+        output_dir
+            Output directory.
+        """
+        fp: Path = output_dir / self.name
+        fp.touch()
+        msg = f"Writing {fp.as_posix()!r} ..."
+        logger.info(msg)
+        match self.suffix:
+            case ".arrow":
+                df.write_ipc(fp, compression="zstd")
+            case ".csv":
+                df.write_csv(
+                    fp,
+                    date_format=None,
+                    datetime_format=None,
+                    time_format=None,
+                    null_value=None,
+                )
+            case ".json":
+                df.write_json(fp)
+            case ".parquet":
+                df.write_parquet(fp, compression="zstd", compression_level=22)
+            case _:
+                fp.unlink()
+                msg = f"Unexpected extension {self.suffix!r}"
+                raise NotImplementedError(msg)
+
+    def _transform_temporal(self, ldf: pl.LazyFrame, /) -> pl.LazyFrame:
+        if not self.dt_format:
+            return ldf
+        date: pl.Expr = col("date")
+        if self.dt_format == "decimal":
+            return ldf.select(
+                (date.dt.hour() + date.dt.minute() / 60).alias("time"), cs.exclude(date)
+            )
+        return ldf.with_columns(date.dt.to_string(self.dt_format))
+
+    @staticmethod
+    def _validate(
+        n_rows: Any, suffix: Any, dt_format: Any, columns: Any, /
+    ) -> tuple[Rows, Extension, DateTimeFormat, Sequence[Column]]:
+        if not is_columns(columns):
+            msg = f"`columns` contains unrecognized names:\n{columns!r}"
+            raise TypeError(msg)
+
+        if {"date", "time"}.isdisjoint(columns):
+            msg = (
+                f"Must specify one of {['date', 'time']!r} columns, "
+                f"but got: {columns!r}"
+            )
+            raise TypeError(msg)
+
+        if not is_datetime_format(dt_format):
+            msg = f"Unrecognized datetime format: {dt_format!r}"
+            raise TypeError(msg)
+
+        if not is_rows(n_rows):
+            msg = (
+                "Number of rows must be either:\n"
+                "  - 1 <= n_rows < 1_000\n"
+                "  - Representable as thousands, millions, or billions without a remainder\n\n"
+                f"But got: {n_rows!r}"
+            )
+            raise TypeError(msg)
+
+        if not is_extension(suffix):
+            msg = f"Unexpected extension {suffix!r}"
+            raise TypeError(msg)
+
+        return n_rows, suffix, dt_format, columns
+
+
+class SourceMap:
+    """
+    Group specs by common data, scanning a `pl.LazyFrame`_ per-group.
+
+    Parameters
+    ----------
+    input_dir
+        Directory containing monthly input files.
+
+    .. _pl.LazyFrame:
+        https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html
+    """
+
+    def __init__(self, input_dir: Path, /) -> None:
+        self.input_dir: Path = input_dir
+        self._mapping = defaultdict[DateRange, deque[Spec]](deque)
+        self._frames: dict[DateRange, pl.LazyFrame] = {}
+
+    @classmethod
+    def from_specs(cls, specs: Iterable[Spec], input_dir: Path, /) -> SourceMap:
+        """
+        Construct with all dependent data grouped and loaded.
+
+        Parameters
+        ----------
+        specs
+            Target dataset definitions.
+        input_dir
+            Directory containing monthly input files.
+        """
+        obj = cls(input_dir)
+        logger.info("Scanning dependencies ...")
+        for spec in specs:
+            obj.add_spec(spec)
+        msg = f"Finished scanning {len(obj)!r} date ranges."
+        logger.info(msg)
+        return obj
+
+    def add_spec(self, spec: Spec, /) -> None:
+        """
+        Adds a spec dependency, detecting and loading any shared resources.
+
+        Required files for each unique ``DateRange`` are lazily read into a single table.
+
+        Parameters
+        ----------
+        spec
+            Describes a target output file.
+        """
+        d_range: DateRange = spec.range
+        if d_range not in self._mapping:
+            paths = d_range.paths(self.input_dir)
+            self._frames[d_range] = self.clean(pl.scan_parquet(paths))
+        self._mapping[d_range].append(spec)
+
+    def iter_tasks(self) -> Iterator[tuple[Spec, pl.LazyFrame]]:
+        """Yields each spec, with its respective clean source data."""
+        if not len(self):
+            msg = (
+                "Dependent specs have not yet been added.\n\n"
+                f"Try calling {self.add_spec.__qualname__}(...) first."
+            )
+            raise TypeError(msg)
+        for d_range, frame in self._frames.items():
+            for spec in self._mapping[d_range]:
+                yield spec, frame
+
+    @staticmethod
+    def clean(ldf: pl.LazyFrame, /) -> pl.LazyFrame:
+        """
+        Fix *known* dataset issues, coerce types, rename columns.
+
+        Parameters
+        ----------
+        ldf
+            Monthly datasets, concatenated as a single table.
+
+        Notes
+        -----
+        - Rows containing cancelled flights or null values are dropped (~3.16%)
+        - Non compliant* `ISO-8601`_ times are corrected
+
+        *Invalid midnight representation prior to `ISO-8601-1-2019-Amd-1-2022`_
+
+        **Input schema**:
+
+            {
+                "FlightDate": datetime.date,
+                "CRSDepTime": str,
+                "DepTime": str,
+                "DepDelay": float,
+                "ArrDelay": float,
+                "Distance": float,
+                "Origin": str,
+                "Dest": str,
+                "Cancelled": float,
+            }
+
+        **Output schema**:
+
+            {
+                "date": datetime.datetime,
+                "delay": int,
+                "distance": int,
+                "origin": str,
+                "destination": str,
+                "ScheduledFlightDate": datetime.date,
+                "ScheduledFlightTime": datetime.time,
+                "DepDelay": int,
+            }
+
+        .. _ISO-8601:
+            https://en.wikipedia.org/wiki/ISO_8601
+        .. _ISO-8601-1-2019-Amd-1-2022:
+            https://cdn.standards.iteh.ai/samples/81801/f527872a9fe34281ae3a4af8e730f3f8/ISO-8601-1-2019-Amd-1-2022.pdf#page=8
+        """
+        cancelled = col("Cancelled").cast(bool)
+        flight_date = col("FlightDate")
+        dep_time = col("DepTime")
+        times = cs.ends_with("DepTime")
+
+        wrap_midnight = times.str.replace("2400", "0000").str.to_time("%H%M")
+        datetime = flight_date.dt.combine(dep_time)
+        flight_date_corrected = (
+            pl.when(dep_time == pl.time(0, 0, 0, 0))
+            .then(datetime.dt.offset_by("1d"))
+            .otherwise(datetime)
+        )
+        return (
+            ldf.filter(
+                ~pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null())
+            )
+            .with_columns(wrap_midnight, cs.float().cast(int))
+            .select(
+                flight_date_corrected.alias("date"),
+                col("ArrDelay").alias("delay"),
+                col("Distance", "Origin").name.to_lowercase(),
+                col("Dest").alias("destination"),
+                flight_date.alias("ScheduledFlightDate"),
+                col("CRSDepTime").alias("ScheduledFlightTime"),
+                "DepDelay",
+            )
+        )
+
+    def __len__(self) -> int:
+        return len(self._frames)
+
+
+class Flights:
+    """
+    Orchestrates flights dataset generation.
+
+    Parameters
+    ----------
+    specs
+        Target dataset definitions.
+    input_dir
+        Directory to store monthly input files.
+    output_dir
+        Directory to write realised specs to.
+
+    Notes
+    -----
+    - Detecting & downloading dependencies
+        - Sharing common data
+    - Extracting & concatenating
+    - Transforms to meet a given spec
+    - Writing to target formats
+
+    Examples
+    --------
+    Specs can be defined programatically:
+
+    >>> from pathlib import Path
+    >>> input_dir = Path.cwd()
+    >>> output_dir = Path.cwd() / "output"
+    >>> date_range = DateRange((2001, 1), (2001, 12))
+    >>> prog = Flights([
+    ...     Spec(date_range, 5_000, ".csv", dt_format="iso:strict"),
+    ...     Spec(date_range, 20_000, ".parquet"),
+    ...     Spec(
+    ...         date_range,
+    ...         200_000,
+    ...         ".json",
+    ...         dt_format="%Y/%m/%d %H:%M",
+    ...         columns=("date", "origin", "destination"),
+    ...     ),
+    ...     Spec(((2001, 1, 1), (2001, 3, 31)), 100_000, ".arrow"),
+    ... ])
+    >>> prog.run()  # doctest: +SKIP
+
+    Or they can be loaded in from a ``.toml`` file:
+
+    >>> source = Path.cwd() / "source.toml"
+    >>> decl = Flights.from_toml(source, input_dir, output_dir)  # doctest: +SKIP
+    >>> decl.run()  # doctest: +SKIP
+    """
+
+    input_dir: Path
+    output_dir: Path
+    specs: Sequence[Spec]
+    sources: SourceMap
+
+    def __init__(
+        self, specs: Sequence[Spec], input_dir: str | Path, output_dir: str | Path
+    ) -> None:
+        self.input_dir = Path(input_dir)
+        self.output_dir = Path(output_dir)
+        self.input_dir.mkdir(exist_ok=True)
+        self.output_dir.mkdir(exist_ok=True)
+        self.specs = specs
+
+    @classmethod
+    def from_toml(
+        cls,
+        source: str | Path,
+        /,
+        input_dir: str | Path | None,
+        output_dir: str | Path | None,
+    ) -> Flights:
+        """Construct from a toml file."""
+        fp = Path(source)
+        msg = f"Reading specs from {fp.as_posix()!r}"
+        logger.info(msg)
+        mapping = tomllib.loads(fp.read_text("utf-8"))
+        if specs_array := mapping.get("specs"):
+            return cls(
+                specs=[Spec.from_dict(spec) for spec in specs_array],
+                input_dir=input_dir or mapping["input_dir"],
+                output_dir=output_dir or mapping["output_dir"],
+            )
+        msg = (
+            f"Expected to find an array of tables keyed to `'specs'`, but got\n"
+            f"{mapping!r}"
+        )
+        raise TypeError(msg)
+
+    def __iter__(self) -> Iterator[Spec]:
+        yield from self.specs
+
+    @property
+    def ranges(self) -> pl.LazyFrame:
+        return pl.select(pl.concat(spec.range.monthly for spec in self), eager=False)
+
+    @property
+    def _required_stems(self) -> set[str]:
+        date = col("date")
+        return set(
+            self.ranges.select(
+                date.dt.year().alias("year"), date.dt.month().alias("month")
+            )
+            .unique()
+            .select(_file_stem_source("year", "month"))
+            .collect()
+            .to_series()
+            .to_list()
+        )
+
+    @property
+    def _existing_stems(self) -> set[str]:
+        it = self.input_dir.glob(PATTERN_PARQUET)
+        return {_without_suffixes(fp.name) for fp in it}
+
+    @property
+    def missing_stems(self) -> set[str]:
+        missing = self._required_stems - self._existing_stems
+        if n := len(missing):
+            msg = f"Missing {n} sources"
+            logger.info(msg)
+            if n >= 5:
+                logger.warning("Downloads may exceed 100MB")
+            if n >= 11:
+                logger.warning("Total number of rows will exceed 5_000_000")
+        return missing
+
+    async def _download_sources_async(self, names: Iterable[str], /) -> list[Path]:
+        """Request, write missing data."""
+        session = niquests.AsyncSession(base_url=ROUTE_ZIP)
+        aws = (_request_async(session, name) for name in names)
+        buffers = await asyncio.gather(*aws)
+        writes = (_write_zip_to_parquet_async(self.input_dir, buf) for buf in buffers)
+        return await asyncio.gather(*writes)
+
+    def download_sources(self) -> None:
+        """
+        Ensure all required source data is saved to ``self.input_dir``.
+
+        Any month(s) that are missing will be requested from `transtats`_.
+
+        .. _transtats:
+            https://www.transtats.bts.gov
+        """
+        logger.info("Detecting required sources ...")
+        if missing := self.missing_stems:
+            asyncio.run(self._download_sources_async(missing))
+            logger.info("Successfully downloaded all missing sources.")
+        else:
+            logger.info("Sources already downloaded.")
+
+    def run(self) -> None:
+        """Top-level command providing fully managed data collection, transformation and export."""
+        logger.info("Starting job ...")
+        self.download_sources()
+        self.sources = SourceMap.from_specs(self, self.input_dir)
+        for spec, frame in self.sources.iter_tasks():
+            result = spec.transform(frame)
+            spec.write(result, self.output_dir)
+        logger.info("Finished job.")
+
+
+async def _request_async(session: niquests.AsyncSession, name: str, /) -> io.BytesIO:
+    name = f"{_without_suffixes(name)}{ZIP}"
+    msg = f"Requesting {name!r} ..."
+    logger.info(msg)
+    async with session:
+        response = await session.get(name)
+        if response.ok and (content := response.content):
+            buf = io.BytesIO()
+            buf.write(content)
+            msg = f"Successful {name!r}"
+            logger.info(msg)
+            return buf
+        msg = f"Failed for {name!r}"
+        raise NotImplementedError(msg)
+
+
+def _write_zip_to_parquet(input_dir: Path, buf: io.BytesIO, /) -> Path:
+    """
+    Extract inner ``.csv`` from ``.zip``, write to ``.parquet``of the same name.
+
+    Parameters
+    ----------
+    input_dir
+        Directory to store monthly input files.
+    buf
+        Buffer containing the zipped response.
+
+    Notes
+    -----
+    - We pay the *decompress*->*compress* cost only **once** per-download
+    - Only the subset of columns defined in ``SCAN_SCHEMA`` are preserved
+        - Further reduces file size
+        - Also, some unused columns contain invalid utf8 values
+
+    Original file:
+
+        On_Time_Reporting_Carrier_On_Time_Performance_1987_present_YYYY_M.zip
+        ├──On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_YYYY_M.csv
+        └──readme.html
+
+    Result file:
+
+        On_Time_Reporting_Carrier_On_Time_Performance_1987_present_YYYY_M.parquet
+
+    Size comparison:
+
+        | format   | min (KB) | max  (KB) |
+        | -------- | -------- | --------- |
+        | .parquet | 1_800    | 3_000     |
+        | .zip     | 15_000   | 30_000    |
+        | .csv     | 200_000  | 250_000   |
+    """
+    zip_csv = next(zipfile.Path(zipfile.ZipFile(buf)).glob("*.csv"))
+    stem = zip_csv.at.replace("(", "").replace(")", "")
+    output = (input_dir / stem).with_suffix(".parquet")
+    output.touch()
+    msg = f"Writing {output.as_posix()!r}"
+    logger.debug(msg)
+    with zip_csv.open("rb") as strm:
+        ldf = pl.scan_csv(
+            strm,
+            try_parse_dates=True,
+            schema_overrides=SCAN_SCHEMA,
+            encoding="utf8-lossy",
+        ).select(SCAN_SCHEMA.names())
+    ldf.collect().write_parquet(output, compression="zstd", compression_level=17)
+    return output
+
+
+async def _write_zip_to_parquet_async(input_dir: Path, buf: io.BytesIO, /) -> Path:
+    """
+    Wraps ``_write_zip_to_parquet`` to run in a separate thread.
+
+    - **Greatly** reduces the cost of the decompress > compress operations
+    - During testing, each write would block for ~10s
+    """
+    return await asyncio.to_thread(_write_zip_to_parquet, input_dir, buf)
+
+
+def _file_stem_source[T: (str, pl.Expr)](year: T, month: T, /) -> pl.Expr:
+    """Returns an expression that composes the file stem for a single month."""
+    return pl.concat_str(pl.lit(REPORTING_PREFIX), year, pl.lit("_"), month)
+
+
+def _without_suffixes[T: (str, Path)](source: T, /) -> T:
+    """Ensure all suffixes (not just the last) are removed."""
+    if isinstance(source, str):
+        return source.removesuffix("".join(Path(source).suffixes))
+    return Path(str(source).removesuffix("".join(source.suffixes)))
+
+
+def _get_args(tp: Any, /) -> tuple[Any, ...]:
+    unwrapped = getattr(tp, "__value__", tp)
+    return _typing_get_args(unwrapped)
+
+
+def main() -> None:
+    logging.basicConfig(level=logging.INFO)
+    repo_root = Path(__file__).parent.parent
+    source_toml = repo_root / "_data" / "flights.toml"
+    app = Flights.from_toml(
+        source_toml,
+        input_dir=Path.home() / ".vega_datasets",
+        output_dir=repo_root / "data",
+    )
+    app.run()
+
+
+if __name__ == "__main__":
     main()

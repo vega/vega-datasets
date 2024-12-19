@@ -19,7 +19,6 @@ dev = ["ipython[kernel]>=8.30.0", "ruff>=0.8.2", "taplo>=0.9.3"]
 extend-exclude = [
   ".venv",
   "scripts/budget.py",
-  "scripts/flights.py",
   "scripts/github.py",
   "scripts/make-unemployment-across-industries.py",
   "scripts/update_countries_json.py",
@@ -111,7 +110,7 @@ select = [
 [tool.pyright]
 enableExperimentalFeatures = true
 ignore                     = ["../../../**/Lib", ".venv"]
-include                    = ["./scripts/build_datapackage.py", "./scripts/flights2.py"]
+include                    = ["./scripts/build_datapackage.py", "./scripts/flights.py"]
 pythonPlatform             = "All"
 pythonVersion              = "3.12"
 reportUnusedExpression     = "none"
