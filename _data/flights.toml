@@ -1,12 +1,4 @@
 [[specs]]
-# This spec won't be part of the final PR.
-# Using it to demonstrate the deviation from [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
-range     = [2001-01-01, 2001-03-31]
-n_rows    = 1_000
-suffix    = ".csv"
-dt_format = "iso"
-
-[[specs]]
 start     = 2001-01-01
 end       = 2001-03-31
 n_rows    = 2_000
