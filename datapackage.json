@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-20T12:17:51.410891+00:00",
+  "created": "2024-12-20T17:55:57.520536+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -30,7 +30,8 @@
       "scheme": "file",
       "format": "png",
       "mediatype": "image/png",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 3969
     },
     {
       "name": "airports.csv",
@@ -40,6 +41,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 213742,
       "schema": {
         "fields": [
           {
@@ -87,7 +89,8 @@
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 266265
     },
     {
       "name": "anscombe.json",
@@ -98,6 +101,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 1752,
       "dialect": {
         "json": {
           "keyed": true
@@ -139,6 +143,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 8606,
       "dialect": {
         "json": {
           "keyed": true
@@ -180,6 +185,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 1223329,
       "schema": {
         "fields": [
           {
@@ -256,6 +262,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 408892,
       "dialect": {
         "json": {
           "keyed": true
@@ -562,6 +569,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 19230,
       "dialect": {
         "json": {
           "keyed": true
@@ -603,6 +611,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 2873,
       "dialect": {
         "json": {
           "keyed": true
@@ -652,6 +661,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 104960,
       "dialect": {
         "json": {
           "keyed": true
@@ -713,6 +723,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 19289,
       "schema": {
         "fields": [
           {
@@ -757,6 +768,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 99457,
       "dialect": {
         "json": {
           "keyed": true
@@ -809,6 +821,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 1763,
       "dialect": {
         "json": {
           "keyed": true
@@ -850,6 +863,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 19643,
       "schema": {
         "fields": [
           {
@@ -881,6 +895,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 3517,
       "dialect": {
         "json": {
           "keyed": true
@@ -921,7 +936,8 @@
       "scheme": "file",
       "format": "geojson",
       "mediatype": "text/geojson",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 1221559
     },
     {
       "name": "ffox.png",
@@ -931,7 +947,8 @@
       "scheme": "file",
       "format": "png",
       "mediatype": "image/png",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 17628
     },
     {
       "name": "flare-dependencies.json",
@@ -941,6 +958,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 37657,
       "dialect": {
         "json": {
           "keyed": true
@@ -967,6 +985,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 22118,
       "dialect": {
         "json": {
           "keyed": true
@@ -1000,6 +1019,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 892400,
       "dialect": {
         "json": {
           "keyed": true
@@ -1044,6 +1064,7 @@
       "scheme": "file",
       "format": ".arrow",
       "mediatype": "application/vnd.apache.arrow.file",
+      "bytes": 662832,
       "schema": {
         "fields": [
           {
@@ -1076,6 +1097,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 9863892,
       "dialect": {
         "json": {
           "keyed": true
@@ -1113,6 +1135,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 1784867,
       "dialect": {
         "json": {
           "keyed": true
@@ -1158,6 +1181,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 178495,
       "dialect": {
         "json": {
           "keyed": true
@@ -1202,6 +1226,7 @@
       "scheme": "file",
       "format": "parquet",
       "mediatype": "application/parquet",
+      "bytes": 13493022,
       "schema": {
         "fields": [
           {
@@ -1242,6 +1267,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 446167,
       "dialect": {
         "json": {
           "keyed": true
@@ -1287,6 +1313,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 70939,
       "schema": {
         "fields": [
           {
@@ -1319,6 +1346,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 1259245,
       "dialect": {
         "json": {
           "keyed": true
@@ -1378,6 +1406,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 8793,
       "schema": {
         "fields": [
           {
@@ -1454,6 +1483,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 75201,
       "dialect": {
         "json": {
           "keyed": true
@@ -1502,7 +1532,8 @@
       "scheme": "file",
       "format": "png",
       "mediatype": "image/png",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 8211
     },
     {
       "name": "github.csv",
@@ -1513,6 +1544,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 22015,
       "schema": {
         "fields": [
           {
@@ -1541,6 +1573,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 1663,
       "schema": {
         "fields": [
           {
@@ -1562,6 +1595,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 76933,
       "dialect": {
         "json": {
           "keyed": true
@@ -1611,6 +1645,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 1583,
       "schema": {
         "fields": [
           {
@@ -1644,6 +1679,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 990200,
       "dialect": {
         "json": {
           "keyed": true
@@ -1694,6 +1730,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 7496,
       "schema": {
         "fields": [
           {
@@ -1757,7 +1794,8 @@
       "scheme": "file",
       "format": "topojson",
       "mediatype": "text/topojson",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 14733
     },
     {
       "name": "londoncentroids.json",
@@ -1768,6 +1806,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 2340,
       "dialect": {
         "json": {
           "keyed": true
@@ -1804,7 +1843,8 @@
       "scheme": "file",
       "format": "topojson",
       "mediatype": "text/topojson",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 80098
     },
     {
       "name": "lookup_groups.csv",
@@ -1814,6 +1854,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 86,
       "schema": {
         "fields": [
           {
@@ -1835,6 +1876,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 134,
       "schema": {
         "fields": [
           {
@@ -1859,7 +1901,8 @@
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 12372
     },
     {
       "name": "monarchs.json",
@@ -1880,6 +1923,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 697,
       "dialect": {
         "json": {
           "keyed": true
@@ -1919,6 +1963,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 1399981,
       "dialect": {
         "json": {
           "keyed": true
@@ -2001,6 +2046,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 36399,
       "dialect": {
         "json": {
           "keyed": true
@@ -2027,6 +2073,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 2253,
       "dialect": {
         "json": {
           "keyed": true
@@ -2064,6 +2111,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 5783,
       "dialect": {
         "json": {
           "keyed": true
@@ -2121,6 +2169,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 70216,
       "dialect": {
         "json": {
           "keyed": true
@@ -2174,6 +2223,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 1499239,
       "dialect": {
         "json": {
           "keyed": true
@@ -2224,6 +2274,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 4926,
       "dialect": {
         "json": {
           "keyed": true
@@ -2261,6 +2312,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 51833,
       "dialect": {
         "json": {
           "keyed": true
@@ -2386,6 +2438,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 28234,
       "dialect": {
         "json": {
           "keyed": true
@@ -2439,6 +2492,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 1905,
       "schema": {
         "fields": [
           {
@@ -2479,6 +2533,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 319908,
       "schema": {
         "fields": [
           {
@@ -2515,6 +2570,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 49681,
       "schema": {
         "fields": [
           {
@@ -2559,6 +2615,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 421073,
       "schema": {
         "fields": [
           {
@@ -2600,6 +2657,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 2429,
       "schema": {
         "fields": [
           {
@@ -2621,6 +2679,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 12805,
       "schema": {
         "fields": [
           {
@@ -2646,6 +2705,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 6460,
       "dialect": {
         "json": {
           "keyed": true
@@ -2687,6 +2747,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 185642,
       "dialect": {
         "json": {
           "keyed": true
@@ -2746,6 +2807,7 @@
       "format": "tsv",
       "mediatype": "text/tsv",
       "encoding": "utf-8",
+      "bytes": 37958,
       "dialect": {
         "csv": {
           "delimiter": "\t"
@@ -2774,6 +2836,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 36218,
       "dialect": {
         "json": {
           "keyed": true
@@ -2799,7 +2862,8 @@
       "scheme": "file",
       "format": "topojson",
       "mediatype": "text/topojson",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 642362
     },
     {
       "name": "us-employment.csv",
@@ -2816,6 +2880,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 17962,
       "schema": {
         "fields": [
           {
@@ -2925,6 +2990,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 3921,
       "dialect": {
         "json": {
           "keyed": true
@@ -2965,7 +3031,8 @@
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 21234
     },
     {
       "name": "weather.csv",
@@ -2982,6 +3049,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 124340,
       "schema": {
         "fields": [
           {
@@ -3023,7 +3091,8 @@
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 1281
     },
     {
       "name": "wheat.json",
@@ -3040,6 +3109,7 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
+      "bytes": 2138,
       "dialect": {
         "json": {
           "keyed": true
@@ -3071,6 +3141,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 129253,
       "schema": {
         "fields": [
           {
@@ -3103,7 +3174,8 @@
       "scheme": "file",
       "format": "topojson",
       "mediatype": "text/topojson",
-      "encoding": "utf-8"
+      "encoding": "utf-8",
+      "bytes": 119410
     },
     {
       "name": "zipcodes.csv",
@@ -3120,6 +3192,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
+      "bytes": 2060438,
       "schema": {
         "fields": [
           {
