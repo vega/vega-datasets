@@ -932,9 +932,13 @@ from multiple fields in the original dataset. This data is intended for instruct
 title = "NOAA Climate Data Online"
 path  = "http://www.ncdc.noaa.gov/cdo-web/datatools/findstation"
 
-[[resources]] # Path: weather.json
-path        = "weather.json"
-description = """Instructional dataset showing actual and predicted temperature data."""
+[[resources]] # Path: weekly-weather.json
+path = "weekly-weather.json"
+description = """Instructional dataset showing actual and predicted temperature data.
+
+> [!IMPORTANT]
+> Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).
+"""
 
 [[resources]] # Path: wheat.json
 path = "wheat.json"
