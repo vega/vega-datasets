@@ -90,7 +90,6 @@ logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
 type PackageMethod[**P] = Callable[Concatenate[Package, P], Any]
-type PathMeta = Literal["name", "path", "scheme", "mediatype"]
 type PythonDataType = (
     type[
         int
@@ -270,13 +269,14 @@ class ResourceAdapter:
         return cls.infer_as(source, tp)
 
     @classmethod
-    def _extract_file_parts(cls, source: Path, /) -> dict[PathMeta, str]:
+    def _extract_file_parts(cls, source: Path, /) -> PathMeta:
         """Metadata that can be inferred from the file path *alone*."""
-        parts: dict[PathMeta, str] = {
-            "name": source.name.lower(),
-            "path": source.name,
-            "scheme": "file",
-        }
+        parts = PathMeta(
+            name=source.name.lower(),
+            path=source.name,
+            scheme="file",
+            bytes=source.stat().st_size,
+        )
         if mediatype := cls.mediatype.get(source.suffix):
             parts["mediatype"] = mediatype
         return parts
@@ -307,6 +307,14 @@ def merge_schemas(resource: Resource, *, extra: Schema) -> fl.Schema:
 
 def _flatten_schema(schema: Schema, /) -> dict[str, Field]:
     return {field["name"]: field for field in schema["fields"]}
+
+
+class PathMeta(TypedDict):
+    name: str
+    path: str
+    scheme: Literal["file"]
+    bytes: int
+    mediatype: NotRequired[str]
 
 
 class Source(TypedDict, total=False):
