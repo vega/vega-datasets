@@ -1,0 +1,49 @@
+[[specs]]
+start     = 2001-01-01
+end       = 2001-03-31
+n_rows    = 2_000
+suffix    = ".json"
+dt_format = "%Y/%m/%d %H:%M"
+
+[[specs]]
+start     = 2001-01-01
+end       = 2001-03-31
+n_rows    = 5_000
+suffix    = ".json"
+dt_format = "%Y/%m/%d %H:%M"
+
+[[specs]]
+start     = 2001-01-01
+end       = 2001-03-31
+n_rows    = 10_000
+suffix    = ".json"
+dt_format = "%Y/%m/%d %H:%M"
+
+[[specs]]
+start     = 2001-01-01
+end       = 2001-03-31
+n_rows    = 20_000
+suffix    = ".json"
+dt_format = "%Y/%m/%d %H:%M"
+
+[[specs]]
+start     = 2001-01-01
+end       = 2001-03-31
+n_rows    = 200_000
+suffix    = ".json"
+dt_format = "decimal"
+columns   = ["delay", "distance", "time"]
+
+[[specs]]
+start     = 2001-01-01
+end       = 2001-03-31
+n_rows    = 200_000
+suffix    = ".arrow"
+dt_format = "decimal"
+columns   = ["delay", "distance", "time"]
+
+[[specs]]
+start  = 2001-01-01
+end    = 2001-06-30
+n_rows = 3_000_000
+suffix = ".parquet"

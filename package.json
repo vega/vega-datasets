@@ -46,7 +46,6 @@
   "scripts": {
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
     "build": "rollup -c",
-    "flights": "node scripts/flights.js",
     "github": "python scripts/github.py",
     "release": "release-it"
   }
