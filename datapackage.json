@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-19T18:26:48.655674+00:00",
+  "created": "2024-12-20T12:00:38.997319+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -3016,10 +3016,10 @@
       }
     },
     {
-      "name": "weather.json",
+      "name": "weekly-weather.json",
       "type": "json",
       "description": "Instructional dataset showing actual and predicted temperature data.",
-      "path": "weather.json",
+      "path": "weekly-weather.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",

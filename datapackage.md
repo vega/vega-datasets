@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-19 18:26:48 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-20 12:00:38 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1357,9 +1357,9 @@ from multiple fields in the original dataset. This data is intended for instruct
 | title                    | path                                                   |
 |:-------------------------|:-------------------------------------------------------|
 | NOAA Climate Data Online | http://www.ncdc.noaa.gov/cdo-web/datatools/findstation |
-## `weather.json`
+## `weekly-weather.json`
 ### path
-weather.json
+weekly-weather.json
 ### description
 Instructional dataset showing actual and predicted temperature data.
 ## `wheat.json`
