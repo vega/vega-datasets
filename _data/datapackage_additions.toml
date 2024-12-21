@@ -217,7 +217,7 @@ alongside mortality figures. Nightingale transformed this data into her now-famo
 diagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). 
 
 The annual mortality rates plotted in the chart can be calculated from the dataset using the formula 
-> (Deaths × 1000 × 12) / Army Size. 
+> (Deaths &times; 1000 &times; 12) &divide; Army Size. 
 
 As [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's 
 innovative visualizations proved that "far more men died of disease, infection, and exposure 
