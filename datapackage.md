@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-21 03:45:20 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-21 16:09:47 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -340,7 +340,7 @@ alongside mortality figures. Nightingale transformed this data into her now-famo
 diagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). 
 
 The annual mortality rates plotted in the chart can be calculated from the dataset using the formula 
-> (Deaths × 1000 × 12) / Army Size. 
+> (Deaths &times; 1000 &times; 12) &divide; Army Size. 
 
 As [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's 
 innovative visualizations proved that "far more men died of disease, infection, and exposure 
@@ -356,9 +356,9 @@ the dramatic impact of sanitary reforms, particularly in reducing preventable de
 | disease   | integer | Deaths from Zymotic Diseases (preventable infectious diseases)                                                                                                                                                                                                                          |
 | army_size | integer | Estimated Average Monthly Strength of the Army                                                                                                                                                                                                                                          |
 ### sources
-| title                                                                                                                                                                                                                                                                                                                                                                                           | path                                                     |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|
-| Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East | https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21 |
+| title                                                                                                                                                                                                                                                                                                                                                                                            | path                                                     |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|
+| Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East. | https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21 |
 ## `disasters.csv`
 ### path
 disasters.csv
