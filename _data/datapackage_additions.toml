@@ -226,23 +226,23 @@ the dramatic impact of sanitary reforms, particularly in reducing preventable de
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
+name        = "date"
 description = "First day of each month during the observation period, in ISO 8601 format (YYYY-MM-DD)"
 
 [[resources.schema.fields]]
-name = "wounds"
+name        = "wounds"
 description = """Deaths from "Wounds and Injuries" which comprised: Luxatio (dislocation), Sub-Luxatio (partial dislocation), Vulnus Sclopitorum (gunshot wounds), Vulnus Incisum (incised wounds), Contusio (bruising), Fractura (fractures), Ambustio (burns) and Concussio-Cerebri (brain concussion)"""
 
 [[resources.schema.fields]]
-name = "other"
+name        = "other"
 description = "Deaths from All Other Causes"
 
 [[resources.schema.fields]]
-name = "disease"
+name        = "disease"
 description = "Deaths from Zymotic Diseases (preventable infectious diseases)"
 
 [[resources.schema.fields]]
-name = "army_size"
+name        = "army_size"
 description = "Estimated Average Monthly Strength of the Army"
 
 [[resources.sources]]
