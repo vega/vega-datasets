@@ -230,8 +230,12 @@ name        = "date"
 description = "First day of each month during the observation period, in ISO 8601 format (YYYY-MM-DD)"
 
 [[resources.schema.fields]]
-name        = "wounds"
-description = """Deaths from "Wounds and Injuries" which comprised: Luxatio (dislocation), Sub-Luxatio (partial dislocation), Vulnus Sclopitorum (gunshot wounds), Vulnus Incisum (incised wounds), Contusio (bruising), Fractura (fractures), Ambustio (burns) and Concussio-Cerebri (brain concussion)"""
+name = "wounds"
+description = """
+Deaths from "Wounds and Injuries" which comprised: Luxatio (dislocation), \
+Sub-Luxatio (partial dislocation), Vulnus Sclopitorum (gunshot wounds), Vulnus Incisum (incised wounds), \
+Contusio (bruising), Fractura (fractures), Ambustio (burns) and Concussio-Cerebri (brain concussion)
+"""
 
 [[resources.schema.fields]]
 name        = "other"
@@ -247,7 +251,11 @@ description = "Estimated Average Monthly Strength of the Army"
 
 [[resources.sources]]
 title = """
-Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East
+Nightingale, Florence. A contribution to the sanitary history of the British army \
+during the late war with Russia. London : John W. Parker and Son, 1859. Table II. \
+Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and \
+Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), \
+in the Hospitals of the Army in the East.
 """
 path = "https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21"
 
