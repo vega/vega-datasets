@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-21 15:55:19 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2024-12-21 16:09:47 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -328,14 +328,37 @@ big picture" rather than support detailed numeric analysis.
 ## `crimea.json`
 ### path
 crimea.json
+### description
+This dataset, which informed Florence Nightingale's groundbreaking work in public health, details 
+monthly mortality rates from British military hospitals during the Crimean War (1854-1856). 
+
+Nightingale credits Dr. William Farr for compiling the data from the 1858 [Medical and Surgical 
+History of the British Army](http://resource.nlm.nih.gov/62510370R). The dataset categorizes 
+deaths into "zymotic" diseases (preventable infectious diseases), wounds/injuries, and other causes. 
+Covering the period from April 1854 to March 1856, the dataset includes monthly army strength 
+alongside mortality figures. Nightingale transformed this data into her now-famous [polar area 
+diagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). 
+
+The annual mortality rates plotted in the chart can be calculated from the dataset using the formula 
+> (Deaths &times; 1000 &times; 12) &divide; Army Size. 
+
+As [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's 
+innovative visualizations proved that "far more men died of disease, infection, and exposure 
+than in battle—a fact that shocked the British nation." Her work also vividly illustrated 
+the dramatic impact of sanitary reforms, particularly in reducing preventable deaths.
 ### schema
     
-| name    | type    |
-|:--------|:--------|
-| date    | date    |
-| wounds  | integer |
-| other   | integer |
-| disease | integer |
+| name      | type    | description                                                                                                                                                                                                                                                                             |
+|:----------|:--------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| date      | date    | First day of each month during the observation period, in ISO 8601 format (YYYY-MM-DD)                                                                                                                                                                                                  |
+| wounds    | integer | Deaths from "Wounds and Injuries" which comprised: Luxatio (dislocation), Sub-Luxatio (partial dislocation), Vulnus Sclopitorum (gunshot wounds), Vulnus Incisum (incised wounds), Contusio (bruising), Fractura (fractures), Ambustio (burns) and Concussio-Cerebri (brain concussion) |
+| other     | integer | Deaths from All Other Causes                                                                                                                                                                                                                                                            |
+| disease   | integer | Deaths from Zymotic Diseases (preventable infectious diseases)                                                                                                                                                                                                                          |
+| army_size | integer | Estimated Average Monthly Strength of the Army                                                                                                                                                                                                                                          |
+### sources
+| title                                                                                                                                                                                                                                                                                                                                                                                            | path                                                     |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|
+| Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East. | https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21 |
 ## `disasters.csv`
 ### path
 disasters.csv

@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-21T15:55:19.477787+00:00",
+  "created": "2024-12-21T16:09:47.521815+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -816,12 +816,19 @@
     {
       "name": "crimea.json",
       "type": "table",
+      "description": "This dataset, which informed Florence Nightingale's groundbreaking work in public health, details \nmonthly mortality rates from British military hospitals during the Crimean War (1854-1856). \n\nNightingale credits Dr. William Farr for compiling the data from the 1858 [Medical and Surgical \nHistory of the British Army](http://resource.nlm.nih.gov/62510370R). The dataset categorizes \ndeaths into \"zymotic\" diseases (preventable infectious diseases), wounds/injuries, and other causes. \nCovering the period from April 1854 to March 1856, the dataset includes monthly army strength \nalongside mortality figures. Nightingale transformed this data into her now-famous [polar area \ndiagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). \n\nThe annual mortality rates plotted in the chart can be calculated from the dataset using the formula \n> (Deaths &times; 1000 &times; 12) &divide; Army Size. \n\nAs [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's \ninnovative visualizations proved that \"far more men died of disease, infection, and exposure \nthan in battle—a fact that shocked the British nation.\" Her work also vividly illustrated \nthe dramatic impact of sanitary reforms, particularly in reducing preventable deaths.",
+      "sources": [
+        {
+          "title": "Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East.\n",
+          "path": "https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21"
+        }
+      ],
       "path": "crimea.json",
       "scheme": "file",
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
-      "bytes": 1737,
+      "bytes": 2183,
       "dialect": {
         "json": {
           "keyed": true
@@ -831,19 +838,28 @@
         "fields": [
           {
             "name": "date",
-            "type": "date"
+            "type": "date",
+            "description": "First day of each month during the observation period, in ISO 8601 format (YYYY-MM-DD)"
           },
           {
             "name": "wounds",
-            "type": "integer"
+            "type": "integer",
+            "description": "Deaths from \"Wounds and Injuries\" which comprised: Luxatio (dislocation), Sub-Luxatio (partial dislocation), Vulnus Sclopitorum (gunshot wounds), Vulnus Incisum (incised wounds), Contusio (bruising), Fractura (fractures), Ambustio (burns) and Concussio-Cerebri (brain concussion)\n"
           },
           {
             "name": "other",
-            "type": "integer"
+            "type": "integer",
+            "description": "Deaths from All Other Causes"
           },
           {
             "name": "disease",
-            "type": "integer"
+            "type": "integer",
+            "description": "Deaths from Zymotic Diseases (preventable infectious diseases)"
+          },
+          {
+            "name": "army_size",
+            "type": "integer",
+            "description": "Estimated Average Monthly Strength of the Army"
           }
         ]
       }
