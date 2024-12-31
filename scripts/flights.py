@@ -526,7 +526,7 @@ class Spec:
         kwds = self.write_options
         match self.suffix:
             case ".arrow":
-                df.write_ipc(fp, **kwds)
+                df.with_columns(pl.all().shrink_dtype()).write_ipc(fp, **kwds)
             case ".csv":
                 df.write_csv(fp, **kwds)
             case ".json":

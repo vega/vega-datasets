@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-31T12:05:10.822988+00:00",
+  "created": "2024-12-31T18:32:26.970186+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -1080,7 +1080,7 @@
       "scheme": "file",
       "format": ".arrow",
       "mediatype": "application/vnd.apache.arrow.file",
-      "bytes": 4800864,
+      "bytes": 1600864,
       "schema": {
         "fields": [
           {
