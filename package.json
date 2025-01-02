@@ -31,7 +31,7 @@
     "@babel/runtime": "^7.26.0",
     "@release-it/conventional-changelog": "^9.0.2",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/d3-dsv": "^3.0.7",
     "d3-dsv": "^3.0.1",
