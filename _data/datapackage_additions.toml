@@ -19,8 +19,8 @@ path        = "7zip.png"
 description = """Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html)."""
 
 [[resources.sources]]
-title   = "7-Zip"
-path    = "https://www.7-zip.org/"
+title = "7-Zip"
+path  = "https://www.7-zip.org/"
 
 [[resources.licenses]]
 title = "GNU Lesser General Public License "
