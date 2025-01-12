@@ -20,12 +20,24 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2024-12-31T18:32:26.970186+00:00",
+  "created": "2025-01-12T12:13:04.934046+00:00",
   "resources": [
     {
       "name": "7zip.png",
       "type": "file",
-      "description": "Application icons from open-source software projects.",
+      "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
+      "licenses": [
+        {
+          "title": "GNU Lesser General Public License ",
+          "path": "https://www.7-zip.org/license.txt"
+        }
+      ],
+      "sources": [
+        {
+          "title": "7-Zip",
+          "path": "https://www.7-zip.org/"
+        }
+      ],
       "path": "7zip.png",
       "scheme": "file",
       "format": "png",
