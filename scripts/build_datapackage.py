@@ -1,12 +1,5 @@
 #!/usr/bin/env -S uv run
 
-# /// script
-# requires-python = ">=3.12"
-# dependencies = [
-#     "frictionless[json,parquet]",
-#     "polars",
-# ]
-# ///
 """
 Generates machine-readable metadata, describing the contents of `/data/`_.
 
