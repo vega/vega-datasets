@@ -57,6 +57,7 @@ from typing import (
 )
 
 import frictionless as fl
+import niquests
 import polars as pl
 from frictionless.fields import (
     AnyField,
@@ -495,7 +496,7 @@ def iter_data_dir(data_root: Path, /) -> Iterator[Path]:
 
 
 def iter_resources(
-    root: Path, /, overrides: dict[str, ResourceMeta]
+    root: Path, /, overrides: dict[str, ResourceMeta], gh_sha1: Mapping[str, str]
 ) -> Iterator[Resource]:
     """
     Yield all parseable resources, constructing with the most appropriate ``Resource`` class.
@@ -516,7 +517,37 @@ def iter_resources(
         name = fp.name
         if name in overrides:
             resource = ResourceAdapter.with_extras(resource, **overrides[name])
+        resource.hash = gh_sha1[name]
         yield resource
+
+
+def request_sha(
+    ref: str = "main", /, *, api_version: str = "2022-11-28"
+) -> Mapping[str, str]:
+    DATA = "data"
+    TREES = "https://api.github.com/repos/vega/vega-datasets/git/trees"
+    headers = {"X-GitHub-Api-Version": api_version}
+    url = f"{TREES}/{ref}"
+    msg = f"Retrieving sha values from {url!r}"
+    logger.info(msg)
+    with niquests.get(url, headers=headers) as resp:
+        root = resp.json()
+    query = (tree["url"] for tree in root["tree"] if tree["path"] == DATA)
+    if data_url := next(query, None):
+        with niquests.get(data_url, headers=headers) as resp:
+            trees = resp.json()
+        return {t["path"]: _to_hash(t["sha"]) for t in trees["tree"]}
+    raise NotImplementedError
+
+
+def _to_hash(s: str, /) -> str:
+    """
+    Format the hash according to `data-resource/#hash`_.
+
+    .. _data-resource/#hash:
+        https://datapackage.org/standard/data-resource/#hash
+    """
+    return f"sha1:{s}"
 
 
 def read_toml(fp: Path, /) -> dict[str, Any]:
@@ -562,9 +593,13 @@ def main(
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
     pkg_meta = extract_package_metadata(npm_package, sources)
+    gh_sha1 = request_sha("main")
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
-    pkg = Package(resources=list(iter_resources(data_dir, overrides)), **pkg_meta)  # type: ignore[arg-type]
+    pkg = Package(
+        resources=list(iter_resources(data_dir, overrides, gh_sha1)),
+        **pkg_meta,  # type: ignore[arg-type]
+    )
     msg = f"Collected {len(pkg.resources)} resources"
     logger.info(msg)
     DEBUG_MARKDOWN = ("md",)
