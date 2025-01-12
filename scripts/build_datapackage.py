@@ -517,6 +517,34 @@ def iter_resources(
 def request_sha(
     ref: str = "main", /, *, api_version: str = "2022-11-28"
 ) -> Mapping[str, str]:
+    """
+    Use `Get a tree`_ to retrieve a hash for each dataset.
+
+    Parameters
+    ----------
+    ref
+        The SHA1 value or ref (`branch`_ or `tag`_) name of the tree.
+
+    api_version
+        The `GitHub REST API version`_.
+
+    Returns
+    -------
+    Mapping from `Resource.path`_ to `Resource.hash`_.
+
+    .. _Get a tree:
+        https://docs.github.com/en/rest/git/trees?apiVersion=2022-11-28#get-a-tree
+    .. _branch:
+        https://github.com/vega/vega-datasets/branches
+    .. _tag:
+        https://github.com/vega/vega-datasets/tags
+    .. _GitHub REST API version:
+        https://docs.github.com/en/rest/about-the-rest-api/api-versions?apiVersion=2022-11-28
+    .. _Resource.path:
+        https://datapackage.org/standard/data-resource/#path-or-data
+    .. _Resource.hash:
+        https://datapackage.org/standard/data-resource/#hash
+    """
     DATA = "data"
     TREES = "https://api.github.com/repos/vega/vega-datasets/git/trees"
     headers = {"X-GitHub-Api-Version": api_version}
