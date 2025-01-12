@@ -292,7 +292,15 @@ path  = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 
 [[resources]] # Path: ffox.png
 path        = "ffox.png"
-description = """Application icons from open-source software projects."""
+description = """Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html)."""
+
+[[resources.sources]]
+title = "Mozilla Firefox"
+path  = "https://www.mozilla.org/firefox/"
+
+[[resources.licenses]]
+title = "Mozilla Public License"
+path  = "https://www.mozilla.org/MPL/"
 
 [[resources]] # Path: flare-dependencies.json
 path = "flare-dependencies.json"

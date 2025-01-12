@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-01-12T12:13:04.934046+00:00",
+  "created": "2025-01-12T19:11:50.857477+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -970,7 +970,19 @@
     {
       "name": "ffox.png",
       "type": "file",
-      "description": "Application icons from open-source software projects.",
+      "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
+      "licenses": [
+        {
+          "title": "Mozilla Public License",
+          "path": "https://www.mozilla.org/MPL/"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mozilla Firefox",
+          "path": "https://www.mozilla.org/firefox/"
+        }
+      ],
       "path": "ffox.png",
       "scheme": "file",
       "format": "png",

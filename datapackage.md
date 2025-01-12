@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-12 12:13:04 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-12 19:11:50 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -411,7 +411,15 @@ Earthquake data retrieved Feb 6, 2018
 ### path
 ffox.png
 ### description
-Application icons from open-source software projects.
+Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).
+### sources
+| title           | path                             |
+|:----------------|:---------------------------------|
+| Mozilla Firefox | https://www.mozilla.org/firefox/ |
+### licenses
+| title                  | path                         |
+|:-----------------------|:-----------------------------|
+| Mozilla Public License | https://www.mozilla.org/MPL/ |
 ## `flare-dependencies.json`
 ### path
 flare-dependencies.json
