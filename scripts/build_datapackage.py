@@ -558,7 +558,8 @@ def request_sha(
         with niquests.get(data_url, headers=headers) as resp:
             trees = resp.json()
         return {t["path"]: _to_hash(t["sha"]) for t in trees["tree"]}
-    raise NotImplementedError
+    msg = f"Did not find a tree for {DATA!r} in response:\n{root!r}"
+    raise NotImplementedError(msg)
 
 
 def _to_hash(s: str, /) -> str:
