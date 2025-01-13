@@ -1031,9 +1031,22 @@ description = """Simulated wind patterns over northwestern Europe."""
 path = "world-110m.json"
 
 [[resources]] # Path: zipcodes.csv
-path        = "zipcodes.csv"
-description = """GeoNames.org"""
+path = "zipcodes.csv"
+description = """
+This dataset, first contributed to vega-datasets in 2017, contains postal codes mapped to 
+their geographical coordinates (latitude/longitude in WGS84) and administrative hierarchies, 
+for the United States and Puerto Rico. The GeoNames geographical database provides worldwide
+postal code data with associated geographical and administrative information. 
+
+This historical snapshot is no longer current. Administrative boundaries have been redrawn, 
+counties reorganized and renamed, and postal codes modified. Latitude/longitude coordinates 
+have been updated by Geonames since this data was collected. For current postal code data,
+users should refer to the main GeoNames database."""
 
 [[resources.sources]]
-title = "GeoNames"
-path  = "https://www.geonames.org"
+title = "GeoNames Postal Codes"
+path  = "https://download.geonames.org/export/zip/"
+
+[[resources.licenses]]
+title = "Creative Commons Attribution 4.0 International"
+path  = "https://creativecommons.org/licenses/by/4.0/"
