@@ -1029,6 +1029,37 @@ description = """Simulated wind patterns over northwestern Europe."""
 
 [[resources]] # Path: world-110m.json
 path = "world-110m.json"
+description = """This dataset is a simplified representation of world geographic boundaries, 
+optimized for creating web-based world maps. It's in [TopoJSON](https://github.com/topojson/topojson) format, which is a compressed form of 
+GeoJSON that makes geographic data more efficient for web use.
+
+The "110m" in the name refers to the scale of simplification - it's simplified to 1:110,000,000 
+scale, meaning small geographic details are removed to create a streamlined version suitable for 
+overview maps. This makes it ideal for creating basic world visualizations where precise boundary 
+detail isn't necessary.
+
+The file contains two main geometry collections:
+- "land": Contains polygons representing all land masses
+- "countries": Contains polygons for country boundaries with their corresponding country codes
+
+The TopoJSON World Atlas collection, from which this dataset appears to be derived, has been one
+of the most commonly used datasets for creating world maps in data visualization."""
+
+[[resources.sources]]
+title = "TopoJSON World Atlas (Likely original source, processed from Natural Earth data)"
+path  = "https://github.com/topojson/world-atlas"
+
+[[resources.sources]]
+title = "Natural Earth Data - Admin 0 Countries (1:110m)"
+path  = "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/"
+
+[[resources.licenses]]
+title = "TopoJSON World Atlas ISC License"
+path  = "https://github.com/topojson/world-atlas/blob/master/LICENSE.md"
+
+[[resources.licenses]]
+title = "Natural Earth Data Public Domain"
+path  = "https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[resources]] # Path: zipcodes.csv
 path = "zipcodes.csv"
