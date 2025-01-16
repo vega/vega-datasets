@@ -954,6 +954,24 @@ path = "uniform-2d.json"
 
 [[resources]] # Path: us-10m.json
 path = "us-10m.json"
+description = """This dataset contains a simplified representation (at 1:10,000,000 scale) 
+of US county boundaries, designed for efficient web mapping and visualization. The data is 
+in [TopoJSON](https://github.com/topojson/topojson) format, which optimizes for smaller file sizes. This dataset is similar to 
+those existing in the TopoJSON US Atlas collection, which in turn is a redistribution of 
+the Census Bureau's cartographic boundary shapefiles.
+"""
+
+[[resources.sources]]
+title = "TopoJSON US Atlas"
+path  = "https://github.com/topojson/us-atlas"
+
+[[resources.sources]]
+title = "US Census Bureau Cartographic Boundary FIles"
+path  = "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html"
+
+[[resources.licenses]]
+title = "TopoJSON US Atlas ISC License"
+path  = "https://github.com/topojson/us-atlas/blob/master/LICENSE.md"
 
 [[resources]] # Path: us-employment.csv
 path = "us-employment.csv"
