@@ -323,12 +323,20 @@ title = "New York Times"
 path  = "https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html"
 
 [[resources]] # Path: earthquakes.json
-path        = "earthquakes.json"
-description = """Earthquake data retrieved Feb 6, 2018"""
+path = "earthquakes.json"
+description = """
+This dataset contains 1,707 worldwide earthquake events recorded by the USGS Earthquake Hazards
+Program from January 31 to February 7, 2018 (UTC). The data represents approximately one week of 
+continuous monitoring from USGS's "all earthquakes" real-time feed, which includes seismic 
+events of all magnitudes."""
 
 [[resources.sources]]
 title = "USGS Earthquake Feed"
 path  = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
+
+[[resources.licenses]]
+title = "U.S. Public Domain"
+path  = "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
 
 [[resources]] # Path: ffox.png
 path        = "ffox.png"
