@@ -303,6 +303,10 @@ in the Hospitals of the Army in the East.
 """
 path = "https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21"
 
+[[resources.licenses]]
+title = "Harvard Library - Digitized Content Copyright & Viewer Terms of Use"
+path  = "https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent"
+
 [[resources]] # Path: disasters.csv
 path        = "disasters.csv"
 description = "Annual number of deaths from disasters."
