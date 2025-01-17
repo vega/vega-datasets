@@ -35,7 +35,11 @@ description = """A raster grid of global annual precipitation for the year 2016 
 
 [[resources.sources]]
 title = "Climate Forecast System Version 2"
-path  = "https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/climate-forecast-system-version2-cfsv2"
+path  = "https://www.cpc.ncep.noaa.gov/products/people/wwang/cfsv2_fcst_history/"
+
+[[resources.licenses]]
+title = "Public Domain"
+path  = "https://www.weather.gov/disclaimer/"
 
 [[resources]] # Path: anscombe.json
 path        = "anscombe.json"
@@ -72,6 +76,10 @@ description = "Records of reported wildlife strikes received by the U.S. FAA"
 title = "FAA Wildlife Strike Database"
 path  = "http://wildlife.faa.gov"
 
+[[resources.licenses]]
+title = "Public Domain"
+path  = "https://resources.data.gov/open-licenses/"
+
 [[resources]] # Path: budget.json
 path        = "budget.json"
 description = """Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. Office of Management and Budget."""
@@ -79,6 +87,10 @@ description = """Historical and forecasted federal revenue/receipts produced in 
 [[resources.sources]]
 title = "Office of Management and Budget - Budget FY 2016 - Receipts"
 path  = "https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3"
+
+[[resources.licenses]]
+title = "Public Domain"
+path  = "https://resources.data.gov/open-licenses/"
 
 [[resources]] # Path: budgets.json
 path = "budgets.json"
@@ -137,6 +149,10 @@ path  = "https://graphicdesignarchives.org/projects/scope-magazine-vol-iii-5/"
 title = "Protovis Antibiotics Example"
 path  = "https://mbostock.github.io/protovis/ex/antibiotics-burtin.html"
 
+[[resources.licenses]]
+title = "BSD License (via Protovis)"
+path  = "https://mbostock.github.io/protovis/"
+
 [[resources]] # Path: cars.json
 path        = "cars.json"
 description = "Collection of car specifications and performance metrics from various automobile manufacturers."
@@ -144,6 +160,10 @@ description = "Collection of car specifications and performance metrics from var
 [[resources.sources]]
 title = "StatLib Datasets Archive"
 path  = "http://lib.stat.cmu.edu/datasets/"
+
+[[resources.licenses]]
+title = "The original dataset was distributed in 1982 for educational and scientific purposes."
+path  = "http://lib.stat.cmu.edu/datasets/cars.desc"
 
 [[resources]] # Path: co2-concentration.csv
 path = "co2-concentration.csv"
