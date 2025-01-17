@@ -167,12 +167,28 @@ path  = "http://lib.stat.cmu.edu/datasets/cars.desc"
 
 [[resources]] # Path: co2-concentration.csv
 path = "co2-concentration.csv"
-description = """Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. 
-Only includes rows with valid data."""
+description = """
+Atmospheric CO2 concentration measurements from Mauna Loa Observatory, Hawaii. 
+Dataset contains monthly readings from 1958-2020 with two key measurements:
+1. CO2 concentrations in millionths of a [mole](https://en.wikipedia.org/wiki/Mole_(unit)) of CO2 
+per mole of air (parts per million), reported on the 2012 
+SIO manometric mole fraction scale
+2. Seasonally adjusted values where a [4-harmonic fit](https://en.wikipedia.org/wiki/Harmonic_analysis) with linear gain factor 
+has been subtracted to remove the quasi-regular seasonal cycle
+Values are adjusted to 24:00 hours on the 15th of each month. 
+Only includes rows with valid data.
+"""
 
 [[resources.sources]]
 title = "Scripps CO2 Program"
 path  = "https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record"
+[[resources.sources]]
+title = "In-situ CO2 Data"
+path  = "https://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv"
+
+[[resources.licenses]]
+title = "Creative Commons Attribution 4.0"
+path  = "https://creativecommons.org/licenses/by/4.0/"
 
 [[resources]] # Path: countries.json
 path = "countries.json"
