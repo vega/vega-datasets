@@ -613,6 +613,10 @@ description = """Combined Land-Surface Air and Sea-Surface Water Temperature Ano
 title = "NASA Goddard Institute for Space Studies"
 path  = "https://data.giss.nasa.gov/gistemp/"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: income.json
 path = "income.json"
 
@@ -626,6 +630,10 @@ It is useful for illustrating stacked area charts."""
 [[resources.sources]]
 title = "U.S. Energy Information Administration"
 path  = "https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin="
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: jobs.json
 path = "jobs.json"
@@ -691,6 +699,10 @@ description = "Percentage of the workforce in the occupation"
 title   = "IPUMS USA"
 path    = "https://usa.ipums.org/usa/"
 version = "6.0"
+
+[[resources.licenses]]
+title = "IPUMS Terms of Use"
+path  = "https://www.ipums.org/about/terms"
 
 [[resources]] # Path: la-riots.csv
 path = "la-riots.csv"
@@ -808,6 +820,10 @@ path  = "https://www.royal.uk/kings-and-queens-1066"
 title = "The Royal Family - Interregnum"
 path  = "https://www.royal.uk/interregnum-1649-1660"
 
+[[resources.licenses]]
+title = "Open Government Licence v3.0 (UK)"
+path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+
 [[resources]] # Path: movies.json
 path = "movies.json"
 description = """The dataset has well known and intentionally included errors. 
@@ -871,7 +887,7 @@ FEC data is subject to the commission's:
 Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:
 > This project is in the public domain within the United States, and we waive worldwide 
 > copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/)
-> dedication. Read more on our license page.
+> dedication. Read more on our [license](https://github.com/fecgov/FEC?tab=License-1-ov-file) page.
 > A few restrictions limit the way you can use FEC data. For example, you can't use 
 > contributor lists for commercial purposes or to solicit donations. Learn more on 
 > [FEC.gov](https://www.fec.gov/)."""
@@ -882,6 +898,10 @@ path  = "https://www.fec.gov/data/browse-data/?tab=bulk-data"
 [[resources.sources]]
 title = "OpenFEC API"
 path  = "https://api.open.fec.gov/developers/"
+
+[[resources.licenses]]
+title = "Creative Commons Zero 1.0 Universal"
+path  = "https://creativecommons.org/publicdomain/zero/1.0/"
 
 [[resources]] # Path: population.json
 path = "population.json"
@@ -936,6 +956,10 @@ path  = "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview
 title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: seattle-weather-hourly-normals.csv
 path = "seattle-weather-hourly-normals.csv"
 description = """Hourly weather normals with metric units. The 1981-2010 Climate Normals are 
@@ -948,6 +972,10 @@ and updated the format to be easier to parse."""
 title = "NOAA National Climatic Data Center (NCDC)"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/normals"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: seattle-weather.csv
 path = "seattle-weather.csv"
 description = """Daily weather records with metric units. Transformed using `/scripts/weather.py`. 
@@ -957,6 +985,10 @@ This data is intended for instructional purposes."""
 [[resources.sources]]
 title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: sp500-2000.csv
 path        = "sp500-2000.csv"
@@ -1030,6 +1062,10 @@ path  = "https://www.bls.gov/lau/data.htm"
 title = "Bureau of Labor Statistics Table A-31"
 path  = "https://www.bls.gov/web/empsit/cpseea31.htm"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: unemployment.tsv
 path = "unemployment.tsv"
 description = """This dataset contains county-level unemployment rates in the United States, with data generally
@@ -1076,6 +1112,10 @@ path  = "https://www.bls.gov/developers/"
 [[resources.sources]]
 title = "BLS Handbook of Methods"
 path  = "https://www.bls.gov/opub/hom/lau/home.htm"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: uniform-2d.json
 path = "uniform-2d.json"
@@ -1125,6 +1165,10 @@ negative and positive values.
 title = "U.S. Bureau of Labor Statistics Current Employment Statistics"
 path  = "https://www.bls.gov/ces/"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: us-state-capitals.json
 path = "us-state-capitals.json"
 
@@ -1146,6 +1190,10 @@ from multiple fields in the original dataset. This data is intended for instruct
 [[resources.sources]]
 title = "NOAA Climate Data Online"
 path  = "http://www.ncdc.noaa.gov/cdo-web/datatools/findstation"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: weekly-weather.json
 path = "weekly-weather.json"
