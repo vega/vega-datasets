@@ -357,60 +357,116 @@ path = "flare-dependencies.json"
 path = "flare.json"
 
 [[resources]] # Path: flights-10k.json
-path        = "flights-10k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-10k.json"
+description = """Flight delay statistics (10,000 rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-200k.arrow
-path        = "flights-200k.arrow"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-200k.arrow"
+description = """Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-200k.json
-path        = "flights-200k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-200k.json"
+description = """Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-20k.json
-path        = "flights-20k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-20k.json"
+description = """Flight delay statistics (20,000 rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-2k.json
-path        = "flights-2k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-2k.json"
+description = """Flight delay statistics (2,000 rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-3m.parquet
-path        = "flights-3m.parquet"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-3m.parquet"
+description = """Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-5k.json
-path        = "flights-5k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-5k.json"
+description = """Flight delay statistics (5,000 rows) from U.S. Bureau of Transportation Statistics. 
+Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-airport.csv
 path        = "flights-airport.csv"
