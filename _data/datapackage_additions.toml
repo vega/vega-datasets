@@ -712,17 +712,41 @@ and \"Contains Ordnance Survey data © Crown copyright and database right [2015]
 title = "Statistical GIS Boundary Files, London Datastore"
 path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
 
+[[resources.licenses]]
+title = "UK Open Government License"
+path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+
 [[resources]] # Path: londonCentroids.json
 path        = "londonCentroids.json"
 description = """Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid)."""
 
+[[resources.sources]]
+title = "[londonBoroughs.json](https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json) from the [vega-datasets](https://github.com/vega/vega-datasets) repository"
+path  = "https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json"
+
+[[resources.licenses]]
+title = "UK Open Government License"
+path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+
 [[resources]] # Path: londonTubeLines.json
-path        = "londonTubeLines.json"
-description = """Selected rail lines simplified from source."""
+path = "londonTubeLines.json"
+description = """
+This TopoJSON file provides a simplified representation of selected London Underground rail lines. The data originates 
+from OpenStreetMap and was processed and edited by oobrien, resulting in the `tfl_lines.json` dataset referenced in the source.
+This `tfl_lines.json` file contains a GeoJSON representation of London transport lines which have been simplified, 
+with each line feature representing a path of a particular transport line between stations, and with stations represented as 
+nodes on the line. This TopoJSON file was then generated from this intermediate dataset, resulting in 394 LineString geometries 
+representing segments of these lines, topologically encoded using 406 arcs. Note that the data represents a specific view of 
+the network, committed on Feb 4, 2018, and may not include more recent changes or extensions.
+"""
 
 [[resources.sources]]
-title = "London Tube Data"
-path  = "https://github.com/oobrien/vis/tree/master/tube/data"
+title = "OpenStreetMap Data (processed by oobrien/vis)"
+path  = "https://github.com/oobrien/vis/blob/master/tubecreature/data/tfl_lines.json"
+
+[[resources.licenses]]
+title = "Open Data Commons Open Database License (ODbL)"
+path  = "https://opendatacommons.org/licenses/odbl/"
 
 [[resources]] # Path: lookup_groups.csv
 path = "lookup_groups.csv"
