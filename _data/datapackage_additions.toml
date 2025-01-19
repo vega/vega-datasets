@@ -28,6 +28,19 @@ path  = "https://www.7-zip.org/license.txt"
 
 [[resources]] # Path: airports.csv
 path = "airports.csv"
+description = """A comprehensive dataset of airports in the United States and its territories, including 
+major commercial, regional, and municipal airports. The dataset contains information about each airport's
+location (latitude/longitude coordinates), identification codes, name, city, state, and country. The data 
+structure and content is consistent with the airports dataset available on Data.gov, the U.S. government's
+open data site."""
+
+[[resources.sources]]
+title = "Airports (Data.gov)"
+path  = "https://catalog.data.gov/dataset/airports-5e97a"
+
+[[resources.licenses]]
+name  = "other-open"
+title = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: annual-precip.json
 path        = "annual-precip.json"
@@ -48,16 +61,17 @@ description = """Graphs in Statistical Analysis, F. J. Anscombe, The American St
 [[resources]] # Path: barley.json
 path = "barley.json"
 description = """
-The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 \
-different varieties of barley at six different sites.
+A dataset containing barley variety yields from experiments conducted by the Minnesota Agricultural
+Experiment Station (MAES) across six sites in Minnesota. The USDA Technical Bulletin No. 735
+(December 1940) republished these yields data with explicit credit to MAES as the source.
 
-It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper \
+It was analyzed by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper \
 "Statistical Determination of Barley Varietal Adaption".
 
-R.A. Fisher's popularized its use in the field of statistics when he included it in his book "The \
+R.A. Fisher popularized its use in the field of statistics when he included it in his book "The \
 Design of Experiments".
 
-Since then it has been used to demonstrate new statistical techniques, including the trellis charts \
+Since then it has been used to demonstrate new visualization techniques, including the trellis charts \
 developed by Richard Becker, William Cleveland and others in the 1990s.
 """
 
@@ -65,8 +79,11 @@ developed by Richard Becker, William Cleveland and others in the 1990s.
 title = "The Design of Experiments Reference"
 path  = "https://en.wikipedia.org/wiki/The_Design_of_Experiments"
 [[resources.sources]]
-title = "Trellis Charts Paper"
-path  = "http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf"
+title = "Wiebe, G. A., Reinbach-Welch, L., Cowan, P. R. (1940). Yields of Barley Varieties in the United States and Canada, 1932-36. United States: U.S. Department of Agriculture."
+path  = "https://books.google.com/books?id=OUfxLocnpKkC&pg=PA19"
+
+[[resources.licenses]]
+name = "Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified"
 
 [[resources]] # Path: birdstrikes.csv
 path        = "birdstrikes.csv"
@@ -308,19 +325,47 @@ title = "Harvard Library - Digitized Content Copyright & Viewer Terms of Use"
 path  = "https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent"
 
 [[resources]] # Path: disasters.csv
-path        = "disasters.csv"
-description = "Annual number of deaths from disasters."
+path = "disasters.csv"
+description = """Annual number of deaths from disasters. The data is sourced from EM-DAT (Emergency Events Database) 
+maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at UCLouvain, Belgium. 
+The dataset was processed by Our World in Data, which involved standardizing country names and world region 
+definitions, converting units, calculating derived indicators, and adapting metadata. Deaths are reported 
+as absolute numbers."""
 
 [[resources.sources]]
-title = "Our World in Data - Natural Catastrophes"
+title = "EM-DAT: The Emergency Events Database"
+path  = "https://www.emdat.be"
+[[resources.sources]]
+title = "Hannah Ritchie, Pablo Rosado and Max Roser (2022) - Natural Disasters"
 path  = "https://ourworldindata.org/natural-catastrophes"
+
+[[resources.licenses]]
+title = "EM-DAT terms of use"
+path  = "https://doc.emdat.be/docs/legal/terms-of-use/"
+[[resources.licenses]]
+title = "Creative Commons BY license (Our World in Data)"
+path  = "https://creativecommons.org/licenses/by/4.0/"
 
 [[resources]] # Path: driving.json
 path = "driving.json"
+description = """This dataset tracks the relationship between driving habits and gasoline prices
+in the United States from 1956 to 2010. It combines two key metrics:
+
+1. Miles driven per capita per year (ranging from approximately 4,000 to 10,000 miles)
+2. Price of a gallon of gasoline (adjusted for inflation, in regular grade)
+
+The dataset includes a "side" column with values (left, right, top, bottom) that indicates label positioning 
+in the original visualization to optimize readability and prevent overlap. The data spans multiple significant 
+historical periods including the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the
+"swing backward" period from 1956 to 2010.
+"""
 
 [[resources.sources]]
-title = "New York Times"
+title = "New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution)"
 path  = "https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: earthquakes.json
 path = "earthquakes.json"
@@ -485,6 +530,9 @@ chosen divisions over the time period."""
 [[resources.sources]]
 title = "OpenFootball"
 path  = "https://github.com/openfootball/football.json"
+
+[[resources.licenses]]
+path = "https://github.com/openfootball/football.json?tab=readme-ov-file#license"
 
 [[resources]] # Path: gapminder-health-income.csv
 path = "gapminder-health-income.csv"
@@ -714,6 +762,9 @@ coordinates of their death. Compiled and published by the Los Angeles Times Data
 title = "LA Riots Deaths, Los Angeles Times Data Desk"
 path  = "http://spreadsheets.latimes.com/la-riots-deaths/"
 
+[[resources.licenses]]
+name = "License status undetermined"
+
 [[resources]] # Path: londonBoroughs.json
 path = "londonBoroughs.json"
 description = """Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. 
@@ -838,12 +889,20 @@ path = "obesity.json"
 [[resources]] # Path: ohlc.json
 path = "ohlc.json"
 description = """This dataset contains the performance of the Chicago Board Options Exchange 
-[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX#overview))
-in the summer of 2009."""
+[Volatility Index](https://en.wikipedia.org/wiki/VIX) (VIX) in the summer of 2009.
+
+The precise methodology used to derive the signal and calculate the ret columns is unclear.
+"""
 
 [[resources.sources]]
 title = "Yahoo Finance VIX Data"
 path  = "https://finance.yahoo.com/chart/%5EVIX"
+[[resources.sources]]
+title = "CBOE - VIX Historical Data"
+path  = "https://www.cboe.com/tradable_products/vix/vix_historical_data/"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: penguins.json
 path = "penguins.json"
@@ -859,13 +918,20 @@ path  = "https://pal.lternet.edu/"
 title = "Allison Horst's Penguins Repository"
 path  = "https://github.com/allisonhorst/penguins"
 
+[[resources.licenses]]
+name = "CC0 1.0 Universal"
+path = "https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme"
+
 [[resources]] # Path: platformer-terrain.json
 path        = "platformer-terrain.json"
-description = """Assets from the video game Celeste."""
+description = """Assets from the video game Celeste. Added in [#376](https://github.com/vega/vega-datasets/pull/376)"""
 
 [[resources.sources]]
 title = "Celeste Game"
 path  = "http://www.celestegame.com/"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: points.json
 path = "points.json"
@@ -941,6 +1007,10 @@ description = "Number of individuals (IPUMS PERWT)"
 title = "IPUMS USA"
 path  = "https://usa.ipums.org/usa/"
 
+[[resources.licenses]]
+title = "IPUMS Terms of Use"
+path  = "https://www.ipums.org/about/terms"
+
 [[resources]] # Path: population_engineers_hurricanes.csv
 path = "population_engineers_hurricanes.csv"
 description = """Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
@@ -994,6 +1064,9 @@ path  = "https://www.usa.gov/government-works"
 path        = "sp500-2000.csv"
 description = """S&amp;P 500 index values from 2000 to 2020."""
 
+[[resources.licenses]]
+name = "License status undetermined"
+
 [[resources.sources]]
 title = "Yahoo Finance"
 path  = "https://finance.yahoo.com/quote/%5EDJI/history/"
@@ -1001,8 +1074,17 @@ path  = "https://finance.yahoo.com/quote/%5EDJI/history/"
 [[resources]] # Path: sp500.csv
 path = "sp500.csv"
 
+[[resources.licenses]]
+name = "License status undetermined"
+
 [[resources]] # Path: stocks.csv
 path = "stocks.csv"
+
+[[resources.sources]]
+title = "Source undetermined"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
@@ -1182,6 +1264,9 @@ topographic map by Ross Ihaka, adapted from R datasets. These data should not be
 title = "R Datasets"
 path  = "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html"
 
+[[resources.licenses]]
+name = "License status undetermined"
+
 [[resources]] # Path: weather.csv
 path = "weather.csv"
 description = """NOAA data transformed using `/scripts/weather.py`. Categorical \"weather\" field synthesized 
@@ -1198,6 +1283,12 @@ path  = "https://www.usa.gov/government-works"
 [[resources]] # Path: weekly-weather.json
 path = "weekly-weather.json"
 description = """Instructional dataset showing actual and predicted temperature data.
+
+[[resources.sources]]
+name = "Source undetermined"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 > [!IMPORTANT]
 > Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).
@@ -1225,6 +1316,12 @@ path  = "https://commons.wikimedia.org/wiki/Public_domain"
 [[resources]] # Path: windvectors.csv
 path        = "windvectors.csv"
 description = """Simulated wind patterns over northwestern Europe."""
+
+[[resources.sources]]
+name = "Source undetermined"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: world-110m.json
 path = "world-110m.json"
