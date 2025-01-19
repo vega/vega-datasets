@@ -562,8 +562,16 @@ path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
 title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-airport.csv
-path        = "flights-airport.csv"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-airport.csv"
+description = """Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id), 
+a destination airport, and the count of flights along this route."""
+
+[[resources.sources]]
+title = "U.S. Bureau of Transportation Statistics"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
