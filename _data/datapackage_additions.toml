@@ -112,7 +112,7 @@ title = "FAA Wildlife Strike Database"
 path  = "http://wildlife.faa.gov"
 
 [[resources.licenses]]
-title = "Public Domain"
+title = "U.S. Government Dataset"
 path  = "https://resources.data.gov/open-licenses/"
 
 [[resources]] # Path: budget.json
@@ -124,11 +124,27 @@ title = "Office of Management and Budget - Budget FY 2016 - Receipts"
 path  = "https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3"
 
 [[resources.licenses]]
-title = "Public Domain"
+title = "U.S. Government Dataset"
 path  = "https://resources.data.gov/open-licenses/"
 
 [[resources]] # Path: budgets.json
 path = "budgets.json"
+description = """
+The dataset, sourced from the Office of Management and Budget (OMB) and [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010, 
+tracks U.S. federal budget projections and actual outcomes (in trillions of dollars) from 1980 through 2010, with all 
+values adjusted for inflation to the price level at the time of publication. For each budget year, the data includes 
+both the actual budget outcome (looking back one year) and a series of forecasts for future years, allowing comparison 
+between projected and real fiscal results. The data reveals how budget forecasts made in any given year compared to
+what actually happened, with positive values indicating surpluses (briefly seen around 2000) and negative values 
+representing deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis)."""
+
+[[resources.sources]]
+title = "Office of Management and Budget"
+path  = "https://www.whitehouse.gov/omb/"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://resources.data.gov/open-licenses/"
 
 [[resources]] # Path: burtin.json
 path = "burtin.json"
