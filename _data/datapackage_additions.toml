@@ -55,8 +55,26 @@ title = "Public Domain"
 path  = "https://www.weather.gov/disclaimer/"
 
 [[resources]] # Path: anscombe.json
-path        = "anscombe.json"
-description = """Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician."""
+path = "anscombe.json"
+description = """In his 1973 paper "Graphs in Statistical Analysis," [Yale](https://archives.yale.edu/repositories/12/resources/3711) Professor Francis Anscombe uses these four datasets 
+to argue that visualization is essential to good statistical work, not merely an optional supplement—a radical position at a 
+time when most statistical analysis was done through batch processing on mainframes with no graphical output. The datasets serve 
+as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
+statistical analysis should combine both numerical calculations and graphical examination. Each dataset contains eleven (x,y) pairs 
+of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression lines (same slope and intercept) and correlation coefficients 
+(approximately 0.816)—yet when plotted, they reveal starkly different patterns: one shows a linear relationship, another a 
+non-linear curve, the third a near-perfect linear relationship disrupted by a single outlier, and the fourth a near-vertical 
+line of points where a single outlier entirely dictates the regression."""
+
+[[resources.sources]]
+title = "Anscombe's quartet (Wikipedia)"
+path  = "https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data"
+[[resources.sources]]
+title = "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21. "
+path  = "https://www.jstor.org/stable/2682899"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: barley.json
 path = "barley.json"
