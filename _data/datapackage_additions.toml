@@ -426,8 +426,8 @@ title = "Mozilla Firefox"
 path  = "https://www.mozilla.org/firefox/"
 
 [[resources.licenses]]
-title = "Mozilla Public License"
-path  = "https://www.mozilla.org/MPL/"
+title = "Mozilla Trademark License"
+path  = "https://www.mozilla.org/en-US/foundation/trademarks/policy/"
 
 [[resources]] # Path: flare-dependencies.json
 path        = "flare-dependencies.json"
@@ -701,13 +701,32 @@ path  = "https://www.gapminder.org/data/geo/"
 title = "Gapminder Data Documentation"
 path  = "https://www.gapminder.org/data/documentation/"
 
+[[resources.licenses]]
+title = "Creative Commons Attribution 4.0 International"
+path  = "https://www.gapminder.org/free-material/"
+
 [[resources]] # Path: gimp.png
 path        = "gimp.png"
-description = """Application icons from open-source software projects."""
+description = """Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html)."""
+
+[[resources.sources]]
+title = "GIMP - About GIMP"
+path  = "https://www.gimp.org/about/"
+
+[[resources.licenses]]
+path = "https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it"
 
 [[resources]] # Path: github.csv
-path        = "github.csv"
-description = """Generated using `/scripts/github.py`."""
+path = "github.csv"
+description = """This dataset contains simulated GitHub contribution data showing hourly commit counts across 
+different times of day, spanning from January 1st to May 30th, 2015, designed to demonstrate typical patterns 
+of developer activity in a GitHub-style punchcard visualization format."""
+
+[[resources.sources]]
+title = """Generated using `/scripts/github.py`."""
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: global-temp.csv
 path        = "global-temp.csv"
@@ -869,12 +888,41 @@ path  = "https://opendatacommons.org/licenses/odbl/"
 
 [[resources]] # Path: lookup_groups.csv
 path = "lookup_groups.csv"
+description = """A nine-row lookup table for the `lookup_people.csv` dataset, 
+mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms."""
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: lookup_people.csv
 path = "lookup_people.csv"
+description = """A dataset of people and their associated name, age, 
+and height in centimeters. Used in conjunction with `lookup_groups.csv` 
+to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms."""
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: miserables.json
 path = "miserables.json"
+description = """
+A weighted network of coappearances of characters in Victor Hugo's novel "Les Miserables". 
+Nodes represent characters as indicated by the labels and edges connect any pair of characters 
+that appear in the same chapter of the book. The values on the edges are the number of such 
+coappearances.
+"""
+[[resources.sources]]
+title = "D. E. Knuth, The Stanford GraphBase: A Platform for Combinatorial Computing, Addison-Wesley, Reading, MA (1993)."
+path  = "https://www-cs-faculty.stanford.edu/~knuth/sgb.html"
+
+[[resources.licenses]]
+path = "https://websites.umich.edu/~mejn/netdata/"
 
 [[resources]] # Path: monarchs.json
 path = "monarchs.json"
@@ -936,8 +984,30 @@ path = "movies.json"
 description = """The dataset has well known and intentionally included errors. 
 This dataset is provided for instructional purposes, including the need to reckon with dirty data."""
 
+[[resources.sources]]
+title = "Source undetermined"
+
+[[resources.licenses]]
+name = "License status undetermined"
+
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
+description = """
+A synthetic dataset of 500 two-dimensional points (u, v) sampled from a bivariate normal distribution. 
+The data is centered near the origin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), 
+indicating a relatively equal spread in both dimensions. The variables exhibit negligible correlation (0.026), 
+suggesting independence. The range of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each 
+variable yield high p-values (u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's 
+characteristics make it well-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, 
+including scatter plots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a 
+clean baseline dataset for testing new visualization methods or for educational purposes in data visualization and statistics.
+"""
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: obesity.json
 path = "obesity.json"
@@ -1134,7 +1204,8 @@ path = "sp500.csv"
 name = "License status undetermined"
 
 [[resources]] # Path: stocks.csv
-path = "stocks.csv"
+path        = "stocks.csv"
+description = "Monthly stock prices for five companies from 2000 to 2010."
 
 [[resources.sources]]
 title = "Source undetermined"
