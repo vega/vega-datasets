@@ -570,7 +570,7 @@ def extract_sha(source: str | Path, /) -> Mapping[str, str]:
     GIT = "git"
     SHA = "sha1:%(objectname)"
     PATH = "%(path)"
-    GITHUB_ENV_VAR = "GITHUB_REF"
+    GITHUB_ENV_VAR = "GITHUB_SHA"
     CMD_CURRENT_BRANCH = GIT, "branch", "--show-current"
     CURRENT_BRANCH = run_check(CMD_CURRENT_BRANCH).stdout.rstrip()
     ref_name = os.environ.get(GITHUB_ENV_VAR, CURRENT_BRANCH)
