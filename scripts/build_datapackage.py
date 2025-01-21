@@ -570,9 +570,12 @@ def extract_sha(source: str | Path, /) -> Mapping[str, str]:
     GIT = "git"
     SHA = "sha1:%(objectname)"
     PATH = "%(path)"
+    GITHUB_ENV_VAR = "GITHUB_REF_NAME"
     CMD_CURRENT_BRANCH = GIT, "branch", "--show-current"
     CURRENT_BRANCH = run_check(CMD_CURRENT_BRANCH).stdout.rstrip()
-    CMD_LS_FILES = (GIT, "ls-tree", CURRENT_BRANCH, f"--format={PATH},{SHA}")
+    ref_name = os.environ.get(GITHUB_ENV_VAR, CURRENT_BRANCH)
+    print(f"GitHub: {os.environ.get(GITHUB_ENV_VAR, '')}\ngit: {CURRENT_BRANCH}")
+    CMD_LS_FILES = (GIT, "ls-tree", ref_name, f"--format={PATH},{SHA}")
     with contextlib.chdir(Path(source)):
         buf = io.BytesIO(run_check(CMD_LS_FILES, into=bytes).stdout)
     return dict(pl.read_csv(buf, has_header=False, new_columns=COLUMNS).iter_rows())
