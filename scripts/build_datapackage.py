@@ -539,8 +539,8 @@ def run_check[T: (str, bytes)](
     try:
         p = sp.run(args, check=True, capture_output=True, text=into is str)
     except sp.CalledProcessError as err:
-        out = err.output.decode() if into is bytes else err.output
-        msg = f"{err.returncode}: {out}"
+        out = err.stderr
+        msg = f"{err.returncode}: {out.decode() if into is bytes else out}"
         err.add_note(msg)
         raise
     return p
