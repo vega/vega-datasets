@@ -537,13 +537,12 @@ def run_check[T: (str, bytes)](
     msg = f"Running command:\n    >>> {msg}"
     logger.info(msg)
     try:
-        p = sp.run(args, check=True, capture_output=True, text=into is str)
+        return sp.run(args, check=True, capture_output=True, text=into is str)
     except sp.CalledProcessError as err:
         out = err.stderr
         msg = f"{err.returncode}: {out.decode() if into is bytes else out}"
         err.add_note(msg)
         raise
-    return p
 
 
 def extract_sha(source: str | Path, /) -> Mapping[str, str]:
@@ -567,18 +566,18 @@ def extract_sha(source: str | Path, /) -> Mapping[str, str]:
         https://datapackage.org/standard/data-resource/#hash
     """
     COLUMNS = "path", "sha"
-    GIT = "git"
     SHA = "sha1:%(objectname)"
     PATH = "%(path)"
-    GITHUB_ENV_VAR = "GITHUB_SHA"
-    CMD_CURRENT_BRANCH = GIT, "branch", "--show-current"
-    CURRENT_BRANCH = run_check(CMD_CURRENT_BRANCH).stdout.rstrip()
-    ref_name = os.environ.get(GITHUB_ENV_VAR, CURRENT_BRANCH)
-    print(f"GitHub: {os.environ.get(GITHUB_ENV_VAR, '')}\ngit: {CURRENT_BRANCH}")
-    CMD_LS_FILES = (GIT, "ls-tree", ref_name, f"--format={PATH},{SHA}")
+    CMD_LS_FILES = ("git", "ls-tree", _current_branch(), f"--format={PATH},{SHA}")
     with contextlib.chdir(Path(source)):
         buf = io.BytesIO(run_check(CMD_LS_FILES, into=bytes).stdout)
     return dict(pl.read_csv(buf, has_header=False, new_columns=COLUMNS).iter_rows())
+
+
+def _current_branch(*, ci_env_var: str = "GITHUB_SHA") -> str:
+    """Uses ``ci_env_var`` when run in a GitHub Action."""
+    CMD = "git", "branch", "--show-current"
+    return os.environ.get(ci_env_var) or run_check(CMD).stdout.rstrip()
 
 
 def read_toml(fp: Path, /) -> dict[str, Any]:
