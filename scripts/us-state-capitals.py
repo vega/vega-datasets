@@ -1,16 +1,10 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = [
-#   "requests",
-# ]
-# ///
 """Lookup and output US state capitals with longitude and latitude."""
 
 import json
 from pathlib import Path
 from time import sleep
 
-import requests
+import niquests
 
 
 def get_state_capitals() -> list[dict]:
@@ -94,7 +88,7 @@ def lookup_coordinates(capitals: list[dict]) -> list[dict]:
             f"&state={capital['state']}&country=USA&format=json"
         )
         headers = {"User-Agent": "state-capitals-lookup"}
-        response = requests.get(url, headers=headers)
+        response = niquests.get(url, headers=headers)
 
         if response.status_code != 200:
             print(
