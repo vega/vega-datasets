@@ -5,12 +5,13 @@
 # ]
 # ///
 """Lookup and output US state capitals with longitude and latitude."""
+
 import json
-from time import sleep
-import os
 from pathlib import Path
+from time import sleep
 
 import requests
+
 
 def get_state_capitals() -> list[dict]:
     """
@@ -71,6 +72,7 @@ def get_state_capitals() -> list[dict]:
         {"state": "Wyoming", "city": "Cheyenne"},
     ]
 
+
 def lookup_coordinates(capitals: list[dict]) -> list[dict]:
     """
     Lookup coordinates for a list of state capitals.
@@ -126,13 +128,15 @@ def lookup_coordinates(capitals: list[dict]) -> list[dict]:
 
     return updated_capitals
 
+
 def save_json_output(data: list[dict], output_path: Path) -> None:
     """
-    Save the capitals data as a JSON file with custom formatting:
+    Save the capitals data as a JSON file with custom formatting.
+
     - no spaces after colons
     - spaces after commas
-    - fields ordered as lon, lat, state, city
-    
+    - fields ordered as lon, lat, state, city.
+
     Parameters
     ----------
     data
@@ -141,28 +145,24 @@ def save_json_output(data: list[dict], output_path: Path) -> None:
         Path to the output JSON file
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with output_path.open('w') as f:
-        f.write('[\n')
+
+    with output_path.open("w") as f:
+        f.write("[\n")
         for i, capital_data in enumerate(data):
             # Create ordered dictionary with desired field order
             ordered_data = {
                 "lon": capital_data["lon"],
                 "lat": capital_data["lat"],
                 "state": capital_data["state"],
-                "city": capital_data["city"]
+                "city": capital_data["city"],
             }
             # Convert to JSON with custom separators
-            json_str = json.dumps(ordered_data, separators=(', ', ':'))
-            
-            f.write(
-                '  '
-                + json_str
-                + (',' if i < len(data) - 1 else '')
-                + '\n'
-            )
-        f.write(']\n')
-                        
+            json_str = json.dumps(ordered_data, separators=(", ", ":"))
+
+            f.write("  " + json_str + ("," if i < len(data) - 1 else "") + "\n")
+        f.write("]\n")
+
+
 def main() -> None:
     """Main function to lookup and output state capitals with coordinates."""
     # Get the script's directory
@@ -170,11 +170,12 @@ def main() -> None:
     # Construct path to data directory (one level up + data)
     data_dir = script_dir.parent / "data"
     output_path = data_dir / "us-state-capitals.json"
-    
+
     capitals = get_state_capitals()
     updated_capitals = lookup_coordinates(capitals)
     save_json_output(updated_capitals, output_path)
     print(f"Saved state capitals data to {output_path}")
+
 
 if __name__ == "__main__":
     main()
