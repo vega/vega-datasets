@@ -1,175 +1,151 @@
-"""Lookup and output US state capitals with longitude and latitude."""
+"""
+Retrieves and saves U.S. state capital locations with their coordinates from the National Map API.
 
+This script fetches data from the USGS National Map Structures Database API to generate a JSON file
+containing the latitude, longitude, state, and city of U.S. state capitals. State capitol building 
+locations are used as a practical representation of state capital city points.
+
+It relies on a local JSON file `_data/us-state-codes.json` for mapping state abbreviations to full names.
+"""
+import niquests
 import json
 from pathlib import Path
-from time import sleep
 
-import niquests
-
-
-def get_state_capitals() -> list[dict]:
+def load_state_codes(script_dir: Path) -> dict:
     """
-    List of dictionaries representing US state capitals.
+    Loads state/territory code mappings from `_data/us-state-codes.json`.
+    Required to:
+    1. convert API state abbreviations to full names (e.g., 'CA' to 'California').
+    2. filter out U.S. territory locations from the API data. (Current script scope: U.S. states)
 
-    Each dictionary contains 'state' and 'city' keys.
+    Example `us-state-codes.json`:
+    ```json
+    {
+        "states": {
+            "AL": "Alabama",
+            "WY": "Wyoming"
+        },
+        "territories": {}
+    }
+    ```
+
+    Args:
+        script_dir: Script directory (for locating `_data/us-state-codes.json`).
+
+    Returns:
+        Dictionary: State abbreviation to full name mappings (from JSON "states"),
+                    used for name lookup and territory filtering.
     """
-    return [
-        {"state": "Alabama", "city": "Montgomery"},
-        {"state": "Alaska", "city": "Juneau"},
-        {"state": "Arizona", "city": "Phoenix"},
-        {"state": "Arkansas", "city": "Little Rock"},
-        {"state": "California", "city": "Sacramento"},
-        {"state": "Colorado", "city": "Denver"},
-        {"state": "Connecticut", "city": "Hartford"},
-        {"state": "Delaware", "city": "Dover"},
-        {"state": "Florida", "city": "Tallahassee"},
-        {"state": "Georgia", "city": "Atlanta"},
-        {"state": "Hawaii", "city": "Honolulu"},
-        {"state": "Idaho", "city": "Boise"},
-        {"state": "Illinois", "city": "Springfield"},
-        {"state": "Indiana", "city": "Indianapolis"},
-        {"state": "Iowa", "city": "Des Moines"},
-        {"state": "Kansas", "city": "Topeka"},
-        {"state": "Kentucky", "city": "Frankfort"},
-        {"state": "Louisiana", "city": "Baton Rouge"},
-        {"state": "Maine", "city": "Augusta"},
-        {"state": "Maryland", "city": "Annapolis"},
-        {"state": "Massachusetts", "city": "Boston"},
-        {"state": "Michigan", "city": "Lansing"},
-        {"state": "Minnesota", "city": "Saint Paul"},
-        {"state": "Mississippi", "city": "Jackson"},
-        {"state": "Missouri", "city": "Jefferson City"},
-        {"state": "Montana", "city": "Helena"},
-        {"state": "Nebraska", "city": "Lincoln"},
-        {"state": "Nevada", "city": "Carson City"},
-        {"state": "New Hampshire", "city": "Concord"},
-        {"state": "New Jersey", "city": "Trenton"},
-        {"state": "New Mexico", "city": "Santa Fe"},
-        {"state": "New York", "city": "Albany"},
-        {"state": "North Carolina", "city": "Raleigh"},
-        {"state": "North Dakota", "city": "Bismarck"},
-        {"state": "Ohio", "city": "Columbus"},
-        {"state": "Oklahoma", "city": "Oklahoma City"},
-        {"state": "Oregon", "city": "Salem"},
-        {"state": "Pennsylvania", "city": "Harrisburg"},
-        {"state": "Rhode Island", "city": "Providence"},
-        {"state": "South Carolina", "city": "Columbia"},
-        {"state": "South Dakota", "city": "Pierre"},
-        {"state": "Tennessee", "city": "Nashville"},
-        {"state": "Texas", "city": "Austin"},
-        {"state": "Utah", "city": "Salt Lake City"},
-        {"state": "Vermont", "city": "Montpelier"},
-        {"state": "Virginia", "city": "Richmond"},
-        {"state": "Washington", "city": "Olympia"},
-        {"state": "West Virginia", "city": "Charleston"},
-        {"state": "Wisconsin", "city": "Madison"},
-        {"state": "Wyoming", "city": "Cheyenne"},
-    ]
 
+    data_dir = script_dir.parent / "_data"
+    state_codes_path = data_dir / "us-state-codes.json"
 
-def lookup_coordinates(capitals: list[dict]) -> list[dict]:
+    with state_codes_path.open() as f:
+        return json.load(f)
+    
+def get_state_capitols():
     """
-    Lookup coordinates for a list of state capitals.
-
-    Parameters
-    ----------
-    capitals
-      List of dictionaries with 'state' and 'city' keys.
-
-    Returns
-    -------
-    List of dictionaries with added 'lon' and 'lat' keys.
+    Fetches state capitol building coordinates from the National Map Structures Database.
+    
+    Returns:
+        JSON response containing capitol building data, or None if request fails
     """
-    updated_capitals = []
+    url = "https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/6/query"
+    params = {
+        "f": "json",
+        "where": "FCODE=83006",  # Feature code for state capitol buildings
+        "outFields": "NAME,STATE,CITY,SHAPE",
+        "geometryPrecision": 7,
+        "outSR": 4326,  # WGS84 coordinate system
+        "returnGeometry": True
+    }
+    
+    try:
+        response = niquests.get(url, params=params)
+        response.raise_for_status()
+        return response.json()
+    except niquests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+        return None
 
-    for capital in capitals:
-        url = (
-            f"https://nominatim.openstreetmap.org/search?city={capital['city']}"
-            f"&state={capital['state']}&country=USA&format=json"
-        )
-        headers = {"User-Agent": "state-capitals-lookup"}
-        response = niquests.get(url, headers=headers)
-
-        if response.status_code != 200:
-            print(
-                f"Request failed for {capital['city']}, {capital['state']} "
-                f"with status code {response.status_code}"
-            )
-            continue
-
-        try:
-            data = response.json()
-            if data:
-                loc = data[0]
-                capital_data = {
-                    "lon": float(loc["lon"]),
-                    "lat": float(loc["lat"]),
-                    "state": capital["state"],
-                    "city": capital["city"],
-                }
-                updated_capitals.append(capital_data)
-            else:
-                print(
-                    f"Could not find coordinates for {capital['city']}, {capital['state']}"
-                )
-        except json.JSONDecodeError:
-            print(
-                f"Failed to decode JSON response for {capital['city']}, {capital['state']}"
-            )
-            continue
-
-        sleep(0.25)  # Respect Nominatim's usage policy
-
-    return updated_capitals
-
+def format_capitols_data(capitols_data, state_data: dict):
+    """
+    Processes raw capitol data into a clean format with full state names.
+    
+    Args:
+        capitols_data: Raw JSON response from the WMS query
+        state_data: Dictionary with 'states' and 'territories' mappings
+        
+    Returns:
+        List of dictionaries containing formatted capitol data
+    """
+    formatted_data = []
+    if capitols_data and 'features' in capitols_data:
+        for feature in capitols_data['features']:
+            attributes = feature.get('attributes', {})
+            geometry = feature.get('geometry', {})
+            
+            state_code = attributes.get('STATE')
+            city_name = attributes.get('CITY')
+            lon = geometry.get('x')
+            lat = geometry.get('y')
+            
+            # Check if it's a state and we have all required data
+            if (state_code 
+                and state_code in state_data['states']  # Check in states dictionary
+                and city_name 
+                and lon is not None 
+                and lat is not None):
+                
+                formatted_data.append({
+                    "lon": lon,
+                    "lat": lat,
+                    "state": state_data['states'][state_code],  # Get name from states dictionary
+                    "city": city_name
+                })
+    return formatted_data
 
 def save_json_output(data: list[dict], output_path: Path) -> None:
     """
-    Save the capitals data as a JSON file with custom formatting.
-
-    - no spaces after colons
-    - spaces after commas
-    - fields ordered as lon, lat, state, city.
-
-    Parameters
-    ----------
-    data
-        List of dictionaries containing capital data
-    output_path
-        Path to the output JSON file
+    Saves formatted capitol data to a JSON file with consistent formatting.
+    
+    Args:
+        data: List of formatted capitol dictionaries
+        output_path: Path where JSON file should be saved
     """
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
+    sorted_data = sorted(data, key=lambda x: x['state'])
+    
     with output_path.open("w") as f:
         f.write("[\n")
-        for i, capital_data in enumerate(data):
-            # Create ordered dictionary with desired field order
+        for i, capital_data in enumerate(sorted_data):
             ordered_data = {
                 "lon": capital_data["lon"],
                 "lat": capital_data["lat"],
                 "state": capital_data["state"],
                 "city": capital_data["city"],
             }
-            # Convert to JSON with custom separators
             json_str = json.dumps(ordered_data, separators=(", ", ":"))
-
-            f.write("  " + json_str + ("," if i < len(data) - 1 else "") + "\n")
+            
+            f.write("  " + json_str + ("," if i < len(sorted_data) - 1 else "") + "\n")
         f.write("]\n")
 
-
 def main() -> None:
-    """Main function to lookup and output state capitals with coordinates."""
-    # Get the script's directory
     script_dir = Path(__file__).parent
-    # Construct path to data directory (one level up + data)
+    state_codes = load_state_codes(script_dir)
+
+    capitols_response = get_state_capitols()
+    if not capitols_response:
+        print("Error: Failed to retrieve state capitals data")
+        return
+
+    formatted_data = format_capitols_data(capitols_response, state_codes)
+    print(f"Found {len(formatted_data)} state capitals")
+
     data_dir = script_dir.parent / "data"
     output_path = data_dir / "us-state-capitals.json"
-
-    capitals = get_state_capitals()
-    updated_capitals = lookup_coordinates(capitals)
-    save_json_output(updated_capitals, output_path)
-    print(f"Saved state capitals data to {output_path}")
-
+    output_path.touch()
+    save_json_output(formatted_data, output_path)
+    print(f"Data written to {output_path}")
 
 if __name__ == "__main__":
     main()
