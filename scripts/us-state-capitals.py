@@ -51,7 +51,7 @@ Example:
 """
 
 OUTPUT_FILE: Path = OUTPUT_DIR / "us-state-capitals.json"
-URL_ARCGIS = "https://carto.nationalmap.gov/arcgis/"
+URL_ARCGIS = "https://carto.nationalmap.gov/arcgis/rest"
 URL_MAP_SERVER = f"{URL_ARCGIS}services/structures/MapServer/"
 URL_STATE_CAPITOLS = f"{URL_MAP_SERVER}6/query"
 FEATURE_STATE_CAPITOLS = "FCODE = 83006"
