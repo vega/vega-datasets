@@ -77,7 +77,9 @@ def get_state_capitols() -> dict | None:
         return None
 
 
-def format_capitols_data(capitols_data: dict[str, Any] | None, state_data: dict) -> list:
+def format_capitols_data(
+    capitols_data: dict[str, Any] | None, state_data: dict
+) -> list:
     """
     Processes raw capitol data into a clean format with full state names.
 
@@ -108,14 +110,16 @@ def format_capitols_data(capitols_data: dict[str, Any] | None, state_data: dict)
                 and lon is not None
                 and lat is not None
             ):
-                formatted_data.append({
-                    "lon": lon,
-                    "lat": lat,
-                    "state": state_data["states"][
-                        state_code
-                    ],  # Get name from states dictionary
-                    "city": city_name,
-                })
+                formatted_data.append(
+                    {
+                        "lon": lon,
+                        "lat": lat,
+                        "state": state_data["states"][
+                            state_code
+                        ],  # Get name from states dictionary
+                        "city": city_name,
+                    }
+                )
     return formatted_data
 
 
