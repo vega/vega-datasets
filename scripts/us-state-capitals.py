@@ -8,161 +8,181 @@ locations are used as a practical representation of state capital city points.
 It relies on a local JSON file `_data/us-state-codes.json` for mapping state abbreviations to full names.
 """
 
+from __future__ import annotations
+
 import json
+import typing
+import warnings
+from functools import partial
 from operator import itemgetter
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Literal, TypedDict
 
 import niquests
 
+if TYPE_CHECKING:
+    import sys
+    from collections.abc import Iterator, Mapping, Sequence
+    from typing import Any, LiteralString
 
-def load_state_codes(script_dir: Path) -> dict:
+    if sys.version_info >= (3, 13):
+        from typing import TypeIs
+    else:
+        from typing_extensions import TypeIs
+
+type Features = Sequence[Feature[Any, Any, Any]]
+"""Represents the ``features`` property of capitol building data, before validation."""
+
+type FieldName = Literal["NAME", "STATE", "CITY"]
+
+REPO_ROOT: Path = Path(__file__).parent.parent
+INPUT_DIR: Path = REPO_ROOT / "_data"
+OUTPUT_DIR: Path = REPO_ROOT / "data"
+
+INPUT_FILE: Path = INPUT_DIR / "us-state-codes.json"
+"""
+State abbreviation to full name mappings (from JSON "states").
+
+Used for name lookup and territory filtering.
+
+Example:
+
+    {"states": {"AL": "Alabama", "WY": "Wyoming"}, "territories": {}}
+"""
+
+OUTPUT_FILE: Path = OUTPUT_DIR / "us-state-capitals.json"
+URL_ARCGIS = "https://carto.nationalmap.gov/arcgis/"
+URL_MAP_SERVER = f"{URL_ARCGIS}services/structures/MapServer/"
+URL_STATE_CAPITOLS = f"{URL_MAP_SERVER}6/query"
+FEATURE_STATE_CAPITOLS = "FCODE = 83006"
+TERRITORIES = "STATE IN ('AS', 'GU', 'MP', 'PR', 'VI')"
+WHERE_CLAUSE = f"{FEATURE_STATE_CAPITOLS} AND NOT ({TERRITORIES})"
+WKID_WGS84: Literal[4326] = 4326
+"""
+`Well-known ID`_ for `WGS 84`_, used as a `spatial reference`_.
+
+.. _Well-known ID: https://support.esri.com/en-us/gis-dictionary/wkid
+.. _WGS 84: https://en.wikipedia.org/wiki/World_Geodetic_System#WGS_84
+.. _spatial reference: https://carto.nationalmap.gov/arcgis/help/en/rest/services-reference/enterprise/geometry-objects/#spatial-reference
+"""
+
+
+class MapServiceLayerResponse(TypedDict, total=False):
     """
-    Loads state/territory code mappings from `_data/us-state-codes.json`.
+    Response from `National Map Structures Database`_.
 
-    Required to:
-    1. convert API state abbreviations to full names (e.g., 'CA' to 'California').
-    2. filter out U.S. territory locations from the API data. (Current script scope: U.S. states).
-
-    Example `us-state-codes.json`:
-    ```json
-    {
-        "states": {
-            "AL": "Alabama",
-            "WY": "Wyoming"
-        },
-        "territories": {}
-    }
-    ```
-
-    Args:
-        script_dir: Script directory (for locating `_data/us-state-codes.json`).
-
-    Returns
-    -------
-        Dictionary: State abbreviation to full name mappings (from JSON "states"),
-                    used for name lookup and territory filtering.
+    .. _National Map Structures Database: https://carto.nationalmap.gov/arcgis/help/en/rest/services-reference/enterprise/query-map-service-layer/
     """
-    data_dir = script_dir.parent / "_data"
-    state_codes_path = data_dir / "us-state-codes.json"
 
-    with state_codes_path.open() as f:
-        return json.load(f)
+    features: Features
 
 
-def get_state_capitols() -> dict | None:
+class Point(TypedDict):
+    x: float
+    y: float
+
+
+class Feature[A_KT: LiteralString, A_VT: str | float | bool, G: Mapping[str, Any]](
+    TypedDict
+):
     """
-    Fetches state capitol building coordinates from the National Map Structures Database.
+    A generic `GeoJSON feature object`_.
 
-    Returns
-    -------
-        JSON response containing capitol building data, or None if request fails
+    .. _GeoJSON feature object: https://carto.nationalmap.gov/arcgis/help/en/rest/services-reference/enterprise/feature-object/
     """
-    url = "https://carto.nationalmap.gov/arcgis/rest/services/structures/MapServer/6/query"
+
+    attributes: Mapping[A_KT, A_VT]
+    geometry: G
+
+
+class CapitolFeature(Feature[FieldName, str, Point]):
+    """Validated state capitol feature, **prior** to any processing."""
+
+
+class StateCapitol(TypedDict):
+    """State capitol feature, **after** processing."""
+
+    lon: float
+    lat: float
+    state: str
+    city: str
+
+
+def read_json(source: str | Path, /) -> Any:
+    return json.loads(Path(source).read_text("utf-8"))
+
+
+def get_state_capitols() -> Features:
+    """Fetches state capitol building coordinates from the National Map Structures Database."""
     params = {
         "f": "json",
-        "where": "FCODE=83006",  # Feature code for state capitol buildings
-        "outFields": "NAME,STATE,CITY,SHAPE",
+        "where": WHERE_CLAUSE,
+        "outFields": ",".join((*_get_args(FieldName), "SHAPE")),
         "geometryPrecision": 7,
-        "outSR": 4326,  # WGS84 coordinate system
+        "outSR": WKID_WGS84,
         "returnGeometry": True,
     }
-
-    try:
-        response = niquests.get(url, params=params)
-        response.raise_for_status()
-        return response.json()
-    except niquests.exceptions.RequestException as e:
-        print(f"Error fetching data: {e}")
-        return None
-
-
-def format_capitols_data(
-    capitols_data: dict[str, Any] | None, state_data: dict
-) -> list:
-    """
-    Processes raw capitol data into a clean format with full state names.
-
-    Args:
-        capitols_data: Raw JSON response from the WMS query
-        state_data: Dictionary with 'states' and 'territories' mappings
-
-    Returns
-    -------
-        List of dictionaries containing formatted capitol data
-    """
-    formatted_data = []
-    if capitols_data and "features" in capitols_data:
-        for feature in capitols_data["features"]:
-            attributes = feature.get("attributes", {})
-            geometry = feature.get("geometry", {})
-
-            state_code = attributes.get("STATE")
-            city_name = attributes.get("CITY")
-            lon = geometry.get("x")
-            lat = geometry.get("y")
-
-            # Check if it's a state and we have all required data
-            if (
-                state_code
-                and state_code in state_data["states"]  # Check in states dictionary
-                and city_name
-                and lon is not None
-                and lat is not None
-            ):
-                formatted_data.append({
-                    "lon": lon,
-                    "lat": lat,
-                    "state": state_data["states"][
-                        state_code
-                    ],  # Get name from states dictionary
-                    "city": city_name,
-                })
-    return formatted_data
+    response = niquests.get(URL_STATE_CAPITOLS, params=params)
+    response.raise_for_status()
+    content: MapServiceLayerResponse = response.json()
+    if features := content.get("features"):
+        return features
+    msg = f"Expected a features mapping but got:\n\n{content!r}"
+    raise TypeError(msg)
 
 
-def save_json_output(data: list[dict], output_path: Path) -> None:
-    """
-    Saves formatted capitol data to a JSON file with consistent formatting.
+def is_capitol_feature(feat: Feature, states: dict[str, str]) -> TypeIs[CapitolFeature]:
+    """Ensure feature describes only capitols of states and not territories."""
+    return bool(
+        (attrs := feat.get("attributes"))
+        and attrs.get("STATE") in states
+        and "CITY" in attrs
+        and (geom := feat.get("geometry"))
+        and geom.keys() == {"x", "y"}
+    )
 
-    Args:
-        data: List of formatted capitol dictionaries
-        output_path: Path where JSON file should be saved
-    """
-    sorted_data = sorted(data, key=itemgetter("state"))
 
-    with output_path.open("w") as f:
-        f.write("[\n")
-        for i, capital_data in enumerate(sorted_data):
-            ordered_data = {
-                "lon": capital_data["lon"],
-                "lat": capital_data["lat"],
-                "state": capital_data["state"],
-                "city": capital_data["city"],
-            }
-            json_str = json.dumps(ordered_data, separators=(", ", ":"))
+def into_state_capitol(feat: CapitolFeature, states: dict[str, str]) -> StateCapitol:
+    """Convert feature response into a clean format with full state names."""
+    geom, attrs = feat["geometry"], feat["attributes"]
+    return StateCapitol(
+        lon=geom["x"], lat=geom["y"], state=states[attrs["STATE"]], city=attrs["CITY"]
+    )
 
-            f.write("  " + json_str + ("," if i < len(sorted_data) - 1 else "") + "\n")
-        f.write("]\n")
+
+def iter_state_capitols(
+    features: Features, states: dict[str, str]
+) -> Iterator[StateCapitol]:
+    for feat in features:
+        if is_capitol_feature(feat, states):
+            yield into_state_capitol(feat, states)
+        else:
+            msg = f"Unexpected territory:\n{feat!r}"
+            warnings.warn(msg, stacklevel=2)
+
+
+def write_json(data: Sequence[StateCapitol], output: Path) -> None:
+    """Saves ``data`` to ``output`` with consistent formatting."""
+    INDENT, OB, CB, NL = "  ", "[", "]", "\n"
+    to_str = partial(json.dumps, separators=(", ", ":"))
+    with output.open("w", encoding="utf-8") as f:
+        f.write(f"{OB}{NL}")
+        for record in data[:-1]:
+            f.write(f"{INDENT}{to_str(record)},{NL}")
+        f.write(f"{INDENT}{to_str(data[-1])}{NL}{CB}{NL}")
+
+
+def _get_args(tp: Any, /) -> tuple[Any, ...]:
+    return typing.get_args(getattr(tp, "__value__", tp))
 
 
 def main() -> None:
-    script_dir = Path(__file__).parent
-    state_codes = load_state_codes(script_dir)
-
-    capitols_response = get_state_capitols()
-    if not capitols_response:
-        print("Error: Failed to retrieve state capitals data")
-        return
-
-    formatted_data = format_capitols_data(capitols_response, state_codes)
-    print(f"Found {len(formatted_data)} state capitals")
-
-    data_dir = script_dir.parent / "data"
-    output_path = data_dir / "us-state-capitals.json"
-    output_path.touch()
-    save_json_output(formatted_data, output_path)
-    print(f"Data written to {output_path}")
+    it = iter_state_capitols(get_state_capitols(), read_json(INPUT_FILE)["states"])
+    by_state = sorted(it, key=itemgetter("state"))
+    print(f"Found {len(by_state)} state capitals")
+    OUTPUT_FILE.touch()
+    write_json(by_state, OUTPUT_FILE)
+    print(f"Data written to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
