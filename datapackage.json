@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-01-21T15:05:39.767318+00:00",
+  "created": "2025-01-23T03:23:37.709555+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -3071,8 +3071,8 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
-      "hash": "sha1:9c3211c5058c899412c30f5992a77c54a1b80066",
-      "bytes": 3869,
+      "hash": "sha1:32b4d3a13918b0aa85e62c09495eccf842fffb31",
+      "bytes": 4048,
       "dialect": {
         "json": {
           "keyed": true
