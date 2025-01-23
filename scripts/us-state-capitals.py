@@ -51,7 +51,7 @@ Example:
 """
 
 OUTPUT_FILE: Path = OUTPUT_DIR / "us-state-capitals.json"
-URL_ARCGIS = "https://carto.nationalmap.gov/arcgis/rest"
+URL_ARCGIS = "https://carto.nationalmap.gov/arcgis/rest/"
 URL_MAP_SERVER = f"{URL_ARCGIS}services/structures/MapServer/"
 URL_STATE_CAPITOLS = f"{URL_MAP_SERVER}6/query"
 FEATURE_STATE_CAPITOLS = "FCODE = 83006"
@@ -165,7 +165,7 @@ def write_json(data: Sequence[StateCapitol], output: Path) -> None:
     """Saves ``data`` to ``output`` with consistent formatting."""
     INDENT, OB, CB, NL = "  ", "[", "]", "\n"
     to_str = partial(json.dumps, separators=(", ", ":"))
-    with output.open("w", encoding="utf-8") as f:
+    with output.open("w", encoding="utf-8", newline="\n") as f:
         f.write(f"{OB}{NL}")
         for record in data[:-1]:
             f.write(f"{INDENT}{to_str(record)},{NL}")
