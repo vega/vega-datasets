@@ -110,16 +110,14 @@ def format_capitols_data(
                 and lon is not None
                 and lat is not None
             ):
-                formatted_data.append(
-                    {
-                        "lon": lon,
-                        "lat": lat,
-                        "state": state_data["states"][
-                            state_code
-                        ],  # Get name from states dictionary
-                        "city": city_name,
-                    }
-                )
+                formatted_data.append({
+                    "lon": lon,
+                    "lat": lat,
+                    "state": state_data["states"][
+                        state_code
+                    ],  # Get name from states dictionary
+                    "city": city_name,
+                })
     return formatted_data
 
 
