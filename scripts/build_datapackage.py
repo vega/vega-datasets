@@ -27,11 +27,14 @@ Related
 
 from __future__ import annotations
 
+import contextlib
 import copy
 import datetime as dt
+import io
 import json
 import logging
 import os
+import subprocess as sp
 import tomllib
 import warnings
 from collections.abc import Mapping, Sequence
@@ -50,7 +53,6 @@ from typing import (
 )
 
 import frictionless as fl
-import niquests
 import polars as pl
 from frictionless.fields import (
     AnyField,
@@ -104,6 +106,7 @@ type PythonDataType = (
 )
 
 type OutputFormat = Literal["json", "yaml", "md"]
+type OneOrSeq[T] = T | Sequence[T]
 
 ADDITIONS_TOML: LiteralString = "datapackage_additions.toml"
 NPM_PACKAGE: Literal["package.json"] = "package.json"
@@ -514,62 +517,67 @@ def iter_resources(
         yield resource
 
 
-def request_sha(
-    ref: str = "main", /, *, api_version: str = "2022-11-28"
-) -> Mapping[str, str]:
+def run_check[T: (str, bytes)](
+    args: OneOrSeq[str | Path], /, into: type[T] = str
+) -> sp.CompletedProcess[T]:
     """
-    Use `Get a tree`_ to retrieve a hash for each dataset.
+    Run a command in a `subprocess`_, capturing its output.
 
     Parameters
     ----------
-    ref
-        The SHA1 value or ref (`branch`_ or `tag`_) name of the tree.
+    args
+        Argument(s) that comprise the command.
+    into
+        Decode (``str``) stdout or keep encoded (``bytes``).
 
-    api_version
-        The `GitHub REST API version`_.
+    .. _subprocess:
+        https://docs.python.org/3/library/subprocess.html#subprocess.run
+    """
+    msg = str(args) if isinstance(args, str | Path) else " ".join(str(c) for c in args)
+    msg = f"Running command:\n    >>> {msg}"
+    logger.info(msg)
+    try:
+        return sp.run(args, check=True, capture_output=True, text=into is str)
+    except sp.CalledProcessError as err:
+        out = err.stderr
+        msg = f"{err.returncode}: {out.decode() if into is bytes else out}"
+        err.add_note(msg)
+        raise
+
+
+def extract_sha(source: str | Path, /) -> Mapping[str, str]:
+    """
+    Get dataset hashes for the current branch via `ls-files`_.
+
+    Parameters
+    ----------
+    source
+        Directory containing datasets.
 
     Returns
     -------
     Mapping from `Resource.path`_ to `Resource.hash`_.
 
-    .. _Get a tree:
-        https://docs.github.com/en/rest/git/trees?apiVersion=2022-11-28#get-a-tree
-    .. _branch:
-        https://github.com/vega/vega-datasets/branches
-    .. _tag:
-        https://github.com/vega/vega-datasets/tags
-    .. _GitHub REST API version:
-        https://docs.github.com/en/rest/about-the-rest-api/api-versions?apiVersion=2022-11-28
+    .. _ls-files:
+        https://git-scm.com/docs/git-ls-files
     .. _Resource.path:
         https://datapackage.org/standard/data-resource/#path-or-data
     .. _Resource.hash:
         https://datapackage.org/standard/data-resource/#hash
     """
-    DATA = "data"
-    TREES = "https://api.github.com/repos/vega/vega-datasets/git/trees"
-    headers = {"X-GitHub-Api-Version": api_version}
-    url = f"{TREES}/{ref}"
-    msg = f"Retrieving sha values from {url!r}"
-    logger.info(msg)
-    with niquests.get(url, headers=headers) as resp:
-        root = resp.json()
-    query = (tree["url"] for tree in root["tree"] if tree["path"] == DATA)
-    if data_url := next(query, None):
-        with niquests.get(data_url, headers=headers) as resp:
-            trees = resp.json()
-        return {t["path"]: _to_hash(t["sha"]) for t in trees["tree"]}
-    msg = f"Did not find a tree for {DATA!r} in response:\n{root!r}"
-    raise NotImplementedError(msg)
+    COLUMNS = "path", "sha"
+    SHA = "sha1:%(objectname)"
+    PATH = "%(path)"
+    CMD_LS_FILES = ("git", "ls-tree", _current_branch(), f"--format={PATH},{SHA}")
+    with contextlib.chdir(Path(source)):
+        buf = io.BytesIO(run_check(CMD_LS_FILES, into=bytes).stdout)
+    return dict(pl.read_csv(buf, has_header=False, new_columns=COLUMNS).iter_rows())
 
 
-def _to_hash(s: str, /) -> str:
-    """
-    Format the hash according to `data-resource/#hash`_.
-
-    .. _data-resource/#hash:
-        https://datapackage.org/standard/data-resource/#hash
-    """
-    return f"sha1:{s}"
+def _current_branch(*, ci_env_var: str = "GITHUB_SHA") -> str:
+    """Uses ``ci_env_var`` when run in a GitHub Action."""
+    CMD = "git", "branch", "--show-current"
+    return os.environ.get(ci_env_var) or run_check(CMD).stdout.rstrip()
 
 
 def read_toml(fp: Path, /) -> dict[str, Any]:
@@ -615,7 +623,7 @@ def main(
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
     pkg_meta = extract_package_metadata(npm_package, sources)
-    gh_sha1 = request_sha("main")
+    gh_sha1 = extract_sha(data_dir)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
     pkg = Package(
