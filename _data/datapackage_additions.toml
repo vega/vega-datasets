@@ -1328,6 +1328,19 @@ path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: uniform-2d.json
 path = "uniform-2d.json"
+description = """
+A synthetic dataset of 500 two-dimensional points (u, v) sampled from a bivariate uniform distribution.
+The data is centered near the origin (u: 0.015, v: -0.013) with ranges spanning approximately [-0.5, 0.5] in both dimensions.
+The standard deviation of u is 0.277 and v is 0.276, showing a relatively equal spread. The variables exhibit negligible correlation (-0.019),
+suggesting independence, as expected for a uniform distribution. The range of u is [-0.499, 0.500] and v is [-0.500, 0.498].
+This dataset's characteristics make it suitable for uniform distributions and as a contrast to normally distributed data
+"""
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: us-10m.json
 path = "us-10m.json"
