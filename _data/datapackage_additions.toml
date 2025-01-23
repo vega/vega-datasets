@@ -1380,6 +1380,29 @@ path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: us-state-capitals.json
 path = "us-state-capitals.json"
+description = """Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. 
+The dataset includes latitude, longitude, state name, and capital city name for all 50 U.S. states. 
+Cities are represented as point locations of their capitol buildings using coordinates in the 
+WGS84 geographic coordinate system.
+
+According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map)), "Map services and data downloaded from The National Map are free and in the public domain. 
+There are no restrictions; however, we request that the following acknowledgment statement 
+of the originating agency be included in products and data derived from our map services 
+when citing, copying, or reprinting: Map services and data available from U.S. 
+Geological Survey, National Geospatial Program."
+"""
+
+[[resources.sources]]
+title = "U.S. Geological Survey National Geospatial Program - The National Map"
+path  = "https://www.usgs.gov/programs/national-geospatial-program/national-map"
+
+[[resources.licenses]]
+title = "U.S. Public Domain"
+path  = "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: volcano.json
 path = "volcano.json"
