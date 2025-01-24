@@ -1229,6 +1229,14 @@ path  = "https://finance.yahoo.com/quote/%5EDJI/history/"
 
 [[resources]] # Path: sp500.csv
 path = "sp500.csv"
+description = """This dataset tracks the monthly closing values of the S&P 500 stock market index 
+from January 2000 to March 2010. The data captures several significant market events including 
+the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. 
+Each record contains a date in the format 'MMM D YYYY' and the corresponding closing price of 
+the index."""
+
+[[resources.sources]]
+title = "Source undetermined"
 
 [[resources.licenses]]
 name = "License status undetermined"
@@ -1488,15 +1496,15 @@ path  = "https://www.usa.gov/government-works"
 path = "weekly-weather.json"
 description = """Instructional dataset showing actual and predicted temperature data.
 
+> [!IMPORTANT]
+> Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).
+"""
+
 [[resources.sources]]
 name = "Source undetermined"
 
 [[resources.licenses]]
 name = "License status undetermined"
-
-> [!IMPORTANT]
-> Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).
-"""
 
 [[resources]] # Path: wheat.json
 path = "wheat.json"
