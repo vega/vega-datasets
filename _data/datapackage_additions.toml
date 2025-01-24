@@ -1245,6 +1245,17 @@ name = "License status undetermined"
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
+description = """Point locations of restaurants and cafes in Seattle's University 
+District, categorized by cuisine type (e.g., "coffee", "pizza", "korean"). Used to 
+create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) showing the prevalence 
+of various food and beverage categories. The example graphic using this dataset states that it originally appeared 
+in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)"""
+
+[[resources.sources]]
+title = "Source undetermined"
+
+[[resources.licenses]]
+name = "License status undetermined"
 
 [[resources]] # Path: unemployment-across-industries.json
 path = "unemployment-across-industries.json"
