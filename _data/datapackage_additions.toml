@@ -742,6 +742,24 @@ path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: income.json
 path = "income.json"
+description = """Household income distribution by US state, derived from the 
+Census Bureau's American Community Survey 3-Year Data (2013). The dataset 
+shows the percentage of households within different income brackets for each state.
+Generated using `/scripts/income.py`. This product uses the Census Bureau Data API 
+but is not endorsed or certified by the Census Bureau."""
+
+[[resources.sources]]
+title = "U.S. Census Bureau American Community Survey 3-Year Data (2013)"
+path  = "https://www.census.gov/data/developers/data-sets/acs-3year/2013.html"
+
+[[resources.sources]]
+title = "Census Bureau Data API User Guide"
+path  = "https://www.census.gov/data/developers/guidance/api-user-guide.html"
+
+[[resources.licenses]]
+title = "U.S. Census Bureau API Terms of Service"
+path  = "https://www.census.gov/data/developers/about/terms-of-service.html"
+name  = "Census Bureau Terms of Use"
 
 [[resources]] # Path: iowa-electricity.csv
 path = "iowa-electricity.csv"
