@@ -1074,9 +1074,6 @@ path  = "http://www.celestegame.com/"
 [[resources.licenses]]
 name = "License status undetermined"
 
-[[resources]] # Path: points.json
-path = "points.json"
-
 [[resources]] # Path: political-contributions.json
 path = "political-contributions.json"
 description = """Summary financial information on contributions to candidates for U.S. 
