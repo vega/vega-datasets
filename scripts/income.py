@@ -161,6 +161,16 @@ def get_census_data() -> CensusResponse:
     return CensusResponse(header=data[0], data=data[1:])
 
 
+def get_state_income_sort_key(record: StateIncome) -> tuple[int, int]:
+    """
+    Create sort key for state income records.
+
+    Returns tuple of (state_id, income_group_index) for consistent sorting
+    by state and then by income group order.
+    """
+    return (record["id"], INCOME_ORDER.index(record["group"]))
+
+
 def process_state_records(census_data: CensusResponse) -> list[StateIncome]:
     """Processes census data into state income records."""
     header = census_data["header"]
@@ -196,7 +206,7 @@ def process_state_records(census_data: CensusResponse) -> list[StateIncome]:
                 )
                 records.append(record)
 
-    return sorted(records, key=lambda x: (x["id"], INCOME_ORDER.index(x["group"])))
+    return sorted(records, key=get_state_income_sort_key)
 
 
 def write_json(data: list[StateIncome], output: Path) -> None:
