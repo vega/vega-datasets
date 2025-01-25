@@ -1,10 +1,30 @@
 from __future__ import annotations
 
 import json
+import typing
 from pathlib import Path
-from typing import TypedDict
+from typing import TYPE_CHECKING, Any, Literal, TypedDict
 
 import niquests
+
+if TYPE_CHECKING:
+    from collections.abc import Callable, Mapping, Sequence
+
+type IncomeGroup = Literal[
+    "<10000",
+    "10000 to 14999",
+    "15000 to 24999",
+    "25000 to 34999",
+    "35000 to 49999",
+    "75000 to 99999",
+    "50000 to 74999",
+    "100000 to 149999",
+    "150000 to 199999",
+    "200000+",
+]
+"""Income group order for sorting."""
+
+type Region = Literal["south", "west", "northeast", "midwest", "other"]
 
 # Repository structure
 REPO_ROOT = Path(__file__).parent.parent
@@ -27,42 +47,27 @@ class CensusResponse(TypedDict):
 class BaseIncomeGroup(TypedDict):
     """Base income group with required fields."""
 
-    group: str
+    group: IncomeGroup
 
 
-class AggregatedIncomeGroup(BaseIncomeGroup, total=False):
-    """Income group that may include aggregation variables."""
+class AggregatedIncomeGroup(BaseIncomeGroup):
+    """Income group that includes aggregation variables."""
 
-    sum_vars: list[str]
+    sum_vars: Sequence[str]
 
 
-class StateIncome(TypedDict):
+class StateIncome(BaseIncomeGroup):
     """Record for each state and income group combination."""
 
     name: str
-    region: str
+    region: Region
     id: int
     pct: float
     total: int
-    group: str
 
-
-# Income group order for sorting
-INCOME_ORDER = [
-    "<10000",
-    "10000 to 14999",
-    "15000 to 24999",
-    "25000 to 34999",
-    "35000 to 49999",
-    "75000 to 99999",
-    "50000 to 74999",
-    "100000 to 149999",
-    "150000 to 199999",
-    "200000+",
-]
 
 # Income groupings and variable mappings
-INCOME_MAPPING: dict[str, str | BaseIncomeGroup | AggregatedIncomeGroup] = {
+INCOME_MAPPING: Mapping[str, str | BaseIncomeGroup | AggregatedIncomeGroup] = {
     "B19001_001E": "total",
     "B19001_002E": {"group": "<10000"},
     "B19001_003E": {"group": "10000 to 14999"},
@@ -92,7 +97,7 @@ INCOME_MAPPING: dict[str, str | BaseIncomeGroup | AggregatedIncomeGroup] = {
 }
 
 # Region definitions
-REGION_MAPPING: dict[str, str] = {
+REGION_MAPPING: Mapping[str, Region] = {
     "01": "south",
     "02": "west",
     "04": "west",
@@ -161,14 +166,19 @@ def get_census_data() -> CensusResponse:
     return CensusResponse(header=data[0], data=data[1:])
 
 
-def get_state_income_sort_key(record: StateIncome) -> tuple[int, int]:
+def by_state_income_group(tp: Any, /) -> Callable[[StateIncome], tuple[int, int]]:
     """
     Create sort key for state income records.
 
     Returns tuple of (state_id, income_group_index) for consistent sorting
     by state and then by income group order.
     """
-    return (record["id"], INCOME_ORDER.index(record["group"]))
+    order = typing.get_args(getattr(tp, "__value__", tp))
+
+    def key(record: StateIncome, /) -> tuple[int, int]:
+        return (record["id"], order.index(record["group"]))
+
+    return key
 
 
 def process_state_records(census_data: CensusResponse) -> list[StateIncome]:
@@ -194,19 +204,17 @@ def process_state_records(census_data: CensusResponse) -> list[StateIncome]:
                 else:
                     count = int(state_data[code_str])
 
-                pct = round(count / total, 3)
-
                 record = StateIncome(
                     name=state_data["NAME"],
                     region=REGION_MAPPING[state_fips],
                     id=int(state_fips),
-                    pct=pct,
+                    pct=round(count / total, 3),
                     total=total,
                     group=group,
                 )
                 records.append(record)
 
-    return sorted(records, key=get_state_income_sort_key)
+    return sorted(records, key=by_state_income_group(IncomeGroup))
 
 
 def write_json(data: list[StateIncome], output: Path) -> None:
