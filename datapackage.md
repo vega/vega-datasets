@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-23 15:50:44 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-25 11:55:43 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -988,15 +988,6 @@ Assets from the video game Celeste.
 | title        | path                        |
 |:-------------|:----------------------------|
 | Celeste Game | http://www.celestegame.com/ |
-## `points.json`
-### path
-points.json
-### schema
-    
-| name   | type   |
-|:-------|:-------|
-| x      | number |
-| y      | number |
 ## `political-contributions.json`
 ### path
 political-contributions.json
