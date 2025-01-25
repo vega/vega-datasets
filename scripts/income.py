@@ -211,7 +211,7 @@ def process_state_records(census_data: CensusResponse) -> list[StateIncome]:
 
 def write_json(data: list[StateIncome], output: Path) -> None:
     """Writes data to JSON file."""
-    output.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    output.write_text(json.dumps(data, indent=2), encoding="utf-8", newline="\n")
 
 
 def main() -> None:
