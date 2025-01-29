@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-01-29T11:48:57.430459+00:00",
+  "created": "2025-01-29T12:22:23.243476+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -2510,15 +2510,17 @@
     {
       "name": "obesity.json",
       "type": "table",
-      "description": "State-level obesity rates (BMI >= 30) for the U.S. in 2008, featured in [Vega's Dorling cartogram example](https://vega.github.io/vega/examples/dorling-cartogram/). \nValues deviate significantly from official [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics, \nwith reported rates lower than those in [state-level BRFSS reports](https://www.in.gov/health/reports/brfss/2008/rank2008.pdf). Given these discrepancies \nfrom the nation's primary health survey data, this source should not be used for obesity analysis.",
+      "description": "State-level obesity rates (BMI >= 30) for the U.S. in 1995. \nOriginally [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics.",
       "licenses": [
         {
-          "name": "License status undetermined"
+          "title": "U.S. Government Dataset",
+          "path": "https://www.usa.gov/government-works"
         }
       ],
       "sources": [
         {
-          "title": "Source undetermined"
+          "title": "Protovis",
+          "path": "https://mbostock.github.io/protovis/ex/us_stats.js"
         }
       ],
       "path": "obesity.json",

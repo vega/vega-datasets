@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-29 11:48:57 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-29 12:22:23 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1262,10 +1262,8 @@ A contrast to uniformly distributed data in `uniform-2d.json`
 ### path
 obesity.json
 ### description
-State-level obesity rates (BMI >= 30) for the U.S. in 2008, featured in [Vega's Dorling cartogram example](https://vega.github.io/vega/examples/dorling-cartogram/). 
-Values deviate significantly from official [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics, 
-with reported rates lower than those in [state-level BRFSS reports](https://www.in.gov/health/reports/brfss/2008/rank2008.pdf). Given these discrepancies 
-from the nation's primary health survey data, this source should not be used for obesity analysis.
+State-level obesity rates (BMI >= 30) for the U.S. in 1995. 
+Originally [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics.
 ### schema
     
 | name   | type    |
@@ -1274,13 +1272,13 @@ from the nation's primary health survey data, this source should not be used for
 | rate   | number  |
 | state  | string  |
 ### sources
-| title               |
-|:--------------------|
-| Source undetermined |
+| title    | path                                               |
+|:---------|:---------------------------------------------------|
+| Protovis | https://mbostock.github.io/protovis/ex/us_stats.js |
 ### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `ohlc.json`
 ### path
 ohlc.json

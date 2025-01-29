@@ -1011,16 +1011,16 @@ path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: obesity.json
 path = "obesity.json"
-description = """State-level obesity rates (BMI >= 30) for the U.S. in 2008, featured in [Vega's Dorling cartogram example](https://vega.github.io/vega/examples/dorling-cartogram/). 
-Values deviate significantly from official [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics, 
-with reported rates lower than those in [state-level BRFSS reports](https://www.in.gov/health/reports/brfss/2008/rank2008.pdf). Given these discrepancies 
-from the nation's primary health survey data, this source should not be used for obesity analysis."""
+description = """State-level obesity rates (BMI >= 30) for the U.S. in 1995. 
+Originally [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics."""
 
 [[resources.sources]]
-title = "Source undetermined"
+title = "Protovis"
+path  = "https://mbostock.github.io/protovis/ex/us_stats.js"
 
 [[resources.licenses]]
-name = "License status undetermined"
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: ohlc.json
 path = "ohlc.json"
