@@ -1,6 +1,8 @@
 import * as d3 from "d3-dsv";
-import { version } from "../package.json";
-import urls from "./urls";
+import pkg from '../package.json';
+import urls from "./urls.js";
+
+const version = pkg.version;
 
 type Name = keyof typeof urls;
 

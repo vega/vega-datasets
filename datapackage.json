@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-01-23T15:50:44.713255+00:00",
+  "created": "2025-01-29T21:17:52.306790+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -2328,34 +2328,6 @@
           {
             "name": "key",
             "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "name": "points.json",
-      "type": "table",
-      "path": "points.json",
-      "scheme": "file",
-      "format": "json",
-      "mediatype": "text/json",
-      "encoding": "utf-8",
-      "hash": "sha1:4716a117308962f3596179d7d7d2ad729a19cda7",
-      "bytes": 4926,
-      "dialect": {
-        "json": {
-          "keyed": true
-        }
-      },
-      "schema": {
-        "fields": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
           }
         ]
       }

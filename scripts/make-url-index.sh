@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-echo "import {version} from '../package.json';"
+echo "import pkg from '../package.json';"
+echo "const version = pkg.version;"
 echo 'export default {'
 echo ''
 
