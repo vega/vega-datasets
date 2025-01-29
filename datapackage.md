@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-24 23:17:25 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-29 11:48:57 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -36,11 +36,9 @@ Application icon from open-source software project. Used in [Image-based Scatter
 ### path
 airports.csv
 ### description
-A comprehensive dataset of airports in the United States and its territories, including 
-major commercial, regional, and municipal airports. The dataset contains information about each airport's
-location (latitude/longitude coordinates), identification codes, name, city, state, and country. The data 
-structure and content is consistent with the airports dataset available on Data.gov, the U.S. government's
-open data site.
+Airports in the United States and its territories, including  major commercial, regional, 
+and municipal airports. Contains information about each airport's location (latitude/longitude 
+coordinates), identification codes, name, city, state, and country.
 ### schema
     
 | name      | type   |
@@ -77,15 +75,18 @@ A raster grid of global annual precipitation for the year 2016 at a resolution 1
 ### path
 anscombe.json
 ### description
+Eleven (x,y) pairs of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression 
+lines (same slope and intercept) and correlation coefficients (approximately 0.816). When plotted, reveals starkly 
+different patterns: one shows a linear relationship, another a non-linear curve, the third a near-perfect linear 
+relationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier 
+entirely dictates the regression.
+
 In his 1973 paper "Graphs in Statistical Analysis," [Yale](https://archives.yale.edu/repositories/12/resources/3711) Professor Francis Anscombe uses these four datasets 
 to argue that visualization is essential to good statistical work, not merely an optional supplement—a radical position at a 
-time when most statistical analysis was done through batch processing on mainframes with no graphical output. The datasets serve 
+time when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves 
 as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
-statistical analysis should combine both numerical calculations and graphical examination. Each dataset contains eleven (x,y) pairs 
-of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression lines (same slope and intercept) and correlation coefficients 
-(approximately 0.816)—yet when plotted, they reveal starkly different patterns: one shows a linear relationship, another a 
-non-linear curve, the third a near-perfect linear relationship disrupted by a single outlier, and the fourth a near-vertical 
-line of points where a single outlier entirely dictates the regression.
+statistical analysis should combine both numerical calculations and graphical examination.  
+
 ### schema
     
 | name   | type    |
@@ -106,7 +107,7 @@ line of points where a single outlier entirely dictates the regression.
 ### path
 barley.json
 ### description
-A dataset containing barley variety yields from experiments conducted by the Minnesota Agricultural
+Yields of barley varieties from experiments conducted by the Minnesota Agricultural
 Experiment Station (MAES) across six sites in Minnesota. The USDA Technical Bulletin No. 735
 (December 1940) republished these yields data with explicit credit to MAES as the source.
 
@@ -257,11 +258,10 @@ Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. 
 ### path
 budgets.json
 ### description
-The dataset, sourced from the Office of Management and Budget (OMB) and [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010, 
-tracks U.S. federal budget projections and actual outcomes (in trillions of dollars) from 1980 through 2010, with all 
-values adjusted for inflation to the price level at the time of publication. For each budget year, the data includes 
-both the actual budget outcome (looking back one year) and a series of forecasts for future years, allowing comparison 
-between projected and real fiscal results. The data reveals how budget forecasts made in any given year compared to
+U.S. federal budget projections and actual outcomes (in trillions of dollars) from 1980 through 2010, with all 
+values adjusted for inflation to the price level at the time of publication. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
+Includes for each year the actual budget outcome (looking back one year) and a series of forecasts for future years, allowing comparison 
+between projected and real fiscal results. Reveals how budget forecasts made in any given year compared to
 what actually happened, with positive values indicating surpluses (briefly seen around 2000) and negative values 
 representing deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis).
 ### schema
@@ -283,17 +283,17 @@ representing deficits (reaching a particularly large value of -$1.78 trillion du
 ### path
 burtin.json
 ### description
-The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine.
+Compares the performance of three antibiotics against 16 different bacteria. Based on graphic designer 
+Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine and
+featured as an example in the Protovis project, a precursor to D3.js.
 
-The dataset compares the performance of three antibiotics against 16 different bacteria.
-
-Numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness.
-
-The dataset was featured as an example in the Protovis project, a precursor to D3.js.
+Numerical values represent the minimum inhibitory concentration (MIC) of each antibiotic, 
+measured in units per milliliter, with lower values indicating higher antibiotic
+effectiveness.
 
 As noted in the Protovis example, "Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin".
 
-The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
+The vega-datsets version is largely consistent with the Protovis version, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
 
 The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
 reads as follows:
@@ -355,15 +355,15 @@ Collection of car specifications and performance metrics from various automobile
 |:-------------------------|:----------------------------------|
 | StatLib Datasets Archive | http://lib.stat.cmu.edu/datasets/ |
 ### licenses
-| title                                                                                 | path                                       |
-|:--------------------------------------------------------------------------------------|:-------------------------------------------|
-| The original dataset was distributed in 1982 for educational and scientific purposes. | http://lib.stat.cmu.edu/datasets/cars.desc |
+| title                                                                         | path                                       |
+|:------------------------------------------------------------------------------|:-------------------------------------------|
+| The original was distributed in 1982 for educational and scientific purposes. | http://lib.stat.cmu.edu/datasets/cars.desc |
 ## `co2-concentration.csv`
 ### path
 co2-concentration.csv
 ### description
 Atmospheric CO2 concentration measurements from Mauna Loa Observatory, Hawaii. 
-Dataset contains monthly readings from 1958-2020 with two key measurements:
+Contains monthly readings from 1958-2020 with two key measurements:
 1. CO2 concentrations in millionths of a [mole](https://en.wikipedia.org/wiki/Mole_(unit)) of CO2 
 per mole of air (parts per million), reported on the 2012 
 SIO manometric mole fraction scale
@@ -392,13 +392,12 @@ Only includes rows with valid data.
 ### path
 countries.json
 ### description
-This dataset combines key demographic indicators (life expectancy at birth and
-fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
-intervals. It includes both current values and adjacent time period values (previous and next)
-for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) 
-notes that its philosophy is to fill data gaps with estimates and use current
-geographic boundaries for historical data. Gapminder states that it aims to "show people the
-big picture" rather than support detailed numeric analysis.
+Key demographic indicators (life expectancy at birth and fertility rate measured 
+as babies per woman) for various countries from 1955 to 2000 at 5-year intervals. Includes both 
+current values and adjacent time period values (previous and next) for each indicator. Gapminder's 
+[data documentation](https://www.gapminder.org/data/documentation/) notes that its philosophy is to fill data gaps with 
+estimates and use current geographic boundaries for historical data. Gapminder states that it 
+aims to "show people the big picture" rather than support detailed numeric analysis.
 ### schema
     
 | name          | type    | description                                                              |
@@ -423,17 +422,15 @@ big picture" rather than support detailed numeric analysis.
 ### path
 crimea.json
 ### description
-This dataset, which informed Florence Nightingale's groundbreaking work in public health, details 
-monthly mortality rates from British military hospitals during the Crimean War (1854-1856). 
-
-Nightingale credits Dr. William Farr for compiling the data from the 1858 [Medical and Surgical 
-History of the British Army](http://resource.nlm.nih.gov/62510370R). The dataset categorizes 
+Monthly mortality rates from British military hospitals during the Crimean War (1854-1856), which informed 
+Florence Nightingale's groundbreaking work in public health. Nightingale credits Dr. William Farr for 
+compiling the data from the 1858 [Medical and Surgical History of the British Army](http://resource.nlm.nih.gov/62510370R). Categorizes 
 deaths into "zymotic" diseases (preventable infectious diseases), wounds/injuries, and other causes. 
-Covering the period from April 1854 to March 1856, the dataset includes monthly army strength 
-alongside mortality figures. Nightingale transformed this data into her now-famous [polar area 
+Covering the period from April 1854 to March 1856, it includes monthly army strength 
+alongside mortality figures. Transformed by Nightingale into her now-famous [polar area 
 diagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). 
 
-The annual mortality rates plotted in the chart can be calculated from the dataset using the formula 
+The annual mortality rates plotted in the chart can be calculated using the formula 
 > (Deaths &times; 1000 &times; 12) &divide; Army Size. 
 
 As [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's 
@@ -461,11 +458,10 @@ the dramatic impact of sanitary reforms, particularly in reducing preventable de
 ### path
 disasters.csv
 ### description
-Annual number of deaths from disasters. The data is sourced from EM-DAT (Emergency Events Database) 
+Annual number of deaths from disasters, sourced from EM-DAT (Emergency Events Database) 
 maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at UCLouvain, Belgium. 
-The dataset was processed by Our World in Data, which involved standardizing country names and world region 
-definitions, converting units, calculating derived indicators, and adapting metadata. Deaths are reported 
-as absolute numbers.
+Processed by Our World in Data to standardize country names and world region definitions, converting units,
+calculating derived indicators, and adapting metadata. Deaths are reported as absolute numbers.
 ### schema
     
 | name   | type    |
@@ -487,14 +483,14 @@ as absolute numbers.
 ### path
 driving.json
 ### description
-This dataset tracks the relationship between driving habits and gasoline prices
-in the United States from 1956 to 2010. It combines two key metrics:
+Tracks the relationship between driving habits and gasoline prices
+in the United States from 1956 to 2010, combining two key metrics:
 
 1. Miles driven per capita per year (ranging from approximately 4,000 to 10,000 miles)
 2. Price of a gallon of gasoline (adjusted for inflation, in regular grade)
 
-The dataset includes a "side" column with values (left, right, top, bottom) that indicates label positioning 
-in the original visualization to optimize readability and prevent overlap. The data spans multiple significant 
+Includes a "side" column with values (left, right, top, bottom) that indicates label positioning 
+in the original visualization to optimize readability and prevent overlap. Spans multiple significant 
 historical periods including the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the
 "swing backward" period from 1956 to 2010.
 
@@ -518,10 +514,9 @@ historical periods including the cheap gas era, Arab oil embargo, energy crisis,
 ### path
 earthquakes.json
 ### description
-This dataset contains 1,707 worldwide earthquake events recorded by the USGS Earthquake Hazards
-Program from January 31 to February 7, 2018 (UTC). The data represents approximately one week of 
-continuous monitoring from USGS's "all earthquakes" real-time feed, which includes seismic 
-events of all magnitudes.
+Represents approximately one week of continuous monitoring from USGS's "all earthquakes" 
+real-time feed, which includes 1,703 seismic events of all magnitudes recorded by the 
+USGS Earthquake Hazards Program from January 31 to February 7, 2018 (UTC). 
 ### sources
 | title                | path                                                                       |
 |:---------------------|:---------------------------------------------------------------------------|
@@ -547,7 +542,7 @@ Application icon from open-source software project. Used in [Image-based Scatter
 ### path
 flare-dependencies.json
 ### description
-Dataset used, with flare.json, to show relationships among classes in a software hierarchy.
+Indicates, with flare.json, relationships among classes in a software hierarchy.
 ### schema
     
 | name   | type    |
@@ -566,7 +561,7 @@ Dataset used, with flare.json, to show relationships among classes in a software
 ### path
 flare.json
 ### description
-Dataset used, with flare-dependencies.json, to show relationships among classes in a software hierarchy.
+Indicates, with flare-dependencies.json, relationships among classes in a software hierarchy.
 ### schema
     
 | name   | type    |
@@ -586,7 +581,7 @@ Dataset used, with flare-dependencies.json, to show relationships among classes 
 flights-10k.json
 ### description
 Flight delay statistics (10,000 rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -611,7 +606,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 flights-200k.arrow
 ### description
 Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -634,7 +629,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 flights-200k.json
 ### description
 Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -657,7 +652,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 flights-20k.json
 ### description
 Flight delay statistics (20,000 rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -682,7 +677,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 flights-2k.json
 ### description
 Flight delay statistics (2,000 rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -707,7 +702,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 flights-3m.parquet
 ### description
 Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -732,7 +727,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 flights-5k.json
 ### description
 Flight delay statistics (5,000 rows) from U.S. Bureau of Transportation Statistics. 
-Data collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`
 ### schema
@@ -803,8 +798,8 @@ chosen divisions over the time period.
 ### path
 gapminder-health-income.csv
 ### description
-Per-capita income, life expectancy, population and regional grouping. Dataset does not specify 
-the reference year for the data. Gapminder historical data is subject to revisions.
+Per-capita income, life expectancy, population and regional grouping. Reference year for the data is not specified. 
+Gapminder historical data is subject to revisions.
 
 Gapminder (v30, 2023) defines per-capita income as follows:
 >"This is real GDP per capita (gross domestic product per person adjusted for inflation) 
@@ -833,16 +828,16 @@ Gapminder (v30, 2023) defines per-capita income as follows:
 ### path
 gapminder.json
 ### description
-This dataset combines key demographic indicators (life expectancy at birth, 
+Combines key demographic indicators (life expectancy at birth, 
 population, and fertility rate measured as babies per woman) for various countries from 1955 
-to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable 
+to 2005 at 5-year intervals. Includes a 'cluster' column, a categorical variable 
 grouping countries. Gapminder's data documentation notes that its philosophy is to fill data 
 gaps with estimates and use current geographic boundaries for historical data. Gapminder 
 states that it aims to "show people the big picture" rather than support detailed numeric 
 analysis.
 
 Notes:
-1. Country Selection: The set of countries in this file matches the version of this dataset 
+1. Country Selection: The set of countries matches the version of this dataset 
    originally added to this collection in 2015. The specific criteria for country selection 
    in that version are not known. Data for Aruba are no longer available in the new version. 
    Hong Kong has been revised to Hong Kong, China in the new version.
@@ -898,9 +893,9 @@ Application icon from open-source software project. Used in [Image-based Scatter
 ### path
 github.csv
 ### description
-This dataset contains simulated GitHub contribution data showing hourly commit counts across 
-different times of day, spanning from January 1st to May 30th, 2015, designed to demonstrate typical patterns 
-of developer activity in a GitHub-style punchcard visualization format.
+Simulated GitHub contribution data showing hourly commit counts across 
+different times of day, spanning from January 1st to May 30th, 2015. Designed to demonstrate 
+typical patterns of developer activity in a GitHub-style punchcard visualization format.
 ### schema
     
 | name   | type    |
@@ -966,10 +961,8 @@ but is not endorsed or certified by the Census Bureau.
 ### path
 iowa-electricity.csv
 ### description
-The state of Iowa has dramatically increased its production of renewable 
-wind power in recent years. This file contains the annual net generation of electricity in 
-the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
-It is useful for illustrating stacked area charts.
+Annual net generation of electricity in Iowa by source, in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
+Useful for illustrating stacked area charts. Demonstrates dramatic increase in wind power production.
 ### schema
     
 | name           | type    |
@@ -989,19 +982,17 @@ It is useful for illustrating stacked area charts.
 ### path
 jobs.json
 ### description
-U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
+U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. Obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
 
 Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). 
 The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
 
-Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
+Based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. Appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
 
 IPUMS USA confirmed in 2024 correspondence that hosting this dataset on vega-datasets is permissible, stating:
 >We're excited to hear that this dataset made its way to this repository and is being used by students for data visualization. We allow for these types of redistributions of summary data so long as the underlying microdata records are not shared.
 
-This dataset contains only summary statistics and does not include any underlying microdata records.
-
-1. This dataset represents summary data. The underlying microdata records are not included.
+1. Represents summary data. Underlying microdata records are not included.
 2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) 
 (person weight) variable as an expansion factor when working with IPUMS USA extracts.
 3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current IPUMS USA data exactly.
@@ -1032,9 +1023,9 @@ Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. 
 ### path
 la-riots.csv
 ### description
-More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles 
-for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic 
-coordinates of their death. Compiled and published by the Los Angeles Times Data Desk.
+A comprehensive record of fatalities during the five days of civil unrest in Los Angeles beginning 
+April 29, 1992, documenting over 60 deaths with associated geographic coordinates where each person lost their life.
+Originally compiled and published by the Los Angeles Times Data Desk.
 ### schema
     
 | name         | type    |
@@ -1097,13 +1088,10 @@ Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/
 ### path
 londonTubeLines.json
 ### description
-This TopoJSON file provides a simplified representation of selected London Underground rail lines. The data originates 
-from OpenStreetMap and was processed and edited by oobrien, resulting in the `tfl_lines.json` dataset referenced in the source.
-This `tfl_lines.json` file contains a GeoJSON representation of London transport lines which have been simplified, 
-with each line feature representing a path of a particular transport line between stations, and with stations represented as 
-nodes on the line. This TopoJSON file was then generated from this intermediate dataset, resulting in 394 LineString geometries 
-representing segments of these lines, topologically encoded using 406 arcs. Note that the data represents a specific view of 
-the network, committed on Feb 4, 2018, and may not include more recent changes or extensions.
+A [topologically-encoded](https://github.com/topojson/topojson) representation of select London Underground rail lines, derived from OpenStreetMap
+data. These 394 LineString geometries, encoded using 406 arcs, depict transport paths between stations with stations marked as nodes
+along the lines. Originally transformed from a GeoJSON intermediary `tfl_lines.json` into TopoJSON format, this network configuration 
+reflects the system as of February 4, 2018, and may not incorporate subsequent modifications or expansions.
 
 ### sources
 | title                                         | path                                                                        |
@@ -1137,7 +1125,7 @@ mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite
 ### path
 lookup_people.csv
 ### description
-A dataset of people and their associated name, age, 
+A synthetic list of nine people and their associated name, age, 
 and height in centimeters. Used in conjunction with `lookup_groups.csv` 
 to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms.
 ### schema
@@ -1177,9 +1165,8 @@ coappearances.
 monarchs.json
 ### description
 A chronological list of English and British monarchs from Elizabeth I through George IV.
-Each entry includes:
 
-The dataset contains two intentional inaccuracies to maintain compatibility with 
+Contains two intentional inaccuracies to maintain compatibility with 
 the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
 1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
 2. the end date for the reign of George IV is shown as 1820, instead of 1830.
@@ -1188,12 +1175,9 @@ The entry "W&M" represents the joint reign of William III and Mary II. While the
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
 and the period leading to the Restoration. While historically more accurate to call this the "interregnum," the field name of `commonwealth` 
-from the original dataset is retained for backwards compatibility.
-The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
+from the original dataset is retained for backwards compatibility. Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
 Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
-Content on the site is protected by Crown Copyright. 
-Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most 
-Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+
 ### schema
     
 | name   | type    | description                                                                                                 |
@@ -1215,8 +1199,9 @@ Crown copyright information is available under the [Open Government Licence v3.0
 ### path
 movies.json
 ### description
-The dataset has well known and intentionally included errors. 
-This dataset is provided for instructional purposes, including the need to reckon with dirty data.
+A collection of films and their performance metrics, including box office earnings, budgets, 
+and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
+resource for developing data cleaning and validation skills in real-world analysis workflows.
 ### schema
     
 | name                   | type    |
@@ -1249,14 +1234,15 @@ This dataset is provided for instructional purposes, including the need to recko
 ### path
 normal-2d.json
 ### description
-A synthetic dataset of 500 two-dimensional points (u, v) sampled from a bivariate normal distribution. 
-The data is centered near the origin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), 
-indicating a relatively equal spread in both dimensions. The variables exhibit negligible correlation (0.026), 
-suggesting independence. The range of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each 
-variable yield high p-values (u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's 
-characteristics make it well-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, 
-including scatter plots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a 
-clean baseline dataset for testing new visualization methods or for educational purposes in data visualization and statistics.
+Five hundred paired coordinates (u, v) sampled from a bivariate normal distribution. The data is centered near the 
+origin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), indicating a relatively equal 
+spread in both dimensions. The variables exhibit negligible correlation (0.026), suggesting independence. The 
+range of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each variable yield high p-values 
+(u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's characteristics make it 
+well-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, including scatter
+plots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a clean baseline 
+dataset for testing new visualization methods or for educational purposes in data visualization and statistics.
+A contrast to uniformly distributed data in `uniform-2d.json`
 
 ### schema
     
@@ -1276,15 +1262,10 @@ clean baseline dataset for testing new visualization methods or for educational 
 ### path
 obesity.json
 ### description
-This dataset purports to show obesity rates (BMI >= 30) by U.S. state in 2008 and is used in 
-[Vega's Dorling cartogram example](https://vega.github.io/vega/examples/dorling-cartogram/). However, the 
-data appears to show significant discrepancies when compared to official health statistics from the same time period. 
-The obesity rates reported here are notably lower than those found in the authoritative 
-[Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) data, as evidenced by 
-[state-level BRFSS reports](https://www.in.gov/health/reports/brfss/2008/rank2008.pdf). The BRFSS is the nation's 
-premier health survey system, collecting data across all U.S. states. Given these inconsistencies with official 
-public health surveillance data, this dataset appears to be inaccurate and should not be relied upon 
-for analysis of obesity rates.
+State-level obesity rates (BMI >= 30) for the U.S. in 2008, featured in [Vega's Dorling cartogram example](https://vega.github.io/vega/examples/dorling-cartogram/). 
+Values deviate significantly from official [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics, 
+with reported rates lower than those in [state-level BRFSS reports](https://www.in.gov/health/reports/brfss/2008/rank2008.pdf). Given these discrepancies 
+from the nation's primary health survey data, this source should not be used for obesity analysis.
 ### schema
     
 | name   | type    |
@@ -1304,7 +1285,7 @@ for analysis of obesity rates.
 ### path
 ohlc.json
 ### description
-This dataset contains the performance of the Chicago Board Options Exchange 
+Performance of the Chicago Board Options Exchange 
 [Volatility Index](https://en.wikipedia.org/wiki/VIX) (VIX) in the summer of 2009.
 
 The precise methodology used to derive the signal and calculate the ret columns is unclear.
@@ -1333,10 +1314,15 @@ The precise methodology used to derive the signal and calculate the ret columns 
 ### path
 penguins.json
 ### description
-Palmer Archipelago (Antarctica) penguin data collected and made available by 
-[Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) 
-and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research 
-Network](https://lternet.edu/).
+Records of morphological measurements and demographic information from 344 Palmer Archipelago 
+penguins across three species (Adelie, Gentoo, and Chinstrap) observed on three islands (Torgersen, Biscoe, and Dream) 
+in Antarctica. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/), measurements include precise 
+beak length (mm), beak depth (mm), flipper length (mm), and body mass (g), along with sex identification for 333 
+individuals. Each entry specifies the penguin's species and island location, with some entries containing null 
+values or missing measurements. Data gathering occurred as part of Palmer Station's long-term ecological research,
+contributing to studies of Antarctic marine ecosystems and penguin biology. All measurements follow standardized units, 
+enabling research into morphological variations between species and sexual dimorphism in Antarctic penguins. 
+
 ### schema
     
 | name                | type    |
@@ -1387,10 +1373,9 @@ Assets from the video game Celeste. Added in [#376](https://github.com/vega/vega
 political-contributions.json
 ### description
 Summary financial information on contributions to candidates for U.S. 
-elections. An updated version of this datset is available from the "all candidates" files 
-(in pipe-delimited format) on the bulk data download page of the U.S. Federal Election 
-Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is 
-available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
+elections. An updated version is available from the "all candidates" files (in pipe-delimited format)
+on the bulk data download page of the U.S. Federal Election Commission, or, alternatively, via OpenFEC. 
+Information on each of the 25 columns is available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
 The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
 
 FEC data is subject to the commission's:
@@ -1447,12 +1432,10 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 ### path
 population.json
 ### description
-United States population statistics by sex and age group across decades between 1850 and 2000. 
-The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census 
-microdata" from as early as 1790.
+U.S. population counts by age group (0-90+ in 5-year intervals) and sex 
+for each decade between 1850 and 2000, collected and harmonized from historical census records by IPUMS USA.
 
-IPUMS updates and revises datasets over time, which may result in discrepancies between this 
-dataset and current IPUMS data. Details on data revisions are available here.
+IPUMS updates and revises datasets over time, which may result in discrepancies with current IPUMS data.
 
 When using this dataset, please refer to IPUMS USA terms of use. The organization requests the 
 use of the following citation for this json file:
@@ -1480,7 +1463,7 @@ http://doi.org/10.18128/D010.V6.0
 ### path
 population_engineers_hurricanes.csv
 ### description
-Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
+Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)
 ### schema
     
@@ -1530,7 +1513,7 @@ and updated the format to be easier to parse.
 ### path
 seattle-weather.csv
 ### description
-Daily weather records with metric units. Transformed using `/scripts/weather.py`. 
+Daily weather in metric units. Transformed using `/scripts/weather.py`. 
 The categorical "weather" field is synthesized from multiple fields in the original dataset. 
 This data is intended for instructional purposes.
 ### schema
@@ -1579,8 +1562,8 @@ S&amp;P 500 index values from 2000 to 2020.
 ### path
 sp500.csv
 ### description
-This dataset tracks the monthly closing values of the S&P 500 stock market index 
-from January 2000 to March 2010. The data captures several significant market events including 
+Monthly closing values of the S&P 500 stock market index 
+from January 2000 to March 2010. Captures several significant market events including 
 the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. 
 Each record contains a date in the format 'MMM D YYYY' and the corresponding closing price of 
 the index.
@@ -1645,14 +1628,11 @@ in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)
 ### path
 unemployment-across-industries.json
 ### description
-Industry-level unemployment statistics from the Current Population Survey 
+Industry-level unemployment from the Current Population Survey 
 (CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons 
 and unemployment rate across 11 private industries, as well as agricultural, government, and 
 self-employed workers. Covers January 2000 through February 2010. Industry classification 
-follows format of CPS Table A-31.
-
-The dataset can be replicated using the BLS API. For more, see the `scripts` folder of this 
-repository.
+follows format of CPS Table A-31. Transformed using `scripts/make-unemployment-across-industries.py`
 
 The BLS Web site states:
 > "Users of the public API should cite the date that data were accessed or retrieved using 
@@ -1686,7 +1666,7 @@ See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.ht
 ### path
 unemployment.tsv
 ### description
-This dataset contains county-level unemployment rates in the United States, with data generally
+County-level unemployment rates in the United States, with data generally
 consistent with levels reported in 2009. The dataset is structured as tab-separated values.
 The unemployment rate represents the number of unemployed persons as a percentage of the labor
 force. According to the Bureau of Labor Statistics (BLS) glossary:
@@ -1697,7 +1677,7 @@ illness, and had made specific efforts to find employment sometime during the 4-
 ending with the reference week. Persons who were waiting to be recalled to a job from which
 they had been laid off need not have been looking for work to be classified as unemployed.
 
-This dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
+Derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
 a federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). 
 The LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,
 states, counties, metropolitan areas, and many cities and towns.
@@ -1731,11 +1711,11 @@ When using BLS public data API and datasets, users should adhere to the [BLS Ter
 ### path
 uniform-2d.json
 ### description
-A synthetic dataset of 500 two-dimensional points (u, v) sampled from a bivariate uniform distribution.
-The data is centered near the origin (u: 0.015, v: -0.013) with ranges spanning approximately [-0.5, 0.5] in both dimensions.
-The standard deviation of u is 0.277 and v is 0.276, showing a relatively equal spread. The variables exhibit negligible correlation (-0.019),
-suggesting independence, as expected for a uniform distribution. The range of u is [-0.499, 0.500] and v is [-0.500, 0.498].
-This dataset's characteristics make it suitable for uniform distributions and as a contrast to normally distributed data
+Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the
+origin (u: 0.015, v: -0.013) with ranges spanning approximately [-0.5, 0.5] in both dimensions. The standard 
+deviation of u is 0.277 and v is 0.276, showing a relatively equal spread. The variables exhibit negligible 
+correlation (-0.019), suggesting independence, as expected for a uniform distribution. The range of u 
+is [-0.499, 0.500] and v is [-0.500, 0.498]. A contrast to normally distributed data in `normal-2d.json` .
 
 ### schema
     
@@ -1755,11 +1735,10 @@ This dataset's characteristics make it suitable for uniform distributions and as
 ### path
 us-10m.json
 ### description
-This dataset contains a simplified representation (at 1:10,000,000 scale) 
-of US county boundaries, designed for efficient web mapping and visualization. The data is 
-in [TopoJSON](https://github.com/topojson/topojson) format, which optimizes for smaller file sizes. This dataset is similar to 
-those existing in the TopoJSON US Atlas collection, which in turn is a redistribution of 
-the Census Bureau's cartographic boundary shapefiles.
+US county boundaries represented at a 1:10,000,000 scale in 
+[TopoJSON](https://github.com/topojson/topojson) format, which optimizes for 
+smaller file sizes. Similar to offerings in the TopoJSON US Atlas collection, which 
+in turn is a redistribution of the Census Bureau's cartographic boundary shapefiles.
 
 ### sources
 | title                                        | path                                                                                        |
@@ -1774,14 +1753,13 @@ the Census Bureau's cartographic boundary shapefiles.
 ### path
 us-employment.csv
 ### description
+Monthly employment total in a variety of job categories from January 2006 through December 2015, 
+seasonally adjusted and reported in thousands. Downloaded and reformatted on Nov. 11, 2018.
+
 In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job 
 losses across the United States. The downturn in employment, and the slow recovery in hiring that 
 followed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau 
 of Labor Statistics.
-
-This file contains the monthly employment total in a variety of job categories from January 2006 
-through December 2015. The numbers are seasonally adjusted and reported in thousands. The data 
-were downloaded on Nov. 11, 2018, and reformatted for use in this library.
 
 Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/time.series/ce/ce.supersector)
 tracked by the BLS. The "nonfarm" total is the category typically used by 
@@ -1832,7 +1810,7 @@ negative and positive values.
 us-state-capitals.json
 ### description
 Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. 
-The dataset includes latitude, longitude, state name, and capital city name for all 50 U.S. states. 
+Includes latitude, longitude, state name, and capital city name for all 50 U.S. states. 
 Cities are represented as point locations of their capitol buildings using coordinates in the 
 WGS84 geographic coordinate system.
 
@@ -1863,9 +1841,10 @@ Geological Survey, National Geospatial Program."
 ### path
 volcano.json
 ### description
-Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. 
-This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a 
-topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate.
+Elevation measurements of Maunga Whau (Mt Eden), a volcano in Auckland, New Zealand, representing 
+a rectangular area of 870 meters by 610 meters. Spacing between measurement points is approximately 
+10 meters in both directions. Digitized from a topographic map by Ross Ihaka and adapted from R datasets, 
+Should not be regarded as accurate.
 ### sources
 | title      | path                                                                       |
 |:-----------|:---------------------------------------------------------------------------|
@@ -1878,8 +1857,10 @@ topographic map by Ross Ihaka, adapted from R datasets. These data should not be
 ### path
 weather.csv
 ### description
-NOAA data transformed using `/scripts/weather.py`. Categorical "weather" field synthesized 
-from multiple fields in the original dataset. This data is intended for instructional purposes.
+Daily weather observations from Seattle and New York, including location, date, precipitation, 
+maximum and minimum temperatures, wind speed, and a categorical weather description (drizzle, rain, snow, sun, fog).  
+Transformed from NOAA data using the script `/scripts/weather.py`. The categorical "weather" field is a synthesized feature, 
+derived from multiple fields present in the original NOAA dataset. Intended for instructional purposes.
 ### schema
     
 | name          | type   |
@@ -1968,21 +1949,15 @@ Simulated wind patterns over northwestern Europe.
 ### path
 world-110m.json
 ### description
-This dataset is a simplified representation of world geographic boundaries, 
-optimized for creating web-based world maps. It's in [TopoJSON](https://github.com/topojson/topojson) format, which is a compressed form of 
-GeoJSON that makes geographic data more efficient for web use.
+A 1:110,000,000-scale world map in [TopoJSON](https://github.com/topojson/topojson) format, optimized for 
+web-based visualization. The simplified geographic boundaries focus on two key elements: 
+land masses and country borders with their corresponding codes. The high level of 
+generalization removes small geographic details while maintaining recognizable global 
+features, making it ideal for overview maps and basic world visualizations. This format 
+provides efficient compression compared to GeoJSON, reducing file size for web use. 
+Part of the widely-used TopoJSON World Atlas collection, this has become a standard 
+resource for creating web-based world maps where precise boundary detail isn't required.
 
-The "110m" in the name refers to the scale of simplification - it's simplified to 1:110,000,000 
-scale, meaning small geographic details are removed to create a streamlined version suitable for 
-overview maps. This makes it ideal for creating basic world visualizations where precise boundary 
-detail isn't necessary.
-
-The file contains two main geometry collections:
-- "land": Contains polygons representing all land masses
-- "countries": Contains polygons for country boundaries with their corresponding country codes
-
-The TopoJSON World Atlas collection, from which this dataset appears to be derived, has been one
-of the most commonly used datasets for creating world maps in data visualization.
 ### sources
 | title                                                                            | path                                                                                     |
 |:---------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|
@@ -1997,15 +1972,15 @@ of the most commonly used datasets for creating world maps in data visualization
 ### path
 zipcodes.csv
 ### description
-This dataset, first contributed to vega-datasets in 2017, contains postal codes mapped to 
-their geographical coordinates (latitude/longitude in WGS84) and administrative hierarchies, 
-for the United States and Puerto Rico. The GeoNames geographical database provides worldwide
-postal code data with associated geographical and administrative information. 
+Postal codes mapped to their geographical coordinates (latitude/longitude in WGS84) 
+and administrative hierarchies, for the United States and Puerto Rico. The GeoNames 
+geographical database provides worldwide postal code data with associated geographical 
+and administrative information. 
 
-This historical snapshot is no longer current. Administrative boundaries have been redrawn, 
-counties reorganized and renamed, and postal codes modified. Latitude/longitude coordinates 
-have been updated by Geonames since this data was collected. For current postal code data,
-users should refer to the main GeoNames database.
+Historical snapshot first contributed to vega-datasets in 2017 and no longer current. 
+Administrative boundaries have been redrawn, counties reorganized and renamed, and postal 
+codes modified. Latitude/longitude coordinates have been updated by Geonames since this 
+data was collected. For current postal code data, refer to the main GeoNames database.
 ### schema
     
 | name      | type    |
