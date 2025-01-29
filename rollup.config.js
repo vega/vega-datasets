@@ -15,6 +15,7 @@ const outputs = [
       sourcemap: true,
     },
     plugins: [nodeResolve(), json(), typescript()],
+    external: Object.keys(pkg.dependencies),
   },
   {
     input: 'src/index.ts',
