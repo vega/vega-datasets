@@ -428,7 +428,7 @@ path  = "https://www.mozilla.org/en-US/foundation/trademarks/policy/"
 
 [[resources]] # Path: flare-dependencies.json
 path        = "flare-dependencies.json"
-description = "Indicates, with flare.json, relationships among classes in a software hierarchy."
+description = "Indicates, with `flare.json`, relationships among classes in a software hierarchy."
 
 [[resources]] # Path: flare.json
 path        = "flare.json"
