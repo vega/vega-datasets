@@ -432,7 +432,7 @@ description = "Indicates, with flare.json, relationships among classes in a soft
 
 [[resources]] # Path: flare.json
 path        = "flare.json"
-description = "Indicates, with flare-dependencies.json, relationships among classes in a software hierarchy."
+description = "Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy."
 
 [[resources]] # Path: flights-10k.json
 path = "flights-10k.json"
