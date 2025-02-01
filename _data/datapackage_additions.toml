@@ -934,7 +934,7 @@ Contains two intentional inaccuracies to maintain compatibility with
 the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
 1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
 2. the end date for the reign of George IV is shown as 1820, instead of 1830.
-These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
+These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used in the visualization.
 The entry \"W&M\" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, 
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
