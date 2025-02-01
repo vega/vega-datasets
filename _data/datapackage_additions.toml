@@ -383,17 +383,29 @@ path  = "https://creativecommons.org/licenses/by/4.0/"
 
 [[resources]] # Path: driving.json
 path = "driving.json"
-description = """Tracks the relationship between driving habits and gasoline prices
-in the United States from 1956 to 2010, combining two key metrics:
-
-1. Miles driven per capita per year (ranging from approximately 4,000 to 10,000 miles)
-2. Price of a gallon of gasoline (adjusted for inflation, in regular grade)
-
-Includes a "side" column with values (left, right, top, bottom) that indicates label positioning 
-in the original visualization to optimize readability and prevent overlap. Spans multiple significant 
-historical periods including the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the
-"swing backward" period from 1956 to 2010.
+description = """Tracks the relationship between driving habits and gasoline prices 
+in the United States during a period spanning multiple significant events, including 
+the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the 
+"swing backward" from 1956 to 2010.
 """
+[resources.schema]
+[[resources.schema.fields]]
+name = "year"
+description = "Year of observation from 1956 to 2010"
+
+[[resources.schema.fields]]
+name = "miles"
+description = "Miles driven per capita per year, ranging from approximately 4,000 to 10,000 miles"
+
+[[resources.schema.fields]]
+name = "gas"
+description = "Price of a gallon of regular grade gasoline, adjusted for inflation"
+
+[[resources.schema.fields]]
+name = "side"
+description = """Label positioning indicator used in the original visualization to optimize 
+readability and prevent overlap"""
+categories = ["left", "right", "top", "bottom"]
 
 [[resources.sources]]
 title = "New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution)"
