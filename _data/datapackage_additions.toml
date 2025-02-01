@@ -992,16 +992,24 @@ name = "License status undetermined"
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
 description = """
-Five hundred paired coordinates (u, v) sampled from a bivariate normal distribution. The data is centered near the 
-origin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), indicating a relatively equal 
-spread in both dimensions. The variables exhibit negligible correlation (0.026), suggesting independence. The 
-range of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each variable yield high p-values 
-(u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's characteristics make it 
-well-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, including scatter
-plots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a clean baseline 
-dataset for testing new visualization methods or for educational purposes in data visualization and statistics.
+Five hundred paired coordinates sampled from a bivariate normal distribution. The data is centered near the 
+origin with standard deviations indicating a relatively equal spread in both dimensions. 
+The variables exhibit negligible correlation (0.026), suggesting independence. 
+[Normality tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) for each variable yield high p-values, supporting the normal distribution assumption. 
+These characteristics make it well-suited for demonstrating statistical visualization techniques 
+in Vega and Vega-Lite, including scatter plots, density plots, heatmaps, and marginal histograms/density curves. 
+It can also serve as a clean baseline for testing new visualization methods or for educational purposes 
+in data visualization and statistics.
 A contrast to uniformly distributed data in `uniform-2d.json`
 """
+
+[[resources.schema.fields]]
+name        = "u"
+description = "mean: 0.005, std: 0.192, range: [-0.578, 0.533], p-value: 0.680"
+
+[[resources.schema.fields]]
+name        = "v"
+description = "mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763"
 
 [[resources.sources]]
 title = "Generated Data"
