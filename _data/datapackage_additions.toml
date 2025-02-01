@@ -61,7 +61,7 @@ relationship disrupted by a single outlier, and the fourth a near-vertical line 
 entirely dictates the regression.
 
 In his 1973 paper "Graphs in Statistical Analysis" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets 
-to argue that visualization is essential to good statistical work, not merely an optional supplement—a radical position at a 
+to argue that visualization is essential to good statistical work, not merely an optional supplement. This was a radical position at a 
 time when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves 
 as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
 statistical analysis should combine both numerical calculations and graphical examination.  
