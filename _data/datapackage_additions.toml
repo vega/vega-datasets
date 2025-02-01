@@ -881,7 +881,7 @@ path  = "https://opendatacommons.org/licenses/odbl/"
 [[resources]] # Path: lookup_groups.csv
 path = "lookup_groups.csv"
 description = """A nine-row lookup table for the `lookup_people.csv` dataset, 
-mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms."""
+mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms."""
 
 [[resources.sources]]
 title = "Generated Data"
@@ -893,7 +893,7 @@ path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 path = "lookup_people.csv"
 description = """A synthetic list of nine people and their associated name, age, 
 and height in centimeters. Used in conjunction with `lookup_groups.csv` 
-to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms."""
+to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms."""
 
 [[resources.sources]]
 title = "Generated Data"
