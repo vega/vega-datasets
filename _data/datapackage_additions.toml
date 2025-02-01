@@ -939,7 +939,11 @@ The entry \"W&M\" represents the joint reign of William III and Mary II. While t
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
 and the period leading to the Restoration. While historically more accurate to call this the \"interregnum,\" the field name of `commonwealth` 
-from the original dataset is retained for backwards compatibility. Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+from the original dataset is retained for backwards compatibility.
+
+> [!IMPORTANT]
+> Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+
 Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
 """
 
