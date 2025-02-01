@@ -74,9 +74,6 @@ path  = "https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data"
 title = "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21."
 path  = "https://www.jstor.org/stable/2682899"
 
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: barley.json
 path = "barley.json"
 description = """
@@ -402,9 +399,6 @@ historical periods including the cheap gas era, Arab oil embargo, energy crisis,
 title = "New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution)"
 path  = "https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html"
 
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: earthquakes.json
 path = "earthquakes.json"
 description = """
@@ -436,21 +430,9 @@ path  = "https://www.mozilla.org/en-US/foundation/trademarks/policy/"
 path        = "flare-dependencies.json"
 description = "Indicates, with flare.json, relationships among classes in a software hierarchy."
 
-[[resources.sources]]
-title = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: flare.json
 path        = "flare.json"
 description = "Indicates, with flare-dependencies.json, relationships among classes in a software hierarchy."
-
-[[resources.sources]]
-title = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
 
 [[resources]] # Path: flights-10k.json
 path = "flights-10k.json"
@@ -854,9 +836,6 @@ Originally compiled and published by the Los Angeles Times Data Desk."""
 title = "LA Riots Deaths, Los Angeles Times Data Desk"
 path  = "http://spreadsheets.latimes.com/la-riots-deaths/"
 
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: londonBoroughs.json
 path = "londonBoroughs.json"
 description = """Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. 
@@ -998,12 +977,6 @@ description = """A collection of films and their performance metrics, including 
 and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
 resource for developing data cleaning and validation skills in real-world analysis workflows."""
 
-[[resources.sources]]
-title = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
 description = """
@@ -1059,9 +1032,6 @@ path  = "https://finance.yahoo.com/chart/%5EVIX"
 [[resources.sources]]
 title = "CBOE - VIX Historical Data"
 path  = "https://www.cboe.com/tradable_products/vix/vix_historical_data/"
-
-[[resources.licenses]]
-name = "License status undetermined"
 
 [[resources]] # Path: penguins.json
 path = "penguins.json"
@@ -1119,9 +1089,6 @@ description = """Assets from the video game Celeste. Added in [#376](https://git
 [[resources.sources]]
 title = "Celeste Game"
 path  = "http://www.celestegame.com/"
-
-[[resources.licenses]]
-name = "License status undetermined"
 
 [[resources]] # Path: political-contributions.json
 path = "political-contributions.json"
@@ -1247,9 +1214,6 @@ path  = "https://www.usa.gov/government-works"
 path        = "sp500-2000.csv"
 description = """S&amp;P 500 index values from 2000 to 2020."""
 
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources.sources]]
 title = "Yahoo Finance"
 path  = "https://finance.yahoo.com/quote/%5EDJI/history/"
@@ -1262,21 +1226,9 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 Each record contains a date in the format 'MMM D YYYY' and the corresponding closing price of 
 the index."""
 
-[[resources.sources]]
-title = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: stocks.csv
 path        = "stocks.csv"
 description = "Monthly stock prices for five companies from 2000 to 2010."
-
-[[resources.sources]]
-title = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
@@ -1285,12 +1237,6 @@ District, categorized by cuisine type (e.g., "coffee", "pizza", "korean"). Used 
 create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) showing the prevalence 
 of various food and beverage categories. The example graphic using this dataset states that it originally appeared 
 in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)"""
-
-[[resources.sources]]
-title = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
 
 [[resources]] # Path: unemployment-across-industries.json
 path = "unemployment-across-industries.json"
@@ -1499,9 +1445,6 @@ Should not be regarded as accurate."""
 title = "R Datasets"
 path  = "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html"
 
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: weather.csv
 path = "weather.csv"
 description = """Daily weather observations from Seattle and New York, including location, date, precipitation, 
@@ -1525,12 +1468,6 @@ description = """Instructional dataset showing actual and predicted temperature 
 > Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).
 """
 
-[[resources.sources]]
-name = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
-
 [[resources]] # Path: wheat.json
 path = "wheat.json"
 description = """As noted by in this protovis [example](https://mbostock.github.io/protovis/ex/wheat.html),
@@ -1553,12 +1490,6 @@ path  = "https://commons.wikimedia.org/wiki/Public_domain"
 [[resources]] # Path: windvectors.csv
 path        = "windvectors.csv"
 description = """Simulated wind patterns over northwestern Europe."""
-
-[[resources.sources]]
-name = "Source undetermined"
-
-[[resources.licenses]]
-name = "License status undetermined"
 
 [[resources]] # Path: world-110m.json
 path = "world-110m.json"
