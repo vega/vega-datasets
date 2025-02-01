@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-29 12:22:23 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-01 16:17:36 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -298,7 +298,7 @@ The vega-datsets version is largely consistent with the Protovis version, with o
 The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
 reads as follows:
 
-> ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
+> #### Antibacterial ranges of Neomycin, Penicillin and Streptomycin
 >
 >
 > The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
