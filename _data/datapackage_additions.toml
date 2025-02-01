@@ -23,7 +23,7 @@ title = "7-Zip"
 path  = "https://www.7-zip.org/"
 
 [[resources.licenses]]
-title = "GNU Lesser General Public License "
+title = "GNU Lesser General Public License"
 path  = "https://www.7-zip.org/license.txt"
 
 [[resources]] # Path: airports.csv
@@ -71,7 +71,7 @@ statistical analysis should combine both numerical calculations and graphical ex
 title = "Anscombe's quartet (Wikipedia)"
 path  = "https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data"
 [[resources.sources]]
-title = "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21. "
+title = "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21."
 path  = "https://www.jstor.org/stable/2682899"
 
 [[resources.licenses]]
@@ -939,7 +939,11 @@ The entry \"W&M\" represents the joint reign of William III and Mary II. While t
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
 and the period leading to the Restoration. While historically more accurate to call this the \"interregnum,\" the field name of `commonwealth` 
-from the original dataset is retained for backwards compatibility. Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+from the original dataset is retained for backwards compatibility.
+
+> [!IMPORTANT]
+> Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+
 Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
 """
 
@@ -992,16 +996,24 @@ name = "License status undetermined"
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
 description = """
-Five hundred paired coordinates (u, v) sampled from a bivariate normal distribution. The data is centered near the 
-origin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), indicating a relatively equal 
-spread in both dimensions. The variables exhibit negligible correlation (0.026), suggesting independence. The 
-range of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each variable yield high p-values 
-(u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's characteristics make it 
-well-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, including scatter
-plots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a clean baseline 
-dataset for testing new visualization methods or for educational purposes in data visualization and statistics.
+Five hundred paired coordinates sampled from a bivariate normal distribution. The data is centered near the 
+origin with standard deviations indicating a relatively equal spread in both dimensions. 
+The variables exhibit negligible correlation (0.026), suggesting independence. 
+[Normality tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) for each variable yield high p-values, supporting the normal distribution assumption. 
+These characteristics make it well-suited for demonstrating statistical visualization techniques 
+in Vega and Vega-Lite, including scatter plots, density plots, heatmaps, and marginal histograms/density curves. 
+It can also serve as a clean baseline for testing new visualization methods or for educational purposes 
+in data visualization and statistics.
 A contrast to uniformly distributed data in `uniform-2d.json`
 """
+
+[[resources.schema.fields]]
+name        = "u"
+description = "mean: 0.005, std: 0.192, range: [-0.578, 0.533], p-value: 0.680"
+
+[[resources.schema.fields]]
+name        = "v"
+description = "mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763"
 
 [[resources.sources]]
 title = "Generated Data"
