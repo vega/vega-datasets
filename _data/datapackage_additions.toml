@@ -23,7 +23,7 @@ title = "7-Zip"
 path  = "https://www.7-zip.org/"
 
 [[resources.licenses]]
-title = "GNU Lesser General Public License "
+title = "GNU Lesser General Public License"
 path  = "https://www.7-zip.org/license.txt"
 
 [[resources]] # Path: airports.csv
