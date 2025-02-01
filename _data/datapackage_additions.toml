@@ -60,7 +60,7 @@ different patterns: one shows a linear relationship, another a non-linear curve,
 relationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier 
 entirely dictates the regression.
 
-In his 1973 paper "Graphs in Statistical Analysis," [Yale](https://archives.yale.edu/repositories/12/resources/3711) Professor Francis Anscombe uses these four datasets 
+In his 1973 paper "Graphs in Statistical Analysis" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets 
 to argue that visualization is essential to good statistical work, not merely an optional supplement—a radical position at a 
 time when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves 
 as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
