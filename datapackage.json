@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-02-01T18:15:18.649305+00:00",
+  "created": "2025-02-01T21:34:01.839728+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -130,11 +130,6 @@
       "name": "anscombe.json",
       "type": "table",
       "description": "Eleven (x,y) pairs of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression \nlines (same slope and intercept) and correlation coefficients (approximately 0.816). When plotted, reveals starkly \ndifferent patterns: one shows a linear relationship, another a non-linear curve, the third a near-perfect linear \nrelationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier \nentirely dictates the regression.\n\nIn his 1973 paper \"Graphs in Statistical Analysis\" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets \nto argue that visualization is essential to good statistical work, not merely an optional supplement. This was a radical position at a \ntime when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves \nas a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that \nstatistical analysis should combine both numerical calculations and graphical examination.  \n",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
       "sources": [
         {
           "title": "Anscombe's quartet (Wikipedia)",
@@ -1035,12 +1030,7 @@
     {
       "name": "driving.json",
       "type": "table",
-      "description": "Tracks the relationship between driving habits and gasoline prices\nin the United States from 1956 to 2010, combining two key metrics:\n\n1. Miles driven per capita per year (ranging from approximately 4,000 to 10,000 miles)\n2. Price of a gallon of gasoline (adjusted for inflation, in regular grade)\n\nIncludes a \"side\" column with values (left, right, top, bottom) that indicates label positioning \nin the original visualization to optimize readability and prevent overlap. Spans multiple significant \nhistorical periods including the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the\n\"swing backward\" period from 1956 to 2010.\n",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
+      "description": "Tracks the relationship between driving habits and gasoline prices \nin the United States during a period spanning multiple significant events, including \nthe cheap gas era, Arab oil embargo, energy crisis, record low prices, and the \n\"swing backward\" from 1956 to 2010.\n",
       "sources": [
         {
           "title": "New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution)",
@@ -1063,19 +1053,29 @@
         "fields": [
           {
             "name": "side",
-            "type": "string"
+            "type": "string",
+            "description": "Label positioning indicator used in the original visualization to optimize \nreadability and prevent overlap",
+            "categories": [
+              "left",
+              "right",
+              "top",
+              "bottom"
+            ]
           },
           {
             "name": "year",
-            "type": "integer"
+            "type": "integer",
+            "description": "Year of observation from 1956 to 2010"
           },
           {
             "name": "miles",
-            "type": "integer"
+            "type": "integer",
+            "description": "Miles driven per capita per year, ranging from approximately 4,000 to 10,000 miles"
           },
           {
             "name": "gas",
-            "type": "number"
+            "type": "number",
+            "description": "Price of a gallon of regular grade gasoline, adjusted for inflation"
           }
         ]
       }
@@ -1131,17 +1131,7 @@
     {
       "name": "flare-dependencies.json",
       "type": "table",
-      "description": "Indicates, with flare.json, relationships among classes in a software hierarchy.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Source undetermined"
-        }
-      ],
+      "description": "Indicates, with `flare.json`, relationships among classes in a software hierarchy.",
       "path": "flare-dependencies.json",
       "scheme": "file",
       "format": "json",
@@ -1170,17 +1160,7 @@
     {
       "name": "flare.json",
       "type": "table",
-      "description": "Indicates, with flare-dependencies.json, relationships among classes in a software hierarchy.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Source undetermined"
-        }
-      ],
+      "description": "Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy.",
       "path": "flare.json",
       "scheme": "file",
       "format": "json",
@@ -1710,7 +1690,7 @@
     {
       "name": "gapminder.json",
       "type": "table",
-      "description": "Combines key demographic indicators (life expectancy at birth, \npopulation, and fertility rate measured as babies per woman) for various countries from 1955 \nto 2005 at 5-year intervals. Includes a 'cluster' column, a categorical variable \ngrouping countries. Gapminder's data documentation notes that its philosophy is to fill data \ngaps with estimates and use current geographic boundaries for historical data. Gapminder \nstates that it aims to \"show people the big picture\" rather than support detailed numeric \nanalysis.\n\nNotes:\n1. Country Selection: The set of countries matches the version of this dataset \n   originally added to this collection in 2015. The specific criteria for country selection \n   in that version are not known. Data for Aruba are no longer available in the new version. \n   Hong Kong has been revised to Hong Kong, China in the new version.\n\n2. Data Precision: The precision of float values may have changed from the original version. \n   These changes reflect the most recent source data used for each indicator.\n\n3. Regional Groupings: The 'cluster' column represents a regional mapping of countries \n   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To \n   preserve continuity with previous versions of this dataset, we have retained the column \n   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: \n   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.",
+      "description": "Combines key demographic indicators (life expectancy at birth, \npopulation, and fertility rate measured as babies per woman) for various countries from 1955 \nto 2005 at 5-year intervals. Includes a 'cluster' column, a categorical variable \ngrouping countries. Gapminder's data documentation notes that its philosophy is to fill data \ngaps with estimates and use current geographic boundaries for historical data. Gapminder \nstates that it aims to \"show people the big picture\" rather than support detailed numeric \nanalysis.\n\nNotes:\n1. Country Selection: The set of countries matches the version of this dataset \n   originally added to this collection in 2015. The specific criteria for country selection \n   in that version are not known. Data for Aruba are no longer available in the new version. \n   Hong Kong has been revised to Hong Kong, China in the new version.\n\n2. Data Precision: The precision of float values may have changed from the original version. \n   These changes reflect the most recent source data used for each indicator.\n\n3. Regional Groupings: To preserve continuity with previous versions of this dataset, we have retained the column \n   name 'cluster' instead of renaming it to 'six_regions'. \n",
       "licenses": [
         {
           "title": "Creative Commons Attribution 4.0 International",
@@ -1724,7 +1704,7 @@
           "version": "14"
         },
         {
-          "title": "Gapminder Foundatio - Life Expectancy (Documentation)",
+          "title": "Gapminder Foundation - Life Expectancy (Documentation)",
           "path": "https://www.gapminder.org/data/documentation/gd004/"
         },
         {
@@ -1786,7 +1766,33 @@
           {
             "name": "cluster",
             "type": "integer",
-            "description": "A categorical variable (values 0-5) grouping countries by region"
+            "description": "A categorical variable grouping countries by region",
+            "categories": [
+              {
+                "value": 0,
+                "label": "south_asia"
+              },
+              {
+                "value": 1,
+                "label": "europe_central_asia"
+              },
+              {
+                "value": 2,
+                "label": "sub_saharan_africa"
+              },
+              {
+                "value": 3,
+                "label": "america"
+              },
+              {
+                "value": 4,
+                "label": "east_asia_pacific"
+              },
+              {
+                "value": 5,
+                "label": "middle_east_north_africa"
+              }
+            ]
           },
           {
             "name": "pop",
@@ -2064,11 +2070,6 @@
       "name": "la-riots.csv",
       "type": "table",
       "description": "A comprehensive record of fatalities during the five days of civil unrest in Los Angeles beginning \nApril 29, 1992, documenting over 60 deaths with associated geographic coordinates where each person lost their life.\nOriginally compiled and published by the Los Angeles Times Data Desk.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
       "sources": [
         {
           "title": "LA Riots Deaths, Los Angeles Times Data Desk",
@@ -2227,7 +2228,7 @@
     {
       "name": "lookup_groups.csv",
       "type": "table",
-      "description": "A nine-row lookup table for the `lookup_people.csv` dataset, \nmapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms.",
+      "description": "A nine-row lookup table for the `lookup_people.csv` dataset, \nmapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms.",
       "licenses": [
         {
           "path": "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
@@ -2261,7 +2262,7 @@
     {
       "name": "lookup_people.csv",
       "type": "table",
-      "description": "A synthetic list of nine people and their associated name, age, \nand height in centimeters. Used in conjunction with `lookup_groups.csv` \nto [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms.",
+      "description": "A synthetic list of nine people and their associated name, age, \nand height in centimeters. Used in conjunction with `lookup_groups.csv` \nto [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms.",
       "licenses": [
         {
           "path": "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
@@ -2380,16 +2381,6 @@
       "name": "movies.json",
       "type": "table",
       "description": "A collection of films and their performance metrics, including box office earnings, budgets, \nand audience ratings. Contains known data quality issues and intentional errors, serving as a teaching \nresource for developing data cleaning and validation skills in real-world analysis workflows.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Source undetermined"
-        }
-      ],
       "path": "movies.json",
       "scheme": "file",
       "format": "json",
@@ -2561,11 +2552,6 @@
       "name": "ohlc.json",
       "type": "table",
       "description": "Performance of the Chicago Board Options Exchange \n[Volatility Index](https://en.wikipedia.org/wiki/VIX) (VIX) in the summer of 2009.\n\nThe precise methodology used to derive the signal and calculate the ret columns is unclear.\n",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
       "sources": [
         {
           "title": "Yahoo Finance VIX Data",
@@ -2697,11 +2683,6 @@
       "name": "platformer-terrain.json",
       "type": "table",
       "description": "Assets from the video game Celeste. Added in [#376](https://github.com/vega/vega-datasets/pull/376)",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
       "sources": [
         {
           "title": "Celeste Game",
@@ -3103,11 +3084,6 @@
       "name": "sp500-2000.csv",
       "type": "table",
       "description": "S&amp;P 500 index values from 2000 to 2020.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
       "sources": [
         {
           "title": "Yahoo Finance",
@@ -3158,16 +3134,6 @@
       "name": "sp500.csv",
       "type": "table",
       "description": "Monthly closing values of the S&P 500 stock market index \nfrom January 2000 to March 2010. Captures several significant market events including \nthe dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. \nEach record contains a date in the format 'MMM D YYYY' and the corresponding closing price of \nthe index.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Source undetermined"
-        }
-      ],
       "path": "sp500.csv",
       "scheme": "file",
       "format": "csv",
@@ -3192,16 +3158,6 @@
       "name": "stocks.csv",
       "type": "table",
       "description": "Monthly stock prices for five companies from 2000 to 2010.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Source undetermined"
-        }
-      ],
       "path": "stocks.csv",
       "scheme": "file",
       "format": "csv",
@@ -3230,16 +3186,6 @@
       "name": "udistrict.json",
       "type": "table",
       "description": "Point locations of restaurants and cafes in Seattle's University \nDistrict, categorized by cuisine type (e.g., \"coffee\", \"pizza\", \"korean\"). Used to \ncreate a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) showing the prevalence \nof various food and beverage categories. The example graphic using this dataset states that it originally appeared \nin Alaska Airlines Beyond Magazine (Sep 2017, p. 120)",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "title": "Source undetermined"
-        }
-      ],
       "path": "udistrict.json",
       "scheme": "file",
       "format": "json",
@@ -3631,11 +3577,6 @@
       "name": "volcano.json",
       "type": "json",
       "description": "Elevation measurements of Maunga Whau (Mt Eden), a volcano in Auckland, New Zealand, representing \na rectangular area of 870 meters by 610 meters. Spacing between measurement points is approximately \n10 meters in both directions. Digitized from a topographic map by Ross Ihaka and adapted from R datasets, \nShould not be regarded as accurate.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
       "sources": [
         {
           "title": "R Datasets",
@@ -3710,16 +3651,6 @@
       "name": "weekly-weather.json",
       "type": "json",
       "description": "Instructional dataset showing actual and predicted temperature data.\n\n> [!IMPORTANT]\n> Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).\n",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "name": "Source undetermined"
-        }
-      ],
       "path": "weekly-weather.json",
       "scheme": "file",
       "format": "json",
@@ -3777,16 +3708,6 @@
       "name": "windvectors.csv",
       "type": "table",
       "description": "Simulated wind patterns over northwestern Europe.",
-      "licenses": [
-        {
-          "name": "License status undetermined"
-        }
-      ],
-      "sources": [
-        {
-          "name": "Source undetermined"
-        }
-      ],
       "path": "windvectors.csv",
       "scheme": "file",
       "format": "csv",

@@ -390,15 +390,15 @@ the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the
 """
 [resources.schema]
 [[resources.schema.fields]]
-name = "year"
+name        = "year"
 description = "Year of observation from 1956 to 2010"
 
 [[resources.schema.fields]]
-name = "miles"
+name        = "miles"
 description = "Miles driven per capita per year, ranging from approximately 4,000 to 10,000 miles"
 
 [[resources.schema.fields]]
-name = "gas"
+name        = "gas"
 description = "Price of a gallon of regular grade gasoline, adjusted for inflation"
 
 [[resources.schema.fields]]
@@ -641,15 +641,15 @@ name        = "country"
 description = "Name of the country"
 
 [[resources.schema.fields]]
-name        = "cluster"
+name = "cluster"
 description = "A categorical variable grouping countries by region"
-categories  = [
-    { value = 0, label = "south_asia" },
-    { value = 1, label = "europe_central_asia" },
-    { value = 2, label = "sub_saharan_africa" },
-    { value = 3, label = "america" },
-    { value = 4, label = "east_asia_pacific" },
-    { value = 5, label = "middle_east_north_africa" }
+categories = [
+  { value = 0, label = "south_asia" },
+  { value = 1, label = "europe_central_asia" },
+  { value = 2, label = "sub_saharan_africa" },
+  { value = 3, label = "america" },
+  { value = 4, label = "east_asia_pacific" },
+  { value = 5, label = "middle_east_north_africa" },
 ]
 
 [[resources.schema.fields]]

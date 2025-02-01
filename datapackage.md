@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-01 18:15:18 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-01 21:34:01 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -99,10 +99,6 @@ statistical analysis should combine both numerical calculations and graphical ex
 |:------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
 | Anscombe's quartet (Wikipedia)                                                                  | https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data |
 | Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21. | https://www.jstor.org/stable/2682899                    |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `barley.json`
 ### path
 barley.json
@@ -481,33 +477,24 @@ calculating derived indicators, and adapting metadata. Deaths are reported as ab
 ### path
 driving.json
 ### description
-Tracks the relationship between driving habits and gasoline prices
-in the United States from 1956 to 2010, combining two key metrics:
-
-1. Miles driven per capita per year (ranging from approximately 4,000 to 10,000 miles)
-2. Price of a gallon of gasoline (adjusted for inflation, in regular grade)
-
-Includes a "side" column with values (left, right, top, bottom) that indicates label positioning 
-in the original visualization to optimize readability and prevent overlap. Spans multiple significant 
-historical periods including the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the
-"swing backward" period from 1956 to 2010.
+Tracks the relationship between driving habits and gasoline prices 
+in the United States during a period spanning multiple significant events, including 
+the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the 
+"swing backward" from 1956 to 2010.
 
 ### schema
     
-| name   | type    |
-|:-------|:--------|
-| side   | string  |
-| year   | integer |
-| miles  | integer |
-| gas    | number  |
+| name   | type    | description                                                                        | categories                         |
+|:-------|:--------|:-----------------------------------------------------------------------------------|:-----------------------------------|
+| side   | string  | Label positioning indicator used in the original visualization to optimize         | ['left', 'right', 'top', 'bottom'] |
+|        |         | readability and prevent overlap                                                    |                                    |
+| year   | integer | Year of observation from 1956 to 2010                                              |                                    |
+| miles  | integer | Miles driven per capita per year, ranging from approximately 4,000 to 10,000 miles |                                    |
+| gas    | number  | Price of a gallon of regular grade gasoline, adjusted for inflation                |                                    |
 ### sources
 | title                                                                                                                     | path                                                                                      |
 |:--------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
 | New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution) | https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `earthquakes.json`
 ### path
 earthquakes.json
@@ -540,40 +527,24 @@ Application icon from open-source software project. Used in [Image-based Scatter
 ### path
 flare-dependencies.json
 ### description
-Indicates, with flare.json, relationships among classes in a software hierarchy.
+Indicates, with `flare.json`, relationships among classes in a software hierarchy.
 ### schema
     
 | name   | type    |
 |:-------|:--------|
 | source | integer |
 | target | integer |
-### sources
-| title               |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `flare.json`
 ### path
 flare.json
 ### description
-Indicates, with flare-dependencies.json, relationships among classes in a software hierarchy.
+Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy.
 ### schema
     
 | name   | type    |
 |:-------|:--------|
 | id     | integer |
 | name   | string  |
-### sources
-| title               |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `flights-10k.json`
 ### path
 flights-10k.json
@@ -843,26 +814,24 @@ Notes:
 2. Data Precision: The precision of float values may have changed from the original version. 
    These changes reflect the most recent source data used for each indicator.
 
-3. Regional Groupings: The 'cluster' column represents a regional mapping of countries 
-   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
-   preserve continuity with previous versions of this dataset, we have retained the column 
-   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
-   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.
+3. Regional Groupings: To preserve continuity with previous versions of this dataset, we have retained the column 
+   name 'cluster' instead of renaming it to 'six_regions'. 
+
 ### schema
     
-| name        | type    | description                                                      |
-|:------------|:--------|:-----------------------------------------------------------------|
-| year        | integer | Years from 1955 to 2005 at 5-year intervals                      |
-| country     | string  | Name of the country                                              |
-| cluster     | integer | A categorical variable (values 0-5) grouping countries by region |
-| pop         | integer | Population of the country                                        |
-| life_expect | number  | Life expectancy in years                                         |
-| fertility   | number  | Fertility rate (average number of children per woman             |
+| name        | type    | description                                          | categories                                                                                                                                                                                                                                                        |
+|:------------|:--------|:-----------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| year        | integer | Years from 1955 to 2005 at 5-year intervals          |                                                                                                                                                                                                                                                                   |
+| country     | string  | Name of the country                                  |                                                                                                                                                                                                                                                                   |
+| cluster     | integer | A categorical variable grouping countries by region  | [{'value': 0, 'label': 'south_asia'}, {'value': 1, 'label': 'europe_central_asia'}, {'value': 2, 'label': 'sub_saharan_africa'}, {'value': 3, 'label': 'america'}, {'value': 4, 'label': 'east_asia_pacific'}, {'value': 5, 'label': 'middle_east_north_africa'}] |
+| pop         | integer | Population of the country                            |                                                                                                                                                                                                                                                                   |
+| life_expect | number  | Life expectancy in years                             |                                                                                                                                                                                                                                                                   |
+| fertility   | number  | Fertility rate (average number of children per woman |                                                                                                                                                                                                                                                                   |
 ### sources
 | title                                                          | path                                                                                                                   |   version |
 |:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|----------:|
 | Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   |        14 |
-| Gapminder Foundatio - Life Expectancy (Documentation)          | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
+| Gapminder Foundation - Life Expectancy (Documentation)         | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
 | Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   |         7 |
 | Gapminder Foundation - Population (Documentation)              | https://www.gapminder.org/data/documentation/gd003/                                                                    |           |
 | Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   |        14 |
@@ -1043,10 +1012,6 @@ Originally compiled and published by the Los Angeles Times Data Desk.
 | title                                        | path                                             |
 |:---------------------------------------------|:-------------------------------------------------|
 | LA Riots Deaths, Los Angeles Times Data Desk | http://spreadsheets.latimes.com/la-riots-deaths/ |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `londonboroughs.json`
 ### path
 londonBoroughs.json
@@ -1104,7 +1069,7 @@ reflects the system as of February 4, 2018, and may not incorporate subsequent m
 lookup_groups.csv
 ### description
 A nine-row lookup table for the `lookup_people.csv` dataset, 
-mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms.
+mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms.
 ### schema
     
 | name   | type    |
@@ -1125,7 +1090,7 @@ lookup_people.csv
 ### description
 A synthetic list of nine people and their associated name, age, 
 and height in centimeters. Used in conjunction with `lookup_groups.csv` 
-to [demonstrate](https://vega.github.io/vega-lite-v3/examples/lookup.html) `lookup` transforms.
+to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms.
 ### schema
     
 | name   | type    |
@@ -1224,14 +1189,6 @@ resource for developing data cleaning and validation skills in real-world analys
 | Rotten Tomatoes Rating | integer |
 | IMDB Rating            | number  |
 | IMDB Votes             | integer |
-### sources
-| title               |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `normal-2d.json`
 ### path
 normal-2d.json
@@ -1306,10 +1263,6 @@ The precise methodology used to derive the signal and calculate the ret columns 
 |:---------------------------|:----------------------------------------------------------------|
 | Yahoo Finance VIX Data     | https://finance.yahoo.com/chart/%5EVIX                          |
 | CBOE - VIX Historical Data | https://www.cboe.com/tradable_products/vix/vix_historical_data/ |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `penguins.json`
 ### path
 penguins.json
@@ -1361,10 +1314,6 @@ Assets from the video game Celeste. Added in [#376](https://github.com/vega/vega
 | title        | path                        |
 |:-------------|:----------------------------|
 | Celeste Game | http://www.celestegame.com/ |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `political-contributions.json`
 ### path
 political-contributions.json
@@ -1551,10 +1500,6 @@ S&amp;P 500 index values from 2000 to 2020.
 | title         | path                                            |
 |:--------------|:------------------------------------------------|
 | Yahoo Finance | https://finance.yahoo.com/quote/%5EDJI/history/ |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `sp500.csv`
 ### path
 sp500.csv
@@ -1570,14 +1515,6 @@ the index.
 |:-------|:-------|
 | date   | string |
 | price  | number |
-### sources
-| title               |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `stocks.csv`
 ### path
 stocks.csv
@@ -1590,14 +1527,6 @@ Monthly stock prices for five companies from 2000 to 2010.
 | symbol | string |
 | date   | string |
 | price  | number |
-### sources
-| title               |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `udistrict.json`
 ### path
 udistrict.json
@@ -1613,14 +1542,6 @@ in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)
 |:-------|:-------|
 | key    | string |
 | lat    | number |
-### sources
-| title               |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `unemployment-across-industries.json`
 ### path
 unemployment-across-industries.json
@@ -1846,10 +1767,6 @@ Should not be regarded as accurate.
 | title      | path                                                                       |
 |:-----------|:---------------------------------------------------------------------------|
 | R Datasets | https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.html |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `weather.csv`
 ### path
 weather.csv
@@ -1886,14 +1803,6 @@ Instructional dataset showing actual and predicted temperature data.
 > [!IMPORTANT]
 > Named `weather.json` in previous versions (`v1.4.0` - `v2.11.0`).
 
-### sources
-| name                |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `wheat.json`
 ### path
 wheat.json
@@ -1934,14 +1843,6 @@ Simulated wind patterns over northwestern Europe.
 | dir       | integer |
 | dirCat    | integer |
 | speed     | number  |
-### sources
-| name                |
-|:--------------------|
-| Source undetermined |
-### licenses
-| name                        |
-|:----------------------------|
-| License status undetermined |
 ## `world-110m.json`
 ### path
 world-110m.json
