@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-01 16:17:36 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-01 18:15:18 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -81,8 +81,8 @@ different patterns: one shows a linear relationship, another a non-linear curve,
 relationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier 
 entirely dictates the regression.
 
-In his 1973 paper "Graphs in Statistical Analysis," [Yale](https://archives.yale.edu/repositories/12/resources/3711) Professor Francis Anscombe uses these four datasets 
-to argue that visualization is essential to good statistical work, not merely an optional supplement—a radical position at a 
+In his 1973 paper "Graphs in Statistical Analysis" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets 
+to argue that visualization is essential to good statistical work, not merely an optional supplement. This was a radical position at a 
 time when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves 
 as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
 statistical analysis should combine both numerical calculations and graphical examination.  
@@ -258,19 +258,17 @@ Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. 
 ### path
 budgets.json
 ### description
-U.S. federal budget projections and actual outcomes (in trillions of dollars) from 1980 through 2010, with all 
-values adjusted for inflation to the price level at the time of publication. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
-Includes for each year the actual budget outcome (looking back one year) and a series of forecasts for future years, allowing comparison 
-between projected and real fiscal results. Reveals how budget forecasts made in any given year compared to
-what actually happened, with positive values indicating surpluses (briefly seen around 2000) and negative values 
+U.S. federal budget projections and actual outcomes from 1980 through 2010. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
+Reveals how budget forecasts made in any given year compared to what actually happened, 
+with positive values indicating surpluses (briefly seen around 2000) and negative values 
 representing deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis).
 ### schema
     
-| name         | type    |
-|:-------------|:--------|
-| budgetYear   | integer |
-| forecastYear | integer |
-| value        | number  |
+| name         | type    | description                                                           |
+|:-------------|:--------|:----------------------------------------------------------------------|
+| budgetYear   | integer | The year for which the budget outcome is being reported               |
+| forecastYear | integer | The year for which the budget was forecast                            |
+| value        | number  | The budget outcome or projection value (in trillions of 2010 dollars) |
 ### sources
 | title                           | path                            |
 |:--------------------------------|:--------------------------------|
@@ -1170,12 +1168,16 @@ Contains two intentional inaccuracies to maintain compatibility with
 the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
 1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
 2. the end date for the reign of George IV is shown as 1820, instead of 1830.
-These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
+These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used in the visualization.
 The entry "W&M" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, 
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
 and the period leading to the Restoration. While historically more accurate to call this the "interregnum," the field name of `commonwealth` 
-from the original dataset is retained for backwards compatibility. Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+from the original dataset is retained for backwards compatibility.
+
+> [!IMPORTANT]
+> Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+
 Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
 
 ### schema
@@ -1234,22 +1236,22 @@ resource for developing data cleaning and validation skills in real-world analys
 ### path
 normal-2d.json
 ### description
-Five hundred paired coordinates (u, v) sampled from a bivariate normal distribution. The data is centered near the 
-origin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), indicating a relatively equal 
-spread in both dimensions. The variables exhibit negligible correlation (0.026), suggesting independence. The 
-range of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each variable yield high p-values 
-(u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's characteristics make it 
-well-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, including scatter
-plots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a clean baseline 
-dataset for testing new visualization methods or for educational purposes in data visualization and statistics.
+Five hundred paired coordinates sampled from a bivariate normal distribution. The data is centered near the 
+origin with standard deviations indicating a relatively equal spread in both dimensions. 
+The variables exhibit negligible correlation (0.026), suggesting independence. 
+[Normality tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) for each variable yield high p-values, supporting the normal distribution assumption. 
+These characteristics make it well-suited for demonstrating statistical visualization techniques 
+in Vega and Vega-Lite, including scatter plots, density plots, heatmaps, and marginal histograms/density curves. 
+It can also serve as a clean baseline for testing new visualization methods or for educational purposes 
+in data visualization and statistics.
 A contrast to uniformly distributed data in `uniform-2d.json`
 
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| u      | number |
-| v      | number |
+| name   | type   | description                                                      |
+|:-------|:-------|:-----------------------------------------------------------------|
+| u      | number | mean: 0.005, std: 0.192, range: [-0.578, 0.533], p-value: 0.680  |
+| v      | number | mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763 |
 ### sources
 | title          |
 |:---------------|
@@ -1313,25 +1315,22 @@ The precise methodology used to derive the signal and calculate the ret columns 
 penguins.json
 ### description
 Records of morphological measurements and demographic information from 344 Palmer Archipelago 
-penguins across three species (Adelie, Gentoo, and Chinstrap) observed on three islands (Torgersen, Biscoe, and Dream) 
-in Antarctica. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/), measurements include precise 
-beak length (mm), beak depth (mm), flipper length (mm), and body mass (g), along with sex identification for 333 
-individuals. Each entry specifies the penguin's species and island location, with some entries containing null 
-values or missing measurements. Data gathering occurred as part of Palmer Station's long-term ecological research,
-contributing to studies of Antarctic marine ecosystems and penguin biology. All measurements follow standardized units, 
-enabling research into morphological variations between species and sexual dimorphism in Antarctic penguins. 
+penguins across three species. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/). 
+Data gathering occurred as part of Palmer Station's long-term ecological research, contributing to studies of Antarctic marine
+ecosystems and penguin biology. All measurements follow standardized units, enabling research into morphological 
+variations between species and sexual dimorphism in Antarctic penguins. 
 
 ### schema
     
-| name                | type    |
-|:--------------------|:--------|
-| Species             | string  |
-| Island              | string  |
-| Beak Length (mm)    | number  |
-| Beak Depth (mm)     | number  |
-| Flipper Length (mm) | integer |
-| Body Mass (g)       | integer |
-| Sex                 | string  |
+| name                | type    | description                                                         |
+|:--------------------|:--------|:--------------------------------------------------------------------|
+| Species             | string  | Penguin species (Adelie, Gentoo, or Chinstrap)                      |
+| Island              | string  | Island where the penguin was observed (Torgersen, Biscoe, or Dream) |
+| Beak Length (mm)    | number  | Beak length in millimeters                                          |
+| Beak Depth (mm)     | number  | Beak depth in millimeters                                           |
+| Flipper Length (mm) | integer | Flipper length in millimeters                                       |
+| Body Mass (g)       | integer | Body mass in grams                                                  |
+| Sex                 | string  | Sex of the penguin (MALE, FEMALE or null)                           |
 ### sources
 | title                               | path                                     |
 |:------------------------------------|:-----------------------------------------|

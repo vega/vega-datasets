@@ -131,12 +131,23 @@ path  = "https://resources.data.gov/open-licenses/"
 [[resources]] # Path: budgets.json
 path = "budgets.json"
 description = """
-U.S. federal budget projections and actual outcomes (in trillions of dollars) from 1980 through 2010, with all 
-values adjusted for inflation to the price level at the time of publication. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
-Includes for each year the actual budget outcome (looking back one year) and a series of forecasts for future years, allowing comparison 
-between projected and real fiscal results. Reveals how budget forecasts made in any given year compared to
-what actually happened, with positive values indicating surpluses (briefly seen around 2000) and negative values 
+U.S. federal budget projections and actual outcomes from 1980 through 2010. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
+Reveals how budget forecasts made in any given year compared to what actually happened, 
+with positive values indicating surpluses (briefly seen around 2000) and negative values 
 representing deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis)."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "budgetYear"
+description = "The year for which the budget outcome is being reported"
+
+[[resources.schema.fields]]
+name        = "forecastYear"
+description = "The year for which the budget was forecast"
+
+[[resources.schema.fields]]
+name        = "value"
+description = "The budget outcome or projection value (in trillions of 2010 dollars)"
 
 [[resources.sources]]
 title = "Office of Management and Budget"
@@ -1055,14 +1066,40 @@ name = "License status undetermined"
 [[resources]] # Path: penguins.json
 path = "penguins.json"
 description = """Records of morphological measurements and demographic information from 344 Palmer Archipelago 
-penguins across three species (Adelie, Gentoo, and Chinstrap) observed on three islands (Torgersen, Biscoe, and Dream) 
-in Antarctica. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/), measurements include precise 
-beak length (mm), beak depth (mm), flipper length (mm), and body mass (g), along with sex identification for 333 
-individuals. Each entry specifies the penguin's species and island location, with some entries containing null 
-values or missing measurements. Data gathering occurred as part of Palmer Station's long-term ecological research,
-contributing to studies of Antarctic marine ecosystems and penguin biology. All measurements follow standardized units, 
-enabling research into morphological variations between species and sexual dimorphism in Antarctic penguins. 
+penguins across three species. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/). 
+Data gathering occurred as part of Palmer Station's long-term ecological research, contributing to studies of Antarctic marine
+ecosystems and penguin biology. All measurements follow standardized units, enabling research into morphological 
+variations between species and sexual dimorphism in Antarctic penguins. 
 """
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "Species"
+description = "Penguin species (Adelie, Gentoo, or Chinstrap)"
+
+[[resources.schema.fields]]
+name        = "Island"
+description = "Island where the penguin was observed (Torgersen, Biscoe, or Dream)"
+
+[[resources.schema.fields]]
+name        = "Beak Length (mm)"
+description = "Beak length in millimeters"
+
+[[resources.schema.fields]]
+name        = "Beak Depth (mm)"
+description = "Beak depth in millimeters"
+
+[[resources.schema.fields]]
+name        = "Flipper Length (mm)"
+description = "Flipper length in millimeters"
+
+[[resources.schema.fields]]
+name        = "Body Mass (g)"
+description = "Body mass in grams"
+
+[[resources.schema.fields]]
+name        = "Sex"
+description = "Sex of the penguin (MALE, FEMALE or null)"
 
 [[resources.sources]]
 title = "Palmer Station Antarctica LTER"

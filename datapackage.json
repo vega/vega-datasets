@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-02-01T16:17:36.850922+00:00",
+  "created": "2025-02-01T18:15:18.649305+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -28,7 +28,7 @@
       "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
       "licenses": [
         {
-          "title": "GNU Lesser General Public License ",
+          "title": "GNU Lesser General Public License",
           "path": "https://www.7-zip.org/license.txt"
         }
       ],
@@ -129,7 +129,7 @@
     {
       "name": "anscombe.json",
       "type": "table",
-      "description": "Eleven (x,y) pairs of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression \nlines (same slope and intercept) and correlation coefficients (approximately 0.816). When plotted, reveals starkly \ndifferent patterns: one shows a linear relationship, another a non-linear curve, the third a near-perfect linear \nrelationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier \nentirely dictates the regression.\n\nIn his 1973 paper \"Graphs in Statistical Analysis,\" [Yale](https://archives.yale.edu/repositories/12/resources/3711) Professor Francis Anscombe uses these four datasets \nto argue that visualization is essential to good statistical work, not merely an optional supplement—a radical position at a \ntime when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves \nas a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that \nstatistical analysis should combine both numerical calculations and graphical examination.  \n",
+      "description": "Eleven (x,y) pairs of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression \nlines (same slope and intercept) and correlation coefficients (approximately 0.816). When plotted, reveals starkly \ndifferent patterns: one shows a linear relationship, another a non-linear curve, the third a near-perfect linear \nrelationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier \nentirely dictates the regression.\n\nIn his 1973 paper \"Graphs in Statistical Analysis\" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets \nto argue that visualization is essential to good statistical work, not merely an optional supplement. This was a radical position at a \ntime when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves \nas a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that \nstatistical analysis should combine both numerical calculations and graphical examination.  \n",
       "licenses": [
         {
           "name": "License status undetermined"
@@ -141,7 +141,7 @@
           "path": "https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data"
         },
         {
-          "title": "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21. ",
+          "title": "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21.",
           "path": "https://www.jstor.org/stable/2682899"
         }
       ],
@@ -634,7 +634,7 @@
     {
       "name": "budgets.json",
       "type": "table",
-      "description": "U.S. federal budget projections and actual outcomes (in trillions of dollars) from 1980 through 2010, with all \nvalues adjusted for inflation to the price level at the time of publication. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. \nIncludes for each year the actual budget outcome (looking back one year) and a series of forecasts for future years, allowing comparison \nbetween projected and real fiscal results. Reveals how budget forecasts made in any given year compared to\nwhat actually happened, with positive values indicating surpluses (briefly seen around 2000) and negative values \nrepresenting deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis).",
+      "description": "U.S. federal budget projections and actual outcomes from 1980 through 2010. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. \nReveals how budget forecasts made in any given year compared to what actually happened, \nwith positive values indicating surpluses (briefly seen around 2000) and negative values \nrepresenting deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis).",
       "licenses": [
         {
           "title": "U.S. Government Dataset",
@@ -663,15 +663,18 @@
         "fields": [
           {
             "name": "budgetYear",
-            "type": "integer"
+            "type": "integer",
+            "description": "The year for which the budget outcome is being reported"
           },
           {
             "name": "forecastYear",
-            "type": "integer"
+            "type": "integer",
+            "description": "The year for which the budget was forecast"
           },
           {
             "name": "value",
-            "type": "number"
+            "type": "number",
+            "description": "The budget outcome or projection value (in trillions of 2010 dollars)"
           }
         ]
       }
@@ -2319,7 +2322,7 @@
     {
       "name": "monarchs.json",
       "type": "table",
-      "description": "A chronological list of English and British monarchs from Elizabeth I through George IV.\n\nContains two intentional inaccuracies to maintain compatibility with \nthe [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:\n1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;\n2. the end date for the reign of George IV is shown as 1820, instead of 1830.\nThese discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.\nThe entry \"W&M\" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, \nthe official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.\nThe `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, \nand the period leading to the Restoration. While historically more accurate to call this the \"interregnum,\" the field name of `commonwealth` \nfrom the original dataset is retained for backwards compatibility. Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).\nSource data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).\n",
+      "description": "A chronological list of English and British monarchs from Elizabeth I through George IV.\n\nContains two intentional inaccuracies to maintain compatibility with \nthe [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:\n1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;\n2. the end date for the reign of George IV is shown as 1820, instead of 1830.\nThese discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used in the visualization.\nThe entry \"W&M\" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, \nthe official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.\nThe `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, \nand the period leading to the Restoration. While historically more accurate to call this the \"interregnum,\" the field name of `commonwealth` \nfrom the original dataset is retained for backwards compatibility.\n\n> [!IMPORTANT]\n> Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).\n\nSource data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).\n",
       "licenses": [
         {
           "title": "Open Government Licence v3.0 (UK)",
@@ -2471,7 +2474,7 @@
     {
       "name": "normal-2d.json",
       "type": "table",
-      "description": "Five hundred paired coordinates (u, v) sampled from a bivariate normal distribution. The data is centered near the \norigin (u: 0.005, v: -0.011) with standard deviations of 0.192 (u) and 0.199 (v), indicating a relatively equal \nspread in both dimensions. The variables exhibit negligible correlation (0.026), suggesting independence. The \nrange of u is [-0.578, 0.533] and v is [-0.534, 0.606]. Normality tests for each variable yield high p-values \n(u: 0.680, v: 0.763), supporting the normal distribution assumption. This dataset's characteristics make it \nwell-suited for demonstrating statistical visualization techniques in Vega and Vega-Lite, including scatter\nplots, density plots, heatmaps, and marginal histograms/density curves. It can also serve as a clean baseline \ndataset for testing new visualization methods or for educational purposes in data visualization and statistics.\nA contrast to uniformly distributed data in `uniform-2d.json`\n",
+      "description": "Five hundred paired coordinates sampled from a bivariate normal distribution. The data is centered near the \norigin with standard deviations indicating a relatively equal spread in both dimensions. \nThe variables exhibit negligible correlation (0.026), suggesting independence. \n[Normality tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) for each variable yield high p-values, supporting the normal distribution assumption. \nThese characteristics make it well-suited for demonstrating statistical visualization techniques \nin Vega and Vega-Lite, including scatter plots, density plots, heatmaps, and marginal histograms/density curves. \nIt can also serve as a clean baseline for testing new visualization methods or for educational purposes \nin data visualization and statistics.\nA contrast to uniformly distributed data in `uniform-2d.json`\n",
       "licenses": [
         {
           "path": "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
@@ -2498,11 +2501,13 @@
         "fields": [
           {
             "name": "u",
-            "type": "number"
+            "type": "number",
+            "description": "mean: 0.005, std: 0.192, range: [-0.578, 0.533], p-value: 0.680"
           },
           {
             "name": "v",
-            "type": "number"
+            "type": "number",
+            "description": "mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763"
           }
         ]
       }
@@ -2619,7 +2624,7 @@
     {
       "name": "penguins.json",
       "type": "table",
-      "description": "Records of morphological measurements and demographic information from 344 Palmer Archipelago \npenguins across three species (Adelie, Gentoo, and Chinstrap) observed on three islands (Torgersen, Biscoe, and Dream) \nin Antarctica. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/), measurements include precise \nbeak length (mm), beak depth (mm), flipper length (mm), and body mass (g), along with sex identification for 333 \nindividuals. Each entry specifies the penguin's species and island location, with some entries containing null \nvalues or missing measurements. Data gathering occurred as part of Palmer Station's long-term ecological research,\ncontributing to studies of Antarctic marine ecosystems and penguin biology. All measurements follow standardized units, \nenabling research into morphological variations between species and sexual dimorphism in Antarctic penguins. \n",
+      "description": "Records of morphological measurements and demographic information from 344 Palmer Archipelago \npenguins across three species. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/). \nData gathering occurred as part of Palmer Station's long-term ecological research, contributing to studies of Antarctic marine\necosystems and penguin biology. All measurements follow standardized units, enabling research into morphological \nvariations between species and sexual dimorphism in Antarctic penguins. \n",
       "licenses": [
         {
           "name": "CC0 1.0 Universal",
@@ -2652,31 +2657,38 @@
         "fields": [
           {
             "name": "Species",
-            "type": "string"
+            "type": "string",
+            "description": "Penguin species (Adelie, Gentoo, or Chinstrap)"
           },
           {
             "name": "Island",
-            "type": "string"
+            "type": "string",
+            "description": "Island where the penguin was observed (Torgersen, Biscoe, or Dream)"
           },
           {
             "name": "Beak Length (mm)",
-            "type": "number"
+            "type": "number",
+            "description": "Beak length in millimeters"
           },
           {
             "name": "Beak Depth (mm)",
-            "type": "number"
+            "type": "number",
+            "description": "Beak depth in millimeters"
           },
           {
             "name": "Flipper Length (mm)",
-            "type": "integer"
+            "type": "integer",
+            "description": "Flipper length in millimeters"
           },
           {
             "name": "Body Mass (g)",
-            "type": "integer"
+            "type": "integer",
+            "description": "Body mass in grams"
           },
           {
             "name": "Sex",
-            "type": "string"
+            "type": "string",
+            "description": "Sex of the penguin (MALE, FEMALE or null)"
           }
         ]
       }
