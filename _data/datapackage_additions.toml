@@ -615,11 +615,9 @@ Notes:
 2. Data Precision: The precision of float values may have changed from the original version. 
    These changes reflect the most recent source data used for each indicator.
 
-3. Regional Groupings: The 'cluster' column represents a regional mapping of countries 
-   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
-   preserve continuity with previous versions of this dataset, we have retained the column 
-   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
-   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`."""
+3. Regional Groupings: To preserve continuity with previous versions of this dataset, we have retained the column 
+   name 'cluster' instead of renaming it to 'six_regions'. 
+"""
 
 [resources.schema]
 [[resources.schema.fields]]
@@ -632,7 +630,15 @@ description = "Name of the country"
 
 [[resources.schema.fields]]
 name        = "cluster"
-description = "A categorical variable (values 0-5) grouping countries by region"
+description = "A categorical variable grouping countries by region"
+categories  = [
+    { value = 0, label = "south_asia" },
+    { value = 1, label = "europe_central_asia" },
+    { value = 2, label = "sub_saharan_africa" },
+    { value = 3, label = "america" },
+    { value = 4, label = "east_asia_pacific" },
+    { value = 5, label = "middle_east_north_africa" }
+]
 
 [[resources.schema.fields]]
 name        = "pop"
@@ -652,7 +658,7 @@ path    = "https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsg
 version = "14"
 
 [[resources.sources]]
-title = "Gapminder Foundatio - Life Expectancy (Documentation)"
+title = "Gapminder Foundation - Life Expectancy (Documentation)"
 path  = "https://www.gapminder.org/data/documentation/gd004/"
 
 [[resources.sources]]
