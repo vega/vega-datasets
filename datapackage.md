@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-02 12:04:24 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-02 14:39:56 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1531,10 +1531,9 @@ Monthly stock prices for five companies from 2000 to 2010.
 udistrict.json
 ### description
 Point locations of restaurants and cafes in Seattle's University 
-District, categorized by cuisine type (e.g., "coffee", "pizza", "korean"). Used to 
-create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) showing the prevalence 
-of various food and beverage categories. The example graphic using this dataset states that it originally appeared 
-in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)
+District, categorized by cuisine type. Used to create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) 
+showing the prevalence of various food and beverage categories. The example graphic 
+using this dataset states that it originally appeared in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)
 ### schema
     
 | name   | type   |

@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-02-02T12:04:24.205787+00:00",
+  "created": "2025-02-02T14:39:56.173973+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -3202,7 +3202,7 @@
     {
       "name": "udistrict.json",
       "type": "table",
-      "description": "Point locations of restaurants and cafes in Seattle's University \nDistrict, categorized by cuisine type (e.g., \"coffee\", \"pizza\", \"korean\"). Used to \ncreate a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) showing the prevalence \nof various food and beverage categories. The example graphic using this dataset states that it originally appeared \nin Alaska Airlines Beyond Magazine (Sep 2017, p. 120)",
+      "description": "Point locations of restaurants and cafes in Seattle's University \nDistrict, categorized by cuisine type. Used to create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) \nshowing the prevalence of various food and beverage categories. The example graphic \nusing this dataset states that it originally appeared in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)",
       "path": "udistrict.json",
       "scheme": "file",
       "format": "json",
