@@ -36,7 +36,7 @@
     "@types/d3-dsv": "^3.0.7",
     "d3-dsv": "^3.0.1",
     "datalib": "^1.9.3",
-    "release-it": "^17.10.0",
+    "release-it": "^18.1.2",
     "rollup": "^4.24.4",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-ts": "^3.4.5",
