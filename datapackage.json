@@ -1933,8 +1933,8 @@
       "format": "json",
       "mediatype": "text/json",
       "encoding": "utf-8",
-      "hash": "sha1:ebfd02fd584009ee391bfc5d33972e4c94f507ab",
-      "bytes": 72771,
+      "hash": "sha1:50bc780ef4a81e4f67c5ab2686ff10ba9798a951",
+      "bytes": 72770,
       "dialect": {
         "json": {
           "keyed": true

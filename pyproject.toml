@@ -109,9 +109,13 @@ select = [
 
 [tool.pyright]
 enableExperimentalFeatures = true
-ignore                     = ["../../../**/Lib", ".venv"]
-include                    = ["./scripts/build_datapackage.py", "./scripts/flights.py"]
-pythonPlatform             = "All"
-pythonVersion              = "3.12"
-reportUnusedExpression     = "none"
-typeCheckingMode           = "basic"
+ignore = ["../../../**/Lib", ".venv"]
+include = [
+  "./scripts/build_datapackage.py",
+  "./scripts/flights.py",
+  "./scripts/income.py",
+]
+pythonPlatform = "All"
+pythonVersion = "3.12"
+reportUnusedExpression = "none"
+typeCheckingMode = "basic"
