@@ -16,10 +16,29 @@ path  = "https://github.com/vega/vega-datasets/graphs/contributors"
 
 [[resources]] # Path: 7zip.png
 path        = "7zip.png"
-description = """Application icons from open-source software projects."""
+description = """Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html)."""
+
+[[resources.sources]]
+title = "7-Zip"
+path  = "https://www.7-zip.org/"
+
+[[resources.licenses]]
+title = "GNU Lesser General Public License"
+path  = "https://www.7-zip.org/license.txt"
 
 [[resources]] # Path: airports.csv
 path = "airports.csv"
+description = """Airports in the United States and its territories, including  major commercial, regional, 
+and municipal airports. Contains information about each airport's location (latitude/longitude 
+coordinates), identification codes, name, city, state, and country."""
+
+[[resources.sources]]
+title = "Airports (Data.gov)"
+path  = "https://catalog.data.gov/dataset/airports-5e97a"
+
+[[resources.licenses]]
+name  = "other-open"
+title = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: annual-precip.json
 path        = "annual-precip.json"
@@ -27,25 +46,48 @@ description = """A raster grid of global annual precipitation for the year 2016 
 
 [[resources.sources]]
 title = "Climate Forecast System Version 2"
-path  = "https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/climate-forecast-system-version2-cfsv2"
+path  = "https://www.cpc.ncep.noaa.gov/products/people/wwang/cfsv2_fcst_history/"
+
+[[resources.licenses]]
+title = "Public Domain"
+path  = "https://www.weather.gov/disclaimer/"
 
 [[resources]] # Path: anscombe.json
-path        = "anscombe.json"
-description = """Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician."""
+path = "anscombe.json"
+description = """Eleven (x,y) pairs of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression 
+lines (same slope and intercept) and correlation coefficients (approximately 0.816). When plotted, reveals starkly 
+different patterns: one shows a linear relationship, another a non-linear curve, the third a near-perfect linear 
+relationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier 
+entirely dictates the regression.
+
+In his 1973 paper "Graphs in Statistical Analysis" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets 
+to argue that visualization is essential to good statistical work, not merely an optional supplement. This was a radical position at a 
+time when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves 
+as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
+statistical analysis should combine both numerical calculations and graphical examination.  
+"""
+
+[[resources.sources]]
+title = "Anscombe's quartet (Wikipedia)"
+path  = "https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data"
+[[resources.sources]]
+title = "Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21."
+path  = "https://www.jstor.org/stable/2682899"
 
 [[resources]] # Path: barley.json
 path = "barley.json"
 description = """
-The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 \
-different varieties of barley at six different sites.
+Yields of barley varieties from experiments conducted by the Minnesota Agricultural
+Experiment Station (MAES) across six sites in Minnesota. The USDA Technical Bulletin No. 735
+(December 1940) republished these yields data with explicit credit to MAES as the source.
 
-It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper \
+It was analyzed by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper \
 "Statistical Determination of Barley Varietal Adaption".
 
-R.A. Fisher's popularized its use in the field of statistics when he included it in his book "The \
+R.A. Fisher popularized its use in the field of statistics when he included it in his book "The \
 Design of Experiments".
 
-Since then it has been used to demonstrate new statistical techniques, including the trellis charts \
+Since then it has been used to demonstrate new visualization techniques, including the trellis charts \
 developed by Richard Becker, William Cleveland and others in the 1990s.
 """
 
@@ -53,8 +95,11 @@ developed by Richard Becker, William Cleveland and others in the 1990s.
 title = "The Design of Experiments Reference"
 path  = "https://en.wikipedia.org/wiki/The_Design_of_Experiments"
 [[resources.sources]]
-title = "Trellis Charts Paper"
-path  = "http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf"
+title = "Wiebe, G. A., Reinbach-Welch, L., Cowan, P. R. (1940). Yields of Barley Varieties in the United States and Canada, 1932-36. United States: U.S. Department of Agriculture."
+path  = "https://books.google.com/books?id=OUfxLocnpKkC&pg=PA19"
+
+[[resources.licenses]]
+name = "Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified"
 
 [[resources]] # Path: birdstrikes.csv
 path        = "birdstrikes.csv"
@@ -64,6 +109,10 @@ description = "Records of reported wildlife strikes received by the U.S. FAA"
 title = "FAA Wildlife Strike Database"
 path  = "http://wildlife.faa.gov"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://resources.data.gov/open-licenses/"
+
 [[resources]] # Path: budget.json
 path        = "budget.json"
 description = """Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. Office of Management and Budget."""
@@ -72,34 +121,61 @@ description = """Historical and forecasted federal revenue/receipts produced in 
 title = "Office of Management and Budget - Budget FY 2016 - Receipts"
 path  = "https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://resources.data.gov/open-licenses/"
+
 [[resources]] # Path: budgets.json
 path = "budgets.json"
+description = """
+U.S. federal budget projections and actual outcomes from 1980 through 2010. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
+Reveals how budget forecasts made in any given year compared to what actually happened, 
+with positive values indicating surpluses (briefly seen around 2000) and negative values 
+representing deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis)."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "budgetYear"
+description = "The year for which the budget outcome is being reported"
+
+[[resources.schema.fields]]
+name        = "forecastYear"
+description = "The year for which the budget was forecast"
+
+[[resources.schema.fields]]
+name        = "value"
+description = "The budget outcome or projection value (in trillions of 2010 dollars)"
+
+[[resources.sources]]
+title = "Office of Management and Budget"
+path  = "https://www.whitehouse.gov/omb/"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://resources.data.gov/open-licenses/"
 
 [[resources]] # Path: burtin.json
 path = "burtin.json"
 description = """
-The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic \
-effectiveness, originally published in Scope Magazine.
+Compares the performance of three antibiotics against 16 different bacteria. Based on graphic designer 
+Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine and
+featured as an example in the Protovis project, a precursor to D3.js.
 
-The dataset compares the performance of three antibiotics against 16 different bacteria.
-
-Numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each \
-antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic \
+Numerical values represent the minimum inhibitory concentration (MIC) of each antibiotic, 
+measured in units per milliliter, with lower values indicating higher antibiotic
 effectiveness.
-
-The dataset was featured as an example in the Protovis project, a precursor to D3.js.
 
 As noted in the Protovis example, "Recreating this display revealed some minor errors in the original: \
 a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin".
 
-The vega-datsets version is largely consistent with the Protovis version of the dataset, with one \
+The vega-datsets version is largely consistent with the Protovis version, with one \
 correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a \
 new column, 'Genus', to group related bacterial species together.
 
 The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
 reads as follows:
 
-> ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
+> #### Antibacterial ranges of Neomycin, Penicillin and Streptomycin
 >
 >
 > The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in \
@@ -129,6 +205,10 @@ path  = "https://graphicdesignarchives.org/projects/scope-magazine-vol-iii-5/"
 title = "Protovis Antibiotics Example"
 path  = "https://mbostock.github.io/protovis/ex/antibiotics-burtin.html"
 
+[[resources.licenses]]
+title = "BSD License (via Protovis)"
+path  = "https://mbostock.github.io/protovis/"
+
 [[resources]] # Path: cars.json
 path        = "cars.json"
 description = "Collection of car specifications and performance metrics from various automobile manufacturers."
@@ -137,24 +217,43 @@ description = "Collection of car specifications and performance metrics from var
 title = "StatLib Datasets Archive"
 path  = "http://lib.stat.cmu.edu/datasets/"
 
+[[resources.licenses]]
+title = "The original was distributed in 1982 for educational and scientific purposes."
+path  = "http://lib.stat.cmu.edu/datasets/cars.desc"
+
 [[resources]] # Path: co2-concentration.csv
 path = "co2-concentration.csv"
-description = """Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. 
-Only includes rows with valid data."""
+description = """
+Atmospheric CO2 concentration measurements from Mauna Loa Observatory, Hawaii. 
+Contains monthly readings from 1958-2020 with two key measurements:
+1. CO2 concentrations in millionths of a [mole](https://en.wikipedia.org/wiki/Mole_(unit)) of CO2 
+per mole of air (parts per million), reported on the 2012 
+SIO manometric mole fraction scale
+2. Seasonally adjusted values where a [4-harmonic fit](https://en.wikipedia.org/wiki/Harmonic_analysis) with linear gain factor 
+has been subtracted to remove the quasi-regular seasonal cycle
+Values are adjusted to 24:00 hours on the 15th of each month. 
+Only includes rows with valid data.
+"""
 
 [[resources.sources]]
 title = "Scripps CO2 Program"
 path  = "https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record"
+[[resources.sources]]
+title = "In-situ CO2 Data"
+path  = "https://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv"
+
+[[resources.licenses]]
+title = "Creative Commons Attribution 4.0"
+path  = "https://creativecommons.org/licenses/by/4.0/"
 
 [[resources]] # Path: countries.json
 path = "countries.json"
-description = """This dataset combines key demographic indicators (life expectancy at birth and
-fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
-intervals. It includes both current values and adjacent time period values (previous and next)
-for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) 
-notes that its philosophy is to fill data gaps with estimates and use current
-geographic boundaries for historical data. Gapminder states that it aims to "show people the
-big picture" rather than support detailed numeric analysis."""
+description = """Key demographic indicators (life expectancy at birth and fertility rate measured 
+as babies per woman) for various countries from 1955 to 2000 at 5-year intervals. Includes both 
+current values and adjacent time period values (previous and next) for each indicator. Gapminder's 
+[data documentation](https://www.gapminder.org/data/documentation/) notes that its philosophy is to fill data gaps with 
+estimates and use current geographic boundaries for historical data. Gapminder states that it 
+aims to "show people the big picture" rather than support detailed numeric analysis."""
 
 [resources.schema]
 [[resources.schema.fields]]
@@ -206,17 +305,15 @@ path  = "https://www.gapminder.org/free-material/"
 [[resources]] # Path: crimea.json
 path = "crimea.json"
 description = """
-This dataset, which informed Florence Nightingale's groundbreaking work in public health, details 
-monthly mortality rates from British military hospitals during the Crimean War (1854-1856). 
-
-Nightingale credits Dr. William Farr for compiling the data from the 1858 [Medical and Surgical 
-History of the British Army](http://resource.nlm.nih.gov/62510370R). The dataset categorizes 
+Monthly mortality rates from British military hospitals during the Crimean War (1854-1856), which informed 
+Florence Nightingale's groundbreaking work in public health. Nightingale credits Dr. William Farr for 
+compiling the data from the 1858 [Medical and Surgical History of the British Army](http://resource.nlm.nih.gov/62510370R). Categorizes 
 deaths into "zymotic" diseases (preventable infectious diseases), wounds/injuries, and other causes. 
-Covering the period from April 1854 to March 1856, the dataset includes monthly army strength 
-alongside mortality figures. Nightingale transformed this data into her now-famous [polar area 
+Covering the period from April 1854 to March 1856, it includes monthly army strength 
+alongside mortality figures. Transformed by Nightingale into her now-famous [polar area 
 diagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). 
 
-The annual mortality rates plotted in the chart can be calculated from the dataset using the formula 
+The annual mortality rates plotted in the chart can be calculated using the formula 
 > (Deaths &times; 1000 &times; 12) &divide; Army Size. 
 
 As [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's 
@@ -259,98 +356,219 @@ in the Hospitals of the Army in the East.
 """
 path = "https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21"
 
+[[resources.licenses]]
+title = "Harvard Library - Digitized Content Copyright & Viewer Terms of Use"
+path  = "https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent"
+
 [[resources]] # Path: disasters.csv
-path        = "disasters.csv"
-description = "Annual number of deaths from disasters."
+path = "disasters.csv"
+description = """Annual number of deaths from disasters, sourced from EM-DAT (Emergency Events Database) 
+maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at UCLouvain, Belgium. 
+Processed by Our World in Data to standardize country names and world region definitions, converting units,
+calculating derived indicators, and adapting metadata. Deaths are reported as absolute numbers."""
 
 [[resources.sources]]
-title = "Our World in Data - Natural Catastrophes"
+title = "EM-DAT: The Emergency Events Database"
+path  = "https://www.emdat.be"
+[[resources.sources]]
+title = "Hannah Ritchie, Pablo Rosado and Max Roser (2022) - Natural Disasters"
 path  = "https://ourworldindata.org/natural-catastrophes"
+
+[[resources.licenses]]
+title = "EM-DAT terms of use"
+path  = "https://doc.emdat.be/docs/legal/terms-of-use/"
+[[resources.licenses]]
+title = "Creative Commons BY license (Our World in Data)"
+path  = "https://creativecommons.org/licenses/by/4.0/"
 
 [[resources]] # Path: driving.json
 path = "driving.json"
+description = """Tracks the relationship between driving habits and gasoline prices 
+in the United States during a period spanning multiple significant events, including 
+the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the 
+"swing backward" from 1956 to 2010.
+"""
+[resources.schema]
+[[resources.schema.fields]]
+name        = "year"
+description = "Year of observation from 1956 to 2010"
+
+[[resources.schema.fields]]
+name        = "miles"
+description = "Miles driven per capita per year, ranging from approximately 4,000 to 10,000 miles"
+
+[[resources.schema.fields]]
+name        = "gas"
+description = "Price of a gallon of regular grade gasoline, adjusted for inflation"
+
+[[resources.schema.fields]]
+name = "side"
+description = """Label positioning indicator used in the original visualization to optimize 
+readability and prevent overlap"""
+categories = ["left", "right", "top", "bottom"]
 
 [[resources.sources]]
-title = "New York Times"
+title = "New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution)"
 path  = "https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html"
 
 [[resources]] # Path: earthquakes.json
-path        = "earthquakes.json"
-description = """Earthquake data retrieved Feb 6, 2018"""
+path = "earthquakes.json"
+description = """
+Represents approximately one week of continuous monitoring from USGS's "all earthquakes" 
+real-time feed, which includes 1,703 seismic events of all magnitudes recorded by the 
+USGS Earthquake Hazards Program from January 31 to February 7, 2018 (UTC). """
 
 [[resources.sources]]
 title = "USGS Earthquake Feed"
 path  = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
+[[resources.licenses]]
+title = "U.S. Public Domain"
+path  = "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+
 [[resources]] # Path: ffox.png
 path        = "ffox.png"
-description = """Application icons from open-source software projects."""
+description = """Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html)."""
+
+[[resources.sources]]
+title = "Mozilla Firefox"
+path  = "https://www.mozilla.org/firefox/"
+
+[[resources.licenses]]
+title = "Mozilla Trademark License"
+path  = "https://www.mozilla.org/en-US/foundation/trademarks/policy/"
 
 [[resources]] # Path: flare-dependencies.json
-path = "flare-dependencies.json"
+path        = "flare-dependencies.json"
+description = "Indicates, with `flare.json`, relationships among classes in a software hierarchy."
 
 [[resources]] # Path: flare.json
-path = "flare.json"
+path        = "flare.json"
+description = "Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy."
 
 [[resources]] # Path: flights-10k.json
-path        = "flights-10k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-10k.json"
+description = """Flight delay statistics (10,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-200k.arrow
-path        = "flights-200k.arrow"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-200k.arrow"
+description = """Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-200k.json
-path        = "flights-200k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-200k.json"
+description = """Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-20k.json
-path        = "flights-20k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-20k.json"
+description = """Flight delay statistics (20,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-2k.json
-path        = "flights-2k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-2k.json"
+description = """Flight delay statistics (2,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-3m.parquet
-path        = "flights-3m.parquet"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-3m.parquet"
+description = """Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
+
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
 
 [[resources]] # Path: flights-5k.json
-path        = "flights-5k.json"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-5k.json"
+description = """Flight delay statistics (5,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`"""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
+[[resources.licenses]]
+name  = "other-open"
+path  = "https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234"
+title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified"
+
 [[resources]] # Path: flights-airport.csv
-path        = "flights-airport.csv"
-description = """Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`"""
+path = "flights-airport.csv"
+description = """Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id), 
+a destination airport, and the count of flights along this route."""
+
+[[resources.sources]]
+title = "U.S. Bureau of Transportation Statistics"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -366,11 +584,14 @@ chosen divisions over the time period."""
 title = "OpenFootball"
 path  = "https://github.com/openfootball/football.json"
 
+[[resources.licenses]]
+path = "https://github.com/openfootball/football.json?tab=readme-ov-file#license"
+
 [[resources]] # Path: gapminder-health-income.csv
 path = "gapminder-health-income.csv"
 description = """
-Per-capita income, life expectancy, population and regional grouping. Dataset does not specify 
-the reference year for the data. Gapminder historical data is subject to revisions.
+Per-capita income, life expectancy, population and regional grouping. Reference year for the data is not specified. 
+Gapminder historical data is subject to revisions.
 
 Gapminder (v30, 2023) defines per-capita income as follows:
 >"This is real GDP per capita (gross domestic product per person adjusted for inflation) 
@@ -389,16 +610,16 @@ path  = "https://www.gapminder.org/free-material/"
 
 [[resources]] # Path: gapminder.json
 path = "gapminder.json"
-description = """This dataset combines key demographic indicators (life expectancy at birth, 
+description = """Combines key demographic indicators (life expectancy at birth, 
 population, and fertility rate measured as babies per woman) for various countries from 1955 
-to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable 
+to 2005 at 5-year intervals. Includes a 'cluster' column, a categorical variable 
 grouping countries. Gapminder's data documentation notes that its philosophy is to fill data 
 gaps with estimates and use current geographic boundaries for historical data. Gapminder 
 states that it aims to "show people the big picture" rather than support detailed numeric 
 analysis.
 
 Notes:
-1. Country Selection: The set of countries in this file matches the version of this dataset 
+1. Country Selection: The set of countries matches the version of this dataset 
    originally added to this collection in 2015. The specific criteria for country selection 
    in that version are not known. Data for Aruba are no longer available in the new version. 
    Hong Kong has been revised to Hong Kong, China in the new version.
@@ -406,11 +627,9 @@ Notes:
 2. Data Precision: The precision of float values may have changed from the original version. 
    These changes reflect the most recent source data used for each indicator.
 
-3. Regional Groupings: The 'cluster' column represents a regional mapping of countries 
-   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
-   preserve continuity with previous versions of this dataset, we have retained the column 
-   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
-   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`."""
+3. Regional Groupings: To preserve continuity with previous versions of this dataset, we have retained the column 
+   name 'cluster' instead of renaming it to 'six_regions'. 
+"""
 
 [resources.schema]
 [[resources.schema.fields]]
@@ -422,8 +641,16 @@ name        = "country"
 description = "Name of the country"
 
 [[resources.schema.fields]]
-name        = "cluster"
-description = "A categorical variable (values 0-5) grouping countries by region"
+name = "cluster"
+description = "A categorical variable grouping countries by region"
+categories = [
+  { value = 0, label = "south_asia" },
+  { value = 1, label = "europe_central_asia" },
+  { value = 2, label = "sub_saharan_africa" },
+  { value = 3, label = "america" },
+  { value = 4, label = "east_asia_pacific" },
+  { value = 5, label = "middle_east_north_africa" },
+]
 
 [[resources.schema.fields]]
 name        = "pop"
@@ -443,7 +670,7 @@ path    = "https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsg
 version = "14"
 
 [[resources.sources]]
-title = "Gapminder Foundatio - Life Expectancy (Documentation)"
+title = "Gapminder Foundation - Life Expectancy (Documentation)"
 path  = "https://www.gapminder.org/data/documentation/gd004/"
 
 [[resources.sources]]
@@ -477,13 +704,41 @@ path  = "https://www.gapminder.org/data/geo/"
 title = "Gapminder Data Documentation"
 path  = "https://www.gapminder.org/data/documentation/"
 
+[[resources.licenses]]
+title = "Creative Commons Attribution 4.0 International"
+path  = "https://www.gapminder.org/free-material/"
+
 [[resources]] # Path: gimp.png
 path        = "gimp.png"
-description = """Application icons from open-source software projects."""
+description = """Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html)."""
+
+[[resources.sources]]
+title = "GIMP - About GIMP"
+path  = "https://www.gimp.org/about/"
+
+[[resources.licenses]]
+path = "https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it"
 
 [[resources]] # Path: github.csv
-path        = "github.csv"
-description = """Generated using `/scripts/github.py`."""
+path = "github.csv"
+description = """Simulated GitHub contribution data showing hourly commit counts across 
+different times of day. Designed to demonstrate typical patterns of developer activity 
+in a GitHub-style punchcard visualization format."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "time"
+description = "Hourly timestamp from January 1st to May 30th, 2015"
+
+[[resources.schema.fields]]
+name        = "count"
+description = "Simulated hourly commit counts"
+
+[[resources.sources]]
+title = """Generated using `/scripts/github.py`."""
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: global-temp.csv
 path        = "global-temp.csv"
@@ -493,33 +748,57 @@ description = """Combined Land-Surface Air and Sea-Surface Water Temperature Ano
 title = "NASA Goddard Institute for Space Studies"
 path  = "https://data.giss.nasa.gov/gistemp/"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: income.json
 path = "income.json"
+description = """Household income distribution by US state, derived from the 
+Census Bureau's American Community Survey 3-Year Data (2013). The dataset 
+shows the percentage of households within different income brackets for each state.
+Generated using `/scripts/income.py`. This product uses the Census Bureau Data API 
+but is not endorsed or certified by the Census Bureau."""
+
+[[resources.sources]]
+title = "U.S. Census Bureau American Community Survey 3-Year Data (2013)"
+path  = "https://www.census.gov/data/developers/data-sets/acs-3year/2013.html"
+
+[[resources.sources]]
+title = "Census Bureau Data API User Guide"
+path  = "https://www.census.gov/data/developers/guidance/api-user-guide.html"
+
+[[resources.licenses]]
+title = "U.S. Census Bureau API Terms of Service"
+path  = "https://www.census.gov/data/developers/about/terms-of-service.html"
+name  = "Census Bureau Terms of Use"
 
 [[resources]] # Path: iowa-electricity.csv
 path = "iowa-electricity.csv"
-description = """The state of Iowa has dramatically increased its production of renewable 
-wind power in recent years. This file contains the annual net generation of electricity in 
-the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
-It is useful for illustrating stacked area charts."""
+description = """Annual net generation of electricity in Iowa by source, in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
+Useful for illustrating stacked area charts. Demonstrates dramatic increase in wind power production."""
 
 [[resources.sources]]
 title = "U.S. Energy Information Administration"
 path  = "https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin="
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: jobs.json
 path = "jobs.json"
 description = """
 U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by \
-sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which \
+sex and year across decades between 1850 and 2000. Obtained from IPUMS USA, which \
 "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
 
 Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, \
 Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). 
 The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
 
-Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) \
-variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of \
+Based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) \
+variable by sex across IPUMS USA samples. Appears to be derived from Version 6.0 (2015) of \
 IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to \
 occupation coding since version 6, particularly for 19th-century samples, which may result in \
 discrepancies between this dataset and current IPUMS data. Details on data revisions are available \
@@ -531,9 +810,7 @@ stating:
 for data visualization. We allow for these types of redistributions of summary data so long as the \
 underlying microdata records are not shared.
 
-This dataset contains only summary statistics and does not include any underlying microdata records.
-
-1. This dataset represents summary data. The underlying microdata records are not included.
+1. Represents summary data. Underlying microdata records are not included.
 2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) 
 (person weight) variable as an expansion factor when working with IPUMS USA extracts.
 3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current \
@@ -572,11 +849,15 @@ title   = "IPUMS USA"
 path    = "https://usa.ipums.org/usa/"
 version = "6.0"
 
+[[resources.licenses]]
+title = "IPUMS Terms of Use"
+path  = "https://www.ipums.org/about/terms"
+
 [[resources]] # Path: la-riots.csv
 path = "la-riots.csv"
-description = """More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles 
-for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic 
-coordinates of their death. Compiled and published by the Los Angeles Times Data Desk."""
+description = """A comprehensive record of fatalities during the five days of civil unrest in Los Angeles beginning 
+April 29, 1992, documenting over 60 deaths with associated geographic coordinates where each person lost their life.
+Originally compiled and published by the Los Angeles Times Data Desk."""
 
 [[resources.sources]]
 title = "LA Riots Deaths, Los Angeles Times Data Desk"
@@ -592,47 +873,96 @@ and \"Contains Ordnance Survey data © Crown copyright and database right [2015]
 title = "Statistical GIS Boundary Files, London Datastore"
 path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
 
+[[resources.licenses]]
+title = "UK Open Government License"
+path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+
 [[resources]] # Path: londonCentroids.json
 path        = "londonCentroids.json"
 description = """Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid)."""
 
+[[resources.sources]]
+title = "[londonBoroughs.json](https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json) from the [vega-datasets](https://github.com/vega/vega-datasets) repository"
+path  = "https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json"
+
+[[resources.licenses]]
+title = "UK Open Government License"
+path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+
 [[resources]] # Path: londonTubeLines.json
-path        = "londonTubeLines.json"
-description = """Selected rail lines simplified from source."""
+path = "londonTubeLines.json"
+description = """A [topologically-encoded](https://github.com/topojson/topojson) representation of select London Underground rail lines, derived from OpenStreetMap
+data. These 394 LineString geometries, encoded using 406 arcs, depict transport paths between stations with stations marked as nodes
+along the lines. Originally transformed from a GeoJSON intermediary `tfl_lines.json` into TopoJSON format, this network configuration 
+reflects the system as of February 4, 2018, and may not incorporate subsequent modifications or expansions.
+"""
 
 [[resources.sources]]
-title = "London Tube Data"
-path  = "https://github.com/oobrien/vis/tree/master/tube/data"
+title = "OpenStreetMap Data (processed by oobrien/vis)"
+path  = "https://github.com/oobrien/vis/blob/master/tubecreature/data/tfl_lines.json"
+
+[[resources.licenses]]
+title = "Open Data Commons Open Database License (ODbL)"
+path  = "https://opendatacommons.org/licenses/odbl/"
 
 [[resources]] # Path: lookup_groups.csv
 path = "lookup_groups.csv"
+description = """A nine-row lookup table for the `lookup_people.csv` dataset, 
+mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms."""
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: lookup_people.csv
 path = "lookup_people.csv"
+description = """A synthetic list of nine people and their associated name, age, 
+and height in centimeters. Used in conjunction with `lookup_groups.csv` 
+to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms."""
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: miserables.json
 path = "miserables.json"
+description = """
+A weighted network of coappearances of characters in Victor Hugo's novel "Les Miserables". 
+Nodes represent characters as indicated by the labels and edges connect any pair of characters 
+that appear in the same chapter of the book. The values on the edges are the number of such 
+coappearances.
+"""
+[[resources.sources]]
+title = "D. E. Knuth, The Stanford GraphBase: A Platform for Combinatorial Computing, Addison-Wesley, Reading, MA (1993)."
+path  = "https://www-cs-faculty.stanford.edu/~knuth/sgb.html"
+
+[[resources.licenses]]
+path = "https://websites.umich.edu/~mejn/netdata/"
 
 [[resources]] # Path: monarchs.json
 path = "monarchs.json"
 description = """A chronological list of English and British monarchs from Elizabeth I through George IV.
-Each entry includes:
 
-The dataset contains two intentional inaccuracies to maintain compatibility with 
+Contains two intentional inaccuracies to maintain compatibility with 
 the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
 1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
 2. the end date for the reign of George IV is shown as 1820, instead of 1830.
-These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
+These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used in the visualization.
 The entry \"W&M\" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, 
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
 and the period leading to the Restoration. While historically more accurate to call this the \"interregnum,\" the field name of `commonwealth` 
 from the original dataset is retained for backwards compatibility.
-The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
+
+> [!IMPORTANT]
+> Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+
 Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
-Content on the site is protected by Crown Copyright. 
-Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most 
-Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)."""
+"""
 
 [resources.schema]
 
@@ -664,33 +994,109 @@ path  = "https://www.royal.uk/kings-and-queens-1066"
 title = "The Royal Family - Interregnum"
 path  = "https://www.royal.uk/interregnum-1649-1660"
 
+[[resources.licenses]]
+title = "Open Government Licence v3.0 (UK)"
+path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+
 [[resources]] # Path: movies.json
 path = "movies.json"
-description = """The dataset has well known and intentionally included errors. 
-This dataset is provided for instructional purposes, including the need to reckon with dirty data."""
+description = """A collection of films and their performance metrics, including box office earnings, budgets, 
+and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
+resource for developing data cleaning and validation skills in real-world analysis workflows."""
 
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
+description = """
+Five hundred paired coordinates sampled from a bivariate normal distribution. The data is centered near the 
+origin with standard deviations indicating a relatively equal spread in both dimensions. 
+The variables exhibit negligible correlation (0.026), suggesting independence. 
+[Normality tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) for each variable yield high p-values, supporting the normal distribution assumption. 
+These characteristics make it well-suited for demonstrating statistical visualization techniques 
+in Vega and Vega-Lite, including scatter plots, density plots, heatmaps, and marginal histograms/density curves. 
+It can also serve as a clean baseline for testing new visualization methods or for educational purposes 
+in data visualization and statistics.
+A contrast to uniformly distributed data in `uniform-2d.json`
+"""
+
+[[resources.schema.fields]]
+name        = "u"
+description = "mean: 0.005, std: 0.192, range: [-0.578, 0.533], p-value: 0.680"
+
+[[resources.schema.fields]]
+name        = "v"
+description = "mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763"
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: obesity.json
 path = "obesity.json"
+description = """State-level obesity rates (BMI >= 30) for the U.S. in 1995. 
+Originally [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics."""
+
+[[resources.sources]]
+title = "Protovis"
+path  = "https://mbostock.github.io/protovis/ex/us_stats.js"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: ohlc.json
 path = "ohlc.json"
-description = """This dataset contains the performance of the Chicago Board Options Exchange 
-[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX#overview))
-in the summer of 2009."""
+description = """Performance of the Chicago Board Options Exchange 
+[Volatility Index](https://en.wikipedia.org/wiki/VIX) (VIX) in the summer of 2009.
+
+The precise methodology used to derive the signal and calculate the ret columns is unclear.
+"""
 
 [[resources.sources]]
 title = "Yahoo Finance VIX Data"
 path  = "https://finance.yahoo.com/chart/%5EVIX"
+[[resources.sources]]
+title = "CBOE - VIX Historical Data"
+path  = "https://www.cboe.com/tradable_products/vix/vix_historical_data/"
 
 [[resources]] # Path: penguins.json
 path = "penguins.json"
-description = """Palmer Archipelago (Antarctica) penguin data collected and made available by 
-[Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) 
-and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research 
-Network](https://lternet.edu/)."""
+description = """Records of morphological measurements and demographic information from 344 Palmer Archipelago 
+penguins across three species. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/). 
+Data gathering occurred as part of Palmer Station's long-term ecological research, contributing to studies of Antarctic marine
+ecosystems and penguin biology. All measurements follow standardized units, enabling research into morphological 
+variations between species and sexual dimorphism in Antarctic penguins. 
+"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "Species"
+description = "Penguin species (Adelie, Gentoo, or Chinstrap)"
+
+[[resources.schema.fields]]
+name        = "Island"
+description = "Island where the penguin was observed (Torgersen, Biscoe, or Dream)"
+
+[[resources.schema.fields]]
+name        = "Beak Length (mm)"
+description = "Beak length in millimeters"
+
+[[resources.schema.fields]]
+name        = "Beak Depth (mm)"
+description = "Beak depth in millimeters"
+
+[[resources.schema.fields]]
+name        = "Flipper Length (mm)"
+description = "Flipper length in millimeters"
+
+[[resources.schema.fields]]
+name        = "Body Mass (g)"
+description = "Body mass in grams"
+
+[[resources.schema.fields]]
+name        = "Sex"
+description = "Sex of the penguin (MALE, FEMALE or null)"
 
 [[resources.sources]]
 title = "Palmer Station Antarctica LTER"
@@ -699,24 +1105,24 @@ path  = "https://pal.lternet.edu/"
 title = "Allison Horst's Penguins Repository"
 path  = "https://github.com/allisonhorst/penguins"
 
+[[resources.licenses]]
+name = "CC0 1.0 Universal"
+path = "https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme"
+
 [[resources]] # Path: platformer-terrain.json
 path        = "platformer-terrain.json"
-description = """Assets from the video game Celeste."""
+description = """Assets from the video game Celeste. Added in [#376](https://github.com/vega/vega-datasets/pull/376)"""
 
 [[resources.sources]]
 title = "Celeste Game"
 path  = "http://www.celestegame.com/"
 
-[[resources]] # Path: points.json
-path = "points.json"
-
 [[resources]] # Path: political-contributions.json
 path = "political-contributions.json"
 description = """Summary financial information on contributions to candidates for U.S. 
-elections. An updated version of this datset is available from the "all candidates" files 
-(in pipe-delimited format) on the bulk data download page of the U.S. Federal Election 
-Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is 
-available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
+elections. An updated version is available from the "all candidates" files (in pipe-delimited format)
+on the bulk data download page of the U.S. Federal Election Commission, or, alternatively, via OpenFEC. 
+Information on each of the 25 columns is available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
 The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
 
 FEC data is subject to the commission's:
@@ -727,7 +1133,7 @@ FEC data is subject to the commission's:
 Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:
 > This project is in the public domain within the United States, and we waive worldwide 
 > copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/)
-> dedication. Read more on our license page.
+> dedication. Read more on our [license](https://github.com/fecgov/FEC?tab=License-1-ov-file) page.
 > A few restrictions limit the way you can use FEC data. For example, you can't use 
 > contributor lists for commercial purposes or to solicit donations. Learn more on 
 > [FEC.gov](https://www.fec.gov/)."""
@@ -739,15 +1145,16 @@ path  = "https://www.fec.gov/data/browse-data/?tab=bulk-data"
 title = "OpenFEC API"
 path  = "https://api.open.fec.gov/developers/"
 
+[[resources.licenses]]
+title = "Creative Commons Zero 1.0 Universal"
+path  = "https://creativecommons.org/publicdomain/zero/1.0/"
+
 [[resources]] # Path: population.json
 path = "population.json"
-description = """
-United States population statistics by sex and age group across decades between 1850 and 2000. 
-The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census 
-microdata" from as early as 1790.
+description = """U.S. population counts by age group (0-90+ in 5-year intervals) and sex 
+for each decade between 1850 and 2000, collected and harmonized from historical census records by IPUMS USA.
 
-IPUMS updates and revises datasets over time, which may result in discrepancies between this 
-dataset and current IPUMS data. Details on data revisions are available here.
+IPUMS updates and revises datasets over time, which may result in discrepancies with current IPUMS data.
 
 When using this dataset, please refer to IPUMS USA terms of use. The organization requests the 
 use of the following citation for this json file:
@@ -777,9 +1184,13 @@ description = "Number of individuals (IPUMS PERWT)"
 title = "IPUMS USA"
 path  = "https://usa.ipums.org/usa/"
 
+[[resources.licenses]]
+title = "IPUMS Terms of Use"
+path  = "https://www.ipums.org/about/terms"
+
 [[resources]] # Path: population_engineers_hurricanes.csv
 path = "population_engineers_hurricanes.csv"
-description = """Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
+description = """Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
 
 [[resources.sources]]
@@ -791,6 +1202,10 @@ path  = "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview
 [[resources.sources]]
 title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: seattle-weather-hourly-normals.csv
 path = "seattle-weather-hourly-normals.csv"
@@ -804,15 +1219,49 @@ and updated the format to be easier to parse."""
 title = "NOAA National Climatic Data Center (NCDC)"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/normals"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: seattle-weather.csv
 path = "seattle-weather.csv"
-description = """Daily weather records with metric units. Transformed using `/scripts/weather.py`. 
+description = """Daily weather in metric units. Transformed using `/scripts/weather.py`. 
 The categorical \"weather\" field is synthesized from multiple fields in the original dataset. 
 This data is intended for instructional purposes."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "date"
+description = "Date of the weather observation"
+
+[[resources.schema.fields]]
+name        = "precipitation"
+description = "Amount of precipitation in millimeters"
+
+[[resources.schema.fields]]
+name        = "temp_max"
+description = "Maximum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "temp_min"
+description = "Minimum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "wind"
+description = "Wind speed in kilometers per hour"
+
+[[resources.schema.fields]]
+name        = "weather"
+description = "Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog."
+categories  = ["drizzle", "rain", "snow", "sun", "fog"]
 
 [[resources.sources]]
 title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: sp500-2000.csv
 path        = "sp500-2000.csv"
@@ -824,23 +1273,75 @@ path  = "https://finance.yahoo.com/quote/%5EDJI/history/"
 
 [[resources]] # Path: sp500.csv
 path = "sp500.csv"
+description = """Monthly closing values of the S&P 500 stock market index 
+from January 2000 to March 2010. Captures several significant market events including 
+the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. 
+"""
+[resources.schema]
+[[resources.schema.fields]]
+name        = "date"
+description = "Date of monthly observation in the format 'MMM D YYYY'"
+
+[[resources.schema.fields]]
+name        = "price"
+description = "Closing price of the S&P 500 index for the given month"
 
 [[resources]] # Path: stocks.csv
-path = "stocks.csv"
+path        = "stocks.csv"
+description = "Monthly stock prices for five companies from 2000 to 2010."
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
+description = """Point locations of restaurants and cafes in Seattle's University 
+District, categorized by cuisine type. Used to create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) 
+showing the prevalence of various food and beverage categories. The example graphic 
+using this dataset states that it originally appeared in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "latitude"
+description = "Latitude of the restaurant or cafe"
+
+[[resources.schema.fields]]
+name        = "longitude"
+description = "Longitude of the restaurant or cafe"
+
+[[resources.schema.fields]]
+name        = "name"
+description = "Name of the restaurant or cafe"
+
+[[resources.schema.fields]]
+name = "category"
+description = "Cuisine type of the restaurant or cafe"
+categories = [
+  "bakeries",
+  "burgers",
+  "bubbletea",
+  "coffee",
+  "chinese",
+  "drinks",
+  "hawaiian",
+  "indian",
+  "japanese",
+  "korean",
+  "latin",
+  "mideastern",
+  "pizza",
+  "seafood",
+  "thai",
+  "veg",
+  "vietnamese",
+  "breakfast",
+  "american",
+]
 
 [[resources]] # Path: unemployment-across-industries.json
 path = "unemployment-across-industries.json"
-description = """Industry-level unemployment statistics from the Current Population Survey 
+description = """Industry-level unemployment from the Current Population Survey 
 (CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons 
 and unemployment rate across 11 private industries, as well as agricultural, government, and 
 self-employed workers. Covers January 2000 through February 2010. Industry classification 
-follows format of CPS Table A-31.
-
-The dataset can be replicated using the BLS API. For more, see the `scripts` folder of this 
-repository.
+follows format of CPS Table A-31. Transformed using `scripts/make-unemployment-across-industries.py`
 
 The BLS Web site states:
 > "Users of the public API should cite the date that data were accessed or retrieved using 
@@ -886,9 +1387,13 @@ path  = "https://www.bls.gov/lau/data.htm"
 title = "Bureau of Labor Statistics Table A-31"
 path  = "https://www.bls.gov/web/empsit/cpseea31.htm"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: unemployment.tsv
 path = "unemployment.tsv"
-description = """This dataset contains county-level unemployment rates in the United States, with data generally
+description = """County-level unemployment rates in the United States, with data generally
 consistent with levels reported in 2009. The dataset is structured as tab-separated values.
 The unemployment rate represents the number of unemployed persons as a percentage of the labor
 force. According to the Bureau of Labor Statistics (BLS) glossary:
@@ -899,7 +1404,7 @@ illness, and had made specific efforts to find employment sometime during the 4-
 ending with the reference week. Persons who were waiting to be recalled to a job from which
 they had been laid off need not have been looking for work to be classified as unemployed.
 
-This dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
+Derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
 a federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). 
 The LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,
 states, counties, metropolitan areas, and many cities and towns.
@@ -933,23 +1438,63 @@ path  = "https://www.bls.gov/developers/"
 title = "BLS Handbook of Methods"
 path  = "https://www.bls.gov/opub/hom/lau/home.htm"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: uniform-2d.json
 path = "uniform-2d.json"
+description = """
+Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the
+origin with ranges spanning approximately [-0.5, 0.5] in both dimensions. The variables exhibit negligible
+correlation (-0.019), suggesting independence, as expected for a uniform distribution.
+A contrast to normally distributed data in `normal-2d.json`.
+"""
+
+[[resources.schema.fields]]
+name        = "u"
+description = "mean: 0.015, std: 0.277, range: [-0.499, 0.500]"
+
+[[resources.schema.fields]]
+name        = "v"
+description = "mean: -0.013, std: 0.276, range: [-0.500, 0.498]"
+
+[[resources.sources]]
+title = "Generated Data"
+
+[[resources.licenses]]
+path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: us-10m.json
 path = "us-10m.json"
+description = """US county boundaries represented at a 1:10,000,000 scale in 
+[TopoJSON](https://github.com/topojson/topojson) format, which optimizes for 
+smaller file sizes. Similar to offerings in the TopoJSON US Atlas collection, which 
+in turn is a redistribution of the Census Bureau's cartographic boundary shapefiles.
+"""
+
+[[resources.sources]]
+title = "TopoJSON US Atlas"
+path  = "https://github.com/topojson/us-atlas"
+
+[[resources.sources]]
+title = "US Census Bureau Cartographic Boundary FIles"
+path  = "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html"
+
+[[resources.licenses]]
+title = "TopoJSON US Atlas ISC License"
+path  = "https://github.com/topojson/us-atlas/blob/master/LICENSE.md"
 
 [[resources]] # Path: us-employment.csv
 path = "us-employment.csv"
 description = """
+Monthly employment total in a variety of job categories from January 2006 through December 2015, 
+seasonally adjusted and reported in thousands. Downloaded and reformatted on Nov. 11, 2018.
+
 In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job 
 losses across the United States. The downturn in employment, and the slow recovery in hiring that 
 followed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau 
 of Labor Statistics.
-
-This file contains the monthly employment total in a variety of job categories from January 2006 
-through December 2015. The numbers are seasonally adjusted and reported in thousands. The data 
-were downloaded on Nov. 11, 2018, and reformatted for use in this library.
 
 Totals are included for the [22 \"supersectors\"](https://download.bls.gov/pub/time.series/ce/ce.supersector)
 tracked by the BLS. The \"nonfarm\" total is the category typically used by 
@@ -963,14 +1508,43 @@ negative and positive values.
 title = "U.S. Bureau of Labor Statistics Current Employment Statistics"
 path  = "https://www.bls.gov/ces/"
 
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
+
 [[resources]] # Path: us-state-capitals.json
 path = "us-state-capitals.json"
+description = """Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. 
+Includes latitude, longitude, state name, and capital city name for all 50 U.S. states. 
+Cities are represented as point locations of their capitol buildings using coordinates in the 
+WGS84 geographic coordinate system.
+
+According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))
+> "Map services and data downloaded from The National Map are free and in the public domain. 
+> There are no restrictions; however, we request that the following acknowledgment statement 
+> of the originating agency be included in products and data derived from our map services 
+> when citing, copying, or reprinting: Map services and data available from U.S. 
+> Geological Survey, National Geospatial Program."
+"""
+
+[[resources.sources]]
+title = "U.S. Geological Survey National Geospatial Program - The National Map"
+path  = "https://www.usgs.gov/programs/national-geospatial-program/national-map"
+
+[[resources.licenses]]
+title = "U.S. Public Domain"
+path  = "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: volcano.json
 path = "volcano.json"
-description = """Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. 
-This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a 
-topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate."""
+description = """Elevation measurements of Maunga Whau (Mt Eden), a volcano in Auckland, New Zealand, representing 
+a rectangular area of 870 meters by 610 meters. Spacing between measurement points is approximately 
+10 meters in both directions. Digitized from a topographic map by Ross Ihaka and adapted from R datasets, 
+Should not be regarded as accurate."""
 
 [[resources.sources]]
 title = "R Datasets"
@@ -978,12 +1552,48 @@ path  = "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.h
 
 [[resources]] # Path: weather.csv
 path = "weather.csv"
-description = """NOAA data transformed using `/scripts/weather.py`. Categorical \"weather\" field synthesized 
-from multiple fields in the original dataset. This data is intended for instructional purposes."""
+description = """Daily weather observations from Seattle and New York.
+Transformed from NOAA data using the script `/scripts/weather.py`.
+The categorical \"weather\" field is synthesized from multiple fields in the original dataset.
+Intended for instructional purposes."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "location"
+description = "City location of the weather observation (Seattle or New York)"
+
+[[resources.schema.fields]]
+name        = "date"
+description = "Date of the weather observation"
+
+[[resources.schema.fields]]
+name        = "precipitation"
+description = "Amount of precipitation in millimeters"
+
+[[resources.schema.fields]]
+name        = "temp_max"
+description = "Maximum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "temp_min"
+description = "Minimum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "wind"
+description = "Wind speed in kilometers per hour"
+
+[[resources.schema.fields]]
+name        = "weather"
+description = "Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog."
+categories  = ["drizzle", "rain", "snow", "sun", "fog"]
 
 [[resources.sources]]
 title = "NOAA Climate Data Online"
 path  = "http://www.ncdc.noaa.gov/cdo-web/datatools/findstation"
+
+[[resources.licenses]]
+title = "U.S. Government Dataset"
+path  = "https://www.usa.gov/government-works"
 
 [[resources]] # Path: weekly-weather.json
 path = "weekly-weather.json"
@@ -995,17 +1605,22 @@ description = """Instructional dataset showing actual and predicted temperature 
 
 [[resources]] # Path: wheat.json
 path = "wheat.json"
-description = """In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),
-a Scottish engineer who is often credited as the founder of statistical graphics, 
-published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
-weekly wages and the reigning monarch. He intended to demonstrate that:
-> "never at any former period was wheat so cheap, in proportion to mechanical labour, \
-as it is at the present time."
+description = """As noted by in this protovis [example](https://mbostock.github.io/protovis/ex/wheat.html),
+"In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair), a Scottish engineer 
+who is often credited as the founder of statistical graphics, published an elegant chart 
+on the price of wheat. It plots 250 years of prices alongside weekly wages and the reigning monarch. 
+He intended to demonstrate that:
+> 'never at any former period was wheat so cheap, in proportion to mechanical labour, \
+as it is at the present time.'"
 """
 
 [[resources.sources]]
 title = "1822 Playfair Chart"
-path  = "http://dh101.humanities.ucla.edu/wp-content/uploads/2014/08/Vis_2.jpg"
+path  = "https://commons.wikimedia.org/wiki/File:Chart_Showing_at_One_View_the_Price_of_the_Quarter_of_Wheat,_and_Wages_of_Labour_by_the_Week,_from_1565_to_1821.png"
+
+[[resources.licenses]]
+title = "Public Domain"
+path  = "https://commons.wikimedia.org/wiki/Public_domain"
 
 [[resources]] # Path: windvectors.csv
 path        = "windvectors.csv"
@@ -1013,11 +1628,49 @@ description = """Simulated wind patterns over northwestern Europe."""
 
 [[resources]] # Path: world-110m.json
 path = "world-110m.json"
-
-[[resources]] # Path: zipcodes.csv
-path        = "zipcodes.csv"
-description = """GeoNames.org"""
+description = """A 1:110,000,000-scale world map in [TopoJSON](https://github.com/topojson/topojson) format, optimized for 
+web-based visualization. The simplified geographic boundaries focus on two key elements: 
+land masses and country borders with their corresponding codes. The high level of 
+generalization removes small geographic details while maintaining recognizable global 
+features, making it ideal for overview maps and basic world visualizations. This format 
+provides efficient compression compared to GeoJSON, reducing file size for web use. 
+Part of the widely-used TopoJSON World Atlas collection, this has become a standard 
+resource for creating web-based world maps where precise boundary detail isn't required.
+"""
 
 [[resources.sources]]
-title = "GeoNames"
-path  = "https://www.geonames.org"
+title = "TopoJSON World Atlas (Likely original source, processed from Natural Earth data)"
+path  = "https://github.com/topojson/world-atlas"
+
+[[resources.sources]]
+title = "Natural Earth Data - Admin 0 Countries (1:110m)"
+path  = "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/"
+
+[[resources.licenses]]
+title = "TopoJSON World Atlas ISC License"
+path  = "https://github.com/topojson/world-atlas/blob/master/LICENSE.md"
+
+[[resources.licenses]]
+title = "Natural Earth Data Public Domain"
+path  = "https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[resources]] # Path: zipcodes.csv
+path = "zipcodes.csv"
+description = """
+Postal codes mapped to their geographical coordinates (latitude/longitude in WGS84) 
+and administrative hierarchies, for the United States and Puerto Rico. The GeoNames 
+geographical database provides worldwide postal code data with associated geographical 
+and administrative information. 
+
+Historical snapshot first contributed to vega-datasets in 2017 and no longer current. 
+Administrative boundaries have been redrawn, counties reorganized and renamed, and postal 
+codes modified. Latitude/longitude coordinates have been updated by Geonames since this 
+data was collected. For current postal code data, refer to the main GeoNames database."""
+
+[[resources.sources]]
+title = "GeoNames Postal Codes"
+path  = "https://download.geonames.org/export/zip/"
+
+[[resources.licenses]]
+title = "Creative Commons Attribution 4.0 International"
+path  = "https://creativecommons.org/licenses/by/4.0/"

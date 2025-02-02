@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-01-25 11:55:43 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-02 14:39:56 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -23,10 +23,22 @@ is a reference starting point only and is provided without any warranty of accur
 ### path
 7zip.png
 ### description
-Application icons from open-source software projects.
+Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).
+### sources
+| title   | path                   |
+|:--------|:-----------------------|
+| 7-Zip   | https://www.7-zip.org/ |
+### licenses
+| title                             | path                              |
+|:----------------------------------|:----------------------------------|
+| GNU Lesser General Public License | https://www.7-zip.org/license.txt |
 ## `airports.csv`
 ### path
 airports.csv
+### description
+Airports in the United States and its territories, including  major commercial, regional, 
+and municipal airports. Contains information about each airport's location (latitude/longitude 
+coordinates), identification codes, name, city, state, and country.
 ### schema
     
 | name      | type   |
@@ -38,20 +50,43 @@ airports.csv
 | country   | string |
 | latitude  | number |
 | longitude | number |
+### sources
+| title               | path                                            |
+|:--------------------|:------------------------------------------------|
+| Airports (Data.gov) | https://catalog.data.gov/dataset/airports-5e97a |
+### licenses
+| name       | title                                |
+|:-----------|:-------------------------------------|
+| other-open | https://www.usa.gov/government-works |
 ## `annual-precip.json`
 ### path
 annual-precip.json
 ### description
 A raster grid of global annual precipitation for the year 2016 at a resolution 1 degree of lon/lat per cell.
 ### sources
-| title                             | path                                                                                                   |
-|:----------------------------------|:-------------------------------------------------------------------------------------------------------|
-| Climate Forecast System Version 2 | https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/climate-forecast-system-version2-cfsv2 |
+| title                             | path                                                                    |
+|:----------------------------------|:------------------------------------------------------------------------|
+| Climate Forecast System Version 2 | https://www.cpc.ncep.noaa.gov/products/people/wwang/cfsv2_fcst_history/ |
+### licenses
+| title         | path                                |
+|:--------------|:------------------------------------|
+| Public Domain | https://www.weather.gov/disclaimer/ |
 ## `anscombe.json`
 ### path
 anscombe.json
 ### description
-Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician.
+Eleven (x,y) pairs of numbers, with means x̄=9.0 and ȳ=7.5, and identical linear regression 
+lines (same slope and intercept) and correlation coefficients (approximately 0.816). When plotted, reveals starkly 
+different patterns: one shows a linear relationship, another a non-linear curve, the third a near-perfect linear 
+relationship disrupted by a single outlier, and the fourth a near-vertical line of points where a single outlier 
+entirely dictates the regression.
+
+In his 1973 paper "Graphs in Statistical Analysis" Yale Professor [Francis Anscombe](https://archives.yale.edu/repositories/12/resources/3711) uses these four datasets 
+to argue that visualization is essential to good statistical work, not merely an optional supplement. This was a radical position at a 
+time when most statistical analysis was done through batch processing on mainframes with no graphical output. Serves 
+as a powerful demonstration that identical summary statistics can mask radically different patterns in data, making the case that 
+statistical analysis should combine both numerical calculations and graphical examination.  
+
 ### schema
     
 | name   | type    |
@@ -59,17 +94,24 @@ Graphs in Statistical Analysis, F. J. Anscombe, The American Statistician.
 | Series | string  |
 | X      | integer |
 | Y      | number  |
+### sources
+| title                                                                                           | path                                                    |
+|:------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| Anscombe's quartet (Wikipedia)                                                                  | https://en.wikipedia.org/wiki/Anscombe%27s_quartet#Data |
+| Anscombe, F. J. (1973). Graphs in Statistical Analysis. The American Statistician, 27(1):17-21. | https://www.jstor.org/stable/2682899                    |
 ## `barley.json`
 ### path
 barley.json
 ### description
-The result of a 1930s agricultural experiment in Minnesota, this dataset contains yields for 10 different varieties of barley at six different sites.
+Yields of barley varieties from experiments conducted by the Minnesota Agricultural
+Experiment Station (MAES) across six sites in Minnesota. The USDA Technical Bulletin No. 735
+(December 1940) republished these yields data with explicit credit to MAES as the source.
 
-It was first published by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption".
+It was analyzed by agronomists F.R. Immer, H.K. Hayes, and L. Powers in the 1934 paper "Statistical Determination of Barley Varietal Adaption".
 
-R.A. Fisher's popularized its use in the field of statistics when he included it in his book "The Design of Experiments".
+R.A. Fisher popularized its use in the field of statistics when he included it in his book "The Design of Experiments".
 
-Since then it has been used to demonstrate new statistical techniques, including the trellis charts developed by Richard Becker, William Cleveland and others in the 1990s.
+Since then it has been used to demonstrate new visualization techniques, including the trellis charts developed by Richard Becker, William Cleveland and others in the 1990s.
 
 ### schema
     
@@ -80,10 +122,14 @@ Since then it has been used to demonstrate new statistical techniques, including
 | year    | integer |
 | site    | string  |
 ### sources
-| title                               | path                                                                 |
-|:------------------------------------|:---------------------------------------------------------------------|
-| The Design of Experiments Reference | https://en.wikipedia.org/wiki/The_Design_of_Experiments              |
-| Trellis Charts Paper                | http://ml.stat.purdue.edu/stat695t/writings/TrellisDesignControl.pdf |
+| title                                                                                                                                                                      | path                                                    |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
+| The Design of Experiments Reference                                                                                                                                        | https://en.wikipedia.org/wiki/The_Design_of_Experiments |
+| Wiebe, G. A., Reinbach-Welch, L., Cowan, P. R. (1940). Yields of Barley Varieties in the United States and Canada, 1932-36. United States: U.S. Department of Agriculture. | https://books.google.com/books?id=OUfxLocnpKkC&pg=PA19  |
+### licenses
+| name                                                                                        |
+|:--------------------------------------------------------------------------------------------|
+| Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified |
 ## `birdstrikes.csv`
 ### path
 birdstrikes.csv
@@ -111,6 +157,10 @@ Records of reported wildlife strikes received by the U.S. FAA
 | title                        | path                    |
 |:-----------------------------|:------------------------|
 | FAA Wildlife Strike Database | http://wildlife.faa.gov |
+### licenses
+| title                   | path                                      |
+|:------------------------|:------------------------------------------|
+| U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
 ## `budget.json`
 ### path
 budget.json
@@ -196,36 +246,53 @@ Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. 
 | title                                                       | path                                                                |
 |:------------------------------------------------------------|:--------------------------------------------------------------------|
 | Office of Management and Budget - Budget FY 2016 - Receipts | https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3 |
+### licenses
+| title                   | path                                      |
+|:------------------------|:------------------------------------------|
+| U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
 ## `budgets.json`
 ### path
 budgets.json
+### description
+U.S. federal budget projections and actual outcomes from 1980 through 2010. Originally [analyzed](https://archive.nytimes.com/www.nytimes.com/interactive/2010/02/02/us/politics/20100201-budget-porcupine-graphic.html) by The New York Times in 2010. 
+Reveals how budget forecasts made in any given year compared to what actually happened, 
+with positive values indicating surpluses (briefly seen around 2000) and negative values 
+representing deficits (reaching a particularly large value of -$1.78 trillion during the 2008-2009 financial crisis).
 ### schema
     
-| name         | type    |
-|:-------------|:--------|
-| budgetYear   | integer |
-| forecastYear | integer |
-| value        | number  |
+| name         | type    | description                                                           |
+|:-------------|:--------|:----------------------------------------------------------------------|
+| budgetYear   | integer | The year for which the budget outcome is being reported               |
+| forecastYear | integer | The year for which the budget was forecast                            |
+| value        | number  | The budget outcome or projection value (in trillions of 2010 dollars) |
+### sources
+| title                           | path                            |
+|:--------------------------------|:--------------------------------|
+| Office of Management and Budget | https://www.whitehouse.gov/omb/ |
+### licenses
+| title                   | path                                      |
+|:------------------------|:------------------------------------------|
+| U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
 ## `burtin.json`
 ### path
 burtin.json
 ### description
-The burtin.json dataset is based on graphic designer Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine.
+Compares the performance of three antibiotics against 16 different bacteria. Based on graphic designer 
+Will Burtin's 1951 visualization of antibiotic effectiveness, originally published in Scope Magazine and
+featured as an example in the Protovis project, a precursor to D3.js.
 
-The dataset compares the performance of three antibiotics against 16 different bacteria.
-
-Numerical values in the dataset represent the minimum inhibitory concentration (MIC) of each antibiotic, measured in units per milliliter, with lower values indicating higher antibiotic effectiveness.
-
-The dataset was featured as an example in the Protovis project, a precursor to D3.js.
+Numerical values represent the minimum inhibitory concentration (MIC) of each antibiotic, 
+measured in units per milliliter, with lower values indicating higher antibiotic
+effectiveness.
 
 As noted in the Protovis example, "Recreating this display revealed some minor errors in the original: a missing grid line at 0.01 μg/ml, and an exaggeration of some values for penicillin".
 
-The vega-datsets version is largely consistent with the Protovis version of the dataset, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
+The vega-datsets version is largely consistent with the Protovis version, with one correction (changing 'Brucella antracis' to the correct 'Bacillus anthracis') and the addition of a new column, 'Genus', to group related bacterial species together.
 
 The caption of the original 1951 [visualization](https://graphicdesignarchives.org/wp-content/uploads/wmgda_8616c.jpg) 
 reads as follows:
 
-> ## Antibacterial ranges of Neomycin, Penicillin and Streptomycin
+> #### Antibacterial ranges of Neomycin, Penicillin and Streptomycin
 >
 >
 > The chart compares the in vitro sensitivities to neomycin of some of the common pathogens (gram+ in red and gram- in blue) with their sensitivities to penicillin, and streptomycin.
@@ -255,6 +322,10 @@ reads as follows:
 |:-----------------------------|:---------------------------------------------------------------------|
 | Scope Magazine               | https://graphicdesignarchives.org/projects/scope-magazine-vol-iii-5/ |
 | Protovis Antibiotics Example | https://mbostock.github.io/protovis/ex/antibiotics-burtin.html       |
+### licenses
+| title                      | path                                 |
+|:---------------------------|:-------------------------------------|
+| BSD License (via Protovis) | https://mbostock.github.io/protovis/ |
 ## `cars.json`
 ### path
 cars.json
@@ -277,12 +348,24 @@ Collection of car specifications and performance metrics from various automobile
 | title                    | path                              |
 |:-------------------------|:----------------------------------|
 | StatLib Datasets Archive | http://lib.stat.cmu.edu/datasets/ |
+### licenses
+| title                                                                         | path                                       |
+|:------------------------------------------------------------------------------|:-------------------------------------------|
+| The original was distributed in 1982 for educational and scientific purposes. | http://lib.stat.cmu.edu/datasets/cars.desc |
 ## `co2-concentration.csv`
 ### path
 co2-concentration.csv
 ### description
-Scripps CO2 program data ut modified to only include date, CO2, seasonally adjusted CO2. 
+Atmospheric CO2 concentration measurements from Mauna Loa Observatory, Hawaii. 
+Contains monthly readings from 1958-2020 with two key measurements:
+1. CO2 concentrations in millionths of a [mole](https://en.wikipedia.org/wiki/Mole_(unit)) of CO2 
+per mole of air (parts per million), reported on the 2012 
+SIO manometric mole fraction scale
+2. Seasonally adjusted values where a [4-harmonic fit](https://en.wikipedia.org/wiki/Harmonic_analysis) with linear gain factor 
+has been subtracted to remove the quasi-regular seasonal cycle
+Values are adjusted to 24:00 hours on the 15th of each month. 
 Only includes rows with valid data.
+
 ### schema
     
 | name         | type   |
@@ -291,20 +374,24 @@ Only includes rows with valid data.
 | CO2          | number |
 | adjusted CO2 | number |
 ### sources
-| title               | path                                                                    |
-|:--------------------|:------------------------------------------------------------------------|
-| Scripps CO2 Program | https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record |
+| title               | path                                                                                                         |
+|:--------------------|:-------------------------------------------------------------------------------------------------------------|
+| Scripps CO2 Program | https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record                                      |
+| In-situ CO2 Data    | https://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv |
+### licenses
+| title                            | path                                         |
+|:---------------------------------|:---------------------------------------------|
+| Creative Commons Attribution 4.0 | https://creativecommons.org/licenses/by/4.0/ |
 ## `countries.json`
 ### path
 countries.json
 ### description
-This dataset combines key demographic indicators (life expectancy at birth and
-fertility rate measured as babies per woman) for various countries from 1955 to 2000 at 5-year
-intervals. It includes both current values and adjacent time period values (previous and next)
-for each indicator. Gapminder's [data documentation](https://www.gapminder.org/data/documentation/) 
-notes that its philosophy is to fill data gaps with estimates and use current
-geographic boundaries for historical data. Gapminder states that it aims to "show people the
-big picture" rather than support detailed numeric analysis.
+Key demographic indicators (life expectancy at birth and fertility rate measured 
+as babies per woman) for various countries from 1955 to 2000 at 5-year intervals. Includes both 
+current values and adjacent time period values (previous and next) for each indicator. Gapminder's 
+[data documentation](https://www.gapminder.org/data/documentation/) notes that its philosophy is to fill data gaps with 
+estimates and use current geographic boundaries for historical data. Gapminder states that it 
+aims to "show people the big picture" rather than support detailed numeric analysis.
 ### schema
     
 | name          | type    | description                                                              |
@@ -329,17 +416,15 @@ big picture" rather than support detailed numeric analysis.
 ### path
 crimea.json
 ### description
-This dataset, which informed Florence Nightingale's groundbreaking work in public health, details 
-monthly mortality rates from British military hospitals during the Crimean War (1854-1856). 
-
-Nightingale credits Dr. William Farr for compiling the data from the 1858 [Medical and Surgical 
-History of the British Army](http://resource.nlm.nih.gov/62510370R). The dataset categorizes 
+Monthly mortality rates from British military hospitals during the Crimean War (1854-1856), which informed 
+Florence Nightingale's groundbreaking work in public health. Nightingale credits Dr. William Farr for 
+compiling the data from the 1858 [Medical and Surgical History of the British Army](http://resource.nlm.nih.gov/62510370R). Categorizes 
 deaths into "zymotic" diseases (preventable infectious diseases), wounds/injuries, and other causes. 
-Covering the period from April 1854 to March 1856, the dataset includes monthly army strength 
-alongside mortality figures. Nightingale transformed this data into her now-famous [polar area 
+Covering the period from April 1854 to March 1856, it includes monthly army strength 
+alongside mortality figures. Transformed by Nightingale into her now-famous [polar area 
 diagrams](https://iiif.lib.harvard.edu/manifests/view/drs:7420433$25i). 
 
-The annual mortality rates plotted in the chart can be calculated from the dataset using the formula 
+The annual mortality rates plotted in the chart can be calculated using the formula 
 > (Deaths &times; 1000 &times; 12) &divide; Army Size. 
 
 As [The Lancet](https://pmc.ncbi.nlm.nih.gov/articles/PMC7252134/) argued in 2020, Nightingale's 
@@ -359,11 +444,18 @@ the dramatic impact of sanitary reforms, particularly in reducing preventable de
 | title                                                                                                                                                                                                                                                                                                                                                                                            | path                                                     |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|
 | Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East. | https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21 |
+### licenses
+| title                                                               | path                                                                                 |
+|:--------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
+| Harvard Library - Digitized Content Copyright & Viewer Terms of Use | https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent |
 ## `disasters.csv`
 ### path
 disasters.csv
 ### description
-Annual number of deaths from disasters.
+Annual number of deaths from disasters, sourced from EM-DAT (Emergency Events Database) 
+maintained by the Centre for Research on the Epidemiology of Disasters (CRED) at UCLouvain, Belgium. 
+Processed by Our World in Data to standardize country names and world region definitions, converting units,
+calculating derived indicators, and adapting metadata. Deaths are reported as absolute numbers.
 ### schema
     
 | name   | type    |
@@ -372,41 +464,70 @@ Annual number of deaths from disasters.
 | Year   | integer |
 | Deaths | integer |
 ### sources
-| title                                    | path                                            |
-|:-----------------------------------------|:------------------------------------------------|
-| Our World in Data - Natural Catastrophes | https://ourworldindata.org/natural-catastrophes |
+| title                                                                 | path                                            |
+|:----------------------------------------------------------------------|:------------------------------------------------|
+| EM-DAT: The Emergency Events Database                                 | https://www.emdat.be                            |
+| Hannah Ritchie, Pablo Rosado and Max Roser (2022) - Natural Disasters | https://ourworldindata.org/natural-catastrophes |
+### licenses
+| title                                           | path                                          |
+|:------------------------------------------------|:----------------------------------------------|
+| EM-DAT terms of use                             | https://doc.emdat.be/docs/legal/terms-of-use/ |
+| Creative Commons BY license (Our World in Data) | https://creativecommons.org/licenses/by/4.0/  |
 ## `driving.json`
 ### path
 driving.json
+### description
+Tracks the relationship between driving habits and gasoline prices 
+in the United States during a period spanning multiple significant events, including 
+the cheap gas era, Arab oil embargo, energy crisis, record low prices, and the 
+"swing backward" from 1956 to 2010.
+
 ### schema
     
-| name   | type    |
-|:-------|:--------|
-| side   | string  |
-| year   | integer |
-| miles  | integer |
-| gas    | number  |
+| name   | type    | description                                                                        | categories                         |
+|:-------|:--------|:-----------------------------------------------------------------------------------|:-----------------------------------|
+| side   | string  | Label positioning indicator used in the original visualization to optimize         | ['left', 'right', 'top', 'bottom'] |
+|        |         | readability and prevent overlap                                                    |                                    |
+| year   | integer | Year of observation from 1956 to 2010                                              |                                    |
+| miles  | integer | Miles driven per capita per year, ranging from approximately 4,000 to 10,000 miles |                                    |
+| gas    | number  | Price of a gallon of regular grade gasoline, adjusted for inflation                |                                    |
 ### sources
-| title          | path                                                                                      |
-|:---------------|:------------------------------------------------------------------------------------------|
-| New York Times | https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html |
+| title                                                                                                                     | path                                                                                      |
+|:--------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
+| New York Times (citing U.S. Energy Information Administration, Federal Highway Administration, and Brookings Institution) | https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html |
 ## `earthquakes.json`
 ### path
 earthquakes.json
 ### description
-Earthquake data retrieved Feb 6, 2018
+Represents approximately one week of continuous monitoring from USGS's "all earthquakes" 
+real-time feed, which includes 1,703 seismic events of all magnitudes recorded by the 
+USGS Earthquake Hazards Program from January 31 to February 7, 2018 (UTC). 
 ### sources
 | title                | path                                                                       |
 |:---------------------|:---------------------------------------------------------------------------|
 | USGS Earthquake Feed | https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson |
+### licenses
+| title              | path                                                                              |
+|:-------------------|:----------------------------------------------------------------------------------|
+| U.S. Public Domain | https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits |
 ## `ffox.png`
 ### path
 ffox.png
 ### description
-Application icons from open-source software projects.
+Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).
+### sources
+| title           | path                             |
+|:----------------|:---------------------------------|
+| Mozilla Firefox | https://www.mozilla.org/firefox/ |
+### licenses
+| title                     | path                                                        |
+|:--------------------------|:------------------------------------------------------------|
+| Mozilla Trademark License | https://www.mozilla.org/en-US/foundation/trademarks/policy/ |
 ## `flare-dependencies.json`
 ### path
 flare-dependencies.json
+### description
+Indicates, with `flare.json`, relationships among classes in a software hierarchy.
 ### schema
     
 | name   | type    |
@@ -416,6 +537,8 @@ flare-dependencies.json
 ## `flare.json`
 ### path
 flare.json
+### description
+Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy.
 ### schema
     
 | name   | type    |
@@ -426,7 +549,10 @@ flare.json
 ### path
 flights-10k.json
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (10,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name        | type    |
@@ -440,11 +566,18 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                          |
+|:-----------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-200k.arrow`
 ### path
 flights-200k.arrow
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name     | type    |
@@ -456,11 +589,18 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                          |
+|:-----------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-200k.json`
 ### path
 flights-200k.json
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name     | type    |
@@ -472,11 +612,18 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                          |
+|:-----------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-20k.json`
 ### path
 flights-20k.json
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (20,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name        | type    |
@@ -490,11 +637,18 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                     |
+|:-----------|:-----------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-2k.json`
 ### path
 flights-2k.json
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (2,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name        | type    |
@@ -508,11 +662,18 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                          |
+|:-----------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-3m.parquet`
 ### path
 flights-3m.parquet
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name        | type     |
@@ -526,11 +687,18 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                          |
+|:-----------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-5k.json`
 ### path
 flights-5k.json
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight delay statistics (5,000 rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
+`/scripts/flights.py`
 ### schema
     
 | name        | type    |
@@ -544,11 +712,16 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| name       | path                                                                   | title                                                                                          |
+|:-----------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| other-open | https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-234 | Data Collected Under U.S. DOT Regulatory Requirements - License Terms Not Explicitly Specified |
 ## `flights-airport.csv`
 ### path
 flights-airport.csv
 ### description
-Flight delay statistics from U.S. Bureau of Transportation Statistics. Transformed using `/scripts/flights.py`
+Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id), 
+a destination airport, and the count of flights along this route.
 ### schema
     
 | name        | type    |
@@ -559,7 +732,12 @@ Flight delay statistics from U.S. Bureau of Transportation Statistics. Transform
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
+| U.S. Bureau of Transportation Statistics |                                                                                      |
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `football.json`
 ### path
 football.json
@@ -581,12 +759,16 @@ chosen divisions over the time period.
 | title        | path                                          |
 |:-------------|:----------------------------------------------|
 | OpenFootball | https://github.com/openfootball/football.json |
+### licenses
+| path                                                                     |
+|:-------------------------------------------------------------------------|
+| https://github.com/openfootball/football.json?tab=readme-ov-file#license |
 ## `gapminder-health-income.csv`
 ### path
 gapminder-health-income.csv
 ### description
-Per-capita income, life expectancy, population and regional grouping. Dataset does not specify 
-the reference year for the data. Gapminder historical data is subject to revisions.
+Per-capita income, life expectancy, population and regional grouping. Reference year for the data is not specified. 
+Gapminder historical data is subject to revisions.
 
 Gapminder (v30, 2023) defines per-capita income as follows:
 >"This is real GDP per capita (gross domestic product per person adjusted for inflation) 
@@ -615,16 +797,16 @@ Gapminder (v30, 2023) defines per-capita income as follows:
 ### path
 gapminder.json
 ### description
-This dataset combines key demographic indicators (life expectancy at birth, 
+Combines key demographic indicators (life expectancy at birth, 
 population, and fertility rate measured as babies per woman) for various countries from 1955 
-to 2005 at 5-year intervals. It also includes a 'cluster' column, a categorical variable 
+to 2005 at 5-year intervals. Includes a 'cluster' column, a categorical variable 
 grouping countries. Gapminder's data documentation notes that its philosophy is to fill data 
 gaps with estimates and use current geographic boundaries for historical data. Gapminder 
 states that it aims to "show people the big picture" rather than support detailed numeric 
 analysis.
 
 Notes:
-1. Country Selection: The set of countries in this file matches the version of this dataset 
+1. Country Selection: The set of countries matches the version of this dataset 
    originally added to this collection in 2015. The specific criteria for country selection 
    in that version are not known. Data for Aruba are no longer available in the new version. 
    Hong Kong has been revised to Hong Kong, China in the new version.
@@ -632,26 +814,24 @@ Notes:
 2. Data Precision: The precision of float values may have changed from the original version. 
    These changes reflect the most recent source data used for each indicator.
 
-3. Regional Groupings: The 'cluster' column represents a regional mapping of countries 
-   corresponding to the 'six_regions' schema in Gapminder's Data Geographies dataset. To 
-   preserve continuity with previous versions of this dataset, we have retained the column 
-   name 'cluster' instead of renaming it to 'six_regions'. The six regions represented are: 
-   `0: south_asia, 1: europe_central_asia, 2: sub_saharan_africa, 3: america, 4: east_asia_pacific, 5: middle_east_north_africa`.
+3. Regional Groupings: To preserve continuity with previous versions of this dataset, we have retained the column 
+   name 'cluster' instead of renaming it to 'six_regions'. 
+
 ### schema
     
-| name        | type    | description                                                      |
-|:------------|:--------|:-----------------------------------------------------------------|
-| year        | integer | Years from 1955 to 2005 at 5-year intervals                      |
-| country     | string  | Name of the country                                              |
-| cluster     | integer | A categorical variable (values 0-5) grouping countries by region |
-| pop         | integer | Population of the country                                        |
-| life_expect | number  | Life expectancy in years                                         |
-| fertility   | number  | Fertility rate (average number of children per woman             |
+| name        | type    | description                                          | categories                                                                                                                                                                                                                                                        |
+|:------------|:--------|:-----------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| year        | integer | Years from 1955 to 2005 at 5-year intervals          |                                                                                                                                                                                                                                                                   |
+| country     | string  | Name of the country                                  |                                                                                                                                                                                                                                                                   |
+| cluster     | integer | A categorical variable grouping countries by region  | [{'value': 0, 'label': 'south_asia'}, {'value': 1, 'label': 'europe_central_asia'}, {'value': 2, 'label': 'sub_saharan_africa'}, {'value': 3, 'label': 'america'}, {'value': 4, 'label': 'east_asia_pacific'}, {'value': 5, 'label': 'middle_east_north_africa'}] |
+| pop         | integer | Population of the country                            |                                                                                                                                                                                                                                                                   |
+| life_expect | number  | Life expectancy in years                             |                                                                                                                                                                                                                                                                   |
+| fertility   | number  | Fertility rate (average number of children per woman |                                                                                                                                                                                                                                                                   |
 ### sources
 | title                                                          | path                                                                                                                   |   version |
 |:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|----------:|
 | Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   |        14 |
-| Gapminder Foundatio - Life Expectancy (Documentation)          | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
+| Gapminder Foundation - Life Expectancy (Documentation)         | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
 | Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   |         7 |
 | Gapminder Foundation - Population (Documentation)              | https://www.gapminder.org/data/documentation/gd003/                                                                    |           |
 | Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   |        14 |
@@ -659,22 +839,44 @@ Notes:
 | Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 |         2 |
 | Gapminder Foundation - Data Geographies (Documentation)        | https://www.gapminder.org/data/geo/                                                                                    |           |
 | Gapminder Data Documentation                                   | https://www.gapminder.org/data/documentation/                                                                          |           |
+### licenses
+| title                                          | path                                     |
+|:-----------------------------------------------|:-----------------------------------------|
+| Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
 ## `gimp.png`
 ### path
 gimp.png
 ### description
-Application icons from open-source software projects.
+Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).
+### sources
+| title             | path                        |
+|:------------------|:----------------------------|
+| GIMP - About GIMP | https://www.gimp.org/about/ |
+### licenses
+| path                                                                                       |
+|:-------------------------------------------------------------------------------------------|
+| https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it |
 ## `github.csv`
 ### path
 github.csv
 ### description
-Generated using `/scripts/github.py`.
+Simulated GitHub contribution data showing hourly commit counts across 
+different times of day. Designed to demonstrate typical patterns of developer activity 
+in a GitHub-style punchcard visualization format.
 ### schema
     
-| name   | type    |
-|:-------|:--------|
-| time   | string  |
-| count  | integer |
+| name   | type    | description                                         |
+|:-------|:--------|:----------------------------------------------------|
+| time   | string  | Hourly timestamp from January 1st to May 30th, 2015 |
+| count  | integer | Simulated hourly commit counts                      |
+### sources
+| title                                 |
+|:--------------------------------------|
+| Generated using `/scripts/github.py`. |
+### licenses
+| path                                                            |
+|:----------------------------------------------------------------|
+| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `global-temp.csv`
 ### path
 global-temp.csv
@@ -690,9 +892,19 @@ Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocea
 | title                                    | path                                |
 |:-----------------------------------------|:------------------------------------|
 | NASA Goddard Institute for Space Studies | https://data.giss.nasa.gov/gistemp/ |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `income.json`
 ### path
 income.json
+### description
+Household income distribution by US state, derived from the 
+Census Bureau's American Community Survey 3-Year Data (2013). The dataset 
+shows the percentage of households within different income brackets for each state.
+Generated using `/scripts/income.py`. This product uses the Census Bureau Data API 
+but is not endorsed or certified by the Census Bureau.
 ### schema
     
 | name   | type    |
@@ -703,14 +915,21 @@ income.json
 | pct    | number  |
 | total  | integer |
 | group  | string  |
+### sources
+| title                                                           | path                                                                 |
+|:----------------------------------------------------------------|:---------------------------------------------------------------------|
+| U.S. Census Bureau American Community Survey 3-Year Data (2013) | https://www.census.gov/data/developers/data-sets/acs-3year/2013.html |
+| Census Bureau Data API User Guide                               | https://www.census.gov/data/developers/guidance/api-user-guide.html  |
+### licenses
+| title                                   | path                                                               | name                       |
+|:----------------------------------------|:-------------------------------------------------------------------|:---------------------------|
+| U.S. Census Bureau API Terms of Service | https://www.census.gov/data/developers/about/terms-of-service.html | Census Bureau Terms of Use |
 ## `iowa-electricity.csv`
 ### path
 iowa-electricity.csv
 ### description
-The state of Iowa has dramatically increased its production of renewable 
-wind power in recent years. This file contains the annual net generation of electricity in 
-the state by source in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
-It is useful for illustrating stacked area charts.
+Annual net generation of electricity in Iowa by source, in thousand megawatthours. U.S. EIA data downloaded on May 6, 2018. 
+Useful for illustrating stacked area charts. Demonstrates dramatic increase in wind power production.
 ### schema
     
 | name           | type    |
@@ -722,23 +941,25 @@ It is useful for illustrating stacked area charts.
 | title                                  | path                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | U.S. Energy Information Administration | https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin= |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `jobs.json`
 ### path
 jobs.json
 ### description
-U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
+U.S. census data on [occupations](https://usa.ipums.org/usa-action/variables/OCC1950#codes_section) by sex and year across decades between 1850 and 2000. Obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census microdata" from as early as 1790.
 
 Originally created for a 2006 data visualization project called *sense.us* by IBM Research (Jeff Heer, Martin Wattenberg and Fernanda Viégas), described [here](https://homes.cs.washington.edu/~jheer/files/bdata_ch12.pdf). 
 The dataset is also referenced in this vega [example](https://vega.github.io/vega/examples/job-voyager/).
 
-Data is based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. The dataset appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
+Based on a tabulation of the [OCC1950](https://usa.ipums.org/usa-action/variables/OCC1950) variable by sex across IPUMS USA samples. Appears to be derived from Version 6.0 (2015) of IPUMS USA, according to 2024 correspondence with the IPUMS Project. IPUMS has made improvements to occupation coding since version 6, particularly for 19th-century samples, which may result in discrepancies between this dataset and current IPUMS data. Details on data revisions are available [here](https://usa.ipums.org/usa-action/revisions).
 
 IPUMS USA confirmed in 2024 correspondence that hosting this dataset on vega-datasets is permissible, stating:
 >We're excited to hear that this dataset made its way to this repository and is being used by students for data visualization. We allow for these types of redistributions of summary data so long as the underlying microdata records are not shared.
 
-This dataset contains only summary statistics and does not include any underlying microdata records.
-
-1. This dataset represents summary data. The underlying microdata records are not included.
+1. Represents summary data. Underlying microdata records are not included.
 2. Users attempting to replicate or extend this data should use the [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) 
 (person weight) variable as an expansion factor when working with IPUMS USA extracts.
 3. Due to coding revisions, figures for earlier years (particularly 19th century) may not match current IPUMS USA data exactly.
@@ -761,13 +982,17 @@ Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. 
 | title     | path                       |   version |
 |:----------|:---------------------------|----------:|
 | IPUMS USA | https://usa.ipums.org/usa/ |         6 |
+### licenses
+| title              | path                              |
+|:-------------------|:----------------------------------|
+| IPUMS Terms of Use | https://www.ipums.org/about/terms |
 ## `la-riots.csv`
 ### path
 la-riots.csv
 ### description
-More than 60 people lost their lives amid the looting and fires that ravaged Los Angeles 
-for five days starting on April 29, 1992. This file contains metadata about each person, including the geographic 
-coordinates of their death. Compiled and published by the Los Angeles Times Data Desk.
+A comprehensive record of fatalities during the five days of civil unrest in Los Angeles beginning 
+April 29, 1992, documenting over 60 deaths with associated geographic coordinates where each person lost their life.
+Originally compiled and published by the Los Angeles Times Data Desk.
 ### schema
     
 | name         | type    |
@@ -798,6 +1023,10 @@ and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 | title                                            | path                                                                     |
 |:-------------------------------------------------|:-------------------------------------------------------------------------|
 | Statistical GIS Boundary Files, London Datastore | https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london |
+### licenses
+| title                      | path                                                                       |
+|:---------------------------|:---------------------------------------------------------------------------|
+| UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
 ## `londoncentroids.json`
 ### path
 londonCentroids.json
@@ -810,27 +1039,58 @@ Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/
 | name   | string |
 | cx     | number |
 | cy     | number |
+### sources
+| title                                                                                                                                                                      | path                                                                     |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
+| [londonBoroughs.json](https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json) from the [vega-datasets](https://github.com/vega/vega-datasets) repository | https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json |
+### licenses
+| title                      | path                                                                       |
+|:---------------------------|:---------------------------------------------------------------------------|
+| UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
 ## `londontubelines.json`
 ### path
 londonTubeLines.json
 ### description
-Selected rail lines simplified from source.
+A [topologically-encoded](https://github.com/topojson/topojson) representation of select London Underground rail lines, derived from OpenStreetMap
+data. These 394 LineString geometries, encoded using 406 arcs, depict transport paths between stations with stations marked as nodes
+along the lines. Originally transformed from a GeoJSON intermediary `tfl_lines.json` into TopoJSON format, this network configuration 
+reflects the system as of February 4, 2018, and may not incorporate subsequent modifications or expansions.
+
 ### sources
-| title            | path                                                 |
-|:-----------------|:-----------------------------------------------------|
-| London Tube Data | https://github.com/oobrien/vis/tree/master/tube/data |
+| title                                         | path                                                                        |
+|:----------------------------------------------|:----------------------------------------------------------------------------|
+| OpenStreetMap Data (processed by oobrien/vis) | https://github.com/oobrien/vis/blob/master/tubecreature/data/tfl_lines.json |
+### licenses
+| title                                          | path                                       |
+|:-----------------------------------------------|:-------------------------------------------|
+| Open Data Commons Open Database License (ODbL) | https://opendatacommons.org/licenses/odbl/ |
 ## `lookup_groups.csv`
 ### path
 lookup_groups.csv
+### description
+A nine-row lookup table for the `lookup_people.csv` dataset, 
+mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms.
 ### schema
     
 | name   | type    |
 |:-------|:--------|
 | group  | integer |
 | person | string  |
+### sources
+| title          |
+|:---------------|
+| Generated Data |
+### licenses
+| path                                                            |
+|:----------------------------------------------------------------|
+| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `lookup_people.csv`
 ### path
 lookup_people.csv
+### description
+A synthetic list of nine people and their associated name, age, 
+and height in centimeters. Used in conjunction with `lookup_groups.csv` 
+to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup` transforms.
 ### schema
     
 | name   | type    |
@@ -838,31 +1098,53 @@ lookup_people.csv
 | name   | string  |
 | age    | integer |
 | height | integer |
+### sources
+| title          |
+|:---------------|
+| Generated Data |
+### licenses
+| path                                                            |
+|:----------------------------------------------------------------|
+| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `miserables.json`
 ### path
 miserables.json
+### description
+A weighted network of coappearances of characters in Victor Hugo's novel "Les Miserables". 
+Nodes represent characters as indicated by the labels and edges connect any pair of characters 
+that appear in the same chapter of the book. The values on the edges are the number of such 
+coappearances.
+
+### sources
+| title                                                                                                            | path                                                |
+|:-----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|
+| D. E. Knuth, The Stanford GraphBase: A Platform for Combinatorial Computing, Addison-Wesley, Reading, MA (1993). | https://www-cs-faculty.stanford.edu/~knuth/sgb.html |
+### licenses
+| path                                      |
+|:------------------------------------------|
+| https://websites.umich.edu/~mejn/netdata/ |
 ## `monarchs.json`
 ### path
 monarchs.json
 ### description
 A chronological list of English and British monarchs from Elizabeth I through George IV.
-Each entry includes:
 
-The dataset contains two intentional inaccuracies to maintain compatibility with 
+Contains two intentional inaccuracies to maintain compatibility with 
 the [Wheat and Wages](https://vega.github.io/vega/examples/wheat-and-wages/) example visualization:
 1. the start date for the reign of Elizabeth I is shown as 1565, instead of 1558;
 2. the end date for the reign of George IV is shown as 1820, instead of 1830.
-These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used i the visualization.
+These discrepancies align the `monarchs.json` dataset with the start and end dates of the `wheat.json` dataset used in the visualization.
 The entry "W&M" represents the joint reign of William III and Mary II. While the dataset shows their reign as 1689-1702, 
 the official Web site of the British royal family indicates that Mary II's reign ended in 1694, though William III continued to rule until 1702.
 The `commonwealth` field is used to flag the period from 1649 to 1660, which includes the Commonwealth of England, the Protectorate, 
 and the period leading to the Restoration. While historically more accurate to call this the "interregnum," the field name of `commonwealth` 
 from the original dataset is retained for backwards compatibility.
-The dataset was revised in Aug. 2024. James II's reign now ends in 1688 (previously 1689).
+
+> [!IMPORTANT]
+> Revised in Aug. 2024 to show James II's reign now ends in 1688 (previously 1689).
+
 Source data has been verified against the kings & queens and interregnum pages of the official website of the British royal family (retrieved in Aug. 2024).
-Content on the site is protected by Crown Copyright. 
-Under the [UK Government Licensing Framework](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/), most 
-Crown copyright information is available under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+
 ### schema
     
 | name   | type    | description                                                                                                 |
@@ -876,12 +1158,17 @@ Crown copyright information is available under the [Open Government Licence v3.0
 |:----------------------------------|:-------------------------------------------|
 | The Royal Family - Kings & Queens | https://www.royal.uk/kings-and-queens-1066 |
 | The Royal Family - Interregnum    | https://www.royal.uk/interregnum-1649-1660 |
+### licenses
+| title                             | path                                                                       |
+|:----------------------------------|:---------------------------------------------------------------------------|
+| Open Government Licence v3.0 (UK) | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
 ## `movies.json`
 ### path
 movies.json
 ### description
-The dataset has well known and intentionally included errors. 
-This dataset is provided for instructional purposes, including the need to reckon with dirty data.
+A collection of films and their performance metrics, including box office earnings, budgets, 
+and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
+resource for developing data cleaning and validation skills in real-world analysis workflows.
 ### schema
     
 | name                   | type    |
@@ -905,15 +1192,37 @@ This dataset is provided for instructional purposes, including the need to recko
 ## `normal-2d.json`
 ### path
 normal-2d.json
+### description
+Five hundred paired coordinates sampled from a bivariate normal distribution. The data is centered near the 
+origin with standard deviations indicating a relatively equal spread in both dimensions. 
+The variables exhibit negligible correlation (0.026), suggesting independence. 
+[Normality tests](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html) for each variable yield high p-values, supporting the normal distribution assumption. 
+These characteristics make it well-suited for demonstrating statistical visualization techniques 
+in Vega and Vega-Lite, including scatter plots, density plots, heatmaps, and marginal histograms/density curves. 
+It can also serve as a clean baseline for testing new visualization methods or for educational purposes 
+in data visualization and statistics.
+A contrast to uniformly distributed data in `uniform-2d.json`
+
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| u      | number |
-| v      | number |
+| name   | type   | description                                                      |
+|:-------|:-------|:-----------------------------------------------------------------|
+| u      | number | mean: 0.005, std: 0.192, range: [-0.578, 0.533], p-value: 0.680  |
+| v      | number | mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763 |
+### sources
+| title          |
+|:---------------|
+| Generated Data |
+### licenses
+| path                                                            |
+|:----------------------------------------------------------------|
+| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `obesity.json`
 ### path
 obesity.json
+### description
+State-level obesity rates (BMI >= 30) for the U.S. in 1995. 
+Originally [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss/index.html) statistics.
 ### schema
     
 | name   | type    |
@@ -921,13 +1230,23 @@ obesity.json
 | id     | integer |
 | rate   | number  |
 | state  | string  |
+### sources
+| title    | path                                               |
+|:---------|:---------------------------------------------------|
+| Protovis | https://mbostock.github.io/protovis/ex/us_stats.js |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `ohlc.json`
 ### path
 ohlc.json
 ### description
-This dataset contains the performance of the Chicago Board Options Exchange 
-[Volatility Index](https://en.wikipedia.org/wiki/VIX) ([VIX](https://finance.yahoo.com/chart/%5EVIX#overview))
-in the summer of 2009.
+Performance of the Chicago Board Options Exchange 
+[Volatility Index](https://en.wikipedia.org/wiki/VIX) (VIX) in the summer of 2009.
+
+The precise methodology used to derive the signal and calculate the ret columns is unclear.
+
 ### schema
     
 | name   | type   |
@@ -940,38 +1259,45 @@ in the summer of 2009.
 | signal | string |
 | ret    | number |
 ### sources
-| title                  | path                                   |
-|:-----------------------|:---------------------------------------|
-| Yahoo Finance VIX Data | https://finance.yahoo.com/chart/%5EVIX |
+| title                      | path                                                            |
+|:---------------------------|:----------------------------------------------------------------|
+| Yahoo Finance VIX Data     | https://finance.yahoo.com/chart/%5EVIX                          |
+| CBOE - VIX Historical Data | https://www.cboe.com/tradable_products/vix/vix_historical_data/ |
 ## `penguins.json`
 ### path
 penguins.json
 ### description
-Palmer Archipelago (Antarctica) penguin data collected and made available by 
-[Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) 
-and the Palmer Station, Antarctica LTER, a member of the [Long Term Ecological Research 
-Network](https://lternet.edu/).
+Records of morphological measurements and demographic information from 344 Palmer Archipelago 
+penguins across three species. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/). 
+Data gathering occurred as part of Palmer Station's long-term ecological research, contributing to studies of Antarctic marine
+ecosystems and penguin biology. All measurements follow standardized units, enabling research into morphological 
+variations between species and sexual dimorphism in Antarctic penguins. 
+
 ### schema
     
-| name                | type    |
-|:--------------------|:--------|
-| Species             | string  |
-| Island              | string  |
-| Beak Length (mm)    | number  |
-| Beak Depth (mm)     | number  |
-| Flipper Length (mm) | integer |
-| Body Mass (g)       | integer |
-| Sex                 | string  |
+| name                | type    | description                                                         |
+|:--------------------|:--------|:--------------------------------------------------------------------|
+| Species             | string  | Penguin species (Adelie, Gentoo, or Chinstrap)                      |
+| Island              | string  | Island where the penguin was observed (Torgersen, Biscoe, or Dream) |
+| Beak Length (mm)    | number  | Beak length in millimeters                                          |
+| Beak Depth (mm)     | number  | Beak depth in millimeters                                           |
+| Flipper Length (mm) | integer | Flipper length in millimeters                                       |
+| Body Mass (g)       | integer | Body mass in grams                                                  |
+| Sex                 | string  | Sex of the penguin (MALE, FEMALE or null)                           |
 ### sources
 | title                               | path                                     |
 |:------------------------------------|:-----------------------------------------|
 | Palmer Station Antarctica LTER      | https://pal.lternet.edu/                 |
 | Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins |
+### licenses
+| name              | path                                                                        |
+|:------------------|:----------------------------------------------------------------------------|
+| CC0 1.0 Universal | https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme |
 ## `platformer-terrain.json`
 ### path
 platformer-terrain.json
 ### description
-Assets from the video game Celeste.
+Assets from the video game Celeste. Added in [#376](https://github.com/vega/vega-datasets/pull/376)
 ### schema
     
 | name       | type    |
@@ -993,10 +1319,9 @@ Assets from the video game Celeste.
 political-contributions.json
 ### description
 Summary financial information on contributions to candidates for U.S. 
-elections. An updated version of this datset is available from the "all candidates" files 
-(in pipe-delimited format) on the bulk data download page of the U.S. Federal Election 
-Commission, or, alternatively, via OpenFEC. Information on each of the 25 columns is 
-available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
+elections. An updated version is available from the "all candidates" files (in pipe-delimited format)
+on the bulk data download page of the U.S. Federal Election Commission, or, alternatively, via OpenFEC. 
+Information on each of the 25 columns is available from the [FEC All Candidates File Description](https://www.fec.gov/campaign-finance-data/all-candidates-file-description/).
 The sample dataset in `political-contributions.json` contains 58 records with dates from 2015.
 
 FEC data is subject to the commission's:
@@ -1007,7 +1332,7 @@ FEC data is subject to the commission's:
 Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) states:
 > This project is in the public domain within the United States, and we waive worldwide 
 > copyright and related rights through [CC0 universal public domain](https://creativecommons.org/publicdomain/zero/1.0/)
-> dedication. Read more on our license page.
+> dedication. Read more on our [license](https://github.com/fecgov/FEC?tab=License-1-ov-file) page.
 > A few restrictions limit the way you can use FEC data. For example, you can't use 
 > contributor lists for commercial purposes or to solicit donations. Learn more on 
 > [FEC.gov](https://www.fec.gov/).
@@ -1045,16 +1370,18 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 |:--------------------------------------|:----------------------------------------------------|
 | Federal Election Commission Bulk Data | https://www.fec.gov/data/browse-data/?tab=bulk-data |
 | OpenFEC API                           | https://api.open.fec.gov/developers/                |
+### licenses
+| title                               | path                                               |
+|:------------------------------------|:---------------------------------------------------|
+| Creative Commons Zero 1.0 Universal | https://creativecommons.org/publicdomain/zero/1.0/ |
 ## `population.json`
 ### path
 population.json
 ### description
-United States population statistics by sex and age group across decades between 1850 and 2000. 
-The dataset was obtained from IPUMS USA, which "collects, preserves and harmonizes U.S. census 
-microdata" from as early as 1790.
+U.S. population counts by age group (0-90+ in 5-year intervals) and sex 
+for each decade between 1850 and 2000, collected and harmonized from historical census records by IPUMS USA.
 
-IPUMS updates and revises datasets over time, which may result in discrepancies between this 
-dataset and current IPUMS data. Details on data revisions are available here.
+IPUMS updates and revises datasets over time, which may result in discrepancies with current IPUMS data.
 
 When using this dataset, please refer to IPUMS USA terms of use. The organization requests the 
 use of the following citation for this json file:
@@ -1074,11 +1401,15 @@ http://doi.org/10.18128/D010.V6.0
 | title     | path                       |
 |:----------|:---------------------------|
 | IPUMS USA | https://usa.ipums.org/usa/ |
+### licenses
+| title              | path                              |
+|:-------------------|:----------------------------------|
+| IPUMS Terms of Use | https://www.ipums.org/about/terms |
 ## `population_engineers_hurricanes.csv`
 ### path
 population_engineers_hurricanes.csv
 ### description
-Per-state data on population, number of engineers, and hurricanes. Used in Vega-Lite example,
+Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)
 ### schema
     
@@ -1095,6 +1426,10 @@ Per-state data on population, number of engineers, and hurricanes. Used in Vega-
 | Bureau of Labor Statistics         | https://www.bls.gov/oes/tables.htm                                                                                |
 | American Community Survey          | https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table |
 | NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records                                                               |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `seattle-weather-hourly-normals.csv`
 ### path
 seattle-weather-hourly-normals.csv
@@ -1116,27 +1451,35 @@ and updated the format to be easier to parse.
 | title                                     | path                                                |
 |:------------------------------------------|:----------------------------------------------------|
 | NOAA National Climatic Data Center (NCDC) | https://www.ncdc.noaa.gov/cdo-web/datatools/normals |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `seattle-weather.csv`
 ### path
 seattle-weather.csv
 ### description
-Daily weather records with metric units. Transformed using `/scripts/weather.py`. 
+Daily weather in metric units. Transformed using `/scripts/weather.py`. 
 The categorical "weather" field is synthesized from multiple fields in the original dataset. 
 This data is intended for instructional purposes.
 ### schema
     
-| name          | type   |
-|:--------------|:-------|
-| date          | date   |
-| precipitation | number |
-| temp_max      | number |
-| temp_min      | number |
-| wind          | number |
-| weather       | string |
+| name          | type   | description                                                                                                                 | categories                                |
+|:--------------|:-------|:----------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|
+| date          | date   | Date of the weather observation                                                                                             |                                           |
+| precipitation | number | Amount of precipitation in millimeters                                                                                      |                                           |
+| temp_max      | number | Maximum daily temperature in degrees Celsius                                                                                |                                           |
+| temp_min      | number | Minimum daily temperature in degrees Celsius                                                                                |                                           |
+| wind          | number | Wind speed in kilometers per hour                                                                                           |                                           |
+| weather       | string | Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog. | ['drizzle', 'rain', 'snow', 'sun', 'fog'] |
 ### sources
 | title                              | path                                                |
 |:-----------------------------------|:----------------------------------------------------|
 | NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `sp500-2000.csv`
 ### path
 sp500-2000.csv
@@ -1160,15 +1503,22 @@ S&amp;P 500 index values from 2000 to 2020.
 ## `sp500.csv`
 ### path
 sp500.csv
+### description
+Monthly closing values of the S&P 500 stock market index 
+from January 2000 to March 2010. Captures several significant market events including 
+the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. 
+
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| date   | string |
-| price  | number |
+| name   | type   | description                                            |
+|:-------|:-------|:-------------------------------------------------------|
+| date   | string | Date of monthly observation in the format 'MMM D YYYY' |
+| price  | number | Closing price of the S&P 500 index for the given month |
 ## `stocks.csv`
 ### path
 stocks.csv
+### description
+Monthly stock prices for five companies from 2000 to 2010.
 ### schema
     
 | name   | type   |
@@ -1179,6 +1529,11 @@ stocks.csv
 ## `udistrict.json`
 ### path
 udistrict.json
+### description
+Point locations of restaurants and cafes in Seattle's University 
+District, categorized by cuisine type. Used to create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) 
+showing the prevalence of various food and beverage categories. The example graphic 
+using this dataset states that it originally appeared in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)
 ### schema
     
 | name   | type   |
@@ -1189,14 +1544,11 @@ udistrict.json
 ### path
 unemployment-across-industries.json
 ### description
-Industry-level unemployment statistics from the Current Population Survey 
+Industry-level unemployment from the Current Population Survey 
 (CPS), published monthly by the U.S. Bureau of Labor Statistics. Includes unemployed persons 
 and unemployment rate across 11 private industries, as well as agricultural, government, and 
 self-employed workers. Covers January 2000 through February 2010. Industry classification 
-follows format of CPS Table A-31.
-
-The dataset can be replicated using the BLS API. For more, see the `scripts` folder of this 
-repository.
+follows format of CPS Table A-31. Transformed using `scripts/make-unemployment-across-industries.py`
 
 The BLS Web site states:
 > "Users of the public API should cite the date that data were accessed or retrieved using 
@@ -1222,11 +1574,15 @@ See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.ht
 | U.S. Census Bureau Current Population Survey | https://www.census.gov/programs-surveys/cps.html |
 | BLS LAUS Data Tools                          | https://www.bls.gov/lau/data.htm                 |
 | Bureau of Labor Statistics Table A-31        | https://www.bls.gov/web/empsit/cpseea31.htm      |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `unemployment.tsv`
 ### path
 unemployment.tsv
 ### description
-This dataset contains county-level unemployment rates in the United States, with data generally
+County-level unemployment rates in the United States, with data generally
 consistent with levels reported in 2009. The dataset is structured as tab-separated values.
 The unemployment rate represents the number of unemployed persons as a percentage of the labor
 force. According to the Bureau of Labor Statistics (BLS) glossary:
@@ -1237,7 +1593,7 @@ illness, and had made specific efforts to find employment sometime during the 4-
 ending with the reference week. Persons who were waiting to be recalled to a job from which
 they had been laid off need not have been looking for work to be classified as unemployed.
 
-This dataset is derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
+Derived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, 
 a federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). 
 The LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,
 states, counties, metropolitan areas, and many cities and towns.
@@ -1263,30 +1619,62 @@ When using BLS public data API and datasets, users should adhere to the [BLS Ter
 |:------------------------|:------------------------------------------|
 | BLS Developers API      | https://www.bls.gov/developers/           |
 | BLS Handbook of Methods | https://www.bls.gov/opub/hom/lau/home.htm |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `uniform-2d.json`
 ### path
 uniform-2d.json
+### description
+Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the
+origin with ranges spanning approximately [-0.5, 0.5] in both dimensions. The variables exhibit negligible
+correlation (-0.019), suggesting independence, as expected for a uniform distribution.
+A contrast to normally distributed data in `normal-2d.json`.
+
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| u      | number |
-| v      | number |
+| name   | type   | description                                      |
+|:-------|:-------|:-------------------------------------------------|
+| u      | number | mean: 0.015, std: 0.277, range: [-0.499, 0.500]  |
+| v      | number | mean: -0.013, std: 0.276, range: [-0.500, 0.498] |
+### sources
+| title          |
+|:---------------|
+| Generated Data |
+### licenses
+| path                                                            |
+|:----------------------------------------------------------------|
+| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `us-10m.json`
 ### path
 us-10m.json
+### description
+US county boundaries represented at a 1:10,000,000 scale in 
+[TopoJSON](https://github.com/topojson/topojson) format, which optimizes for 
+smaller file sizes. Similar to offerings in the TopoJSON US Atlas collection, which 
+in turn is a redistribution of the Census Bureau's cartographic boundary shapefiles.
+
+### sources
+| title                                        | path                                                                                        |
+|:---------------------------------------------|:--------------------------------------------------------------------------------------------|
+| TopoJSON US Atlas                            | https://github.com/topojson/us-atlas                                                        |
+| US Census Bureau Cartographic Boundary FIles | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
+### licenses
+| title                         | path                                                        |
+|:------------------------------|:------------------------------------------------------------|
+| TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
 ## `us-employment.csv`
 ### path
 us-employment.csv
 ### description
+Monthly employment total in a variety of job categories from January 2006 through December 2015, 
+seasonally adjusted and reported in thousands. Downloaded and reformatted on Nov. 11, 2018.
+
 In the mid 2000s the global economy was hit by a crippling recession. One result: Massive job 
 losses across the United States. The downturn in employment, and the slow recovery in hiring that 
 followed, was tracked each month by the Current Employment Statistics program at the U.S. Bureau 
 of Labor Statistics.
-
-This file contains the monthly employment total in a variety of job categories from January 2006 
-through December 2015. The numbers are seasonally adjusted and reported in thousands. The data 
-were downloaded on Nov. 11, 2018, and reformatted for use in this library.
 
 Totals are included for the [22 "supersectors"](https://download.bls.gov/pub/time.series/ce/ce.supersector)
 tracked by the BLS. The "nonfarm" total is the category typically used by 
@@ -1328,9 +1716,26 @@ negative and positive values.
 | title                                                         | path                     |
 |:--------------------------------------------------------------|:-------------------------|
 | U.S. Bureau of Labor Statistics Current Employment Statistics | https://www.bls.gov/ces/ |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `us-state-capitals.json`
 ### path
 us-state-capitals.json
+### description
+Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. 
+Includes latitude, longitude, state name, and capital city name for all 50 U.S. states. 
+Cities are represented as point locations of their capitol buildings using coordinates in the 
+WGS84 geographic coordinate system.
+
+According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))
+> "Map services and data downloaded from The National Map are free and in the public domain. 
+> There are no restrictions; however, we request that the following acknowledgment statement 
+> of the originating agency be included in products and data derived from our map services 
+> when citing, copying, or reprinting: Map services and data available from U.S. 
+> Geological Survey, National Geospatial Program."
+
 ### schema
     
 | name   | type   |
@@ -1339,13 +1744,23 @@ us-state-capitals.json
 | lat    | number |
 | state  | string |
 | city   | string |
+### sources
+| title                                                                 | path                                                                   |
+|:----------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| U.S. Geological Survey National Geospatial Program - The National Map | https://www.usgs.gov/programs/national-geospatial-program/national-map |
+### licenses
+| title                   | path                                                                              |
+|:------------------------|:----------------------------------------------------------------------------------|
+| U.S. Public Domain      | https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits |
+| U.S. Government Dataset | https://www.usa.gov/government-works                                              |
 ## `volcano.json`
 ### path
 volcano.json
 ### description
-Maunga Whau (Mt Eden) is one of about 50 volcanos in the Auckland volcanic field. 
-This data set gives topographic information for Maunga Whau on a 10m by 10m grid. Digitized from a 
-topographic map by Ross Ihaka, adapted from R datasets. These data should not be regarded as accurate.
+Elevation measurements of Maunga Whau (Mt Eden), a volcano in Auckland, New Zealand, representing 
+a rectangular area of 870 meters by 610 meters. Spacing between measurement points is approximately 
+10 meters in both directions. Digitized from a topographic map by Ross Ihaka and adapted from R datasets, 
+Should not be regarded as accurate.
 ### sources
 | title      | path                                                                       |
 |:-----------|:---------------------------------------------------------------------------|
@@ -1354,23 +1769,29 @@ topographic map by Ross Ihaka, adapted from R datasets. These data should not be
 ### path
 weather.csv
 ### description
-NOAA data transformed using `/scripts/weather.py`. Categorical "weather" field synthesized 
-from multiple fields in the original dataset. This data is intended for instructional purposes.
+Daily weather observations from Seattle and New York.
+Transformed from NOAA data using the script `/scripts/weather.py`.
+The categorical "weather" field is synthesized from multiple fields in the original dataset.
+Intended for instructional purposes.
 ### schema
     
-| name          | type   |
-|:--------------|:-------|
-| location      | string |
-| date          | date   |
-| precipitation | number |
-| temp_max      | number |
-| temp_min      | number |
-| wind          | number |
-| weather       | string |
+| name          | type   | description                                                                                                                 | categories                                |
+|:--------------|:-------|:----------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|
+| location      | string | City location of the weather observation (Seattle or New York)                                                              |                                           |
+| date          | date   | Date of the weather observation                                                                                             |                                           |
+| precipitation | number | Amount of precipitation in millimeters                                                                                      |                                           |
+| temp_max      | number | Maximum daily temperature in degrees Celsius                                                                                |                                           |
+| temp_min      | number | Minimum daily temperature in degrees Celsius                                                                                |                                           |
+| wind          | number | Wind speed in kilometers per hour                                                                                           |                                           |
+| weather       | string | Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog. | ['drizzle', 'rain', 'snow', 'sun', 'fog'] |
 ### sources
 | title                    | path                                                   |
 |:-------------------------|:-------------------------------------------------------|
 | NOAA Climate Data Online | http://www.ncdc.noaa.gov/cdo-web/datatools/findstation |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `weekly-weather.json`
 ### path
 weekly-weather.json
@@ -1384,11 +1805,12 @@ Instructional dataset showing actual and predicted temperature data.
 ### path
 wheat.json
 ### description
-In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair),
-a Scottish engineer who is often credited as the founder of statistical graphics, 
-published an elegant chart on the price of wheat. It plots 250 years of prices alongside 
-weekly wages and the reigning monarch. He intended to demonstrate that:
-> "never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time."
+As noted by in this protovis [example](https://mbostock.github.io/protovis/ex/wheat.html),
+"In an 1822 letter to Parliament, [William Playfair](https://en.wikipedia.org/wiki/William_Playfair), a Scottish engineer 
+who is often credited as the founder of statistical graphics, published an elegant chart 
+on the price of wheat. It plots 250 years of prices alongside weekly wages and the reigning monarch. 
+He intended to demonstrate that:
+> 'never at any former period was wheat so cheap, in proportion to mechanical labour, as it is at the present time.'"
 
 ### schema
     
@@ -1398,9 +1820,13 @@ weekly wages and the reigning monarch. He intended to demonstrate that:
 | wheat  | number  |
 | wages  | number  |
 ### sources
-| title               | path                                                                  |
-|:--------------------|:----------------------------------------------------------------------|
-| 1822 Playfair Chart | http://dh101.humanities.ucla.edu/wp-content/uploads/2014/08/Vis_2.jpg |
+| title               | path                                                                                                                                                        |
+|:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1822 Playfair Chart | https://commons.wikimedia.org/wiki/File:Chart_Showing_at_One_View_the_Price_of_the_Quarter_of_Wheat,_and_Wages_of_Labour_by_the_Week,_from_1565_to_1821.png |
+### licenses
+| title         | path                                             |
+|:--------------|:-------------------------------------------------|
+| Public Domain | https://commons.wikimedia.org/wiki/Public_domain |
 ## `windvectors.csv`
 ### path
 windvectors.csv
@@ -1418,11 +1844,39 @@ Simulated wind patterns over northwestern Europe.
 ## `world-110m.json`
 ### path
 world-110m.json
+### description
+A 1:110,000,000-scale world map in [TopoJSON](https://github.com/topojson/topojson) format, optimized for 
+web-based visualization. The simplified geographic boundaries focus on two key elements: 
+land masses and country borders with their corresponding codes. The high level of 
+generalization removes small geographic details while maintaining recognizable global 
+features, making it ideal for overview maps and basic world visualizations. This format 
+provides efficient compression compared to GeoJSON, reducing file size for web use. 
+Part of the widely-used TopoJSON World Atlas collection, this has become a standard 
+resource for creating web-based world maps where precise boundary detail isn't required.
+
+### sources
+| title                                                                            | path                                                                                     |
+|:---------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|
+| TopoJSON World Atlas (Likely original source, processed from Natural Earth data) | https://github.com/topojson/world-atlas                                                  |
+| Natural Earth Data - Admin 0 Countries (1:110m)                                  | https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ |
+### licenses
+| title                            | path                                                           |
+|:---------------------------------|:---------------------------------------------------------------|
+| TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
+| Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
 ## `zipcodes.csv`
 ### path
 zipcodes.csv
 ### description
-GeoNames.org
+Postal codes mapped to their geographical coordinates (latitude/longitude in WGS84) 
+and administrative hierarchies, for the United States and Puerto Rico. The GeoNames 
+geographical database provides worldwide postal code data with associated geographical 
+and administrative information. 
+
+Historical snapshot first contributed to vega-datasets in 2017 and no longer current. 
+Administrative boundaries have been redrawn, counties reorganized and renamed, and postal 
+codes modified. Latitude/longitude coordinates have been updated by Geonames since this 
+data was collected. For current postal code data, refer to the main GeoNames database.
 ### schema
     
 | name      | type    |
@@ -1434,6 +1888,10 @@ GeoNames.org
 | state     | string  |
 | county    | string  |
 ### sources
-| title    | path                     |
-|:---------|:-------------------------|
-| GeoNames | https://www.geonames.org |
+| title                 | path                                      |
+|:----------------------|:------------------------------------------|
+| GeoNames Postal Codes | https://download.geonames.org/export/zip/ |
+### licenses
+| title                                          | path                                         |
+|:-----------------------------------------------|:---------------------------------------------|
+| Creative Commons Attribution 4.0 International | https://creativecommons.org/licenses/by/4.0/ |
