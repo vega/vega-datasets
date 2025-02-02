@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-02-01T21:34:01.839728+00:00",
+  "created": "2025-02-02T12:04:24.205787+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -1838,7 +1838,7 @@
     {
       "name": "github.csv",
       "type": "table",
-      "description": "Simulated GitHub contribution data showing hourly commit counts across \ndifferent times of day, spanning from January 1st to May 30th, 2015. Designed to demonstrate \ntypical patterns of developer activity in a GitHub-style punchcard visualization format.",
+      "description": "Simulated GitHub contribution data showing hourly commit counts across \ndifferent times of day. Designed to demonstrate typical patterns of developer activity \nin a GitHub-style punchcard visualization format.",
       "licenses": [
         {
           "path": "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
@@ -1860,11 +1860,13 @@
         "fields": [
           {
             "name": "time",
-            "type": "string"
+            "type": "string",
+            "description": "Hourly timestamp from January 1st to May 30th, 2015"
           },
           {
             "name": "count",
-            "type": "integer"
+            "type": "integer",
+            "description": "Simulated hourly commit counts"
           }
         ]
       }
@@ -3055,27 +3057,40 @@
         "fields": [
           {
             "name": "date",
-            "type": "date"
+            "type": "date",
+            "description": "Date of the weather observation"
           },
           {
             "name": "precipitation",
-            "type": "number"
+            "type": "number",
+            "description": "Amount of precipitation in millimeters"
           },
           {
             "name": "temp_max",
-            "type": "number"
+            "type": "number",
+            "description": "Maximum daily temperature in degrees Celsius"
           },
           {
             "name": "temp_min",
-            "type": "number"
+            "type": "number",
+            "description": "Minimum daily temperature in degrees Celsius"
           },
           {
             "name": "wind",
-            "type": "number"
+            "type": "number",
+            "description": "Wind speed in kilometers per hour"
           },
           {
             "name": "weather",
-            "type": "string"
+            "type": "string",
+            "description": "Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog.",
+            "categories": [
+              "drizzle",
+              "rain",
+              "snow",
+              "sun",
+              "fog"
+            ]
           }
         ]
       }
@@ -3133,7 +3148,7 @@
     {
       "name": "sp500.csv",
       "type": "table",
-      "description": "Monthly closing values of the S&P 500 stock market index \nfrom January 2000 to March 2010. Captures several significant market events including \nthe dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. \nEach record contains a date in the format 'MMM D YYYY' and the corresponding closing price of \nthe index.",
+      "description": "Monthly closing values of the S&P 500 stock market index \nfrom January 2000 to March 2010. Captures several significant market events including \nthe dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. \n",
       "path": "sp500.csv",
       "scheme": "file",
       "format": "csv",
@@ -3145,11 +3160,13 @@
         "fields": [
           {
             "name": "date",
-            "type": "string"
+            "type": "string",
+            "description": "Date of monthly observation in the format 'MMM D YYYY'"
           },
           {
             "name": "price",
-            "type": "number"
+            "type": "number",
+            "description": "Closing price of the S&P 500 index for the given month"
           }
         ]
       }
@@ -3332,7 +3349,7 @@
     {
       "name": "uniform-2d.json",
       "type": "table",
-      "description": "Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the\norigin (u: 0.015, v: -0.013) with ranges spanning approximately [-0.5, 0.5] in both dimensions. The standard \ndeviation of u is 0.277 and v is 0.276, showing a relatively equal spread. The variables exhibit negligible \ncorrelation (-0.019), suggesting independence, as expected for a uniform distribution. The range of u \nis [-0.499, 0.500] and v is [-0.500, 0.498]. A contrast to normally distributed data in `normal-2d.json` .\n",
+      "description": "Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the\norigin with ranges spanning approximately [-0.5, 0.5] in both dimensions. The variables exhibit negligible\ncorrelation (-0.019), suggesting independence, as expected for a uniform distribution.\nA contrast to normally distributed data in `normal-2d.json`.\n",
       "licenses": [
         {
           "path": "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
@@ -3359,11 +3376,13 @@
         "fields": [
           {
             "name": "u",
-            "type": "number"
+            "type": "number",
+            "description": "mean: 0.015, std: 0.277, range: [-0.499, 0.500]"
           },
           {
             "name": "v",
-            "type": "number"
+            "type": "number",
+            "description": "mean: -0.013, std: 0.276, range: [-0.500, 0.498]"
           }
         ]
       }
@@ -3523,7 +3542,7 @@
     {
       "name": "us-state-capitals.json",
       "type": "table",
-      "description": "Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. \nIncludes latitude, longitude, state name, and capital city name for all 50 U.S. states. \nCities are represented as point locations of their capitol buildings using coordinates in the \nWGS84 geographic coordinate system.\n\nAccording to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map)), \"Map services and data downloaded from The National Map are free and in the public domain. \nThere are no restrictions; however, we request that the following acknowledgment statement \nof the originating agency be included in products and data derived from our map services \nwhen citing, copying, or reprinting: Map services and data available from U.S. \nGeological Survey, National Geospatial Program.\"\n",
+      "description": "Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. \nIncludes latitude, longitude, state name, and capital city name for all 50 U.S. states. \nCities are represented as point locations of their capitol buildings using coordinates in the \nWGS84 geographic coordinate system.\n\nAccording to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))\n> \"Map services and data downloaded from The National Map are free and in the public domain. \n> There are no restrictions; however, we request that the following acknowledgment statement \n> of the originating agency be included in products and data derived from our map services \n> when citing, copying, or reprinting: Map services and data available from U.S. \n> Geological Survey, National Geospatial Program.\"\n",
       "licenses": [
         {
           "title": "U.S. Public Domain",
@@ -3594,7 +3613,7 @@
     {
       "name": "weather.csv",
       "type": "table",
-      "description": "Daily weather observations from Seattle and New York, including location, date, precipitation, \nmaximum and minimum temperatures, wind speed, and a categorical weather description (drizzle, rain, snow, sun, fog).  \nTransformed from NOAA data using the script `/scripts/weather.py`. The categorical \"weather\" field is a synthesized feature, \nderived from multiple fields present in the original NOAA dataset. Intended for instructional purposes.",
+      "description": "Daily weather observations from Seattle and New York.\nTransformed from NOAA data using the script `/scripts/weather.py`.\nThe categorical \"weather\" field is synthesized from multiple fields in the original dataset.\nIntended for instructional purposes.",
       "licenses": [
         {
           "title": "U.S. Government Dataset",
@@ -3618,31 +3637,45 @@
         "fields": [
           {
             "name": "location",
-            "type": "string"
+            "type": "string",
+            "description": "City location of the weather observation (Seattle or New York)"
           },
           {
             "name": "date",
-            "type": "date"
+            "type": "date",
+            "description": "Date of the weather observation"
           },
           {
             "name": "precipitation",
-            "type": "number"
+            "type": "number",
+            "description": "Amount of precipitation in millimeters"
           },
           {
             "name": "temp_max",
-            "type": "number"
+            "type": "number",
+            "description": "Maximum daily temperature in degrees Celsius"
           },
           {
             "name": "temp_min",
-            "type": "number"
+            "type": "number",
+            "description": "Minimum daily temperature in degrees Celsius"
           },
           {
             "name": "wind",
-            "type": "number"
+            "type": "number",
+            "description": "Wind speed in kilometers per hour"
           },
           {
             "name": "weather",
-            "type": "string"
+            "type": "string",
+            "description": "Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog.",
+            "categories": [
+              "drizzle",
+              "rain",
+              "snow",
+              "sun",
+              "fog"
+            ]
           }
         ]
       }

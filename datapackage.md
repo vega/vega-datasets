@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-01 21:34:01 [UTC]
+`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-02 12:04:24 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -861,14 +861,14 @@ Application icon from open-source software project. Used in [Image-based Scatter
 github.csv
 ### description
 Simulated GitHub contribution data showing hourly commit counts across 
-different times of day, spanning from January 1st to May 30th, 2015. Designed to demonstrate 
-typical patterns of developer activity in a GitHub-style punchcard visualization format.
+different times of day. Designed to demonstrate typical patterns of developer activity 
+in a GitHub-style punchcard visualization format.
 ### schema
     
-| name   | type    |
-|:-------|:--------|
-| time   | string  |
-| count  | integer |
+| name   | type    | description                                         |
+|:-------|:--------|:----------------------------------------------------|
+| time   | string  | Hourly timestamp from January 1st to May 30th, 2015 |
+| count  | integer | Simulated hourly commit counts                      |
 ### sources
 | title                                 |
 |:--------------------------------------|
@@ -1464,14 +1464,14 @@ The categorical "weather" field is synthesized from multiple fields in the origi
 This data is intended for instructional purposes.
 ### schema
     
-| name          | type   |
-|:--------------|:-------|
-| date          | date   |
-| precipitation | number |
-| temp_max      | number |
-| temp_min      | number |
-| wind          | number |
-| weather       | string |
+| name          | type   | description                                                                                                                 | categories                                |
+|:--------------|:-------|:----------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|
+| date          | date   | Date of the weather observation                                                                                             |                                           |
+| precipitation | number | Amount of precipitation in millimeters                                                                                      |                                           |
+| temp_max      | number | Maximum daily temperature in degrees Celsius                                                                                |                                           |
+| temp_min      | number | Minimum daily temperature in degrees Celsius                                                                                |                                           |
+| wind          | number | Wind speed in kilometers per hour                                                                                           |                                           |
+| weather       | string | Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog. | ['drizzle', 'rain', 'snow', 'sun', 'fog'] |
 ### sources
 | title                              | path                                                |
 |:-----------------------------------|:----------------------------------------------------|
@@ -1507,14 +1507,13 @@ sp500.csv
 Monthly closing values of the S&P 500 stock market index 
 from January 2000 to March 2010. Captures several significant market events including 
 the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. 
-Each record contains a date in the format 'MMM D YYYY' and the corresponding closing price of 
-the index.
+
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| date   | string |
-| price  | number |
+| name   | type   | description                                            |
+|:-------|:-------|:-------------------------------------------------------|
+| date   | string | Date of monthly observation in the format 'MMM D YYYY' |
+| price  | number | Closing price of the S&P 500 index for the given month |
 ## `stocks.csv`
 ### path
 stocks.csv
@@ -1630,17 +1629,16 @@ When using BLS public data API and datasets, users should adhere to the [BLS Ter
 uniform-2d.json
 ### description
 Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the
-origin (u: 0.015, v: -0.013) with ranges spanning approximately [-0.5, 0.5] in both dimensions. The standard 
-deviation of u is 0.277 and v is 0.276, showing a relatively equal spread. The variables exhibit negligible 
-correlation (-0.019), suggesting independence, as expected for a uniform distribution. The range of u 
-is [-0.499, 0.500] and v is [-0.500, 0.498]. A contrast to normally distributed data in `normal-2d.json` .
+origin with ranges spanning approximately [-0.5, 0.5] in both dimensions. The variables exhibit negligible
+correlation (-0.019), suggesting independence, as expected for a uniform distribution.
+A contrast to normally distributed data in `normal-2d.json`.
 
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| u      | number |
-| v      | number |
+| name   | type   | description                                      |
+|:-------|:-------|:-------------------------------------------------|
+| u      | number | mean: 0.015, std: 0.277, range: [-0.499, 0.500]  |
+| v      | number | mean: -0.013, std: 0.276, range: [-0.500, 0.498] |
 ### sources
 | title          |
 |:---------------|
@@ -1732,11 +1730,12 @@ Includes latitude, longitude, state name, and capital city name for all 50 U.S. 
 Cities are represented as point locations of their capitol buildings using coordinates in the 
 WGS84 geographic coordinate system.
 
-According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map)), "Map services and data downloaded from The National Map are free and in the public domain. 
-There are no restrictions; however, we request that the following acknowledgment statement 
-of the originating agency be included in products and data derived from our map services 
-when citing, copying, or reprinting: Map services and data available from U.S. 
-Geological Survey, National Geospatial Program."
+According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))
+> "Map services and data downloaded from The National Map are free and in the public domain. 
+> There are no restrictions; however, we request that the following acknowledgment statement 
+> of the originating agency be included in products and data derived from our map services 
+> when citing, copying, or reprinting: Map services and data available from U.S. 
+> Geological Survey, National Geospatial Program."
 
 ### schema
     
@@ -1771,21 +1770,21 @@ Should not be regarded as accurate.
 ### path
 weather.csv
 ### description
-Daily weather observations from Seattle and New York, including location, date, precipitation, 
-maximum and minimum temperatures, wind speed, and a categorical weather description (drizzle, rain, snow, sun, fog).  
-Transformed from NOAA data using the script `/scripts/weather.py`. The categorical "weather" field is a synthesized feature, 
-derived from multiple fields present in the original NOAA dataset. Intended for instructional purposes.
+Daily weather observations from Seattle and New York.
+Transformed from NOAA data using the script `/scripts/weather.py`.
+The categorical "weather" field is synthesized from multiple fields in the original dataset.
+Intended for instructional purposes.
 ### schema
     
-| name          | type   |
-|:--------------|:-------|
-| location      | string |
-| date          | date   |
-| precipitation | number |
-| temp_max      | number |
-| temp_min      | number |
-| wind          | number |
-| weather       | string |
+| name          | type   | description                                                                                                                 | categories                                |
+|:--------------|:-------|:----------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|
+| location      | string | City location of the weather observation (Seattle or New York)                                                              |                                           |
+| date          | date   | Date of the weather observation                                                                                             |                                           |
+| precipitation | number | Amount of precipitation in millimeters                                                                                      |                                           |
+| temp_max      | number | Maximum daily temperature in degrees Celsius                                                                                |                                           |
+| temp_min      | number | Minimum daily temperature in degrees Celsius                                                                                |                                           |
+| wind          | number | Wind speed in kilometers per hour                                                                                           |                                           |
+| weather       | string | Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog. | ['drizzle', 'rain', 'snow', 'sun', 'fog'] |
 ### sources
 | title                    | path                                                   |
 |:-------------------------|:-------------------------------------------------------|

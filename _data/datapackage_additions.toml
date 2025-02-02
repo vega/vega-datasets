@@ -722,8 +722,17 @@ path = "https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-d
 [[resources]] # Path: github.csv
 path = "github.csv"
 description = """Simulated GitHub contribution data showing hourly commit counts across 
-different times of day, spanning from January 1st to May 30th, 2015. Designed to demonstrate 
-typical patterns of developer activity in a GitHub-style punchcard visualization format."""
+different times of day. Designed to demonstrate typical patterns of developer activity 
+in a GitHub-style punchcard visualization format."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "time"
+description = "Hourly timestamp from January 1st to May 30th, 2015"
+
+[[resources.schema.fields]]
+name        = "count"
+description = "Simulated hourly commit counts"
 
 [[resources.sources]]
 title = """Generated using `/scripts/github.py`."""
@@ -1220,6 +1229,32 @@ description = """Daily weather in metric units. Transformed using `/scripts/weat
 The categorical \"weather\" field is synthesized from multiple fields in the original dataset. 
 This data is intended for instructional purposes."""
 
+[resources.schema]
+[[resources.schema.fields]]
+name        = "date"
+description = "Date of the weather observation"
+
+[[resources.schema.fields]]
+name        = "precipitation"
+description = "Amount of precipitation in millimeters"
+
+[[resources.schema.fields]]
+name        = "temp_max"
+description = "Maximum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "temp_min"
+description = "Minimum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "wind"
+description = "Wind speed in kilometers per hour"
+
+[[resources.schema.fields]]
+name        = "weather"
+description = "Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog."
+categories  = ["drizzle", "rain", "snow", "sun", "fog"]
+
 [[resources.sources]]
 title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
@@ -1241,8 +1276,15 @@ path = "sp500.csv"
 description = """Monthly closing values of the S&P 500 stock market index 
 from January 2000 to March 2010. Captures several significant market events including 
 the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 financial crisis. 
-Each record contains a date in the format 'MMM D YYYY' and the corresponding closing price of 
-the index."""
+"""
+[resources.schema]
+[[resources.schema.fields]]
+name        = "date"
+description = "Date of monthly observation in the format 'MMM D YYYY'"
+
+[[resources.schema.fields]]
+name        = "price"
+description = "Closing price of the S&P 500 index for the given month"
 
 [[resources]] # Path: stocks.csv
 path        = "stocks.csv"
@@ -1255,6 +1297,44 @@ District, categorized by cuisine type (e.g., "coffee", "pizza", "korean"). Used 
 create a [ridgeline plot example](https://vega.github.io/vega/examples/u-district-cuisine/) showing the prevalence 
 of various food and beverage categories. The example graphic using this dataset states that it originally appeared 
 in Alaska Airlines Beyond Magazine (Sep 2017, p. 120)"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "latitude"
+description = "Latitude of the restaurant or cafe"
+
+[[resources.schema.fields]]
+name        = "longitude"
+description = "Longitude of the restaurant or cafe"
+
+[[resources.schema.fields]]
+name        = "name"
+description = "Name of the restaurant or cafe"
+
+[[resources.schema.fields]]
+name = "category"
+description = "Cuisine type of the restaurant or cafe"
+categories = [
+  "bakeries",
+  "burgers",
+  "bubbletea",
+  "coffee",
+  "chinese",
+  "drinks",
+  "hawaiian",
+  "indian",
+  "japanese",
+  "korean",
+  "latin",
+  "mideastern",
+  "pizza",
+  "seafood",
+  "thai",
+  "veg",
+  "vietnamese",
+  "breakfast",
+  "american",
+]
 
 [[resources]] # Path: unemployment-across-industries.json
 path = "unemployment-across-industries.json"
@@ -1367,11 +1447,18 @@ path  = "https://www.usa.gov/government-works"
 path = "uniform-2d.json"
 description = """
 Five hundred paired coordinates (u, v) sampled from a bivariate uniform distribution. Centered near the
-origin (u: 0.015, v: -0.013) with ranges spanning approximately [-0.5, 0.5] in both dimensions. The standard 
-deviation of u is 0.277 and v is 0.276, showing a relatively equal spread. The variables exhibit negligible 
-correlation (-0.019), suggesting independence, as expected for a uniform distribution. The range of u 
-is [-0.499, 0.500] and v is [-0.500, 0.498]. A contrast to normally distributed data in `normal-2d.json` .
+origin with ranges spanning approximately [-0.5, 0.5] in both dimensions. The variables exhibit negligible
+correlation (-0.019), suggesting independence, as expected for a uniform distribution.
+A contrast to normally distributed data in `normal-2d.json`.
 """
+
+[[resources.schema.fields]]
+name        = "u"
+description = "mean: 0.015, std: 0.277, range: [-0.499, 0.500]"
+
+[[resources.schema.fields]]
+name        = "v"
+description = "mean: -0.013, std: 0.276, range: [-0.500, 0.498]"
 
 [[resources.sources]]
 title = "Generated Data"
@@ -1433,11 +1520,12 @@ Includes latitude, longitude, state name, and capital city name for all 50 U.S. 
 Cities are represented as point locations of their capitol buildings using coordinates in the 
 WGS84 geographic coordinate system.
 
-According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map)), "Map services and data downloaded from The National Map are free and in the public domain. 
-There are no restrictions; however, we request that the following acknowledgment statement 
-of the originating agency be included in products and data derived from our map services 
-when citing, copying, or reprinting: Map services and data available from U.S. 
-Geological Survey, National Geospatial Program."
+According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))
+> "Map services and data downloaded from The National Map are free and in the public domain. 
+> There are no restrictions; however, we request that the following acknowledgment statement 
+> of the originating agency be included in products and data derived from our map services 
+> when citing, copying, or reprinting: Map services and data available from U.S. 
+> Geological Survey, National Geospatial Program."
 """
 
 [[resources.sources]]
@@ -1465,10 +1553,40 @@ path  = "https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/volcano.h
 
 [[resources]] # Path: weather.csv
 path = "weather.csv"
-description = """Daily weather observations from Seattle and New York, including location, date, precipitation, 
-maximum and minimum temperatures, wind speed, and a categorical weather description (drizzle, rain, snow, sun, fog).  
-Transformed from NOAA data using the script `/scripts/weather.py`. The categorical "weather" field is a synthesized feature, 
-derived from multiple fields present in the original NOAA dataset. Intended for instructional purposes."""
+description = """Daily weather observations from Seattle and New York.
+Transformed from NOAA data using the script `/scripts/weather.py`.
+The categorical \"weather\" field is synthesized from multiple fields in the original dataset.
+Intended for instructional purposes."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "location"
+description = "City location of the weather observation (Seattle or New York)"
+
+[[resources.schema.fields]]
+name        = "date"
+description = "Date of the weather observation"
+
+[[resources.schema.fields]]
+name        = "precipitation"
+description = "Amount of precipitation in millimeters"
+
+[[resources.schema.fields]]
+name        = "temp_max"
+description = "Maximum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "temp_min"
+description = "Minimum daily temperature in degrees Celsius"
+
+[[resources.schema.fields]]
+name        = "wind"
+description = "Wind speed in kilometers per hour"
+
+[[resources.schema.fields]]
+name        = "weather"
+description = "Categorical weather type synthesized from original NOAA data fields. Categories include: drizzle, rain, snow, sun, and fog."
+categories  = ["drizzle", "rain", "snow", "sun", "fog"]
 
 [[resources.sources]]
 title = "NOAA Climate Data Online"
