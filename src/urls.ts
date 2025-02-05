@@ -1,4 +1,5 @@
-import {version} from '../package.json';
+import pkg from '../package.json';
+const version = pkg.version;
 export default {
 
   'annual-precip.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/annual-precip.json`,
@@ -12,8 +13,8 @@ export default {
   'crimea.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/crimea.json`,
   'driving.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/driving.json`,
   'earthquakes.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/earthquakes.json`,
-  'flare.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flare.json`,
   'flare-dependencies.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flare-dependencies.json`,
+  'flare.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flare.json`,
   'flights-10k.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-10k.json`,
   'flights-200k.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-200k.json`,
   'flights-20k.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-20k.json`,
@@ -34,7 +35,6 @@ export default {
   'ohlc.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/ohlc.json`,
   'penguins.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/penguins.json`,
   'platformer-terrain.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/platformer-terrain.json`,
-  'points.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/points.json`,
   'political-contributions.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/political-contributions.json`,
   'population.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/population.json`,
   'udistrict.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/udistrict.json`,
@@ -59,10 +59,10 @@ export default {
   'lookup_groups.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/lookup_groups.csv`,
   'lookup_people.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/lookup_people.csv`,
   'population_engineers_hurricanes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/population_engineers_hurricanes.csv`,
-  'seattle-weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather.csv`,
   'seattle-weather-hourly-normals.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather-hourly-normals.csv`,
-  'sp500.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500.csv`,
+  'seattle-weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather.csv`,
   'sp500-2000.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500-2000.csv`,
+  'sp500.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500.csv`,
   'stocks.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/stocks.csv`,
   'us-employment.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/us-employment.csv`,
   'weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/weather.csv`,

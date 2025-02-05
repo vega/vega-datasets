@@ -3,11 +3,11 @@
   "version": "2.11.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
-  "main": "build/vega-datasets.js",
-  "module": "build/vega-datasets.module.js",
+  "type": "module",
+  "exports": "./build/vega-datasets.js",
+  "types": "build/index.d.ts",
   "unpkg": "build/vega-datasets.min.js",
   "jsdelivr": "build/vega-datasets.min.js",
-  "types": "build/vega-datasets.module.d.ts",
   "repository": {
     "type": "git",
     "url": "http://github.com/vega/vega-datasets.git"
@@ -22,26 +22,28 @@
     "data",
     "datapackage.json"
   ],
+  "dependencies": {
+    "d3-dsv": "^3.0.1"
+  },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
+    "@babel/core": "^7.26.7",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.25.9",
-    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-env": "^7.26.7",
     "@babel/preset-typescript": "^7.26.0",
-    "@babel/runtime": "^7.26.0",
-    "@release-it/conventional-changelog": "^9.0.2",
+    "@babel/runtime": "^7.26.7",
+    "@release-it/conventional-changelog": "^10.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@types/d3-dsv": "^3.0.7",
-    "d3-dsv": "^3.0.1",
     "datalib": "^1.9.3",
-    "release-it": "^17.10.0",
-    "rollup": "^4.24.4",
+    "release-it": "^18.1.2",
+    "rollup": "^4.32.1",
     "rollup-plugin-bundle-size": "^1.0.3",
-    "rollup-plugin-ts": "^3.4.5",
-    "terser": "^5.36.0",
-    "typescript": "^5.6.3"
+    "terser": "^5.37.0",
+    "typescript": "^5.7.3"
   },
   "scripts": {
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
