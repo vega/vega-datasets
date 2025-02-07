@@ -30,7 +30,7 @@ We do not change data in patch releases except to resolve formatting issues. Min
 
 You can also get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN) like:
 
-https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@2/data/cars.json.
+https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@3/data/cars.json.
 
 You can find a full listing of the available datasets at https://cdn.jsdelivr.net/npm/vega-datasets/data/.
 
@@ -50,7 +50,7 @@ Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
 npm i vega-datasets
 ```
 
-Now you can import `data = require('vega-datasets')` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files.
+Now you can import `import data from 'vega-datasets';` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files.
 
 Here is a full example
 
