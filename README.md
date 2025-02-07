@@ -50,7 +50,7 @@ Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
 npm i vega-datasets
 ```
 
-Now you can import `data = require('vega-datasets')` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files.
+Now you can import `import data from 'vega-datasets';` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files.
 
 Here is a full example
 
