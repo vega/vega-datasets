@@ -4,8 +4,10 @@
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
   "type": "module",
-  "exports": "./build/vega-datasets.js",
-  "types": "build/index.d.ts",
+  "exports": {
+    "default": "./build/vega-datasets.js",
+    "types": "./build/index.d.ts"
+  },
   "unpkg": "build/vega-datasets.min.js",
   "jsdelivr": "build/vega-datasets.min.js",
   "repository": {
