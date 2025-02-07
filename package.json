@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "version": "2.11.0",
+  "version": "3.0.0-alpha.1",
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
   "type": "module",
