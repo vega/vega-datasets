@@ -21,10 +21,8 @@ const outputs = [
     input: 'src/index.ts',
     output: {
       file: pkg.unpkg,
-      format: 'umd',
+      format: 'esm',
       sourcemap: true,
-      name: 'vegaDatasets',
-      exports: 'named',
     },
     plugins: [nodeResolve(), json(), typescript(), terser(), bundleSize()],
   },
