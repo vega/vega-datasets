@@ -5,14 +5,12 @@
   "license": "BSD-3-Clause",
   "type": "module",
   "exports": {
-    "default": "./build/vega-datasets.js",
-    "types": "./build/index.d.ts"
+    "types": "./build/index.d.ts",
+    "default": "./build/vega-datasets.js"
   },
-  "unpkg": "build/vega-datasets.min.js",
-  "jsdelivr": "build/vega-datasets.min.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/vega/vega-datasets.git"
+    "url": "git+http://github.com/vega/vega-datasets.git"
   },
   "author": {
     "name": "UW Interactive Data Lab",
@@ -31,14 +29,12 @@
     "@release-it/conventional-changelog": "^10.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
-    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
     "release-it": "^18.1.2",
     "rollup": "^4.32.1",
     "rollup-plugin-bundle-size": "^1.0.3",
-    "terser": "^5.37.0",
     "typescript": "^5.7.3"
   },
   "scripts": {
