@@ -6,7 +6,8 @@
 #     "numpy",
 #     "exactextract",
 #     "rasterio",
-#     "niquests",  # drop-in replacement for requests with better performance
+#     "setuptools",
+#     "sciencebasepy", # provides functionality for interacting with the USGS ScienceBase platform
 #     "tqdm",
 # ]
 # ///
@@ -23,7 +24,6 @@ Output:
 
 from __future__ import annotations
 
-import io
 import logging
 import tempfile
 import zipfile
@@ -31,10 +31,10 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import geopandas as gpd
-import niquests
 import numpy as np
 import pandas as pd
 from exactextract import exact_extract
+from sciencebasepy import SbSession
 from tqdm import tqdm
 
 if TYPE_CHECKING:
@@ -46,69 +46,77 @@ DATA_DIR = FILE_DIR.parent / "data"
 VECTOR_FP = DATA_DIR / "us-10m.json"
 OUTPUT_CSV_NAME = "species.csv"
 
-HABITAT_URLS: Sequence[str] = [
-    "https://www.sciencebase.gov/catalog/file/get/58fa64ece4b0b7ea545257e3?f=__disk__f3%2F9a%2F10%2Ff39a100ea8eb5293e0ea771795e15792bf24ed00",  # Coyote
-    "https://www.sciencebase.gov/catalog/file/get/58fa513ce4b0b7ea5452521a?f=__disk__95%2F9a%2F85%2F959a85f2cc7f9d4c47d07a4edbf3318e89ba1e24",  # cardinal
-    "https://www.sciencebase.gov/catalog/file/get/58fe0a6be4b007492829456e?f=__disk__92%2F99%2F2d%2F92992d211f3fc43f68f2d645624295c23eec31ba",  # alligator
-    "https://www.sciencebase.gov/catalog/file/get/58fa3f0be4b0b7ea54524859?f=__disk__81%2F26%2F6f%2F81266f6d642fe5a03255f19055afd9d4d169a06d",  # American bullfrog
+HABITAT_ITEM_IDS: Sequence[str] = [
+    "58fa64ece4b0b7ea545257e3",  # Coyote
+    "58fa513ce4b0b7ea5452521a",  # Cardinal
+    "58fe0a6be4b007492829456e",  # Alligator
+    "58fa3f0be4b0b7ea54524859",  # American bullfrog
 ]
 
 
-def download_and_extract_tifs(urls: Sequence[str], temp_dir: Path) -> list[Path]:
-    """Downloads and extracts TIF files to a temporary directory using niquests."""
+# def download_and_extract_tifs(item_ids: Sequence[str], temp_dir: Path) -> list[Path]:
+#     """Downloads and extracts TIF files to a temporary directory using sciencebasepy."""
+#     downloaded_files = []
+#     sb = SbSession()
+
+#     for item_id in tqdm(item_ids, desc="Downloading TIF files from ScienceBase"):
+#         try:
+#             item_json = sb.get_item(item_id)
+#             files_info = sb.get_item_file_info(item_json)
+
+#             for file_info in files_info:
+#                 if file_info["name"].lower().endswith(".tif"):
+#                     file_path = temp_dir / file_info["name"]
+#                     sb.download_file(file_info["url"], str(file_path))
+#                     downloaded_files.append(file_path)
+
+#         except Exception as e:
+#             logger.error(f"Error downloading files from item {item_id}: {e}")
+#             continue
+
+#     return sorted(downloaded_files)
+
+def download_and_extract_tifs(item_ids: Sequence[str], temp_dir: Path) -> list[Path]:
+    """Downloads and extracts TIF files from ZIP archives to a temporary directory."""
     downloaded_files = []
+    sb = SbSession()
 
-    # Use multiplexed session for better performance
-    with niquests.Session(multiplexed=True) as session:
-        for url in tqdm(urls, desc="Downloading and extracting TIF files"):
-            try:
-                # Stream download to handle large files efficiently
-                response = session.get(url, stream=True)
-                response.raise_for_status()
+    for item_id in tqdm(item_ids, desc="Downloading TIF files from ScienceBase"):
+        try:
+            item_json = sb.get_item(item_id)
+            files_info = sb.get_item_file_info(item_json)
 
-                # Get content length for progress bar if available
-                total_size = int(response.headers.get("content-length", 0))
+            logger.info("Found %d files for item %s", len(files_info), item_id)
 
-                # Download with progress bar
-                zip_data = io.BytesIO()
-                with tqdm(
-                    total=total_size, unit="iB", unit_scale=True, desc="Downloading"
-                ) as pbar:
-                    for chunk in response.iter_content(chunk_size=8192 * 4):
-                        size = zip_data.write(chunk)
-                        pbar.update(size)
+            # Look for ZIP files containing habitat maps
+            for file_info in files_info:
+                if "HabMap" in file_info["name"] and file_info["name"].endswith(".zip"):
+                    zip_path = temp_dir / file_info["name"]
+                    logger.info("Downloading ZIP file to: %s", zip_path)
 
-                # Extract TIF files from the zip
-                zip_data.seek(0)
-                with zipfile.ZipFile(zip_data) as zf:
-                    tif_files = [f for f in zf.namelist() if f.lower().endswith(".tif")]
-                    for tif_file in tif_files:
-                        tif_path = temp_dir / Path(tif_file).name
-                        tif_path.write_bytes(zf.read(tif_file))
-                        downloaded_files.append(tif_path)
+                    # Download the ZIP file
+                    sb.download_file(file_info["url"], str(zip_path))
 
-                # Log connection info for debugging/optimization
-                logger.debug(
-                    "Connection info for %(url)s: Established in %(latency)s, Headers: %(headers)s",
-                    {
-                        "url": url,
-                        "latency": response.conn_info.established_latency,
-                        "headers": response.headers,
-                    },
-                )
+                    # Extract TIF files from the ZIP
+                    with zipfile.ZipFile(zip_path) as zf:
+                        for zip_info in zf.filelist:
+                            if zip_info.filename.lower().endswith('.tif'):
+                                logger.info("Extracting TIF file: %s", zip_info.filename)
 
-            except niquests.RequestException as e:
-                logger.error(
-                    "Error downloading from %(url)s: %(error)s",
-                    {"url": url, "error": str(e)},
-                )
-                continue
-            except zipfile.BadZipFile as e:
-                logger.error(
-                    "Error extracting zip from %(url)s: %(error)s",
-                    {"url": url, "error": str(e)},
-                )
-                continue
+                                tif_path = temp_dir / zip_info.filename
+                                Path(tif_path).write_bytes(zf.read(zip_info.filename))
+                                downloaded_files.append(tif_path)
+
+                    # Clean up the ZIP file after extraction
+                    zip_path.unlink()
+
+        except Exception as e:
+            logger.error("Error processing item %s: %s", item_id, e)
+            logger.exception("Full traceback:")
+            continue
+
+    logger.info("Total TIF files extracted: %d", len(downloaded_files))
+    logger.info("Extracted TIF files: %s", downloaded_files)
 
     return sorted(downloaded_files)
 
@@ -174,8 +182,8 @@ def main() -> None:
         temp_path = Path(temp_dir)
 
         try:
-            # Download and process files
-            tif_files = download_and_extract_tifs(HABITAT_URLS, temp_path)
+            # Download and process files using ScienceBase item IDs
+            tif_files = download_and_extract_tifs(HABITAT_ITEM_IDS, temp_path)  # Changed line
             if not tif_files:
                 logger.error("No TIF files downloaded and extracted")
                 return
