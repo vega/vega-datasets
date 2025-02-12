@@ -76,6 +76,7 @@ HABITAT_ITEM_IDS: Sequence[str] = [
 
 #     return sorted(downloaded_files)
 
+
 def download_and_extract_tifs(item_ids: Sequence[str], temp_dir: Path) -> list[Path]:
     """Downloads and extracts TIF files from ZIP archives to a temporary directory."""
     downloaded_files = []
@@ -100,8 +101,10 @@ def download_and_extract_tifs(item_ids: Sequence[str], temp_dir: Path) -> list[P
                     # Extract TIF files from the ZIP
                     with zipfile.ZipFile(zip_path) as zf:
                         for zip_info in zf.filelist:
-                            if zip_info.filename.lower().endswith('.tif'):
-                                logger.info("Extracting TIF file: %s", zip_info.filename)
+                            if zip_info.filename.lower().endswith(".tif"):
+                                logger.info(
+                                    "Extracting TIF file: %s", zip_info.filename
+                                )
 
                                 tif_path = temp_dir / zip_info.filename
                                 Path(tif_path).write_bytes(zf.read(zip_info.filename))
@@ -183,7 +186,9 @@ def main() -> None:
 
         try:
             # Download and process files using ScienceBase item IDs
-            tif_files = download_and_extract_tifs(HABITAT_ITEM_IDS, temp_path)  # Changed line
+            tif_files = download_and_extract_tifs(
+                HABITAT_ITEM_IDS, temp_path
+            )  # Changed line
             if not tif_files:
                 logger.error("No TIF files downloaded and extracted")
                 return
