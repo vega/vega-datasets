@@ -28,6 +28,7 @@ Key Classes:
 - `RasterSet`: Manages a collection of raster files.
 - `HabitatDataProcessor`: Orchestrates the data processing workflow.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -88,7 +89,9 @@ class ScienceBaseClient:
         """Initializes the ScienceBase client with a session."""
         self.sb = SbSession()
 
-    def download_zip_files(self, item_ids: Sequence[ItemId], temp_dir: Path) -> list[ZipPath]:
+    def download_zip_files(
+        self, item_ids: Sequence[ItemId], temp_dir: Path
+    ) -> list[ZipPath]:
         """
         Downloads ZIP files from ScienceBase to a temporary directory.
 
@@ -104,16 +107,22 @@ class ScienceBaseClient:
                 files_info = self.sb.get_item_file_info(item_json)
 
                 for file_info in files_info:
-                    if "HabMap" in file_info["name"] and file_info["name"].endswith(".zip"):
+                    if "HabMap" in file_info["name"] and file_info["name"].endswith(
+                        ".zip"
+                    ):
                         zip_path = temp_dir / file_info["name"]
                         self.sb.download_file(file_info["url"], str(zip_path))
                         downloaded_zips.append(zip_path)
 
             except Exception as e:  # Catch generic Exception
                 if isinstance(e, requests.exceptions.RequestException):
-                    logger.error("Error downloading files for item ID %s: %s", item_id, e)
+                    logger.error(
+                        "Error downloading files for item ID %s: %s", item_id, e
+                    )
                 else:
-                    logger.error("An unexpected error occurred for item ID %s: %s", item_id, e)
+                    logger.error(
+                        "An unexpected error occurred for item ID %s: %s", item_id, e
+                    )
                 continue  # Go to the next item_id
 
         return sorted(downloaded_zips)  # ALWAYS return the list
@@ -136,11 +145,20 @@ class ScienceBaseClient:
                 common_name = None
                 scientific_name = None
                 for identifier in item_json["identifiers"]:
-                    if identifier["scheme"] == "https://www.sciencebase.gov/vocab/category/bis/bis_identifiers/GAP_SpeciesCode":
+                    if (
+                        identifier["scheme"]
+                        == "https://www.sciencebase.gov/vocab/category/bis/bis_identifiers/GAP_SpeciesCode"
+                    ):
                         species_code = identifier["key"]
-                    elif identifier["scheme"] == "https://www.sciencebase.gov/vocab/category/bis/bis_identifiers/CommonName":
+                    elif (
+                        identifier["scheme"]
+                        == "https://www.sciencebase.gov/vocab/category/bis/bis_identifiers/CommonName"
+                    ):
                         common_name = identifier["key"]
-                    elif identifier["scheme"] == "https://www.sciencebase.gov/vocab/category/bis/bis_identifiers/ScientificName":
+                    elif (
+                        identifier["scheme"]
+                        == "https://www.sciencebase.gov/vocab/category/bis/bis_identifiers/ScientificName"
+                    ):
                         scientific_name = identifier["key"]
 
                     if species_code:
@@ -151,9 +169,13 @@ class ScienceBaseClient:
                         }
             except Exception as e:  # Catch generic Exception
                 if isinstance(e, requests.exceptions.RequestException):
-                    logger.error("Error getting species info for item ID %s: %s", item_id, e)
+                    logger.error(
+                        "Error getting species info for item ID %s: %s", item_id, e
+                    )
                 else:
-                    logger.error("An unexpected error occurred for item ID %s: %s", item_id, e)
+                    logger.error(
+                        "An unexpected error occurred for item ID %s: %s", item_id, e
+                    )
                 continue
 
         return species_info
@@ -201,7 +223,13 @@ class HabitatDataProcessor:
     of GAP species habitat maps to calculate habitat percentages within US counties.
     """
 
-    def __init__(self, item_ids: Sequence[ItemId], vector_fp: Path, output_dir: Path, output_format: str = "arrow") -> None:
+    def __init__(
+        self,
+        item_ids: Sequence[ItemId],
+        vector_fp: Path,
+        output_dir: Path,
+        output_format: str = "arrow",
+    ) -> None:
         """
         Initializes the HabitatDataProcessor.
 
@@ -233,14 +261,22 @@ class HabitatDataProcessor:
             # Try loading from the local file path
             if Path(self.vector_fp).exists():
                 logger.info("Loading vector data from local file: %s", self.vector_fp)
-                gdf: CountyDataFrame = gpd.read_file(self.vector_fp, layer='counties')
+                gdf: CountyDataFrame = gpd.read_file(self.vector_fp, layer="counties")
             else:
-                logger.info("Local file not found: %s. Attempting to load from URL: %s", self.vector_fp, VECTOR_URL)
+                logger.info(
+                    "Local file not found: %s. Attempting to load from URL: %s",
+                    self.vector_fp,
+                    VECTOR_URL,
+                )
                 # Try loading from the URL
                 try:
-                    gdf = gpd.read_file(VECTOR_URL, layer='counties')  # GeoPandas can read directly from a URL!
+                    gdf = gpd.read_file(
+                        VECTOR_URL, layer="counties"
+                    )  # GeoPandas can read directly from a URL!
                 except Exception as e:
-                    msg = f"Could not load vector data from URL: {VECTOR_URL}. Error: {e}"
+                    msg = (
+                        f"Could not load vector data from URL: {VECTOR_URL}. Error: {e}"
+                    )
                     raise FileNotFoundError(msg) from e
 
             gdf = gdf.set_crs(epsg=4326, allow_override=True)
@@ -249,14 +285,16 @@ class HabitatDataProcessor:
                 raise ValueError(msg)
             gdf = gdf.to_crs(epsg=5070)
             gdf = gdf[~gdf.is_empty]
-            gdf.columns = ['county_id', 'geometry']
+            gdf.columns = ["county_id", "geometry"]
             return gdf
 
         except Exception as e:
             logger.error("Error loading county data: %s", e)
             raise  # Re-raise the exception to stop execution
 
-    def process_habitat_data(self, temp_dir: Path) -> tuple[list[RasterPath], SpeciesInfo]:
+    def process_habitat_data(
+        self, temp_dir: Path
+    ) -> tuple[list[RasterPath], SpeciesInfo]:
         """
         Processes habitat data: downloads ZIP files, extracts TIFFs, and retrieves species info.
 
@@ -281,7 +319,9 @@ class HabitatDataProcessor:
 
         return tif_files, species_info
 
-    def analyze_habitat_rasters(self, tif_files: list[RasterPath], species_info: SpeciesInfo) -> ProcessedDataFrame:
+    def analyze_habitat_rasters(
+        self, tif_files: list[RasterPath], species_info: SpeciesInfo
+    ) -> ProcessedDataFrame:
         """
         Analyzes habitat raster files against county geometries to calculate habitat percentages.
 
@@ -305,14 +345,17 @@ class HabitatDataProcessor:
         # - frac: Calculate fraction of each unique value's coverage
         # 255 is used as the default_value for areas outside raster coverage,
         # and is assumed to NOT be a valid habitat code.
-        ops: list[ExactExtractOp] = ["unique(default_value=255)", "frac(default_value=255)"]
+        ops: list[ExactExtractOp] = [
+            "unique(default_value=255)",
+            "frac(default_value=255)",
+        ]
         results = exact_extract(
             rast=tif_files,
             vec=self.gdf,
             ops=ops,
-            include_cols='county_id',
-            output='pandas',
-            progress=True
+            include_cols="county_id",
+            output="pandas",
+            progress=True,
         )
 
         # Log the columns generated by exact_extract
@@ -325,7 +368,7 @@ class HabitatDataProcessor:
         for tif_file in tif_files:
             # Extract species code from filename
             stem: str = tif_file.stem
-            species: SpeciesCode = stem.split('_')[0]
+            species: SpeciesCode = stem.split("_")[0]
 
             # Determine column names based on number of raster files
             if len(tif_files) > 1:
@@ -350,11 +393,15 @@ class HabitatDataProcessor:
 
             # Check if the unique and frac columns contain non-empty lists
             if len(unique_values) == 0 or len(frac_values) == 0:
-                logger.warning("No valid data found in columns for %s. Skipping.", species)
+                logger.warning(
+                    "No valid data found in columns for %s. Skipping.", species
+                )
                 continue
 
             # Repeat county_ids based on array lengths
-            county_ids = np.repeat(results["county_id"].values, [len(arr) for arr in unique_values])
+            county_ids = np.repeat(
+                results["county_id"].values, [len(arr) for arr in unique_values]
+            )
 
             # Flatten arrays
             unique_flat = np.concatenate(unique_values)
@@ -365,17 +412,16 @@ class HabitatDataProcessor:
             mask = unique_flat == 3
 
             # Get species metadata
-            species_metadata = species_info.get(species, {
-                "CommonName": "Unknown",
-                "ScientificName": "Unknown"
-            })
+            species_metadata = species_info.get(
+                species, {"CommonName": "Unknown", "ScientificName": "Unknown"}
+            )
 
             species_df: ProcessedDataFrame = pd.DataFrame({
                 "county_id": county_ids[mask],
                 "species_code": species,
                 "common_name": species_metadata["CommonName"],
                 "scientific_name": species_metadata["ScientificName"],
-                "pct": frac_flat[mask]
+                "pct": frac_flat[mask],
             })
 
             all_data.append(species_df)
@@ -388,9 +434,11 @@ class HabitatDataProcessor:
         # Combine all species data
         return pd.concat(all_data, ignore_index=True)
 
-# ... (rest of the code remains the same)
+    # ... (rest of the code remains the same)
 
-    def save_results(self, results_df: ProcessedDataFrame, species_info: SpeciesInfo) -> None:
+    def save_results(
+        self, results_df: ProcessedDataFrame, species_info: SpeciesInfo
+    ) -> None:
         """
         Saves the processed results to CSV, Parquet, or Arrow files.
 
@@ -404,22 +452,26 @@ class HabitatDataProcessor:
         if not results_df.empty:
             self.output_dir.mkdir(exist_ok=True)
 
-            results_df = results_df.rename(columns={
-                "species_code": "GAP_Species",
-                "pct": "percent_habitat"
-            })
-            results_df = results_df[[
-                "county_id", "GAP_Species", "percent_habitat"
-            ]]
+            results_df = results_df.rename(
+                columns={"species_code": "GAP_Species", "pct": "percent_habitat"}
+            )
+            results_df = results_df[["county_id", "GAP_Species", "percent_habitat"]]
 
-            species_info_df = pd.DataFrame.from_dict(species_info, orient='index')
+            species_info_df = pd.DataFrame.from_dict(species_info, orient="index")
             final_df: ProcessedDataFrame = results_df.merge(
                 species_info_df, left_on="GAP_Species", right_index=True
             )
 
-            final_df = final_df[[
-                "item_id", "CommonName", "ScientificName", "GAP_Species", "county_id", "percent_habitat"
-            ]]
+            final_df = final_df[
+                [
+                    "item_id",
+                    "CommonName",
+                    "ScientificName",
+                    "GAP_Species",
+                    "county_id",
+                    "percent_habitat",
+                ]
+            ]
 
             final_df["percent_habitat"] = final_df["percent_habitat"].round(4)
 
@@ -428,16 +480,22 @@ class HabitatDataProcessor:
             else:  # Handle both Parquet and Arrow
                 table = pa.Table.from_pandas(final_df)
                 for col in ["item_id", "CommonName", "county_id"]:
-                    table = table.set_column(table.schema.get_field_index(col), col, pa.compute.dictionary_encode(table[col]))
+                    table = table.set_column(
+                        table.schema.get_field_index(col),
+                        col,
+                        pa.compute.dictionary_encode(table[col]),
+                    )
 
                 if self.output_format == "parquet":
                     pa.parquet.write_table(table, self.output_dir / "species.parquet")
                 else:  # Default to Arrow
-                    with pa.OSFile(str(self.output_dir / "species.arrow"), 'wb') as sink, \
-                        pa.RecordBatchFileWriter(sink, table.schema) as writer:
+                    with (
+                        pa.OSFile(str(self.output_dir / "species.arrow"), "wb") as sink,
+                        pa.RecordBatchFileWriter(sink, table.schema) as writer,
+                    ):
                         writer.write_table(table)
 
-# ... (rest of the code remains the same)
+    # ... (rest of the code remains the same)
 
     def run(self) -> None:
         """Runs the complete habitat data processing workflow."""
@@ -447,7 +505,9 @@ class HabitatDataProcessor:
             tif_files, species_info = self.process_habitat_data(temp_dir)
 
             species_count = len(species_info)
-            logger.info("Step 2/3: Beginning habitat analysis for %d species", species_count)
+            logger.info(
+                "Step 2/3: Beginning habitat analysis for %d species", species_count
+            )
             results_df = self.analyze_habitat_rasters(tif_files, species_info)
 
             logger.info("Step 3/3: Saving analysis results")
@@ -456,14 +516,16 @@ class HabitatDataProcessor:
 
         finally:
             if temp_dir.exists():
-                for file in temp_dir.glob('*'):
+                for file in temp_dir.glob("*"):
                     file.unlink()
                 temp_dir.rmdir()
 
 
 def main() -> None:
     """Main entry point for the script: parses command-line arguments and runs the processor."""
-    parser = argparse.ArgumentParser(description="Process and analyze GAP National Terrestrial Ecosystems data.")
+    parser = argparse.ArgumentParser(
+        description="Process and analyze GAP National Terrestrial Ecosystems data."
+    )
     parser.add_argument(
         "--item_ids",
         nargs="+",
@@ -484,7 +546,8 @@ def main() -> None:
         help="Output directory for results.",
     )
     parser.add_argument(
-        "-D", "--debug",
+        "-D",
+        "--debug",
         action="store_true",
         help="Enable debug logging.",
     )
@@ -499,13 +562,15 @@ def main() -> None:
     args = parser.parse_args()
 
     # Updated logging configuration
-    log_format = '%(asctime)s [%(levelname)s] %(message)s'
-    date_format = '%Y-%m-%d %H:%M:%S'
+    log_format = "%(asctime)s [%(levelname)s] %(message)s"
+    date_format = "%Y-%m-%d %H:%M:%S"
     log_level = logging.DEBUG if args.debug else logging.INFO
     logging.basicConfig(level=log_level, format=log_format, datefmt=date_format)
 
     logger.info("Initializing GAP habitat analysis pipeline")
-    processor = HabitatDataProcessor(args.item_ids, Path(args.vector_fp), Path(args.output_dir), args.output_format)
+    processor = HabitatDataProcessor(
+        args.item_ids, Path(args.vector_fp), Path(args.output_dir), args.output_format
+    )
     processor.run()
 
 
