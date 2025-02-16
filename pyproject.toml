@@ -114,6 +114,7 @@ include = [
   "./scripts/build_datapackage.py",
   "./scripts/flights.py",
   "./scripts/income.py",
+  "./scripts/species.py",
 ]
 pythonPlatform = "All"
 pythonVersion = "3.12"

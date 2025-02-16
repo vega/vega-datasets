@@ -55,16 +55,16 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 # Type Aliases
-ItemId = str
-SpeciesInfo = dict[str, dict[str, str]]
-CountyDataFrame = gpd.GeoDataFrame
-RasterPath = Path
-ZipPath = Path
-CountyId = str
-SpeciesCode = str
-ProcessedDataFrame = pd.DataFrame
-FileExtension = Literal[".csv", ".parquet", ".arrow"]
-ExactExtractOp = Literal["unique", "frac"]
+type ItemId = str
+type SpeciesInfo = dict[str, dict[str, str]]
+type CountyDataFrame = gpd.GeoDataFrame
+type RasterPath = Path
+type ZipPath = Path
+type CountyId = str
+type SpeciesCode = str
+type ProcessedDataFrame = pd.DataFrame
+type FileExtension = Literal[".csv", ".parquet", ".arrow"]
+type ExactExtractOp = Literal["unique(default_value=255)", "frac(default_value=255)"]
 
 
 FILE_DIR = Path(__file__).parent
