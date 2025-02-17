@@ -192,25 +192,35 @@ class RasterSet:
 
     def extract_tifs_from_zips(self) -> list[RasterPath]:
         """
-        Extracts TIF files from ZIP archives.
+        Extracts TIFF files from ZIP archives.
 
-        ZIP files are deleted after extraction.
+        Assumes and enforces that each ZIP file contains *exactly one* .tif file.
+        Raises a RuntimeError if this is not the case.
 
-        Returns
-        -------
-            list[RasterPath]: A list of paths to the extracted TIFF files.
+        Returns a sorted list of paths to the extracted TIFF files.
         """
         extracted_tifs: list[RasterPath] = []
 
         for zip_path in self.zip_files:
-            with zipfile.ZipFile(zip_path) as zf:
-                for zip_info in zf.filelist:
-                    if zip_info.filename.lower().endswith(".tif"):
-                        tif_path = self.temp_dir / zip_info.filename
-                        Path(tif_path).write_bytes(zf.read(zip_info.filename))
-                        extracted_tifs.append(tif_path)
+            with zipfile.ZipFile(zip_path) as zf:  # Use context manager for ZipFile
+                zip_root = zipfile.Path(zf)
+                tif_files = list(zip_root.glob("*.tif"))
+
+                if len(tif_files) != 1:
+                    msg = (
+                        f"Expected exactly one .tif file in {zip_path}, "
+                        f"found {len(tif_files)}"
+                    )
+                    raise RuntimeError(msg)
+
+                tif_file = tif_files[0]  # Get the single TIF file
+                output_path = self.temp_dir / tif_file.name
+                with tif_file.open("rb") as src, output_path.open("wb") as dst:
+                    dst.write(src.read())
+                extracted_tifs.append(output_path)
 
             zip_path.unlink()
+
         self.tif_files = sorted(extracted_tifs)
         return self.tif_files
 
