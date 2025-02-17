@@ -10,7 +10,7 @@
 #     "sciencebasepy",
 #     "tqdm",
 #     "pyarrow",
-#     "requests"
+#     "requests",
 # ]
 # ///
 
@@ -19,6 +19,7 @@ Process and analyze USGS Gap Analysis Project Species Habitat Maps data.
 
 This script downloads, extracts, and analyzes habitat data from USGS ScienceBase to
 determine the percentage of habitat for specific species within US counties.
+It uses a TOML configuration file (_data/species.toml) for settings.
 
 These habitat maps represent species distribution based on 2001 ground conditions and
 use 30-meter resolution rasters in Albers Conical Equal Area projection (EPSG:5070).
@@ -31,9 +32,9 @@ Key Classes:
 
 from __future__ import annotations
 
-import argparse
 import logging
 import tempfile
+import tomllib
 import zipfile
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal
@@ -68,6 +69,7 @@ type ExactExtractOp = Literal["unique(default_value=255)", "frac(default_value=2
 
 
 FILE_DIR = Path(__file__).parent
+CONFIG_DIR = FILE_DIR.parent / "_data"  # Configuration directory
 DATA_DIR = FILE_DIR.parent / "data"
 VECTOR_FP = DATA_DIR / "us-10m.json"
 VECTOR_URL = "https://vega.github.io/vega-datasets/data/us-10m.json"
@@ -532,55 +534,74 @@ class HabitatDataProcessor:
 
 
 def main() -> None:
-    """Main entry point for the script: parses command-line arguments and runs the processor."""
-    parser = argparse.ArgumentParser(
-        description="Process and analyze GAP National Terrestrial Ecosystems data."
-    )
-    parser.add_argument(
-        "--item_ids",
-        nargs="+",
-        type=str,
-        default=HABITAT_ITEM_IDS,
-        help="List of ScienceBase item IDs (space-separated).",
-    )
-    parser.add_argument(
-        "--vector_fp",
-        type=str,
-        default=str(VECTOR_FP),
-        help="Path to the vector file (GeoJSON).",
-    )
-    parser.add_argument(
-        "--output_dir",
-        type=str,
-        default=str(DATA_DIR),
-        help="Output directory for results.",
-    )
-    parser.add_argument(
-        "-D",
-        "--debug",
-        action="store_true",
-        help="Enable debug logging.",
-    )
-    parser.add_argument(
-        "--output_format",
-        type=str,
-        default="arrow",
-        choices=["csv", "parquet", "arrow"],
-        help="Output format (csv, parquet, or arrow). Defaults to arrow.",
-    )
+    """Main entry point: loads TOML config, runs the processor."""
+    # --- Configuration Loading (TOML) ---
+    config_path = CONFIG_DIR / "species.toml"  # Correct path
+    try:
+        with config_path.open("rb") as f:
+            config = tomllib.load(f)
+    except FileNotFoundError:
+        logger.error("Configuration file not found: %s", config_path)
+        raise  # Critical error: stop execution
+    except tomllib.TOMLDecodeError as e:
+        logger.error("Error decoding TOML file: %s", e)
+        raise
 
-    args = parser.parse_args()
+    processing_config = config.get("processing", {})
+    if not processing_config:
+        logger.error("Missing [processing] table in TOML configuration.")
+        msg = "Missing [processing] table in TOML configuration."
+        raise ValueError(msg)
 
-    # Updated logging configuration
+    # --- Extract Configuration Values ---
+    item_ids = processing_config.get("item_ids", HABITAT_ITEM_IDS)  # Fallback
+    vector_fp = processing_config.get("vector_fp", str(VECTOR_FP))
+    output_dir = processing_config.get("output_dir", str(DATA_DIR))
+    output_format = processing_config.get("output_format", "arrow")
+    debug = processing_config.get("debug", False)
+
+    # --- Resolve Relative Paths ---
+    #  Make paths absolute, relative to the *config file*, not the CWD
+    vector_fp = (config_path.parent / vector_fp).resolve()
+    output_dir = (config_path.parent / output_dir).resolve()
+
+    # --- Basic Configuration Validation ---
+    if not isinstance(item_ids, list):
+        logger.error("`item_ids` in the TOML file must be a list.")
+        msg = "`item_ids` must be a list."
+        raise TypeError(msg)
+
+    if not isinstance(vector_fp, str | Path):
+        logger.error("`vector_fp` must be a string or Path.")
+        msg = "`vector_fp` must be a string or Path."
+        raise TypeError(msg)
+    vector_fp = Path(vector_fp)
+
+    if not isinstance(output_dir, str | Path):
+        logger.error("`output_dir` must be a string or Path.")
+        msg = "`output_dir` must be a string or Path."
+        raise TypeError(msg)
+    output_dir = Path(output_dir)
+
+    if output_format not in {"csv", "parquet", "arrow"}:
+        logger.error("Invalid `output_format`: %s", output_format)
+        msg = f"Invalid `output_format`: {output_format}"
+        raise ValueError(msg)
+
+    if not isinstance(debug, bool):
+        logger.error("`debug` must be a boolean.")
+        msg = "`debug` must be a boolean."
+        raise TypeError(msg)
+
+    # --- Logging Setup (same as before) ---
     log_format = "%(asctime)s [%(levelname)s] %(message)s"
     date_format = "%Y-%m-%d %H:%M:%S"
-    log_level = logging.DEBUG if args.debug else logging.INFO
+    log_level = logging.DEBUG if debug else logging.INFO
     logging.basicConfig(level=log_level, format=log_format, datefmt=date_format)
 
+    # --- Initialize and Run Processor ---
     logger.info("Initializing GAP habitat analysis pipeline")
-    processor = HabitatDataProcessor(
-        args.item_ids, Path(args.vector_fp), Path(args.output_dir), args.output_format
-    )
+    processor = HabitatDataProcessor(item_ids, vector_fp, output_dir, output_format)
     processor.run()
 
 
