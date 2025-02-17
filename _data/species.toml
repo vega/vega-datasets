@@ -2,12 +2,12 @@
 
 [processing]
 item_ids = [
-    "58fa64ece4b0b7ea545257e3",  # Coyote
-    "58fa513ce4b0b7ea5452521a",  # Cardinal
-    "58fe0a6be4b007492829456e",  # Alligator
-    "58fa3f0be4b0b7ea54524859",  # American bullfrog
+  "58fa64ece4b0b7ea545257e3", # Coyote
+  "58fa513ce4b0b7ea5452521a", # Cardinal
+  "58fe0a6be4b007492829456e", # Alligator
+  "58fa3f0be4b0b7ea54524859", # American bullfrog
 ]
-vector_fp = "../data/us-10m.json"  # Relative path from TOML file
-output_dir = "../data"            # Relative path from TOML file
-output_format = "arrow"           # Default, can be overridden
-debug = false                     # Controls logging level
+vector_fp = "../data/us-10m.json" # Relative path from TOML file
+output_dir = "../data" # Relative path from TOML file
+output_format = "arrow" # Default, can be overridden
+debug = false # Controls logging level
