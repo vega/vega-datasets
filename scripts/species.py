@@ -74,15 +74,6 @@ DATA_DIR = FILE_DIR.parent / "data"
 VECTOR_FP = DATA_DIR / "us-10m.json"
 VECTOR_URL = "https://vega.github.io/vega-datasets/data/us-10m.json"
 
-HABITAT_ITEM_IDS: Sequence[ItemId] = [
-    # "58fa6137e4b0b7ea5452571c", small files for testing
-    # "58fe0ab2e4b007492829457b" small files for testing
-    "58fa64ece4b0b7ea545257e3",  # Coyote
-    "58fa513ce4b0b7ea5452521a",  # Cardinal
-    "58fe0a6be4b007492829456e",  # Alligator
-    "58fa3f0be4b0b7ea54524859",  # American bullfrog
-]
-
 
 class ScienceBaseClient:
     """Handles interactions with ScienceBase for downloading and retrieving item information."""
@@ -446,8 +437,6 @@ class HabitatDataProcessor:
         # Combine all species data
         return pd.concat(all_data, ignore_index=True)
 
-    # ... (rest of the code remains the same)
-
     def save_results(
         self, results_df: ProcessedDataFrame, species_info: SpeciesInfo
     ) -> None:
@@ -507,8 +496,6 @@ class HabitatDataProcessor:
                     ):
                         writer.write_table(table)
 
-    # ... (rest of the code remains the same)
-
     def run(self) -> None:
         """Runs the complete habitat data processing workflow."""
         temp_dir = Path(tempfile.mkdtemp())
@@ -554,7 +541,13 @@ def main() -> None:
         raise ValueError(msg)
 
     # --- Extract Configuration Values ---
-    item_ids = processing_config.get("item_ids", HABITAT_ITEM_IDS)  # Fallback
+    # Require item_ids in configuration
+    if "item_ids" not in processing_config:
+        logger.error("Required configuration 'item_ids' not found in TOML file")
+        msg = "Missing required configuration: item_ids must be specified in the TOML file"
+        raise ValueError(msg)
+
+    item_ids = processing_config["item_ids"]
     vector_fp = processing_config.get("vector_fp", str(VECTOR_FP))
     output_dir = processing_config.get("output_dir", str(DATA_DIR))
     output_format = processing_config.get("output_format", "arrow")
@@ -566,9 +559,9 @@ def main() -> None:
     output_dir = (config_path.parent / output_dir).resolve()
 
     # --- Basic Configuration Validation ---
-    if not isinstance(item_ids, list):
-        logger.error("`item_ids` in the TOML file must be a list.")
-        msg = "`item_ids` must be a list."
+    if not isinstance(item_ids, list) or not item_ids:
+        logger.error("`item_ids` in the TOML file must be a non-empty list.")
+        msg = "`item_ids` must be a non-empty list."
         raise TypeError(msg)
 
     if not isinstance(vector_fp, str | Path):
@@ -593,7 +586,7 @@ def main() -> None:
         msg = "`debug` must be a boolean."
         raise TypeError(msg)
 
-    # --- Logging Setup (same as before) ---
+    # --- Logging Setup ---
     log_format = "%(asctime)s [%(levelname)s] %(message)s"
     date_format = "%Y-%m-%d %H:%M:%S"
     log_level = logging.DEBUG if debug else logging.INFO
