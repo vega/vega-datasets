@@ -15,19 +15,30 @@
 # ///
 
 """
-Process and analyze USGS Gap Analysis Project Species Habitat Maps data.
+Process and analyze USGS Gap Analysis Project (GAP) Species Habitat Maps.
 
-This script downloads, extracts, and analyzes habitat data from USGS ScienceBase to
-determine the percentage of habitat for specific species within US counties.
-It uses a TOML configuration file (_data/species.toml) for settings.
+This script downloads, extracts, and analyzes data from USGS ScienceBase to calculate
+species habitat coverage within US counties. It uses a TOML configuration file
+(_data/species.toml) for settings and US county boundaries from a 1:10M-scale TopoJSON
+file derived from Census Bureau cartographic boundary files.
 
-These habitat maps represent species distribution based on 2001 ground conditions and
-use 30-meter resolution rasters in Albers Conical Equal Area projection (EPSG:5070).
+The habitat maps are provided as 30-meter resolution raster files in Albers Conical
+Equal Area projection (EPSG:5070). The script overlays these raster habitat maps with
+county boundary vectors to calculate the percentage of year-round habitat (value 3 in
+rasters) within each county. Values 1 and 2 in the rasters represent summer and winter
+habitat respectively, though these are not currently analyzed.
+
+Output is available in multiple formats (CSV, Parquet, or Arrow) with dictionary-encoded
+columns for efficient storage. Results include species metadata (GAP species code, common
+name, scientific name) and habitat percentages by county. The script includes comprehensive
+logging and error handling, with debug options configurable via TOML settings. Downloaded
+and extracted files are managed in a temporary directory and cleaned up after processing.
 
 Key Classes:
-- `ScienceBaseClient`: Handles interactions with USGS ScienceBase.
-- `RasterSet`: Manages a collection of raster files.
-- `HabitatDataProcessor`: Orchestrates the data processing workflow.
+- `ScienceBaseClient`: Downloads habitat data and retrieves species metadata from USGS ScienceBase.
+- `RasterSet`: Extracts and validates TIFF files from downloaded ZIP archives.
+- `HabitatDataProcessor`: Orchestrates the complete workflow including vector data loading,
+  habitat analysis, and output formatting.
 """
 
 from __future__ import annotations
@@ -157,8 +168,8 @@ class ScienceBaseClient:
                     if species_code:
                         species_info[species_code] = {
                             "item_id": item_id,
-                            "CommonName": common_name or "Not Available",
-                            "ScientificName": scientific_name or "Not Available",
+                            "common_name": common_name or "Not Available",
+                            "scientific_name": scientific_name or "Not Available",
                         }
             except Exception as e:  # Catch generic Exception
                 if isinstance(e, requests.exceptions.RequestException):
@@ -422,8 +433,8 @@ class HabitatDataProcessor:
             species_df: ProcessedDataFrame = pd.DataFrame({
                 "county_id": county_ids[mask],
                 "species_code": species,
-                "common_name": species_metadata["CommonName"],
-                "scientific_name": species_metadata["ScientificName"],
+                "common_name": species_metadata["common_name"],
+                "scientific_name": species_metadata["scientific_name"],
                 "pct": frac_flat[mask],
             })
 
@@ -453,34 +464,43 @@ class HabitatDataProcessor:
         if not results_df.empty:
             self.output_dir.mkdir(exist_ok=True)
 
+            # Rename columns to allow for future expansion of the dataset to include summer
+            # or winter-only habitat data, or range data that may be summer/winter/yearround.
             results_df = results_df.rename(
-                columns={"species_code": "GAP_Species", "pct": "percent_habitat"}
+                columns={
+                    "species_code": "gap_species_code",
+                    "pct": "habitat_yearround_pct",
+                }
             )
-            results_df = results_df[["county_id", "GAP_Species", "percent_habitat"]]
+            results_df = results_df[
+                ["county_id", "gap_species_code", "habitat_yearround_pct"]
+            ]
 
             species_info_df = pd.DataFrame.from_dict(species_info, orient="index")
             final_df: ProcessedDataFrame = results_df.merge(
-                species_info_df, left_on="GAP_Species", right_index=True
+                species_info_df, left_on="gap_species_code", right_index=True
             )
 
             final_df = final_df[
                 [
                     "item_id",
-                    "CommonName",
-                    "ScientificName",
-                    "GAP_Species",
+                    "common_name",
+                    "scientific_name",
+                    "gap_species_code",
                     "county_id",
-                    "percent_habitat",
+                    "habitat_yearround_pct",
                 ]
             ]
 
-            final_df["percent_habitat"] = final_df["percent_habitat"].round(4)
+            final_df["habitat_yearround_pct"] = final_df["habitat_yearround_pct"].round(
+                4
+            )
 
             if self.output_format == "csv":
                 final_df.to_csv(self.output_dir / "species.csv", index=False)
             else:  # Handle both Parquet and Arrow
                 table = pa.Table.from_pandas(final_df)
-                for col in ["item_id", "CommonName", "county_id"]:
+                for col in ["item_id", "common_name", "county_id"]:
                     table = table.set_column(
                         table.schema.get_field_index(col),
                         col,
