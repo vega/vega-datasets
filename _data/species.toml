@@ -2,12 +2,12 @@
 
 [processing]
 item_ids = [
-  '58fa449fe4b0b7ea54524c5e', # American Robin
-  '58fa817ae4b0b7ea54525c2f', # White-tailed Deer
-  '58fa3f0be4b0b7ea54524859', # American Bullfrog
-  '58fe0f4fe4b0074928294636', # Common Gartersnake
+  '58fa449fe4b0b7ea54524c5e', # American Robin (Habitat)
+  '58fa817ae4b0b7ea54525c2f', # White-tailed Deer (Habitat)
+  '58fa3f0be4b0b7ea54524859', # American Bullfrog (Habitat)
+  '58fe0f4fe4b0074928294636', # Common Gartersnake (Habitat)
 ]
 vector_fp = "../data/us-10m.json" # Relative path from TOML file
 output_dir = "../data" # Relative path from TOML file
-output_format = "arrow" # Default, can be overridden
+output_format = "arrow" # Other formats: "csv", "parquet"
 debug = false # Controls logging level
