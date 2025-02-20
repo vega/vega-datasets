@@ -1,7 +1,7 @@
 {
   "name": "vega-datasets",
   "description": "Common repository for example datasets used by Vega related projects. \nBSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets \ncomplies with the license terms of the original sources. Dataset license information, where included, \nis a reference starting point only and is provided without any warranty of accuracy or completeness.\n",
-  "homepage": "http://github.com/vega/vega-datasets.git",
+  "homepage": "git+http://github.com/vega/vega-datasets.git",
   "licenses": [
     {
       "name": "BSD-3-Clause",
@@ -20,7 +20,7 @@
     }
   ],
   "version": "2.11.0",
-  "created": "2025-02-07T20:36:42.016594+00:00",
+  "created": "2025-02-20T13:20:53.899446+00:00",
   "resources": [
     {
       "name": "7zip.png",
@@ -3167,6 +3167,67 @@
             "name": "price",
             "type": "number",
             "description": "Closing price of the S&P 500 index for the given month"
+          }
+        ]
+      }
+    },
+    {
+      "name": "species.arrow",
+      "type": "table",
+      "description": "Percentage of year-round habitat for four species -- American robin, White-tailed deer, \nAmerican bullfrog, and common gartersnak -- within US counties, derived from USGS \nGap Analysis Project (GAP) Species Habitat Maps. Data is provided at a 30-meter \nresolution and covers the contiguous United States. Habitat percentages are calculated \nby overlaying species habitat rasters (year-round habitat represented by value 3) with \nUS county boundaries.\n\nThe habitat maps are in Albers Conical Equal Area projection (EPSG:5070). County boundaries \nare derived from US Census Bureau cartographic boundary files (1:10,000,000 scale), from \n`US-10m.json` in this repository. This dataset only includes *year-round* habitat. \nThe original raster data also contains values for summer and winter habitat, which are \n*not* included in this dataset. Data was processed using the `exactextract` library \nfor zonal statistics.\n",
+      "licenses": [
+        {
+          "title": "U.S. Government Dataset",
+          "path": "https://www.usa.gov/government-works"
+        }
+      ],
+      "sources": [
+        {
+          "title": "USGS Gap Analysis Project (GAP) Species Habitat Maps",
+          "path": "https://www.usgs.gov/programs/gap-analysis-project"
+        },
+        {
+          "title": "US Census Bureau Cartographic Boundary Files (1:10,000,000)",
+          "path": "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html"
+        }
+      ],
+      "path": "species.arrow",
+      "scheme": "file",
+      "format": ".arrow",
+      "mediatype": "application/vnd.apache.arrow.file",
+      "hash": "sha1:bef9659518d1817c31c82ffd6411e62ccbe495d8",
+      "bytes": 667258,
+      "schema": {
+        "fields": [
+          {
+            "name": "item_id",
+            "type": "string",
+            "description": "Unique identifier for the species data item on ScienceBase."
+          },
+          {
+            "name": "common_name",
+            "type": "string",
+            "description": "Common name of the species."
+          },
+          {
+            "name": "scientific_name",
+            "type": "string",
+            "description": "Scientific name of the species."
+          },
+          {
+            "name": "gap_species_code",
+            "type": "string",
+            "description": "GAP Species Code, a unique identifier for the species within the GAP dataset."
+          },
+          {
+            "name": "county_id",
+            "type": "string",
+            "description": "Combined state and county FIPS code, identifying the US county."
+          },
+          {
+            "name": "habitat_yearround_pct",
+            "type": "number",
+            "description": "Percentage of the county area that is classified as year-round habitat for the species (rounded to 4 decimal places)."
           }
         ]
       }

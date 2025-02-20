@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](http://github.com/vega/vega-datasets.git) | 2025-02-07 20:36:42 [UTC]
+`2.11.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-02-20 13:20:53 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1514,6 +1514,43 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 |:-------|:-------|:-------------------------------------------------------|
 | date   | string | Date of monthly observation in the format 'MMM D YYYY' |
 | price  | number | Closing price of the S&P 500 index for the given month |
+## `species.arrow`
+### path
+species.arrow
+### description
+Percentage of year-round habitat for four species -- American robin, White-tailed deer, 
+American bullfrog, and common gartersnak -- within US counties, derived from USGS 
+Gap Analysis Project (GAP) Species Habitat Maps. Data is provided at a 30-meter 
+resolution and covers the contiguous United States. Habitat percentages are calculated 
+by overlaying species habitat rasters (year-round habitat represented by value 3) with 
+US county boundaries.
+
+The habitat maps are in Albers Conical Equal Area projection (EPSG:5070). County boundaries 
+are derived from US Census Bureau cartographic boundary files (1:10,000,000 scale), from 
+`US-10m.json` in this repository. This dataset only includes *year-round* habitat. 
+The original raster data also contains values for summer and winter habitat, which are 
+*not* included in this dataset. Data was processed using the `exactextract` library 
+for zonal statistics.
+
+### schema
+    
+| name                  | type   | description                                                                                                           |
+|:----------------------|:-------|:----------------------------------------------------------------------------------------------------------------------|
+| item_id               | string | Unique identifier for the species data item on ScienceBase.                                                           |
+| common_name           | string | Common name of the species.                                                                                           |
+| scientific_name       | string | Scientific name of the species.                                                                                       |
+| gap_species_code      | string | GAP Species Code, a unique identifier for the species within the GAP dataset.                                         |
+| county_id             | string | Combined state and county FIPS code, identifying the US county.                                                       |
+| habitat_yearround_pct | number | Percentage of the county area that is classified as year-round habitat for the species (rounded to 4 decimal places). |
+### sources
+| title                                                       | path                                                                                        |
+|:------------------------------------------------------------|:--------------------------------------------------------------------------------------------|
+| USGS Gap Analysis Project (GAP) Species Habitat Maps        | https://www.usgs.gov/programs/gap-analysis-project                                          |
+| US Census Bureau Cartographic Boundary Files (1:10,000,000) | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
+### licenses
+| title                   | path                                 |
+|:------------------------|:-------------------------------------|
+| U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `stocks.csv`
 ### path
 stocks.csv
