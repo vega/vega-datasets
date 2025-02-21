@@ -90,18 +90,32 @@ class ScienceBaseClient:
     """Handles interactions with ScienceBase for downloading and retrieving item information."""
 
     def __init__(self) -> None:
-        """Initializes the ScienceBase client with a session."""
+        """
+        Initializes the ScienceBase client with a session.
+
+        Establishes a ScienceBase session (`SbSession`) for interacting with the USGS ScienceBase API.
+        This session is used for authentication and managing requests to ScienceBase.
+        """
         self.sb = SbSession()
 
     def download_zip_files(
         self, item_ids: Sequence[ItemId], temp_dir: Path
     ) -> list[ZipPath]:
         """
-        Downloads ZIP files from ScienceBase to a temporary directory.
+        Downloads ZIP files from ScienceBase associated with the given ScienceBase ID to a temporary directory.
+
+        Each ZIP file is expected to contain a habitat map raster (TIFF).
+
+        Args:
+                item_ids: A sequence of ScienceBase item IDs to download files for.
+                temp_dir: Path to a temporary directory where ZIP files will be downloaded.
 
         Returns
         -------
-            list[ZipPath]: A list of paths to the downloaded ZIP files.
+                list[ZipPath]: A list of paths to the downloaded ZIP files, sorted alphabetically.
+                           Returns an empty list if no ZIP files are successfully downloaded.
+                           Logs errors to the logger if downloads fail for specific item IDs,
+                           but continues processing other item IDs.
         """
         downloaded_zips: list[ZipPath] = []
 
@@ -134,6 +148,14 @@ class ScienceBaseClient:
     def get_species_info(self, item_ids: Sequence[ItemId]) -> SpeciesInfo:
         """
         Retrieves species information from ScienceBase items.
+
+        Extracts metadata (species code, common name, scientific name) from ScienceBase
+        items based on their identifiers.
+
+        Args:
+            item_ids: A sequence of ScienceBase item IDs to retrieve information for.
+
+
 
         Returns
         -------
@@ -346,13 +368,21 @@ class HabitatDataProcessor:
         - 2: Winter habitat
         - 3: Year-round habitat
 
-        Args:
+        Args
+        ----
             tif_files (list[RasterPath]): List of paths to habitat raster TIFF files.
             species_info (SpeciesInfo): Dictionary of species information.
 
         Returns
         -------
             ProcessedDataFrame: DataFrame containing county IDs, species codes, names, and habitat percentages.
+
+        Note
+        ----
+            A `RuntimeWarning` about spatial reference systems may appear. This is often benign,
+            resulting from minor differences in coordinate system descriptions (WKT) between
+            vector and raster data, even when projections are effectively the same (EPSG:5070).
+            It does not impact analysis accuracy here and is addressed in newer versions of `exactextract`
         """
         # Define operations for exact_extract:
         # - unique: Find all unique values in each county
