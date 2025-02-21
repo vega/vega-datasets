@@ -526,9 +526,7 @@ class HabitatDataProcessor:
                 4
             )
 
-            if self.output_format == "csv":
-                final_df.to_csv(self.output_dir / "species.csv", index=False)
-            else:  # Handle both Parquet and Arrow
+            if self.output_format == "parquet":
                 table = pa.Table.from_pandas(final_df)
                 for col in ["item_id", "common_name", "county_id"]:
                     table = table.set_column(
@@ -536,15 +534,22 @@ class HabitatDataProcessor:
                         col,
                         pa.compute.dictionary_encode(table[col]),
                     )
-
-                if self.output_format == "parquet":
-                    pa.parquet.write_table(table, self.output_dir / "species.parquet")
-                else:  # Default to Arrow
-                    with (
-                        pa.OSFile(str(self.output_dir / "species.csv"), "wb") as sink,
-                        pa.RecordBatchFileWriter(sink, table.schema) as writer,
-                    ):
-                        writer.write_table(table)
+                pa.parquet.write_table(table, self.output_dir / "species.parquet")
+            elif self.output_format == "arrow":
+                table = pa.Table.from_pandas(final_df)
+                for col in ["item_id", "common_name", "county_id"]:
+                    table = table.set_column(
+                        table.schema.get_field_index(col),
+                        col,
+                        pa.compute.dictionary_encode(table[col]),
+                    )
+                with (
+                    pa.OSFile(str(self.output_dir / "species.arrow"), "wb") as sink,
+                    pa.RecordBatchFileWriter(sink, table.schema) as writer,
+                ):
+                    writer.write_table(table)
+            else:  # Default to CSV
+                final_df.to_csv(self.output_dir / "species.csv", index=False)
 
     def run(self) -> None:
         """Runs the complete habitat data processing workflow."""
