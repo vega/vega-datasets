@@ -9,5 +9,5 @@ item_ids = [
 ]
 vector_fp = "../data/us-10m.json" # Relative path from TOML file
 output_dir = "../data" # Relative path from TOML file
-output_format = "arrow" # Available formats: "csv", "parquet", "arrow"
+output_format = "csv" # Available formats: "csv", "parquet", "arrow"
 debug = false # Controls logging level
