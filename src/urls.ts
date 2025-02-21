@@ -70,6 +70,6 @@ export default {
   'zipcodes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/zipcodes.csv`,
   'unemployment.tsv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/unemployment.tsv`,
   'flights-200k.arrow': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-200k.arrow`,
-  'species.arrow': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/species.arrow`,
+  'species.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/species.csv`,
   'flights-3m.parquet': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-3m.parquet`,
 }
