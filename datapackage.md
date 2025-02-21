@@ -1,5 +1,5 @@
 # vega-datasets
-`2.11.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-02-20 13:20:53 [UTC]
+`2.11.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-02-21 12:50:00 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1514,12 +1514,12 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 |:-------|:-------|:-------------------------------------------------------|
 | date   | string | Date of monthly observation in the format 'MMM D YYYY' |
 | price  | number | Closing price of the S&P 500 index for the given month |
-## `species.arrow`
+## `species.csv`
 ### path
-species.arrow
+species.csv
 ### description
-Percentage of year-round habitat for four species -- American robin, White-tailed deer, 
-American bullfrog, and common gartersnak -- within US counties, derived from USGS 
+Percentage of year-round habitat for four species -- American robin, white-tailed deer, 
+American bullfrog, and common gartersnake -- within US counties, derived from USGS 
 Gap Analysis Project (GAP) Species Habitat Maps. Data is provided at a 30-meter 
 resolution and covers the contiguous United States. Habitat percentages are calculated 
 by overlaying species habitat rasters (year-round habitat represented by value 3) with 
@@ -1534,14 +1534,14 @@ for zonal statistics.
 
 ### schema
     
-| name                  | type   | description                                                                                                           |
-|:----------------------|:-------|:----------------------------------------------------------------------------------------------------------------------|
-| item_id               | string | Unique identifier for the species data item on ScienceBase.                                                           |
-| common_name           | string | Common name of the species.                                                                                           |
-| scientific_name       | string | Scientific name of the species.                                                                                       |
-| gap_species_code      | string | GAP Species Code, a unique identifier for the species within the GAP dataset.                                         |
-| county_id             | string | Combined state and county FIPS code, identifying the US county.                                                       |
-| habitat_yearround_pct | number | Percentage of the county area that is classified as year-round habitat for the species (rounded to 4 decimal places). |
+| name                  | type    | description                                                                                                           |
+|:----------------------|:--------|:----------------------------------------------------------------------------------------------------------------------|
+| item_id               | string  | Unique identifier for the species data item on ScienceBase.                                                           |
+| common_name           | string  | Common name of the species.                                                                                           |
+| scientific_name       | string  | Scientific name of the species.                                                                                       |
+| gap_species_code      | string  | GAP Species Code, a unique identifier for the species within the GAP dataset.                                         |
+| county_id             | integer | Combined state and county FIPS code, identifying the US county.                                                       |
+| habitat_yearround_pct | number  | Percentage of the county area that is classified as year-round habitat for the species (rounded to 4 decimal places). |
 ### sources
 | title                                                       | path                                                                                        |
 |:------------------------------------------------------------|:--------------------------------------------------------------------------------------------|

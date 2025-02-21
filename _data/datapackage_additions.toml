@@ -1289,8 +1289,8 @@ description = "Closing price of the S&P 500 index for the given month"
 [[resources]] # Path: species.csv
 path = "species.csv"
 description = """
-Percentage of year-round habitat for four species -- American robin, White-tailed deer, 
-American bullfrog, and common gartersnak -- within US counties, derived from USGS 
+Percentage of year-round habitat for four species -- American robin, white-tailed deer, 
+American bullfrog, and common gartersnake -- within US counties, derived from USGS 
 Gap Analysis Project (GAP) Species Habitat Maps. Data is provided at a 30-meter 
 resolution and covers the contiguous United States. Habitat percentages are calculated 
 by overlaying species habitat rasters (year-round habitat represented by value 3) with 
