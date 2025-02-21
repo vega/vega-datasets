@@ -1286,8 +1286,8 @@ description = "Date of monthly observation in the format 'MMM D YYYY'"
 name        = "price"
 description = "Closing price of the S&P 500 index for the given month"
 
-[[resources]] # Path: species.arrow
-path = "species.arrow"
+[[resources]] # Path: species.csv
+path = "species.csv"
 description = """
 Percentage of year-round habitat for four species -- American robin, White-tailed deer, 
 American bullfrog, and common gartersnak -- within US counties, derived from USGS 
