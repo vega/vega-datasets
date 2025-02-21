@@ -541,7 +541,7 @@ class HabitatDataProcessor:
                     pa.parquet.write_table(table, self.output_dir / "species.parquet")
                 else:  # Default to Arrow
                     with (
-                        pa.OSFile(str(self.output_dir / "species.arrow"), "wb") as sink,
+                        pa.OSFile(str(self.output_dir / "species.csv"), "wb") as sink,
                         pa.RecordBatchFileWriter(sink, table.schema) as writer,
                     ):
                         writer.write_table(table)
