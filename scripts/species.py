@@ -589,15 +589,11 @@ def main() -> None:
     """Main entry point: loads TOML config, runs the processor."""
     # --- Configuration Loading (TOML) ---
     config_path = CONFIG_DIR / "species.toml"  # Correct path
-    try:
-        with config_path.open("rb") as f:
-            config = tomllib.load(f)
-    except FileNotFoundError:
-        logger.error("Configuration file not found: %s", config_path)
-        raise  # Critical error: stop execution
-    except tomllib.TOMLDecodeError as e:
-        logger.error("Error decoding TOML file: %s", e)
-        raise
+    if config_path.exists():
+        config = tomllib.loads(fp.read_text("utf-8"))
+    else:
+        msg = f"Configuration file not found: {config_path}"
+        raise FileNotFoundError(msg)
 
     processing_config = config.get("processing", {})
     if not processing_config:
