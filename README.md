@@ -68,6 +68,51 @@ console.log(cars);
 
 Install dependencies with `npm install`.
 
+### Testing and Linting
+Before submitting changes to the main vega-datasets repository, it is recommended that you run the following automated tests and linting checks. 
+
+[Install `uv`](https://docs.astral.sh/uv/getting-started/installation/), or update to the latest version:
+
+```cmd
+uv self update
+```
+
+> [!TIP]
+> If you're new to `uv`, check out their [Getting started](https://docs.astral.sh/uv/getting-started/) guide for help
+
+#### Required Checks
+
+1. **TOML Formatting**
+   ```bash
+   uvx taplo fmt --check --diff
+   ```
+   - Required only when TOML configuration files have been modified
+   - Ensures consistent formatting of TOML configuration files
+   - Shows detailed differences when formatting issues are found
+
+
+2. **Python Linting**
+   ```bash
+   uvx ruff check
+   ```
+   - Checks for common Python code issues and style violations
+   - Identifies potential bugs and code smells
+
+3. **Python Formatting**
+   ```bash
+   uvx ruff format --check
+   ```
+   - Ensures consistent Python code formatting
+   - Reports files that need reformatting
+
+### Auto-fixing Issues
+To automatically fix formatting issues:
+```bash
+uvx taplo fmt  # Fix TOML formatting
+uvx ruff check --fix  # Fix Python linting issues
+uvx ruff format  # Fix Python formatting
+```
+
 ## Release process
 
 To make a release, run `npm run release`.
