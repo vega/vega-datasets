@@ -296,40 +296,32 @@ class HabitatDataProcessor:
         -------
         CountyDataFrame: A GeoDataFrame containing county geometries in EPSG:5070.
         """
-        try:
-            # Try loading from the local file path
-            if Path(self.vector_fp).exists():
-                logger.info("Loading vector data from local file: %s", self.vector_fp)
-                gdf: CountyDataFrame = gpd.read_file(self.vector_fp, layer="counties")
-            else:
-                logger.info(
-                    "Local file not found: %s. Attempting to load from URL: %s",
-                    self.vector_fp,
-                    VECTOR_URL,
-                )
-                # Try loading from the URL
-                try:
-                    gdf = gpd.read_file(
-                        VECTOR_URL, layer="counties"
-                    )  # GeoPandas can read directly from a URL!
-                except Exception as e:
-                    msg = (
-                        f"Could not load vector data from URL: {VECTOR_URL}. Error: {e}"
-                    )
-                    raise FileNotFoundError(msg) from e
+        # Try loading from the local file path
+        if Path(self.vector_fp).exists():
+            logger.info("Loading vector data from local file: %s", self.vector_fp)
+            gdf: CountyDataFrame = gpd.read_file(self.vector_fp, layer="counties")
+        else:
+            logger.info(
+                "Local file not found: %s. Attempting to load from URL: %s",
+                self.vector_fp,
+                VECTOR_URL,
+            )
+            # Try loading from the URL
+            try:
+                gdf = gpd.read_file(VECTOR_URL, layer="counties")
+            except Exception as e:
+                msg = f"Could not load vector data from URL: {VECTOR_URL}. Error: {e}"
+                raise FileNotFoundError(msg) from e
 
-            gdf = gdf.set_crs(epsg=4326, allow_override=True)
-            if gdf.crs is None or gdf.crs.to_epsg() != 4326:
-                msg = "Input GeoJSON must be in EPSG:4326, or have a valid CRS definition."
-                raise ValueError(msg)
-            gdf = gdf.to_crs(epsg=5070)
-            gdf = gdf[~gdf.is_empty]
-            gdf.columns = ["county_id", "geometry"]
-            return gdf
+        gdf = gdf.set_crs(epsg=4326, allow_override=True)
+        if gdf.crs is None or gdf.crs.to_epsg() != 4326:
+            msg = "Input GeoJSON must be in EPSG:4326, or have a valid CRS definition."
+            raise ValueError(msg)
 
-        except Exception as e:
-            logger.error("Error loading county data: %s", e)
-            raise  # Re-raise the exception to stop execution
+        gdf = gdf.to_crs(epsg=5070)
+        gdf = gdf[~gdf.is_empty]
+        gdf.columns = ["county_id", "geometry"]
+        return gdf
 
     def process_habitat_data(
         self, temp_dir: Path
@@ -588,24 +580,20 @@ class HabitatDataProcessor:
 def main() -> None:
     """Main entry point: loads TOML config, runs the processor."""
     # --- Configuration Loading (TOML) ---
-    config_path = CONFIG_DIR / "species.toml"  # Correct path
-    if config_path.exists():
-        config = tomllib.loads(fp.read_text("utf-8"))
-    else:
+    config_path = CONFIG_DIR / "species.toml"
+    if not config_path.exists():
         msg = f"Configuration file not found: {config_path}"
         raise FileNotFoundError(msg)
 
+    config = tomllib.loads(config_path.read_text("utf-8"))
     processing_config = config.get("processing", {})
     if not processing_config:
-        logger.error("Missing [processing] table in TOML configuration.")
         msg = "Missing [processing] table in TOML configuration."
         raise ValueError(msg)
 
     # --- Extract Configuration Values ---
-    # Require item_ids in configuration
     if "item_ids" not in processing_config:
-        logger.error("Required configuration 'item_ids' not found in TOML file")
-        msg = "Missing required configuration: item_ids must be specified in the TOML file"
+        msg = "Missing required configuration: item_ids must be specified in TOML file"
         raise ValueError(msg)
 
     item_ids = processing_config["item_ids"]
@@ -615,43 +603,36 @@ def main() -> None:
     debug = processing_config.get("debug", False)
 
     # --- Resolve Relative Paths ---
-    #  Make paths absolute, relative to the *config file*, not the CWD
     vector_fp = (config_path.parent / vector_fp).resolve()
     output_dir = (config_path.parent / output_dir).resolve()
 
-    # --- Basic Configuration Validation ---
+    # --- Configuration Validation ---
     if not isinstance(item_ids, list) or not item_ids:
-        logger.error("`item_ids` in the TOML file must be a non-empty list.")
         msg = "`item_ids` must be a non-empty list."
         raise TypeError(msg)
 
     if not isinstance(vector_fp, str | Path):
-        logger.error("`vector_fp` must be a string or Path.")
         msg = "`vector_fp` must be a string or Path."
         raise TypeError(msg)
-    vector_fp = Path(vector_fp)
 
     if not isinstance(output_dir, str | Path):
-        logger.error("`output_dir` must be a string or Path.")
         msg = "`output_dir` must be a string or Path."
         raise TypeError(msg)
-    output_dir = Path(output_dir)
 
     if output_format not in {"csv", "parquet", "arrow"}:
-        logger.error("Invalid `output_format`: %s", output_format)
         msg = f"Invalid `output_format`: {output_format}"
         raise ValueError(msg)
 
     if not isinstance(debug, bool):
-        logger.error("`debug` must be a boolean.")
         msg = "`debug` must be a boolean."
         raise TypeError(msg)
 
     # --- Logging Setup ---
-    log_format = "%(asctime)s [%(levelname)s] %(message)s"
-    date_format = "%Y-%m-%d %H:%M:%S"
-    log_level = logging.DEBUG if debug else logging.INFO
-    logging.basicConfig(level=log_level, format=log_format, datefmt=date_format)
+    logging.basicConfig(
+        level=logging.DEBUG if debug else logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 
     # --- Initialize and Run Processor ---
     logger.info("Initializing GAP habitat analysis pipeline")
