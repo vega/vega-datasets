@@ -87,15 +87,14 @@ VECTOR_URL = "https://vega.github.io/vega-datasets/data/us-10m.json"
 
 
 class ScienceBaseClient:
-    """Handles interactions with ScienceBase for downloading and retrieving item information."""
+    """
+    Handles interactions with ScienceBase for downloading and retrieving item information.
+
+    Establishes a ScienceBase session (`SbSession`) for interacting with the USGS ScienceBase API.
+    This session is used for authentication and managing requests to ScienceBase.
+    """
 
     def __init__(self) -> None:
-        """
-        Initializes the ScienceBase client with a session.
-
-        Establishes a ScienceBase session (`SbSession`) for interacting with the USGS ScienceBase API.
-        This session is used for authentication and managing requests to ScienceBase.
-        """
         self.sb = SbSession()
 
     def download_zip_files(
@@ -106,16 +105,19 @@ class ScienceBaseClient:
 
         Each ZIP file is expected to contain a habitat map raster (TIFF).
 
-        Args:
-                item_ids: A sequence of ScienceBase item IDs to download files for.
-                temp_dir: Path to a temporary directory where ZIP files will be downloaded.
+        Parameters
+        ----------
+        item_ids
+            A sequence of ScienceBase item IDs to download files for.
+        temp_dir
+            Path to a temporary directory where ZIP files will be downloaded.
 
         Returns
         -------
-                list[ZipPath]: A list of paths to the downloaded ZIP files, sorted alphabetically.
-                           Returns an empty list if no ZIP files are successfully downloaded.
-                           Logs errors to the logger if downloads fail for specific item IDs,
-                           but continues processing other item IDs.
+        list[ZipPath]: A list of paths to the downloaded ZIP files, sorted alphabetically.
+        Returns an empty list if no ZIP files are successfully downloaded.
+        logs errors to the logger if downloads fail for specific item IDs,
+        but continues processing other item IDs.
         """
         downloaded_zips: list[ZipPath] = []
 
@@ -152,14 +154,14 @@ class ScienceBaseClient:
         Extracts metadata (species code, common name, scientific name) from ScienceBase
         items based on their identifiers.
 
-        Args:
-            item_ids: A sequence of ScienceBase item IDs to retrieve information for.
-
-
+        Parameters
+        ----------
+        item_ids
+            A sequence of ScienceBase item IDs to retrieve information for.
 
         Returns
         -------
-            SpeciesInfo: A dictionary containing species information.
+        SpeciesInfo: A dictionary containing species information.
         """
         species_info: SpeciesInfo = {}
 
@@ -211,7 +213,6 @@ class RasterSet:
     """Represents a set of raster files and provides methods for extraction."""
 
     def __init__(self, zip_files: list[ZipPath], temp_dir: Path) -> None:
-        """Initializes the RasterSet with a list of ZIP file paths and a temporary directory."""
         self.zip_files = zip_files
         self.temp_dir = temp_dir
         self.tif_files: list[RasterPath] = []
@@ -257,6 +258,17 @@ class HabitatDataProcessor:
 
     This class orchestrates the download, extraction, analysis, and output
     of GAP species habitat maps to calculate habitat percentages within US counties.
+
+    Parameters
+    ----------
+    item_ids
+        A sequence of ScienceBase item IDs.
+    vector_fp
+        Path to the vector file (GeoJSON) containing county boundaries.
+    output_dir
+        Path to the output directory.
+    output_format
+        Output format for results (csv, parquet, arrow). Defaults to arrow.
     """
 
     def __init__(
@@ -266,15 +278,6 @@ class HabitatDataProcessor:
         output_dir: Path,
         output_format: str = "arrow",
     ) -> None:
-        """
-        Initializes the HabitatDataProcessor.
-
-        Args:
-            item_ids: A sequence of ScienceBase item IDs.
-            vector_fp: Path to the vector file (GeoJSON) containing county boundaries.
-            output_dir: Path to the output directory.
-            output_format: Output format for results (csv, parquet, arrow). Defaults to arrow.
-        """
         self.item_ids = item_ids
         self.vector_fp = vector_fp
         self.output_dir = output_dir
@@ -291,7 +294,7 @@ class HabitatDataProcessor:
 
         Returns
         -------
-            CountyDataFrame: A GeoDataFrame containing county geometries in EPSG:5070.
+        CountyDataFrame: A GeoDataFrame containing county geometries in EPSG:5070.
         """
         try:
             # Try loading from the local file path
@@ -334,14 +337,16 @@ class HabitatDataProcessor:
         """
         Processes habitat data: downloads ZIP files, extracts TIFFs, and retrieves species info.
 
-        Args:
-            temp_dir (Path): Path to a temporary directory to store downloaded and extracted files.
+        Parameters
+        ----------
+        temp_dir
+            Path to a temporary directory to store downloaded and extracted files.
 
         Returns
         -------
-            tuple[list[RasterPath], SpeciesInfo]: A tuple containing:
-                - list[RasterPath]: List of paths to extracted TIFF raster files.
-                - SpeciesInfo: Dictionary of species information.
+        tuple[list[RasterPath], SpeciesInfo]: A tuple containing:
+        - list[RasterPath]: List of paths to extracted TIFF raster files.
+        - SpeciesInfo: Dictionary of species information.
         """
         logger.info("Retrieving species information from ScienceBase")
         species_info = self.sciencebase_client.get_species_info(self.item_ids)
@@ -368,21 +373,23 @@ class HabitatDataProcessor:
         - 2: Winter habitat
         - 3: Year-round habitat
 
-        Args
-        ----
-            tif_files (list[RasterPath]): List of paths to habitat raster TIFF files.
-            species_info (SpeciesInfo): Dictionary of species information.
+        Parameters
+        ----------
+        tif_files
+            List of paths to habitat raster TIFF files.
+        species_info
+            Dictionary of species information.
 
         Returns
         -------
-            ProcessedDataFrame: DataFrame containing county IDs, species codes, names, and habitat percentages.
+        ProcessedDataFrame: DataFrame containing county IDs, species codes, names, and habitat percentages.
 
-        Note
-        ----
-            A `RuntimeWarning` about spatial reference systems may appear. This is often benign,
-            resulting from minor differences in coordinate system descriptions (WKT) between
-            vector and raster data, even when projections are effectively the same (EPSG:5070).
-            It does not impact analysis accuracy here and is addressed in newer versions of `exactextract`
+        Notes
+        -----
+        A `RuntimeWarning` about spatial reference systems may appear. This is often benign,
+        resulting from minor differences in coordinate system descriptions (WKT) between
+        vector and raster data, even when projections are effectively the same (EPSG:5070).
+        It does not impact analysis accuracy here and is addressed in newer versions of `exactextract`
         """
         # Define operations for exact_extract:
         # - unique: Find all unique values in each county
@@ -487,9 +494,12 @@ class HabitatDataProcessor:
         Files are named 'species' with the corresponding file extension.  Handles
         dictionary encoding for Arrow and Parquet output.
 
-        Args:
-            results_df (ProcessedDataFrame): DataFrame containing the processed habitat data.
-            species_info (SpeciesInfo): Dictionary of species information.
+        Parameters
+        ----------
+        results_df
+            DataFrame containing the processed habitat data.
+        species_info
+            Dictionary of species information.
         """
         if not results_df.empty:
             self.output_dir.mkdir(exist_ok=True)
