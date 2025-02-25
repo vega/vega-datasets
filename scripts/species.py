@@ -365,6 +365,9 @@ class HabitatDataProcessor:
         - 2: Winter habitat
         - 3: Year-round habitat
 
+        CONUS counties (not in Alaska or Hawaii) without habitat are set to 0,
+        while Alaska and Hawaii counties remain as null values.
+
         Parameters
         ----------
         tif_files
@@ -441,30 +444,56 @@ class HabitatDataProcessor:
                 )
                 continue
 
-            # Repeat county_ids based on array lengths
-            county_ids = np.repeat(
-                results["county_id"].values, [len(arr) for arr in unique_values]
+            # Create a DataFrame with all counties
+            # This ensures we have a row for each county, even those without habitat
+            all_counties_df = pd.DataFrame({"county_id": self.gdf["county_id"]})
+
+            # Process habitat data
+            habitat_data = []
+            for i, (unique_arr, frac_arr) in enumerate(
+                zip(unique_values, frac_values, strict=False)
+            ):
+                county_id = results["county_id"].iloc[i]
+                # Check if the county has year-round habitat (value 3)
+                year_round_idx = np.where(unique_arr == 3)[0]
+                if len(year_round_idx) > 0:
+                    # County has year-round habitat
+                    pct = frac_arr[year_round_idx[0]]
+                    habitat_data.append({"county_id": county_id, "pct": pct})
+                else:
+                    # County doesn't have year-round habitat
+                    # We'll add these with pct=0 later for CONUS only
+                    pass
+
+            habitat_df = pd.DataFrame(habitat_data)
+
+            # Merge with all counties to identify counties without habitat
+            merged_df = pd.merge(
+                all_counties_df, habitat_df, on="county_id", how="left"
             )
 
-            # Flatten arrays
-            unique_flat = np.concatenate(unique_values)
-            frac_flat = np.concatenate(frac_values)
+            # Identify Alaska and Hawaii counties by FIPS code prefixes
+            # FIPS codes: Alaska starts with '02', Hawaii starts with '15'
+            merged_df["state_fips"] = merged_df["county_id"].astype(str).str[:2]
+            merged_df["is_ak_hi"] = merged_df["state_fips"].isin(["02", "15"])
 
-            # Filter for year-round habitat (value 3)
-            # Note: This could be expanded to include seasonal habitat (values 1-2)
-            mask = unique_flat == 3
+            # Set CONUS counties without habitat to 0, leave AK/HI as null
+            merged_df.loc[
+                (merged_df["pct"].isna()) & (~merged_df["is_ak_hi"]), "pct"
+            ] = 0.0
 
             # Get species metadata
             species_metadata = species_info.get(
-                species, {"CommonName": "Unknown", "ScientificName": "Unknown"}
+                species, {"common_name": "Unknown", "scientific_name": "Unknown"}
             )
 
-            species_df: ProcessedDataFrame = pd.DataFrame({
-                "county_id": county_ids[mask],
+            # Create final DataFrame for this species
+            species_df = pd.DataFrame({
+                "county_id": merged_df["county_id"],
                 "species_code": species,
                 "common_name": species_metadata["common_name"],
                 "scientific_name": species_metadata["scientific_name"],
-                "pct": frac_flat[mask],
+                "pct": merged_df["pct"],
             })
 
             all_data.append(species_df)
