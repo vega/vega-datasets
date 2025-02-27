@@ -18,7 +18,7 @@
 Process and analyze USGS Gap Analysis Project (GAP) Species Habitat Maps.
 
 This script downloads, extracts, and analyzes data from USGS ScienceBase to calculate
-species habitat coverage within US counties in the contiguous (coterminous) United States.
+species habitat coverage within US counties in the contiguous (conterminous) United States.
 It uses a TOML configuration file (_data/species.toml) for settings and US county
 boundaries from a 1:10M-scale TopoJSON file derived from Census Bureau cartographic
 boundary files.
@@ -301,13 +301,13 @@ class HabitatDataProcessor:
 
         This function:
         1. Loads county boundaries from a file or URL
-        2. Filters areas by FIPS code to focus on the coterminous United States
-        3. Converts the map to a projection that accurately represents area in the coterminous US
+        2. Filters areas by FIPS code to focus on the conterminous United States
+        3. Converts the map to a projection that accurately represents area in the conterminous US
         4. Returns clean county data ready for analysis
 
         Returns
         -------
-        CountyDataFrame: A dataset of coterminous US county boundaries
+        CountyDataFrame: A dataset of conterminous US county boundaries
         """
         # Load the raw data
         gdf = self._load_raw_county_data()
@@ -315,8 +315,8 @@ class HabitatDataProcessor:
         # Process the data
         gdf = self._prepare_county_data(gdf)
 
-        # Filter to coterminous US
-        gdf = self._filter_to_coterminous_us(gdf)
+        # Filter to conterminous US
+        gdf = self._filter_to_conterminous_us(gdf)
 
         # Project and validate
         return self._finalize_county_data(gdf)
@@ -384,8 +384,8 @@ class HabitatDataProcessor:
 
         return gdf
 
-    def _filter_to_coterminous_us(self, gdf: CountyDataFrame) -> CountyDataFrame:
-        """Filters out non-coterminous US counties based on FIPS codes from config or defaults to no filtering."""
+    def _filter_to_conterminous_us(self, gdf: CountyDataFrame) -> CountyDataFrame:
+        """Filters out non-conterminous US counties based on FIPS codes from config or defaults to no filtering."""
         # Get excluded FIPS codes from config
         excluded_fips = []
         fips_names = {}
@@ -415,7 +415,7 @@ class HabitatDataProcessor:
 
         # Log which areas we're filtering out
         logger.info(
-            "Filtering out %d areas by FIPS code to focus on coterminous US",
+            "Filtering out %d areas by FIPS code to focus on conterminous US",
             len(excluded_fips),
         )
 
@@ -438,18 +438,18 @@ class HabitatDataProcessor:
                     "No counties found with FIPS prefix %s (%s)", fips_code, area_name
                 )
 
-        # Apply filter to keep only counties in coterminous US
+        # Apply filter to keep only counties in conterminous US
         filtered_gdf = gdf[~gdf["state_fips"].isin(excluded_fips)].drop(
             columns=["state_fips"]
         )
 
-        logger.info("Analyzing %d counties in coterminous US", len(filtered_gdf))
+        logger.info("Analyzing %d counties in conterminous US", len(filtered_gdf))
 
         return filtered_gdf
 
     def _finalize_county_data(self, gdf: CountyDataFrame) -> CountyDataFrame:
         """Projects to equal-area and removes invalid geometries."""
-        # Convert to an equal-area projection for the coterminous US
+        # Convert to an equal-area projection for the conterminous US
         projected_gdf = gdf.to_crs(epsg=5070)
 
         # Remove any counties with invalid/empty geometries
@@ -619,7 +619,7 @@ class HabitatDataProcessor:
     def save_results(
         self, results_df: ProcessedDataFrame, species_info: SpeciesInfo
     ) -> None:
-        """Saves processed results with coterminous US (contiguous US) US counties only, filling missing values with zeros."""
+        """Saves processed results with conterminous US (contiguous US) US counties only, filling missing values with zeros."""
         if results_df.empty:
             return
 
@@ -652,8 +652,8 @@ class HabitatDataProcessor:
         # Ensure consistent county_id format
         final_df["county_id"] = final_df["county_id"].astype(str).str.zfill(5)
 
-        # Get list of all coterminous US counties (already filtered in _load_county_data)
-        coterminous_counties = self.gdf["county_id"].unique()
+        # Get list of all conterminous US counties (already filtered in _load_county_data)
+        conterminous_counties = self.gdf["county_id"].unique()
 
         # Create complete dataset with zeros for missing counties
         complete_data = []
@@ -675,7 +675,7 @@ class HabitatDataProcessor:
             )
 
             # Add rows for all counties (existing values or zeros)
-            for county in coterminous_counties:
+            for county in conterminous_counties:
                 row = template.copy()
                 row["county_id"] = county
                 row["habitat_yearround_pct"] = county_data.get(county, 0.0)
