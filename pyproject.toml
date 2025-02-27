@@ -22,6 +22,7 @@ geo-species = [
   "requests",
   "sciencebasepy",
   "setuptools",
+  "tqdm",
 ]
 
 [tool.ruff]
