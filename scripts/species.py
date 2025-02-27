@@ -1,19 +1,3 @@
-# /// script
-# requires-python = ">=3.12"
-# dependencies = [
-#     "geopandas",
-#     "pandas",
-#     "numpy",
-#     "exactextract",
-#     "rasterio",
-#     "setuptools",
-#     "sciencebasepy",
-#     "tqdm",
-#     "pyarrow",
-#     "requests",
-# ]
-# ///
-
 """
 Process and analyze USGS Gap Analysis Project (GAP) Species Habitat Maps.
 
