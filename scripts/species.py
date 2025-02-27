@@ -18,9 +18,10 @@
 Process and analyze USGS Gap Analysis Project (GAP) Species Habitat Maps.
 
 This script downloads, extracts, and analyzes data from USGS ScienceBase to calculate
-species habitat coverage within US counties. It uses a TOML configuration file
-(_data/species.toml) for settings and US county boundaries from a 1:10M-scale TopoJSON
-file derived from Census Bureau cartographic boundary files.
+species habitat coverage within US counties in the contiguous (coterminous) United States.
+It uses a TOML configuration file (_data/species.toml) for settings and US county
+boundaries from a 1:10M-scale TopoJSON file derived from Census Bureau cartographic
+boundary files.
 
 The habitat maps are provided as 30-meter resolution raster files in Albers Conical
 Equal Area projection (EPSG:5070). The script overlays these raster habitat maps with
@@ -276,52 +277,190 @@ class HabitatDataProcessor:
         item_ids: Sequence[ItemId],
         vector_fp: Path,
         output_dir: Path,
-        output_format: str = "arrow",
+        output_format: str = "csv",
+        config: dict | None = None,
     ) -> None:
         self.item_ids = item_ids
         self.vector_fp = vector_fp
         self.output_dir = output_dir
+
+        # Validate output_format within the class
+        valid_formats = {"csv", "parquet", "arrow"}
+        if output_format not in valid_formats:
+            msg = f"Invalid output_format: {output_format}. Must be one of {valid_formats}"
+            raise ValueError(msg)
+
         self.output_format = output_format  # Store the output format
+        self.config = config or {}  # Store config with empty dict as default
         self.sciencebase_client = ScienceBaseClient()  # Create an instance
         self.gdf: CountyDataFrame = self._load_county_data()
 
     def _load_county_data(self) -> CountyDataFrame:
         """
-        Loads and prepares the county geometry data from a local file or URL.
+        Loads county boundary data and prepares it for habitat analysis.
 
-        The county data is expected to be in GeoJSON format and EPSG:4326 projection.
-        It is reprojected to EPSG:5070 for analysis.
+        This function:
+        1. Loads county boundaries from a file or URL
+        2. Filters areas by FIPS code to focus on the coterminous United States
+        3. Converts the map to a projection that accurately represents area in the coterminous US
+        4. Returns clean county data ready for analysis
 
         Returns
         -------
-        CountyDataFrame: A GeoDataFrame containing county geometries in EPSG:5070.
+        CountyDataFrame: A dataset of coterminous US county boundaries
         """
-        # Try loading from the local file path
+        # Load the raw data
+        gdf = self._load_raw_county_data()
+
+        # Process the data
+        gdf = self._prepare_county_data(gdf)
+
+        # Filter to coterminous US
+        gdf = self._filter_to_coterminous_us(gdf)
+
+        # Project and validate
+        return self._finalize_county_data(gdf)
+
+    def _load_raw_county_data(self) -> CountyDataFrame:
+        """Loads raw county boundary data from file or URL."""
         if Path(self.vector_fp).exists():
-            logger.info("Loading vector data from local file: %s", self.vector_fp)
-            gdf: CountyDataFrame = gpd.read_file(self.vector_fp, layer="counties")
+            logger.info("Loading county boundaries from local file: %s", self.vector_fp)
+            try:
+                gdf: CountyDataFrame = gpd.read_file(self.vector_fp, layer="counties")
+                logger.info(
+                    "Successfully loaded county data with these columns: %s",
+                    gdf.columns.tolist(),
+                )
+                return gdf
+            except Exception as e:
+                logger.error("Error reading file: %s", e)
+                raise
         else:
+            # If local file doesn't exist, try downloading from URL
             logger.info(
-                "Local file not found: %s. Attempting to load from URL: %s",
+                "Local file not found: %s. Trying to download from: %s",
                 self.vector_fp,
                 VECTOR_URL,
             )
-            # Try loading from the URL
             try:
-                gdf = gpd.read_file(VECTOR_URL, layer="counties")
+                # Return directly instead of assigning to a variable first
+                return gpd.read_file(VECTOR_URL, layer="counties")
             except Exception as e:
-                msg = f"Could not load vector data from URL: {VECTOR_URL}. Error: {e}"
+                msg = (
+                    f"Could not download county data from URL: {VECTOR_URL}. Error: {e}"
+                )
                 raise FileNotFoundError(msg) from e
 
+    def _prepare_county_data(self, gdf: CountyDataFrame) -> CountyDataFrame:
+        """Prepares county data by setting CRS and reformatting identifiers."""
+        # Make sure the map has the correct coordinate system
         gdf = gdf.set_crs(epsg=4326, allow_override=True)
         if gdf.crs is None or gdf.crs.to_epsg() != 4326:
-            msg = "Input GeoJSON must be in EPSG:4326, or have a valid CRS definition."
+            msg = "County map must use standard global coordinates (EPSG:4326)."
             raise ValueError(msg)
 
-        gdf = gdf.to_crs(epsg=5070)
-        gdf = gdf[~gdf.is_empty]
-        gdf.columns = ["county_id", "geometry"]
+        # Rename the county identifier column to 'county_id' for consistency
+        if "id" in gdf.columns:
+            gdf = gdf.rename(columns={"id": "county_id"})
+        else:
+            logger.error(
+                "County ID column not found. Available columns: %s",
+                gdf.columns.tolist(),
+            )
+            msg = "Required column 'id' missing from county data"
+            raise ValueError(msg)
+
+        # Format county FIPS codes consistently (5-digit format with leading zeros)
+        gdf["county_id"] = gdf["county_id"].astype(str).str.zfill(5)
+
+        # Handle duplicate counties - variables defined but not used
+        # These variables are used in the commented-out duplicate handling code
+        # that might be reactivated in the future
+        # _ = len(gdf)  # total_records
+        # _ = len(gdf["county_id"].unique())  # unique_counties
+
+        # Extract state code from county FIPS code (first 2 digits)
+        gdf["state_fips"] = gdf["county_id"].str[:2]
+
         return gdf
+
+    def _filter_to_coterminous_us(self, gdf: CountyDataFrame) -> CountyDataFrame:
+        """Filters out non-coterminous US counties based on FIPS codes from config or defaults to no filtering."""
+        # Get excluded FIPS codes from config
+        excluded_fips = []
+        fips_names = {}
+
+        # Check for filter config
+        if (
+            "processing" in self.config
+            and "geographic_filter" in self.config["processing"]
+        ):
+            filters = self.config["processing"]["geographic_filter"].get(
+                "excluded_fips", []
+            )
+            for filter_item in filters:
+                code = filter_item.get("code")
+                name = filter_item.get("name", f"FIPS {code}")
+                if code:
+                    excluded_fips.append(code)
+                    fips_names[code] = name
+
+        # If no filters found in config, log that no filtering will be applied
+        if not excluded_fips:
+            logger.info(
+                "No geographic filter found in config. No areas will be excluded."
+            )
+            # Return the original DataFrame without filtering
+            return gdf
+
+        # Log which areas we're filtering out
+        logger.info(
+            "Filtering out %d areas by FIPS code to focus on coterminous US",
+            len(excluded_fips),
+        )
+
+        for fips_code in excluded_fips:
+            counties = gdf[gdf["state_fips"] == fips_code]["county_id"].unique()
+            area_name = fips_names.get(fips_code, f"FIPS {fips_code}")
+
+            if len(counties) > 0:
+                logger.info(
+                    "Excluding %d counties with FIPS prefix %s (%s)",
+                    len(counties),
+                    fips_code,
+                    area_name,
+                )
+                logger.info(
+                    "Excluded county FIPS codes: %s", ", ".join(sorted(counties))
+                )
+            else:
+                logger.info(
+                    "No counties found with FIPS prefix %s (%s)", fips_code, area_name
+                )
+
+        # Apply filter to keep only counties in coterminous US
+        filtered_gdf = gdf[~gdf["state_fips"].isin(excluded_fips)].drop(
+            columns=["state_fips"]
+        )
+
+        logger.info("Analyzing %d counties in coterminous US", len(filtered_gdf))
+
+        return filtered_gdf
+
+    def _finalize_county_data(self, gdf: CountyDataFrame) -> CountyDataFrame:
+        """Projects to equal-area and removes invalid geometries."""
+        # Convert to an equal-area projection for the coterminous US
+        projected_gdf = gdf.to_crs(epsg=5070)
+
+        # Remove any counties with invalid/empty geometries
+        valid_counties = projected_gdf[~projected_gdf.is_empty]
+        if len(valid_counties) < len(projected_gdf):
+            logger.warning(
+                "Removed %d counties with invalid boundaries",
+                len(projected_gdf) - len(valid_counties),
+            )
+
+        return valid_counties
 
     def process_habitat_data(
         self, temp_dir: Path
@@ -364,9 +503,6 @@ class HabitatDataProcessor:
         - 1: Summer habitat
         - 2: Winter habitat
         - 3: Year-round habitat
-
-        CONUS counties (not in Alaska or Hawaii) without habitat are set to 0,
-        while Alaska and Hawaii counties remain as null values.
 
         Parameters
         ----------
@@ -444,56 +580,30 @@ class HabitatDataProcessor:
                 )
                 continue
 
-            # Create a DataFrame with all counties
-            # This ensures we have a row for each county, even those without habitat
-            all_counties_df = pd.DataFrame({"county_id": self.gdf["county_id"]})
-
-            # Process habitat data
-            habitat_data = []
-            for i, (unique_arr, frac_arr) in enumerate(
-                zip(unique_values, frac_values, strict=False)
-            ):
-                county_id = results["county_id"].iloc[i]
-                # Check if the county has year-round habitat (value 3)
-                year_round_idx = np.where(unique_arr == 3)[0]
-                if len(year_round_idx) > 0:
-                    # County has year-round habitat
-                    pct = frac_arr[year_round_idx[0]]
-                    habitat_data.append({"county_id": county_id, "pct": pct})
-                else:
-                    # County doesn't have year-round habitat
-                    # We'll add these with pct=0 later for CONUS only
-                    pass
-
-            habitat_df = pd.DataFrame(habitat_data)
-
-            # Merge with all counties to identify counties without habitat
-            merged_df = pd.merge(
-                all_counties_df, habitat_df, on="county_id", how="left"
+            # Repeat county_ids based on array lengths
+            county_ids = np.repeat(
+                results["county_id"].values, [len(arr) for arr in unique_values]
             )
 
-            # Identify Alaska and Hawaii counties by FIPS code prefixes
-            # FIPS codes: Alaska starts with '02', Hawaii starts with '15'
-            merged_df["state_fips"] = merged_df["county_id"].astype(str).str[:2]
-            merged_df["is_ak_hi"] = merged_df["state_fips"].isin(["02", "15"])
+            # Flatten arrays
+            unique_flat = np.concatenate(unique_values)
+            frac_flat = np.concatenate(frac_values)
 
-            # Set CONUS counties without habitat to 0, leave AK/HI as null
-            merged_df.loc[
-                (merged_df["pct"].isna()) & (~merged_df["is_ak_hi"]), "pct"
-            ] = 0.0
+            # Filter for year-round habitat (value 3)
+            # Note: This could be expanded to include seasonal habitat (values 1-2)
+            mask = unique_flat == 3
 
             # Get species metadata
             species_metadata = species_info.get(
-                species, {"common_name": "Unknown", "scientific_name": "Unknown"}
+                species, {"CommonName": "Unknown", "ScientificName": "Unknown"}
             )
 
-            # Create final DataFrame for this species
-            species_df = pd.DataFrame({
-                "county_id": merged_df["county_id"],
+            species_df: ProcessedDataFrame = pd.DataFrame({
+                "county_id": county_ids[mask],
                 "species_code": species,
                 "common_name": species_metadata["common_name"],
                 "scientific_name": species_metadata["scientific_name"],
-                "pct": merged_df["pct"],
+                "pct": frac_flat[mask],
             })
 
             all_data.append(species_df)
@@ -509,78 +619,96 @@ class HabitatDataProcessor:
     def save_results(
         self, results_df: ProcessedDataFrame, species_info: SpeciesInfo
     ) -> None:
-        """
-        Saves the processed results to CSV, Parquet, or Arrow files.
+        """Saves processed results with coterminous US (contiguous US) US counties only, filling missing values with zeros."""
+        if results_df.empty:
+            return
 
-        Files are named 'species' with the corresponding file extension.  Handles
-        dictionary encoding for Arrow and Parquet output.
+        # Basic setup and column renaming
+        self.output_dir.mkdir(exist_ok=True)
+        results_df = results_df.rename(
+            columns={"species_code": "gap_species_code", "pct": "habitat_yearround_pct"}
+        )
+        results_df = results_df[
+            ["county_id", "gap_species_code", "habitat_yearround_pct"]
+        ]
 
-        Parameters
-        ----------
-        results_df
-            DataFrame containing the processed habitat data.
-        species_info
-            Dictionary of species information.
-        """
-        if not results_df.empty:
-            self.output_dir.mkdir(exist_ok=True)
-
-            # Rename columns to allow for future expansion of the dataset to include summer
-            # or winter-only habitat data, or range data that may be summer/winter/yearround.
-            results_df = results_df.rename(
-                columns={
-                    "species_code": "gap_species_code",
-                    "pct": "habitat_yearround_pct",
-                }
-            )
-            results_df = results_df[
-                ["county_id", "gap_species_code", "habitat_yearround_pct"]
+        # Merge with species info and round percentages
+        species_info_df = pd.DataFrame.from_dict(species_info, orient="index")
+        final_df = results_df.merge(
+            species_info_df, left_on="gap_species_code", right_index=True
+        )
+        final_df = final_df[
+            [
+                "item_id",
+                "common_name",
+                "scientific_name",
+                "gap_species_code",
+                "county_id",
+                "habitat_yearround_pct",
             ]
+        ]
+        final_df["habitat_yearround_pct"] = final_df["habitat_yearround_pct"].round(4)
 
-            species_info_df = pd.DataFrame.from_dict(species_info, orient="index")
-            final_df: ProcessedDataFrame = results_df.merge(
-                species_info_df, left_on="gap_species_code", right_index=True
-            )
+        # Ensure consistent county_id format
+        final_df["county_id"] = final_df["county_id"].astype(str).str.zfill(5)
 
-            final_df = final_df[
-                [
+        # Get list of all coterminous US counties (already filtered in _load_county_data)
+        coterminous_counties = self.gdf["county_id"].unique()
+
+        # Create complete dataset with zeros for missing counties
+        complete_data = []
+        for _species, group in final_df.groupby("gap_species_code"):
+            # Create template row with species info
+            template = {
+                col: group[col].iloc[0]
+                for col in [
                     "item_id",
                     "common_name",
                     "scientific_name",
                     "gap_species_code",
-                    "county_id",
-                    "habitat_yearround_pct",
                 ]
-            ]
+            }
 
-            final_df["habitat_yearround_pct"] = final_df["habitat_yearround_pct"].round(
-                4
+            # Create dictionary of existing county data
+            county_data = dict(
+                zip(group["county_id"], group["habitat_yearround_pct"], strict=False)
             )
 
-            if self.output_format == "parquet":
-                table = pa.Table.from_pandas(final_df)
-                for col in ["item_id", "common_name", "county_id"]:
-                    table = table.set_column(
-                        table.schema.get_field_index(col),
-                        col,
-                        pa.compute.dictionary_encode(table[col]),
-                    )
-                pa.parquet.write_table(table, self.output_dir / "species.parquet")
-            elif self.output_format == "arrow":
-                table = pa.Table.from_pandas(final_df)
-                for col in ["item_id", "common_name", "county_id"]:
-                    table = table.set_column(
-                        table.schema.get_field_index(col),
-                        col,
-                        pa.compute.dictionary_encode(table[col]),
-                    )
-                with (
-                    pa.OSFile(str(self.output_dir / "species.arrow"), "wb") as sink,
-                    pa.RecordBatchFileWriter(sink, table.schema) as writer,
-                ):
-                    writer.write_table(table)
-            else:  # Default to CSV
-                final_df.to_csv(self.output_dir / "species.csv", index=False)
+            # Add rows for all counties (existing values or zeros)
+            for county in coterminous_counties:
+                row = template.copy()
+                row["county_id"] = county
+                row["habitat_yearround_pct"] = county_data.get(county, 0.0)
+                complete_data.append(row)
+
+        # Convert to dataframe
+        final_df = pd.DataFrame(complete_data)
+
+        # Extract the common functionality for dictionary encoding to a helper function
+        def create_dictionary_encoded_table(df: pd.DataFrame) -> pa.Table:
+            """Create a PyArrow table with dictionary-encoded columns for efficiency."""
+            table = pa.Table.from_pandas(df)
+            for col in ["item_id", "common_name", "county_id"]:
+                table = table.set_column(
+                    table.schema.get_field_index(col),
+                    col,
+                    pa.compute.dictionary_encode(table[col]),
+                )
+            return table
+
+        # Save to specified format
+        if self.output_format == "parquet":
+            table = create_dictionary_encoded_table(final_df)
+            pa.parquet.write_table(table, self.output_dir / "species.parquet")
+        elif self.output_format == "arrow":
+            table = create_dictionary_encoded_table(final_df)
+            with (
+                pa.OSFile(str(self.output_dir / "species.arrow"), "wb") as sink,
+                pa.RecordBatchFileWriter(sink, table.schema) as writer,
+            ):
+                writer.write_table(table)
+        else:  # Default to CSV
+            final_df.to_csv(self.output_dir / "species.csv", index=False)
 
     def run(self) -> None:
         """Runs the complete habitat data processing workflow."""
@@ -665,7 +793,13 @@ def main() -> None:
 
     # --- Initialize and Run Processor ---
     logger.info("Initializing GAP habitat analysis pipeline")
-    processor = HabitatDataProcessor(item_ids, vector_fp, output_dir, output_format)
+    processor = HabitatDataProcessor(
+        item_ids,
+        vector_fp,
+        output_dir,
+        output_format,
+        config=config,  # Pass the full config
+    )
     processor.run()
 
 

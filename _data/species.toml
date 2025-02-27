@@ -11,3 +11,12 @@ vector_fp = "../data/us-10m.json" # Relative path from TOML file
 output_dir = "../data" # Relative path from TOML file
 output_format = "csv" # Available formats: "csv", "parquet", "arrow"
 debug = false # Controls logging level
+
+# Areas excluded from analysis to focus on coterminous US
+[processing.geographic_filter]
+excluded_fips = [
+  { code = "02", name = "Alaska" },
+  { code = "15", name = "Hawaii" },
+  { code = "72", name = "Puerto Rico" },
+  { code = "78", name = "Virgin Islands" },
+]
