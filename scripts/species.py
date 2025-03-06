@@ -29,7 +29,9 @@ Key Classes:
 from __future__ import annotations
 
 import logging
+import sys
 import tempfile
+import time
 import tomllib
 import zipfile
 from pathlib import Path
@@ -105,21 +107,47 @@ class ScienceBaseClient:
         but continues processing other item IDs.
         """
         downloaded_zips: list[ZipPath] = []
+        logger.info(
+            "Starting download of files from %s ScienceBase items", len(item_ids)
+        )
 
-        for item_id in item_ids:
+        for i, item_id in enumerate(item_ids):
+            logger.info("Processing item %s/%s - %s", i + 1, len(item_ids), item_id)
             try:
                 item_json = self.sb.get_item(item_id)
                 files_info = self.sb.get_item_file_info(item_json)
 
-                for file_info in files_info:
-                    if "HabMap" in file_info["name"] and file_info["name"].endswith(
-                        ".zip"
-                    ):
-                        zip_path = temp_dir / file_info["name"]
-                        self.sb.download_file(file_info["url"], str(zip_path))
-                        downloaded_zips.append(zip_path)
+                hab_map_files = [
+                    f
+                    for f in files_info
+                    if "HabMap" in f["name"] and f["name"].endswith(".zip")
+                ]
 
-            except Exception as e:  # Catch generic Exception
+                if not hab_map_files:
+                    logger.info("No HabMap zip files found for item %s", item_id)
+                    continue
+
+                logger.info(
+                    "Found %s HabMap zip files for item %s", len(hab_map_files), item_id
+                )
+
+                for file_info in hab_map_files:
+                    zip_path = temp_dir / file_info["name"]
+                    file_size_mb = file_info.get("size", 0) / (1024 * 1024)
+                    logger.info(
+                        "Downloading: %s (%.1f MB)", file_info["name"], file_size_mb
+                    )
+
+                    try:
+                        self._download_file_with_progress(
+                            file_info["url"], str(zip_path)
+                        )
+                        downloaded_zips.append(zip_path)
+                        logger.info("Download complete: %s", file_info["name"])
+                    except (OSError, requests.exceptions.RequestException) as e:
+                        logger.error("Error downloading %s: %s", file_info["name"], e)
+
+            except (requests.exceptions.RequestException, ValueError, KeyError) as e:
                 if isinstance(e, requests.exceptions.RequestException):
                     logger.error(
                         "Error downloading files for item ID %s: %s", item_id, e
@@ -130,7 +158,95 @@ class ScienceBaseClient:
                     )
                 continue  # Go to the next item_id
 
+        logger.info(
+            "Download complete! %s files downloaded successfully.", len(downloaded_zips)
+        )
         return sorted(downloaded_zips)  # ALWAYS return the list
+
+    def _download_file_with_progress(self, url: str, destination: str) -> None:
+        """Downloads a file with a progress bar."""
+        try:
+            with requests.get(url, stream=True, timeout=(10, 60)) as response:
+                response.raise_for_status()
+                total_size = int(response.headers.get("content-length", 0))
+
+                with Path(destination).open("wb") as f:
+                    if total_size == 0:
+                        f.write(response.content)
+                        logger.info("Downloaded file of unknown size")
+                    else:
+                        downloaded = 0
+                        chunk_size = 8192 * 16  # Increased chunk size for performance
+                        start_time = time.time()
+                        last_update_time = start_time
+
+                        filename = Path(destination).name
+                        mb_total = total_size / (1024 * 1024)
+                        logger.info("Downloading: %s (%.1fMB)", filename, mb_total)
+
+                        bar_length = 30
+                        bar = " " * bar_length
+                        sys.stdout.write(f"\rProgress: [{bar}] 0.0% (0.0MB)")
+                        sys.stdout.flush()
+
+                        for chunk in response.iter_content(chunk_size=chunk_size):
+                            if chunk:
+                                f.write(chunk)
+                                downloaded += len(chunk)
+
+                                current_time = time.time()
+                                if current_time - last_update_time >= 0.1:
+                                    last_update_time = current_time
+                                    percent = min(100, (downloaded / total_size) * 100)
+                                    filled_length = int(bar_length * percent / 100)
+                                    bar = "=" * filled_length + " " * (
+                                        bar_length - filled_length
+                                    )
+                                    mb_downloaded = downloaded / (1024 * 1024)
+
+                                    elapsed = current_time - start_time
+                                    if elapsed > 0:
+                                        speed = downloaded / elapsed / (1024 * 1024)
+                                        remaining = (
+                                            (total_size - downloaded)
+                                            / (speed * 1024 * 1024)
+                                            if speed > 0
+                                            else 0
+                                        )
+                                        eta = (
+                                            f" ETA: {int(remaining)}s"
+                                            if remaining > 0
+                                            else ""
+                                        )
+                                    else:
+                                        speed = 0
+                                        eta = ""
+
+                                    sys.stdout.write(
+                                        f"\rProgress: [{bar}] {percent:.1f}% ({mb_downloaded:.1f}MB/{mb_total:.1f}MB) {speed:.1f}MB/s{eta}"
+                                    )
+                                    sys.stdout.flush()
+
+                        sys.stdout.write("\n")
+                        sys.stdout.flush()
+
+                        elapsed = time.time() - start_time
+                        avg_speed = (
+                            downloaded / (elapsed * 1024 * 1024) if elapsed > 0 else 0
+                        )
+                        logger.info(
+                            "Download complete: %s (%.1fMB in %.1fs, avg: %.1fMB/s)",
+                            filename,
+                            mb_total,
+                            elapsed,
+                            avg_speed,
+                        )
+        except requests.exceptions.Timeout:
+            logger.error("Timeout occurred while downloading %s", url)
+            raise
+        except requests.exceptions.RequestException as e:
+            logger.error("Request failed: %s", e)
+            raise
 
     def get_species_info(self, item_ids: Sequence[ItemId]) -> SpeciesInfo:
         """
@@ -180,7 +296,7 @@ class ScienceBaseClient:
                             "common_name": common_name or "Not Available",
                             "scientific_name": scientific_name or "Not Available",
                         }
-            except Exception as e:  # Catch generic Exception
+            except (requests.exceptions.RequestException, ValueError, KeyError) as e:
                 if isinstance(e, requests.exceptions.RequestException):
                     logger.error(
                         "Error getting species info for item ID %s: %s", item_id, e
@@ -316,7 +432,7 @@ class HabitatDataProcessor:
                     gdf.columns.tolist(),
                 )
                 return gdf
-            except Exception as e:
+            except (OSError, ValueError) as e:
                 logger.error("Error reading file: %s", e)
                 raise
         else:
@@ -329,7 +445,7 @@ class HabitatDataProcessor:
             try:
                 # Return directly instead of assigning to a variable first
                 return gpd.read_file(VECTOR_URL, layer="counties")
-            except Exception as e:
+            except (OSError, ValueError) as e:
                 msg = (
                     f"Could not download county data from URL: {VECTOR_URL}. Error: {e}"
                 )
