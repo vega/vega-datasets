@@ -415,17 +415,12 @@ class HabitatDataProcessor:
         -------
         CountyDataFrame: A dataset of conterminous US county boundaries
         """
-        # Load the raw data
-        gdf = self._load_raw_county_data()
-
-        # Process the data
-        gdf = self._prepare_county_data(gdf)
-
-        # Filter to conterminous US
-        gdf = self._filter_to_conterminous_us(gdf)
-
-        # Project and validate
-        return self._finalize_county_data(gdf)
+        return (
+            self._load_raw_county_data()
+            .pipe(self._prepare_county_data)
+            .pipe(self._filter_to_conterminous_us)
+            .pipe(self._finalize_county_data)
+        )
 
     def _load_raw_county_data(self) -> CountyDataFrame:
         """Loads raw county boundary data from file or URL."""
