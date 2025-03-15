@@ -7,9 +7,7 @@ item_ids = [
   '58fa3f0be4b0b7ea54524859', # American Bullfrog (Habitat)
   '58fe0f4fe4b0074928294636', # Common Gartersnake (Habitat)
 ]
-vector_fp = "../data/us-10m.json" # Relative path from TOML file
-output_dir = "../data" # Relative path from TOML file
-output_format = "csv" # Available formats: "csv", "parquet", "arrow"
+output_format = ".csv" # Available formats: ".csv", ".parquet", ".arrow"
 debug = false # Controls logging level
 
 # Areas excluded from analysis to focus on coterminous US
