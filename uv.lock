@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.12"
 
 [[package]]
@@ -257,20 +258,23 @@ wheels = [
 
 [[package]]
 name = "exactextract"
-version = "0.2.0"
+version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/6f/00/a8d3720a93d6fffee06c6bf41d5049c9075a7e0df8dd74cabb2c8e149f83/exactextract-0.2.0.tar.gz", hash = "sha256:776b5619a1642f674e8575cee9d5b8dfa756d9b4a81a73c2749773557a3d4871", size = 194524 }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/de/ee/8496cdcbfe6dc7b90dc7adadff0b80919720ab897b325fb8f2fdd98a6dd9/exactextract-0.2.1.tar.gz", hash = "sha256:8d10dbaa26b503f73e40fbd4acffefcc0cb78d3e612300a0bae45243add15599", size = 181787 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/71/8d/53c1a4d1c73d2f7f0a5fbd10b2d3bd3aff75746624e861d401695c08d73d/exactextract-0.2.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:1eb5480c4b56086b3aab295ec4255912f16e8b671c5b6e75c515a2669b76c872", size = 1643388 },
-    { url = "https://files.pythonhosted.org/packages/64/41/d1ff386502566174043849416acbace02a0730469c2c6d8234e82aa01c95/exactextract-0.2.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:e2cc8831a1e3c215097fe29cf093e82bb16ebc8293988e38330c5b9396be6d7f", size = 1415286 },
-    { url = "https://files.pythonhosted.org/packages/ac/b1/88a538bc27d1f2a49b71859239c3ecc8a91e7c8afd291ccd700844e2c242/exactextract-0.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f66e6b4ee4846b15647a77e4ed8d4efa81161686a7dd243eb7a848fc416d5266", size = 2072680 },
-    { url = "https://files.pythonhosted.org/packages/0f/d9/b2343ac082585f9f1e7d3dc78291969807ce2f0d4f2e9df30c3a318eaae7/exactextract-0.2.0-cp312-cp312-win32.whl", hash = "sha256:7f7384ddd3ac7e8aa81d66db61a97746860ff380e5cf496df889afddd2b959d3", size = 1320622 },
-    { url = "https://files.pythonhosted.org/packages/cf/55/257917bf9ccaf12fd3962c8879e792d241ebc9f81e4374066f021a5e9385/exactextract-0.2.0-cp312-cp312-win_amd64.whl", hash = "sha256:7f1dea7545cb82cd1bd47b5e93de8a9f2baedd88c95a9d1fd0a24d5387ed8809", size = 1503854 },
-    { url = "https://files.pythonhosted.org/packages/f0/a8/3ee0ee232de104bdb9597ba94bb93e59c8fecc6f932de2eaa21dfd634d5b/exactextract-0.2.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:7bd2dfd6f923797fa4908ca82a50ed603d95245f7f42339a6e4d094a58861793", size = 1633470 },
-    { url = "https://files.pythonhosted.org/packages/41/48/60b215ff05b1253e3a524882c331c2e490854e4efc8c17965b828fd846b4/exactextract-0.2.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:652b34c69c46a6ebcd42f0daa6e36a64008198db6f0f19adb2fd4e58f7dece8c", size = 1415413 },
-    { url = "https://files.pythonhosted.org/packages/a6/7b/f438269ef52d5e90886fc2feba9ecf731a2b2d4c25cd8de15d1be4ab952e/exactextract-0.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:56b09fef5d68d7f713c50d518404e62d93886d0aacdc920054ad29b6a7666de1", size = 2072726 },
-    { url = "https://files.pythonhosted.org/packages/84/49/0a3b4feca272dcb6f4297e851c3f7087a7fe24ae0ae91cc1a0032ad18df4/exactextract-0.2.0-cp313-cp313-win32.whl", hash = "sha256:c6d9821c3c72d5aa2231909faedc944ddbd4b16771c03cf03d84f24809740f39", size = 1320719 },
-    { url = "https://files.pythonhosted.org/packages/43/fd/59b7c2dfd33cc8cb6e5d2f74e64fec5006169473cc5c81f4cf2e3e9970d1/exactextract-0.2.0-cp313-cp313-win_amd64.whl", hash = "sha256:edd2c79ee71a4d9cb5dccbbebf838f8dfda3d2c68a6b7b5960f01f3c37c98894", size = 1503950 },
+    { url = "https://files.pythonhosted.org/packages/3a/75/f36c2b66554029ab821c937f5d41e1cc32cb337560d1e76a7289db1fe3ea/exactextract-0.2.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:1cbe0657bf8eb20b6de7b4e036ef88c50c62df24519faf75bfa7985ed3d2dbf6", size = 1648290 },
+    { url = "https://files.pythonhosted.org/packages/92/70/8f52dabfa0dfc96e740210a50e9f8a47ade0d90ecae66e0566bb2cc31a42/exactextract-0.2.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:600bb641d39a516a0804e5502a8db372c64a28d6f6a5c9fefe087846b2de00e3", size = 1419703 },
+    { url = "https://files.pythonhosted.org/packages/ab/f3/5332deffbdc2e95a5409a24005e7e2b1b5cb343922bfad544c18a3cba33b/exactextract-0.2.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9bb11deda7087917d1d2d66aa8efd88eb967b110f9253e12389e3c0cda93c222", size = 2077997 },
+    { url = "https://files.pythonhosted.org/packages/74/8c/0b111d86d1883dfd0c66feebc8501b2f2862f330411066b651bf7e4db76d/exactextract-0.2.1-cp312-cp312-win32.whl", hash = "sha256:0ec668dc3da04ab42c9a3db73c14f8bcc81af8c83292076d8273dfe1c5dc2908", size = 1323656 },
+    { url = "https://files.pythonhosted.org/packages/57/d0/25dc9a8b9ad60183f1e9ef97404c33c29cf38f71dcd0df99c8f4b25546d8/exactextract-0.2.1-cp312-cp312-win_amd64.whl", hash = "sha256:f130da677e30afce3212306d776f1c7c098bdafe8ab6a0eaefd0da701a99b735", size = 1508009 },
+    { url = "https://files.pythonhosted.org/packages/7a/39/ecc8dd4b847a01cf1d451d90be0a1559c93c9e71032050a1437ce497c180/exactextract-0.2.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:e18c631c2576c5f71d45d50a2e5219d693a93f66f4cba6f5454795791448c958", size = 1638473 },
+    { url = "https://files.pythonhosted.org/packages/01/fa/2192f28aed5eab0208d76e111e61760f31572f1528d059283324f0f2ba13/exactextract-0.2.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:b124ccce1d0077c0a04e959c226b727fa092192c9ee0ad35a5f2a0df758bbafd", size = 1419740 },
+    { url = "https://files.pythonhosted.org/packages/d4/d7/b2a69cc182103c128c6d43ba285b468145d620b49e29ad505ae5f6f9f629/exactextract-0.2.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0d8288d45d3992033a7d551e88cf70b8950401233046f716e43a8e93fa58c6e8", size = 2077851 },
+    { url = "https://files.pythonhosted.org/packages/2e/7d/4d3cb5e7bcf4f6df2cf67e0f9f746eb7e9bd75d250a2a2d6ca073af0a949/exactextract-0.2.1-cp313-cp313-win32.whl", hash = "sha256:0afaeea86882f2eec1434087bc70b3fff199ae6355c4d24e78f07a580facf2de", size = 1323635 },
+    { url = "https://files.pythonhosted.org/packages/d2/92/32c191c19acb2b7782dc1f228832e2bdd32af5eb38d1ca187a8733921224/exactextract-0.2.1-cp313-cp313-win_amd64.whl", hash = "sha256:a2fec946ecea6e2a8df4bf2cb9e0d5ca4ba426684094032e8801c9e582eb5eb8", size = 1508048 },
 ]
 
 [[package]]
@@ -1673,7 +1677,7 @@ dev = [
     { name = "taplo", specifier = ">=0.9.3" },
 ]
 geo-species = [
-    { name = "exactextract" },
+    { name = "exactextract", specifier = ">=0.2.1" },
     { name = "geopandas" },
     { name = "pandas", extras = ["pyarrow"] },
     { name = "rasterio" },
