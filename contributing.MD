@@ -171,11 +171,3 @@ uvx ruff format
 5. Open a pull request against the `main` branch.
 
 6. Wait for CI checks to pass and respond to reviewer feedback.
-
-## Additional Resources
-
-- [Vega Datasets README](README.md)
-- [Vega Project](https://vega.github.io/)
-- [Vega-Lite Project](https://vega.github.io/vega-lite/)
-- [Altair Project](https://altair-viz.github.io/)
-- [Data Package Standard](https://datapackage.org/standard/)
