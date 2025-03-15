@@ -18,6 +18,7 @@ geo-species = [
   "exactextract>=0.2.1",
   "geopandas",
   "pandas[pyarrow]",
+  "pyarrow-stubs",
   "rasterio",
   "requests",
   "sciencebasepy",

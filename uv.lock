@@ -1,5 +1,4 @@
 version = 1
-revision = 1
 requires-python = ">=3.12"
 
 [[package]]
@@ -950,6 +949,18 @@ wheels = [
 ]
 
 [[package]]
+name = "pyarrow-stubs"
+version = "17.17"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyarrow" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9a/71/de34645bf936f287816a034e2e24bc0f433dd8102daad7d4b6ca35086503/pyarrow_stubs-17.17.tar.gz", hash = "sha256:0b28482e222de359b6753c71b42177afa3f682ba7b1707628b9d1a20b7252326", size = 83460 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b0/98/7b740f3e5c4a9208d65e3ac3dfc78ece7b877c371c03a1b02f7e4eb65020/pyarrow_stubs-17.17-py3-none-any.whl", hash = "sha256:e693d5aaa05e93babef6b677af64fc1da57f5e424068b2b30d05865c266e44f9", size = 79901 },
+]
+
+[[package]]
 name = "pycparser"
 version = "2.22"
 source = { registry = "https://pypi.org/simple" }
@@ -1655,6 +1666,7 @@ geo-species = [
     { name = "exactextract" },
     { name = "geopandas" },
     { name = "pandas", extra = ["pyarrow"] },
+    { name = "pyarrow-stubs" },
     { name = "rasterio" },
     { name = "requests" },
     { name = "sciencebasepy" },
@@ -1680,6 +1692,7 @@ geo-species = [
     { name = "exactextract", specifier = ">=0.2.1" },
     { name = "geopandas" },
     { name = "pandas", extras = ["pyarrow"] },
+    { name = "pyarrow-stubs" },
     { name = "rasterio" },
     { name = "requests" },
     { name = "sciencebasepy" },
