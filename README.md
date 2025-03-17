@@ -31,22 +31,7 @@ You can get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN)
 
 You can find a full listing of available datasets at https://cdn.jsdelivr.net/npm/vega-datasets/data/.
 
-### In Node.js
-
-```javascript
-const vegaDatasets = require('vega-datasets');
-
-// List all available datasets
-const datasetList = vegaDatasets.list();
-
-// Retrieve the URL for a specific dataset
-const carsURL = vegaDatasets.url('cars.json');
-
-// Load a dataset
-const cars = require('vega-datasets/data/cars.json');
-```
-
-### Using NPM Import
+### Using ESM Import
 
 ```typescript
 import data from 'vega-datasets';
