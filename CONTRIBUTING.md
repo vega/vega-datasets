@@ -137,10 +137,6 @@ uvx taplo fmt --check --diff
 uvx ruff check
 uvx ruff format --check
 
-# Run all checks at once
-uvx taplo fmt --check --diff && uvx ruff check && uvx ruff format --check
-```
-
 To automatically fix issues:
 ```bash
 uvx taplo fmt
