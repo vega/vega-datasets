@@ -10,11 +10,12 @@ All contributions are accepted under the [Project's license](./LICENSE). The Pro
 
 ### General Principles
 
-1. **Maintain backward compatibility**: Avoid modifying existing datasets as other projects rely on them for tests and examples.
+1. **Prioritize backward compatibility**: Generally avoid modifying existing datasets as other projects rely on them for tests and examples. Please review our [versioning guidelines](README.md#versioning) before making changes to ensure your contribution follows our versioning policy.
 
-2. **Use open datasets**: All datasets must be available under an open license (e.g., CC0, CC-BY, ODbL, Public Domain) with proper attribution and license documentation.
 
-3. **Document thoroughly**: Include detailed descriptions, sources, license information, and field definitions.
+2. **Use open datasets**: All contributions must either use datasets available under open licenses (e.g., [CC0](https://creativecommons.org/public-domain/cc0/), [CC-BY](https://creativecommons.org/licenses/by/4.0/deed.en), [ODbL](https://opendatacommons.org/licenses/odbl/), Public Domain) or datasets with research-friendly licenses, government data, or other terms that permit redistribution with attribution. All submissions must include complete documentation of licensing terms, clear attribution information, and transparency about any usage limitations.
+
+3. **Document thoroughly**: Provide detailed descriptions, sources, license information, and field definitions to ensure your data can be properly understood and utilized by users who may be unfamiliar with your dataset's domain. Good documentation preserves institutional knowledge about data provenance and processing methods. Each dataset in this repository is treated as a [data resource](https://datapackage.org/standard/data-resource/) within the [Data Package Standard v2](https://datapackage.org/standard/data-package/), which guides our documentation approach and ensures consistency.
 
 **Important**: The BSD-3-Clause license of this repository applies to the package code and infrastructure, NOT to the datasets themselves. Each dataset maintains its original license.
 
