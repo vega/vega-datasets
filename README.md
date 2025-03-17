@@ -10,7 +10,7 @@ This data lives at https://github.com/vega/vega-datasets and can be accessed via
 
 ## Contributing
 
-Modifications of existing datasets should be kept to a minimum as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and examples. Contributions of new datasets, documentation, scripts, corrections and bug fixes are encouraged. Please review the [contribution guidelines](https://github.com/vega/vega-datasets/blob/main/CONTRIBUTING.md).
+Modifications of existing datasets should be kept to a minimum as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and examples. Contributions of new datasets, documentation, scripts, corrections and bug fixes are encouraged. Please review the [contribution guidelines](CONTRIBUTING.md).
 
 ## Installation
 
