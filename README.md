@@ -147,4 +147,4 @@ The repository code is licensed under the BSD-3-Clause License. Note that indivi
 
 ## Acknowledgments
 
-Vega Datasets is maintained by the UW Interactive Data Lab along with a community of contributors. Appreciation is extended to the numerous organizations and individuals who have generously shared their data for use in this collection.
+Appreciation is extended to the numerous organizations and individuals who have generously shared their data for use in this collection.
