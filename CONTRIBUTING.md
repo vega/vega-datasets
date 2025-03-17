@@ -6,13 +6,6 @@ We welcome contributions that enhance metadata, improve documentation, fix datas
 
 All contributions are accepted under the [Project's license](./LICENSE). The Project abides by the Vega Organization's [code of conduct](https://github.com/vega/.github/blob/main/CODE_OF_CONDUCT.md) and [governance](https://github.com/vega/.github/blob/main/project-docs/GOVERNANCE.md).
 
-## Table of Contents
-
-- [Dataset Contribution Guidelines](#dataset-contribution-guidelines)
-- [Metadata and Documentation](#metadata-and-documentation)
-- [Development Setup](#development-setup)
-- [Contributing Process](#contributing-process)
-
 ## Dataset Contribution Guidelines
 
 ### General Principles
