@@ -71,7 +71,7 @@ Reference a dataset via URL:
 
 ## Available Datasets
 
-The repository hosts over 70 datasets with comprehensive metadata. Highlights include:
+Repository highlights include:
 
 - Geographic data ([world maps](datapackage.md#world-110mjson), [US states](datapackage.md#us-10mjson), [country boundaries](datapackage.md#world-110mjson))
 - Economic indicators ([unemployment](datapackage.md#unemploymenttsv), [stock data](datapackage.md#stockscsv), [budgets](datapackage.md#budgetjson))
