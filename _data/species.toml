@@ -1,0 +1,20 @@
+# _data/species.toml
+
+[processing]
+item_ids = [
+  '58fa449fe4b0b7ea54524c5e', # American Robin (Habitat)
+  '58fa817ae4b0b7ea54525c2f', # White-tailed Deer (Habitat)
+  '58fa3f0be4b0b7ea54524859', # American Bullfrog (Habitat)
+  '58fe0f4fe4b0074928294636', # Common Gartersnake (Habitat)
+]
+output_format = ".csv" # Available formats: ".csv", ".parquet", ".arrow"
+debug = false # Controls logging level
+
+# Areas excluded from analysis to focus on coterminous US
+[processing.geographic_filter]
+excluded_fips = [
+  { code = "02", name = "Alaska" },
+  { code = "15", name = "Hawaii" },
+  { code = "72", name = "Puerto Rico" },
+  { code = "78", name = "Virgin Islands" },
+]

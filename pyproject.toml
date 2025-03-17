@@ -14,6 +14,17 @@ version = "2.11.0"
 
 [dependency-groups]
 dev = ["ipython[kernel]>=8.30.0", "ruff>=0.8.2", "taplo>=0.9.3"]
+geo-species = [
+  "exactextract>=0.2.1",
+  "geopandas",
+  "pandas[pyarrow]",
+  "pyarrow-stubs",
+  "rasterio",
+  "requests",
+  "sciencebasepy",
+  "setuptools",
+  "tqdm",
+]
 
 [tool.ruff]
 extend-exclude = [
@@ -70,6 +81,7 @@ pydocstyle = { convention = "numpy" }
 select = [
   "ANN",     # flake8-annotations
   "B",       # flake8-bugbear
+  "BLE",     # flake8-blind-except
   "C4",      # flake8-comprehensions
   "C90",     # mccabe (complex-structure)
   "D",       # pydocstyle
@@ -99,6 +111,7 @@ select = [
   "SIM",     # flake8-simplify
   "TC",      # flake8-type-checking
   "TID",     # flake8-tidy-imports
+  "TRY",     # tryceratops
   "UP",      # pyupgrade
   "W",       # pycodestyle-warning
 ]
@@ -114,6 +127,7 @@ include = [
   "./scripts/build_datapackage.py",
   "./scripts/flights.py",
   "./scripts/income.py",
+  "./scripts/species.py",
 ]
 pythonPlatform = "All"
 pythonVersion = "3.12"
