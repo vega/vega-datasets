@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to Vega Datasets! This repository serves as a centralized hub for datasets used across the Vega ecosystem (Vega, Vega-Lite, Altair).
 
-We welcome contributions that enhance metadata, improve documentation, fix dataset issues, enhance infrastructure, or add new datasets that demonstrate visualization techniques. Each dataset should serve a clear purpose in showcasing visualization capabilities.
+We welcome contributions that enhance metadata, improve documentation, fix dataset issues, enhance infrastructure, or add new datasets that demonstrate visualization techniques. Each dataset should serve a clear purpose in showcasing visualization capabilities. 
 
 All contributions are accepted under the [Project's license](./LICENSE). The Project abides by the Vega Organization's [code of conduct](https://github.com/vega/.github/blob/main/CODE_OF_CONDUCT.md) and [governance](https://github.com/vega/.github/blob/main/project-docs/GOVERNANCE.md).
 
@@ -12,12 +12,34 @@ All contributions are accepted under the [Project's license](./LICENSE). The Pro
 
 1. **Prioritize backward compatibility**: Generally avoid modifying existing datasets as other projects rely on them for tests and examples. Please review our [versioning guidelines](README.md#versioning) before making changes to ensure your contribution follows our versioning policy.
 
-
 2. **Use open datasets**: All contributions must either use datasets available under open licenses (e.g., [CC0](https://creativecommons.org/public-domain/cc0/), [CC-BY](https://creativecommons.org/licenses/by/4.0/deed.en), [ODbL](https://opendatacommons.org/licenses/odbl/), Public Domain) or datasets with research-friendly licenses, government data, or other terms that permit redistribution with attribution. All submissions must include complete documentation of licensing terms, clear attribution information, and transparency about any usage limitations.
 
 3. **Document thoroughly**: Provide detailed descriptions, sources, license information, and field definitions to ensure your data can be properly understood and utilized by users who may be unfamiliar with your dataset's domain. Good documentation preserves institutional knowledge about data provenance and processing methods. Each dataset in this repository is treated as a [data resource](https://datapackage.org/standard/data-resource/) within the [Data Package Standard v2](https://datapackage.org/standard/data-package/), which guides our documentation approach and ensures consistency.
 
 **Important**: The BSD-3-Clause license of this repository applies to the package code and infrastructure, NOT to the datasets themselves. Each dataset maintains its original license.
+
+### Proposing New Datasets
+
+New datasets typically emerge organically from the needs of the Vega ecosystem. The path to contribution often follows one of these patterns:
+
+* **Addressing visualization needs**: A limitation might be discovered while working with Altair, Vega, or Vega-Lite where an existing example or visualization technique could benefit from a specific dataset structure. These discussions may begin in any of the Vega ecosystem repositories.
+
+* **Demonstrating new capabilities**: When new visualization features are developed, specialized datasets that effectively showcase these capabilities may be needed.
+
+* **Improving examples**: Community members may identify gaps in documentation or tutorials that could be addressed with more representative datasets.
+
+* **Exploring new domains**: Datasets that bring visualization capabilities to domains not yet represented in the Vega ecosystem may add value. When introducing data from a new domain:
+   * Include domain-specific context in the documentation
+   * Explain how the dataset enables interesting or novel visualizations
+   * Highlight which aspects of the domain make it suitable for demonstration purposes
+
+Before contributing a new dataset:
+
+* **Connect with the community**: Either locate an existing issue discussing the need for such a dataset, or create one in the most relevant repository (Vega, Vega-Lite, Altair, or vega-datasets). This helps establish context for why the dataset is valuable.
+
+* **Reference related discussions**: In your PR, reference any related discussions across repositories that demonstrate the need for this dataset.
+
+The goal is to ensure that each dataset serves a clear visualization purpose. However, the process is often iterative and may cross multiple repositories.
 
 ### Data Generation Scripts
 
