@@ -85,9 +85,8 @@ For the complete list and details, see the [data directory](https://github.com/v
 
 Each dataset comes with:
 
-- **Detailed Metadata**: Source, structure, and licensing information.
+- **Detailed Metadata**: Source, structure, and licensing information, following [Data Package Standard v2](https://datapackage.org/) for enhanced interoperability.
 - **Generation Scripts**: Automation tools that facilitate data processing and updates, ensuring consistency and reproducibility.
-- **Standardized Format**: Metadata following the Data Package Standard v2 for enhanced interoperability.
 
 Further information is available in [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md) (human-readable) and [datapackage.json](https://github.com/vega/vega-datasets/blob/main/datapackage.json) (machine-readable).
 
