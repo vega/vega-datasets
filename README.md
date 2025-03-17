@@ -70,11 +70,11 @@ Reference a dataset via URL:
 
 The repository hosts over 70 datasets with comprehensive metadata. Highlights include:
 
-- Geographic data ([world maps](#world-110mjson), [US states](#us-10mjson), [country boundaries](#world-110mjson))
-- Economic indicators ([unemployment](#unemploymenttsv), [stock data](#stocks-and-sp500), [budgets](#budgetjson-and-budgetsjson))
-- Scientific measurements ([weather patterns](#seattle-weathercsv-and-seattle-weather-hourly-normalscsv), [earthquake data](#earthquakesjson))
-- Statistical examples ([Anscombe's quartet](#anscombejson), [iris dataset](#no-iris-dataset-found))
-- Historical records ([wheat prices](#wheatjson), [monarch data](#monarchsjson))
+- Geographic data ([world maps](datapackage.md#world-110mjson), [US states](datapackage.md#us-10mjson), [country boundaries](datapackage.md#world-110mjson))
+- Economic indicators ([unemployment](datapackage.md#unemploymenttsv), [stock data](datapackage.md#stockscsv), [budgets](datapackage.md#budgetjson))
+- Scientific measurements ([weather patterns](datapackage.md#seattle-weathercsv), [earthquake data](datapackage.md#earthquakesjson))
+- Statistical examples ([Anscombe's quartet](datapackage.md#anscombesjson), [iris dataset](datapackage.md#irisjson))
+- Historical records ([wheat prices](datapackage.md#wheatjson), [monarch data](datapackage.md#monarchsjson))
 
 For the complete list and details, see the [data directory](https://github.com/vega/vega-datasets/tree/main/data) or review the [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md#resources) file.
 
