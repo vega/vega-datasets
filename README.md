@@ -4,57 +4,39 @@
 [![Build Status](https://github.com/vega/vega-datasets/workflows/Test/badge.svg)](https://github.com/vega/vega-datasets/actions)
 [![](https://data.jsdelivr.com/v1/package/npm/vega-datasets/badge?style=rounded)](https://www.jsdelivr.com/package/npm/vega-datasets)
 
-Collection of datasets used in example galleries for [Vega](https://vega.github.io/vega/examples/) and [Vega-Lite](https://vega.github.io/vega-lite/examples/). This data lives at https://github.com/vega/vega-datasets and https://cdn.jsdelivr.net/npm/vega-datasets.
+Vega Datasets is the centralized hub for over 70 datasets featured in the examples and documentation of Vega, Vega-Lite, Altair and related projects. A dataset catalog conforming to the [Data Package Standard v2](https://datapackage.org/blog/2024-06-26-v2-release/) provides information on data structure, sourcing, and licensing. Generation scripts document data provenance and transformation, enabling reproducibility and transparency throughout the data preparation process. Each dataset is curated to illustrate essential visualization concepts, statistical methods, or domain-specific applications.
 
-Common repository for example datasets used by Vega related projects. Keep changes to this repository minimal as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and for examples.
+This data lives at https://github.com/vega/vega-datasets and can be accessed via CDN at https://cdn.jsdelivr.net/npm/vega-datasets.
 
-The list of sources is in [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md#resources).
-This metadata is also available in a machine-readable format at [datapackage.json](https://github.com/vega/vega-datasets/blob/main/datapackage.json).
+## Contributing
 
+Modifications of existing datasets should be kept to a minimum as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and examples. Contributions of new datasets, documentation, scripts, corrections and bug fixes are encouraged. Please review the [contribution guidelines](CONTRIBUTING.md).
 
-To access the data in Observable, you can import `vega-dataset`. Try our [example notebook](https://observablehq.com/@vega/vega-datasets). To access these datasets from Python, you can use the [Vega datasets python package](https://github.com/altair-viz/vega_datasets). To access them from Julia, you can use the [VegaDatasets.jl julia package](https://github.com/davidanthoff/VegaDatasets.jl).
+> [!IMPORTANT]  
+> **Dataset Licensing**: Each dataset hosted in this repository maintains its original license as documented in the [datapackage metadata](datapackage.md). While we've made efforts to provide accurate licensing information, this metadata should be considered a starting point rather than definitive guidance. Users should verify their intended use complies with original source licensing terms.
 
-## Data Usage Note
+## Installation
 
-These datasets are intended only for instructional and demonstration purposes. Datasets may contain intentional inconsistencies or errors to provide opportunities for data cleaning exercises and to illustrate common data quality issues.
+Install Vega Datasets via npm:
 
-## Versioning
-
-We use semantic versioning. However, since this package serves datasets we have additional rules about how we version data.
-
-We do not change data in patch releases except to resolve formatting issues. Minor releases may change the data but only update datasets in ways that do not change field names or file names. Minor releases may also add datasets. Major versions may change file names, file contents, and remove or update files.
-
-## How to use it
-
-### HTTP
-
-You can also get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN) like:
-
-https://vega.github.io/vega-datasets/data/cars.json or with a fixed version (recommended) such as https://cdn.jsdelivr.net/npm/vega-datasets@3/data/cars.json.
-
-You can find a full listing of the available datasets at https://cdn.jsdelivr.net/npm/vega-datasets/data/.
-
-### NPM
-
-#### Get the data on disk
-
-```
-npm i vega-datasets
+```bash
+npm install vega-datasets
 ```
 
-Now you have all the datasets in a folder in `node_modules/vega-datasets/data/`.
+## Usage
 
-#### Get the URLs or Data via URL
+### HTTP Direct Access
 
-```
-npm i vega-datasets
-```
+You can get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN):
 
-Now you can import `import data from 'vega-datasets';` and access the URLs of any dataset with `data[NAME].url`. `data[NAME]()` returns a promise that resolves to the actual data fetched from the URL. We use d3-dsv to parse CSV files.
+- GitHub: https://vega.github.io/vega-datasets/data/cars.json
+- jsDelivr (with fixed version, recommended): https://cdn.jsdelivr.net/npm/vega-datasets@3/data/cars.json
 
-Here is a full example
+You can find a full listing of available datasets at https://cdn.jsdelivr.net/npm/vega-datasets/data/.
 
-```ts
+### Using ESM Import
+
+```typescript
 import data from 'vega-datasets';
 
 const cars = await data['cars.json']();
@@ -64,10 +46,90 @@ const cars = await data['cars.json']();
 console.log(cars);
 ```
 
-## Development process
+### In Vega/Vega-Lite Specifications
 
-Install dependencies with `npm install`.
+Reference a dataset via URL:
 
-## Release process
+```json
+{
+  "data": {
+    "url": "https://cdn.jsdelivr.net/npm/vega-datasets@latest/data/cars.json"
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"}
+  }
+}
+```
 
-To make a release, run `npm run release`.
+## Language Interfaces
+
+- **JavaScript/Observable**: Directly import Vega Datasets in Observable. See the [example notebook](https://observablehq.com/@vega/vega-datasets).
+- **Python**: Access datasets using the [Vega Datasets Python package](https://github.com/altair-viz/vega_datasets).
+- **Julia**: Utilize the [VegaDatasets.jl package](https://github.com/davidanthoff/VegaDatasets.jl) for Julia integrations.
+
+## Available Datasets
+
+Repository highlights include:
+
+- Geographic data ([world maps](datapackage.md#world-110mjson), [US states](datapackage.md#us-10mjson), [country boundaries](datapackage.md#world-110mjson))
+- Economic indicators ([unemployment](datapackage.md#unemploymenttsv), [stock data](datapackage.md#stockscsv), [budgets](datapackage.md#budgetjson))
+- Scientific measurements ([weather patterns](datapackage.md#seattle-weathercsv), [earthquake data](datapackage.md#earthquakesjson))
+- Statistical examples ([Anscombe's quartet](datapackage.md#anscombesjson), [iris dataset](datapackage.md#irisjson))
+- Historical records ([wheat prices](datapackage.md#wheatjson), [monarch data](datapackage.md#monarchsjson))
+
+For the complete list and details, see the [data directory](https://github.com/vega/vega-datasets/tree/main/data) or review the [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md#resources) file.
+
+## Dataset Information
+
+Each dataset comes with:
+
+- **Detailed Metadata**: Source, structure, and licensing information, following [Data Package Standard v2](https://datapackage.org/) for enhanced interoperability.
+- **Generation Scripts**: Automation tools that facilitate data processing and updates, ensuring consistency and reproducibility.
+
+Further information is available in [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md) (human-readable) and [datapackage.json](https://github.com/vega/vega-datasets/blob/main/datapackage.json) (machine-readable).
+
+## Example Galleries
+
+Visualizations built with these datasets are showcased in several galleries:
+
+- [Vega Example Gallery](https://vega.github.io/vega/examples/)
+- [Vega-Lite Example Gallery](https://vega.github.io/vega-lite/examples/)
+- [Altair Example Gallery](https://altair-viz.github.io/gallery/index.html)
+- [Observable Vega Examples](https://observablehq.com/@vega)
+
+## Data Usage Note
+
+- The datasets are designed for instructional and demonstration purposes.
+- Some datasets include intentional inconsistencies to offer opportunities for data cleaning exercises.
+
+## Versioning
+
+Vega Datasets follows semantic versioning with additional data-specific guidelines:
+
+- **Patch Releases**: Minor formatting or documentation updates without changes to the data.
+- **Minor Releases**: Data content updates that maintain existing file and field names, including new datasets.
+- **Major Releases**: Potential changes to file names or removal of datasets that may break backward compatibility.
+
+## Development and Release
+
+For development setup:
+
+```bash
+npm install
+```
+
+For releasing:
+
+```bash
+npm run release
+```
+
+## License
+
+The repository code is licensed under the BSD-3-Clause License. Note that individual datasets have distinct licensing terms as specified in their metadata.
+
+## Acknowledgments
+
+Appreciation is extended to the numerous organizations and individuals who have generously shared their data for use in this collection.
