@@ -12,6 +12,9 @@ This data lives at https://github.com/vega/vega-datasets and can be accessed via
 
 Modifications of existing datasets should be kept to a minimum as other projects (Vega, Vega Editor, Vega-Lite, Polestar, Voyager) use this data in their tests and examples. Contributions of new datasets, documentation, scripts, corrections and bug fixes are encouraged. Please review the [contribution guidelines](CONTRIBUTING.md).
 
+> [!IMPORTANT]  
+> **Dataset Licensing**: Each dataset hosted in this repository maintains its original license as documented in the [datapackage metadata](datapackage.md). While we've made efforts to provide accurate licensing information, this metadata should be considered a starting point rather than definitive guidance. Users should verify their intended use complies with original source licensing terms.
+
 ## Installation
 
 Install Vega Datasets via npm:
@@ -101,8 +104,6 @@ Visualizations built with these datasets are showcased in several galleries:
 
 - The datasets are designed for instructional and demonstration purposes.
 - Some datasets include intentional inconsistencies to offer opportunities for data cleaning exercises.
-- Licensing for individual datasets may vary; refer to each dataset's metadata for specific details. Licensing information provided in the metadata should be verified with the source.
-- The BSD-3-Clause license applies to the package code, not necessarily the datasets themselves.
 
 ## Versioning
 
@@ -128,7 +129,7 @@ npm run release
 
 ## License
 
-The repository code is licensed under the BSD-3-Clause License. Note that individual datasets may have distinct licensing terms as specified in their metadata.
+The repository code is licensed under the BSD-3-Clause License. Note that individual datasets have distinct licensing terms as specified in their metadata.
 
 ## Acknowledgments
 
