@@ -149,17 +149,17 @@ class ScienceBaseClient:
                         )
                         downloaded_zips.append(zip_path)
                         logger.info("Download complete: %s", file_info["name"])
-                    except (OSError, requests.exceptions.RequestException) as e:
-                        logger.error("Error downloading %s: %s", file_info["name"], e)
+                    except (OSError, requests.exceptions.RequestException):
+                        logger.exception("Error downloading %s: %s", file_info["name"])
 
             except (requests.exceptions.RequestException, ValueError, KeyError) as e:
                 if isinstance(e, requests.exceptions.RequestException):
-                    logger.error(
-                        "Error downloading files for item ID %s: %s", item_id, e
+                    logger.exception(
+                        "Error downloading files for item ID %s: %s", item_id
                     )
                 else:
-                    logger.error(
-                        "An unexpected error occurred for item ID %s: %s", item_id, e
+                    logger.exception(
+                        "An unexpected error occurred for item ID %s: %s", item_id
                     )
                 continue  # Go to the next item_id
 
@@ -247,10 +247,10 @@ class ScienceBaseClient:
                             avg_speed,
                         )
         except requests.exceptions.Timeout:
-            logger.error("Timeout occurred while downloading %s", url)
+            logger.exception("Timeout occurred while downloading %s", url)
             raise
-        except requests.exceptions.RequestException as e:
-            logger.error("Request failed: %s", e)
+        except requests.exceptions.RequestException:
+            logger.exception("Request failed: %s")
             raise
 
     def get_species_info(self, item_ids: Sequence[ItemId]) -> SpeciesInfo:
@@ -303,12 +303,12 @@ class ScienceBaseClient:
                         }
             except (requests.exceptions.RequestException, ValueError, KeyError) as e:
                 if isinstance(e, requests.exceptions.RequestException):
-                    logger.error(
-                        "Error getting species info for item ID %s: %s", item_id, e
+                    logger.exception(
+                        "Error getting species info for item ID %s: %s", item_id
                     )
                 else:
-                    logger.error(
-                        "An unexpected error occurred for item ID %s: %s", item_id, e
+                    logger.exception(
+                        "An unexpected error occurred for item ID %s: %s", item_id
                     )
                 continue
 
@@ -432,10 +432,11 @@ class HabitatDataProcessor:
                     "Successfully loaded county data with these columns: %s",
                     gdf.columns.tolist(),
                 )
-                return gdf
-            except (OSError, ValueError) as e:
-                logger.error("Error reading file: %s", e)
+            except (OSError, ValueError):
+                logger.exception("Error reading file: %s")
                 raise
+            else:
+                return gdf
         else:
             # If local file doesn't exist, try downloading from URL
             logger.info(
