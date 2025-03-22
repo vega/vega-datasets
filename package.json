@@ -28,14 +28,14 @@
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
     "release-it": "^18.1.2",
-    "rollup": "^4.32.1",
+    "rollup": "^4.36.0",
     "rollup-plugin-bundle-size": "^1.0.3",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "scripts": {
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",

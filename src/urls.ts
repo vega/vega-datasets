@@ -63,6 +63,7 @@ export default {
   'seattle-weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/seattle-weather.csv`,
   'sp500-2000.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500-2000.csv`,
   'sp500.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/sp500.csv`,
+  'species.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/species.csv`,
   'stocks.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/stocks.csv`,
   'us-employment.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/us-employment.csv`,
   'weather.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/weather.csv`,
@@ -70,6 +71,5 @@ export default {
   'zipcodes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/zipcodes.csv`,
   'unemployment.tsv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/unemployment.tsv`,
   'flights-200k.arrow': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-200k.arrow`,
-  'species.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/species.csv`,
   'flights-3m.parquet': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-3m.parquet`,
 }
