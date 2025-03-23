@@ -1,4 +1,29 @@
+# Changelog
 
+# [3.0.0](https://github.com/vega/vega-datasets/compare/v2.11.0...v3.0.0) (2025-03-23)
+
+
+### Bug Fixes
+
+* Change default `.arrow` compression to `"uncompressed"` ([#656](https://github.com/vega/vega-datasets/issues/656)) ([7c2e67f](https://github.com/vega/vega-datasets/commit/7c2e67f6e7ba69b00e7cb1473503518942385d11))
+* fix `CRLF`-inflated `Resource.bytes` size ([#653](https://github.com/vega/vega-datasets/issues/653)) ([2f1c39f](https://github.com/vega/vega-datasets/commit/2f1c39feab287a02e840a14adce14e47e1aa16ec))
+* fix example data in us-state-capitals.json, move ND Capital to correct location ([06cd734](https://github.com/vega/vega-datasets/commit/06cd734e788efe0d0461d539012639aaf0f73bf2))
+* guarantee unique resource names in `datapackage.json` ([#640](https://github.com/vega/vega-datasets/issues/640)) ([ca792c8](https://github.com/vega/vega-datasets/commit/ca792c8a973ff0ec75f54d4228a10164c70f82cb))
+* use current branch for `Resource.hash` ([#669](https://github.com/vega/vega-datasets/issues/669)) ([16a0c65](https://github.com/vega/vega-datasets/commit/16a0c650c4320abaf82743545ada37f1400ccf07))
+
+
+### Features
+
+* add generation script for us-state-capitals.json ([#668](https://github.com/vega/vega-datasets/issues/668)) ([dd43f29](https://github.com/vega/vega-datasets/commit/dd43f29f288d45d0f4e0a2f9d211bb6e41c99890))
+* add parquet files to index and datapackage.json to export ([#632](https://github.com/vega/vega-datasets/issues/632)) ([719c388](https://github.com/vega/vega-datasets/commit/719c388cc844392cda24517e4e0cda976b1d8519))
+* Add Species Habitat Dataset for Faceted Map Examples ([#684](https://github.com/vega/vega-datasets/issues/684)) ([7732f91](https://github.com/vega/vega-datasets/commit/7732f91009512799d0e476df7044c15b0fac8a9d)), closes [/github.com/vega/vega-datasets/pull/684/files#r1973999830](https://github.com//github.com/vega/vega-datasets/pull/684/files/issues/r1973999830) [/docs.astral.sh/ruff/rules/#flake8](https://github.com//docs.astral.sh/ruff/rules//issues/flake8)
+* adds `Resource.hash` in `datapackage.json` ([#665](https://github.com/vega/vega-datasets/issues/665)) ([9176bda](https://github.com/vega/vega-datasets/commit/9176bdab04ffcebc75bb9bf07cfcbc754dd8db00))
+* adds generation script for income.json ([#672](https://github.com/vega/vega-datasets/issues/672)) ([40620d6](https://github.com/vega/vega-datasets/commit/40620d61fd3df815f21d9685ef7a47edc11f8986)), closes [#653](https://github.com/vega/vega-datasets/issues/653) [#671](https://github.com/vega/vega-datasets/issues/671)
+* Correct and document `crimea.json` ([#648](https://github.com/vega/vega-datasets/issues/648)) ([369b462](https://github.com/vega/vega-datasets/commit/369b462f7505e4ef3454668793e001e3620861ff))
+* generate `frictionless` data package metadata ([#631](https://github.com/vega/vega-datasets/issues/631)) ([3987d4e](https://github.com/vega/vega-datasets/commit/3987d4e896432778407cb128d629b1cecefd0742)), closes [#629](https://github.com/vega/vega-datasets/issues/629) [/github.com/vega/vega-datasets/pull/631#issuecomment-2503760452](https://github.com//github.com/vega/vega-datasets/pull/631/issues/issuecomment-2503760452) [/github.com/vega/vega-datasets/pull/631#pullrequestreview-2465311789](https://github.com//github.com/vega/vega-datasets/pull/631/issues/pullrequestreview-2465311789) [/github.com/vega/vega-datasets/pull/631#issuecomment-2504151082](https://github.com//github.com/vega/vega-datasets/pull/631/issues/issuecomment-2504151082) [/github.com/vega/vega-datasets/pull/631#issuecomment-2503825716](https://github.com//github.com/vega/vega-datasets/pull/631/issues/issuecomment-2503825716) [/github.com/vega/vega-datasets/pull/631#issuecomment-2504182615](https://github.com//github.com/vega/vega-datasets/pull/631/issues/issuecomment-2504182615) [/github.com/vega/vega-datasets/pull/631#issuecomment-2503825716](https://github.com//github.com/vega/vega-datasets/pull/631/issues/issuecomment-2503825716)
+* Improve `flights.*` dataset reproducibility ([#645](https://github.com/vega/vega-datasets/issues/645)) ([a88ff4c](https://github.com/vega/vega-datasets/commit/a88ff4c094e0eb4a88ad4f9793d33498bd39225d))
+* replace `SOURCES.md` with `datapackage.md` ([#643](https://github.com/vega/vega-datasets/issues/643)) ([5eaa256](https://github.com/vega/vega-datasets/commit/5eaa256486deec59f3c4441d0abb568688ff5a81))
+* Use a datetime column in `flights-3m.parquet` ([#642](https://github.com/vega/vega-datasets/issues/642)) ([0c5dc68](https://github.com/vega/vega-datasets/commit/0c5dc68c6bc19cf2c864909ecb06a624d788cec0))
 
 # [2.11.0](https://github.com/vega/vega-datasets/compare/v2.10.0...v2.11.0) (2024-11-16)
 
