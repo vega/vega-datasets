@@ -1,5 +1,7 @@
 # Changelog
 
+## [3.0.1](https://github.com/vega/vega-datasets/compare/v3.0.0...v3.0.1) (2025-03-23)
+
 # [3.0.0](https://github.com/vega/vega-datasets/compare/v2.11.0...v3.0.0) (2025-03-23)
 
 
