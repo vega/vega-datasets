@@ -1,5 +1,6 @@
 import json from '@rollup/plugin-json';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import bundleSize from 'rollup-plugin-bundle-size';
 
@@ -15,6 +16,16 @@ const outputs = [
     },
     plugins: [nodeResolve(), json(), typescript(), bundleSize()],
     external: Object.keys(pkg.dependencies),
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      file: pkg.unpkg,
+      format: 'umd',
+      name: 'vegaDatasets',
+      sourcemap: true
+    },
+    plugins: [nodeResolve(), json(), typescript(), terser(), bundleSize()]
   },
 ];
 

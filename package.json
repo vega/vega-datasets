@@ -4,10 +4,6 @@
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
   "type": "module",
-  "exports": {
-    "types": "./build/index.d.ts",
-    "default": "./build/vega-datasets.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+http://github.com/vega/vega-datasets.git"
@@ -19,6 +15,12 @@
   "funding": {
     "url": "https://app.hubspot.com/payments/GyPC972GD9Rt"
   },
+  "exports": {
+    "types": "./build/index.d.ts",
+    "default": "./build/index.js"
+  },
+  "unpkg": "build/vega-datasets.min.js",
+  "jsdelivr": "build/vega-datasets.min.js",
   "files": [
     "src",
     "build",
@@ -32,11 +34,12 @@
     "@release-it/conventional-changelog": "^10.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
     "release-it": "^18.1.2",
-    "rollup": "^4.37.0",
+    "rollup": "^4.38.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "typescript": "^5.8.2"
   },
