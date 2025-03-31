@@ -1,5 +1,12 @@
 # Changelog
 
+# [3.1.0](https://github.com/vega/vega-datasets/compare/v3.0.1...v3.1.0) (2025-03-31)
+
+
+### Features
+
+* bung back umd bundle ([c2169e6](https://github.com/vega/vega-datasets/commit/c2169e6cab76f35b212fe5fbce15952c1cb38e54)), closes [#693](https://github.com/vega/vega-datasets/issues/693)
+
 ## [3.0.1](https://github.com/vega/vega-datasets/compare/v3.0.0...v3.0.1) (2025-03-23)
 
 # [3.0.0](https://github.com/vega/vega-datasets/compare/v2.11.0...v3.0.0) (2025-03-23)

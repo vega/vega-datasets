@@ -1,5 +1,5 @@
 # vega-datasets
-`3.0.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-03-31 17:23:42 [UTC]
+`3.1.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-03-31 17:24:58 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
