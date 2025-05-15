@@ -38,7 +38,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
-    "release-it": "^18.1.2",
+    "release-it": "^19.0.2",
     "rollup": "^4.38.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "typescript": "^5.8.2"
