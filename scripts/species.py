@@ -655,7 +655,7 @@ class HabitatDataProcessor:
         for tif_file in tif_files:
             # Extract species code from filename
             stem: str = tif_file.stem
-            species: SpeciesCode = stem.split("_")[0]
+            species: SpeciesCode = stem.split("_", 1)[0]
 
             # Determine column names based on number of raster files
             if len(tif_files) > 1:
