@@ -29,12 +29,12 @@ jobs:
           enable-cache: true
 
       - name: Format toml
-        run: uvx taplo fmt --check --diff
+        run: uv run taplo fmt --check --diff
 
       - name: Format and lint (python)
         run: |
-          uvx ruff check
-          uvx ruff format --check
+          uv run ruff check
+          uv run ruff format --check
 
       - name: Install Node dependencies
         run: npm ci
