@@ -1,4 +1,8 @@
 #:schema taplo://taplo.toml
+
+exclude = [".venv/**/*.toml"]
+include = ["**/taplo.toml", "pyproject.toml"]
+
 [formatting]
 align_entries       = true
 allowed_blank_lines = 1
