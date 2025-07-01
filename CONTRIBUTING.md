@@ -130,7 +130,7 @@ npm run build
 
 1. Fork and clone the repository:
    ```
-   git clone https://github.com/YOUR-USERNAME/vega-datasets.git
+   git clone https://github.com/vega/vega-datasets.git
    cd vega-datasets
    npm install
    ```
