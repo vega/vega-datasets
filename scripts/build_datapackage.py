@@ -199,11 +199,74 @@ def render_markdown_patch(path: str, data: dict[str, Any]) -> str:
 fl_markdown.render_markdown = render_markdown_patch
 
 
+def identify_multi_format_datasets(data_root: Path) -> set[str]:
+    """
+    Identify dataset base names that have multiple format variants.
+
+    Returns a set of base names (without extensions) that exist in multiple formats.
+    """
+    base_names: dict[str, list[str]] = {}
+
+    for fp in data_root.iterdir():
+        if fp.is_file() and ResourceAdapter.is_supported(fp):
+            base = fp.stem
+            base_names.setdefault(base, []).append(fp.suffix)
+
+    # Return base names that have multiple formats
+    return {base for base, suffixes in base_names.items() if len(suffixes) > 1}
+
+
+def make_uax31_name(path: Path, multi_format_bases: set[str]) -> str:
+    """
+    Generate UAX-31 compliant identifier from file path.
+
+    Ensures the name is a valid Python identifier by:
+    - Removing file extensions
+    - Replacing hyphens with underscores
+    - Adding prefixes for names starting with digits
+    - Appending format suffixes when multiple formats exist for the same dataset
+
+    Parameters
+    ----------
+    path : Path
+        The file path to convert to a UAX-31 compliant name
+    multi_format_bases : set[str]
+        Set of base names that exist in multiple formats.
+
+    Returns
+    -------
+    str
+        A valid Python identifier derived from the file path
+    """
+    # Remove extension
+    base_name = path.stem
+
+    # Replace hyphens with underscores
+    name = base_name.replace("-", "_")
+
+    # Handle names starting with digits
+    if name and name[0].isdigit():
+        # Add appropriate prefix based on file type
+        name = f"icon_{name}" if path.suffix in {".png", ".jpg"} else f"data_{name}"
+
+    # If multiple formats exist for this dataset, append format suffix to all
+    if base_name in multi_format_bases:
+        name = f"{name}_{path.suffix[1:]}"
+
+    # Validate the name is a valid identifier
+    assert name.isidentifier(), f"Generated name '{name}' is not a valid identifier"
+
+    return name
+
+
 class ResourceAdapter:
     mediatype: ClassVar[Mapping[str, str]] = {
         ".arrow": "application/vnd.apache.arrow.file"
     }
     """https://www.iana.org/assignments/media-types/application/vnd.apache.arrow.file"""
+
+    multi_format_bases: ClassVar[set[str]] = set()
+    """Base names that exist in multiple formats."""
 
     @classmethod
     def is_supported(cls, source: Path, /) -> bool:
@@ -269,7 +332,7 @@ class ResourceAdapter:
     def _extract_file_parts(cls, source: Path, /) -> PathMeta:
         """Metadata that can be inferred from the file path *alone*."""
         parts = PathMeta(
-            name=source.name.lower(),
+            name=make_uax31_name(source, cls.multi_format_bases),
             path=source.name,
             scheme="file",
             bytes=source.stat().st_size,
@@ -622,6 +685,10 @@ def main(
     # NOTE: Forcing base directory here
     # - Ensures ``frictionless`` doesn't insert platform-specific path separator(s)
     os.chdir(data_dir)
+
+    # Identify datasets with multiple formats
+    ResourceAdapter.multi_format_bases = identify_multi_format_datasets(data_dir)
+
     pkg_meta = extract_package_metadata(npm_package, sources)
     gh_sha1 = extract_sha(data_dir)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."

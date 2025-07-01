@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.1.0",
-  "created": "2025-03-31T17:24:58.659124+00:00",
+  "created": "2025-07-01T22:14:24.642423+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -1105,7 +1105,7 @@
       "bytes": 1219853
     },
     {
-      "name": "icon_firefox",
+      "name": "ffox",
       "type": "file",
       "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
       "licenses": [
@@ -1281,7 +1281,7 @@
       }
     },
     {
-      "name": "flights_200k",
+      "name": "flights_200k_json",
       "type": "table",
       "description": "Flight delay statistics (200,000 rows) from U.S. Bureau of Transportation Statistics. \nCollected under regulatory reporting requirements (14 CFR Part 234), which mandate \nthat qualifying airlines report on-time performance data to BTS. Transformed using \n`/scripts/flights.py`",
       "licenses": [
@@ -1435,7 +1435,7 @@
       }
     },
     {
-      "name": "flights_3m_parquet",
+      "name": "flights_3m",
       "type": "table",
       "description": "Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. \nCollected under regulatory reporting requirements (14 CFR Part 234), which mandate \nthat qualifying airlines report on-time performance data to BTS. Transformed using \n`/scripts/flights.py`",
       "licenses": [
@@ -1813,7 +1813,7 @@
       }
     },
     {
-      "name": "icon_gimp",
+      "name": "gimp",
       "type": "file",
       "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
       "licenses": [
@@ -2135,7 +2135,7 @@
       }
     },
     {
-      "name": "londonboroughs",
+      "name": "londonBoroughs",
       "type": "json",
       "description": "Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. \nOriginal data \"contains National Statistics data © Crown copyright and database right (2015)\" \nand \"Contains Ordnance Survey data © Crown copyright and database right [2015].",
       "licenses": [
@@ -2159,7 +2159,7 @@
       "bytes": 14732
     },
     {
-      "name": "londoncentroids",
+      "name": "londonCentroids",
       "type": "table",
       "description": "Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid).",
       "licenses": [
@@ -2204,7 +2204,7 @@
       }
     },
     {
-      "name": "londontubelines",
+      "name": "londonTubeLines",
       "type": "json",
       "description": "A [topologically-encoded](https://github.com/topojson/topojson) representation of select London Underground rail lines, derived from OpenStreetMap\ndata. These 394 LineString geometries, encoded using 406 arcs, depict transport paths between stations with stations marked as nodes\nalong the lines. Originally transformed from a GeoJSON intermediary `tfl_lines.json` into TopoJSON format, this network configuration \nreflects the system as of February 4, 2018, and may not incorporate subsequent modifications or expansions.\n",
       "licenses": [
@@ -3362,7 +3362,7 @@
       }
     },
     {
-      "name": "unemployment.tsv",
+      "name": "unemployment",
       "type": "table",
       "description": "County-level unemployment rates in the United States, with data generally\nconsistent with levels reported in 2009. The dataset is structured as tab-separated values.\nThe unemployment rate represents the number of unemployed persons as a percentage of the labor\nforce. According to the Bureau of Labor Statistics (BLS) glossary:\n\nUnemployed persons (Current Population Survey) [are] persons aged 16 years and older who had\nno employment during the reference week, were available for work, except for temporary\nillness, and had made specific efforts to find employment sometime during the 4-week period\nending with the reference week. Persons who were waiting to be recalled to a job from which\nthey had been laid off need not have been looking for work to be classified as unemployed.\n\nDerived from the [Local Area Unemployment Statistics (LAUS)](https://www.bls.gov/lau/) program, \na federal-state cooperative effort overseen by the Bureau of Labor Statistics (BLS). \nThe LAUS program produces monthly and annual employment, unemployment, and labor force data for census regions and divisions,\nstates, counties, metropolitan areas, and many cities and towns.\n\nFor the most up-to-date LAUS data:\n1. **Monthly and Annual Data Downloads**:\n- Visit the [LAUS Data Tools](https://www.bls.gov/lau/data.htm) page for [monthly](https://www.bls.gov/lau/tables.htm#mcounty) \nand [annual](https://www.bls.gov/lau/tables.htm#cntyaa) county data.\n2. **BLS Public Data API**:\n- The BLS provides an API for developers to access various datasets, including LAUS data.\n- To use the API for LAUS data, refer to the [LAUS Series ID Formats](https://www.bls.gov/help/hlpforma.htm#LA) to construct your query.\n- API documentation and examples are available on the BLS Developers page.\n\nWhen using BLS public data API and datasets, users should adhere to the [BLS Terms of Service](https://www.bls.gov/developers/termsOfService.htm).",
       "licenses": [
