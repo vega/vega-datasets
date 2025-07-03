@@ -34,6 +34,7 @@ import io
 import json
 import logging
 import os
+import re
 import subprocess as sp
 import tomllib
 import warnings
@@ -216,11 +217,19 @@ def identify_multi_format_datasets(data_root: Path) -> set[str]:
     return {base for base, suffixes in base_names.items() if len(suffixes) > 1}
 
 
+def to_snake_case(name: str) -> str:
+    """Converts a string from camelCase to snake_case."""
+    s1 = re.sub(r"(.)([A-Z][a-z]+)", r"\1_\2", name)
+    s2 = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", s1)
+    return s2.lower()
+
+
 def make_uax31_name(path: Path, multi_format_bases: set[str]) -> str:
     """
-    Generate UAX-31 compliant identifier from file path.
+    Generate UAX-31 compliant and snake_cased identifier from file path.
 
     Ensures the name is a valid Python identifier by:
+    - Converting the name to snake_case (e.g., 'londonBoroughs' -> 'london_boroughs')
     - Removing file extensions
     - Replacing hyphens with underscores
     - Adding prefixes for names starting with digits
@@ -236,13 +245,14 @@ def make_uax31_name(path: Path, multi_format_bases: set[str]) -> str:
     Returns
     -------
     str
-        A valid Python identifier derived from the file path
+        A valid, snake_cased Python identifier derived from the file path
     """
     # Remove extension
     base_name = path.stem
 
-    # Replace hyphens with underscores
-    name = base_name.replace("-", "_")
+    # Convert to snake_case (handles camelCase) and replace hyphens
+    name = to_snake_case(base_name)
+    name = name.replace("-", "_")
 
     # Handle names starting with digits
     if name and name[0].isdigit():
@@ -251,7 +261,7 @@ def make_uax31_name(path: Path, multi_format_bases: set[str]) -> str:
 
     # If multiple formats exist for this dataset, append format suffix to all
     if base_name in multi_format_bases:
-        name = f"{name}_{path.suffix[1:]}"
+        name = f"{name}_{path.suffix[1:].lower()}"
 
     # Validate the name is a valid identifier
     assert name.isidentifier(), f"Generated name '{name}' is not a valid identifier"

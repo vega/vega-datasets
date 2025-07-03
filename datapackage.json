@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.1.0",
-  "created": "2025-07-01T22:14:24.642423+00:00",
+  "created": "2025-07-03T22:03:32.424280+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -2135,7 +2135,7 @@
       }
     },
     {
-      "name": "londonBoroughs",
+      "name": "london_boroughs",
       "type": "json",
       "description": "Boundaries of London boroughs reprojected and simplified from `London_Borough_Excluding_MHW` shapefile. \nOriginal data \"contains National Statistics data © Crown copyright and database right (2015)\" \nand \"Contains Ordnance Survey data © Crown copyright and database right [2015].",
       "licenses": [
@@ -2159,7 +2159,7 @@
       "bytes": 14732
     },
     {
-      "name": "londonCentroids",
+      "name": "london_centroids",
       "type": "table",
       "description": "Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/d3-geo/math#geoCentroid).",
       "licenses": [
@@ -2204,7 +2204,7 @@
       }
     },
     {
-      "name": "londonTubeLines",
+      "name": "london_tube_lines",
       "type": "json",
       "description": "A [topologically-encoded](https://github.com/topojson/topojson) representation of select London Underground rail lines, derived from OpenStreetMap\ndata. These 394 LineString geometries, encoded using 406 arcs, depict transport paths between stations with stations marked as nodes\nalong the lines. Originally transformed from a GeoJSON intermediary `tfl_lines.json` into TopoJSON format, this network configuration \nreflects the system as of February 4, 2018, and may not incorporate subsequent modifications or expansions.\n",
       "licenses": [

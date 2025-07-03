@@ -1,5 +1,5 @@
 # vega-datasets
-`3.1.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-07-01 22:14:24 [UTC]
+`3.1.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-07-03 22:03:32 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1012,7 +1012,7 @@ Originally compiled and published by the Los Angeles Times Data Desk.
 | title                                        | path                                             |
 |:---------------------------------------------|:-------------------------------------------------|
 | LA Riots Deaths, Los Angeles Times Data Desk | http://spreadsheets.latimes.com/la-riots-deaths/ |
-## `londonBoroughs`
+## `london_boroughs`
 ### path
 londonBoroughs.json
 ### description
@@ -1027,7 +1027,7 @@ and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 | title                      | path                                                                       |
 |:---------------------------|:---------------------------------------------------------------------------|
 | UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
-## `londonCentroids`
+## `london_centroids`
 ### path
 londonCentroids.json
 ### description
@@ -1047,7 +1047,7 @@ Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/
 | title                      | path                                                                       |
 |:---------------------------|:---------------------------------------------------------------------------|
 | UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
-## `londonTubeLines`
+## `london_tube_lines`
 ### path
 londonTubeLines.json
 ### description
