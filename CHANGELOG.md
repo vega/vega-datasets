@@ -1,5 +1,17 @@
 # Changelog
 
+# [3.2.0](https://github.com/vega/vega-datasets/compare/v3.1.0...v3.2.0) (2025-07-07)
+
+
+### Bug Fixes
+
+* Resolve PLC0207 linting error using maxsplit ([#706](https://github.com/vega/vega-datasets/issues/706)) ([5134628](https://github.com/vega/vega-datasets/commit/513462880720a47ad861b3b8aabfd142b3cc72a2))
+
+
+### Features
+
+* Adopt UAX-31 compliant dataset names ([#702](https://github.com/vega/vega-datasets/issues/702)) ([ada523a](https://github.com/vega/vega-datasets/commit/ada523a7e838fe6a4575b5ed6827f9bb4d80596b))
+
 # [3.1.0](https://github.com/vega/vega-datasets/compare/v3.0.1...v3.1.0) (2025-03-31)
 
 
