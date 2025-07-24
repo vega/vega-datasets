@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-07-07 10:54:37 [UTC]
+`3.2.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-07-24 23:07:05 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -555,13 +555,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type    |
-|:------------|:--------|
-| date        | string  |
-| delay       | integer |
-| distance    | integer |
-| origin      | string  |
-| destination | string  |
+| name        | type     |
+|:------------|:---------|
+| date        | datetime |
+| delay       | integer  |
+| distance    | integer  |
+| origin      | string   |
+| destination | string   |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -626,13 +626,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type    |
-|:------------|:--------|
-| date        | string  |
-| delay       | integer |
-| distance    | integer |
-| origin      | string  |
-| destination | string  |
+| name        | type     |
+|:------------|:---------|
+| date        | datetime |
+| delay       | integer  |
+| distance    | integer  |
+| origin      | string   |
+| destination | string   |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -651,13 +651,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type    |
-|:------------|:--------|
-| date        | string  |
-| delay       | integer |
-| distance    | integer |
-| origin      | string  |
-| destination | string  |
+| name        | type     |
+|:------------|:---------|
+| date        | datetime |
+| delay       | integer  |
+| distance    | integer  |
+| origin      | string   |
+| destination | string   |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -701,13 +701,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type    |
-|:------------|:--------|
-| date        | string  |
-| delay       | integer |
-| distance    | integer |
-| origin      | string  |
-| destination | string  |
+| name        | type     |
+|:------------|:---------|
+| date        | datetime |
+| delay       | integer  |
+| distance    | integer  |
+| origin      | string   |
+| destination | string   |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -1178,7 +1178,7 @@ resource for developing data cleaning and validation skills in real-world analys
 | Worldwide Gross        | integer |
 | US DVD Sales           | integer |
 | Production Budget      | integer |
-| Release Date           | string  |
+| Release Date           | date    |
 | MPAA Rating            | string  |
 | Running Time min       | integer |
 | Distributor            | string  |
@@ -1362,7 +1362,7 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 | Candidate_District                            | integer |
 | Contributions_from_Other_Political_Committees | integer |
 | Contributions_from_Party_Committees           | integer |
-| Coverage_End_Date                             | string  |
+| Coverage_End_Date                             | date    |
 | Refunds_to_Individuals                        | integer |
 | Refunds_to_Committees                         | integer |
 ### sources
@@ -1512,7 +1512,7 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
     
 | name   | type   | description                                            |
 |:-------|:-------|:-------------------------------------------------------|
-| date   | string | Date of monthly observation in the format 'MMM D YYYY' |
+| date   | date   | Date of monthly observation in the format 'MMM D YYYY' |
 | price  | number | Closing price of the S&P 500 index for the given month |
 ## `species`
 ### path
@@ -1561,7 +1561,7 @@ Monthly stock prices for five companies from 2000 to 2010.
 | name   | type   |
 |:-------|:-------|
 | symbol | string |
-| date   | string |
+| date   | date   |
 | price  | number |
 ## `udistrict`
 ### path

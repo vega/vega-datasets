@@ -453,6 +453,11 @@ Collected under regulatory reporting requirements (14 CFR Part 234), which manda
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`"""
 
+[resources.schema]
+[[resources.schema.fields]]
+name = "date"
+type = "datetime"
+
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
@@ -501,6 +506,11 @@ Collected under regulatory reporting requirements (14 CFR Part 234), which manda
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`"""
 
+[resources.schema]
+[[resources.schema.fields]]
+name = "date"
+type = "datetime"
+
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
 path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
@@ -516,6 +526,11 @@ description = """Flight delay statistics (2,000 rows) from U.S. Bureau of Transp
 Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name = "date"
+type = "datetime"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -548,6 +563,11 @@ description = """Flight delay statistics (5,000 rows) from U.S. Bureau of Transp
 Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name = "date"
+type = "datetime"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -1004,6 +1024,11 @@ description = """A collection of films and their performance metrics, including 
 and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
 resource for developing data cleaning and validation skills in real-world analysis workflows."""
 
+[resources.schema]
+[[resources.schema.fields]]
+name = "Release Date"
+type = "date"
+
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
 description = """
@@ -1137,6 +1162,11 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 > A few restrictions limit the way you can use FEC data. For example, you can't use 
 > contributor lists for commercial purposes or to solicit donations. Learn more on 
 > [FEC.gov](https://www.fec.gov/)."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name = "Coverage_End_Date"
+type = "date"
 
 [[resources.sources]]
 title = "Federal Election Commission Bulk Data"
@@ -1280,6 +1310,7 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 [resources.schema]
 [[resources.schema.fields]]
 name        = "date"
+type        = "date"
 description = "Date of monthly observation in the format 'MMM D YYYY'"
 
 [[resources.schema.fields]]
@@ -1344,6 +1375,11 @@ path  = "https://www.usa.gov/government-works"
 [[resources]] # Path: stocks.csv
 path        = "stocks.csv"
 description = "Monthly stock prices for five companies from 2000 to 2010."
+
+[resources.schema]
+[[resources.schema.fields]]
+name = "date"
+type = "date"
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
