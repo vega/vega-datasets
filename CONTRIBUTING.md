@@ -79,6 +79,8 @@ description = """Detailed description of the dataset"""
 [[resources.schema.fields]]
 name = "field1"  # Must match the actual column name in the dataset
 description = "Description of what this column/field represents"
+# Optional: Override the inferred type (see "Field Types" section below)
+# type = "date"
 
 [[resources.schema.fields]]
 name = "field2"  # Must match the actual column name in the dataset
@@ -112,6 +114,27 @@ title = "Human-readable license name"
 - **Field Matching**: When documenting columns in `resources.schema.fields`, ensure the `name` field exactly matches the column name in your dataset
 - **Precedence**: Your manual definitions in the TOML file will override any automatically inferred values
 - **Complete Examples**: See existing entries in `_data/datapackage_additions.toml` for reference on documenting various types of datasets
+
+#### Field Types
+
+The Frictionless framework automatically infers field types by analyzing data values during the build process. You can explicitly override the inferred types by specifying a `type` field. Valid types according to the [Data Package Table Schema standard](https://datapackage.org/standard/table-schema/#field-types) are:
+
+- **Text**: `string`
+- **Numeric**: `number`, `integer`
+- **Boolean**: `boolean`
+- **Date/Time**: `date`, `time`, `datetime`, `year`, `yearmonth`, `duration`
+- **Structured**: `object`, `array`, `list`
+- **Spatial**: `geopoint`, `geojson`
+- **Any**: `any` (accepts any type - used when a field contains mixed types or when type inference is not possible)
+
+Example of overriding a field type:
+
+```toml
+[[resources.schema.fields]]
+name = "date"
+type = "datetime"  # Override inferred type
+description = "Date and time of the observation"
+```
 
 Generate metadata files by running:
 
