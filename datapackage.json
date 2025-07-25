@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.0",
-  "created": "2025-07-07T10:54:37.465491+00:00",
+  "created": "2025-07-24T23:07:05.742469+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -1219,7 +1219,7 @@
         "fields": [
           {
             "name": "date",
-            "type": "string"
+            "type": "datetime"
           },
           {
             "name": "delay",
@@ -1359,7 +1359,7 @@
         "fields": [
           {
             "name": "date",
-            "type": "string"
+            "type": "datetime"
           },
           {
             "name": "delay",
@@ -1413,7 +1413,7 @@
         "fields": [
           {
             "name": "date",
-            "type": "string"
+            "type": "datetime"
           },
           {
             "name": "delay",
@@ -1515,7 +1515,7 @@
         "fields": [
           {
             "name": "date",
-            "type": "string"
+            "type": "datetime"
           },
           {
             "name": "delay",
@@ -2419,7 +2419,7 @@
           },
           {
             "name": "Release Date",
-            "type": "string"
+            "type": "date"
           },
           {
             "name": "MPAA Rating",
@@ -2864,7 +2864,7 @@
           },
           {
             "name": "Coverage_End_Date",
-            "type": "string"
+            "type": "date"
           },
           {
             "name": "Refunds_to_Individuals",
@@ -3160,7 +3160,7 @@
         "fields": [
           {
             "name": "date",
-            "type": "string",
+            "type": "date",
             "description": "Date of monthly observation in the format 'MMM D YYYY'"
           },
           {
@@ -3252,7 +3252,7 @@
           },
           {
             "name": "date",
-            "type": "string"
+            "type": "date"
           },
           {
             "name": "price",
