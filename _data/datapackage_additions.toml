@@ -1309,8 +1309,8 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 """
 [resources.schema]
 [[resources.schema.fields]]
-name        = "date"
-type        = "date"
+name = "date"
+type = "date"
 description = "Date of monthly observation in the format 'MMM D YYYY'"
 
 [[resources.schema.fields]]
