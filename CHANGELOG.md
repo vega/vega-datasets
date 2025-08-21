@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.1](https://github.com/vega/vega-datasets/compare/v3.2.0...v3.2.1) (2025-08-21)
+
+
+### Bug Fixes
+
+* override type for date/datetime columns in various datasets ([#712](https://github.com/vega/vega-datasets/issues/712)) ([ca1aea2](https://github.com/vega/vega-datasets/commit/ca1aea26b73fde93228e624ce8223dc0e0316432))
+
 # [3.2.0](https://github.com/vega/vega-datasets/compare/v3.1.0...v3.2.0) (2025-07-07)
 
 
