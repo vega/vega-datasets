@@ -1,0 +1,82 @@
+# Configuration for gallery_examples collection script
+# This file externalizes URLs, mappings, and settings to make maintenance easier.
+
+# ============================================================================
+# Altair Dataset Name Mappings
+# ============================================================================
+#
+# Manual mappings for Altair Python API names that don't match datapackage.json
+# canonical names. These mappings are needed because:
+#
+# 1. Altair uses camelCase API names (e.g., data.londonBoroughs.url)
+# 2. The datapackage.json uses snake_case canonical names (e.g., london_boroughs)
+# 3. Some Altair API names don't include file extensions
+#
+# TEMPORARY: This section will eventually be removed once:
+# - The dataset name mapper includes extension-less variants (see ALTAIR_APPROACH_COMPARISON_RESULTS.md)
+# - OR Altair completes its migration to match vega-datasets naming conventions
+#
+# Format: altair_api_name = "canonical_datapackage_name"
+
+[altair.name_mapping]
+londonBoroughs = "london_boroughs"
+londonCentroids = "london_centroids"
+londonTubeLines = "london_tube_lines"
+# Add more mappings here as they are discovered
+# Example for icon datasets:
+# "7zip" = "icon_7zip"
+# "github" = "icon_github"
+
+# ============================================================================
+# Data Source URLs
+# ============================================================================
+#
+# URLs for fetching gallery metadata and dataset catalog.
+# All URLs point to the main/master branch for stable releases.
+
+[sources]
+# Vega-datasets canonical dataset catalog
+datapackage_url = "https://raw.githubusercontent.com/vega/vega-datasets/main/datapackage.json"
+
+# Vega-Lite gallery examples metadata
+vega_lite_examples_url = "https://raw.githubusercontent.com/vega/vega-lite/main/site/_data/examples.json"
+
+# Vega gallery examples metadata
+vega_examples_url = "https://raw.githubusercontent.com/vega/vega/main/docs/_data/examples.json"
+
+# Altair example directories
+# The script fetches Python files from both syntax styles
+altair_examples_dirs = [
+    "tests/examples_methods_syntax",
+    "tests/examples_arguments_syntax",
+]
+
+# ============================================================================
+# Output Configuration
+# ============================================================================
+#
+# Default output settings for the generated JSON file.
+
+[output]
+# Default output file path (relative to repository root)
+# Can be overridden with --output CLI argument
+default_output_path = "gallery_examples.json"
+
+# Dry run mode (doesn't write output file)
+# Can be overridden with --dry-run CLI flag
+dry_run = false
+
+# ============================================================================
+# Network Settings
+# ============================================================================
+#
+# HTTP request configuration for fetching remote resources.
+
+[network]
+# Timeout in seconds for HTTP requests
+# Used for fetching metadata files and individual example specifications
+timeout = 30
+
+# Maximum number of retries for failed requests (future use)
+# Currently not implemented, but reserved for potential retry logic
+max_retries = 3
