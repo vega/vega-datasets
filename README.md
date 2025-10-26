@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/vega-datasets.svg)](https://www.npmjs.com/package/vega-datasets)
 [![Build Status](https://github.com/vega/vega-datasets/workflows/Test/badge.svg)](https://github.com/vega/vega-datasets/actions)
 [![](https://data.jsdelivr.com/v1/package/npm/vega-datasets/badge?style=rounded)](https://www.jsdelivr.com/package/npm/vega-datasets)
+[![Kaggle](https://img.shields.io/badge/Kaggle-035a7d?style=plastic&logo=kaggle&logoColor=white)](https://www.kaggle.com/organizations/vega-datasets)
 
 Vega Datasets is the centralized hub for over 70 datasets featured in the examples and documentation of Vega, Vega-Lite, Altair and related projects. A dataset catalog conforming to the [Data Package Standard v2](https://datapackage.org/blog/2024-06-26-v2-release/) provides information on data structure, sourcing, and licensing. Generation scripts document data provenance and transformation, enabling reproducibility and transparency throughout the data preparation process. Each dataset is curated to illustrate essential visualization concepts, statistical methods, or domain-specific applications.
 
