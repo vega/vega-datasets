@@ -1484,14 +1484,29 @@ _config: GalleryConfig
 
 
 def extract_altair_api_datasets(
-    code: str, valid_names: ValidNames
+    code: str,
+    valid_names: ValidNames,
+    name_mapping: dict[str, str] | None = None,
 ) -> list[CanonicalName]:
     """
-    Extract Altair API dataset names using explicit mapping from config.toml.
+    Extract Altair API dataset names using optional name mapping.
 
-    Altair's Python API uses naming conventions (e.g., camelCase) that may differ
-    from canonical vega-datasets names (e.g., snake_case). This function uses
-    explicit mappings from config.toml to handle known naming mismatches.
+    LEGACY SUPPORT: Altair v6+ (PR #3859, merged Oct 2025) uses canonical
+    vega-datasets names directly, making name mapping unnecessary when tracking
+    Altair main branch. This function supports name mapping for backward
+    compatibility with Altair v5.x releases.
+
+    Historical context:
+    - Altair v5.x used camelCase API names (e.g., data.londonBoroughs.url)
+    - vega-datasets canonical names use snake_case (e.g., london_boroughs)
+    - Name mapping bridged this gap
+    - Altair v6+ adopted canonical names, eliminating the need for mapping
+
+    Current behavior (Altair v6+, with name_mapping=None):
+    - Extracts dataset names from Altair code patterns
+    - Validates directly against vega-datasets canonical names
+    - Logs warnings for external datasets (expected for some examples)
+    - No name transformation occurs
 
     Parameters
     ----------
@@ -1499,6 +1514,11 @@ def extract_altair_api_datasets(
         Altair Python source code.
     valid_names : set[str]
         Valid dataset names from datapackage.json.
+    name_mapping : dict[str, str] | None, default None
+        Optional mapping from Altair API names to canonical names.
+        - For Altair v6+: Pass None or {} (canonical names used directly)
+        - For Altair v5: Pass mapping like {"londonBoroughs": "london_boroughs"}
+        Typically loaded from config.toml under [altair.name_mapping].
 
     Returns
     -------
@@ -1507,12 +1527,23 @@ def extract_altair_api_datasets(
 
     Examples
     --------
-    >>> # With config['altair']['name_mapping']['londonBoroughs'] = 'london_boroughs'
-    >>> code = "data.londonBoroughs.url"
+    Altair v6+ (no mapping needed):
+
+    >>> code = "data.london_boroughs.url"
     >>> valid_names = {"london_boroughs"}
     >>> extract_altair_api_datasets(code, valid_names)
     ['london_boroughs']
+
+    Altair v5 (with mapping):
+
+    >>> code = "data.londonBoroughs.url"
+    >>> valid_names = {"london_boroughs"}
+    >>> mapping = {"londonBoroughs": "london_boroughs"}
+    >>> extract_altair_api_datasets(code, valid_names, name_mapping=mapping)
+    ['london_boroughs']
     # Logs: DEBUG - Altair mapping applied: londonBoroughs → london_boroughs
+
+    External dataset (not in vega-datasets):
 
     >>> code = "data.unknown_dataset()"
     >>> extract_altair_api_datasets(code, valid_names)
@@ -1521,25 +1552,31 @@ def extract_altair_api_datasets(
 
     Notes
     -----
-    - Mappings are defined in config.toml under [altair.name_mapping]
     - External datasets (not in vega-datasets) log warnings but are skipped
     - This approach was selected after comparative testing showed best accuracy
       and performance (see ALTAIR_APPROACH_COMPARISON_RESULTS.md)
+    - Patterns may overlap (e.g., alt.UrlData(data.cars.url) matches multiple patterns)
+      but deduplication via set() ensures each name appears once
     """
+    # Use provided mapping or empty dict
+    if name_mapping is None:
+        name_mapping = {}
+
     datasets = []
 
-    # Get mapping from config (loaded in main())
-    name_mapping = _config.get("altair", {}).get("name_mapping", {})
-
-    # Same patterns as other approaches
+    # Regex patterns for different Altair dataset reference styles
     patterns = [
-        r"data\.(\w+)\s*\(",
-        r"data\.(\w+)\.url",
-        r"alt\.topo_feature\s*\(\s*data\.(\w+)\.url",
-        r"vega_datasets\.data\.(\w+)\.url",
-        r"alt\.UrlData\s*\(\s*data\.(\w+)\.url",
+        r"data\.(\w+)\s*\(",  # data.cars()
+        r"data\.(\w+)\.url",  # data.cars.url
+        r"alt\.topo_feature\s*\(\s*data\.(\w+)\.url",  # alt.topo_feature(data.cars.url
+        r"vega_datasets\.data\.(\w+)\.url",  # Legacy: from vega_datasets import data
+        r"altair\.datasets\.data\.(\w+)\.url",  # Altair v6: import altair (fully qualified)
+        r"alt\.UrlData\s*\(\s*data\.(\w+)\.url",  # alt.UrlData(data.cars.url
     ]
 
+    # Extract dataset names from all patterns
+    # Note: Patterns may overlap (e.g., alt.UrlData(data.cars.url) matches patterns 2 and 6)
+    # Deduplication via set() ensures each name appears once
     extracted_names = set()
     for pattern in patterns:
         matches = re.findall(pattern, code)
@@ -1606,7 +1643,8 @@ def extract_datasets_from_altair_code(
     Notes
     -----
     - File path extraction uses name_map for normalization
-    - API name validation uses config.toml mappings (see config['altair']['name_mapping'])
+    - API name validation uses optional config.toml mappings (for Altair v5 legacy support)
+    - Altair v6+ uses canonical names directly (empty mapping in config.toml)
     - Checks for vega_datasets or altair.datasets imports before attempting API extraction
     """
     datasets = []
@@ -1635,7 +1673,12 @@ def extract_datasets_from_altair_code(
 
     if re.search(vega_import, code) or re.search(altair_import, code):
         # Extract API datasets using config.toml mappings
-        api_datasets = extract_altair_api_datasets(code, valid_names)
+        # For Altair v6+, mapping is typically empty (no transformation needed)
+        api_datasets = extract_altair_api_datasets(
+            code,
+            valid_names,
+            name_mapping=_config.get("altair", {}).get("name_mapping", {}),
+        )
         datasets.extend(api_datasets)
 
     return datasets
