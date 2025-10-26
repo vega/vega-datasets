@@ -5,27 +5,41 @@
 # Altair Dataset Name Mappings
 # ============================================================================
 #
-# Manual mappings for Altair Python API names that don't match datapackage.json
-# canonical names. These mappings are needed because:
+# LEGACY SUPPORT: This section provides backward compatibility for Altair v5.x.
 #
-# 1. Altair uses camelCase API names (e.g., data.londonBoroughs.url)
-# 2. The datapackage.json uses snake_case canonical names (e.g., london_boroughs)
-# 3. Some Altair API names don't include file extensions
+# As of Altair v6 (PR #3859, merged 2025-10-26), Altair uses canonical
+# vega-datasets names directly. When tracking Altair main branch (v6+),
+# this mapping section should remain empty.
 #
-# TEMPORARY: This section will eventually be removed once:
-# - The dataset name mapper includes extension-less variants (see ALTAIR_APPROACH_COMPARISON_RESULTS.md)
-# - OR Altair completes its migration to match vega-datasets naming conventions
+# Manual mappings may be added if:
+# 1. Tracking older Altair releases (v5.x) that use camelCase API names
+# 2. Custom Altair forks with different naming conventions
+# 3. Testing against historical Altair versions
 #
 # Format: altair_api_name = "canonical_datapackage_name"
 
 [altair.name_mapping]
-londonBoroughs = "london_boroughs"
-londonCentroids = "london_centroids"
-londonTubeLines = "london_tube_lines"
-# Add more mappings here as they are discovered
-# Example for icon datasets:
-# "7zip" = "icon_7zip"
-# "github" = "icon_github"
+# Empty mapping section - kept for backward compatibility with Altair v5.x
+#
+# Altair v6+ (PR #3859, merged 2025-10-26) uses canonical vega-datasets names
+# directly, so no mappings are needed when tracking Altair main branch.
+#
+# VERSION TRACKING: This configuration currently tracks Altair main branch (v6+).
+# The git reference is hardcoded in generate_gallery_examples.py (line 1135).
+# To track a specific Altair version, you must modify the Python script to use
+# a different git ref (e.g., "v5.4.1" or "v6.0.0" instead of "main").
+#
+# TESTING WITH ALTAIR V5: If you need to regenerate examples from Altair v5.x
+# (e.g., for comparison or regression testing):
+# 1. Modify generate_gallery_examples.py to fetch from Altair v5.x tag
+# 2. Uncomment the camelCase mappings below
+# 3. Run the script to regenerate gallery_examples.json
+# 4. After testing, restore this section and the script to v6+ configuration
+#
+# Altair v5.x mappings (uncomment if testing with v5.x):
+# londonBoroughs = "london_boroughs"
+# londonCentroids = "london_centroids"
+# londonTubeLines = "london_tube_lines"
 
 # ============================================================================
 # Data Source URLs
@@ -46,6 +60,13 @@ vega_examples_url = "https://raw.githubusercontent.com/vega/vega/main/docs/_data
 
 # Altair example directories
 # The script fetches Python files from both syntax styles
+#
+# STABILITY NOTE: The script currently fetches from Altair's main branch
+# (hardcoded in generate_gallery_examples.py). This tracks the latest Altair v6+
+# development but creates a moving target dependency. For production stability,
+# consider pinning to a specific Altair release tag after v6.0.0 is released.
+#
+# Current approach assumes Altair main is stable post-v6 merge (PR #3859).
 altair_examples_dirs = [
     "tests/examples_methods_syntax",
     "tests/examples_arguments_syntax",

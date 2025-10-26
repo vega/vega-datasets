@@ -2,7 +2,7 @@
   "name": "gallery-examples",
   "title": "Vega Ecosystem Gallery Examples Registry",
   "description": "Cross-reference catalog mapping gallery examples to vega-datasets resources. Tracks which datasets from the vega-datasets collection are used in example visualizations across Vega, Vega-Lite, and Altair galleries.",
-  "created": "2025-10-26T00:35:42.508794+00:00",
+  "created": "2025-10-26T18:51:10.659819+00:00",
   "datapackage": {
     "name": "vega-datasets",
     "version": "3.2.1",
@@ -417,7 +417,9 @@
         "Advanced Calculations"
       ],
       "description": "Inspired by `Zan Armstrong's comet chart <https://www.zanarmstrong.com/infovisresearch>`_ this plot uses ``mark_trail`` to visualize change of grouped data over time. A more elaborate example and explanation of creating comet charts in Altair is shown in `this blogpost <https://medium.com/de-dataverbinders/comet-charts-in-python-visualizing-statistical-mix-effects-and-simpsons-paradox-with-altair-6cd51fb58b7c>`_.",
-      "datasets_used": [],
+      "datasets_used": [
+        "barley"
+      ],
       "id": 30
     },
     {
@@ -440,8 +442,10 @@
       "categories": [
         "Case Studies"
       ],
-      "description": "This example shows bivariate deviation ellipses of petal length and width of three iris species. Inspired by `ggplot2.stat_ellipse`_ and directly based on `Deviation ellipses example`_ by `@essicolo`_ .. _ggplot2.stat_ellipse: https://ggplot2.tidyverse.org/reference/stat_ellipse.html#ref-examples .. _Deviation ellipses example: https://github.com/vega/altair/pull/514 .. _@essicolo: https://github.com/essicolo",
-      "datasets_used": [],
+      "description": "This example shows bivariate deviation ellipses of flipper length and body mass of three penguin species. Inspired by `ggplot2.stat_ellipse`_ and directly based on `Deviation ellipses example`_ by `@essicolo`_ .. _ggplot2.stat_ellipse: https://ggplot2.tidyverse.org/reference/stat_ellipse.html#ref-examples .. _Deviation ellipses example: https://github.com/vega/altair/pull/514 .. _@essicolo: https://github.com/essicolo",
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 32
     },
     {
@@ -454,9 +458,9 @@
       ],
       "description": "This example shows all the connections between major U.S. airports. Lookup transformations are used to find the coordinates of each airport and connecting airports. Connections are displayed on pointerover via a single selection.",
       "datasets_used": [
-        "airports",
+        "us_10m",
         "flights_airport",
-        "us_10m"
+        "airports"
       ],
       "id": 33
     },
@@ -779,8 +783,8 @@
       ],
       "description": "This is a layered geographic visualization that groups points by state.",
       "datasets_used": [
-        "airports",
-        "us_10m"
+        "us_10m",
+        "airports"
       ],
       "id": 57
     },
@@ -1474,7 +1478,9 @@
         "Scatter Plots"
       ],
       "description": "This example shows how to make a scatter plot with multiple feature encodings.",
-      "datasets_used": [],
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 108
     },
     {
@@ -1513,8 +1519,10 @@
       "categories": [
         "Advanced Calculations"
       ],
-      "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_ chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a modified parallel coordinates chart with the Iris dataset, where the y-axis shows the value after min-max rather than the raw value. It's a simplified Altair version of `the VegaLite version <https://vega.github.io/vega-lite/examples/parallel_coordinate.html>`_",
-      "datasets_used": [],
+      "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_ chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a modified parallel coordinates chart with the Penguins dataset, where the y-axis shows the value after min-max rather than the raw value. It's a simplified Altair version of `the VegaLite version <https://vega.github.io/vega-lite/examples/parallel_coordinate.html>`_",
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 111
     },
     {
@@ -1579,8 +1587,10 @@
       "categories": [
         "Advanced Calculations"
       ],
-      "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_ chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a parallel coordinates chart with the Iris dataset.",
-      "datasets_used": [],
+      "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_ chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a parallel coordinates chart with the Penguins dataset.",
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 116
     },
     {
@@ -1617,8 +1627,8 @@
       ],
       "description": "This is a layered map that shows the positions of airports on a background of U.S. states.",
       "datasets_used": [
-        "airports",
-        "us_10m"
+        "us_10m",
+        "airports"
       ],
       "id": 119
     },
@@ -1734,8 +1744,8 @@
       ],
       "description": "Three choropleths representing disjoint data from the same table.",
       "datasets_used": [
-        "population_engineers_hurricanes",
-        "us_10m"
+        "us_10m",
+        "population_engineers_hurricanes"
       ],
       "id": 128
     },
@@ -1743,12 +1753,14 @@
       "gallery_name": "altair",
       "example_name": "Repeated Density Estimates",
       "example_url": "https://altair-viz.github.io/gallery/density_repeat.html",
-      "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_arguments_syntax/density_repeat.py",
+      "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/density_repeat.py",
       "categories": [
         "Distributions"
       ],
-      "description": "Density estimates for each feature of iris flower. This is what we call a \"repeated\" plot, with one subplot for each feature.",
-      "datasets_used": [],
+      "description": "Density estimates for each measurement of penguins. This is what we call a \"repeated\" plot, with one subplot for each measurement type. All measurements are in millimeters, making them directly comparable on a shared x-axis.",
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 129
     },
     {
@@ -1800,7 +1812,9 @@
         "Distributions"
       ],
       "description": "This example demonstrates how to generate a scatter plot, with faceted marginal histograms that share their respective x- and y-limits.",
-      "datasets_used": [],
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 133
     },
     {
@@ -2171,8 +2185,10 @@
       "categories": [
         "Distributions"
       ],
-      "description": "To plot a stacked graph of estimates, use a shared ``extent`` and a fixed number of subdivision ``steps`` to ensure that the points for each area align well. Density estimates of measurements for each iris flower feature are plot in a stacked method. In addition, setting ``counts`` to true multiplies the densities by the number of data points in each group, preserving proportional differences.",
-      "datasets_used": [],
+      "description": "To plot a stacked graph of estimates, use a shared ``extent`` and a fixed number of subdivision ``steps`` to ensure that the points for each area align well. Density estimates of body mass for each penguin species are plotted in a stacked method. In addition, setting ``counts`` to true multiplies the densities by the number of data points in each group, preserving proportional differences.",
+      "datasets_used": [
+        "penguins"
+      ],
       "id": 161
     },
     {
@@ -2321,8 +2337,8 @@
       ],
       "description": "This is a layered geographic visualization that shows US capitals overlaid on a map.",
       "datasets_used": [
-        "us_state_capitals",
-        "us_10m"
+        "us_10m",
+        "us_state_capitals"
       ],
       "id": 172
     },
