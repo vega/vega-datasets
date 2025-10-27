@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2025-10-27T02:47:23.491535+00:00",
+  "created": "2025-10-27T13:00:14.510156+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -2933,7 +2933,7 @@
     {
       "name": "population_engineers_hurricanes",
       "type": "table",
-      "description": "Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,\n[Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)",
+      "description": "Per-state population (2016 ACS 1-Year), ratio of engineers to total civilian employed population (2016 ACS 1-Year), and total hurricane landfalls (possibly 1851-2015). Used in Vega-Lite example,\n[Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)",
       "licenses": [
         {
           "title": "U.S. Government Dataset",
@@ -2942,12 +2942,16 @@
       ],
       "sources": [
         {
-          "title": "Bureau of Labor Statistics",
-          "path": "https://www.bls.gov/oes/tables.htm"
+          "title": "U.S. Census Bureau, 2016 ACS 1-Year Estimates: Total Population (B01001) and Occupation (S2401)",
+          "path": "https://www.census.gov/data/developers/data-sets/acs-1year/2016.html"
         },
         {
-          "title": "NOAA National Climatic Data Center",
-          "path": "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+          "title": "Continental United States Hurricane Impacts/Landfalls",
+          "path": "https://www.aoml.noaa.gov/hrd/hurdat/All_U.S._Hurricanes.html"
+        },
+        {
+          "title": "NOAA FAQ: How Many Landfalling Hurricanes Have Hit Eact State?",
+          "path": "https://www.aoml.noaa.gov/hrd-faq/#landfalls-by-state"
         }
       ],
       "path": "population_engineers_hurricanes.csv",

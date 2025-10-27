@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-27 02:47:23 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-27 13:00:14 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1409,7 +1409,7 @@ http://doi.org/10.18128/D010.V6.0
 ### path
 population_engineers_hurricanes.csv
 ### description
-Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
+Per-state population (2016 ACS 1-Year), ratio of engineers to total civilian employed population (2016 ACS 1-Year), and total hurricane landfalls (possibly 1851-2015). Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)
 ### schema
     
@@ -1421,10 +1421,11 @@ Per-state population, number of engineers, and hurricanes. Used in Vega-Lite exa
 | engineers  | number  |
 | hurricanes | integer |
 ### sources
-| title                              | path                                                |
-|:-----------------------------------|:----------------------------------------------------|
-| Bureau of Labor Statistics         | https://www.bls.gov/oes/tables.htm                  |
-| NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records |
+| title                                                                                           | path                                                                 |
+|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|
+| U.S. Census Bureau, 2016 ACS 1-Year Estimates: Total Population (B01001) and Occupation (S2401) | https://www.census.gov/data/developers/data-sets/acs-1year/2016.html |
+| Continental United States Hurricane Impacts/Landfalls                                           | https://www.aoml.noaa.gov/hrd/hurdat/All_U.S._Hurricanes.html        |
+| NOAA FAQ: How Many Landfalling Hurricanes Have Hit Eact State?                                  | https://www.aoml.noaa.gov/hrd-faq/#landfalls-by-state                |
 ### licenses
 | title                   | path                                 |
 |:------------------------|:-------------------------------------|
