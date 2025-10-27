@@ -4,7 +4,7 @@ Thank you for your interest in contributing to Vega Datasets! This repository se
 
 We welcome contributions that enhance metadata, improve documentation, fix dataset issues, enhance infrastructure, or add new datasets that demonstrate visualization techniques. Each dataset should serve a clear purpose in showcasing visualization capabilities. 
 
-All contributions are accepted under the [Project's license](./LICENSE). The Project abides by the Vega Organization's [code of conduct](https://github.com/vega/.github/blob/main/CODE_OF_CONDUCT.md) and [governance](https://github.com/vega/.github/blob/main/project-docs/GOVERNANCE.md).
+All contributions are accepted under the [Project's license](https://github.com/vega/vega-datasets/blob/main/README.md#license). The Project abides by the Vega Organization's [code of conduct](https://github.com/vega/.github/blob/main/CODE_OF_CONDUCT.md) and [governance](https://github.com/vega/.github/blob/main/project-docs/GOVERNANCE.md).
 
 ## Dataset Contribution Guidelines
 
