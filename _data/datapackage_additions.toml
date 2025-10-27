@@ -1220,15 +1220,18 @@ path  = "https://www.ipums.org/about/terms"
 
 [[resources]] # Path: population_engineers_hurricanes.csv
 path = "population_engineers_hurricanes.csv"
-description = """Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
+description = """Per-state population (2016 ACS 1-Year), ratio of engineers to total civilian employed population (2016 ACS 1-Year), and total hurricane landfalls (possibly 1851-2015). Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
 
 [[resources.sources]]
-title = "Bureau of Labor Statistics"
-path  = "https://www.bls.gov/oes/tables.htm"
+title = "U.S. Census Bureau, 2016 ACS 1-Year Estimates: Total Population (B01001) and Occupation (S2401)"
+path  = "https://www.census.gov/data/developers/data-sets/acs-1year/2016.html"
 [[resources.sources]]
-title = "NOAA National Climatic Data Center"
-path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+title = "Continental United States Hurricane Impacts/Landfalls"
+path  = "https://www.aoml.noaa.gov/hrd/hurdat/All_U.S._Hurricanes.html"
+[[resources.sources]]
+title = "NOAA FAQ: How Many Landfalling Hurricanes Have Hit Eact State?"
+path  = "https://www.aoml.noaa.gov/hrd-faq/#landfalls-by-state"
 
 [[resources.licenses]]
 title = "U.S. Government Dataset"
