@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2025-10-27T02:36:50.208080+00:00",
+  "created": "2025-10-27T02:47:23.491535+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -2621,8 +2621,8 @@
       ],
       "sources": [
         {
-          "title": "palmerpenguins R Package",
-          "path": "https://allisonhorst.github.io/palmerpenguins/"
+          "title": "Palmer Station Antarctica LTER",
+          "path": "https://pallter.marine.rutgers.edu/"
         },
         {
           "title": "Allison Horst's Penguins Repository",

@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-27 02:36:50 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-27 02:47:23 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1285,10 +1285,10 @@ variations between species and sexual dimorphism in Antarctic penguins.
 | Body Mass (g)       | integer | Body mass in grams                                                  |
 | Sex                 | string  | Sex of the penguin (MALE, FEMALE or null)                           |
 ### sources
-| title                               | path                                           |
-|:------------------------------------|:-----------------------------------------------|
-| palmerpenguins R Package            | https://allisonhorst.github.io/palmerpenguins/ |
-| Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins       |
+| title                               | path                                     |
+|:------------------------------------|:-----------------------------------------|
+| Palmer Station Antarctica LTER      | https://pallter.marine.rutgers.edu/      |
+| Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins |
 ### licenses
 | name              | path                                                                        |
 |:------------------|:----------------------------------------------------------------------------|

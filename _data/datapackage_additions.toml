@@ -1124,8 +1124,8 @@ name        = "Sex"
 description = "Sex of the penguin (MALE, FEMALE or null)"
 
 [[resources.sources]]
-title = "palmerpenguins R Package"
-path  = "https://allisonhorst.github.io/palmerpenguins/"
+title = "Palmer Station Antarctica LTER"
+path  = "https://pallter.marine.rutgers.edu/"
 [[resources.sources]]
 title = "Allison Horst's Penguins Repository"
 path  = "https://github.com/allisonhorst/penguins"
