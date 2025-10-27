@@ -33,8 +33,8 @@ and municipal airports. Contains information about each airport's location (lati
 coordinates), identification codes, name, city, state, and country."""
 
 [[resources.sources]]
-title = "Airports (Data.gov)"
-path  = "https://catalog.data.gov/dataset/airports-5e97a"
+title = "FAA Aviation Facilities (Data.gov)"
+path  = "https://catalog.data.gov/dataset/aviation-facilities1"
 
 [[resources.licenses]]
 name  = "other-open"
@@ -891,7 +891,7 @@ and \"Contains Ordnance Survey data © Crown copyright and database right [2015]
 
 [[resources.sources]]
 title = "Statistical GIS Boundary Files, London Datastore"
-path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
+path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-for-london-20od9/"
 
 [[resources.licenses]]
 title = "UK Open Government License"
@@ -1124,8 +1124,8 @@ name        = "Sex"
 description = "Sex of the penguin (MALE, FEMALE or null)"
 
 [[resources.sources]]
-title = "Palmer Station Antarctica LTER"
-path  = "https://pal.lternet.edu/"
+title = "palmerpenguins R Package"
+path  = "https://allisonhorst.github.io/palmerpenguins/"
 [[resources.sources]]
 title = "Allison Horst's Penguins Repository"
 path  = "https://github.com/allisonhorst/penguins"
@@ -1226,9 +1226,6 @@ description = """Per-state population, number of engineers, and hurricanes. Used
 [[resources.sources]]
 title = "Bureau of Labor Statistics"
 path  = "https://www.bls.gov/oes/tables.htm"
-[[resources.sources]]
-title = "American Community Survey"
-path  = "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table"
 [[resources.sources]]
 title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
@@ -1574,7 +1571,7 @@ path  = "https://www.census.gov/geographies/mapping-files/time-series/geo/cartog
 
 [[resources.licenses]]
 title = "TopoJSON US Atlas ISC License"
-path  = "https://github.com/topojson/us-atlas/blob/master/LICENSE.md"
+path  = "https://github.com/topojson/us-atlas/blob/master/LICENSE"
 
 [[resources]] # Path: us-employment.csv
 path = "us-employment.csv"
@@ -1739,7 +1736,7 @@ path  = "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-a
 
 [[resources.licenses]]
 title = "TopoJSON World Atlas ISC License"
-path  = "https://github.com/topojson/world-atlas/blob/master/LICENSE.md"
+path  = "https://github.com/topojson/world-atlas/blob/master/LICENSE"
 
 [[resources.licenses]]
 title = "Natural Earth Data Public Domain"

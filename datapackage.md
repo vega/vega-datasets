@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-08-21 23:04:37 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-27 02:36:50 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -51,9 +51,9 @@ coordinates), identification codes, name, city, state, and country.
 | latitude  | number |
 | longitude | number |
 ### sources
-| title               | path                                            |
-|:--------------------|:------------------------------------------------|
-| Airports (Data.gov) | https://catalog.data.gov/dataset/airports-5e97a |
+| title                              | path                                                  |
+|:-----------------------------------|:------------------------------------------------------|
+| FAA Aviation Facilities (Data.gov) | https://catalog.data.gov/dataset/aviation-facilities1 |
 ### licenses
 | name       | title                                |
 |:-----------|:-------------------------------------|
@@ -1020,9 +1020,9 @@ Boundaries of London boroughs reprojected and simplified from `London_Borough_Ex
 Original data "contains National Statistics data © Crown copyright and database right (2015)" 
 and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 ### sources
-| title                                            | path                                                                     |
-|:-------------------------------------------------|:-------------------------------------------------------------------------|
-| Statistical GIS Boundary Files, London Datastore | https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london |
+| title                                            | path                                                                                |
+|:-------------------------------------------------|:------------------------------------------------------------------------------------|
+| Statistical GIS Boundary Files, London Datastore | https://data.london.gov.uk/dataset/statistical-gis-boundary-files-for-london-20od9/ |
 ### licenses
 | title                      | path                                                                       |
 |:---------------------------|:---------------------------------------------------------------------------|
@@ -1285,10 +1285,10 @@ variations between species and sexual dimorphism in Antarctic penguins.
 | Body Mass (g)       | integer | Body mass in grams                                                  |
 | Sex                 | string  | Sex of the penguin (MALE, FEMALE or null)                           |
 ### sources
-| title                               | path                                     |
-|:------------------------------------|:-----------------------------------------|
-| Palmer Station Antarctica LTER      | https://pal.lternet.edu/                 |
-| Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins |
+| title                               | path                                           |
+|:------------------------------------|:-----------------------------------------------|
+| palmerpenguins R Package            | https://allisonhorst.github.io/palmerpenguins/ |
+| Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins       |
 ### licenses
 | name              | path                                                                        |
 |:------------------|:----------------------------------------------------------------------------|
@@ -1421,11 +1421,10 @@ Per-state population, number of engineers, and hurricanes. Used in Vega-Lite exa
 | engineers  | number  |
 | hurricanes | integer |
 ### sources
-| title                              | path                                                                                                              |
-|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------|
-| Bureau of Labor Statistics         | https://www.bls.gov/oes/tables.htm                                                                                |
-| American Community Survey          | https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table |
-| NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records                                                               |
+| title                              | path                                                |
+|:-----------------------------------|:----------------------------------------------------|
+| Bureau of Labor Statistics         | https://www.bls.gov/oes/tables.htm                  |
+| NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records |
 ### licenses
 | title                   | path                                 |
 |:------------------------|:-------------------------------------|
@@ -1698,9 +1697,9 @@ in turn is a redistribution of the Census Bureau's cartographic boundary shapefi
 | TopoJSON US Atlas                            | https://github.com/topojson/us-atlas                                                        |
 | US Census Bureau Cartographic Boundary FIles | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
 ### licenses
-| title                         | path                                                        |
-|:------------------------------|:------------------------------------------------------------|
-| TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
+| title                         | path                                                     |
+|:------------------------------|:---------------------------------------------------------|
+| TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE |
 ## `us_employment`
 ### path
 us-employment.csv
@@ -1897,10 +1896,10 @@ resource for creating web-based world maps where precise boundary detail isn't r
 | TopoJSON World Atlas (Likely original source, processed from Natural Earth data) | https://github.com/topojson/world-atlas                                                  |
 | Natural Earth Data - Admin 0 Countries (1:110m)                                  | https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ |
 ### licenses
-| title                            | path                                                           |
-|:---------------------------------|:---------------------------------------------------------------|
-| TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
-| Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
+| title                            | path                                                        |
+|:---------------------------------|:------------------------------------------------------------|
+| TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE |
+| Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/        |
 ## `zipcodes`
 ### path
 zipcodes.csv

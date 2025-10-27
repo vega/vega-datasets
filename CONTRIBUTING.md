@@ -52,7 +52,7 @@ For datasets requiring processing:
 
 ## Metadata and Documentation
 
-We follow the [Data Package Standard 2.0](https://datapackage.org/standard/) with:
+We follow the [Data Package Standard 2.0](https://datapackage.org/) with:
 
 - Auto-generated `datapackage.json` and `datapackage.md` files
 - Datasets in the `data/` directory

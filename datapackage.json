@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2025-08-21T23:04:37.691343+00:00",
+  "created": "2025-10-27T02:36:50.208080+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -58,8 +58,8 @@
       ],
       "sources": [
         {
-          "title": "Airports (Data.gov)",
-          "path": "https://catalog.data.gov/dataset/airports-5e97a"
+          "title": "FAA Aviation Facilities (Data.gov)",
+          "path": "https://catalog.data.gov/dataset/aviation-facilities1"
         }
       ],
       "path": "airports.csv",
@@ -2147,7 +2147,7 @@
       "sources": [
         {
           "title": "Statistical GIS Boundary Files, London Datastore",
-          "path": "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
+          "path": "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-for-london-20od9/"
         }
       ],
       "path": "londonBoroughs.json",
@@ -2621,8 +2621,8 @@
       ],
       "sources": [
         {
-          "title": "Palmer Station Antarctica LTER",
-          "path": "https://pal.lternet.edu/"
+          "title": "palmerpenguins R Package",
+          "path": "https://allisonhorst.github.io/palmerpenguins/"
         },
         {
           "title": "Allison Horst's Penguins Repository",
@@ -2944,10 +2944,6 @@
         {
           "title": "Bureau of Labor Statistics",
           "path": "https://www.bls.gov/oes/tables.htm"
-        },
-        {
-          "title": "American Community Survey",
-          "path": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table"
         },
         {
           "title": "NOAA National Climatic Data Center",
@@ -3456,7 +3452,7 @@
       "licenses": [
         {
           "title": "TopoJSON US Atlas ISC License",
-          "path": "https://github.com/topojson/us-atlas/blob/master/LICENSE.md"
+          "path": "https://github.com/topojson/us-atlas/blob/master/LICENSE"
         }
       ],
       "sources": [
@@ -3842,7 +3838,7 @@
       "licenses": [
         {
           "title": "TopoJSON World Atlas ISC License",
-          "path": "https://github.com/topojson/world-atlas/blob/master/LICENSE.md"
+          "path": "https://github.com/topojson/world-atlas/blob/master/LICENSE"
         },
         {
           "title": "Natural Earth Data Public Domain",
