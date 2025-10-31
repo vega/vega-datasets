@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-27 13:00:14 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-10-31 08:34:52 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -36,9 +36,11 @@ Application icon from open-source software project. Used in [Image-based Scatter
 ### path
 airports.csv
 ### description
-Airports in the United States and its territories, including  major commercial, regional, 
+Airports in the United States and its territories, including major commercial, regional, 
 and municipal airports. Contains information about each airport's location (latitude/longitude 
-coordinates), identification codes, name, city, state, and country.
+coordinates), identification codes, name, city, state, and country. While the exact generation 
+source of this file is unknown, this data is consistent with files provided on a monthly 
+frequency by the FAA's [National Airspace System Resource](https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/).
 ### schema
     
 | name      | type   |
@@ -51,9 +53,9 @@ coordinates), identification codes, name, city, state, and country.
 | latitude  | number |
 | longitude | number |
 ### sources
-| title                              | path                                                  |
-|:-----------------------------------|:------------------------------------------------------|
-| FAA Aviation Facilities (Data.gov) | https://catalog.data.gov/dataset/aviation-facilities1 |
+| title                           | path                                                                             |
+|:--------------------------------|:---------------------------------------------------------------------------------|
+| Federal Aviation Administration | https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/ |
 ### licenses
 | name       | title                                |
 |:-----------|:-------------------------------------|
