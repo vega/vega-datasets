@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
           node-version: 20
 
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v7
         with:
           version: ">=0.5.0"
           enable-cache: true
