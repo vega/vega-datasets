@@ -1485,7 +1485,7 @@ F91,Thomas P Stafford,Weatherford,OK,USA,35.54482944,-98.66849028
 F99,Holdenville Municipal,Holdenville,OK,USA,35.085875,-96.41666667
 FAI,Fairbanks International,Fairbanks,AK,USA,64.8136775,-147.8596694
 FAM,Farmington Regional,Farmington,MO,USA,37.76107917,-90.42859722
-FAQ,Fitiuta,Fitiuta Village,AS,USA,14.21577583,-169.4239058
+FAQ,Fitiuta,Fitiuta Village,AS,USA,-14.21577583,-169.4239058
 FAR,Hector International,Fargo,ND,USA,46.91934889,-96.81498889
 FAT,Fresno Yosemite International,Fresno,CA,USA,36.77619444,-119.7181389
 FAY,Fayetteville Municipal,Fayetteville,NC,USA,34.99147222,-78.88
@@ -1644,10 +1644,10 @@ GRE,Greenville,Greenville,IL,USA,38.83615778,-89.37841111
 GRI,Central Nebraska Regional,Grand Island,NE,USA,40.96747222,-98.30861111
 GRK,Robert Gray AAF,Killeen,TX,USA,31.06489778,-97.82779778
 GRN,Gordon Municipal,Gordon,NE,USA,42.80597222,-102.17525
-GRO,Rota International,Rota Island,CQ,USA,14.1743075,-145.2425353
+GRO,Rota International,Rota Island,CQ,USA,14.1743075,145.2425353
 GRR,Kent County International,Grand Rapids,MI,USA,42.88081972,-85.52276778
 GSH,Goshen Municipal,Goshen,IN,USA,41.52716028,-85.79210278
-GSN,Saipan International,Obyan,CQ,USA,15.11900139,-145.7293561
+GSN,Saipan International,Obyan,CQ,USA,15.11900139,145.7293561
 GSO,Piedmont Triad International,Greensboro,NC,USA,36.09774694,-79.9372975
 GSP,Greenville-Spartanburg,Greer,SC,USA,34.89566722,-82.21885833
 GST,Gustavus,Gustavus,AK,USA,58.42438139,-135.7073814
@@ -1655,7 +1655,7 @@ GTF,Great Falls Intl,Great Falls,MT,USA,47.48200194,-111.3706853
 GTR,Golden Triangle Regional,Columbus-Starkville-West Point,MS,USA,33.45033444,-88.59136861
 GTU,Georgetown Municipal,Georgetown,TX,USA,30.67880889,-97.67938389
 GUC,Gunnison County,Gunnison,CO,USA,38.53396333,-106.9331817
-GUM,Guam International,Agana,GU,USA,13.48345,-144.7959825
+GUM,Guam International,Agana,GU,USA,13.48345,144.7959825
 GUP,Gallup Municipal,Gallup,NM,USA,35.51105833,-108.7893094
 GUY,Guymon Municipal,Guymon,OK,USA,36.68507194,-101.5077817
 GVL,Lee Gilmer Memorial,Gainesville,GA,USA,34.27290389,-83.82681333
@@ -2658,7 +2658,7 @@ POY,Powell Muni,Powell,WY,USA,44.86797222,-108.793
 PPA,Perry Lefors,Pampa,TX,USA,35.61298806,-100.9962608
 PPC,Prospect Creek,Prospect Creek,AK,USA,66.81288139,-150.6437925
 PPF,Tri City,Parsons,KS,USA,37.33125778,-95.50900667
-PPG,Pago Pago International,Pago Pago,AS,USA,14.33102278,-170.7105258
+PPG,Pago Pago International,Pago Pago,AS,USA,-14.33102278,-170.7105258
 PPO,La Porte Municipal,La Porte,IN,USA,41.57276194,-86.73413139
 PPQ,Pittsfield Penstone Municipal,Pittsfield,IL,USA,39.63885556,-90.77843111
 PQI,Northern Maine Regional,Presque Isle,ME,USA,46.68896,-68.04479972
@@ -3113,7 +3113,7 @@ TLR,Mefford,Tulare,CA,USA,36.15630556,-119.3261667
 TLT,Tuluksak,Tuluksak,AK,USA,61.09676222,-160.9684167
 TMA,Henry Tift Myers,Tifton,GA,USA,31.42879528,-83.48787167
 TMB,Kendall-Tamiami Executive,Miami,FL,USA,25.64788889,-80.43277778
-TNI,West Tinian,Peipeinimaru,CQ,USA,14.99685028,-145.6180383
+TNI,West Tinian,Peipeinimaru,CQ,USA,14.99685028,145.6180383
 TNP,Twentynine Palms,Twentynine Palms,CA,USA,34.13208528,-115.9458319
 TNT,Dade Collier T And T,Miami,FL,USA,25.86180556,-80.897
 TNU,Newton Municipal,Newton,IA,USA,41.67442972,-93.02172917
@@ -3140,7 +3140,7 @@ TRM,Desert Resorts Regional,Palm Springs,CA,USA,33.62789944,-116.1601194
 TRX,Trenton Municipal,Trenton,MO,USA,40.08351333,-93.59063472
 TSO,Carroll County-Tolson,Carrollton,OH,USA,40.56186833,-81.07748611
 TSP,Tehachapi Municipal,Tehachapi,CA,USA,35.13497222,-118.43925
-TT01,Pagan Airstrip,Shomu-Shon,CQ,USA,18.12444444,-145.7686111
+TT01,Pagan Airstrip,Shomu-Shon,CQ,USA,18.12444444,145.7686111
 TTA,Sanford-Lee County Regional,Sanford,NC,USA,35.58247222,-79.10136111
 TTD,Portland-Troutdale,Portland,OR,USA,45.54936889,-122.4012519
 TTF,Monroe Custer,Monroe,MI,USA,41.93990639,-83.43468306
@@ -3360,7 +3360,7 @@ YKM,Yakima Air Terminal,Yakima,WA,USA,46.56816972,-120.5440594
 YKN,Chan Gurney Municipal,Yankton,SD,USA,42.91669444,-97.38594444
 YNG,Youngstown-Warren Regional,Youngstown,OH,USA,41.26073556,-80.67909667
 YUM,Yuma MCAS-Yuma International,Yuma,AZ,USA,32.65658333,-114.6059722
-Z08,Ofu,Ofu Village,AS,USA,14.18435056,-169.6700236
+Z08,Ofu,Ofu Village,AS,USA,-14.18435056,-169.6700236
 Z09,Kasigluk,Kasigluk,AK,USA,60.87202194,-162.5248094
 Z13,Akiachak,Akiachak,AK,USA,60.90453167,-161.42091
 Z17,Ophir,Ophir,AK,USA,63.1460375,-156.529865
