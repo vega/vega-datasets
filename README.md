@@ -1,4 +1,5 @@
 # Vega Datasets
+Vega Datasets are also widely used for rapid prototyping in machine learning workflows, enabling students and practitioners to test visualization strategies, benchmark feature analysis, and explore data transformations before applying them to real-world datasets.
 
 [![npm version](https://img.shields.io/npm/v/vega-datasets.svg)](https://www.npmjs.com/package/vega-datasets)
 [![Build Status](https://github.com/vega/vega-datasets/workflows/Test/badge.svg)](https://github.com/vega/vega-datasets/actions)
