@@ -677,6 +677,27 @@ def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
         fn(pkg, p)
 
 
+def write_schemas_ts(pkg: Package, repo_dir: Path) -> None:
+    """Generate src/schemas.ts listing protected string fields for CSVs."""
+    protected_fields: dict[str, list[str]] = {}
+
+    for resource in pkg.resources:
+        if resource.path.endswith(".csv") and resource.schema:
+            string_fields = [
+                f.name for f in resource.schema.fields if f.type == "string"
+            ]
+            if string_fields:
+                protected_fields[resource.path] = string_fields
+
+    ts_path = repo_dir / "src" / "schemas.ts"
+    with ts_path.open("w", encoding="utf-8") as f:
+        f.write(
+            f"export default {json.dumps(protected_fields, indent=2)} as Record<string, string[]>;\n"
+        )
+
+    logger.info("Wrote protected field schemas to %s", ts_path)
+
+
 def main(
     *,
     output_format: Literal["json", "yaml"] = "json",
@@ -711,6 +732,7 @@ def main(
     logger.info(msg)
     DEBUG_MARKDOWN = ("md",)
     write_package(pkg, repo_dir, output_format, *DEBUG_MARKDOWN)
+    write_schemas_ts(pkg, repo_dir)
 
 
 if __name__ == "__main__":
