@@ -1,34 +1,10 @@
 import * as d3 from "d3-dsv";
 import pkg from '../package.json';
 import urls from "./urls.js";
-import schemas from "./schemas.js";
+import stringOverrides from "./stringOverrides.js";
 
 const version = pkg.version;
 type Name = keyof typeof urls;
-
-// Inline type inference (mirrors d3.autoType, zero allocation)
-const fixtz = new Date("2019-01-01T00:00").getHours() || new Date("2019-07-01T00:00").getHours();
-const dateRegex = /^([-+]\d{2})?\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{3})?)?(Z|[-+]\d{2}:\d{2})?)?$/;
-
-function inferType(value: string): any {
-  const v = value.trim();
-  if (!v) return null;
-  if (v === "true") return true;
-  if (v === "false") return false;
-  if (v === "NaN") return NaN;
-
-  const num = +v;
-  if (!isNaN(num)) return num;
-
-  const m = v.match(dateRegex);
-  if (m) {
-    let dateStr = v;
-    if (fixtz && m[4] && !m[7]) dateStr = v.replace(/-/g, "/").replace(/T/, " ");
-    return new Date(dateStr);
-  }
-
-  return value;
-}
 
 const data: {
   [key in Name]: () => Promise<any | any[] | string> & { url: string };
@@ -43,12 +19,26 @@ for (const name of Object.keys(urls) as Name[]) {
       return await result.json();
     } else if (name.endsWith(".csv")) {
       const text = await result.text();
-      const protectedKeys = new Set(schemas[name] || []);
+      const overrideKeys = stringOverrides[name];
+
+      if (!overrideKeys || overrideKeys.length === 0) {
+        // No overrides needed - use autoType directly
+        return d3.csvParse(text, d3.autoType);
+      }
 
       return d3.csvParse(text, (row) => {
-        for (const key in row) {
-          if (protectedKeys.has(key)) continue;  // Keep as string
-          (row as any)[key] = inferType(row[key]!);
+        // Capture original string values for fields that should stay strings
+        const originals: Record<string, string> = {};
+        for (const key of overrideKeys) {
+          if (key in row) originals[key] = row[key]!;
+        }
+
+        // Let d3.autoType infer types for all fields
+        d3.autoType(row);
+
+        // Restore string values for override fields (e.g., IATA codes like "0E0")
+        for (const key in originals) {
+          (row as any)[key] = originals[key];
         }
         return row;
       });

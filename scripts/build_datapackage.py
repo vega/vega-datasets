@@ -677,9 +677,9 @@ def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
         fn(pkg, p)
 
 
-def write_schemas_ts(pkg: Package, repo_dir: Path) -> None:
-    """Generate src/schemas.ts listing protected string fields for CSVs."""
-    protected_fields: dict[str, list[str]] = {}
+def write_string_overrides_ts(pkg: Package, repo_dir: Path) -> None:
+    """Generate src/stringOverrides.ts listing fields that should remain strings."""
+    string_fields_by_csv: dict[str, list[str]] = {}
 
     for resource in pkg.resources:
         if resource.path.endswith(".csv") and resource.schema:
@@ -687,15 +687,15 @@ def write_schemas_ts(pkg: Package, repo_dir: Path) -> None:
                 f.name for f in resource.schema.fields if f.type == "string"
             ]
             if string_fields:
-                protected_fields[resource.path] = string_fields
+                string_fields_by_csv[resource.path] = string_fields
 
-    ts_path = repo_dir / "src" / "schemas.ts"
+    ts_path = repo_dir / "src" / "stringOverrides.ts"
     with ts_path.open("w", encoding="utf-8") as f:
         f.write(
-            f"export default {json.dumps(protected_fields, indent=2)} as Record<string, string[]>;\n"
+            f"export default {json.dumps(string_fields_by_csv, indent=2)} as Record<string, string[]>;\n"
         )
 
-    logger.info("Wrote protected field schemas to %s", ts_path)
+    logger.info("Wrote string overrides to %s", ts_path)
 
 
 def main(
@@ -732,7 +732,7 @@ def main(
     logger.info(msg)
     DEBUG_MARKDOWN = ("md",)
     write_package(pkg, repo_dir, output_format, *DEBUG_MARKDOWN)
-    write_schemas_ts(pkg, repo_dir)
+    write_string_overrides_ts(pkg, repo_dir)
 
 
 if __name__ == "__main__":
