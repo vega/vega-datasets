@@ -6,6 +6,24 @@ import stringOverrides from "./stringOverrides.js";
 const version = pkg.version;
 type Name = keyof typeof urls;
 
+function autoType(object: Record<string, any>, skipFields?: Set<string>) {
+  for (const key in object) {
+    if (skipFields?.has(key)) continue;
+    let value = object[key].trim(), number, m;
+    if (!value) value = null;
+    else if (value === "true") value = true;
+    else if (value === "false") value = false;
+    else if (value === "NaN") value = NaN;
+    else if (!isNaN(number = +value)) value = number;
+    else if (m = value.match(/^([-+]\d{2})?\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{3})?)?(Z|[-+]\d{2}:\d{2})?)?$/)) {
+      value = new Date(value);
+    }
+    else continue;
+    object[key] = value;
+  }
+  return object;
+}
+
 const data: {
   [key in Name]: () => Promise<any | any[] | string> & { url: string };
 } & { version: string } = { version } as any;
@@ -19,29 +37,8 @@ for (const name of Object.keys(urls) as Name[]) {
       return await result.json();
     } else if (name.endsWith(".csv")) {
       const text = await result.text();
-      const overrideKeys = stringOverrides[name];
-
-      if (!overrideKeys || overrideKeys.length === 0) {
-        // No overrides needed - use autoType directly
-        return d3.csvParse(text, d3.autoType);
-      }
-
-      return d3.csvParse(text, (row) => {
-        // Capture original string values for fields that should stay strings
-        const originals: Record<string, string> = {};
-        for (const key of overrideKeys) {
-          if (key in row) originals[key] = row[key]!;
-        }
-
-        // Let d3.autoType infer types for all fields
-        d3.autoType(row);
-
-        // Restore string values for override fields (e.g., IATA codes like "0E0")
-        for (const key in originals) {
-          (row as any)[key] = originals[key];
-        }
-        return row;
-      });
+      const skipFields = stringOverrides[name];
+      return d3.csvParse(text, (row) => autoType(row, skipFields));
     } else {
       return await result.text();
     }
