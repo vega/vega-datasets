@@ -6,6 +6,7 @@ import stringOverrides from "./stringOverrides.js";
 const version = pkg.version;
 type Name = keyof typeof urls;
 
+// modified from https://github.com/d3/d3-dsv/blob/a2facce660bb4895b56c62a655d0f252efc3d99f/src/autoType.js to add skipFields.
 function autoType(object: Record<string, any>, skipFields?: Set<string>) {
   for (const key in object) {
     if (skipFields?.has(key)) continue;
