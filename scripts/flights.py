@@ -366,8 +366,7 @@ class DateRange:
         date = col("date")
         year, month = (date.dt.year().alias("year"), date.dt.month().alias("month"))
         return tuple(
-            pl
-            .select(self.monthly)
+            pl.select(self.monthly)
             .lazy()
             .select(_file_stem_source(year, month).sort_by(date))
             .collect()
@@ -502,8 +501,7 @@ class Spec:
             Cleaned source data, spanning ``self.range``.
         """
         return (
-            self
-            ._transform_temporal(ldf)
+            self._transform_temporal(ldf)
             .select(self.columns)
             .collect()
             .sample(self.n_rows, seed=self._RANDOM_SEED)
@@ -730,14 +728,14 @@ class SourceMap:
         wrap_midnight = times.str.replace("2400", "0000").str.to_time("%H%M")
         datetime = flight_date.dt.combine(dep_time)
         flight_date_corrected = (
-            pl
-            .when(dep_time == pl.time(0, 0, 0, 0))
+            pl.when(dep_time == pl.time(0, 0, 0, 0))
             .then(datetime.dt.offset_by("1d"))
             .otherwise(datetime)
         )
         return (
-            ldf
-            .filter(~pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null()))
+            ldf.filter(
+                ~pl.any_horizontal(cancelled, dep_time == "", cs.float().is_null())
+            )
             .with_columns(wrap_midnight, cs.float().cast(int))
             .select(
                 flight_date_corrected.alias("date"),
@@ -854,8 +852,9 @@ class Flights:
     def _required_stems(self) -> set[str]:
         date = col("date")
         return set(
-            self.ranges
-            .select(date.dt.year().alias("year"), date.dt.month().alias("month"))
+            self.ranges.select(
+                date.dt.year().alias("year"), date.dt.month().alias("month")
+            )
             .unique()
             .select(_file_stem_source("year", "month"))
             .collect()

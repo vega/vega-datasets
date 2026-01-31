@@ -416,8 +416,7 @@ class HabitatDataProcessor:
         CountyDataFrame: A dataset of conterminous US county boundaries
         """
         return (
-            self
-            ._load_raw_county_data()
+            self._load_raw_county_data()
             .pipe(self._prepare_county_data)
             .pipe(self._filter_to_conterminous_us)
             .pipe(self._finalize_county_data)
