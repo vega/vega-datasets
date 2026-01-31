@@ -39,7 +39,7 @@ for (const name of Object.keys(urls) as Name[]) {
       return await result.json();
     } else if (name.endsWith(".csv")) {
       const text = await result.text();
-      const skipFields = stringOverrides[name];
+      const skipFields = stringOverrides[name] ? new Set(stringOverrides[name]) : undefined;
       return d3.csvParse(text, (row) => autoType(row, skipFields));
     } else {
       return await result.text();
