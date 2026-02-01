@@ -464,7 +464,13 @@ description = "Indicates, with `flare.json`, relationships among classes in a so
 
 [[resources]] # Path: flare.json
 path        = "flare.json"
-description = "Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy."
+description = """Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy.
+
+Represents a tree structure where nodes have different fields depending on their role:
+- Root node: only `id` and `name`
+- Branch nodes: `id`, `name`, and `parent`
+- Leaf nodes: `id`, `name`, `parent`, and `size`
+"""
 
 [resources.schema]
 [[resources.schema.fields]]
@@ -587,9 +593,9 @@ title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms N
 
 [[resources]] # Path: flights-3m.parquet
 path = "flights-3m.parquet"
-description = """Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics.
-Collected under regulatory reporting requirements (14 CFR Part 234), which mandate
-that qualifying airlines report on-time performance data to BTS. Transformed using
+description = """Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. 
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
+that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`"""
 
 [resources.schema]
@@ -631,20 +637,17 @@ title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms N
 
 [[resources]] # Path: flights-airport.csv
 path = "flights-airport.csv"
-description = """Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id), 
+description = """Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id),
 a destination airport, and the count of flights along this route."""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
+path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
 [[resources.licenses]]
 name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
-
-[[resources.sources]]
-title = "U.S. Bureau of Transportation Statistics"
-path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
 [[resources]] # Path: football.json
 path = "football.json"
@@ -1089,9 +1092,13 @@ path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version
 
 [[resources]] # Path: movies.json
 path = "movies.json"
-description = """A collection of films and their performance metrics, including box office earnings, budgets, 
-and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
-resource for developing data cleaning and validation skills in real-world analysis workflows."""
+description = """A collection of films and their performance metrics, including box office earnings, budgets,
+and audience ratings. Contains known data quality issues typical of real-world datasets:
+- Some movie titles with numeric names (1776, 2012, 300, etc.) are stored as JSON numbers rather than strings
+- Release dates use 'MMM DD YYYY' format rather than ISO 8601
+
+These characteristics make it suitable as a teaching resource for developing data cleaning
+and validation skills in real-world analysis workflows."""
 
 [resources.schema]
 [[resources.schema.fields]]
