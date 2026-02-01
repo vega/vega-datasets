@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2025-08-21 23:04:37 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-01 19:49:53 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -29,9 +29,9 @@ Application icon from open-source software project. Used in [Image-based Scatter
 |:--------|:-----------------------|
 | 7-Zip   | https://www.7-zip.org/ |
 ### licenses
-| title                             | path                              |
-|:----------------------------------|:----------------------------------|
-| GNU Lesser General Public License | https://www.7-zip.org/license.txt |
+| name     | title                             | path                              |
+|:---------|:----------------------------------|:----------------------------------|
+| LGPL-2.1 | GNU Lesser General Public License | https://www.7-zip.org/license.txt |
 ## `airports`
 ### path
 airports.csv
@@ -68,9 +68,9 @@ A raster grid of global annual precipitation for the year 2016 at a resolution 1
 |:----------------------------------|:------------------------------------------------------------------------|
 | Climate Forecast System Version 2 | https://www.cpc.ncep.noaa.gov/products/people/wwang/cfsv2_fcst_history/ |
 ### licenses
-| title         | path                                |
-|:--------------|:------------------------------------|
-| Public Domain | https://www.weather.gov/disclaimer/ |
+| name     | title         | path                                |
+|:---------|:--------------|:------------------------------------|
+| other-pd | Public Domain | https://www.weather.gov/disclaimer/ |
 ## `anscombe`
 ### path
 anscombe.json
@@ -127,9 +127,9 @@ Since then it has been used to demonstrate new visualization techniques, includi
 | The Design of Experiments Reference                                                                                                                                        | https://en.wikipedia.org/wiki/The_Design_of_Experiments |
 | Wiebe, G. A., Reinbach-Welch, L., Cowan, P. R. (1940). Yields of Barley Varieties in the United States and Canada, 1932-36. United States: U.S. Department of Agriculture. | https://books.google.com/books?id=OUfxLocnpKkC&pg=PA19  |
 ### licenses
-| name                                                                                        |
-|:--------------------------------------------------------------------------------------------|
-| Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified |
+| name         | title                                                                                       |
+|:-------------|:--------------------------------------------------------------------------------------------|
+| notspecified | Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified |
 ## `birdstrikes`
 ### path
 birdstrikes.csv
@@ -158,9 +158,9 @@ Records of reported wildlife strikes received by the U.S. FAA
 |:-----------------------------|:------------------------|
 | FAA Wildlife Strike Database | http://wildlife.faa.gov |
 ### licenses
-| title                   | path                                      |
-|:------------------------|:------------------------------------------|
-| U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
+| name     | title                   | path                                      |
+|:---------|:------------------------|:------------------------------------------|
+| other-pd | U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
 ## `budget`
 ### path
 budget.json
@@ -247,9 +247,9 @@ Historical and forecasted federal revenue/receipts produced in 2016 by the U.S. 
 |:------------------------------------------------------------|:--------------------------------------------------------------------|
 | Office of Management and Budget - Budget FY 2016 - Receipts | https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3 |
 ### licenses
-| title                   | path                                      |
-|:------------------------|:------------------------------------------|
-| U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
+| name     | title                   | path                                      |
+|:---------|:------------------------|:------------------------------------------|
+| other-pd | U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
 ## `budgets`
 ### path
 budgets.json
@@ -270,9 +270,9 @@ representing deficits (reaching a particularly large value of -$1.78 trillion du
 |:--------------------------------|:--------------------------------|
 | Office of Management and Budget | https://www.whitehouse.gov/omb/ |
 ### licenses
-| title                   | path                                      |
-|:------------------------|:------------------------------------------|
-| U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
+| name     | title                   | path                                      |
+|:---------|:------------------------|:------------------------------------------|
+| other-pd | U.S. Government Dataset | https://resources.data.gov/open-licenses/ |
 ## `burtin`
 ### path
 burtin.json
@@ -323,9 +323,9 @@ reads as follows:
 | Scope Magazine               | https://graphicdesignarchives.org/projects/scope-magazine-vol-iii-5/ |
 | Protovis Antibiotics Example | https://mbostock.github.io/protovis/ex/antibiotics-burtin.html       |
 ### licenses
-| title                      | path                                 |
-|:---------------------------|:-------------------------------------|
-| BSD License (via Protovis) | https://mbostock.github.io/protovis/ |
+| name         | title                      | path                                 |
+|:-------------|:---------------------------|:-------------------------------------|
+| BSD-3-Clause | BSD License (via Protovis) | https://mbostock.github.io/protovis/ |
 ## `cars`
 ### path
 cars.json
@@ -336,7 +336,7 @@ Collection of car specifications and performance metrics from various automobile
 | name             | type    |
 |:-----------------|:--------|
 | Name             | string  |
-| Miles_per_Gallon | integer |
+| Miles_per_Gallon | number  |
 | Cylinders        | integer |
 | Displacement     | number  |
 | Horsepower       | integer |
@@ -349,9 +349,9 @@ Collection of car specifications and performance metrics from various automobile
 |:-------------------------|:----------------------------------|
 | StatLib Datasets Archive | http://lib.stat.cmu.edu/datasets/ |
 ### licenses
-| title                                                                         | path                                       |
-|:------------------------------------------------------------------------------|:-------------------------------------------|
-| The original was distributed in 1982 for educational and scientific purposes. | http://lib.stat.cmu.edu/datasets/cars.desc |
+| name         | title                                                                         | path                                       |
+|:-------------|:------------------------------------------------------------------------------|:-------------------------------------------|
+| notspecified | The original was distributed in 1982 for educational and scientific purposes. | http://lib.stat.cmu.edu/datasets/cars.desc |
 ## `co2_concentration`
 ### path
 co2-concentration.csv
@@ -379,9 +379,9 @@ Only includes rows with valid data.
 | Scripps CO2 Program | https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record                                      |
 | In-situ CO2 Data    | https://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv |
 ### licenses
-| title                            | path                                         |
-|:---------------------------------|:---------------------------------------------|
-| Creative Commons Attribution 4.0 | https://creativecommons.org/licenses/by/4.0/ |
+| name      | title                            | path                                         |
+|:----------|:---------------------------------|:---------------------------------------------|
+| CC-BY-4.0 | Creative Commons Attribution 4.0 | https://creativecommons.org/licenses/by/4.0/ |
 ## `countries`
 ### path
 countries.json
@@ -409,9 +409,9 @@ aims to "show people the big picture" rather than support detailed numeric analy
 | Gapminder Foundation - Life Expectancy | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676 |        14 |
 | Gapminder Foundation - Fertility       | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676 |        14 |
 ### licenses
-| title                                          | path                                     |
-|:-----------------------------------------------|:-----------------------------------------|
-| Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
+| name      | title                                          | path                                     |
+|:----------|:-----------------------------------------------|:-----------------------------------------|
+| CC-BY-4.0 | Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
 ## `crimea`
 ### path
 crimea.json
@@ -445,9 +445,9 @@ the dramatic impact of sanitary reforms, particularly in reducing preventable de
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------|
 | Nightingale, Florence. A contribution to the sanitary history of the British army during the late war with Russia. London : John W. Parker and Son, 1859. Table II. Table showing the Estimated Average Monthly Strength of the Army; and the Deaths and Annual Rate of Mortality per 1,000 in each month, from April 1854, to March 1856 (inclusive), in the Hospitals of the Army in the East. | https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21 |
 ### licenses
-| title                                                               | path                                                                                 |
-|:--------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
-| Harvard Library - Digitized Content Copyright & Viewer Terms of Use | https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent |
+| name         | title                                                               | path                                                                                 |
+|:-------------|:--------------------------------------------------------------------|:-------------------------------------------------------------------------------------|
+| notspecified | Harvard Library - Digitized Content Copyright & Viewer Terms of Use | https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent |
 ## `disasters`
 ### path
 disasters.csv
@@ -469,10 +469,10 @@ calculating derived indicators, and adapting metadata. Deaths are reported as ab
 | EM-DAT: The Emergency Events Database                                 | https://www.emdat.be                            |
 | Hannah Ritchie, Pablo Rosado and Max Roser (2022) - Natural Disasters | https://ourworldindata.org/natural-catastrophes |
 ### licenses
-| title                                           | path                                          |
-|:------------------------------------------------|:----------------------------------------------|
-| EM-DAT terms of use                             | https://doc.emdat.be/docs/legal/terms-of-use/ |
-| Creative Commons BY license (Our World in Data) | https://creativecommons.org/licenses/by/4.0/  |
+| name         | title                                           | path                                          |
+|:-------------|:------------------------------------------------|:----------------------------------------------|
+| notspecified | EM-DAT terms of use                             | https://doc.emdat.be/docs/legal/terms-of-use/ |
+| CC-BY-4.0    | Creative Commons BY license (Our World in Data) | https://creativecommons.org/licenses/by/4.0/  |
 ## `driving`
 ### path
 driving.json
@@ -507,9 +507,9 @@ USGS Earthquake Hazards Program from January 31 to February 7, 2018 (UTC).
 |:---------------------|:---------------------------------------------------------------------------|
 | USGS Earthquake Feed | https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson |
 ### licenses
-| title              | path                                                                              |
-|:-------------------|:----------------------------------------------------------------------------------|
-| U.S. Public Domain | https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits |
+| name     | title              | path                                                                              |
+|:---------|:-------------------|:----------------------------------------------------------------------------------|
+| other-pd | U.S. Public Domain | https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits |
 ## `ffox`
 ### path
 ffox.png
@@ -520,31 +520,40 @@ Application icon from open-source software project. Used in [Image-based Scatter
 |:----------------|:---------------------------------|
 | Mozilla Firefox | https://www.mozilla.org/firefox/ |
 ### licenses
-| title                     | path                                                        |
-|:--------------------------|:------------------------------------------------------------|
-| Mozilla Trademark License | https://www.mozilla.org/en-US/foundation/trademarks/policy/ |
+| name         | title                     | path                                                        |
+|:-------------|:--------------------------|:------------------------------------------------------------|
+| notspecified | Mozilla Trademark License | https://www.mozilla.org/en-US/foundation/trademarks/policy/ |
 ## `flare_dependencies`
 ### path
 flare-dependencies.json
 ### description
-Indicates, with `flare.json`, relationships among classes in a software hierarchy.
+Network of class dependencies for the Flare visualization library. Each entry
+represents a directed edge where the `source` class depends on (imports) the `target` class.
+IDs correspond to those in `flare.json`.
 ### schema
     
-| name   | type    |
-|:-------|:--------|
-| source | integer |
-| target | integer |
+| name   | type    | description                                            |
+|:-------|:--------|:-------------------------------------------------------|
+| source | integer | ID of the class that has the dependency (the importer) |
+| target | integer | ID of the class being depended upon (the imported)     |
 ## `flare`
 ### path
 flare.json
 ### description
-Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy.
+Class hierarchy of the Flare visualization library. Used with `flare-dependencies.json`
+to represent the complete package/class structure.
+
+Represents a tree structure where nodes have different fields depending on their role:
+- Root node: only `id` and `name`
+- Branch nodes: `id`, `name`, and `parent`
+- Leaf nodes: `id`, `name`, `parent`, and `size`
+
 ### schema
     
-| name   | type    |
-|:-------|:--------|
-| id     | integer |
-| name   | string  |
+| name   | type    | description                       |
+|:-------|:--------|:----------------------------------|
+| id     | integer | Unique identifier for the node    |
+| name   | string  | Name of the node in the hierarchy |
 ## `flights_10k`
 ### path
 flights-10k.json
@@ -555,13 +564,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type     |
-|:------------|:---------|
-| date        | datetime |
-| delay       | integer  |
-| distance    | integer  |
-| origin      | string   |
-| destination | string   |
+| name        | type     | format         |
+|:------------|:---------|:---------------|
+| date        | datetime | %Y/%m/%d %H:%M |
+| delay       | integer  |                |
+| distance    | integer  |                |
+| origin      | string   |                |
+| destination | string   |                |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -626,13 +635,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type     |
-|:------------|:---------|
-| date        | datetime |
-| delay       | integer  |
-| distance    | integer  |
-| origin      | string   |
-| destination | string   |
+| name        | type     | format         |
+|:------------|:---------|:---------------|
+| date        | datetime | %Y/%m/%d %H:%M |
+| delay       | integer  |                |
+| distance    | integer  |                |
+| origin      | string   |                |
+| destination | string   |                |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -651,13 +660,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type     |
-|:------------|:---------|
-| date        | datetime |
-| delay       | integer  |
-| distance    | integer  |
-| origin      | string   |
-| destination | string   |
+| name        | type     | format         |
+|:------------|:---------|:---------------|
+| date        | datetime | %Y/%m/%d %H:%M |
+| delay       | integer  |                |
+| distance    | integer  |                |
+| origin      | string   |                |
+| destination | string   |                |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -676,13 +685,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type     |
-|:------------|:---------|
-| date        | datetime |
-| delay       | integer  |
-| distance    | integer  |
-| origin      | string   |
-| destination | string   |
+| name        | type     | format         |
+|:------------|:---------|:---------------|
+| date        | datetime | %Y/%m/%d %H:%M |
+| delay       | integer  |                |
+| distance    | integer  |                |
+| origin      | string   |                |
+| destination | string   |                |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -701,13 +710,13 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 `/scripts/flights.py`
 ### schema
     
-| name        | type     |
-|:------------|:---------|
-| date        | datetime |
-| delay       | integer  |
-| distance    | integer  |
-| origin      | string   |
-| destination | string   |
+| name        | type     | format         |
+|:------------|:---------|:---------------|
+| date        | datetime | %Y/%m/%d %H:%M |
+| delay       | integer  |                |
+| distance    | integer  |                |
+| origin      | string   |                |
+| destination | string   |                |
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
@@ -720,7 +729,7 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 ### path
 flights-airport.csv
 ### description
-Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id), 
+Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id),
 a destination airport, and the count of flights along this route.
 ### schema
     
@@ -732,12 +741,11 @@ a destination airport, and the count of flights along this route.
 ### sources
 | title                                    | path                                                                                 |
 |:-----------------------------------------|:-------------------------------------------------------------------------------------|
-| U.S. Bureau of Transportation Statistics |                                                                                      |
 | U.S. Bureau of Transportation Statistics | https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `football`
 ### path
 football.json
@@ -760,9 +768,9 @@ chosen divisions over the time period.
 |:-------------|:----------------------------------------------|
 | OpenFootball | https://github.com/openfootball/football.json |
 ### licenses
-| path                                                                     |
-|:-------------------------------------------------------------------------|
-| https://github.com/openfootball/football.json?tab=readme-ov-file#license |
+| name     | path                                                                     |
+|:---------|:-------------------------------------------------------------------------|
+| other-pd | https://github.com/openfootball/football.json?tab=readme-ov-file#license |
 ## `gapminder_health_income`
 ### path
 gapminder-health-income.csv
@@ -790,9 +798,9 @@ Gapminder (v30, 2023) defines per-capita income as follows:
 | Gapminder Foundation          | https://www.gapminder.org                                                                                            |
 | Gapminder GDP Per Capita Data | https://docs.google.com/spreadsheets/d/1i5AEui3WZNZqh7MQ4AKkJuCz4rRxGR_pw_9gtbcBOqQ/edit?gid=501532268#gid=501532268 |
 ### licenses
-| title                                          | path                                     |
-|:-----------------------------------------------|:-----------------------------------------|
-| Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
+| name      | title                                          | path                                     |
+|:----------|:-----------------------------------------------|:-----------------------------------------|
+| CC-BY-4.0 | Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
 ## `gapminder`
 ### path
 gapminder.json
@@ -840,9 +848,9 @@ Notes:
 | Gapminder Foundation - Data Geographies (Documentation)        | https://www.gapminder.org/data/geo/                                                                                    |           |
 | Gapminder Data Documentation                                   | https://www.gapminder.org/data/documentation/                                                                          |           |
 ### licenses
-| title                                          | path                                     |
-|:-----------------------------------------------|:-----------------------------------------|
-| Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
+| name      | title                                          | path                                     |
+|:----------|:-----------------------------------------------|:-----------------------------------------|
+| CC-BY-4.0 | Creative Commons Attribution 4.0 International | https://www.gapminder.org/free-material/ |
 ## `gimp`
 ### path
 gimp.png
@@ -853,9 +861,9 @@ Application icon from open-source software project. Used in [Image-based Scatter
 |:------------------|:----------------------------|
 | GIMP - About GIMP | https://www.gimp.org/about/ |
 ### licenses
-| path                                                                                       |
-|:-------------------------------------------------------------------------------------------|
-| https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it |
+| name         | path                                                                                       |
+|:-------------|:-------------------------------------------------------------------------------------------|
+| notspecified | https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it |
 ## `github`
 ### path
 github.csv
@@ -870,13 +878,13 @@ in a GitHub-style punchcard visualization format.
 | time   | string  | Hourly timestamp from January 1st to May 30th, 2015 |
 | count  | integer | Simulated hourly commit counts                      |
 ### sources
-| title                                 |
-|:--------------------------------------|
-| Generated using `/scripts/github.py`. |
+| title                                 | path                                                              |
+|:--------------------------------------|:------------------------------------------------------------------|
+| Generated using `/scripts/github.py`. | https://github.com/vega/vega-datasets/blob/main/scripts/github.py |
 ### licenses
-| path                                                            |
-|:----------------------------------------------------------------|
-| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
+| name         | path                                                            |
+|:-------------|:----------------------------------------------------------------|
+| BSD-3-Clause | https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `global_temp`
 ### path
 global-temp.csv
@@ -893,9 +901,9 @@ Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies (Land-Ocea
 |:-----------------------------------------|:------------------------------------|
 | NASA Goddard Institute for Space Studies | https://data.giss.nasa.gov/gistemp/ |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `income`
 ### path
 income.json
@@ -921,9 +929,9 @@ but is not endorsed or certified by the Census Bureau.
 | U.S. Census Bureau American Community Survey 3-Year Data (2013) | https://www.census.gov/data/developers/data-sets/acs-3year/2013.html |
 | Census Bureau Data API User Guide                               | https://www.census.gov/data/developers/guidance/api-user-guide.html  |
 ### licenses
-| title                                   | path                                                               | name                       |
-|:----------------------------------------|:-------------------------------------------------------------------|:---------------------------|
-| U.S. Census Bureau API Terms of Service | https://www.census.gov/data/developers/about/terms-of-service.html | Census Bureau Terms of Use |
+| name       | title                                   | path                                                               |
+|:-----------|:----------------------------------------|:-------------------------------------------------------------------|
+| other-open | U.S. Census Bureau API Terms of Service | https://www.census.gov/data/developers/about/terms-of-service.html |
 ## `iowa_electricity`
 ### path
 iowa-electricity.csv
@@ -942,9 +950,9 @@ Useful for illustrating stacked area charts. Demonstrates dramatic increase in w
 |:---------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | U.S. Energy Information Administration | https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin= |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `jobs`
 ### path
 jobs.json
@@ -983,9 +991,9 @@ Steven Ruggles, Katie Genadek, Ronald Goeken, Josiah Grover, and Matthew Sobek. 
 |:----------|:---------------------------|----------:|
 | IPUMS USA | https://usa.ipums.org/usa/ |         6 |
 ### licenses
-| title              | path                              |
-|:-------------------|:----------------------------------|
-| IPUMS Terms of Use | https://www.ipums.org/about/terms |
+| name         | title              | path                              |
+|:-------------|:-------------------|:----------------------------------|
+| notspecified | IPUMS Terms of Use | https://www.ipums.org/about/terms |
 ## `la_riots`
 ### path
 la-riots.csv
@@ -1024,9 +1032,9 @@ and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 |:-------------------------------------------------|:-------------------------------------------------------------------------|
 | Statistical GIS Boundary Files, London Datastore | https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london |
 ### licenses
-| title                      | path                                                                       |
-|:---------------------------|:---------------------------------------------------------------------------|
-| UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
+| name       | title                      | path                                                                       |
+|:-----------|:---------------------------|:---------------------------------------------------------------------------|
+| OGL-UK-3.0 | UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
 ## `london_centroids`
 ### path
 londonCentroids.json
@@ -1044,9 +1052,9 @@ Calculated from `londonBoroughs.json` using [`d3.geoCentroid`](https://d3js.org/
 |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
 | [londonBoroughs.json](https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json) from the [vega-datasets](https://github.com/vega/vega-datasets) repository | https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json |
 ### licenses
-| title                      | path                                                                       |
-|:---------------------------|:---------------------------------------------------------------------------|
-| UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
+| name       | title                      | path                                                                       |
+|:-----------|:---------------------------|:---------------------------------------------------------------------------|
+| OGL-UK-3.0 | UK Open Government License | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
 ## `london_tube_lines`
 ### path
 londonTubeLines.json
@@ -1061,9 +1069,9 @@ reflects the system as of February 4, 2018, and may not incorporate subsequent m
 |:----------------------------------------------|:----------------------------------------------------------------------------|
 | OpenStreetMap Data (processed by oobrien/vis) | https://github.com/oobrien/vis/blob/master/tubecreature/data/tfl_lines.json |
 ### licenses
-| title                                          | path                                       |
-|:-----------------------------------------------|:-------------------------------------------|
-| Open Data Commons Open Database License (ODbL) | https://opendatacommons.org/licenses/odbl/ |
+| name     | title                                          | path                                       |
+|:---------|:-----------------------------------------------|:-------------------------------------------|
+| ODbL-1.0 | Open Data Commons Open Database License (ODbL) | https://opendatacommons.org/licenses/odbl/ |
 ## `lookup_groups`
 ### path
 lookup_groups.csv
@@ -1081,9 +1089,9 @@ mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite
 |:---------------|
 | Generated Data |
 ### licenses
-| path                                                            |
-|:----------------------------------------------------------------|
-| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
+| name         | path                                                            |
+|:-------------|:----------------------------------------------------------------|
+| BSD-3-Clause | https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `lookup_people`
 ### path
 lookup_people.csv
@@ -1103,9 +1111,9 @@ to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup`
 |:---------------|
 | Generated Data |
 ### licenses
-| path                                                            |
-|:----------------------------------------------------------------|
-| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
+| name         | path                                                            |
+|:-------------|:----------------------------------------------------------------|
+| BSD-3-Clause | https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `miserables`
 ### path
 miserables.json
@@ -1120,9 +1128,9 @@ coappearances.
 |:-----------------------------------------------------------------------------------------------------------------|:----------------------------------------------------|
 | D. E. Knuth, The Stanford GraphBase: A Platform for Combinatorial Computing, Addison-Wesley, Reading, MA (1993). | https://www-cs-faculty.stanford.edu/~knuth/sgb.html |
 ### licenses
-| path                                      |
-|:------------------------------------------|
-| https://websites.umich.edu/~mejn/netdata/ |
+| name         | path                                      |
+|:-------------|:------------------------------------------|
+| notspecified | https://websites.umich.edu/~mejn/netdata/ |
 ## `monarchs`
 ### path
 monarchs.json
@@ -1159,36 +1167,40 @@ Source data has been verified against the kings & queens and interregnum pages o
 | The Royal Family - Kings & Queens | https://www.royal.uk/kings-and-queens-1066 |
 | The Royal Family - Interregnum    | https://www.royal.uk/interregnum-1649-1660 |
 ### licenses
-| title                             | path                                                                       |
-|:----------------------------------|:---------------------------------------------------------------------------|
-| Open Government Licence v3.0 (UK) | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
+| name       | title                             | path                                                                       |
+|:-----------|:----------------------------------|:---------------------------------------------------------------------------|
+| OGL-UK-3.0 | Open Government Licence v3.0 (UK) | https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ |
 ## `movies`
 ### path
 movies.json
 ### description
-A collection of films and their performance metrics, including box office earnings, budgets, 
-and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
-resource for developing data cleaning and validation skills in real-world analysis workflows.
+A collection of films and their performance metrics, including box office earnings, budgets,
+and audience ratings. Contains known data quality issues typical of real-world datasets:
+- Some movie titles with numeric names (1776, 2012, 300, etc.) are stored as JSON numbers rather than strings
+- Release dates use 'MMM DD YYYY' format rather than ISO 8601
+
+These characteristics make it suitable as a teaching resource for developing data cleaning
+and validation skills in real-world analysis workflows.
 ### schema
     
-| name                   | type    |
-|:-----------------------|:--------|
-| Title                  | string  |
-| US Gross               | integer |
-| Worldwide Gross        | integer |
-| US DVD Sales           | integer |
-| Production Budget      | integer |
-| Release Date           | date    |
-| MPAA Rating            | string  |
-| Running Time min       | integer |
-| Distributor            | string  |
-| Source                 | string  |
-| Major Genre            | string  |
-| Creative Type          | string  |
-| Director               | string  |
-| Rotten Tomatoes Rating | integer |
-| IMDB Rating            | number  |
-| IMDB Votes             | integer |
+| name                   | type    | format   |
+|:-----------------------|:--------|:---------|
+| Title                  | string  |          |
+| US Gross               | integer |          |
+| Worldwide Gross        | integer |          |
+| US DVD Sales           | integer |          |
+| Production Budget      | integer |          |
+| Release Date           | date    | %b %d %Y |
+| MPAA Rating            | string  |          |
+| Running Time min       | integer |          |
+| Distributor            | string  |          |
+| Source                 | string  |          |
+| Major Genre            | string  |          |
+| Creative Type          | string  |          |
+| Director               | string  |          |
+| Rotten Tomatoes Rating | integer |          |
+| IMDB Rating            | number  |          |
+| IMDB Votes             | integer |          |
 ## `normal_2d`
 ### path
 normal-2d.json
@@ -1214,9 +1226,9 @@ A contrast to uniformly distributed data in `uniform-2d.json`
 |:---------------|
 | Generated Data |
 ### licenses
-| path                                                            |
-|:----------------------------------------------------------------|
-| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
+| name         | path                                                            |
+|:-------------|:----------------------------------------------------------------|
+| BSD-3-Clause | https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `obesity`
 ### path
 obesity.json
@@ -1235,9 +1247,9 @@ Originally [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.
 |:---------|:---------------------------------------------------|
 | Protovis | https://mbostock.github.io/protovis/ex/us_stats.js |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `ohlc`
 ### path
 ohlc.json
@@ -1338,42 +1350,42 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 > [FEC.gov](https://www.fec.gov/).
 ### schema
     
-| name                                          | type    |
-|:----------------------------------------------|:--------|
-| Candidate_Identification                      | string  |
-| Candidate_Name                                | string  |
-| Incumbent_Challenger_Status                   | string  |
-| Party_Code                                    | integer |
-| Party_Affiliation                             | string  |
-| Total_Receipts                                | number  |
-| Transfers_from_Authorized_Committees          | integer |
-| Total_Disbursements                           | number  |
-| Transfers_to_Authorized_Committees            | number  |
-| Beginning_Cash                                | number  |
-| Ending_Cash                                   | number  |
-| Contributions_from_Candidate                  | number  |
-| Loans_from_Candidate                          | integer |
-| Other_Loans                                   | integer |
-| Candidate_Loan_Repayments                     | number  |
-| Other_Loan_Repayments                         | integer |
-| Debts_Owed_By                                 | number  |
-| Total_Individual_Contributions                | integer |
-| Candidate_State                               | string  |
-| Candidate_District                            | integer |
-| Contributions_from_Other_Political_Committees | integer |
-| Contributions_from_Party_Committees           | integer |
-| Coverage_End_Date                             | date    |
-| Refunds_to_Individuals                        | integer |
-| Refunds_to_Committees                         | integer |
+| name                                          | type    | format   |
+|:----------------------------------------------|:--------|:---------|
+| Candidate_Identification                      | string  |          |
+| Candidate_Name                                | string  |          |
+| Incumbent_Challenger_Status                   | string  |          |
+| Party_Code                                    | integer |          |
+| Party_Affiliation                             | string  |          |
+| Total_Receipts                                | number  |          |
+| Transfers_from_Authorized_Committees          | integer |          |
+| Total_Disbursements                           | number  |          |
+| Transfers_to_Authorized_Committees            | number  |          |
+| Beginning_Cash                                | number  |          |
+| Ending_Cash                                   | number  |          |
+| Contributions_from_Candidate                  | number  |          |
+| Loans_from_Candidate                          | integer |          |
+| Other_Loans                                   | integer |          |
+| Candidate_Loan_Repayments                     | number  |          |
+| Other_Loan_Repayments                         | integer |          |
+| Debts_Owed_By                                 | number  |          |
+| Total_Individual_Contributions                | integer |          |
+| Candidate_State                               | string  |          |
+| Candidate_District                            | integer |          |
+| Contributions_from_Other_Political_Committees | integer |          |
+| Contributions_from_Party_Committees           | integer |          |
+| Coverage_End_Date                             | date    | %m/%d/%Y |
+| Refunds_to_Individuals                        | integer |          |
+| Refunds_to_Committees                         | integer |          |
 ### sources
 | title                                 | path                                                |
 |:--------------------------------------|:----------------------------------------------------|
 | Federal Election Commission Bulk Data | https://www.fec.gov/data/browse-data/?tab=bulk-data |
 | OpenFEC API                           | https://api.open.fec.gov/developers/                |
 ### licenses
-| title                               | path                                               |
-|:------------------------------------|:---------------------------------------------------|
-| Creative Commons Zero 1.0 Universal | https://creativecommons.org/publicdomain/zero/1.0/ |
+| name    | title                               | path                                               |
+|:--------|:------------------------------------|:---------------------------------------------------|
+| CC0-1.0 | Creative Commons Zero 1.0 Universal | https://creativecommons.org/publicdomain/zero/1.0/ |
 ## `population`
 ### path
 population.json
@@ -1402,9 +1414,9 @@ http://doi.org/10.18128/D010.V6.0
 |:----------|:---------------------------|
 | IPUMS USA | https://usa.ipums.org/usa/ |
 ### licenses
-| title              | path                              |
-|:-------------------|:----------------------------------|
-| IPUMS Terms of Use | https://www.ipums.org/about/terms |
+| name         | title              | path                              |
+|:-------------|:-------------------|:----------------------------------|
+| notspecified | IPUMS Terms of Use | https://www.ipums.org/about/terms |
 ## `population_engineers_hurricanes`
 ### path
 population_engineers_hurricanes.csv
@@ -1427,9 +1439,9 @@ Per-state population, number of engineers, and hurricanes. Used in Vega-Lite exa
 | American Community Survey          | https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table |
 | NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records                                                               |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `seattle_weather_hourly_normals`
 ### path
 seattle-weather-hourly-normals.csv
@@ -1452,9 +1464,9 @@ and updated the format to be easier to parse.
 |:------------------------------------------|:----------------------------------------------------|
 | NOAA National Climatic Data Center (NCDC) | https://www.ncdc.noaa.gov/cdo-web/datatools/normals |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `seattle_weather`
 ### path
 seattle-weather.csv
@@ -1477,9 +1489,9 @@ This data is intended for instructional purposes.
 |:-----------------------------------|:----------------------------------------------------|
 | NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `sp500_2000`
 ### path
 sp500-2000.csv
@@ -1510,10 +1522,10 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 
 ### schema
     
-| name   | type   | description                                            |
-|:-------|:-------|:-------------------------------------------------------|
-| date   | date   | Date of monthly observation in the format 'MMM D YYYY' |
-| price  | number | Closing price of the S&P 500 index for the given month |
+| name   | type   | description                                            | format   |
+|:-------|:-------|:-------------------------------------------------------|:---------|
+| date   | date   | Date of monthly observation in the format 'MMM D YYYY' | %b %d %Y |
+| price  | number | Closing price of the S&P 500 index for the given month |          |
 ## `species`
 ### path
 species.csv
@@ -1548,9 +1560,9 @@ for zonal statistics.
 | USGS Gap Analysis Project (GAP) Species Habitat Maps        | https://www.usgs.gov/programs/gap-analysis-project                                          |
 | US Census Bureau Cartographic Boundary Files (1:10,000,000) | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `stocks`
 ### path
 stocks.csv
@@ -1558,11 +1570,11 @@ stocks.csv
 Monthly stock prices for five companies from 2000 to 2010.
 ### schema
     
-| name   | type   |
-|:-------|:-------|
-| symbol | string |
-| date   | date   |
-| price  | number |
+| name   | type   | format   |
+|:-------|:-------|:---------|
+| symbol | string |          |
+| date   | date   | %b %d %Y |
+| price  | number |          |
 ## `udistrict`
 ### path
 udistrict.json
@@ -1612,9 +1624,9 @@ See full BLS [terms of service](https://www.bls.gov/developers/termsOfService.ht
 | BLS LAUS Data Tools                          | https://www.bls.gov/lau/data.htm                 |
 | Bureau of Labor Statistics Table A-31        | https://www.bls.gov/web/empsit/cpseea31.htm      |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `unemployment`
 ### path
 unemployment.tsv
@@ -1657,9 +1669,9 @@ When using BLS public data API and datasets, users should adhere to the [BLS Ter
 | BLS Developers API      | https://www.bls.gov/developers/           |
 | BLS Handbook of Methods | https://www.bls.gov/opub/hom/lau/home.htm |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `uniform_2d`
 ### path
 uniform-2d.json
@@ -1680,9 +1692,9 @@ A contrast to normally distributed data in `normal-2d.json`.
 |:---------------|
 | Generated Data |
 ### licenses
-| path                                                            |
-|:----------------------------------------------------------------|
-| https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
+| name         | path                                                            |
+|:-------------|:----------------------------------------------------------------|
+| BSD-3-Clause | https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE |
 ## `us_10m`
 ### path
 us-10m.json
@@ -1698,9 +1710,9 @@ in turn is a redistribution of the Census Bureau's cartographic boundary shapefi
 | TopoJSON US Atlas                            | https://github.com/topojson/us-atlas                                                        |
 | US Census Bureau Cartographic Boundary FIles | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
 ### licenses
-| title                         | path                                                        |
-|:------------------------------|:------------------------------------------------------------|
-| TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
+| name   | title                         | path                                                        |
+|:-------|:------------------------------|:------------------------------------------------------------|
+| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
 ## `us_employment`
 ### path
 us-employment.csv
@@ -1754,9 +1766,9 @@ negative and positive values.
 |:--------------------------------------------------------------|:-------------------------|
 | U.S. Bureau of Labor Statistics Current Employment Statistics | https://www.bls.gov/ces/ |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `us_state_capitals`
 ### path
 us-state-capitals.json
@@ -1786,10 +1798,10 @@ According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-s
 |:----------------------------------------------------------------------|:-----------------------------------------------------------------------|
 | U.S. Geological Survey National Geospatial Program - The National Map | https://www.usgs.gov/programs/national-geospatial-program/national-map |
 ### licenses
-| title                   | path                                                                              |
-|:------------------------|:----------------------------------------------------------------------------------|
-| U.S. Public Domain      | https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits |
-| U.S. Government Dataset | https://www.usa.gov/government-works                                              |
+| name     | title                   | path                                                                              |
+|:---------|:------------------------|:----------------------------------------------------------------------------------|
+| other-pd | U.S. Public Domain      | https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits |
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works                                              |
 ## `volcano`
 ### path
 volcano.json
@@ -1826,9 +1838,9 @@ Intended for instructional purposes.
 |:-------------------------|:-------------------------------------------------------|
 | NOAA Climate Data Online | http://www.ncdc.noaa.gov/cdo-web/datatools/findstation |
 ### licenses
-| title                   | path                                 |
-|:------------------------|:-------------------------------------|
-| U.S. Government Dataset | https://www.usa.gov/government-works |
+| name     | title                   | path                                 |
+|:---------|:------------------------|:-------------------------------------|
+| other-pd | U.S. Government Dataset | https://www.usa.gov/government-works |
 ## `weekly_weather`
 ### path
 weekly-weather.json
@@ -1861,9 +1873,9 @@ He intended to demonstrate that:
 |:--------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1822 Playfair Chart | https://commons.wikimedia.org/wiki/File:Chart_Showing_at_One_View_the_Price_of_the_Quarter_of_Wheat,_and_Wages_of_Labour_by_the_Week,_from_1565_to_1821.png |
 ### licenses
-| title         | path                                             |
-|:--------------|:-------------------------------------------------|
-| Public Domain | https://commons.wikimedia.org/wiki/Public_domain |
+| name     | title         | path                                             |
+|:---------|:--------------|:-------------------------------------------------|
+| other-pd | Public Domain | https://commons.wikimedia.org/wiki/Public_domain |
 ## `windvectors`
 ### path
 windvectors.csv
@@ -1897,10 +1909,10 @@ resource for creating web-based world maps where precise boundary detail isn't r
 | TopoJSON World Atlas (Likely original source, processed from Natural Earth data) | https://github.com/topojson/world-atlas                                                  |
 | Natural Earth Data - Admin 0 Countries (1:110m)                                  | https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ |
 ### licenses
-| title                            | path                                                           |
-|:---------------------------------|:---------------------------------------------------------------|
-| TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
-| Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
+| name     | title                            | path                                                           |
+|:---------|:---------------------------------|:---------------------------------------------------------------|
+| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
+| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
 ## `zipcodes`
 ### path
 zipcodes.csv
@@ -1929,6 +1941,6 @@ data was collected. For current postal code data, refer to the main GeoNames dat
 |:----------------------|:------------------------------------------|
 | GeoNames Postal Codes | https://download.geonames.org/export/zip/ |
 ### licenses
-| title                                          | path                                         |
-|:-----------------------------------------------|:---------------------------------------------|
-| Creative Commons Attribution 4.0 International | https://creativecommons.org/licenses/by/4.0/ |
+| name      | title                                          | path                                         |
+|:----------|:-----------------------------------------------|:---------------------------------------------|
+| CC-BY-4.0 | Creative Commons Attribution 4.0 International | https://creativecommons.org/licenses/by/4.0/ |
