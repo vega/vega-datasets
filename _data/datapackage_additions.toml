@@ -460,11 +460,25 @@ path  = "https://www.mozilla.org/en-US/foundation/trademarks/policy/"
 
 [[resources]] # Path: flare-dependencies.json
 path        = "flare-dependencies.json"
-description = "Indicates, with `flare.json`, relationships among classes in a software hierarchy."
+description = """Network of class dependencies for the Flare visualization library. Each entry
+represents a directed edge where the `source` class depends on (imports) the `target` class.
+IDs correspond to those in `flare.json`."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "source"
+type        = "integer"
+description = "ID of the class that has the dependency (the importer)"
+
+[[resources.schema.fields]]
+name        = "target"
+type        = "integer"
+description = "ID of the class being depended upon (the imported)"
 
 [[resources]] # Path: flare.json
 path        = "flare.json"
-description = """Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy.
+description = """Class hierarchy of the Flare visualization library. Used with `flare-dependencies.json`
+to represent the complete package/class structure.
 
 Represents a tree structure where nodes have different fields depending on their role:
 - Root node: only `id` and `name`
