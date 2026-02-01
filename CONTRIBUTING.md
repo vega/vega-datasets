@@ -166,20 +166,21 @@ npm run build
 
 ### Code Quality Checks
 
-Run these checks before submitting:
+Run these checks before submitting (using `uv run` ensures correct tool versions from `uv.lock` are used):
 
 ```bash
 # TOML formatting
-uvx taplo fmt --check --diff
+uv run taplo fmt --check --diff
 
 # Python linting and formatting
-uvx ruff check
-uvx ruff format --check
+uv run ruff check
+uv run ruff format --check
+```
 
 To automatically fix issues:
 ```bash
-uvx taplo fmt
-uvx ruff format
+uv run taplo fmt
+uv run ruff format
 ```
 
 ## Contributing Process
@@ -193,7 +194,7 @@ uvx ruff format
 
 3. Run checks and build:
    ```
-   uvx taplo fmt --check --diff && uvx ruff check && uvx ruff format --check
+   uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check
    npm run build
    ```
 
