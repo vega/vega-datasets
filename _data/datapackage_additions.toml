@@ -470,8 +470,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -523,8 +524,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -544,8 +546,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -558,10 +561,16 @@ title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms N
 
 [[resources]] # Path: flights-3m.parquet
 path = "flights-3m.parquet"
-description = """Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics. 
-Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
-that qualifying airlines report on-time performance data to BTS. Transformed using 
+description = """Flight delay statistics (3 million rows) from U.S. Bureau of Transportation Statistics.
+Collected under regulatory reporting requirements (14 CFR Part 234), which mandate
+that qualifying airlines report on-time performance data to BTS. Transformed using
 `/scripts/flights.py`"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -581,8 +590,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -1057,8 +1067,9 @@ resource for developing data cleaning and validation skills in real-world analys
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "Release Date"
-type = "date"
+name   = "Release Date"
+type   = "date"
+format = "%b %d %Y"
 
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
@@ -1198,8 +1209,9 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "Coverage_End_Date"
-type = "date"
+name   = "Coverage_End_Date"
+type   = "date"
+format = "%m/%d/%Y"
 
 [[resources.sources]]
 title = "Federal Election Commission Bulk Data"
@@ -1347,8 +1359,9 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 """
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "date"
+name        = "date"
+type        = "date"
+format      = "%b %d %Y"
 description = "Date of monthly observation in the format 'MMM D YYYY'"
 
 [[resources.schema.fields]]
@@ -1417,8 +1430,9 @@ description = "Monthly stock prices for five companies from 2000 to 2010."
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "date"
+name   = "date"
+type   = "date"
+format = "%b %d %Y"
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
