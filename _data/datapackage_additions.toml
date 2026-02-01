@@ -812,6 +812,7 @@ description = "Simulated hourly commit counts"
 
 [[resources.sources]]
 title = """Generated using `/scripts/github.py`."""
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/github.py"
 
 [[resources.licenses]]
 name  = "BSD-3-Clause"
