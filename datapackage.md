@@ -36,9 +36,11 @@ Application icon from open-source software project. Used in [Image-based Scatter
 ### path
 airports.csv
 ### description
-Airports in the United States and its territories, including  major commercial, regional, 
+Airports in the United States and its territories, including major commercial, regional, 
 and municipal airports. Contains information about each airport's location (latitude/longitude 
-coordinates), identification codes, name, city, state, and country.
+coordinates), identification codes, name, city, state, and country. While the exact generation 
+source of this file is unknown, this data is consistent with files provided on a monthly 
+frequency by the FAA's [National Airspace System Resource](https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/).
 ### schema
     
 | name      | type   |
@@ -51,9 +53,9 @@ coordinates), identification codes, name, city, state, and country.
 | latitude  | number |
 | longitude | number |
 ### sources
-| title               | path                                            |
-|:--------------------|:------------------------------------------------|
-| Airports (Data.gov) | https://catalog.data.gov/dataset/airports-5e97a |
+| title                           | path                                                                             |
+|:--------------------------------|:---------------------------------------------------------------------------------|
+| Federal Aviation Administration | https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/ |
 ### licenses
 | name       | title                                |
 |:-----------|:-------------------------------------|
@@ -1028,9 +1030,9 @@ Boundaries of London boroughs reprojected and simplified from `London_Borough_Ex
 Original data "contains National Statistics data © Crown copyright and database right (2015)" 
 and "Contains Ordnance Survey data © Crown copyright and database right [2015].
 ### sources
-| title                                            | path                                                                     |
-|:-------------------------------------------------|:-------------------------------------------------------------------------|
-| Statistical GIS Boundary Files, London Datastore | https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london |
+| title                                            | path                                                                                |
+|:-------------------------------------------------|:------------------------------------------------------------------------------------|
+| Statistical GIS Boundary Files, London Datastore | https://data.london.gov.uk/dataset/statistical-gis-boundary-files-for-london-20od9/ |
 ### licenses
 | name       | title                      | path                                                                       |
 |:-----------|:---------------------------|:---------------------------------------------------------------------------|
@@ -1299,7 +1301,7 @@ variations between species and sexual dimorphism in Antarctic penguins.
 ### sources
 | title                               | path                                     |
 |:------------------------------------|:-----------------------------------------|
-| Palmer Station Antarctica LTER      | https://pal.lternet.edu/                 |
+| Palmer Station Antarctica LTER      | https://pallter.marine.rutgers.edu/      |
 | Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins |
 ### licenses
 | name              | path                                                                        |
@@ -1421,7 +1423,7 @@ http://doi.org/10.18128/D010.V6.0
 ### path
 population_engineers_hurricanes.csv
 ### description
-Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
+Per-state population (2016 ACS 1-Year), ratio of engineers to total civilian employed population (2016 ACS 1-Year), and total hurricane landfalls (possibly 1851-2015). Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)
 ### schema
     
@@ -1433,11 +1435,11 @@ Per-state population, number of engineers, and hurricanes. Used in Vega-Lite exa
 | engineers  | number  |
 | hurricanes | integer |
 ### sources
-| title                              | path                                                                                                              |
-|:-----------------------------------|:------------------------------------------------------------------------------------------------------------------|
-| Bureau of Labor Statistics         | https://www.bls.gov/oes/tables.htm                                                                                |
-| American Community Survey          | https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table |
-| NOAA National Climatic Data Center | https://www.ncdc.noaa.gov/cdo-web/datatools/records                                                               |
+| title                                                                                           | path                                                                 |
+|:------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|
+| U.S. Census Bureau, 2016 ACS 1-Year Estimates: Total Population (B01001) and Occupation (S2401) | https://www.census.gov/data/developers/data-sets/acs-1year/2016.html |
+| Continental United States Hurricane Impacts/Landfalls                                           | https://www.aoml.noaa.gov/hrd/hurdat/All_U.S._Hurricanes.html        |
+| NOAA FAQ: How Many Landfalling Hurricanes Have Hit Eact State?                                  | https://www.aoml.noaa.gov/hrd-faq/#landfalls-by-state                |
 ### licenses
 | name     | title                   | path                                 |
 |:---------|:------------------------|:-------------------------------------|

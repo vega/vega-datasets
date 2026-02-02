@@ -50,7 +50,7 @@
     {
       "name": "airports",
       "type": "table",
-      "description": "Airports in the United States and its territories, including  major commercial, regional, \nand municipal airports. Contains information about each airport's location (latitude/longitude \ncoordinates), identification codes, name, city, state, and country.",
+      "description": "Airports in the United States and its territories, including major commercial, regional, \nand municipal airports. Contains information about each airport's location (latitude/longitude \ncoordinates), identification codes, name, city, state, and country. While the exact generation \nsource of this file is unknown, this data is consistent with files provided on a monthly \nfrequency by the FAA's [National Airspace System Resource](https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/).",
       "licenses": [
         {
           "name": "other-open",
@@ -59,8 +59,8 @@
       ],
       "sources": [
         {
-          "title": "Airports (Data.gov)",
-          "path": "https://catalog.data.gov/dataset/airports-5e97a"
+          "title": "Federal Aviation Administration",
+          "path": "https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/"
         }
       ],
       "path": "airports.csv",
@@ -68,8 +68,8 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
-      "hash": "sha1:608ba6d51fa70584c3fa1d31eb94533302553838",
-      "bytes": 210365,
+      "hash": "sha1:114c202bcc6784c8358b54f9ef152c54ec6c5fba",
+      "bytes": 210363,
       "schema": {
         "fields": [
           {
@@ -2191,7 +2191,7 @@
       "sources": [
         {
           "title": "Statistical GIS Boundary Files, London Datastore",
-          "path": "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
+          "path": "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-for-london-20od9/"
         }
       ],
       "path": "londonBoroughs.json",
@@ -2675,7 +2675,7 @@
       "sources": [
         {
           "title": "Palmer Station Antarctica LTER",
-          "path": "https://pal.lternet.edu/"
+          "path": "https://pallter.marine.rutgers.edu/"
         },
         {
           "title": "Allison Horst's Penguins Repository",
@@ -2989,7 +2989,7 @@
     {
       "name": "population_engineers_hurricanes",
       "type": "table",
-      "description": "Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,\n[Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)",
+      "description": "Per-state population (2016 ACS 1-Year), ratio of engineers to total civilian employed population (2016 ACS 1-Year), and total hurricane landfalls (possibly 1851-2015). Used in Vega-Lite example,\n[Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)",
       "licenses": [
         {
           "name": "other-pd",
@@ -2999,16 +2999,16 @@
       ],
       "sources": [
         {
-          "title": "Bureau of Labor Statistics",
-          "path": "https://www.bls.gov/oes/tables.htm"
+          "title": "U.S. Census Bureau, 2016 ACS 1-Year Estimates: Total Population (B01001) and Occupation (S2401)",
+          "path": "https://www.census.gov/data/developers/data-sets/acs-1year/2016.html"
         },
         {
-          "title": "American Community Survey",
-          "path": "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table"
+          "title": "Continental United States Hurricane Impacts/Landfalls",
+          "path": "https://www.aoml.noaa.gov/hrd/hurdat/All_U.S._Hurricanes.html"
         },
         {
-          "title": "NOAA National Climatic Data Center",
-          "path": "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+          "title": "NOAA FAQ: How Many Landfalling Hurricanes Have Hit Eact State?",
+          "path": "https://www.aoml.noaa.gov/hrd-faq/#landfalls-by-state"
         }
       ],
       "path": "population_engineers_hurricanes.csv",
@@ -3522,7 +3522,7 @@
         {
           "name": "ISC",
           "title": "TopoJSON US Atlas ISC License",
-          "path": "https://github.com/topojson/us-atlas/blob/master/LICENSE.md"
+          "path": "https://github.com/topojson/us-atlas/blob/master/LICENSE"
         }
       ],
       "sources": [
@@ -3914,7 +3914,7 @@
         {
           "name": "ISC",
           "title": "TopoJSON World Atlas ISC License",
-          "path": "https://github.com/topojson/world-atlas/blob/master/LICENSE.md"
+          "path": "https://github.com/topojson/world-atlas/blob/master/LICENSE"
         },
         {
           "name": "other-pd",
