@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-02 02:05:43 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-02 13:19:39 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1304,9 +1304,9 @@ variations between species and sexual dimorphism in Antarctic penguins.
 | Palmer Station Antarctica LTER      | https://pallter.marine.rutgers.edu/      |
 | Allison Horst's Penguins Repository | https://github.com/allisonhorst/penguins |
 ### licenses
-| name              | path                                                                        |
-|:------------------|:----------------------------------------------------------------------------|
-| CC0 1.0 Universal | https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme |
+| name    | title                               | path                                                                        |
+|:--------|:------------------------------------|:----------------------------------------------------------------------------|
+| CC0-1.0 | Creative Commons Zero 1.0 Universal | https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme |
 ## `platformer_terrain`
 ### path
 platformer-terrain.json

@@ -1232,7 +1232,8 @@ title = "Allison Horst's Penguins Repository"
 path  = "https://github.com/allisonhorst/penguins"
 
 [[resources.licenses]]
-name = "CC0 1.0 Universal"
+name  = "CC0-1.0"
+title = "Creative Commons Zero 1.0 Universal"
 path = "https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme"
 
 [[resources]] # Path: platformer-terrain.json

@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-02-02T02:05:43.544254+00:00",
+  "created": "2026-02-02T13:19:39.437222+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -2668,7 +2668,8 @@
       "description": "Records of morphological measurements and demographic information from 344 Palmer Archipelago \npenguins across three species. Collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the Palmer Station Antarctica [LTER](https://lternet.edu/). \nData gathering occurred as part of Palmer Station's long-term ecological research, contributing to studies of Antarctic marine\necosystems and penguin biology. All measurements follow standardized units, enabling research into morphological \nvariations between species and sexual dimorphism in Antarctic penguins. \n",
       "licenses": [
         {
-          "name": "CC0 1.0 Universal",
+          "name": "CC0-1.0",
+          "title": "Creative Commons Zero 1.0 Universal",
           "path": "https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme"
         }
       ],
