@@ -469,11 +469,13 @@ IDs correspond to those in `flare.json`."""
 name        = "source"
 type        = "integer"
 description = "ID of the class that has the dependency (the importer)"
+constraints = { required = true }
 
 [[resources.schema.fields]]
 name        = "target"
 type        = "integer"
 description = "ID of the class being depended upon (the imported)"
+constraints = { required = true }
 
 [[resources]] # Path: flare.json
 path        = "flare.json"
@@ -491,21 +493,25 @@ Represents a tree structure where nodes have different fields depending on their
 name        = "id"
 type        = "integer"
 description = "Unique identifier for the node"
+constraints = { required = true }
 
 [[resources.schema.fields]]
 name        = "name"
 type        = "string"
 description = "Name of the node in the hierarchy"
+constraints = { required = true }
 
 [[resources.schema.fields]]
 name        = "parent"
 type        = "integer"
 description = "ID of parent node (absent for root node)"
+constraints = { required = false }
 
 [[resources.schema.fields]]
 name        = "size"
 type        = "integer"
 description = "Size value (only present on leaf nodes)"
+constraints = { required = false }
 
 [[resources]] # Path: flights-10k.json
 path = "flights-10k.json"

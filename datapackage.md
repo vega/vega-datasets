@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-01 19:49:53 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-02 02:05:43 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -532,10 +532,10 @@ represents a directed edge where the `source` class depends on (imports) the `ta
 IDs correspond to those in `flare.json`.
 ### schema
     
-| name   | type    | description                                            |
-|:-------|:--------|:-------------------------------------------------------|
-| source | integer | ID of the class that has the dependency (the importer) |
-| target | integer | ID of the class being depended upon (the imported)     |
+| name   | type    | description                                            | constraints        |
+|:-------|:--------|:-------------------------------------------------------|:-------------------|
+| source | integer | ID of the class that has the dependency (the importer) | {'required': True} |
+| target | integer | ID of the class being depended upon (the imported)     | {'required': True} |
 ## `flare`
 ### path
 flare.json
@@ -550,10 +550,10 @@ Represents a tree structure where nodes have different fields depending on their
 
 ### schema
     
-| name   | type    | description                       |
-|:-------|:--------|:----------------------------------|
-| id     | integer | Unique identifier for the node    |
-| name   | string  | Name of the node in the hierarchy |
+| name   | type    | description                       | constraints        |
+|:-------|:--------|:----------------------------------|:-------------------|
+| id     | integer | Unique identifier for the node    | {'required': True} |
+| name   | string  | Name of the node in the hierarchy | {'required': True} |
 ## `flights_10k`
 ### path
 flights-10k.json

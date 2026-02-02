@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-02-01T19:49:53.064433+00:00",
+  "created": "2026-02-02T02:05:43.544254+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -1164,12 +1164,18 @@
           {
             "name": "source",
             "type": "integer",
-            "description": "ID of the class that has the dependency (the importer)"
+            "description": "ID of the class that has the dependency (the importer)",
+            "constraints": {
+              "required": true
+            }
           },
           {
             "name": "target",
             "type": "integer",
-            "description": "ID of the class being depended upon (the imported)"
+            "description": "ID of the class being depended upon (the imported)",
+            "constraints": {
+              "required": true
+            }
           }
         ]
       }
@@ -1195,12 +1201,18 @@
           {
             "name": "id",
             "type": "integer",
-            "description": "Unique identifier for the node"
+            "description": "Unique identifier for the node",
+            "constraints": {
+              "required": true
+            }
           },
           {
             "name": "name",
             "type": "string",
-            "description": "Name of the node in the hierarchy"
+            "description": "Name of the node in the hierarchy",
+            "constraints": {
+              "required": true
+            }
           }
         ]
       }
