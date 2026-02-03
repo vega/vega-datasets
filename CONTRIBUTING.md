@@ -4,7 +4,7 @@ Thank you for your interest in contributing to Vega Datasets! This repository se
 
 We welcome contributions that enhance metadata, improve documentation, fix dataset issues, enhance infrastructure, or add new datasets that demonstrate visualization techniques. Each dataset should serve a clear purpose in showcasing visualization capabilities. 
 
-All contributions are accepted under the [Project's license](./LICENSE). The Project abides by the Vega Organization's [code of conduct](https://github.com/vega/.github/blob/main/CODE_OF_CONDUCT.md) and [governance](https://github.com/vega/.github/blob/main/project-docs/GOVERNANCE.md).
+All contributions are accepted under the [Project's license](https://github.com/vega/vega-datasets/blob/main/README.md#license). The Project abides by the Vega Organization's [code of conduct](https://github.com/vega/.github/blob/main/CODE_OF_CONDUCT.md) and [governance](https://github.com/vega/.github/blob/main/project-docs/GOVERNANCE.md).
 
 ## Dataset Contribution Guidelines
 
@@ -52,7 +52,7 @@ For datasets requiring processing:
 
 ## Metadata and Documentation
 
-We follow the [Data Package Standard 2.0](https://datapackage.org/standard/) with:
+We follow the [Data Package Standard 2.0](https://datapackage.org/) with:
 
 - Auto-generated `datapackage.json` and `datapackage.md` files
 - Datasets in the `data/` directory
@@ -166,20 +166,21 @@ npm run build
 
 ### Code Quality Checks
 
-Run these checks before submitting:
+Run these checks before submitting (using `uv run` ensures correct tool versions from `uv.lock` are used):
 
 ```bash
 # TOML formatting
-uvx taplo fmt --check --diff
+uv run taplo fmt --check --diff
 
 # Python linting and formatting
-uvx ruff check
-uvx ruff format --check
+uv run ruff check
+uv run ruff format --check
+```
 
 To automatically fix issues:
 ```bash
-uvx taplo fmt
-uvx ruff format
+uv run taplo fmt
+uv run ruff format
 ```
 
 ## Contributing Process
@@ -193,7 +194,7 @@ uvx ruff format
 
 3. Run checks and build:
    ```
-   uvx taplo fmt --check --diff && uvx ruff check && uvx ruff format --check
+   uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check
    npm run build
    ```
 

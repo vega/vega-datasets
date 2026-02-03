@@ -23,18 +23,21 @@ title = "7-Zip"
 path  = "https://www.7-zip.org/"
 
 [[resources.licenses]]
+name  = "LGPL-2.1"
 title = "GNU Lesser General Public License"
 path  = "https://www.7-zip.org/license.txt"
 
 [[resources]] # Path: airports.csv
 path = "airports.csv"
-description = """Airports in the United States and its territories, including  major commercial, regional, 
+description = """Airports in the United States and its territories, including major commercial, regional, 
 and municipal airports. Contains information about each airport's location (latitude/longitude 
-coordinates), identification codes, name, city, state, and country."""
+coordinates), identification codes, name, city, state, and country. While the exact generation 
+source of this file is unknown, this data is consistent with files provided on a monthly 
+frequency by the FAA's [National Airspace System Resource](https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/)."""
 
 [[resources.sources]]
-title = "Airports (Data.gov)"
-path  = "https://catalog.data.gov/dataset/airports-5e97a"
+title = "Federal Aviation Administration"
+path  = "https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/"
 
 [[resources.licenses]]
 name  = "other-open"
@@ -49,6 +52,7 @@ title = "Climate Forecast System Version 2"
 path  = "https://www.cpc.ncep.noaa.gov/products/people/wwang/cfsv2_fcst_history/"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "Public Domain"
 path  = "https://www.weather.gov/disclaimer/"
 
@@ -99,7 +103,8 @@ title = "Wiebe, G. A., Reinbach-Welch, L., Cowan, P. R. (1940). Yields of Barley
 path  = "https://books.google.com/books?id=OUfxLocnpKkC&pg=PA19"
 
 [[resources.licenses]]
-name = "Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified"
+name  = "notspecified"
+title = "Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified"
 
 [[resources]] # Path: birdstrikes.csv
 path        = "birdstrikes.csv"
@@ -110,6 +115,7 @@ title = "FAA Wildlife Strike Database"
 path  = "http://wildlife.faa.gov"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://resources.data.gov/open-licenses/"
 
@@ -122,6 +128,7 @@ title = "Office of Management and Budget - Budget FY 2016 - Receipts"
 path  = "https://www.govinfo.gov/app/details/BUDGET-2016-DB/BUDGET-2016-DB-3"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://resources.data.gov/open-licenses/"
 
@@ -151,6 +158,7 @@ title = "Office of Management and Budget"
 path  = "https://www.whitehouse.gov/omb/"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://resources.data.gov/open-licenses/"
 
@@ -206,6 +214,7 @@ title = "Protovis Antibiotics Example"
 path  = "https://mbostock.github.io/protovis/ex/antibiotics-burtin.html"
 
 [[resources.licenses]]
+name  = "BSD-3-Clause"
 title = "BSD License (via Protovis)"
 path  = "https://mbostock.github.io/protovis/"
 
@@ -213,11 +222,17 @@ path  = "https://mbostock.github.io/protovis/"
 path        = "cars.json"
 description = "Collection of car specifications and performance metrics from various automobile manufacturers."
 
+[resources.schema]
+[[resources.schema.fields]]
+name = "Miles_per_Gallon"
+type = "number"
+
 [[resources.sources]]
 title = "StatLib Datasets Archive"
 path  = "http://lib.stat.cmu.edu/datasets/"
 
 [[resources.licenses]]
+name  = "notspecified"
 title = "The original was distributed in 1982 for educational and scientific purposes."
 path  = "http://lib.stat.cmu.edu/datasets/cars.desc"
 
@@ -243,6 +258,7 @@ title = "In-situ CO2 Data"
 path  = "https://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv"
 
 [[resources.licenses]]
+name  = "CC-BY-4.0"
 title = "Creative Commons Attribution 4.0"
 path  = "https://creativecommons.org/licenses/by/4.0/"
 
@@ -299,6 +315,7 @@ path    = "https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wC
 version = "14"
 
 [[resources.licenses]]
+name  = "CC-BY-4.0"
 title = "Creative Commons Attribution 4.0 International"
 path  = "https://www.gapminder.org/free-material/"
 
@@ -357,6 +374,7 @@ in the Hospitals of the Army in the East.
 path = "https://nrs.lib.harvard.edu/urn-3:hms.count:1177146?n=21"
 
 [[resources.licenses]]
+name  = "notspecified"
 title = "Harvard Library - Digitized Content Copyright & Viewer Terms of Use"
 path  = "https://library.harvard.edu/privacy-terms-use-copyright-information#digitizedcontent"
 
@@ -375,9 +393,11 @@ title = "Hannah Ritchie, Pablo Rosado and Max Roser (2022) - Natural Disasters"
 path  = "https://ourworldindata.org/natural-catastrophes"
 
 [[resources.licenses]]
+name  = "notspecified"
 title = "EM-DAT terms of use"
 path  = "https://doc.emdat.be/docs/legal/terms-of-use/"
 [[resources.licenses]]
+name  = "CC-BY-4.0"
 title = "Creative Commons BY license (Our World in Data)"
 path  = "https://creativecommons.org/licenses/by/4.0/"
 
@@ -423,6 +443,7 @@ title = "USGS Earthquake Feed"
 path  = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Public Domain"
 path  = "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
 
@@ -435,16 +456,64 @@ title = "Mozilla Firefox"
 path  = "https://www.mozilla.org/firefox/"
 
 [[resources.licenses]]
+name  = "notspecified"
 title = "Mozilla Trademark License"
 path  = "https://www.mozilla.org/en-US/foundation/trademarks/policy/"
 
 [[resources]] # Path: flare-dependencies.json
 path        = "flare-dependencies.json"
-description = "Indicates, with `flare.json`, relationships among classes in a software hierarchy."
+description = """Network of class dependencies for the Flare visualization library. Each entry
+represents a directed edge where the `source` class depends on (imports) the `target` class.
+IDs correspond to those in `flare.json`."""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "source"
+type        = "integer"
+description = "ID of the class that has the dependency (the importer)"
+constraints = { required = true }
+
+[[resources.schema.fields]]
+name        = "target"
+type        = "integer"
+description = "ID of the class being depended upon (the imported)"
+constraints = { required = true }
 
 [[resources]] # Path: flare.json
 path        = "flare.json"
-description = "Indicates, with `flare-dependencies.json`, relationships among classes in a software hierarchy."
+description = """Class hierarchy of the Flare visualization library. Used with `flare-dependencies.json`
+to represent the complete package/class structure.
+
+Represents a tree structure where nodes have different fields depending on their role:
+- Root node: only `id` and `name`
+- Branch nodes: `id`, `name`, and `parent`
+- Leaf nodes: `id`, `name`, `parent`, and `size`
+"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name        = "id"
+type        = "integer"
+description = "Unique identifier for the node"
+constraints = { required = true }
+
+[[resources.schema.fields]]
+name        = "name"
+type        = "string"
+description = "Name of the node in the hierarchy"
+constraints = { required = true }
+
+[[resources.schema.fields]]
+name        = "parent"
+type        = "integer"
+description = "ID of parent node (absent for root node)"
+constraints = { required = false }
+
+[[resources.schema.fields]]
+name        = "size"
+type        = "integer"
+description = "Size value (only present on leaf nodes)"
+constraints = { required = false }
 
 [[resources]] # Path: flights-10k.json
 path = "flights-10k.json"
@@ -455,8 +524,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -508,8 +578,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -529,8 +600,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -547,6 +619,12 @@ description = """Flight delay statistics (3 million rows) from U.S. Bureau of Tr
 Collected under regulatory reporting requirements (14 CFR Part 234), which mandate 
 that qualifying airlines report on-time performance data to BTS. Transformed using 
 `/scripts/flights.py`"""
+
+[resources.schema]
+[[resources.schema.fields]]
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -566,8 +644,9 @@ that qualifying airlines report on-time performance data to BTS. Transformed usi
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "datetime"
+name   = "date"
+type   = "datetime"
+format = "%Y/%m/%d %H:%M"
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
@@ -580,19 +659,17 @@ title = "Data Collected Under U.S. DOT Regulatory Requirements - License Terms N
 
 [[resources]] # Path: flights-airport.csv
 path = "flights-airport.csv"
-description = """Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id), 
+description = """Flight information for the year 2008. Each record consists of an origin airport (identified by IATA id),
 a destination airport, and the count of flights along this route."""
 
 [[resources.sources]]
 title = "U.S. Bureau of Transportation Statistics"
+path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
-
-[[resources.sources]]
-title = "U.S. Bureau of Transportation Statistics"
-path  = "https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr"
 
 [[resources]] # Path: football.json
 path = "football.json"
@@ -605,7 +682,8 @@ title = "OpenFootball"
 path  = "https://github.com/openfootball/football.json"
 
 [[resources.licenses]]
-path = "https://github.com/openfootball/football.json?tab=readme-ov-file#license"
+name  = "other-pd"
+path  = "https://github.com/openfootball/football.json?tab=readme-ov-file#license"
 
 [[resources]] # Path: gapminder-health-income.csv
 path = "gapminder-health-income.csv"
@@ -625,6 +703,7 @@ path  = "https://www.gapminder.org"
 title = "Gapminder GDP Per Capita Data"
 path  = "https://docs.google.com/spreadsheets/d/1i5AEui3WZNZqh7MQ4AKkJuCz4rRxGR_pw_9gtbcBOqQ/edit?gid=501532268#gid=501532268"
 [[resources.licenses]]
+name  = "CC-BY-4.0"
 title = "Creative Commons Attribution 4.0 International"
 path  = "https://www.gapminder.org/free-material/"
 
@@ -725,6 +804,7 @@ title = "Gapminder Data Documentation"
 path  = "https://www.gapminder.org/data/documentation/"
 
 [[resources.licenses]]
+name  = "CC-BY-4.0"
 title = "Creative Commons Attribution 4.0 International"
 path  = "https://www.gapminder.org/free-material/"
 
@@ -737,7 +817,8 @@ title = "GIMP - About GIMP"
 path  = "https://www.gimp.org/about/"
 
 [[resources.licenses]]
-path = "https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it"
+name  = "notspecified"
+path  = "https://www.gimp.org/docs/userfaq.html#whats-the-gimps-license-and-how-do-i-comply-with-it"
 
 [[resources]] # Path: github.csv
 path = "github.csv"
@@ -756,9 +837,11 @@ description = "Simulated hourly commit counts"
 
 [[resources.sources]]
 title = """Generated using `/scripts/github.py`."""
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/github.py"
 
 [[resources.licenses]]
-path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
+name  = "BSD-3-Clause"
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: global-temp.csv
 path        = "global-temp.csv"
@@ -769,6 +852,7 @@ title = "NASA Goddard Institute for Space Studies"
 path  = "https://data.giss.nasa.gov/gistemp/"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -789,9 +873,9 @@ title = "Census Bureau Data API User Guide"
 path  = "https://www.census.gov/data/developers/guidance/api-user-guide.html"
 
 [[resources.licenses]]
+name  = "other-open"
 title = "U.S. Census Bureau API Terms of Service"
 path  = "https://www.census.gov/data/developers/about/terms-of-service.html"
-name  = "Census Bureau Terms of Use"
 
 [[resources]] # Path: iowa-electricity.csv
 path = "iowa-electricity.csv"
@@ -803,6 +887,7 @@ title = "U.S. Energy Information Administration"
 path  = "https://www.eia.gov/beta/electricity/data/browser/#/topic/0?agg=2,0,1&fuel=vvg&geo=00000g&sec=g&linechart=ELEC.GEN.OTH-IA-99.A~ELEC.GEN.COW-IA-99.A~ELEC.GEN.PEL-IA-99.A~ELEC.GEN.PC-IA-99.A~ELEC.GEN.NG-IA-99.A~~ELEC.GEN.NUC-IA-99.A~ELEC.GEN.HYC-IA-99.A~ELEC.GEN.AOR-IA-99.A~ELEC.GEN.HPS-IA-99.A~&columnchart=ELEC.GEN.ALL-IA-99.A&map=ELEC.GEN.ALL-IA-99.A&freq=A&start=2001&end=2017&ctype=linechart&ltype=pin&tab=overview&maptype=0&rse=0&pin="
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -870,6 +955,7 @@ path    = "https://usa.ipums.org/usa/"
 version = "6.0"
 
 [[resources.licenses]]
+name  = "notspecified"
 title = "IPUMS Terms of Use"
 path  = "https://www.ipums.org/about/terms"
 
@@ -891,9 +977,10 @@ and \"Contains Ordnance Survey data © Crown copyright and database right [2015]
 
 [[resources.sources]]
 title = "Statistical GIS Boundary Files, London Datastore"
-path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london"
+path  = "https://data.london.gov.uk/dataset/statistical-gis-boundary-files-for-london-20od9/"
 
 [[resources.licenses]]
+name  = "OGL-UK-3.0"
 title = "UK Open Government License"
 path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
 
@@ -906,6 +993,7 @@ title = "[londonBoroughs.json](https://github.com/vega/vega-datasets/blob/main/d
 path  = "https://github.com/vega/vega-datasets/blob/main/data/londonBoroughs.json"
 
 [[resources.licenses]]
+name  = "OGL-UK-3.0"
 title = "UK Open Government License"
 path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
 
@@ -922,6 +1010,7 @@ title = "OpenStreetMap Data (processed by oobrien/vis)"
 path  = "https://github.com/oobrien/vis/blob/master/tubecreature/data/tfl_lines.json"
 
 [[resources.licenses]]
+name  = "ODbL-1.0"
 title = "Open Data Commons Open Database License (ODbL)"
 path  = "https://opendatacommons.org/licenses/odbl/"
 
@@ -934,7 +1023,8 @@ mapping people to groups. Used to [demonstrate](https://vega.github.io/vega-lite
 title = "Generated Data"
 
 [[resources.licenses]]
-path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
+name  = "BSD-3-Clause"
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: lookup_people.csv
 path = "lookup_people.csv"
@@ -946,7 +1036,8 @@ to [demonstrate](https://vega.github.io/vega-lite/examples/lookup.html) `lookup`
 title = "Generated Data"
 
 [[resources.licenses]]
-path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
+name  = "BSD-3-Clause"
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: miserables.json
 path = "miserables.json"
@@ -961,7 +1052,8 @@ title = "D. E. Knuth, The Stanford GraphBase: A Platform for Combinatorial Compu
 path  = "https://www-cs-faculty.stanford.edu/~knuth/sgb.html"
 
 [[resources.licenses]]
-path = "https://websites.umich.edu/~mejn/netdata/"
+name  = "notspecified"
+path  = "https://websites.umich.edu/~mejn/netdata/"
 
 [[resources]] # Path: monarchs.json
 path = "monarchs.json"
@@ -1004,6 +1096,7 @@ description = "A zero-based sequential number assigned to each entry, representi
 
 [[resources.schema.fields]]
 name        = "commonwealth"
+type        = "boolean"
 description = "A Boolean flag (true) for the period from 1649 to 1660. This field is omitted for all other entries"
 
 [[resources.sources]]
@@ -1015,19 +1108,25 @@ title = "The Royal Family - Interregnum"
 path  = "https://www.royal.uk/interregnum-1649-1660"
 
 [[resources.licenses]]
+name  = "OGL-UK-3.0"
 title = "Open Government Licence v3.0 (UK)"
 path  = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
 
 [[resources]] # Path: movies.json
 path = "movies.json"
-description = """A collection of films and their performance metrics, including box office earnings, budgets, 
-and audience ratings. Contains known data quality issues and intentional errors, serving as a teaching 
-resource for developing data cleaning and validation skills in real-world analysis workflows."""
+description = """A collection of films and their performance metrics, including box office earnings, budgets,
+and audience ratings. Contains known data quality issues typical of real-world datasets:
+- Some movie titles with numeric names (1776, 2012, 300, etc.) are stored as JSON numbers rather than strings
+- Release dates use 'MMM DD YYYY' format rather than ISO 8601
+
+These characteristics make it suitable as a teaching resource for developing data cleaning
+and validation skills in real-world analysis workflows."""
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "Release Date"
-type = "date"
+name   = "Release Date"
+type   = "date"
+format = "%b %d %Y"
 
 [[resources]] # Path: normal-2d.json
 path = "normal-2d.json"
@@ -1055,7 +1154,8 @@ description = "mean: -0.011, std: 0.199, range: [-0.534, 0.606], p-value: 0.763"
 title = "Generated Data"
 
 [[resources.licenses]]
-path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
+name  = "BSD-3-Clause"
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: obesity.json
 path = "obesity.json"
@@ -1067,6 +1167,7 @@ title = "Protovis"
 path  = "https://mbostock.github.io/protovis/ex/us_stats.js"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1125,13 +1226,14 @@ description = "Sex of the penguin (MALE, FEMALE or null)"
 
 [[resources.sources]]
 title = "Palmer Station Antarctica LTER"
-path  = "https://pal.lternet.edu/"
+path  = "https://pallter.marine.rutgers.edu/"
 [[resources.sources]]
 title = "Allison Horst's Penguins Repository"
 path  = "https://github.com/allisonhorst/penguins"
 
 [[resources.licenses]]
-name = "CC0 1.0 Universal"
+name  = "CC0-1.0"
+title = "Creative Commons Zero 1.0 Universal"
 path = "https://github.com/allisonhorst/palmerpenguins?tab=CC0-1.0-1-ov-file#readme"
 
 [[resources]] # Path: platformer-terrain.json
@@ -1165,8 +1267,9 @@ Additionally, the FEC's Github [repository](https://github.com/fecgov/FEC) state
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "Coverage_End_Date"
-type = "date"
+name   = "Coverage_End_Date"
+type   = "date"
+format = "%m/%d/%Y"
 
 [[resources.sources]]
 title = "Federal Election Commission Bulk Data"
@@ -1176,6 +1279,7 @@ title = "OpenFEC API"
 path  = "https://api.open.fec.gov/developers/"
 
 [[resources.licenses]]
+name  = "CC0-1.0"
 title = "Creative Commons Zero 1.0 Universal"
 path  = "https://creativecommons.org/publicdomain/zero/1.0/"
 
@@ -1215,25 +1319,27 @@ title = "IPUMS USA"
 path  = "https://usa.ipums.org/usa/"
 
 [[resources.licenses]]
+name  = "notspecified"
 title = "IPUMS Terms of Use"
 path  = "https://www.ipums.org/about/terms"
 
 [[resources]] # Path: population_engineers_hurricanes.csv
 path = "population_engineers_hurricanes.csv"
-description = """Per-state population, number of engineers, and hurricanes. Used in Vega-Lite example,
+description = """Per-state population (2016 ACS 1-Year), ratio of engineers to total civilian employed population (2016 ACS 1-Year), and total hurricane landfalls (possibly 1851-2015). Used in Vega-Lite example,
 [Three Choropleths Representing Disjoint Data from the Same Table](https://vega.github.io/vega-lite/examples/geo_repeat.html)"""
 
 [[resources.sources]]
-title = "Bureau of Labor Statistics"
-path  = "https://www.bls.gov/oes/tables.htm"
+title = "U.S. Census Bureau, 2016 ACS 1-Year Estimates: Total Population (B01001) and Occupation (S2401)"
+path  = "https://www.census.gov/data/developers/data-sets/acs-1year/2016.html"
 [[resources.sources]]
-title = "American Community Survey"
-path  = "https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_07_3YR_S1901&prodType=table"
+title = "Continental United States Hurricane Impacts/Landfalls"
+path  = "https://www.aoml.noaa.gov/hrd/hurdat/All_U.S._Hurricanes.html"
 [[resources.sources]]
-title = "NOAA National Climatic Data Center"
-path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
+title = "NOAA FAQ: How Many Landfalling Hurricanes Have Hit Eact State?"
+path  = "https://www.aoml.noaa.gov/hrd-faq/#landfalls-by-state"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1250,6 +1356,7 @@ title = "NOAA National Climatic Data Center (NCDC)"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/normals"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1290,6 +1397,7 @@ title = "NOAA National Climatic Data Center"
 path  = "https://www.ncdc.noaa.gov/cdo-web/datatools/records"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1309,8 +1417,9 @@ the dot-com bubble burst (2000-2002), the mid-2000s bull market, and the 2008 fi
 """
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "date"
+name        = "date"
+type        = "date"
+format      = "%b %d %Y"
 description = "Date of monthly observation in the format 'MMM D YYYY'"
 
 [[resources.schema.fields]]
@@ -1369,6 +1478,7 @@ title = "US Census Bureau Cartographic Boundary Files (1:10,000,000)"
 path  = "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1378,8 +1488,9 @@ description = "Monthly stock prices for five companies from 2000 to 2010."
 
 [resources.schema]
 [[resources.schema.fields]]
-name = "date"
-type = "date"
+name   = "date"
+type   = "date"
+format = "%b %d %Y"
 
 [[resources]] # Path: udistrict.json
 path = "udistrict.json"
@@ -1479,6 +1590,7 @@ title = "Bureau of Labor Statistics Table A-31"
 path  = "https://www.bls.gov/web/empsit/cpseea31.htm"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1530,6 +1642,7 @@ title = "BLS Handbook of Methods"
 path  = "https://www.bls.gov/opub/hom/lau/home.htm"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1554,7 +1667,8 @@ description = "mean: -0.013, std: 0.276, range: [-0.500, 0.498]"
 title = "Generated Data"
 
 [[resources.licenses]]
-path = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
+name  = "BSD-3-Clause"
+path  = "https://github.com/vega/vega-datasets/blob/main/scripts/LICENSE"
 
 [[resources]] # Path: us-10m.json
 path = "us-10m.json"
@@ -1573,8 +1687,9 @@ title = "US Census Bureau Cartographic Boundary FIles"
 path  = "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html"
 
 [[resources.licenses]]
+name  = "ISC"
 title = "TopoJSON US Atlas ISC License"
-path  = "https://github.com/topojson/us-atlas/blob/master/LICENSE.md"
+path  = "https://github.com/topojson/us-atlas/blob/master/LICENSE"
 
 [[resources]] # Path: us-employment.csv
 path = "us-employment.csv"
@@ -1600,6 +1715,7 @@ title = "U.S. Bureau of Labor Statistics Current Employment Statistics"
 path  = "https://www.bls.gov/ces/"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1623,10 +1739,12 @@ title = "U.S. Geological Survey National Geospatial Program - The National Map"
 path  = "https://www.usgs.gov/programs/national-geospatial-program/national-map"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Public Domain"
 path  = "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1683,6 +1801,7 @@ title = "NOAA Climate Data Online"
 path  = "http://www.ncdc.noaa.gov/cdo-web/datatools/findstation"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "U.S. Government Dataset"
 path  = "https://www.usa.gov/government-works"
 
@@ -1710,6 +1829,7 @@ title = "1822 Playfair Chart"
 path  = "https://commons.wikimedia.org/wiki/File:Chart_Showing_at_One_View_the_Price_of_the_Quarter_of_Wheat,_and_Wages_of_Labour_by_the_Week,_from_1565_to_1821.png"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "Public Domain"
 path  = "https://commons.wikimedia.org/wiki/Public_domain"
 
@@ -1738,10 +1858,12 @@ title = "Natural Earth Data - Admin 0 Countries (1:110m)"
 path  = "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/"
 
 [[resources.licenses]]
+name  = "ISC"
 title = "TopoJSON World Atlas ISC License"
-path  = "https://github.com/topojson/world-atlas/blob/master/LICENSE.md"
+path  = "https://github.com/topojson/world-atlas/blob/master/LICENSE"
 
 [[resources.licenses]]
+name  = "other-pd"
 title = "Natural Earth Data Public Domain"
 path  = "https://www.naturalearthdata.com/about/terms-of-use/"
 
@@ -1763,5 +1885,6 @@ title = "GeoNames Postal Codes"
 path  = "https://download.geonames.org/export/zip/"
 
 [[resources.licenses]]
+name  = "CC-BY-4.0"
 title = "Creative Commons Attribution 4.0 International"
 path  = "https://creativecommons.org/licenses/by/4.0/"
