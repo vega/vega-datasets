@@ -50,6 +50,23 @@ For datasets requiring processing:
 - Ensure reproducibility with deterministic outputs and fixed random seeds when applicable
 - See `scripts/flights.py` as an example
 
+### Gallery Examples Registry
+
+The `gallery_examples.json` file catalogs examples from Vega, Vega-Lite, and Altair galleries, tracking which datasets each example uses.
+
+**When to regenerate:**
+- After new releases of Vega, Vega-Lite, or Altair that add/remove examples
+- When examples are renamed or reorganized upstream
+- Periodically (e.g., quarterly) to pick up new examples
+
+**Commands:**
+```bash
+npm run update-gallery                              # Regenerate the file
+npm run update-gallery -- --dry-run --verbose       # Test without writing
+```
+
+Configuration lives in `_data/gallery_examples.toml`. Runtime is ~2-4 minutes (fetches ~470 specs).
+
 ## Metadata and Documentation
 
 We follow the [Data Package Standard 2.0](https://datapackage.org/) with:
