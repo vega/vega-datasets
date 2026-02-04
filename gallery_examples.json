@@ -2,7 +2,8 @@
   "name": "gallery-examples",
   "title": "Vega Ecosystem Gallery Examples Registry",
   "description": "Cross-reference catalog mapping gallery examples to vega-datasets resources. Tracks which datasets from the vega-datasets collection are used in example visualizations across Vega, Vega-Lite, and Altair galleries.",
-  "created": "2025-10-26T18:51:10.659819+00:00",
+  "version": "1.0.0",
+  "created": "2026-01-29T03:34:23.980889+00:00",
   "datapackage": {
     "name": "vega-datasets",
     "version": "3.2.1",
@@ -18,7 +19,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make a heatmap from binned quantitative data.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 1
@@ -32,7 +33,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make a 2d histogram scatter plot.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 2
@@ -46,7 +47,7 @@
         "Tables"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 3
@@ -60,7 +61,7 @@
         "Case Studies"
       ],
       "description": "`Anscombe's Quartet <https://en.wikipedia.org/wiki/Anscombe%27s_quartet>`_ is a famous dataset constructed by Francis Anscombe. It is made of 4 different subsets of data. Each subset has very different characteristics, even though common summary statistics such as mean and variance are identical. This example shows how to make a faceted plot, with each facet showing a different subset of the data.",
-      "datasets_used": [
+      "datasets": [
         "anscombe"
       ],
       "id": 4
@@ -74,7 +75,7 @@
         "Area Charts"
       ],
       "description": "This example shows how to make an area chart with a gradient fill. For more information about gradient options see the Vega-Lite `Gradient documentation <https://vega.github.io/vega-lite/docs/types.html#gradient>`_.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 5
@@ -88,7 +89,7 @@
         "Case Studies"
       ],
       "description": "This example is a fully developed line chart that uses a window transformation. It was inspired by `Gregor Aisch's work at datawrapper <https://www.datawrapper.de/_/OHgEm/>`_.",
-      "datasets_used": [
+      "datasets": [
         "co2_concentration"
       ],
       "id": 6
@@ -102,7 +103,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a bar chart highlighting values beyond a threshold.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 7
     },
     {
@@ -114,7 +115,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a basic bar chart with a single bar highlighted.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 8
@@ -128,7 +129,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a bar chart that highlights values beyond a threshold.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 9
@@ -142,7 +143,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows a bar chart with highlighting on hover and selecting on click. (Inspired by Tableau's interaction style.) Based on https://vega.github.io/vega-lite/examples/interactive_bar_select_highlight.html",
-      "datasets_used": [],
+      "datasets": [],
       "id": 10
     },
     {
@@ -154,7 +155,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a basic horizontal bar chart with labels created with Altair.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 11
@@ -168,7 +169,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a basic horizontal bar chart with labels where the measured luminance to decides if the text overlay is be colored ``black`` or ``white``.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 12
@@ -182,7 +183,7 @@
         "Bar Charts"
       ],
       "description": "This example shows the mean value overlaid on a bar chart.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 13
@@ -196,7 +197,7 @@
         "Bar Charts"
       ],
       "description": "This example shows how to combine two plots and keep their axes. For a more polished version of this chart, see :ref:`gallery_wheat_wages`.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 14
@@ -210,7 +211,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a bar chart with both positive and negative values.",
-      "datasets_used": [
+      "datasets": [
         "us_employment"
       ],
       "id": 15
@@ -224,7 +225,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a range bar chart where each bar displays information of a low and high value.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 16
@@ -238,7 +239,7 @@
         "Bar Charts"
       ],
       "description": "A bar chart overlaid with a rolling mean. In this example the average of values over the previous decade is displayed as a line.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 17
@@ -252,7 +253,7 @@
         "Bar Charts"
       ],
       "description": "This example shows how to create a bar chart with rounded edges.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 18
@@ -266,7 +267,7 @@
         "Bar Charts"
       ],
       "description": "How to layer a tick chart on top of a bar chart.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 19
     },
     {
@@ -277,8 +278,8 @@
       "categories": [
         "Case Studies"
       ],
-      "description": "The example demonstrates the faceted charts created by Richard Becker, William Cleveland and others in the 1990s. Using the visualization technique where each row is a different site (i.e. the chart is faceted by site), they identified an anomaly in a widely used agriculatural dataset, where the \"Morris\" site accidentally had the years 1931 and 1932 swapped. They named this `\"The Morris Mistake.\" <http://ml.stat.purdue.edu/stat695t/writings/Trellis.User.pdf>`_.",
-      "datasets_used": [
+      "description": "The example demonstrates the faceted charts created by Richard Becker, William Cleveland and others in the 1990s. Using the visualization technique where each row is a different site (i.e. the chart is faceted by site), they identified an anomaly in a widely used agriculatural dataset, where the \"Morris\" site accidentally had the years 1931 and 1932 swapped. They named this `\"The Morris Mistake.\" <https://www.stat.auckland.ac.nz/~ihaka/courses/120/trellis.user.pdf>`_.",
+      "datasets": [
         "barley"
       ],
       "id": 20
@@ -291,8 +292,8 @@
       "categories": [
         "Case Studies"
       ],
-      "description": "The example demonstrates the faceted charts created by Richard Becker, William Cleveland and others in the 1990s. Using the visualization technique where each row is a different site (i.e. the chart is faceted by site), they identified an anomaly in a widely used agriculatural dataset, where the \"Morris\" site accidentally had the years 1931 and 1932 swapped. They named this `\"The Morris Mistake.\" <http://ml.stat.purdue.edu/stat695t/writings/Trellis.User.pdf>`_.",
-      "datasets_used": [
+      "description": "The example demonstrates the faceted charts created by Richard Becker, William Cleveland and others in the 1990s. Using the visualization technique where each row is a different site (i.e. the chart is faceted by site), they identified an anomaly in a widely used agriculatural dataset, where the \"Morris\" site accidentally had the years 1931 and 1932 swapped. They named this `\"The Morris Mistake.\" <https://www.stat.auckland.ac.nz/~ihaka/courses/120/trellis.user.pdf>`_.",
+      "datasets": [
         "barley"
       ],
       "id": 21
@@ -306,7 +307,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make a boxplot using US Population data from 2000. Note that the default value of the `extent` property is 1.5, which represents the convention of extending the whiskers to the furthest points within 1.5 * IQR from the first and third quartile.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 22
@@ -320,7 +321,7 @@
         "Scatter Plots"
       ],
       "description": "A scatter plot of the cars dataset, with data tables for horsepower, MPG, and origin. The tables update to reflect the selection on the scatter plot.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 23
@@ -334,7 +335,7 @@
         "Scatter Plots"
       ],
       "description": "This example shows how to make a bubble plot.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 24
@@ -348,7 +349,7 @@
         "Line Charts"
       ],
       "description": "This example shows a bump chart. The data is first grouped into six-month intervals using pandas. The ranks are computed by Altair using a window transform.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 25
@@ -362,7 +363,7 @@
         "Advanced Calculations"
       ],
       "description": "A dot plot showing each movie in the database, and the difference from the average movie rating. The display is sorted by year to visualize everything in sequential order. The graph is for all Movies before 2019. Adapted from `Calculate Residuals <https://vega.github.io/vega-lite/examples/joinaggregate_residual_graph.html>`_.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 26
@@ -376,7 +377,7 @@
         "Bar Charts"
       ],
       "description": "This chart demonstrates how to use a joinaggregate transform to display data values as a percentage of total.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 27
     },
     {
@@ -388,7 +389,7 @@
         "Advanced Calculations"
       ],
       "description": "A candlestick chart inspired from `Protovis <http://mbostock.github.io/protovis/ex/candlestick.html>`_. This example shows the performance of the Chicago Board Options Exchange `Volatility Index <https://en.wikipedia.org/wiki/VIX>`_ (VIX) in the summer of 2009. The thick bar represents the opening and closing prices, while the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red.",
-      "datasets_used": [
+      "datasets": [
         "ohlc"
       ],
       "id": 28
@@ -402,7 +403,7 @@
         "Maps"
       ],
       "description": "A choropleth map of unemployment rate per county in the US",
-      "datasets_used": [
+      "datasets": [
         "unemployment",
         "us_10m"
       ],
@@ -416,8 +417,8 @@
       "categories": [
         "Advanced Calculations"
       ],
-      "description": "Inspired by `Zan Armstrong's comet chart <https://www.zanarmstrong.com/infovisresearch>`_ this plot uses ``mark_trail`` to visualize change of grouped data over time. A more elaborate example and explanation of creating comet charts in Altair is shown in `this blogpost <https://medium.com/de-dataverbinders/comet-charts-in-python-visualizing-statistical-mix-effects-and-simpsons-paradox-with-altair-6cd51fb58b7c>`_.",
-      "datasets_used": [
+      "description": "Inspired by `Zan Armstrong's comet chart <https://www.zanarmstrong.com/>`_ this plot uses ``mark_trail`` to visualize change of grouped data over time. A more elaborate example and explanation of creating comet charts in Altair is shown in `this blogpost <https://medium.com/de-dataverbinders/comet-charts-in-python-visualizing-statistical-mix-effects-and-simpsons-paradox-with-altair-6cd51fb58b7c>`_.",
+      "datasets": [
         "barley"
       ],
       "id": 30
@@ -431,7 +432,7 @@
         "Bar Charts"
       ],
       "description": "A simple grid of bar charts to compare performance data, one subchart for each subset of the data.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 31
     },
     {
@@ -443,7 +444,7 @@
         "Case Studies"
       ],
       "description": "This example shows bivariate deviation ellipses of flipper length and body mass of three penguin species. Inspired by `ggplot2.stat_ellipse`_ and directly based on `Deviation ellipses example`_ by `@essicolo`_ .. _ggplot2.stat_ellipse: https://ggplot2.tidyverse.org/reference/stat_ellipse.html#ref-examples .. _Deviation ellipses example: https://github.com/vega/altair/pull/514 .. _@essicolo: https://github.com/essicolo",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 32
@@ -457,9 +458,9 @@
         "Case Studies"
       ],
       "description": "This example shows all the connections between major U.S. airports. Lookup transformations are used to find the coordinates of each airport and connecting airports. Connections are displayed on pointerover via a single selection.",
-      "datasets_used": [
-        "us_10m",
+      "datasets": [
         "flights_airport",
+        "us_10m",
         "airports"
       ],
       "id": 33
@@ -473,7 +474,7 @@
         "Distributions"
       ],
       "description": "This example shows an area chart with cumulative count. Adapted from https://vega.github.io/vega-lite/examples/area_cumulative_freq.html",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 34
@@ -487,7 +488,7 @@
         "Case Studies"
       ],
       "description": "This is a dendrogram from the result of a hierarchical clustering. It's based on the example from https://scikit-learn.org/stable/auto_examples/cluster/plot_agglomerative_dendrogram.html",
-      "datasets_used": [],
+      "datasets": [],
       "id": 35
     },
     {
@@ -499,7 +500,7 @@
         "Distributions"
       ],
       "description": "Distributions and Medians of Likert Scale Ratings. (Figure 9 from @jhoffswell and @zcliu’s ‘Interactive Repair of Tables Extracted from PDF Documents on Mobile Devices’ – http://idl.cs.washington.edu/files/2019-InteractiveTableRepair-CHI.pdf). Adapted from `Distributions and Medians of Likert Scale Ratings <https://vega.github.io/vega-lite/examples/layer_likert.html>`_.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 36
     },
     {
@@ -511,7 +512,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a diverging stacked bar chart for sentiments towards a set of eight questions, displayed as percentages with neutral responses straddling the 0% mark.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 37
     },
     {
@@ -523,7 +524,7 @@
         "Circular Plots"
       ],
       "description": "This example shows how to make a Donut Chart using ``mark_arc``. This is adapted from a corresponding Vega-Lite Example: `Donut Chart <https://vega.github.io/vega-lite/examples/arc_donut.html>`_.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 38
     },
     {
@@ -535,7 +536,7 @@
         "Distributions"
       ],
       "description": "How to make the dot-dash plot presented in Edward Tufte's `Visual Display of Quantitative Information <https://www.edwardtufte.com/tufte/books_vdqi>`_. Based on a JavaScript implementation by `g3o2 <https://bl.ocks.org/g3o2/bd4362574137061c243a2994ba648fb8>`_.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 39
@@ -549,7 +550,7 @@
         "Distributions"
       ],
       "description": "This example shows an empirical cumulative distribution function.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 40
@@ -563,7 +564,7 @@
         "Uncertainties And Trends"
       ],
       "description": "This example shows how to show error bars using confidence intervals. The confidence intervals are computed internally in vega by a non-parametric `bootstrap of the mean <https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js>`_.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 41
@@ -577,7 +578,7 @@
         "Uncertainties And Trends"
       ],
       "description": "This example shows how to show error bars with standard deviation using crop yields data of different in the years of 1930s.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 42
@@ -591,7 +592,7 @@
         "Area Charts"
       ],
       "description": "Multiple area subcharts, one for each company. We also show filtering out one of the companies, and sorting the companies in a custom order.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 43
@@ -605,9 +606,9 @@
         "Maps"
       ],
       "description": "A set of maps arranged in a grid, each showing the distribution of a species' projected habitat across US counties. Each choropleth map uses color intensity to represent the percentage values within county boundaries.",
-      "datasets_used": [
-        "us_10m",
-        "species"
+      "datasets": [
+        "species",
+        "us_10m"
       ],
       "id": 44
     },
@@ -620,7 +621,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make a basic faceted histogram, with one histogram subplot for different subsets of the data. Based off the vega-lite example: https://vega.github.io/vega-lite/examples/trellis_bar_histogram.html",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 45
@@ -634,7 +635,7 @@
         "Advanced Calculations"
       ],
       "description": "This chart creates one facet per natural disaster and shows the cumulative number of deaths for that category. Note the use of different predicates to filter based on both a list and a range.",
-      "datasets_used": [
+      "datasets": [
         "disasters"
       ],
       "id": 46
@@ -648,7 +649,7 @@
         "Scatter Plots"
       ],
       "description": "A series of scatter plots, one for each country/area of origin.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 47
@@ -662,7 +663,7 @@
         "Bar Charts"
       ],
       "description": "A horizontal stacked bar chart using barley crop yield data. The chart is horizontally faceted based on the year, and vertically faceted based on variety.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 48
@@ -676,7 +677,7 @@
         "Line Charts"
       ],
       "description": "This example shows Google's stock price over time as a step chart with its area filled in and its line emphasized.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 49
@@ -690,7 +691,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to make a simple Gantt chart.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 50
     },
     {
@@ -702,7 +703,7 @@
         "Case Studies"
       ],
       "description": "This example shows how to make a bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost's blog post `'One Chart, Twelve Charting Libraries' <http://lisacharlotterost.github.io/2016/05/17/one-chart-code/>`_.",
-      "datasets_used": [
+      "datasets": [
         "gapminder_health_income"
       ],
       "id": 51
@@ -716,7 +717,7 @@
         "Case Studies"
       ],
       "description": "This example shows a proportional symbols visualization of deaths from natural disasters by year and type.",
-      "datasets_used": [
+      "datasets": [
         "disasters"
       ],
       "id": 52
@@ -730,7 +731,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a grouped bar chart.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 53
@@ -744,7 +745,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a grouped bar chart with error bars.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 54
@@ -758,7 +759,7 @@
         "Bar Charts"
       ],
       "description": "Like :ref:`gallery_grouped_bar_chart`, this example shows a grouped bar chart. Whereas :ref:`gallery_grouped_bar_chart` used the ``column`` encoding channel, this example uses the ``xOffset`` encoding channel. This is adapted from a corresponding Vega-Lite Example: `Grouped Bar Chart <https://vega.github.io/vega-lite/examples/bar_grouped.html>`_.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 55
     },
     {
@@ -770,7 +771,7 @@
         "Bar Charts"
       ],
       "description": "Like :ref:`gallery_grouped_bar_chart2`, this example shows a grouped bar chart using the ``xOffset`` encoding channel, but in this example the bars are partly overlapping within each group.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 56
     },
     {
@@ -782,7 +783,7 @@
         "Maps"
       ],
       "description": "This is a layered geographic visualization that groups points by state.",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "airports"
       ],
@@ -797,7 +798,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make an alternative form of a histogram `designed at Google <https://www.smashingmagazine.com/2022/07/accessibility-first-approach-chart-visual-design/>`_ with the goal of increasing accessibility.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 58
@@ -811,7 +812,7 @@
         "Tables"
       ],
       "description": "This example shows a hexbin chart.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 59
@@ -825,7 +826,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make a histogram with gradient color. The low-high IMDB rating is represented with the color scheme `pinkyellowgreen`.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 60
@@ -839,7 +840,7 @@
         "Distributions"
       ],
       "description": "This shows an example of a histogram with bins that are responsive to a selection domain. Click and drag on the bottom panel to see the bins change on the top panel.",
-      "datasets_used": [
+      "datasets": [
         "flights_5k"
       ],
       "id": 61
@@ -853,7 +854,7 @@
         "Distributions"
       ],
       "description": "This example shows a histogram with a global mean overlay.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 62
@@ -867,7 +868,7 @@
         "Area Charts"
       ],
       "description": "This example shows how to make a Horizon Graph with 2 layers. (See https://idl.cs.washington.edu/papers/horizon/ for more details on Horizon Graphs.)",
-      "datasets_used": [],
+      "datasets": [],
       "id": 63
     },
     {
@@ -879,7 +880,7 @@
         "Bar Charts"
       ],
       "description": "This example is a bar chart drawn horizontally by putting the quantitative value on the x axis.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 64
@@ -893,7 +894,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a horizontal grouped bar chart.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 65
@@ -907,7 +908,7 @@
         "Bar Charts"
       ],
       "description": "This is an example of a horizontal stacked bar chart using data which contains crop yields over different regions and different years in the 1930s.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 66
@@ -921,7 +922,7 @@
         "Interactive Charts"
       ],
       "description": "The plot below uses an interval selection, which causes the chart to include an interactive brush (shown in grey). The brush selection parameterizes the red guideline, which visualizes the average value within the selected interval.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 67
@@ -935,7 +936,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows an interactive chart where the range binder controls a threshold as rule where the datapoints on the left-side are aggregated and on the right-side are drawn as is. The ability to slide back and fourth may help you understand how the visualization represents the aggregation. Adapted from an example by @dwootton.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 68
@@ -949,7 +950,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows an interactive chart where selections in one portion of the chart affect what is shown in other panels. Click on the bar chart to see a detail of the distribution in the upper panel.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 69
@@ -963,7 +964,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows a multi-panel view of the same data, where you can interactively select a portion of the data in any of the panels to highlight that portion in any of the other panels.",
-      "datasets_used": [
+      "datasets": [
         "flights_2k"
       ],
       "id": 70
@@ -977,7 +978,7 @@
         "Interactive Charts"
       ],
       "description": "The following shows how to create a chart with an interactive legend, by binding the selection to ``\"legend\"``. Such a binding only works with ``selection_point`` when projected over a single field or encoding.",
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 71
@@ -991,7 +992,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to add a simple rectangular brush to a scatter plot. By clicking and dragging on the plot, you can highlight points within the range.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 72
@@ -1005,7 +1006,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to link a scatter plot and a histogram together such that clicking on a point in the scatter plot will isolate the distribution corresponding to that point, and vice versa.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 73
     },
     {
@@ -1017,7 +1018,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how columns can be selected interactively by accessing the values from selector widgets, and then compute the difference of the selected columns. It also illustrates how to use `indexof` to filter columns based on active selection values.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 74
     },
     {
@@ -1029,7 +1030,7 @@
         "Interactive Charts"
       ],
       "description": "This is an example of a binned bar chart on the right where the filtered overlay is adjusted by interacting with the map on the left.",
-      "datasets_used": [
+      "datasets": [
         "earthquakes",
         "world_110m"
       ],
@@ -1044,7 +1045,7 @@
         "Interactive Charts"
       ],
       "description": "This is an example of creating a stacked chart for which the domain of the top chart can be selected by interacting with the bottom chart. The initial selection range is set using Python's native datetime objects.",
-      "datasets_used": [
+      "datasets": [
         "sp500"
       ],
       "id": 76
@@ -1058,7 +1059,7 @@
         "Case Studies"
       ],
       "description": "This example is a fully developed stacked chart using the sample dataset of Iowa's electricity sources.",
-      "datasets_used": [
+      "datasets": [
         "iowa_electricity"
       ],
       "id": 77
@@ -1072,7 +1073,7 @@
         "Advanced Calculations"
       ],
       "description": "Isotype Visualization shows the distribution of animals across UK and US. Inspired by `Only An Ocean Between, 1943 <http://www.thomwhite.co.uk/?p=1303>`_. Population Live Stock, p.13. This is adapted from Vega-Lite example https://vega.github.io/editor/#/examples/vega-lite/isotype_bar_chart",
-      "datasets_used": [],
+      "datasets": [],
       "id": 78
     },
     {
@@ -1084,7 +1085,7 @@
         "Advanced Calculations"
       ],
       "description": "Isotype Visualization shows the distribution of animals across UK and US, using unicode emoji marks rather than custom SVG paths (see https://altair-viz.github.io/gallery/isotype.html). This is adapted from Vega-Lite example https://vega.github.io/vega-lite/examples/isotype_bar_chart_emoji.html.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 79
     },
     {
@@ -1096,7 +1097,7 @@
         "Advanced Calculations"
       ],
       "description": "This example is a grid of isotype figures.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 80
     },
     {
@@ -1108,7 +1109,7 @@
         "Tables"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 81
@@ -1122,7 +1123,7 @@
         "Area Charts"
       ],
       "description": "This example shows a layered area chart.",
-      "datasets_used": [
+      "datasets": [
         "iowa_electricity"
       ],
       "id": 82
@@ -1136,7 +1137,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a segmented bar chart that is layered rather than stacked.",
-      "datasets_used": [
+      "datasets": [
         "iowa_electricity"
       ],
       "id": 83
@@ -1150,7 +1151,7 @@
         "Distributions"
       ],
       "description": "This example shows how to use opacity to make a layered histogram in Altair.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 84
     },
     {
@@ -1162,7 +1163,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to create a second independent y axis.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 85
@@ -1176,7 +1177,7 @@
         "Line Charts"
       ],
       "description": "This example shows a simple line chart with two types of arrow annotations. The Unicode character approach is simpler, while the line plus triangle :ref:`point mark <user-guide-point-marks>` allows for greater flexibility, such as customizable arrowheads.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 86
     },
     {
@@ -1188,7 +1189,7 @@
         "Uncertainties And Trends"
       ],
       "description": "How to make a line chart with a bootstrapped 95% confidence interval band.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 87
@@ -1202,7 +1203,7 @@
         "Line Charts"
       ],
       "description": "This chart creates a simple line chart from the cumulative sum of a fields.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 88
@@ -1216,7 +1217,7 @@
         "Line Charts"
       ],
       "description": "This example uses the argmax aggregation function in order to create a custom legend for a line chart.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 89
@@ -1230,7 +1231,7 @@
         "Line Charts"
       ],
       "description": "By default, the line's path (order of points in the line) is determined by data values on the temporal/ordinal field. However, a field can be mapped to the order channel for a custom path. For example, to show a pattern of data change over time between gasoline price and average miles driven per capita we use order channel to sort the points in the line by time field (year). The earliest year (1956) is one endpoint and the latest year (2010) is the other endpoint. This is based on Hannah Fairfield's article 'Driving Shifts Into Reverse'. See https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html.",
-      "datasets_used": [
+      "datasets": [
         "driving"
       ],
       "id": 90
@@ -1244,7 +1245,7 @@
         "Line Charts"
       ],
       "description": "An example of using ``datum`` to highlight certain values, including a ``DateTime`` value. This is adapted from two corresponding Vega-Lite Examples: `Highlight a Specific Value <https://vega.github.io/vega-lite/docs/datum.html#highlight-a-specific-data-value>`_.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 91
@@ -1258,7 +1259,7 @@
         "Line Charts"
       ],
       "description": "An example of using ``repeat`` inside ``datum`` to color a multi-series line chart. This is adapted from this corresponding Vega-Lite Example: `Repeat and Layer to Show Different Movie Measures <https://vega.github.io/vega-lite/examples/repeat_layer.html>`_.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 92
@@ -1272,7 +1273,7 @@
         "Line Charts"
       ],
       "description": "This chart shows a line chart with the path interpolated. A full list of interpolation methods is available `in the documentation <https://altair-viz.github.io/user_guide/generated/core/altair.LineConfig.html?highlight=interpolate#altair-lineconfig>`_.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 93
@@ -1286,7 +1287,7 @@
         "Line Charts"
       ],
       "description": "This chart shows a line chart with a label annotating the final value",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 94
@@ -1300,7 +1301,7 @@
         "Line Charts"
       ],
       "description": "This example shows how to make a multi-series line chart of the daily closing stock prices for AAPL, AMZN, GOOG, IBM, and MSFT between 2000 and 2010, along with a layered rule showing the average values.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 95
@@ -1314,7 +1315,7 @@
         "Line Charts"
       ],
       "description": "How to make a line chart on a `Logarithmic scale <https://en.wikipedia.org/wiki/Logarithmic_scale>`_.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 96
@@ -1328,7 +1329,7 @@
         "Line Charts"
       ],
       "description": "This example shows how to format the tick labels of the y-axis of a chart as percentages.",
-      "datasets_used": [
+      "datasets": [
         "jobs"
       ],
       "id": 97
@@ -1342,7 +1343,7 @@
         "Line Charts"
       ],
       "description": "This chart shows a simple line chart with points marking each value.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 98
@@ -1356,7 +1357,7 @@
         "Line Charts"
       ],
       "description": "This examples shows how to create multiple lines using the sequence generator.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 99
     },
     {
@@ -1368,7 +1369,7 @@
         "Line Charts"
       ],
       "description": "This example shows a simple line chart with points in a different color.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 100
@@ -1382,7 +1383,7 @@
         "Line Charts"
       ],
       "description": "This is example of using the ``trail`` marker to vary the size of a line.",
-      "datasets_used": [
+      "datasets": [
         "wheat"
       ],
       "id": 101
@@ -1396,9 +1397,9 @@
         "Case Studies"
       ],
       "description": "This example shows the London tube lines against the background of the borough boundaries. It is based on the vega-lite example at https://vega.github.io/vega-lite/examples/geo_layer_line_london.html.",
-      "datasets_used": [
-        "london_tube_lines",
+      "datasets": [
         "london_boroughs",
+        "london_tube_lines",
         "london_centroids"
       ],
       "id": 102
@@ -1412,7 +1413,7 @@
         "Tables"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 103
@@ -1426,7 +1427,7 @@
         "Interactive Charts"
       ],
       "description": "This multi-line chart uses an invisible Voronoi tessellation to handle pointerover to identify the nearest point and then highlight the line on which the point falls. It is adapted from the Vega-Lite example found at https://bl.ocks.org/amitkaps/fe4238e716db53930b2f1a70d3401701",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 104
@@ -1440,7 +1441,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how you can use selections and layers to create a tooltip-like behavior tied to the x position of the cursor. If you are looking for more standard tooltips, see the :ref:`gallery_multiline_tooltip_standard` example. In this example, we'll employ a little trick to isolate the x-position of the cursor: we add some transparent points with only an x encoding (no y encoding) and tie a *nearest* selection to these, tied to the \"x\" field.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 105
     },
     {
@@ -1452,7 +1453,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to add a standard tooltip to the same chart as in :ref:`gallery_multiline_tooltip`. You can find another example using this approach in the documentation on the :ref:`user-guide-pivot-transform` transformation.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 106
     },
     {
@@ -1464,7 +1465,7 @@
         "Interactive Charts"
       ],
       "description": "This is an example of using an interval selection to control the color of points across multiple panels.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 107
@@ -1478,7 +1479,7 @@
         "Scatter Plots"
       ],
       "description": "This example shows how to make a scatter plot with multiple feature encodings.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 108
@@ -1492,7 +1493,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how multiple user inputs can be layered onto a chart. The four inputs have functionality as follows: * Dropdown: Filters the movies by genre * Radio Buttons: Highlights certain films by Worldwide Gross * Mouse Drag and Scroll: Zooms the x and y scales to allow for panning * Checkbox: Scales the marker size of big budget films",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 109
@@ -1506,7 +1507,7 @@
         "Line Charts"
       ],
       "description": "This example shows how to make a line chart with multiple series of data.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 110
@@ -1520,7 +1521,7 @@
         "Advanced Calculations"
       ],
       "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_ chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a modified parallel coordinates chart with the Penguins dataset, where the y-axis shows the value after min-max rather than the raw value. It's a simplified Altair version of `the VegaLite version <https://vega.github.io/vega-lite/examples/parallel_coordinate.html>`_",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 111
@@ -1534,7 +1535,7 @@
         "Area Charts"
       ],
       "description": "This example shows how to make a normalized stacked area chart.",
-      "datasets_used": [
+      "datasets": [
         "iowa_electricity"
       ],
       "id": 112
@@ -1548,7 +1549,7 @@
         "Bar Charts"
       ],
       "description": "This is an example of a normalized stacked bar chart using data which contains crop yields over different regions and different years in the 1930s.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 113
@@ -1562,7 +1563,7 @@
         "Case Studies"
       ],
       "description": "This example shows a geographical plot with one dot per zipcode.",
-      "datasets_used": [
+      "datasets": [
         "zipcodes"
       ],
       "id": 114
@@ -1576,7 +1577,7 @@
         "Circular Plots"
       ],
       "description": "Chart made using ``mark_arc`` and constant values. This could also be made using ``alt.Chart(source).mark_arc(color = \"gold\", theta = (5/8)*np.pi, theta2 = (19/8)*np.pi,radius=100)``.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 115
     },
     {
@@ -1588,7 +1589,7 @@
         "Advanced Calculations"
       ],
       "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_ chart is a chart that lets you visualize the individual data points by drawing a single line for each of them. Such a chart can be created in Altair by first transforming the data into a suitable representation. This example shows a parallel coordinates chart with the Penguins dataset.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 116
@@ -1602,7 +1603,7 @@
         "Circular Plots"
       ],
       "description": "This example shows how to make a Pie Chart using ``mark_arc``. This is adapted from a corresponding Vega-Lite Example: `Pie Chart <https://vega.github.io/vega-lite/examples/arc_pie.html>`_.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 117
     },
     {
@@ -1614,7 +1615,7 @@
         "Circular Plots"
       ],
       "description": "This example shows how to layer text over arc marks (``mark_arc``) to label pie charts. This is adapted from a corresponding Vega-Lite Example: `Pie Chart with Labels <https://vega.github.io/vega-lite/examples/layer_arc_label.html>`_.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 118
     },
     {
@@ -1626,7 +1627,7 @@
         "Maps"
       ],
       "description": "This is a layered map that shows the positions of airports on a background of U.S. states.",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "airports"
       ],
@@ -1641,7 +1642,7 @@
         "Circular Plots"
       ],
       "description": "This example shows how to make a polar bar chart using ``mark_arc``. This could also have been called a \"pie chart with axis labels\", but is more commonly referred to as a polar bar chart. The axis lines are created using pie charts with only the stroke visible.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 120
     },
     {
@@ -1653,7 +1654,7 @@
         "Uncertainties And Trends"
       ],
       "description": "This example shows how to overlay data with multiple fitted polynomials using the regression transform.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 121
     },
     {
@@ -1665,7 +1666,7 @@
         "Case Studies"
       ],
       "description": "This example is a reproduction of the Falkensee plot found in the Vega-Lite examples.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 122
     },
     {
@@ -1677,7 +1678,7 @@
         "Case Studies"
       ],
       "description": "Altair reproduction of http://robslink.com/SAS/democd91/pyramid_pie.htm",
-      "datasets_used": [],
+      "datasets": [],
       "id": 123
     },
     {
@@ -1689,7 +1690,7 @@
         "Distributions"
       ],
       "description": "A quantile-quantile plot comparing input data to theoretical distributions.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 124
@@ -1703,7 +1704,7 @@
         "Circular Plots"
       ],
       "description": "This radial plot uses both angular and radial extent to convey multiple dimensions of data. This is adapted from a corresponding Vega-Lite Example: `Radial Plot <https://vega.github.io/vega-lite/examples/arc_radial.html>`_.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 125
     },
     {
@@ -1715,7 +1716,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows a ranged dot plot to convey changing life expectancy for the five most populous countries (between 1955 and 2000).",
-      "datasets_used": [
+      "datasets": [
         "countries"
       ],
       "id": 126
@@ -1729,7 +1730,7 @@
         "Interactive Charts"
       ],
       "description": "This example uses a calculate transform to check the values of the \"site\" column vs the clicked values in the legend, and assigns a lower order (0) if there is a match. The use of \"indexOf\" checks for equality in an array, which here allows for multiple segments to be reordered by holding down the shift key while clicking the legend.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 127
@@ -1743,9 +1744,9 @@
         "Maps"
       ],
       "description": "Three choropleths representing disjoint data from the same table.",
-      "datasets_used": [
-        "us_10m",
-        "population_engineers_hurricanes"
+      "datasets": [
+        "population_engineers_hurricanes",
+        "us_10m"
       ],
       "id": 128
     },
@@ -1758,7 +1759,7 @@
         "Distributions"
       ],
       "description": "Density estimates for each measurement of penguins. This is what we call a \"repeated\" plot, with one subplot for each measurement type. All measurements are in millimeters, making them directly comparable on a shared x-axis.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 129
@@ -1771,8 +1772,8 @@
       "categories": [
         "Distributions"
       ],
-      "description": "A `Ridgeline plot <https://serialmentor.com/blog/2017/9/15/goodbye-joyplots>`_ lets you visualize distribution of a numeric value for different subsets of data (what we call \"facets\" in Altair). Such a chart can be created in Altair by first transforming the data into a suitable representation.",
-      "datasets_used": [
+      "description": "A `Ridgeline plot <https://clauswilke.com/blog/2017/09/15/goodbye-joyplots/>`_ lets you visualize distribution of a numeric value for different subsets of data (what we call \"facets\" in Altair). Such a chart can be created in Altair by first transforming the data into a suitable representation.",
+      "datasets": [
         "seattle_weather"
       ],
       "id": 130
@@ -1786,7 +1787,7 @@
         "Scatter Plots"
       ],
       "description": "An example of using a RepeatChart to construct a multi-panel scatter plot with linked panning and zooming.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 131
@@ -1800,7 +1801,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to link a scatter plot and a histogram together such that an interval selection in the histogram will plot the selected values in the scatter plot. Note that both subplots need to know about the `mbin` field created by the `transform_bin` method. In order to achieve this, the data is not passed to the `Chart()` instances creating the subplots, but directly in the `hconcat()` function, which joins the two plots together.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 132
     },
     {
@@ -1812,7 +1813,7 @@
         "Distributions"
       ],
       "description": "This example demonstrates how to generate a scatter plot, with faceted marginal histograms that share their respective x- and y-limits.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 133
@@ -1826,7 +1827,7 @@
         "Scatter Plots"
       ],
       "description": "This example shows a scatter plot with an ``href`` encoding constructed from the car name. With this encoding, you can click on any of the points to open a google search for the car name.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 134
@@ -1840,7 +1841,7 @@
         "Uncertainties And Trends"
       ],
       "description": "This example shows how to add a trend line to a scatter plot using the LOESS transform (LOcally Estimated Scatter Plot Smoothing).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 135
     },
     {
@@ -1852,7 +1853,7 @@
         "Scatter Plots"
       ],
       "description": "This example shows how to create a miniature version of a plot such that creating a selection in the miniature version adjusts the axis limits in another, more detailed view.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 136
@@ -1866,7 +1867,7 @@
         "Scatter Plots"
       ],
       "description": "A scatter plot with a rolling mean overlay. In this example a 30 day window is used to calculate the mean of the maximum temperature around each date.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 137
@@ -1880,7 +1881,7 @@
         "Scatter Plots"
       ],
       "description": "This example shows a scatter plot with shaded area, constructed using :ref:`area mark <user-guide-area-marks>` and :ref:`rect mark <user-guide-rect-marks>`.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 138
     },
     {
@@ -1892,7 +1893,7 @@
         "Interactive Charts"
       ],
       "description": "This example combines cross-sectional analysis (comparing countries at a single point in time) with longitudinal analysis (tracking changes in individual countries over time), using an interactive visualization technique inspired by [this Vega example](https://vega.github.io/vega/examples/global-development/) Key features: 1. Point Paths. On hover, shows data trajectories using a trail mark that thickens from past to present, clearly indicating the direction of time. 2. Search Box. Implements a case-insensitive regex filter for country names, enabling dynamic, flexible data point selection to enhance exploratory analysis.",
-      "datasets_used": [
+      "datasets": [
         "gapminder"
       ],
       "id": 139
@@ -1906,7 +1907,7 @@
         "Case Studies"
       ],
       "description": "This chart provides an interactive exploration of Seattle weather over the course of the year. It includes a one-axis brush selection to easily see the distribution of weather types in a particular date range.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 140
@@ -1920,7 +1921,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows a selection that links two views of data: the left panel contains one point per object, and the right panel contains one line per object. Clicking on either the points or lines will select the corresponding objects in both views of the data. The challenge lies in expressing such hierarchical data in a way that Altair can handle. We do this by merging the data into a \"long form\" dataframe, and aggregating identical metadata for the final plot.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 141
     },
     {
@@ -1932,7 +1933,7 @@
         "Interactive Charts"
       ],
       "description": "This chart shows an example of using an interval selection to filter the contents of an attached histogram, allowing the user to see the proportion of items in each category within the selection.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 142
@@ -1946,7 +1947,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to bring selected points to the front/foreground by using a condition to change the point's (z)order as it is hovered over with the pointer. This prevents that the selected points are obscured by those that are not selected.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 143
@@ -1960,7 +1961,7 @@
         "Simple Charts"
       ],
       "description": "This example shows a basic bar chart created with Altair.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 144
     },
     {
@@ -1972,7 +1973,7 @@
         "Simple Charts"
       ],
       "description": "This example shows a simple heatmap for showing gridded data.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 145
     },
     {
@@ -1984,7 +1985,7 @@
         "Simple Charts"
       ],
       "description": "This example shows how to make a basic histogram, based on the vega-lite docs https://vega.github.io/vega-lite/examples/histogram.html",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 146
@@ -1998,7 +1999,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to make an interactive scatter plot.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 147
@@ -2012,7 +2013,7 @@
         "Simple Charts"
       ],
       "description": "This chart shows the most basic line chart, made from a dataframe with two columns.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 148
     },
     {
@@ -2024,7 +2025,7 @@
         "Uncertainties And Trends"
       ],
       "description": "A simple scatter plot of a data set with errorbars.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 149
     },
     {
@@ -2036,7 +2037,7 @@
         "Scatter Plots"
       ],
       "description": "This example shows a basic scatter plot with labels created with Altair.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 150
     },
     {
@@ -2048,7 +2049,7 @@
         "Simple Charts"
       ],
       "description": "A scatter plot of the cars dataset, with tooltips showing selected column values when you hover over points. We make the points larger so that it is easier to hover over them.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 151
@@ -2062,7 +2063,7 @@
         "Simple Charts"
       ],
       "description": "This example shows how to make a simple stacked area chart.",
-      "datasets_used": [
+      "datasets": [
         "iowa_electricity"
       ],
       "id": 152
@@ -2076,7 +2077,7 @@
         "Simple Charts"
       ],
       "description": "A simple example of how to make a strip plot.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 153
@@ -2090,7 +2091,7 @@
         "Interactive Charts"
       ],
       "description": "This example shows how to bind a variable parameter to a slider, and how to use the corresponding bound value to color data points. This example is based on an example from the Altair 4 documentation for Interactions, in which the interactivity was accomplished using a selection. The version below has been simplified significantly through the use of a variable parameter. Variable parameters were added in Altair 5.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 154
     },
     {
@@ -2102,7 +2103,7 @@
         "Line Charts"
       ],
       "description": "This example shows how to make Slope Graph.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 155
@@ -2116,7 +2117,7 @@
         "Bar Charts"
       ],
       "description": "This example shows a bar chart sorted by a calculated value.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 156
@@ -2130,7 +2131,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to show error bars using confidence intervals, while also sorting the y-axis based on x-axis values.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 157
@@ -2144,7 +2145,7 @@
         "Bar Charts"
       ],
       "description": "This is an example of a stacked bar chart using data which contains crop yields over different regions and different years in the 1930s.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 158
@@ -2158,7 +2159,7 @@
         "Bar Charts"
       ],
       "description": "This is an example of a stacked-bar chart with the segments of each bar resorted.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 159
@@ -2172,7 +2173,7 @@
         "Bar Charts"
       ],
       "description": "This example shows how to overlay text on a stacked bar chart. For both the bar and text marks, we use the ``stack`` argument in the ``x`` encoding to cause the values to be stacked horizontally.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 160
@@ -2186,7 +2187,7 @@
         "Distributions"
       ],
       "description": "To plot a stacked graph of estimates, use a shared ``extent`` and a fixed number of subdivision ``steps`` to ensure that the points for each area align well. Density estimates of body mass for each penguin species are plotted in a stacked method. In addition, setting ``counts`` to true multiplies the densities by the number of data points in each group, preserving proportional differences.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 161
@@ -2200,7 +2201,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to make a stem and leaf plot.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 162
     },
     {
@@ -2212,7 +2213,7 @@
         "Line Charts"
       ],
       "description": "This example shows Google's stock price over time. This uses the \"step-after\" interpolation scheme. The full list of interpolation options includes 'linear', 'linear-closed', 'step', 'step-before', 'step-after', 'basis', 'basis-open', 'basis-closed', 'cardinal', 'cardinal-open', 'cardinal-closed', 'bundle', and 'monotone'.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 163
@@ -2226,7 +2227,7 @@
         "Area Charts"
       ],
       "description": "This example shows the streamgraph from vega-lite examples.",
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 164
@@ -2240,7 +2241,7 @@
         "Distributions"
       ],
       "description": "In this chart, we encode the ``Major_Genre`` column from the ``movies`` dataset in the ``y``-channel. In the default presentation of this data, it would be difficult to gauge the relative frequencies with which different values occur because there would be so much overlap. To address this, we use the ``yOffset`` channel to incorporate a random offset (jittering). The example is shown twice, on the left side using normally distributed and on the right side using uniformally distributed jitter.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 165
@@ -2254,7 +2255,7 @@
         "Distributions"
       ],
       "description": "This example shows github contributions by the day of week and hour of the day.",
-      "datasets_used": [
+      "datasets": [
         "github"
       ],
       "id": 166
@@ -2268,7 +2269,7 @@
         "Tables"
       ],
       "description": "An example of a layered chart of text over a heatmap using the cars dataset.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 167
@@ -2282,7 +2283,7 @@
         "Case Studies"
       ],
       "description": "This example is a fully developed bar chart with negative values using the sample dataset of U.S. employment changes during the Great Recession.",
-      "datasets_used": [
+      "datasets": [
         "us_employment"
       ],
       "id": 168
@@ -2296,7 +2297,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to use the window and transformation filter to display the Top items of a long list of items in decreasing order. Here we sort the top 10 highest ranking movies of IMDB.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 169
@@ -2310,7 +2311,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to use a window transform in order to display only the top K categories by number of entries. In this case, we rank the characters in the first paragraph of Dickens' *A Tale of Two Cities* by number of occurrences.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 170
     },
     {
@@ -2322,7 +2323,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to use aggregate, window, and calculate transformations to display the top-k directors by average worldwide gross while grouping the remaining directors as 'All Others'.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 171
@@ -2336,7 +2337,7 @@
         "Case Studies"
       ],
       "description": "This is a layered geographic visualization that shows US capitals overlaid on a map.",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "us_state_capitals"
       ],
@@ -2351,9 +2352,9 @@
         "Maps"
       ],
       "description": "This example shows how to create a map of income in the US by state, faceted over income brackets",
-      "datasets_used": [
-        "us_10m",
-        "income"
+      "datasets": [
+        "income",
+        "us_10m"
       ],
       "id": 173
     },
@@ -2366,7 +2367,7 @@
         "Case Studies"
       ],
       "description": "This chart visualizes the age distribution of the US population over time. It uses a slider widget that is bound to the year to visualize the age distribution over time.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 174
@@ -2380,7 +2381,7 @@
         "Case Studies"
       ],
       "description": "This chart visualizes the age distribution of the US population over time, using a wrapped faceting of the data by decade.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 175
@@ -2394,7 +2395,7 @@
         "Case Studies"
       ],
       "description": "A population pyramid shows the distribution of age groups within a population. It uses a slider widget that is bound to the year to visualize the age distribution over time.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 176
@@ -2408,7 +2409,7 @@
         "Interactive Charts"
       ],
       "description": "Because area is considered one object, just using the plain selector will select the entire area instead of just one part of it. This example shows how to use two areas, one on top of the other, and a `transform_filter` to fake out this effect.",
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 177
@@ -2422,7 +2423,7 @@
         "Distributions"
       ],
       "description": "This example shows how to make a Violin Plot using Altair's density transform.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 178
@@ -2436,7 +2437,7 @@
         "Advanced Calculations"
       ],
       "description": "This example shows how to recreate a Vega-Lite implementation of a waterfall chart. Original inspiration is from https://vega.github.io/vega-lite/examples/waterfall_chart.html",
-      "datasets_used": [],
+      "datasets": [],
       "id": 179
     },
     {
@@ -2448,7 +2449,7 @@
         "Case Studies"
       ],
       "description": "A recreation of William Playfair's classic chart visualizing the price of wheat, the wages of a mechanic, and the reigning British monarch. This is a more polished version of the simpler chart in :ref:`gallery_bar_and_line_with_dual_axis`.",
-      "datasets_used": [
+      "datasets": [
         "wheat",
         "monarchs"
       ],
@@ -2463,7 +2464,7 @@
         "Advanced Calculations"
       ],
       "description": "An example of a `Wilkinson Dot Plot <https://en.wikipedia.org/wiki/Dot_plot_(statistics)>`_",
-      "datasets_used": [],
+      "datasets": [],
       "id": 181
     },
     {
@@ -2475,9 +2476,9 @@
         "Maps"
       ],
       "description": "An example showing a vector array map showing wind speed and direction using ``wedge`` as shape for ``mark_point`` and ``angle`` encoding for the wind direction. This is adapted from this corresponding Vega-Lite Example: `Wind Vector Map <https://vega.github.io/vega-lite/examples/point_angle_windvector.html>`_ with an added base map.",
-      "datasets_used": [
-        "windvectors",
-        "world_110m"
+      "datasets": [
+        "world_110m",
+        "windvectors"
       ],
       "id": 182
     },
@@ -2490,7 +2491,7 @@
         "Line Charts"
       ],
       "description": "This example shows the Group F rankings in the 2018 World Cup after each matchday. A window transformation is used to rank each after each match day, sorting by points and difference.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 183
     },
     {
@@ -2502,7 +2503,7 @@
         "Maps"
       ],
       "description": "This example shows how to create a world map using data generators for different background layers.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 184
@@ -2516,7 +2517,7 @@
         "Maps"
       ],
       "description": "This example shows a map of the countries of the world. Use the dropdown menu to compare projections. For more details on the `project` arguments, see the API of `altair.Projection <https://altair-viz.github.io/user_guide/generated/core/altair.Projection.html>`_.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 185
@@ -2530,7 +2531,7 @@
         "Network Diagrams"
       ],
       "description": "Interactive map of U.S. airport connections in 2008.",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "flights_airport",
         "airports"
@@ -2546,7 +2547,7 @@
         "Geographic Maps"
       ],
       "description": "A plot of 2016 annual global precipitation data from the NOAA Climate Forecast System (CFS) v2.",
-      "datasets_used": [
+      "datasets": [
         "annual_precip",
         "world_110m"
       ],
@@ -2561,7 +2562,7 @@
         "Custom Designs"
       ],
       "description": "Area charts showing average daily temperatures in Seattle for each hour of the day.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather_hourly_normals"
       ],
       "id": 188
@@ -2575,7 +2576,7 @@
         "Network Diagrams"
       ],
       "description": "An arc diagram depicting character co-occurrence in the novel Les Misérables.",
-      "datasets_used": [
+      "datasets": [
         "miserables"
       ],
       "id": 189
@@ -2589,7 +2590,7 @@
         "Line & Area Charts"
       ],
       "description": "A basic area chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 190
     },
     {
@@ -2601,7 +2602,7 @@
         "Bar Charts"
       ],
       "description": "A basic bar chart example, with value labels shown upon pointer hover.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 191
     },
     {
@@ -2613,7 +2614,7 @@
         "Interaction Techniques"
       ],
       "description": "An example of Vega visualization that automatically switches between a column chart and a line chart depending on the number of data points",
-      "datasets_used": [],
+      "datasets": [],
       "id": 192
     },
     {
@@ -2625,7 +2626,7 @@
         "Scatter Plots"
       ],
       "description": "A small multiples view of barley yields by site and variety.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 193
@@ -2639,7 +2640,7 @@
         "Other Chart Types"
       ],
       "description": "A beeswarm chart example that uses a force-directed layout to group items by category.",
-      "datasets_used": [
+      "datasets": [
         "miserables"
       ],
       "id": 194
@@ -2653,7 +2654,7 @@
         "Distributions"
       ],
       "description": "A binned scatter plot example showing aggregate counts per binned cell.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 195
@@ -2667,7 +2668,7 @@
         "Distributions"
       ],
       "description": "A box plot example showing aggregate statistics for penguin body mass.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 196
@@ -2681,7 +2682,7 @@
         "Interaction Techniques"
       ],
       "description": "A scatter plot matrix of penguin data with interactive linked selections.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 197
@@ -2695,7 +2696,7 @@
         "Custom Designs"
       ],
       "description": "A recreation of a New York Times chart showing U.S. budget forecasts versus reality.",
-      "datasets_used": [
+      "datasets": [
         "budgets"
       ],
       "id": 198
@@ -2709,7 +2710,7 @@
         "Other Chart Types"
       ],
       "description": "A calendar visualization of daily changes to the S&P 500 since 2000.",
-      "datasets_used": [
+      "datasets": [
         "sp500_2000"
       ],
       "id": 199
@@ -2723,7 +2724,7 @@
         "Tree Diagrams"
       ],
       "description": "An example of a circle packing layout for hierarchical data.",
-      "datasets_used": [
+      "datasets": [
         "flare"
       ],
       "id": 200
@@ -2737,7 +2738,7 @@
         "Custom Designs"
       ],
       "description": "A circular clock visualization showing the current time.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 201
     },
     {
@@ -2749,7 +2750,7 @@
         "Scatter Plots"
       ],
       "description": "An example of a connected scatter plot, tracking changes in miles driven versus the price of gasoline.",
-      "datasets_used": [
+      "datasets": [
         "driving"
       ],
       "id": 202
@@ -2763,7 +2764,7 @@
         "Distributions"
       ],
       "description": "A contour plot example, overlaying a density estimate on scatter plot points.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 203
@@ -2777,7 +2778,7 @@
         "Geographic Maps"
       ],
       "description": "A choropleth map depicting U.S. unemployment rates by county in 2009.",
-      "datasets_used": [
+      "datasets": [
         "unemployment",
         "us_10m"
       ],
@@ -2792,7 +2793,7 @@
         "Interaction Techniques"
       ],
       "description": "Interactive cross-filtering among histograms of flight statistics.",
-      "datasets_used": [
+      "datasets": [
         "flights_200k_json"
       ],
       "id": 205
@@ -2806,7 +2807,7 @@
         "Other Chart Types"
       ],
       "description": "A small multiples view of 2D density heatmaps of automobile statistics.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 206
@@ -2820,7 +2821,7 @@
         "Geographic Maps"
       ],
       "description": "A map view comparing area distortions between two projections.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 207
@@ -2834,7 +2835,7 @@
         "Circular Charts"
       ],
       "description": "A basic donut chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 208
     },
     {
@@ -2846,7 +2847,7 @@
         "Circular Charts"
       ],
       "description": "Donut with non-overlapping labels.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 209
     },
     {
@@ -2858,7 +2859,7 @@
         "Geographic Maps"
       ],
       "description": "A Dorling cartogram depicting U.S. state obesity rates.",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "obesity"
       ],
@@ -2873,7 +2874,7 @@
         "Distributions"
       ],
       "description": "A dot plot example depicting the distribution of animal sleep times.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 211
     },
     {
@@ -2885,7 +2886,7 @@
         "Geographic Maps"
       ],
       "description": "An interactive globe depicting earthquake locations and magnitudes.",
-      "datasets_used": [
+      "datasets": [
         "world_110m",
         "earthquakes"
       ],
@@ -2900,7 +2901,7 @@
         "Custom Designs"
       ],
       "description": "Rotating globe animation depicting earthquake locations. Background - pseudorandomly distributed 'stars'.",
-      "datasets_used": [
+      "datasets": [
         "world_110m",
         "earthquakes"
       ],
@@ -2915,7 +2916,7 @@
         "Network Diagrams"
       ],
       "description": "A network diagram of software dependencies, with edges grouped via hierarchical edge bundling.",
-      "datasets_used": [
+      "datasets": [
         "flare",
         "flare_dependencies"
       ],
@@ -2930,7 +2931,7 @@
         "Scatter Plots"
       ],
       "description": "A basic error bar visualization example.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 215
@@ -2944,7 +2945,7 @@
         "Custom Designs"
       ],
       "description": "An annotated line chart of the population of Falkensee, Germany.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 216
     },
     {
@@ -2956,7 +2957,7 @@
         "Custom Designs"
       ],
       "description": "Passenger Traffic at Seattle-Tacoma International Airport, Percentage Change from October 2019 to March 2020",
-      "datasets_used": [],
+      "datasets": [],
       "id": 217
     },
     {
@@ -2968,7 +2969,7 @@
         "Network Diagrams"
       ],
       "description": "A node-link diagram with force-directed layout, depicting character co-occurrence in the novel Les Misérables.",
-      "datasets_used": [
+      "datasets": [
         "miserables"
       ],
       "id": 218
@@ -2982,7 +2983,7 @@
         "Interaction Techniques"
       ],
       "description": "An interactive scatter plot of global health statistics by country and year.",
-      "datasets_used": [
+      "datasets": [
         "gapminder"
       ],
       "id": 219
@@ -2996,7 +2997,7 @@
         "Bar Charts"
       ],
       "description": "A basic grouped bar chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 220
     },
     {
@@ -3008,7 +3009,7 @@
         "Other Chart Types"
       ],
       "description": "A heatmap showing average daily temperatures in Seattle for each hour of the day.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather_hourly_normals"
       ],
       "id": 221
@@ -3022,7 +3023,7 @@
         "Distributions"
       ],
       "description": "An interactive histogram for visualizing a univariate distribution.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 222
@@ -3036,7 +3037,7 @@
         "Distributions"
       ],
       "description": "A histogram of film ratings, modified to include null values.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 223
@@ -3050,7 +3051,7 @@
         "Line & Area Charts"
       ],
       "description": "A horizon graph, which preserves resolution by layering slices of an area chart.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 224
     },
     {
@@ -3062,7 +3063,7 @@
         "Distributions"
       ],
       "description": "A hypothetical outcome plot that uses animated samples to convey uncertainty.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 225
     },
     {
@@ -3074,7 +3075,7 @@
         "Interaction Techniques"
       ],
       "description": "A scatter plot example with interactive legend and x-axis.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 226
@@ -3088,7 +3089,7 @@
         "Line & Area Charts"
       ],
       "description": "A searchable, stacked area chart of U.S. occupations from 1850 to 2000.",
-      "datasets_used": [
+      "datasets": [
         "jobs"
       ],
       "id": 227
@@ -3102,7 +3103,7 @@
         "Scatter Plots"
       ],
       "description": "A labeled scatter plot of films showing Rotten Tomatoes ratings versus IMDB ratings.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 228
@@ -3116,7 +3117,7 @@
         "Line & Area Charts"
       ],
       "description": "A basic line chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 229
     },
     {
@@ -3128,7 +3129,7 @@
         "Scatter Plots"
       ],
       "description": "A scatter plot with trend line calculated via locally-weighted (loess) regression.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 230
@@ -3142,7 +3143,7 @@
         "Interaction Techniques"
       ],
       "description": "An example of a custom tooltip (on a map)",
-      "datasets_used": [
+      "datasets": [
         "unemployment",
         "us_10m"
       ],
@@ -3157,7 +3158,7 @@
         "Bar Charts"
       ],
       "description": "A nested bar chart example, with bars grouped by category.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 232
     },
     {
@@ -3169,7 +3170,7 @@
         "Interaction Techniques"
       ],
       "description": "Area charts of stock prices, with an interactive overview and filtered detail views.",
-      "datasets_used": [
+      "datasets": [
         "sp500"
       ],
       "id": 233
@@ -3183,7 +3184,7 @@
         "Other Chart Types"
       ],
       "description": "A packed bubble chart.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 234
     },
     {
@@ -3195,7 +3196,7 @@
         "Interaction Techniques"
       ],
       "description": "An implementation of the classic video game Pacman.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 235
     },
     {
@@ -3207,7 +3208,7 @@
         "Other Chart Types"
       ],
       "description": "Parallel coordinates plot showing 7 dimensions of automobile statistics.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 236
@@ -3221,7 +3222,7 @@
         "Interaction Techniques"
       ],
       "description": "Estimating the value of π via random sampling methods.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 237
     },
     {
@@ -3233,7 +3234,7 @@
         "Circular Charts"
       ],
       "description": "A basic pie chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 238
     },
     {
@@ -3245,7 +3246,7 @@
         "Interaction Techniques"
       ],
       "description": "A simple platformer. WASD to move, shift to dash.",
-      "datasets_used": [
+      "datasets": [
         "platformer_terrain"
       ],
       "id": 239
@@ -3259,7 +3260,7 @@
         "Bar Charts"
       ],
       "description": "A population pyramid showing U.S. demographics from 1850 to 2000.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 240
@@ -3273,7 +3274,7 @@
         "Distributions"
       ],
       "description": "Area chart using density estimation to show a probability density or cumulative distribution.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 241
@@ -3287,7 +3288,7 @@
         "Geographic Maps"
       ],
       "description": "A gallery of maps showcasing different cartographic projections.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 242
@@ -3301,7 +3302,7 @@
         "Distributions"
       ],
       "description": "A quantile dot plot conveying the uncertainty of bus arrival times.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 243
     },
     {
@@ -3313,7 +3314,7 @@
         "Distributions"
       ],
       "description": "A quantile-quantile plot example, comparing distributions by quantile values.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d",
         "uniform_2d"
       ],
@@ -3328,7 +3329,7 @@
         "Circular Charts"
       ],
       "description": "A radar chart example, showing multiple dimensions in a radial layout.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 245
     },
     {
@@ -3340,7 +3341,7 @@
         "Circular Charts"
       ],
       "description": "A basic radial plot that encodes two values as the angle and radius of an arc.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 246
     },
     {
@@ -3352,7 +3353,7 @@
         "Tree Diagrams"
       ],
       "description": "An example of a radial layout for a node-link diagram of hierarchical data.",
-      "datasets_used": [
+      "datasets": [
         "flare"
       ],
       "id": 247
@@ -3366,7 +3367,7 @@
         "Scatter Plots"
       ],
       "description": "A scatter plot with trend line calculated via user-configurable regression methods.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 248
@@ -3380,7 +3381,7 @@
         "Network Diagrams"
       ],
       "description": "A re-orderable adjacency matrix depicting character co-occurrence in the novel Les Misérables.",
-      "datasets_used": [
+      "datasets": [
         "miserables"
       ],
       "id": 249
@@ -3394,7 +3395,7 @@
         "Scatter Plots"
       ],
       "description": "A basic scatter plot example depicting automobile statistics.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 250
@@ -3408,7 +3409,7 @@
         "Scatter Plots"
       ],
       "description": "A scatter plot of film statistics, with null values visualized along the axes.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 251
@@ -3422,7 +3423,7 @@
         "Custom Designs"
       ],
       "description": "a serpentine timeline. The serpentine shape can be an option for instances where an oblong canvas is not ideal. The shape can be customized using many of the signals below. Input bindings have been included for demonstration purposes",
-      "datasets_used": [],
+      "datasets": [],
       "id": 252
     },
     {
@@ -3434,7 +3435,7 @@
         "Line & Area Charts"
       ],
       "description": "A basic stacked area chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 253
     },
     {
@@ -3446,7 +3447,7 @@
         "Bar Charts"
       ],
       "description": "A basic stacked bar chart example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 254
     },
     {
@@ -3458,7 +3459,7 @@
         "Interaction Techniques"
       ],
       "description": "An interactive line chart of stock prices, with returns shown relative to a selected date.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 255
@@ -3472,7 +3473,7 @@
         "Tree Diagrams"
       ],
       "description": "An example of a space-fulling radial layout for hierarchical data.",
-      "datasets_used": [
+      "datasets": [
         "flare"
       ],
       "id": 256
@@ -3486,7 +3487,7 @@
         "Interaction Techniques"
       ],
       "description": "An example of a simple table with a scrollbar",
-      "datasets_used": [],
+      "datasets": [],
       "id": 257
     },
     {
@@ -3498,7 +3499,7 @@
         "Distributions"
       ],
       "description": "A bar chart of flight statistics, aggregated by the selected time unit.",
-      "datasets_used": [
+      "datasets": [
         "flights_20k"
       ],
       "id": 258
@@ -3512,7 +3513,7 @@
         "Custom Designs"
       ],
       "description": "A timeline visualization of the lives of the first five U.S. presidents.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 259
     },
     {
@@ -3524,7 +3525,7 @@
         "Distributions"
       ],
       "description": "A top-k bar chart ranking film directors by revenue.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 260
@@ -3538,7 +3539,7 @@
         "Distributions"
       ],
       "description": "A top-k bar chart ranking film directors by revenue, including an aggregate others category.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 261
@@ -3552,7 +3553,7 @@
         "Tree Diagrams"
       ],
       "description": "An example of Cartesian layouts for a node-link diagram of hierarchical data.",
-      "datasets_used": [
+      "datasets": [
         "flare"
       ],
       "id": 262
@@ -3566,7 +3567,7 @@
         "Tree Diagrams"
       ],
       "description": "An example of treemap layout for hierarchical data.",
-      "datasets_used": [
+      "datasets": [
         "flare"
       ],
       "id": 263
@@ -3580,7 +3581,7 @@
         "Custom Designs"
       ],
       "description": "Area charts showing the density of cuisine options in Seattle's U-District.",
-      "datasets_used": [
+      "datasets": [
         "udistrict"
       ],
       "id": 264
@@ -3594,7 +3595,7 @@
         "Distributions"
       ],
       "description": "A violin plot example showing distributions for pengiun body mass.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 265
@@ -3608,7 +3609,7 @@
         "Geographic Maps"
       ],
       "description": "A contour plot of the Maungawhau volcano in New Zealand.",
-      "datasets_used": [
+      "datasets": [
         "volcano"
       ],
       "id": 266
@@ -3622,7 +3623,7 @@
         "Custom Designs"
       ],
       "description": "Warming Stripes Chart. Originally designed by Ed Hawkins.",
-      "datasets_used": [
+      "datasets": [
         "global_temp"
       ],
       "id": 267
@@ -3636,7 +3637,7 @@
         "Custom Designs"
       ],
       "description": "A watch face clock visualization showing the current time.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 268
     },
     {
@@ -3648,7 +3649,7 @@
         "Custom Designs"
       ],
       "description": "Overlaid plots of weekly record, normal, actual, and forecasted temperatures.",
-      "datasets_used": [
+      "datasets": [
         "weekly_weather"
       ],
       "id": 269
@@ -3662,7 +3663,7 @@
         "Custom Designs"
       ],
       "description": "A recreation of William Playfair's classic chart of wheat prices and wages.",
-      "datasets_used": [
+      "datasets": [
         "wheat",
         "monarchs"
       ],
@@ -3677,7 +3678,7 @@
         "Distributions"
       ],
       "description": "A wheat plot example, which combines elements of dot plots and histograms.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 271
@@ -3691,7 +3692,7 @@
         "Geographic Maps"
       ],
       "description": "A flow map of wind direction and speed over northwest Europe.",
-      "datasets_used": [
+      "datasets": [
         "windvectors"
       ],
       "id": 272
@@ -3705,7 +3706,7 @@
         "Other Chart Types"
       ],
       "description": "A word cloud visualization depicting Vega research paper abstracts.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 273
     },
     {
@@ -3717,7 +3718,7 @@
         "Geographic Maps"
       ],
       "description": "A configurable map of countries of the world.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 274
@@ -3731,7 +3732,7 @@
         "Interaction Techniques"
       ],
       "description": "An interactive scatter plot example with binned aggregation supporting pan and zoom.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 275
@@ -3745,7 +3746,7 @@
         "Interaction Techniques"
       ],
       "description": "An example of a zoomable circle packing layout for hierarchical data.",
-      "datasets_used": [
+      "datasets": [
         "flare"
       ],
       "id": 276
@@ -3759,7 +3760,7 @@
         "Interaction Techniques"
       ],
       "description": "An interactive scatter plot example supporting pan and zoom.",
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 277
@@ -3773,7 +3774,7 @@
         "Geographic Maps"
       ],
       "description": "An interactive world map supporting pan and zoom.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 278
@@ -3787,7 +3788,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 279
@@ -3802,7 +3803,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 280
@@ -3817,7 +3818,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 281
@@ -3831,7 +3832,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart that directly encodes color names in the data.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 282
     },
     {
@@ -3843,7 +3844,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 283
@@ -3857,7 +3858,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart showing the US population distribution of age groups in 2000.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 284
@@ -3871,7 +3872,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart that sorts the y-values by the x-values.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 285
@@ -3885,7 +3886,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": "Similar to the Vega version at https://vega.github.io/vega/examples/global-development/.",
-      "datasets_used": [
+      "datasets": [
         "gapminder"
       ],
       "id": 286
@@ -3899,7 +3900,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 287
@@ -3913,7 +3914,7 @@
         "Single-View Plots - Area Charts & Streamgraphs"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 288
@@ -3927,7 +3928,7 @@
         "Single-View Plots - Area Charts & Streamgraphs"
       ],
       "description": "Google's stock price over time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 289
@@ -3941,7 +3942,7 @@
         "Single-View Plots - Area Charts & Streamgraphs"
       ],
       "description": "Google's stock price over time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 290
@@ -3955,7 +3956,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 291
@@ -3969,7 +3970,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "To create a bar chart that highlights values beyond a threshold, we use two `layer`s of `bar` marks. The lower layer shows all the bars while the upper layer shows bar with values above the threshold in red (`#e45755`).  We then `layer` a `rule` mark and a `text` mark over the bars to annotate the threshold value.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 292
     },
     {
@@ -3981,7 +3982,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "The production budget of the movie that has the highest US Gross in each major genre.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 293
@@ -3995,7 +3996,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "Using `labelExpr` to show only initial letters of month names.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 294
@@ -4009,7 +4010,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "A bar chart with highlighting on hover and selecting on click. (Inspired by Tableau's interaction style.)",
-      "datasets_used": [],
+      "datasets": [],
       "id": 295
     },
     {
@@ -4021,7 +4022,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 296
@@ -4035,7 +4036,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 297
     },
     {
@@ -4047,7 +4048,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 298
     },
     {
@@ -4059,7 +4060,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 299
@@ -4073,7 +4074,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "Bar Chart with a spacing-saving y-axis",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 300
@@ -4087,7 +4088,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 301
@@ -4101,7 +4102,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": "The Trellis display by Becker et al. helped establish small multiples as a “powerful mechanism for understanding interactions in studies of how a response depends on explanatory variables”. Here we reproduce a trellis of Barley yields from the 1930s, complete with main-effects ordering to facilitate comparison.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 302
@@ -4115,7 +4116,7 @@
         "Composite Marks - Box Plots"
       ],
       "description": "A vertical box plot showing median, min, and max body mass of penguins.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 303
@@ -4129,7 +4130,7 @@
         "Composite Marks - Box Plots"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 304
     },
     {
@@ -4141,7 +4142,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Drag a rectangular brush to show (first 20) selected points in a table.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 305
@@ -4155,7 +4156,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "A bubbleplot showing horsepower on x, miles per gallons on y, and binned acceleration on size.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 306
@@ -4169,7 +4170,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "A bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost's blog post 'One Chart, Twelve Charting Libraries' --http://lisacharlotterost.github.io/2016/05/17/one-chart-code/).",
-      "datasets_used": [
+      "datasets": [
         "gapminder_health_income"
       ],
       "id": 307
@@ -4183,7 +4184,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "Visualization of global deaths from natural disasters. Copy of chart from [Our World in Data](https://ourworldindata.org/natural-catastrophes).",
-      "datasets_used": [
+      "datasets": [
         "disasters"
       ],
       "id": 308
@@ -4197,7 +4198,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 309
     },
     {
@@ -4209,7 +4210,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Bump chart",
-      "datasets_used": [],
+      "datasets": [],
       "id": 310
     },
     {
@@ -4221,7 +4222,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "Bar graph showing the best films for the year they were produced, where best is defined by at least 2.5 points above average for that year. The red point shows the average rating for a film in that year, and the bar is the rating that the film recieved.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 311
@@ -4235,7 +4236,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 312
@@ -4249,7 +4250,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "A dot plot showing each movie in the database, and the difference from the average movie rating. The display is sorted by year to visualize everything in sequential order. The graph is for all Movies before 2019.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 313
@@ -4263,7 +4264,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": "A candlestick chart inspired by an example in Protovis (http://mbostock.github.io/protovis/ex/candlestick.html)",
-      "datasets_used": [
+      "datasets": [
         "ohlc"
       ],
       "id": 314
@@ -4278,7 +4279,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "This example was inspired by [Gregor Aisch](https://github.com/gka)'s [Carbon Dioxide Concentration By Decade](https://www.datawrapper.de/_/OHgEm/).",
-      "datasets_used": [
+      "datasets": [
         "co2_concentration"
       ],
       "id": 315
@@ -4292,7 +4293,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Show points on top when hovered over with the pointer",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 316
@@ -4306,7 +4307,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "unemployment"
       ],
@@ -4321,7 +4322,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "A scatterplot showing body mass and flipper lengths of penguins.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 318
@@ -4335,7 +4336,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": "A simple grid of bar charts to compare performance data.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 319
     },
     {
@@ -4347,7 +4348,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "Comparing Likert scale ratings between two conditions. (Figure 10. from @kanitw et al.'s \"Voyager 2: Augmenting Visual Analysis with Partial View Specifications\" -- http://idl.cs.washington.edu/files/2017-Voyager2-CHI.pdf).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 320
     },
     {
@@ -4359,7 +4360,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "A connected scatterplot can be created by customizing line `order` and adding `point` overlay in the line mark definition.",
-      "datasets_used": [
+      "datasets": [
         "driving"
       ],
       "id": 321
@@ -4373,7 +4374,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": "An interactive visualization of connections among major U.S. airports in 2008. Based on a U.S. airports example by Mike Bostock.",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "flights_airport",
         "airports"
@@ -4389,7 +4390,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "flights_2k"
       ],
       "id": 323
@@ -4403,7 +4404,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "flights_2k"
       ],
       "id": 324
@@ -4418,7 +4419,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 325
@@ -4432,7 +4433,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 326
@@ -4446,7 +4447,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": "Horizontally concatenated charts that show different types of discretizing scales.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 327
     },
     {
@@ -4458,7 +4459,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "Distributions and Medians of Likert Scale Ratings. (Figure 9 from @jhoffswell and @zcliu's 'Interactive Repair of Tables Extracted from PDF Documents on Mobile Devices' -- http://idl.cs.washington.edu/files/2019-InteractiveTableRepair-CHI.pdf).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 328
     },
     {
@@ -4470,7 +4471,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A population pyramid for the US in 2000, created using stack. See https://vega.github.io/vega-lite/examples/concat_population_pyramid.html for a variant of this created using concat.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 329
@@ -4484,7 +4485,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A diverging stacked bar chart for sentiments towards a set of eight questions, displayed as percentages with neutral responses straddling the 0% mark",
-      "datasets_used": [],
+      "datasets": [],
       "id": 330
     },
     {
@@ -4496,7 +4497,7 @@
         "Single-View Plots - Circular Plots"
       ],
       "description": "A donut chart encodes proportional differences among a set of numeric values using angular extents.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 331
     },
     {
@@ -4508,7 +4509,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "Shows the relationship between horsepower and the number of cylinders using point marks with random offset (jittering).",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 332
@@ -4522,7 +4523,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Plots two functions using a generated sequence.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 333
     },
     {
@@ -4534,7 +4535,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 334
@@ -4548,7 +4549,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": "Interactive globe visualization of earthquakes",
-      "datasets_used": [
+      "datasets": [
         "world_110m",
         "earthquakes"
       ],
@@ -4563,7 +4564,7 @@
         "Composite Marks - Error Bars & Error Bands"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 336
@@ -4577,7 +4578,7 @@
         "Composite Marks - Error Bars & Error Bands"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 337
@@ -4591,7 +4592,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": "A grid of choropleth maps, each displaying the projected habitat distribution for a different species across US counties. Color intensity within each county represents the percentage of suitable habitat.",
-      "datasets_used": [
+      "datasets": [
         "species",
         "us_10m"
       ],
@@ -4606,7 +4607,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 339
@@ -4620,7 +4621,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "Here we use window transform to derive the total number of students along with the rank of the current student to determine the top K students and display their score.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 340
     },
     {
@@ -4632,7 +4633,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "flights_5k"
       ],
       "id": 341
@@ -4646,7 +4647,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A simple bar chart with ranged data (aka Gantt Chart).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 342
     },
     {
@@ -4658,7 +4659,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "Read [here](https://vega.github.io/vega-lite/docs/size.html#offset-step) for more details about how to set step size for grouped bar. ",
-      "datasets_used": [],
+      "datasets": [],
       "id": 343
     },
     {
@@ -4670,7 +4671,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "Read [here](https://vega.github.io/vega-lite/docs/size.html#offset-step) for more details about how to set step size for grouped bar. ",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 344
@@ -4684,7 +4685,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "Heat lane chart based on https://www.smashingmagazine.com/2022/07/accessibility-first-approach-chart-visual-design/",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 345
@@ -4698,7 +4699,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 346
@@ -4712,7 +4713,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 347
@@ -4726,7 +4727,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 348
     },
     {
@@ -4738,7 +4739,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 349
@@ -4752,7 +4753,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 350
@@ -4767,7 +4768,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": "Horizon Graph with 2 layers. (See https://idl.cs.washington.edu/papers/horizon/ for more details on Horizon Graphs.)",
-      "datasets_used": [],
+      "datasets": [],
       "id": 351
     },
     {
@@ -4779,7 +4780,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 352
     },
     {
@@ -4791,7 +4792,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 353
@@ -4805,7 +4806,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": "Horizontally repeated charts that show the histograms of different parameters of cars in different countries.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 354
@@ -4819,7 +4820,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 355
     },
     {
@@ -4831,7 +4832,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "income",
         "us_10m"
       ],
@@ -4846,7 +4847,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "The plot below uses an interval selection, which causes the chart to include an interactive brush (shown in grey). The brush selection parameterizes the red guideline, which visualizes the average value within the selected interval.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 357
@@ -4860,7 +4861,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": "A dashboard with cross-highlighting.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 358
@@ -4874,7 +4875,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 359
@@ -4888,7 +4889,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 360
@@ -4903,7 +4904,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 361
@@ -4917,7 +4918,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": "Inspired by this [Only An Ocean Between, 1943](http://www.thomwhite.co.uk/?p=1303). Population Live Stock, p.13. This example was created by [@jwoLondon](https://github.com/jwoLondon).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 362
     },
     {
@@ -4929,7 +4930,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": "This example was inspired by [@jakevdp](https://github.com/jakevdp) and Isotype Bar Chart by [@jwoLondon](https://github.com/jwoLondon).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 363
     },
     {
@@ -4941,7 +4942,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Inspired by this [D3 example by Alan Smith](http://bl.ocks.org/alansmithy/d832fc03f6e6a91e99f4). Drag region to select. This example was created by @jwoLondon.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 364
     },
     {
@@ -4953,7 +4954,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 365
@@ -4967,7 +4968,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart showing the US population distribution of age groups and gender in 2000.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 366
@@ -4982,7 +4983,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 367
@@ -4996,7 +4997,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": "A dual axis chart, created by setting y's scale resolution to `\"independent\"`",
-      "datasets_used": [
+      "datasets": [
         "weather"
       ],
       "id": 368
@@ -5011,7 +5012,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "Plot showing average data with raw values in the background.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 369
@@ -5026,7 +5027,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "Plot showing a 30 day rolling average with raw values in the background.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 370
@@ -5040,7 +5041,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 371
@@ -5054,7 +5055,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Google's stock price over time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 372
@@ -5068,7 +5069,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 373
     },
     {
@@ -5080,7 +5081,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Line chart with conditional axis ticks, labels, and grid.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 374
@@ -5094,7 +5095,7 @@
         "Composite Marks - Error Bars & Error Bands"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 375
@@ -5108,7 +5109,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "The population of the German city of Falkensee over time",
-      "datasets_used": [],
+      "datasets": [],
       "id": 376
     },
     {
@@ -5120,7 +5121,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 377
     },
     {
@@ -5132,7 +5133,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 378
@@ -5146,7 +5147,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "By setting the `point` property of the line mark definition to an object defining a property of the overlaying point marks, we can overlay point markers on top of line. \n\n Notes&#58; (1) This is equivalent to adding another layer of point marks. \n (2) While `\"point\"` marks are normally semi-transparent, the overlay point marker has `opacity` = 1 by default.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 379
@@ -5160,7 +5161,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "By setting the `point` property of the line mark definition to an object defining a property of the overlaying point marks, we can overlay point markers on top of line. Here we create stroked points by setting their `\"filled\"` to `false` and their `fill` to `\"white\"`. \n\n Notes&#58; (1) This is equivalent to adding another layer of point marks. \n (2) While `\"point\"` marks are normally semi-transparent, the overlay point marker has `opacity` = 1 by default.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 380
@@ -5174,7 +5175,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Stock prices of 5 Tech Companies over Time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 381
@@ -5189,7 +5190,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 382
     },
     {
@@ -5201,7 +5202,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": "Line drawn between airports in the U.S. simulating a flight itinerary",
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "airports"
       ],
@@ -5216,7 +5217,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Line chart with a dashed part created by drawing multiple connecting lines. Note that the data source contains the data point at (E, 81) twice.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 384
     },
     {
@@ -5228,7 +5229,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Stock prices of 5 Tech Companies over Time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 385
@@ -5242,7 +5243,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 386
@@ -5256,7 +5257,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 387
@@ -5270,7 +5271,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": "Log-scaled Histogram.  We may improve the support of this. See https://github.com/vega/vega-lite/issues/4792.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 388
     },
     {
@@ -5282,7 +5283,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": "This example was created by @jwoLondon.",
-      "datasets_used": [
+      "datasets": [
         "london_boroughs",
         "london_centroids",
         "london_tube_lines"
@@ -5298,7 +5299,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": "Marginal histograms show the counts along the x and y dimension.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 390
@@ -5312,7 +5313,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 391
@@ -5326,7 +5327,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 392
@@ -5340,7 +5341,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Stock prices of 5 Tech Companies over Time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 393
@@ -5354,7 +5355,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Multi-series Line Chart with Halo. Use pivot and repeat-layer as a workaround to facet groups of lines and their halo strokes. See https://github.com/vega/vega-lite/issues/6192 for more discussion.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 394
@@ -5368,7 +5369,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "The plot displays labels for all stock prices of the hovered time. The example is forked/modified from [@jakevdp's block](https://bl.ocks.org/jakevdp/a414950f61e4b224765f2439dd1f09b9).",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 395
@@ -5382,7 +5383,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 396
@@ -5396,7 +5397,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "This plot requires the data to have different series in different fields.  See [#1274](https://github.com/vega/vega-lite/issues/1274) and [#1552](https://github.com/vega/vega-lite/issues/1552) for relevant future syntax improvements.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 397
@@ -5410,7 +5411,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "The plot displays labels for all stock prices of the hovered time. This example uses a pivot transform to compute the data for the tooltip.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 398
@@ -5424,7 +5425,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "The plot below uses argmax to position text labels at the end of line.  It also applies single selection to highlight a hovered line.  Note that we can hidden thick lines to make it easier to hover.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 399
@@ -5438,7 +5439,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Stock prices of 5 Tech Companies over Time, with a point marker on hover. Note that the hidden markers are intentionally bigger to make it easier for readers to hover.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 400
@@ -5452,7 +5453,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": "Nested concatenation aligned by setting axis minExtent",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 401
@@ -5466,7 +5467,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": "A histogram for a data source that provides non-linear bins. Thanks to [@Saba9](https://github.com/Saba9) who helps create this example.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 402
     },
     {
@@ -5478,7 +5479,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 403
@@ -5492,7 +5493,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 404
@@ -5506,7 +5507,7 @@
         "Single-View Plots - Area Charts & Streamgraphs"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 405
@@ -5520,7 +5521,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "airports"
       ],
@@ -5535,7 +5536,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "zipcodes"
       ],
       "id": 407
@@ -5549,7 +5550,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "sp500"
       ],
       "id": 408
@@ -5563,7 +5564,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Select multiple points with the shift key.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 409
@@ -5577,7 +5578,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 410
@@ -5591,7 +5592,7 @@
         "Single-View Plots - Circular Plots"
       ],
       "description": "A pie chart encodes proportional differences among a set of numeric values as the angular extent and area of a circular slice.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 411
     },
     {
@@ -5603,7 +5604,7 @@
         "Single-View Plots - Circular Plots"
       ],
       "description": "Layering text over arc marks to label pie charts. For now, [you need to add `stack: true`](https://github.com/vega/vega-lite/issues/5078) to theta to force the text to apply the same polar stacking layout.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 412
     },
     {
@@ -5615,7 +5616,7 @@
         "Single-View Plots - Circular Plots"
       ],
       "description": "A pie chart with a tooltip that shows the percentage covered by the hovered slice.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 413
     },
     {
@@ -5627,7 +5628,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": "A population pyramid for the US in 2000.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 414
@@ -5641,7 +5642,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": "Compare different projections.",
-      "datasets_used": [
+      "datasets": [
         "world_110m"
       ],
       "id": 415
@@ -5655,7 +5656,7 @@
         "Single-View Plots - Circular Plots"
       ],
       "description": "Reproducing http://robslink.com/SAS/democd91/pyramid_pie.htm",
-      "datasets_used": [],
+      "datasets": [],
       "id": 416
     },
     {
@@ -5667,7 +5668,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "normal_2d"
       ],
       "id": 417
@@ -5681,7 +5682,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Drag the sliders to highlight points.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 418
@@ -5695,7 +5696,7 @@
         "Single-View Plots - Circular Plots"
       ],
       "description": "This radial plot uses both angular and radial extent to convey multiple dimensions of data. However, this approach is not perceptually effective, as viewers will most likely be drawn to the total area of the shape, conflating the two dimensions. This example also demonstrates a way to add labels to circular plots.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 419
     },
     {
@@ -5707,7 +5708,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": "A ranged dot plot that uses 'layer' to convey changing life expectancy for the five most populous countries (between 1955 and 2000).",
-      "datasets_used": [
+      "datasets": [
         "countries"
       ],
       "id": 420
@@ -5721,7 +5722,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Drag out a rectangular brush to highlight points.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 421
@@ -5736,7 +5737,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "A bar graph showing what activites consume what percentage of the day.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 422
     },
     {
@@ -5748,7 +5749,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": "Relative frequency histogram. The data is binned with first transform. The number of values per bin and the total number are calculated in the second and third transform to calculate the relative frequency in the last transformation step.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 423
@@ -5762,7 +5763,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 424
@@ -5776,7 +5777,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "The bar gets automatically resized based on container size. To see how the bar gets automatically resized try this in [the editor](https://vega.github.io/editor/#/examples/vega-lite/bar_size_responsive).",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 425
@@ -5790,7 +5791,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "airports",
         "flights_airport"
@@ -5806,7 +5807,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 427
@@ -5820,7 +5821,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 428
@@ -5834,7 +5835,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 429
@@ -5848,7 +5849,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 430
@@ -5862,7 +5863,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 431
@@ -5876,7 +5877,7 @@
         "Composite Marks - Error Bars & Error Bands"
       ],
       "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 432
@@ -5890,7 +5891,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 433
@@ -5904,7 +5905,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": "Search to highlight the relevant car models. Regexes are supported so you can type e.g. `mazda|ford`",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 434
@@ -5918,7 +5919,7 @@
         "Interactive - Interactive Multi-View Displays"
       ],
       "description": "This graph shows an interactive view of Seattle's weather, including maximum temperature, amount of precipitation, and type of weather. By clicking and dragging on the scatter plot, you can see the proportion of days in that range that have sun, rain, fog, snow, etc. Created by @jakevdp.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 435
@@ -5932,7 +5933,7 @@
         "Interactive - Interactive Charts"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 436
     },
     {
@@ -5944,7 +5945,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": "A bar chart encodes quantitative values as the extent of rectangular bars.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 437
     },
     {
@@ -5956,7 +5957,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 438
     },
     {
@@ -5968,7 +5969,7 @@
         "Layered Plots - Labeling & Annotation"
       ],
       "description": "Vega-Lite version of bar chart from https://observablehq.com/@d3/learn-d3-scales.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 439
     },
     {
@@ -5980,7 +5981,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Slope graph showing the change in yield for different barley sites. It shows the error in the year labels for the Morris site.",
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 440
@@ -5994,7 +5995,7 @@
         "Single-View Plots - Area Charts & Streamgraphs"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 441
@@ -6008,7 +6009,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 442
@@ -6022,7 +6023,7 @@
         "Single-View Plots - Bar Charts"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "seattle_weather"
       ],
       "id": 443
@@ -6036,7 +6037,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 444
@@ -6050,7 +6051,7 @@
         "Single-View Plots - Line Charts"
       ],
       "description": "Google's stock price over time.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 445
@@ -6064,7 +6065,7 @@
         "Single-View Plots - Area Charts & Streamgraphs"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "unemployment_across_industries"
       ],
       "id": 446
@@ -6078,7 +6079,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "Shows the relationship between horsepower and the number of cylinders using tick marks.",
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 447
@@ -6092,7 +6093,7 @@
         "Single-View Plots - Scatter & Strip Plots"
       ],
       "description": "After using the numerical values to calculate the average rating, they are replaced by string labels.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 448
@@ -6106,7 +6107,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": "Punchcard Visualization like on Github. The day on y-axis uses a custom order from Monday to Sunday.  The sort property supports both full day names (e.g., 'Monday') and their three letter initials (e.g., 'mon') -- both of which are case insensitive.",
-      "datasets_used": [
+      "datasets": [
         "github"
       ],
       "id": 449
@@ -6120,7 +6121,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 450
@@ -6134,7 +6135,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "A ternary chart example created by [Adrián Bazzana](https://www.linkedin.com/in/adrian-bazzana/).",
-      "datasets_used": [],
+      "datasets": [],
       "id": 451
     },
     {
@@ -6146,7 +6147,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": "the population per state, engineers per state, and hurricanes per state",
-      "datasets_used": [
+      "datasets": [
         "population_engineers_hurricanes",
         "us_10m"
       ],
@@ -6161,7 +6162,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "By @manzt, adapted from https://observablehq.com/@manzt/top-k-plot-with-others-vega-lite-example.",
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 453
@@ -6175,7 +6176,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": "Stock prices of four large companies as a small multiples of area charts.",
-      "datasets_used": [
+      "datasets": [
         "stocks"
       ],
       "id": 454
@@ -6189,7 +6190,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": "Temperature normals in Seattle. Derived from [Seattle Annual Temperate](https://vega.github.io/vega/examples/annual-temperature/) example from the Vega example gallery.",
-      "datasets_used": [
+      "datasets": [
         "seattle_weather_hourly_normals"
       ],
       "id": 455
@@ -6203,7 +6204,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": "A trellis bar chart showing the US population distribution of age groups and gender in 2000.",
-      "datasets_used": [
+      "datasets": [
         "population"
       ],
       "id": 456
@@ -6217,7 +6218,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "cars"
       ],
       "id": 457
@@ -6231,7 +6232,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "movies"
       ],
       "id": 458
@@ -6245,7 +6246,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": "Anscombe's Quartet",
-      "datasets_used": [
+      "datasets": [
         "anscombe"
       ],
       "id": 459
@@ -6259,7 +6260,7 @@
         "Multi-View Displays - Faceting (Trellis Plot / Small Multiples)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "barley"
       ],
       "id": 460
@@ -6273,7 +6274,7 @@
         "Composite Marks - Box Plots"
       ],
       "description": "A vertical box plot showing median and lower and upper quartiles of the distribution of body mass of penguins.",
-      "datasets_used": [
+      "datasets": [
         "penguins"
       ],
       "id": 461
@@ -6287,7 +6288,7 @@
         "Maps (Geographic Displays)"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "us_10m",
         "us_state_capitals"
       ],
@@ -6302,7 +6303,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [
+      "datasets": [
         "lookup_groups",
         "lookup_people"
       ],
@@ -6317,7 +6318,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": "Using window transform to impute missing values in a line chart by averaging the previous and next values.",
-      "datasets_used": [],
+      "datasets": [],
       "id": 464
     },
     {
@@ -6329,7 +6330,7 @@
         "Multi-View Displays - Repeat & Concatenation"
       ],
       "description": "Two vertically concatenated charts",
-      "datasets_used": [
+      "datasets": [
         "weather"
       ],
       "id": 465
@@ -6343,7 +6344,7 @@
         "Single-View Plots - Advanced Calculations"
       ],
       "description": null,
-      "datasets_used": [],
+      "datasets": [],
       "id": 466
     },
     {
@@ -6355,7 +6356,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": "Inspired by <a href='https://vega.github.io/vega-editor/?mode=vega&spec=weather'>this Vega example</a>. Weekly weather data plot representing high/low ranges of record temperatures (light grey), average temperatures (dark grey), and both predicted and observed temperatures (black) for the given week. The first five days have high/low ranges of observed temperatures, and the last five days have ranges of predicted temperatures, where the upper barbell represents the range of high temperature predictions and the lower barbell represents the range of low temperature predictions. Created by @melissatdiamond.",
-      "datasets_used": [
+      "datasets": [
         "weekly_weather"
       ],
       "id": 467
@@ -6369,7 +6370,7 @@
         "Layered Plots - Other Layered Plots"
       ],
       "description": "A recreation of William Playfair’s classic chart visualizing the price of wheat, the wages of a mechanic, and the reigning British monarch. Based on a chart by @manzt.",
-      "datasets_used": [
+      "datasets": [
         "wheat",
         "monarchs"
       ],
@@ -6384,7 +6385,7 @@
         "Single-View Plots - Histograms, Density Plots, and Dot Plots"
       ],
       "description": "A Wilkinson Dot Plot",
-      "datasets_used": [],
+      "datasets": [],
       "id": 469
     },
     {
@@ -6396,7 +6397,7 @@
         "Single-View Plots - Table-based Plots"
       ],
       "description": "Vector array map showing wind speed and direction.",
-      "datasets_used": [
+      "datasets": [
         "windvectors"
       ],
       "id": 470

@@ -12,7 +12,7 @@ This script collects example visualizations from three Vega ecosystem
 repositories (Vega, Vega-Lite, and Altair) and generates a single JSON
 file cataloging how datasets are used across these galleries.
 
-Configuration can be customized via config.toml in the repository root.
+Configuration can be customized via _data/gallery_examples.toml.
 Command-line arguments override config file settings.
 
 The script performs the following operations:
@@ -48,14 +48,14 @@ The script performs the following operations:
          "spec_url": str,
          "categories": list[str],
          "description": str | None,
-         "datasets_used": list[str]
+         "datasets": list[str]
        }
      ]
    }
 
 Usage
 -----
-    uv run scripts/build_gallery_examples.py
+    uv run scripts/generate_gallery_examples.py
 
 Output
 ------
@@ -75,7 +75,7 @@ Examples
 --------
 To regenerate the gallery examples file:
 
-    $ uv run scripts/build_gallery_examples.py
+    $ uv run scripts/generate_gallery_examples.py
 
 See Also
 --------
@@ -91,7 +91,7 @@ import operator
 import re
 import time
 import tomllib
-from datetime import UTC, datetime, timezone  # noqa: F401 - Will be used in Phase 5
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Literal, NotRequired, Protocol, TypedDict, cast
 
@@ -121,7 +121,7 @@ DEFAULT_TIMEOUT = 30
 #
 # 2. Update make_dataset_references() to return [{"name": n} for n in names]
 #
-# 3. Update GalleryExample.datasets_used to use list[DatasetReference]
+# 3. Update GalleryExample.datasets to use list[DatasetReference]
 #
 # 4. Consumer code unchanged: [d if isinstance(d, str) else d["name"] for d in datasets]
 #
@@ -268,7 +268,7 @@ class GalleryExample(TypedDict):
     description : str | None
         Description of what the visualization demonstrates.
         May be None if not available in the source.
-    datasets_used : list[str]
+    datasets : list[str]
         List of dataset names referenced by this example.
         Names match the canonical 'name' field from datapackage.json.
         May be empty for examples with inline data.
@@ -281,7 +281,7 @@ class GalleryExample(TypedDict):
     spec_url: str
     categories: list[str]
     description: str | None
-    datasets_used: list[str]
+    datasets: list[str]
 
 
 class IntermediateExample(TypedDict):
@@ -305,7 +305,7 @@ class IntermediateExample(TypedDict):
         List of category names.
     description : str | None
         Example description if available.
-    datasets_used : list[str]
+    datasets : list[str]
         Dataset names (populated during enrichment phase).
     """
 
@@ -315,7 +315,7 @@ class IntermediateExample(TypedDict):
     spec_url: str
     categories: list[str]
     description: str | None
-    datasets_used: list[str]
+    datasets: list[str]
 
 
 # ============================================================================
@@ -544,6 +544,8 @@ class GalleryExamplesOutput(TypedDict):
         Human-readable title.
     description : str
         Explanation of purpose and relationship to vega-datasets.
+    version : str
+        Semantic version of this registry format.
     created : str
         ISO-8601 timestamp of generation.
     datapackage : dict[str, str]
@@ -555,6 +557,7 @@ class GalleryExamplesOutput(TypedDict):
     name: str
     title: str
     description: str
+    version: str
     created: str
     datapackage: dict[str, str]
     examples: list[GalleryExample]
@@ -579,7 +582,7 @@ logger = logging.getLogger(__name__)
 
 def load_config() -> GalleryConfig:
     """
-    Load configuration from config.toml file.
+    Load configuration from _data/gallery_examples.toml file.
 
     Loads the TOML configuration file from the repository root directory.
     The configuration file is optional - if not found or if there are
@@ -621,7 +624,7 @@ def load_config() -> GalleryConfig:
     Notes
     -----
     - Configuration file path is determined relative to this script's location
-    - If config.toml is not found, default values are used
+    - If _data/gallery_examples.toml is not found, default values are used
     - Any errors during loading are logged but don't crash the script
     - Default configuration matches the original hardcoded values
     - Command-line arguments should override these configuration values
@@ -850,7 +853,7 @@ def collect_vega_lite_examples(
     Returns
     -------
     list[dict[str, Any]]
-        List of IntermediateExample dictionaries. The datasets_used field
+        List of IntermediateExample dictionaries. The datasets field
         is initialized as an empty list and will be populated in Phase 4.
         Expected count: ~190 unique examples.
 
@@ -915,7 +918,7 @@ def collect_vega_lite_examples(
                         "spec_url": spec_url,
                         "categories": [full_category],
                         "description": example.get("description"),
-                        "datasets_used": [],  # Will be filled later
+                        "datasets": [],  # Will be filled later
                     }
 
     logger.info("  Found %s unique Vega-Lite examples", len(example_dict))
@@ -944,7 +947,7 @@ def collect_vega_examples(
     Returns
     -------
     list[dict[str, Any]]
-        List of IntermediateExample dictionaries. The datasets_used field
+        List of IntermediateExample dictionaries. The datasets field
         is initialized as an empty list and will be populated in Phase 4.
         Expected count: ~93 examples.
 
@@ -996,7 +999,7 @@ def collect_vega_examples(
                 "spec_url": spec_url,
                 "categories": [category_name],
                 "description": None,  # Will be extracted from spec
-                "datasets_used": [],
+                "datasets": [],
             })
 
     logger.info("  Found %s Vega examples", len(examples))
@@ -1041,7 +1044,7 @@ def extract_altair_title(session: requests.Session, file_url: str) -> str | None
     - Handles both triple-quote variants (''' and \"\"\")
     """
     try:
-        response = session.get(file_url, timeout=10)
+        response = session.get(file_url, timeout=DEFAULT_TIMEOUT)
         if response.status_code != 200:
             return None
 
@@ -1082,7 +1085,7 @@ def collect_altair_examples(
     Returns
     -------
     list[dict[str, Any]]
-        List of IntermediateExample dictionaries. The datasets_used field
+        List of IntermediateExample dictionaries. The datasets field
         is initialized as an empty list and will be populated in Phase 4.
         Expected count: ~185 examples.
 
@@ -1149,7 +1152,7 @@ def collect_altair_examples(
                 "spec_url": spec_url,
                 "categories": [],  # Will be extracted from code
                 "description": None,  # Will be extracted from code
-                "datasets_used": [],
+                "datasets": [],
             })
 
     logger.info("  Found %s Altair examples", len(examples))
@@ -1479,8 +1482,6 @@ def extract_datasets_from_vegalite_spec(
 # ============================================================================
 # Altair Dataset Extraction Functions
 # ============================================================================
-# Global configuration (loaded in main())
-_config: GalleryConfig
 
 
 def extract_altair_api_datasets(
@@ -1518,7 +1519,7 @@ def extract_altair_api_datasets(
         Optional mapping from Altair API names to canonical names.
         - For Altair v6+: Pass None or {} (canonical names used directly)
         - For Altair v5: Pass mapping like {"londonBoroughs": "london_boroughs"}
-        Typically loaded from config.toml under [altair.name_mapping].
+        Typically loaded from _data/gallery_examples.toml under [altair.name_mapping].
 
     Returns
     -------
@@ -1603,6 +1604,7 @@ def extract_datasets_from_altair_code(
     code: str,
     name_map: DatasetNameMap,
     valid_names: ValidNames,
+    config: GalleryConfig,
 ) -> list[CanonicalName]:
     """
     Extract dataset references from Altair Python code.
@@ -1612,7 +1614,7 @@ def extract_datasets_from_altair_code(
     2. Python API: data.cars(), data.cars.url, etc.
 
     This function handles both patterns, using explicit mappings from
-    config.toml for API name validation.
+    _data/gallery_examples.toml for API name validation.
 
     Parameters
     ----------
@@ -1622,6 +1624,8 @@ def extract_datasets_from_altair_code(
         Map from file paths to canonical dataset names.
     valid_names : set[str]
         Valid dataset names from datapackage.json.
+    config : GalleryConfig
+        Configuration dictionary with Altair name mappings.
 
     Returns
     -------
@@ -1637,14 +1641,15 @@ def extract_datasets_from_altair_code(
     ... '''
     >>> name_map = {"data/cars.json": "cars"}
     >>> valid_names = {"cars", "movies"}
-    >>> extract_datasets_from_altair_code(code, name_map, valid_names)
+    >>> config = {"altair": {"name_mapping": {}}}
+    >>> extract_datasets_from_altair_code(code, name_map, valid_names, config)
     ['cars', 'movies']
 
     Notes
     -----
     - File path extraction uses name_map for normalization
-    - API name validation uses optional config.toml mappings (for Altair v5 legacy support)
-    - Altair v6+ uses canonical names directly (empty mapping in config.toml)
+    - API name validation uses optional _data/gallery_examples.toml mappings (for Altair v5 legacy support)
+    - Altair v6+ uses canonical names directly (empty mapping in _data/gallery_examples.toml)
     - Checks for vega_datasets or altair.datasets imports before attempting API extraction
     """
     datasets = []
@@ -1672,12 +1677,12 @@ def extract_datasets_from_altair_code(
     altair_import = r"from\s+altair\.datasets\s+import\s+data"
 
     if re.search(vega_import, code) or re.search(altair_import, code):
-        # Extract API datasets using config.toml mappings
+        # Extract API datasets using _data/gallery_examples.toml mappings
         # For Altair v6+, mapping is typically empty (no transformation needed)
         api_datasets = extract_altair_api_datasets(
             code,
             valid_names,
-            name_mapping=_config.get("altair", {}).get("name_mapping", {}),
+            name_mapping=config.get("altair", {}).get("name_mapping", {}),
         )
         datasets.extend(api_datasets)
 
@@ -1808,6 +1813,7 @@ def enrich_examples_with_datasets(
     session: requests.Session,
     name_map: DatasetNameMap,
     valid_names: ValidNames,
+    config: GalleryConfig,
 ) -> None:
     """
     Fetch specs and extract datasets for all examples (in-place).
@@ -1821,7 +1827,7 @@ def enrich_examples_with_datasets(
     ----------
     examples : list[dict[str, Any]]
         List of IntermediateExample dictionaries (modified in-place).
-        Each example's datasets_used, description, and categories
+        Each example's datasets, description, and categories
         fields will be populated.
     session : requests.Session
         HTTP session for connection pooling.
@@ -1829,6 +1835,8 @@ def enrich_examples_with_datasets(
         Map from file paths to canonical dataset names.
     valid_names : set[str]
         Valid dataset names from datapackage.json.
+    config : GalleryConfig
+        Configuration dictionary with network and Altair settings.
 
     Returns
     -------
@@ -1838,26 +1846,28 @@ def enrich_examples_with_datasets(
     Examples
     --------
     >>> examples = [
-    ...     {"gallery_name": "vega-lite", "spec_url": "http://...", "datasets_used": []}
+    ...     {"gallery_name": "vega-lite", "spec_url": "http://...", "datasets": []}
     ... ]
     >>> session = requests.Session()
     >>> name_map = {"data/cars.json": "cars"}
     >>> valid_names = {"cars"}
-    >>> enrich_examples_with_datasets(examples, session, name_map, valid_names)
-    >>> examples[0]["datasets_used"]
+    >>> config = {"network": {"timeout": 30}, "altair": {"name_mapping": {}}}
+    >>> enrich_examples_with_datasets(examples, session, name_map, valid_names, config)
+    >>> examples[0]["datasets"]
     ['cars']
 
     Notes
     -----
     - Progress logged every 50 examples
     - Errors are logged but don't stop processing
-    - Duplicates in datasets_used are removed while preserving order
+    - Duplicates in datasets are removed while preserving order
     - Vega-Lite and Vega descriptions extracted from spec.description
     - Altair categories and descriptions extracted from code comments
-    - Altair API name validation uses config.toml mappings
+    - Altair API name validation uses _data/gallery_examples.toml mappings
     - Failed fetches or parsing errors are logged as warnings
     """
     logger.info("Enriching %s examples with dataset information...", len(examples))
+    timeout = config.get("network", {}).get("timeout", DEFAULT_TIMEOUT)
 
     for i, example in enumerate(examples):
         # Progress logging every 50 examples
@@ -1866,7 +1876,7 @@ def enrich_examples_with_datasets(
 
         try:
             # Fetch the specification or code
-            response = session.get(example["spec_url"], timeout=10)
+            response = session.get(example["spec_url"], timeout=timeout)
             if response.status_code != 200:
                 logger.warning(
                     "Failed to fetch %s: %s", example["spec_url"], response.status_code
@@ -1892,7 +1902,7 @@ def enrich_examples_with_datasets(
                 code = response.text
                 assert isinstance(code, str)  # response.text is always str in requests
                 datasets = extract_datasets_from_altair_code(
-                    code, name_map, valid_names
+                    code, name_map, valid_names, config
                 )
                 # Extract category from code comment
                 category = extract_altair_category(code)
@@ -1925,7 +1935,7 @@ def enrich_examples_with_datasets(
                     e,
                 )
 
-            example["datasets_used"] = unique_datasets
+            example["datasets"] = unique_datasets
 
         except Exception as e:
             # Log error but continue processing other examples
@@ -2019,6 +2029,7 @@ def finalize_examples(examples: list[dict[str, Any]]) -> GalleryExamplesOutput:
                 "Tracks which datasets from the vega-datasets collection are used in example "
                 "visualizations across Vega, Vega-Lite, and Altair galleries."
             ),
+            "version": "1.0.0",
             "created": datetime.now(UTC).isoformat(),
             "datapackage": {
                 "name": "vega-datasets",
@@ -2101,24 +2112,24 @@ def main(
     Main entry point for gallery examples collection.
 
     Orchestrates all phases of the collection process:
-    1. Load configuration from config.toml
+    1. Load configuration from _data/gallery_examples.toml
     2. Build dataset name mapping from datapackage.json
     3. Collect examples from all three galleries
     4. Enrich examples with dataset information
     5. Finalize and write output
 
-    Configuration is loaded from config.toml in the repository root.
+    Configuration is loaded from _data/gallery_examples.toml in the repository root.
     Command-line arguments override configuration file settings.
 
     Parameters
     ----------
     output_path : Path | None, default None
-        Custom output file path. If None, uses default from config.toml
+        Custom output file path. If None, uses default from _data/gallery_examples.toml
         or gallery_examples.json in the repository root.
     dry_run : bool, default False
         If True, performs all collection and extraction but does not
         write output file. Useful for testing and validation.
-        Overrides config.toml setting.
+        Overrides _data/gallery_examples.toml setting.
 
     Returns
     -------
@@ -2133,7 +2144,7 @@ def main(
 
     Examples
     --------
-    >>> main()  # Use defaults from config.toml
+    >>> main()  # Use defaults from _data/gallery_examples.toml
     >>> main(output_path=Path("test.json"))  # Custom output
     >>> main(dry_run=True)  # Test without writing
 
@@ -2145,21 +2156,19 @@ def main(
     - Session is closed automatically via try/finally
     - Dry-run still fetches all data but skips file write
     - Configuration file is optional (uses defaults if not found)
-    - Altair API name validation uses config.toml mappings (see config['altair']['name_mapping'])
+    - Altair API name validation uses _data/gallery_examples.toml mappings (see config['altair']['name_mapping'])
     """
-    global _config
-
     start_time = time.time()
 
     logger.info("=== Gallery Examples Collection Starting ===")
 
     # Load configuration
-    _config = load_config()
+    config = load_config()
 
     # Apply config defaults (can be overridden by parameters)
     if output_path is None:
         repo_dir = Path(__file__).parent.parent
-        default_output = _config.get("output", {}).get(
+        default_output = config.get("output", {}).get(
             "default_output_path", "gallery_examples.json"
         )
         output_path = repo_dir / default_output
@@ -2169,14 +2178,14 @@ def main(
 
     # CLI dry_run overrides config
     if not dry_run:
-        dry_run = _config.get("output", {}).get("dry_run", False)
+        dry_run = config.get("output", {}).get("dry_run", False)
 
     if dry_run:
         logger.info("DRY RUN MODE - Will not write output file")
 
     # Get config values
-    timeout = _config.get("network", {}).get("timeout", DEFAULT_TIMEOUT)
-    sources = _config.get("sources", {})
+    timeout = config.get("network", {}).get("timeout", DEFAULT_TIMEOUT)
+    sources = config.get("sources", {})
 
     session = requests.Session()
 
@@ -2221,7 +2230,7 @@ def main(
 
         # Phase 3: Enrich with datasets
         logger.info("\n--- Phase 3: Extracting datasets from specs ---")
-        enrich_examples_with_datasets(all_examples, session, name_map, valid_names)
+        enrich_examples_with_datasets(all_examples, session, name_map, valid_names, config)
 
         # Phase 4: Finalize and write
         logger.info("\n--- Phase 4: Finalizing and writing output ---")
@@ -2276,13 +2285,13 @@ def parse_args() -> dict[str, Any]:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s                                    # Use defaults from config.toml
+  %(prog)s                                    # Use defaults from _data/gallery_examples.toml
   %(prog)s --output test.json                 # Custom output path
   %(prog)s --dry-run                          # Test without writing
   %(prog)s --verbose --dry-run                # Debug with dry-run
 
 Notes:
-  - Altair API name validation uses config.toml mappings (see config['altair']['name_mapping'])
+  - Altair API name validation uses _data/gallery_examples.toml mappings (see config['altair']['name_mapping'])
   - Expected runtime: 2-4 minutes depending on network speed
   - Output: ~470 examples from Vega, Vega-Lite, and Altair galleries
         """,
