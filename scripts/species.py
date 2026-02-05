@@ -41,12 +41,12 @@ from typing import TYPE_CHECKING, Any, Literal, LiteralString, TypedDict, cast
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-import pyarrow as pa  # type: ignore[import-untyped]
-import pyarrow.feather  # type: ignore[import-untyped]
-import pyarrow.parquet as pa_pq  # type: ignore[import-untyped]
+import pyarrow as pa
+import pyarrow.feather
+import pyarrow.parquet as pa_pq
 import requests
-from exactextract import exact_extract  # type: ignore[import-untyped]
-from sciencebasepy import SbSession  # type: ignore[import-untyped]
+from exactextract import exact_extract
+from sciencebasepy import SbSession
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
@@ -463,7 +463,7 @@ class HabitatDataProcessor:
 
         # Rename the county identifier column to 'county_id' for consistency
         if "id" in gdf.columns:
-            gdf = cast("CountyDataFrame", gdf.rename(columns={"id": "county_id"}))
+            gdf = gdf.rename(columns={"id": "county_id"})
         else:
             logger.error(
                 "County ID column not found. Available columns: %s",
@@ -522,8 +522,7 @@ class HabitatDataProcessor:
         )
 
         for fips_code in excluded_fips:
-            county_series: pd.Series = gdf[gdf["state_fips"] == fips_code]["county_id"]  # type: ignore[assignment]
-            counties = county_series.unique()
+            counties = gdf[gdf["state_fips"] == fips_code]["county_id"].unique()
             area_name = fips_names.get(fips_code, f"FIPS {fips_code}")
 
             if len(counties) > 0:
@@ -548,7 +547,7 @@ class HabitatDataProcessor:
 
         logger.info("Analyzing %d counties in conterminous US", len(filtered_gdf))
 
-        return cast("CountyDataFrame", filtered_gdf)
+        return filtered_gdf
 
     def _finalize_county_data(self, gdf: CountyDataFrame) -> CountyDataFrame:
         """Projects to equal-area and removes invalid geometries."""
@@ -563,7 +562,7 @@ class HabitatDataProcessor:
                 len(projected_gdf) - len(valid_counties),
             )
 
-        return cast("CountyDataFrame", valid_counties)
+        return valid_counties
 
     def process_habitat_data(
         self, temp_dir: Path
@@ -731,19 +730,12 @@ class HabitatDataProcessor:
 
         # Basic setup and column renaming
         self.output_dir.mkdir(exist_ok=True)
-        results_df = cast(
-            "ProcessedDataFrame",
-            results_df.rename(
-                columns={
-                    "species_code": "gap_species_code",
-                    "pct": "habitat_yearround_pct",
-                }
-            ),
+        results_df = results_df.rename(
+            columns={"species_code": "gap_species_code", "pct": "habitat_yearround_pct"}
         )
-        results_df = cast(
-            "ProcessedDataFrame",
-            results_df[["county_id", "gap_species_code", "habitat_yearround_pct"]],
-        )
+        results_df = results_df[
+            ["county_id", "gap_species_code", "habitat_yearround_pct"]
+        ]
 
         # Merge with species info and round percentages
         species_info_df = pd.DataFrame.from_dict(species_info, orient="index")
@@ -763,8 +755,7 @@ class HabitatDataProcessor:
         final_df["habitat_yearround_pct"] = final_df["habitat_yearround_pct"].round(4)
 
         # Ensure consistent county_id format
-        county_series: pd.Series = final_df["county_id"].astype(str)  # type: ignore[assignment]
-        final_df["county_id"] = county_series.str.zfill(5)
+        final_df["county_id"] = final_df["county_id"].astype(str).str.zfill(5)
 
         # Get list of all conterminous US counties (already filtered in _load_county_data)
         conterminous_counties = self.gdf["county_id"].unique()
@@ -772,10 +763,9 @@ class HabitatDataProcessor:
         # Create complete dataset with zeros for missing counties
         complete_data = []
         for _species, group in final_df.groupby("gap_species_code"):
-            group_df = cast("pd.DataFrame", group)
             # Create template row with species info
             template = {
-                col: group_df[col].iloc[0]
+                col: group[col].iloc[0]
                 for col in [
                     "item_id",
                     "common_name",
@@ -786,11 +776,7 @@ class HabitatDataProcessor:
 
             # Create dictionary of existing county data
             county_data = dict(
-                zip(
-                    group_df["county_id"],
-                    group_df["habitat_yearround_pct"],
-                    strict=False,
-                )
+                zip(group["county_id"], group["habitat_yearround_pct"], strict=False)
             )
 
             # Add rows for all counties (existing values or zeros)
