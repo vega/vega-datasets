@@ -272,6 +272,11 @@ class GalleryExample(TypedDict):
         List of dataset names referenced by this example.
         Names match the canonical 'name' field from datapackage.json.
         May be empty for examples with inline data.
+    techniques : list[str]
+        Auto-detected Vega/Vega-Lite/Altair features used in the example.
+        Tags use category:subcategory format (e.g., "transform:window",
+        "interaction:selection", "geo:projection").
+        May be empty for simple examples with no notable features.
     """
 
     id: int
@@ -282,6 +287,7 @@ class GalleryExample(TypedDict):
     categories: list[str]
     description: str | None
     datasets: list[str]
+    techniques: list[str]
 
 
 class IntermediateExample(TypedDict):
@@ -307,6 +313,8 @@ class IntermediateExample(TypedDict):
         Example description if available.
     datasets : list[str]
         Dataset names (populated during enrichment phase).
+    techniques : NotRequired[list[str]]
+        Auto-detected techniques (populated during enrichment phase).
     """
 
     gallery_name: str
@@ -316,6 +324,7 @@ class IntermediateExample(TypedDict):
     categories: list[str]
     description: str | None
     datasets: list[str]
+    techniques: NotRequired[list[str]]
 
 
 # ============================================================================
@@ -535,6 +544,12 @@ def make_dataset_references(names: list[str]) -> list[DatasetReference]:
 class GalleryExamplesOutput(TypedDict):
     """
     Complete output structure for gallery_examples.json.
+
+    .. deprecated:: 2.0.0
+        This wrapper format is deprecated. As of Data Package v2 compliance,
+        gallery_examples.json now contains only the examples array (data-only).
+        Metadata (name, title, description, version, created, datapackage)
+        is stored in datapackage.json as a resource entry.
 
     Attributes
     ----------
@@ -919,6 +934,7 @@ def collect_vega_lite_examples(
                         "categories": [full_category],
                         "description": example.get("description"),
                         "datasets": [],  # Will be filled later
+                        "techniques": [],  # Will be filled later
                     }
 
     logger.info("  Found %s unique Vega-Lite examples", len(example_dict))
@@ -1000,6 +1016,7 @@ def collect_vega_examples(
                 "categories": [category_name],
                 "description": None,  # Will be extracted from spec
                 "datasets": [],
+                "techniques": [],  # Will be filled later
             })
 
     logger.info("  Found %s Vega examples", len(examples))
@@ -1153,6 +1170,7 @@ def collect_altair_examples(
                 "categories": [],  # Will be extracted from code
                 "description": None,  # Will be extracted from code
                 "datasets": [],
+                "techniques": [],  # Will be filled later
             })
 
     logger.info("  Found %s Altair examples", len(examples))
@@ -1689,6 +1707,158 @@ def extract_datasets_from_altair_code(
     return datasets
 
 
+# ============================================================================
+# Technique Detection
+# ============================================================================
+
+# Technique detection patterns by category
+# Each tuple: (list of patterns to match, tag to assign)
+# Patterns are matched case-insensitively against serialized spec or code text
+#
+# The three libraries have different syntax for the same concepts:
+# - Vega-Lite (JSON): {"window": [...]} in transform array
+# - Altair (Python): .transform_window(...) method call
+# - Vega (JSON): {"type": "window"} in data transforms
+#
+# Tags use category:subcategory format for flexible filtering:
+# - transform:* for data transformations
+# - interaction:* for user interaction features
+# - geo:* for geographic visualizations
+# - composition:* for multi-view compositions
+# - mark:* for special mark types
+
+TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
+    # === TRANSFORMS ===
+    # Vega-Lite: "transform":[{"window":...}]
+    # Altair: .transform_window(...)
+    # Vega: {"type":"window"} in data transforms
+    (['"window":', "transform_window", '"type":"window"'], "transform:window"),
+    (['"fold":', "transform_fold", '"type":"fold"'], "transform:fold"),
+    (['"pivot":', "transform_pivot", '"type":"pivot"'], "transform:pivot"),
+    (['"calculate":', "transform_calculate", '"type":"formula"'], "transform:calculate"),
+    (['"aggregate":', "transform_aggregate", '"type":"aggregate"'], "transform:aggregate"),
+    (['"filter":', "transform_filter", '"type":"filter"'], "transform:filter"),
+    (['"lookup":', "transform_lookup", '"type":"lookup"'], "transform:lookup"),
+    (['"density":', "transform_density", '"type":"kde"'], "transform:density"),
+    (['"regression":', "transform_regression", '"type":"regression"'], "transform:regression"),
+    (['"loess":', "transform_loess", '"type":"loess"'], "transform:loess"),
+    (['"flatten":', "transform_flatten", '"type":"flatten"'], "transform:flatten"),
+    (['"sample":', "transform_sample", '"type":"sample"'], "transform:sample"),
+    (['"quantile":', "transform_quantile", '"type":"quantile"'], "transform:quantile"),
+    (['"impute":', "transform_impute", '"type":"impute"'], "transform:impute"),
+    (
+        ['"joinaggregate":', "transform_joinaggregate", '"type":"joinaggregate"'],
+        "transform:joinaggregate",
+    ),
+    # Bin is tricky - appears in encoding too, so check for transform context
+    # Vega uses {"type":"bin"}, Vega-Lite uses {"bin":true} or {"bin":{...}}
+    (['"bin":true', '"bin":{', "transform_bin", '"type":"bin"'], "transform:bin"),
+    # Extent transform (Vega-only) - computes min/max of a field
+    (['"type":"extent"'], "transform:extent"),
+    # Crossfilter transform (Vega-only) - multi-dimensional filtering
+    # resolvefilter is always used with crossfilter
+    (['"type":"crossfilter"', '"type":"resolvefilter"'], "transform:crossfilter"),
+    # === INTERACTION ===
+    # Vega-Lite: "params":[{"select":"point"}] or {"select":"interval"}
+    # Altair: selection_point(), selection_interval(), add_params()
+    # Vega: "signals":[...] with event handlers
+    (
+        ['"select":"point"', '"select":"interval"', "selection_point", "selection_interval"],
+        "interaction:selection",
+    ),
+    # Note: "signals":[ matches most Vega specs since signals are fundamental.
+    # This is intentional - Vega's reactive model IS its interaction system.
+    (['"params":[', "add_params(", '"signals":['], "interaction:param"),
+    (
+        ['"bind":', "binding_select", "binding_range", "binding_radio", "binding_checkbox"],
+        "interaction:binding",
+    ),
+    (['"condition":{"param"', "alt.when("], "interaction:conditional"),
+    # === GEOGRAPHIC ===
+    (['"geoshape"', "mark_geoshape"], "geo:shape"),
+    (['"projection":', "projection=", '"projections":'], "geo:projection"),
+    (['"longitude"', '"latitude"', "longitude:", "latitude:"], "geo:coordinates"),
+    (["topojson", "topo_feature"], "geo:topojson"),
+    # === COMPOSITION ===
+    # Vega-Lite: "facet":{}, "row":{}, "column":{}
+    # Altair: .facet(), row=, column=
+    (['"facet":', '"row":{', '"column":{', ".facet(", "row=", "column="], "composition:facet"),
+    (['"layer":[', "alt.layer("], "composition:layer"),
+    (
+        ['"hconcat":', '"vconcat":', '"concat":', "alt.hconcat(", "alt.vconcat("],
+        "composition:concat",
+    ),
+    (['"repeat":', ".repeat("], "composition:repeat"),
+    # === SPECIAL MARKS ===
+    (['"boxplot"', "mark_boxplot"], "mark:boxplot"),
+    (['"errorbar"', '"errorband"', "mark_errorbar", "mark_errorband"], "mark:error"),
+    (['"trail"', "mark_trail"], "mark:trail"),
+]
+
+
+def detect_techniques(
+    spec_or_code: dict[str, Any] | str,
+    _gallery_name: str,
+) -> list[str]:
+    """
+    Detect Vega/Vega-Lite/Altair techniques from spec or code.
+
+    Scans the spec (JSON) or code (Python string) for known patterns
+    that indicate usage of specific visualization techniques.
+
+    Parameters
+    ----------
+    spec_or_code
+        For Vega/Vega-Lite: parsed JSON spec as dict
+        For Altair: Python source code as string
+    _gallery_name
+        One of "vega", "vega-lite", "altair" (currently unused but
+        reserved for future library-specific detection logic)
+
+    Returns
+    -------
+    list[str]
+        Sorted list of technique tags like ["transform:window", "interaction:selection"]
+
+    Examples
+    --------
+    Vega-Lite spec with window transform:
+
+    >>> spec = {"transform": [{"window": [{"op": "rank", "as": "rank"}]}]}
+    >>> detect_techniques(spec, "vega-lite")
+    ['transform:window']
+
+    Altair code with selection:
+
+    >>> code = "brush = alt.selection_interval()"
+    >>> detect_techniques(code, "altair")
+    ['interaction:selection']
+
+    Notes
+    -----
+    - Pattern matching on serialized JSON is intentionally simple—catches 90%+ of cases
+    - Tags use `category:subcategory` format for future filtering flexibility
+    - Empty `techniques: []` is valid (simple examples with no notable features)
+    - _gallery_name parameter is reserved for future use where library-specific
+      detection may be needed
+    """
+    techniques: set[str] = set()
+
+    # Convert to searchable lowercase text
+    if isinstance(spec_or_code, dict):
+        # JSON spec - serialize compactly for pattern matching
+        text = json.dumps(spec_or_code, separators=(",", ":")).lower()
+    else:
+        # Python code string
+        text = spec_or_code.lower()
+
+    for patterns, tag in TECHNIQUE_PATTERNS:
+        if any(p.lower() in text for p in patterns):
+            techniques.add(tag)
+
+    return sorted(techniques)
+
+
 def extract_altair_category(code: str) -> str | None:
     r"""
     Extract category from Altair example code comment.
@@ -1816,18 +1986,18 @@ def enrich_examples_with_datasets(
     config: GalleryConfig,
 ) -> None:
     """
-    Fetch specs and extract datasets for all examples (in-place).
+    Fetch specs and extract datasets and techniques for all examples (in-place).
 
     This is the main orchestration function for Phase 4. It iterates
     through all collected examples, fetches their specifications or
     code, routes to the appropriate extraction function, and updates
-    the example dictionaries with dataset information.
+    the example dictionaries with dataset and technique information.
 
     Parameters
     ----------
     examples : list[dict[str, Any]]
         List of IntermediateExample dictionaries (modified in-place).
-        Each example's datasets, description, and categories
+        Each example's datasets, techniques, description, and categories
         fields will be populated.
     session : requests.Session
         HTTP session for connection pooling.
@@ -1861,6 +2031,7 @@ def enrich_examples_with_datasets(
     - Progress logged every 50 examples
     - Errors are logged but don't stop processing
     - Duplicates in datasets are removed while preserving order
+    - Techniques are auto-detected via pattern matching (see detect_techniques())
     - Vega-Lite and Vega descriptions extracted from spec.description
     - Altair categories and descriptions extracted from code comments
     - Altair API name validation uses _data/gallery_examples.toml mappings
@@ -1884,9 +2055,11 @@ def enrich_examples_with_datasets(
                 continue
 
             # Route to appropriate extraction function based on gallery
+            # Each branch extracts: datasets, techniques, and optionally description
             if example["gallery_name"] == "vega-lite":
                 spec = response.json()
                 datasets = extract_datasets_from_vegalite_spec(spec, name_map)
+                techniques = detect_techniques(spec, "vega-lite")
                 # Extract description from spec if not already set
                 if not example["description"] and "description" in spec:
                     example["description"] = spec["description"]
@@ -1894,6 +2067,7 @@ def enrich_examples_with_datasets(
             elif example["gallery_name"] == "vega":
                 spec = response.json()
                 datasets = extract_datasets_from_vega_spec(spec, name_map)
+                techniques = detect_techniques(spec, "vega")
                 # Extract description from spec if not already set
                 if not example["description"] and "description" in spec:
                     example["description"] = spec["description"]
@@ -1904,6 +2078,7 @@ def enrich_examples_with_datasets(
                 datasets = extract_datasets_from_altair_code(
                     code, name_map, valid_names, config
                 )
+                techniques = detect_techniques(code, "altair")
                 # Extract category from code comment
                 category = extract_altair_category(code)
                 if category:
@@ -1936,6 +2111,7 @@ def enrich_examples_with_datasets(
                 )
 
             example["datasets"] = unique_datasets
+            example["techniques"] = techniques
 
         except Exception as e:
             # Log error but continue processing other examples
@@ -1951,13 +2127,13 @@ def enrich_examples_with_datasets(
 # ============================================================================
 
 
-def finalize_examples(examples: list[dict[str, Any]]) -> GalleryExamplesOutput:
+def finalize_examples(examples: list[dict[str, Any]]) -> list[GalleryExample]:
     """
-    Finalize examples: assign IDs, sort, wrap in output structure.
+    Finalize examples: assign IDs, sort. Returns data-only list for v2 compliance.
 
     Takes a list of enriched examples and prepares them for JSON output
-    by assigning sequential IDs, sorting consistently, and wrapping in
-    the final output structure with metadata.
+    by assigning sequential IDs and sorting consistently. Per Data Package v2,
+    the output is a plain array (data-only); metadata is stored in datapackage.json.
 
     Parameters
     ----------
@@ -1966,10 +2142,9 @@ def finalize_examples(examples: list[dict[str, Any]]) -> GalleryExamplesOutput:
 
     Returns
     -------
-    GalleryExamplesOutput
-        Final output structure with metadata and 'examples' list.
-        Includes: name, title, description, created timestamp,
-        datapackage cross-reference, and examples array.
+    list[GalleryExample]
+        List of gallery examples ready for JSON serialization.
+        Sorted by gallery_name, then example_name, with sequential IDs.
 
     Examples
     --------
@@ -1978,22 +2153,19 @@ def finalize_examples(examples: list[dict[str, Any]]) -> GalleryExamplesOutput:
     ...     {'gallery_name': 'altair', 'example_name': 'Bar Chart', ...}
     ... ]
     >>> output = finalize_examples(examples)
-    >>> output["examples"][0]["id"]
+    >>> output[0]["id"]
     1
-    >>> output["examples"][1]["id"]
+    >>> output[1]["id"]
     2
-    >>> "created" in output
+    >>> isinstance(output, list)
     True
-    >>> output["name"]
-    'gallery-examples'
 
     Notes
     -----
     - Examples are sorted first by gallery_name, then by example_name
     - IDs are assigned sequentially starting at 1
-    - The created timestamp uses ISO-8601 format with UTC timezone
     - This ensures consistent output across runs (same examples = same order)
-    - Reads datapackage.json for version cross-reference
+    - Data Package v2 compliance: metadata is in datapackage.json, not here
     """
     # Sort by gallery name, then example name for consistent ordering
     # This ensures the output is deterministic and easy to diff
@@ -2003,57 +2175,26 @@ def finalize_examples(examples: list[dict[str, Any]]) -> GalleryExamplesOutput:
     for i, example in enumerate(examples, start=1):
         example["id"] = i
 
-    # Read datapackage.json for version cross-reference
-    try:
-        repo_root = Path(__file__).parent.parent
-        datapackage_path = repo_root / "datapackage.json"
-        with datapackage_path.open(encoding="utf-8") as f:
-            datapackage = json.load(f)
-            datapackage_version = datapackage.get("version", "unknown")
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        logger.warning("Could not read datapackage.json version: %s", e)
-        datapackage_version = "unknown"
-
-    # Create final output structure with metadata
-    # Note: examples is typed as list[dict[str, Any]] in the function signature
-    # but will be validated to match GalleryExample structure at runtime
+    # Return data-only list (Data Package v2 compliance)
     # Cast needed because list[dict[str, Any]] is not compatible with list[GalleryExample]
     # due to invariance, even though the runtime structure matches
-    return cast(
-        "GalleryExamplesOutput",
-        {
-            "name": "gallery-examples",
-            "title": "Vega Ecosystem Gallery Examples Registry",
-            "description": (
-                "Cross-reference catalog mapping gallery examples to vega-datasets resources. "
-                "Tracks which datasets from the vega-datasets collection are used in example "
-                "visualizations across Vega, Vega-Lite, and Altair galleries."
-            ),
-            "version": "1.0.0",
-            "created": datetime.now(UTC).isoformat(),
-            "datapackage": {
-                "name": "vega-datasets",
-                "version": datapackage_version,
-                "path": "./datapackage.json",
-            },
-            "examples": examples,
-        },
-    )
+    return cast("list[GalleryExample]", examples)
 
 
 def write_json_output(
-    data: GalleryExamplesOutput | dict[str, Any], output_path: Path
+    data: list[GalleryExample] | list[dict[str, Any]], output_path: Path
 ) -> None:
     """
     Write final JSON output to file.
 
     Writes the finalized example data to a JSON file with human-readable
     formatting (2-space indentation, UTF-8 encoding, preserved unicode).
+    Per Data Package v2, the output is a plain array (data-only).
 
     Parameters
     ----------
-    data : dict[str, Any]
-        Output data structure from finalize_examples().
+    data : list[GalleryExample] | list[dict[str, Any]]
+        List of gallery examples from finalize_examples().
     output_path : Path
         Path to the output JSON file.
 
@@ -2068,18 +2209,18 @@ def write_json_output(
 
     Examples
     --------
-    >>> data = {"created": "2024-01-01T00:00:00Z", "examples": [...]}
+    >>> data = [{"id": 1, "gallery_name": "altair", ...}, ...]
     >>> output_path = Path("gallery_examples.json")
     >>> write_json_output(data, output_path)
-    # Writes formatted JSON to gallery_examples.json
+    # Writes formatted JSON array to gallery_examples.json
 
     Notes
     -----
     - Uses 2-space indentation for readability
     - UTF-8 encoding for international character support
     - ensure_ascii=False preserves unicode characters
-    - sort_keys=False preserves field order (created before examples)
     - Creates parent directories if they don't exist
+    - Data Package v2 compliance: outputs plain array, metadata in datapackage.json
     """
     logger.info("Writing output to %s", output_path)
 
@@ -2096,7 +2237,7 @@ def write_json_output(
             sort_keys=False,  # Preserve order
         )
 
-    logger.info("Wrote %s examples to %s", len(data["examples"]), output_path)
+    logger.info("Wrote %s examples to %s", len(data), output_path)
 
 
 # ============================================================================
@@ -2240,7 +2381,7 @@ def main(
             write_json_output(output_data, output_path)
         else:
             logger.info("DRY RUN: Skipping write to %s", output_path)
-            logger.info("Would have written %s examples", len(output_data["examples"]))
+            logger.info("Would have written %s examples", len(output_data))
 
         # Summary
         elapsed = time.time() - start_time
