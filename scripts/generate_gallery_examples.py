@@ -1735,12 +1735,21 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     (['"window":', "transform_window", '"type":"window"'], "transform:window"),
     (['"fold":', "transform_fold", '"type":"fold"'], "transform:fold"),
     (['"pivot":', "transform_pivot", '"type":"pivot"'], "transform:pivot"),
-    (['"calculate":', "transform_calculate", '"type":"formula"'], "transform:calculate"),
-    (['"aggregate":', "transform_aggregate", '"type":"aggregate"'], "transform:aggregate"),
+    (
+        ['"calculate":', "transform_calculate", '"type":"formula"'],
+        "transform:calculate",
+    ),
+    (
+        ['"aggregate":', "transform_aggregate", '"type":"aggregate"'],
+        "transform:aggregate",
+    ),
     (['"filter":', "transform_filter", '"type":"filter"'], "transform:filter"),
     (['"lookup":', "transform_lookup", '"type":"lookup"'], "transform:lookup"),
     (['"density":', "transform_density", '"type":"kde"'], "transform:density"),
-    (['"regression":', "transform_regression", '"type":"regression"'], "transform:regression"),
+    (
+        ['"regression":', "transform_regression", '"type":"regression"'],
+        "transform:regression",
+    ),
     (['"loess":', "transform_loess", '"type":"loess"'], "transform:loess"),
     (['"flatten":', "transform_flatten", '"type":"flatten"'], "transform:flatten"),
     (['"sample":', "transform_sample", '"type":"sample"'], "transform:sample"),
@@ -1763,14 +1772,25 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     # Altair: selection_point(), selection_interval(), add_params()
     # Vega: "signals":[...] with event handlers
     (
-        ['"select":"point"', '"select":"interval"', "selection_point", "selection_interval"],
+        [
+            '"select":"point"',
+            '"select":"interval"',
+            "selection_point",
+            "selection_interval",
+        ],
         "interaction:selection",
     ),
     # Note: "signals":[ matches most Vega specs since signals are fundamental.
     # This is intentional - Vega's reactive model IS its interaction system.
     (['"params":[', "add_params(", '"signals":['], "interaction:param"),
     (
-        ['"bind":', "binding_select", "binding_range", "binding_radio", "binding_checkbox"],
+        [
+            '"bind":',
+            "binding_select",
+            "binding_range",
+            "binding_radio",
+            "binding_checkbox",
+        ],
         "interaction:binding",
     ),
     (['"condition":{"param"', "alt.when("], "interaction:conditional"),
@@ -1782,7 +1802,10 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     # === COMPOSITION ===
     # Vega-Lite: "facet":{}, "row":{}, "column":{}
     # Altair: .facet(), row=, column=
-    (['"facet":', '"row":{', '"column":{', ".facet(", "row=", "column="], "composition:facet"),
+    (
+        ['"facet":', '"row":{', '"column":{', ".facet(", "row=", "column="],
+        "composition:facet",
+    ),
     (['"layer":[', "alt.layer("], "composition:layer"),
     (
         ['"hconcat":', '"vconcat":', '"concat":', "alt.hconcat(", "alt.vconcat("],
@@ -2371,7 +2394,9 @@ def main(
 
         # Phase 3: Enrich with datasets
         logger.info("\n--- Phase 3: Extracting datasets from specs ---")
-        enrich_examples_with_datasets(all_examples, session, name_map, valid_names, config)
+        enrich_examples_with_datasets(
+            all_examples, session, name_map, valid_names, config
+        )
 
         # Phase 4: Finalize and write
         logger.info("\n--- Phase 4: Finalizing and writing output ---")
