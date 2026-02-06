@@ -1808,6 +1808,11 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     (['"projection":', "projection=", '"projections":'], "geo:projection"),
     (['"longitude"', '"latitude"', "longitude:", "latitude:"], "geo:coordinates"),
     (["topojson", "topo_feature"], "geo:topojson"),
+    # Vega-only geographic transforms
+    (['"type":"graticule"'], "geo:graticule"),
+    (['"type":"geopoint"'], "geo:geopoint"),
+    (['"type":"geopath"'], "geo:geopath"),
+    (['"type":"geojson"'], "geo:geojson"),
     # === COMPOSITION ===
     # Vega-Lite: "facet":{}, "row":{}, "column":{}
     # Altair: .facet(), row=, column=
