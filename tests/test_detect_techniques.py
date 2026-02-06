@@ -67,12 +67,16 @@ class TestVegaTransforms:
                 {
                     "name": "filtered",
                     "source": "flights",
-                    "transform": [{"type": "resolvefilter", "filter": {"signal": "..."}}],
+                    "transform": [
+                        {"type": "resolvefilter", "filter": {"signal": "..."}}
+                    ],
                 }
             ]
         }
         techniques = detect_techniques(spec, "vega")
-        assert "transform:crossfilter" in techniques  # resolvefilter implies crossfilter
+        assert (
+            "transform:crossfilter" in techniques
+        )  # resolvefilter implies crossfilter
 
 
 class TestVegaLiteTransforms:
@@ -87,7 +91,9 @@ class TestVegaLiteTransforms:
     def test_detects_vegalite_bin_object(self):
         """Vega-Lite uses {"bin": {maxbins: 10}} for detailed bin config."""
         spec = {
-            "transform": [{"bin": {"maxbins": 10}, "field": "IMDB_Rating", "as": "binned"}]
+            "transform": [
+                {"bin": {"maxbins": 10}, "field": "IMDB_Rating", "as": "binned"}
+            ]
         }
         techniques = detect_techniques(spec, "vega-lite")
         assert "transform:bin" in techniques
@@ -166,9 +172,7 @@ class TestMissingVLTransforms:
     def test_detects_vegalite_stack_transform_array(self):
         """Vega-Lite transform array form: {"stack":"field", ...}."""
         spec = {
-            "transform": [
-                {"stack": "count", "groupby": ["date"], "as": ["y0", "y1"]}
-            ]
+            "transform": [{"stack": "count", "groupby": ["date"], "as": ["y0", "y1"]}]
         }
         techniques = detect_techniques(spec, "vega-lite")
         assert "transform:stack" in techniques
@@ -193,9 +197,7 @@ class TestMissingVLTransforms:
             "data": [
                 {
                     "name": "table",
-                    "transform": [
-                        {"type": "stack", "groupby": ["x"], "field": "y"}
-                    ],
+                    "transform": [{"type": "stack", "groupby": ["x"], "field": "y"}],
                 }
             ]
         }
@@ -217,9 +219,7 @@ class TestMissingVLTransforms:
     def test_detects_vegalite_timeunit_transform(self):
         """Vega-Lite uses {"timeUnit":"month", "field":"date", "as":"month"}."""
         spec = {
-            "transform": [
-                {"timeUnit": "month", "field": "date", "as": "month_date"}
-            ]
+            "transform": [{"timeUnit": "month", "field": "date", "as": "month_date"}]
         }
         techniques = detect_techniques(spec, "vega-lite")
         assert "transform:timeunit" in techniques
@@ -242,7 +242,11 @@ chart = alt.Chart(data).transform_timeunit(
                 {
                     "name": "table",
                     "transform": [
-                        {"type": "timeunit", "field": "date", "units": ["year", "month"]}
+                        {
+                            "type": "timeunit",
+                            "field": "date",
+                            "units": ["year", "month"],
+                        }
                     ],
                 }
             ]
@@ -256,14 +260,30 @@ class TestVegaLayoutTransforms:
 
     def test_detects_treemap_layout(self):
         spec = {
-            "data": [{"name": "tree", "transform": [{"type": "stratify", "key": "id", "parentKey": "parent"}, {"type": "treemap", "field": "size"}]}]
+            "data": [
+                {
+                    "name": "tree",
+                    "transform": [
+                        {"type": "stratify", "key": "id", "parentKey": "parent"},
+                        {"type": "treemap", "field": "size"},
+                    ],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:treemap" in techniques
 
     def test_detects_tree_layout(self):
         spec = {
-            "data": [{"name": "tree", "transform": [{"type": "stratify", "key": "id", "parentKey": "parent"}, {"type": "tree", "method": "tidy"}]}]
+            "data": [
+                {
+                    "name": "tree",
+                    "transform": [
+                        {"type": "stratify", "key": "id", "parentKey": "parent"},
+                        {"type": "tree", "method": "tidy"},
+                    ],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:tree" in techniques
@@ -277,49 +297,85 @@ class TestVegaLayoutTransforms:
 
     def test_detects_partition_layout(self):
         spec = {
-            "data": [{"name": "tree", "transform": [{"type": "partition", "field": "size"}]}]
+            "data": [
+                {"name": "tree", "transform": [{"type": "partition", "field": "size"}]}
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:partition" in techniques
 
     def test_detects_force_layout(self):
         spec = {
-            "data": [{"name": "nodes", "transform": [{"type": "force", "forces": [{"force": "link", "links": "edges"}]}]}]
+            "data": [
+                {
+                    "name": "nodes",
+                    "transform": [
+                        {
+                            "type": "force",
+                            "forces": [{"force": "link", "links": "edges"}],
+                        }
+                    ],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:force" in techniques
 
     def test_detects_wordcloud_layout(self):
         spec = {
-            "data": [{"name": "table", "transform": [{"type": "wordcloud", "text": {"field": "text"}}]}]
+            "data": [
+                {
+                    "name": "table",
+                    "transform": [{"type": "wordcloud", "text": {"field": "text"}}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:wordcloud" in techniques
 
     def test_detects_voronoi_layout(self):
         spec = {
-            "data": [{"name": "cells", "transform": [{"type": "voronoi", "x": "datum.x", "y": "datum.y"}]}]
+            "data": [
+                {
+                    "name": "cells",
+                    "transform": [{"type": "voronoi", "x": "datum.x", "y": "datum.y"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:voronoi" in techniques
 
     def test_detects_pie_layout(self):
         spec = {
-            "data": [{"name": "table", "transform": [{"type": "pie", "field": "value"}]}]
+            "data": [
+                {"name": "table", "transform": [{"type": "pie", "field": "value"}]}
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:pie" in techniques
 
     def test_detects_contour_layout(self):
         spec = {
-            "data": [{"name": "contours", "transform": [{"type": "contour", "signal": "count"}]}]
+            "data": [
+                {
+                    "name": "contours",
+                    "transform": [{"type": "contour", "signal": "count"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:contour" in techniques
 
     def test_detects_linkpath(self):
         spec = {
-            "marks": [{"type": "path", "from": {"data": "links"}, "encode": {"update": {"path": {"field": "path"}}}, "transform": [{"type": "linkpath"}]}]
+            "marks": [
+                {
+                    "type": "path",
+                    "from": {"data": "links"},
+                    "encode": {"update": {"path": {"field": "path"}}},
+                    "transform": [{"type": "linkpath"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "layout:linkpath" in techniques
@@ -329,29 +385,42 @@ class TestVegaGeoTransforms:
     """Test Vega-only geographic transforms."""
 
     def test_detects_graticule(self):
-        spec = {
-            "data": [{"name": "graticule", "transform": [{"type": "graticule"}]}]
-        }
+        spec = {"data": [{"name": "graticule", "transform": [{"type": "graticule"}]}]}
         techniques = detect_techniques(spec, "vega")
         assert "geo:graticule" in techniques
 
     def test_detects_geopoint(self):
         spec = {
-            "data": [{"name": "points", "transform": [{"type": "geopoint", "projection": "projection"}]}]
+            "data": [
+                {
+                    "name": "points",
+                    "transform": [{"type": "geopoint", "projection": "projection"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "geo:geopoint" in techniques
 
     def test_detects_geopath(self):
         spec = {
-            "data": [{"name": "paths", "transform": [{"type": "geopath", "projection": "projection"}]}]
+            "data": [
+                {
+                    "name": "paths",
+                    "transform": [{"type": "geopath", "projection": "projection"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "geo:geopath" in techniques
 
     def test_detects_geojson(self):
         spec = {
-            "data": [{"name": "geo", "transform": [{"type": "geojson", "fields": ["lon", "lat"]}]}]
+            "data": [
+                {
+                    "name": "geo",
+                    "transform": [{"type": "geojson", "fields": ["lon", "lat"]}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "geo:geojson" in techniques
@@ -362,21 +431,36 @@ class TestVegaHierarchyTransforms:
 
     def test_detects_stratify(self):
         spec = {
-            "data": [{"name": "tree", "transform": [{"type": "stratify", "key": "id", "parentKey": "parent"}]}]
+            "data": [
+                {
+                    "name": "tree",
+                    "transform": [
+                        {"type": "stratify", "key": "id", "parentKey": "parent"}
+                    ],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "transform:stratify" in techniques
 
     def test_detects_nest(self):
         spec = {
-            "data": [{"name": "tree", "transform": [{"type": "nest", "keys": ["category"]}]}]
+            "data": [
+                {"name": "tree", "transform": [{"type": "nest", "keys": ["category"]}]}
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "transform:nest" in techniques
 
     def test_detects_treelinks(self):
         spec = {
-            "data": [{"name": "links", "source": "tree", "transform": [{"type": "treelinks"}]}]
+            "data": [
+                {
+                    "name": "links",
+                    "source": "tree",
+                    "transform": [{"type": "treelinks"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "transform:treelinks" in techniques
@@ -387,29 +471,39 @@ class TestVegaDataTransforms:
 
     def test_detects_kde2d(self):
         spec = {
-            "data": [{"name": "density", "transform": [{"type": "kde2d", "size": [500, 500]}]}]
+            "data": [
+                {
+                    "name": "density",
+                    "transform": [{"type": "kde2d", "size": [500, 500]}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "transform:kde2d" in techniques
 
     def test_detects_dotbin(self):
         spec = {
-            "data": [{"name": "dots", "transform": [{"type": "dotbin", "field": "value"}]}]
+            "data": [
+                {"name": "dots", "transform": [{"type": "dotbin", "field": "value"}]}
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "transform:dotbin" in techniques
 
     def test_detects_countpattern(self):
         spec = {
-            "data": [{"name": "table", "transform": [{"type": "countpattern", "field": "text"}]}]
+            "data": [
+                {
+                    "name": "table",
+                    "transform": [{"type": "countpattern", "field": "text"}],
+                }
+            ]
         }
         techniques = detect_techniques(spec, "vega")
         assert "transform:countpattern" in techniques
 
     def test_detects_cross(self):
-        spec = {
-            "data": [{"name": "crossed", "transform": [{"type": "cross"}]}]
-        }
+        spec = {"data": [{"name": "crossed", "transform": [{"type": "cross"}]}]}
         techniques = detect_techniques(spec, "vega")
         assert "transform:cross" in techniques
 
