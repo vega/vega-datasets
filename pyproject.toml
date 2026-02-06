@@ -124,6 +124,8 @@ select = [
 # - C901: Complex functions handle nested spec structures from Vega/VL/Altair
 # - SIM102: Nested ifs improve readability when validating deeply nested data
 "scripts/generate_gallery_examples.py" = ["BLE001", "C901", "SIM102"]
+# Test files: Relax annotation and docstring requirements
+"tests/**/*.py" = ["ANN", "D"]
 
 [tool.pyright]
 enableExperimentalFeatures = true
