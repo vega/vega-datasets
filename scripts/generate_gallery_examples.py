@@ -1783,6 +1783,11 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     (['"type":"nest"'], "transform:nest"),
     # treelinks generates link objects from a tree structure
     (['"type":"treelinks"'], "transform:treelinks"),
+    # Additional Vega-only data transforms
+    (['"type":"kde2d"'], "transform:kde2d"),
+    (['"type":"dotbin"'], "transform:dotbin"),
+    (['"type":"countpattern"'], "transform:countpattern"),
+    (['"type":"cross"'], "transform:cross"),
     # === INTERACTION ===
     # Vega-Lite: "params":[{"select":"point"}] or {"select":"interval"}
     # Altair: selection_point(), selection_interval(), add_params()
