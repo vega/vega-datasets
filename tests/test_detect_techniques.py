@@ -251,6 +251,80 @@ chart = alt.Chart(data).transform_timeunit(
         assert "transform:timeunit" in techniques
 
 
+class TestVegaLayoutTransforms:
+    """Test Vega-only layout/algorithmic transforms."""
+
+    def test_detects_treemap_layout(self):
+        spec = {
+            "data": [{"name": "tree", "transform": [{"type": "stratify", "key": "id", "parentKey": "parent"}, {"type": "treemap", "field": "size"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:treemap" in techniques
+
+    def test_detects_tree_layout(self):
+        spec = {
+            "data": [{"name": "tree", "transform": [{"type": "stratify", "key": "id", "parentKey": "parent"}, {"type": "tree", "method": "tidy"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:tree" in techniques
+
+    def test_detects_pack_layout(self):
+        spec = {
+            "data": [{"name": "tree", "transform": [{"type": "pack", "field": "size"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:pack" in techniques
+
+    def test_detects_partition_layout(self):
+        spec = {
+            "data": [{"name": "tree", "transform": [{"type": "partition", "field": "size"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:partition" in techniques
+
+    def test_detects_force_layout(self):
+        spec = {
+            "data": [{"name": "nodes", "transform": [{"type": "force", "forces": [{"force": "link", "links": "edges"}]}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:force" in techniques
+
+    def test_detects_wordcloud_layout(self):
+        spec = {
+            "data": [{"name": "table", "transform": [{"type": "wordcloud", "text": {"field": "text"}}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:wordcloud" in techniques
+
+    def test_detects_voronoi_layout(self):
+        spec = {
+            "data": [{"name": "cells", "transform": [{"type": "voronoi", "x": "datum.x", "y": "datum.y"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:voronoi" in techniques
+
+    def test_detects_pie_layout(self):
+        spec = {
+            "data": [{"name": "table", "transform": [{"type": "pie", "field": "value"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:pie" in techniques
+
+    def test_detects_contour_layout(self):
+        spec = {
+            "data": [{"name": "contours", "transform": [{"type": "contour", "signal": "count"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:contour" in techniques
+
+    def test_detects_linkpath(self):
+        spec = {
+            "marks": [{"type": "path", "from": {"data": "links"}, "encode": {"update": {"path": {"field": "path"}}}, "transform": [{"type": "linkpath"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "layout:linkpath" in techniques
+
+
 if __name__ == "__main__":
     import pytest
 
