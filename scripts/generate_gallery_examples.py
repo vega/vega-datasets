@@ -1727,30 +1727,64 @@ def extract_datasets_from_altair_code(
 # - mark:* for special mark types
 
 TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
-    # === TRANSFORMS ===
+    # === TRANSFORMS (shared: Vega + Vega-Lite + Altair) ===
+    # aggregate, bin, calculate, density, filter, flatten, fold,
+    # impute, joinaggregate, loess, lookup, pivot, quantile,
+    # regression, sample, stack, timeunit, window
+    #
+    # === TRANSFORMS (Vega-only) ===
+    # countpattern, cross, crossfilter, dotbin, extent, kde2d,
+    # nest, stratify, treelinks
+    #
+    # === INTERACTION ===
+    # binding, conditional, param, selection
+    #
+    # === GEOGRAPHIC ===
+    # coordinates, geojson, geopath, geopoint, graticule,
+    # projection, shape, topojson
+    #
+    # === COMPOSITION ===
+    # concat, facet, layer, repeat
+    #
+    # === MARKS (notable mark types only) ===
+    # boxplot, error, trail
+    #
+    # === LAYOUT (Vega-only algorithmic layouts) ===
+    # contour, force, linkpath, pack, partition, pie,
+    # tree, treemap, voronoi, wordcloud
+    #
+    # --- Shared transforms (Vega + Vega-Lite + Altair) ---
     # Vega-Lite: "transform":[{"window":...}]
     # Altair: .transform_window(...)
     # Vega: {"type":"window"} in data transforms
-    (['"window":', "transform_window", '"type":"window"'], "transform:window"),
-    (['"fold":', "transform_fold", '"type":"fold"'], "transform:fold"),
-    (['"pivot":', "transform_pivot", '"type":"pivot"'], "transform:pivot"),
-    (
-        ['"calculate":', "transform_calculate", '"type":"formula"'],
-        "transform:calculate",
-    ),
     (
         ['"aggregate":', "transform_aggregate", '"type":"aggregate"'],
         "transform:aggregate",
     ),
-    (['"filter":', "transform_filter", '"type":"filter"'], "transform:filter"),
-    (['"lookup":', "transform_lookup", '"type":"lookup"'], "transform:lookup"),
+    # Bin is tricky - appears in encoding too, so check for transform context
+    # Vega uses {"type":"bin"}, Vega-Lite uses {"bin":true} or {"bin":{...}}
+    (['"bin":true', '"bin":{', "transform_bin", '"type":"bin"'], "transform:bin"),
+    (
+        ['"calculate":', "transform_calculate", '"type":"formula"'],
+        "transform:calculate",
+    ),
     (['"density":', "transform_density", '"type":"kde"'], "transform:density"),
+    (['"filter":', "transform_filter", '"type":"filter"'], "transform:filter"),
+    (['"flatten":', "transform_flatten", '"type":"flatten"'], "transform:flatten"),
+    (['"fold":', "transform_fold", '"type":"fold"'], "transform:fold"),
+    (['"impute":', "transform_impute", '"type":"impute"'], "transform:impute"),
+    (
+        ['"joinaggregate":', "transform_joinaggregate", '"type":"joinaggregate"'],
+        "transform:joinaggregate",
+    ),
+    (['"loess":', "transform_loess", '"type":"loess"'], "transform:loess"),
+    (['"lookup":', "transform_lookup", '"type":"lookup"'], "transform:lookup"),
+    (['"pivot":', "transform_pivot", '"type":"pivot"'], "transform:pivot"),
+    (['"quantile":', "transform_quantile", '"type":"quantile"'], "transform:quantile"),
     (
         ['"regression":', "transform_regression", '"type":"regression"'],
         "transform:regression",
     ),
-    (['"loess":', "transform_loess", '"type":"loess"'], "transform:loess"),
-    (['"flatten":', "transform_flatten", '"type":"flatten"'], "transform:flatten"),
     (['"sample":', "transform_sample", '"type":"sample"'], "transform:sample"),
     # Stack transform - Vega always uses explicit {"type":"stack"}.
     # Vega-Lite: only detects EXPLICIT configs ("stack":"zero"|"normalize"|
@@ -1759,39 +1793,23 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     (['"stack":', '"type":"stack"'], "transform:stack"),
     # TimeUnit transform - discretizes temporal values
     # Vega-Lite: {"timeUnit":"yearmonth"} in encoding or transform
-    # Altair: .transform_timeunit()
-    # Vega: {"type":"timeunit"}
+    # Altair: .transform_timeunit()  |  Vega: {"type":"timeunit"}
     (['"timeunit":', "transform_timeunit", '"type":"timeunit"'], "transform:timeunit"),
-    (['"quantile":', "transform_quantile", '"type":"quantile"'], "transform:quantile"),
-    (['"impute":', "transform_impute", '"type":"impute"'], "transform:impute"),
-    (
-        ['"joinaggregate":', "transform_joinaggregate", '"type":"joinaggregate"'],
-        "transform:joinaggregate",
-    ),
-    # Bin is tricky - appears in encoding too, so check for transform context
-    # Vega uses {"type":"bin"}, Vega-Lite uses {"bin":true} or {"bin":{...}}
-    (['"bin":true', '"bin":{', "transform_bin", '"type":"bin"'], "transform:bin"),
-    # Extent transform (Vega-only) - computes min/max of a field
-    (['"type":"extent"'], "transform:extent"),
-    # Crossfilter transform (Vega-only) - multi-dimensional filtering
-    # resolvefilter is always used with crossfilter
-    (['"type":"crossfilter"', '"type":"resolvefilter"'], "transform:crossfilter"),
-    # Hierarchy data preparation transforms (Vega-only)
-    # stratify builds a tree from flat parent-child data
-    (['"type":"stratify"'], "transform:stratify"),
-    # nest groups data into a tree by key fields
-    (['"type":"nest"'], "transform:nest"),
-    # treelinks generates link objects from a tree structure
-    (['"type":"treelinks"'], "transform:treelinks"),
-    # Additional Vega-only data transforms
-    (['"type":"kde2d"'], "transform:kde2d"),
-    (['"type":"dotbin"'], "transform:dotbin"),
+    (['"window":', "transform_window", '"type":"window"'], "transform:window"),
+    #
+    # --- Vega-only transforms ---
     (['"type":"countpattern"'], "transform:countpattern"),
     (['"type":"cross"'], "transform:cross"),
-    # === INTERACTION ===
-    # Vega-Lite: "params":[{"select":"point"}] or {"select":"interval"}
-    # Altair: selection_point(), selection_interval(), add_params()
-    # Vega: "signals":[...] with event handlers
+    # Crossfilter (Vega-only) - resolvefilter is always used with crossfilter
+    (['"type":"crossfilter"', '"type":"resolvefilter"'], "transform:crossfilter"),
+    (['"type":"dotbin"'], "transform:dotbin"),
+    (['"type":"extent"'], "transform:extent"),
+    (['"type":"kde2d"'], "transform:kde2d"),
+    (['"type":"nest"'], "transform:nest"),
+    (['"type":"stratify"'], "transform:stratify"),
+    (['"type":"treelinks"'], "transform:treelinks"),
+    #
+    # --- Interaction ---
     (
         [
             '"select":"point"',
@@ -1815,46 +1833,47 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
         "interaction:binding",
     ),
     (['"condition":{"param"', "alt.when("], "interaction:conditional"),
-    # === GEOGRAPHIC ===
-    (['"geoshape"', "mark_geoshape"], "geo:shape"),
-    (['"projection":', "projection=", '"projections":'], "geo:projection"),
+    #
+    # --- Geographic ---
     (['"longitude"', '"latitude"', "longitude:", "latitude:"], "geo:coordinates"),
-    (["topojson", "topo_feature"], "geo:topojson"),
-    # Vega-only geographic transforms
-    (['"type":"graticule"'], "geo:graticule"),
-    (['"type":"geopoint"'], "geo:geopoint"),
-    (['"type":"geopath"'], "geo:geopath"),
     (['"type":"geojson"'], "geo:geojson"),
-    # === COMPOSITION ===
-    # Vega-Lite: "facet":{}, "row":{}, "column":{}
-    # Altair: .facet(), row=, column=
+    (['"type":"geopath"'], "geo:geopath"),
+    (['"type":"geopoint"'], "geo:geopoint"),
+    (['"type":"graticule"'], "geo:graticule"),
+    (['"projection":', "projection=", '"projections":'], "geo:projection"),
+    (['"geoshape"', "mark_geoshape"], "geo:shape"),
+    (["topojson", "topo_feature"], "geo:topojson"),
+    #
+    # --- Composition ---
+    (
+        ['"hconcat":', '"vconcat":', '"concat":', "alt.hconcat(", "alt.vconcat("],
+        "composition:concat",
+    ),
     (
         ['"facet":', '"row":{', '"column":{', ".facet(", "row=", "column="],
         "composition:facet",
     ),
     (['"layer":[', "alt.layer("], "composition:layer"),
-    (
-        ['"hconcat":', '"vconcat":', '"concat":', "alt.hconcat(", "alt.vconcat("],
-        "composition:concat",
-    ),
     (['"repeat":', ".repeat("], "composition:repeat"),
-    # === SPECIAL MARKS ===
+    #
+    # --- Notable marks ---
     (['"boxplot"', "mark_boxplot"], "mark:boxplot"),
     (['"errorbar"', '"errorband"', "mark_errorbar", "mark_errorband"], "mark:error"),
     (['"trail"', "mark_trail"], "mark:trail"),
-    # === LAYOUT ALGORITHMS (Vega-only) ===
-    # These are algorithmic layout transforms that compute spatial positions
-    # for entire visualization paradigms. Vega-only — not available in Vega-Lite.
-    (['"type":"treemap"'], "layout:treemap"),
-    (['"type":"tree"'], "layout:tree"),
+    #
+    # --- Layout algorithms (Vega-only) ---
+    # Algorithmic layout transforms that compute spatial positions
+    # for entire visualization paradigms. Not available in Vega-Lite.
+    (['"type":"contour"', '"type":"isocontour"'], "layout:contour"),
+    (['"type":"force"'], "layout:force"),
+    (['"type":"linkpath"'], "layout:linkpath"),
     (['"type":"pack"'], "layout:pack"),
     (['"type":"partition"'], "layout:partition"),
-    (['"type":"force"'], "layout:force"),
-    (['"type":"wordcloud"'], "layout:wordcloud"),
-    (['"type":"voronoi"'], "layout:voronoi"),
     (['"type":"pie"'], "layout:pie"),
-    (['"type":"contour"', '"type":"isocontour"'], "layout:contour"),
-    (['"type":"linkpath"'], "layout:linkpath"),
+    (['"type":"tree"'], "layout:tree"),
+    (['"type":"treemap"'], "layout:treemap"),
+    (['"type":"voronoi"'], "layout:voronoi"),
+    (['"type":"wordcloud"'], "layout:wordcloud"),
 ]
 
 
