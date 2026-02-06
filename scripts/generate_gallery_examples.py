@@ -1825,6 +1825,19 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     (['"boxplot"', "mark_boxplot"], "mark:boxplot"),
     (['"errorbar"', '"errorband"', "mark_errorbar", "mark_errorband"], "mark:error"),
     (['"trail"', "mark_trail"], "mark:trail"),
+    # === LAYOUT ALGORITHMS (Vega-only) ===
+    # These are algorithmic layout transforms that compute spatial positions
+    # for entire visualization paradigms. Vega-only — not available in Vega-Lite.
+    (['"type":"treemap"'], "layout:treemap"),
+    (['"type":"tree"'], "layout:tree"),
+    (['"type":"pack"'], "layout:pack"),
+    (['"type":"partition"'], "layout:partition"),
+    (['"type":"force"'], "layout:force"),
+    (['"type":"wordcloud"'], "layout:wordcloud"),
+    (['"type":"voronoi"'], "layout:voronoi"),
+    (['"type":"pie"'], "layout:pie"),
+    (['"type":"contour"', '"type":"isocontour"'], "layout:contour"),
+    (['"type":"linkpath"'], "layout:linkpath"),
 ]
 
 
