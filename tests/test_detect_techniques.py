@@ -414,6 +414,177 @@ class TestVegaDataTransforms:
         assert "transform:cross" in techniques
 
 
+class TestAltairMethodsSyntax:
+    """Test Altair methods-syntax patterns that differ from JSON/arguments syntax.
+
+    Altair has two coding styles:
+    - Arguments syntax: alt.X('field', bin=True)
+    - Methods syntax:   alt.X('field').bin()
+
+    Most gallery examples use methods syntax. These tests verify we detect
+    features expressed as method chains, not just JSON keys or kwargs.
+    """
+
+    # --- transform:stack via .stack() method ---
+
+    def test_detects_altair_stack_normalize_method(self):
+        """Altair methods syntax: .stack("normalize")."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_bar().encode(
+    x=alt.X('sum(yield)').stack("normalize"),
+    y='variety',
+    color='site'
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "transform:stack" in techniques
+
+    def test_detects_altair_stack_none_method(self):
+        """Altair methods syntax: .stack(None) disables stacking."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_area(opacity=0.3).encode(
+    x="year:T",
+    y=alt.Y("net_generation:Q").stack(None),
+    color="source:N"
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "transform:stack" in techniques
+
+    # --- mark:arc ---
+
+    def test_detects_altair_mark_arc(self):
+        """Altair pie/donut charts use mark_arc()."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_arc().encode(
+    theta="value",
+    color="category"
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "mark:arc" in techniques
+
+    def test_detects_altair_mark_arc_with_kwargs(self):
+        """Altair donut chart: mark_arc(innerRadius=50)."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_arc(innerRadius=50).encode(
+    theta="value",
+    color="category:N"
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "mark:arc" in techniques
+
+    def test_detects_vegalite_arc_mark(self):
+        """Vega-Lite JSON: {"mark": "arc"} or {"mark": {"type": "arc"}}."""
+        spec = {
+            "mark": {"type": "arc", "innerRadius": 50},
+            "encoding": {
+                "theta": {"field": "value", "type": "quantitative"},
+                "color": {"field": "category", "type": "nominal"},
+            },
+        }
+        techniques = detect_techniques(spec, "vega-lite")
+        assert "mark:arc" in techniques
+
+    # --- composition:facet via alt.Row() / alt.Column() ---
+
+    def test_detects_altair_row_facet(self):
+        """Altair methods syntax: alt.Row('field:N')."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_point().encode(
+    alt.X('yield:Q'),
+    alt.Y('variety:N'),
+    alt.Color('year:N'),
+    alt.Row('site:N')
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "composition:facet" in techniques
+
+    def test_detects_altair_column_facet(self):
+        """Altair methods syntax: alt.Column('field:N')."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_bar().encode(
+    x='value:Q',
+    y='category:N',
+    alt.Column('group:N')
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "composition:facet" in techniques
+
+    # --- transform:bin via bin=True / .bin() ---
+
+    def test_detects_altair_bin_kwarg(self):
+        """Altair arguments syntax: alt.X('field', bin=True)."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_bar().encode(
+    alt.X("IMDB Rating:Q", bin=True),
+    y='count()',
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "transform:bin" in techniques
+
+    def test_detects_altair_bin_method(self):
+        """Altair methods syntax: alt.X('field').bin()."""
+        code = """
+import altair as alt
+base = alt.Chart(source)
+bar = base.mark_bar().encode(
+    alt.X('IMDB Rating:Q').bin().axis(None),
+    y='count()'
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "transform:bin" in techniques
+
+    # --- transform:aggregate via count() shorthand ---
+
+    def test_detects_altair_count_shorthand(self):
+        """Altair encoding shorthand: y='count()'."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_bar().encode(
+    alt.X("IMDB Rating:Q", bin=True),
+    y='count()',
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "transform:aggregate" in techniques
+
+    def test_detects_altair_count_in_encoding(self):
+        """Altair: 'count()' as standalone aggregate."""
+        code = """
+import altair as alt
+alt.Chart(source).mark_bar().encode(
+    x='count()',
+    y='category:N'
+)
+"""
+        techniques = detect_techniques(code, "altair")
+        assert "transform:aggregate" in techniques
+
+    def test_count_in_python_comment_still_matches(self):
+        """We accept that count() in comments may match — low risk in gallery code."""
+        code = """
+# This uses count() aggregation
+import altair as alt
+alt.Chart(source).mark_bar()
+"""
+        techniques = detect_techniques(code, "altair")
+        # count() in a comment still matches — acceptable for gallery examples
+        assert "transform:aggregate" in techniques
+
+
 if __name__ == "__main__":
     import pytest
 

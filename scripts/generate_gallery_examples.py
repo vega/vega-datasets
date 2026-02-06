@@ -1747,7 +1747,7 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     # concat, facet, layer, repeat
     #
     # === MARKS (notable mark types only) ===
-    # boxplot, error, trail
+    # arc, boxplot, error, trail
     #
     # === LAYOUT (Vega-only algorithmic layouts) ===
     # contour, force, linkpath, pack, partition, pie,
@@ -1758,12 +1758,15 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     # Altair: .transform_window(...)
     # Vega: {"type":"window"} in data transforms
     (
-        ['"aggregate":', "transform_aggregate", '"type":"aggregate"'],
+        ['"aggregate":', "transform_aggregate", '"type":"aggregate"', "count()"],
         "transform:aggregate",
     ),
     # Bin is tricky - appears in encoding too, so check for transform context
     # Vega uses {"type":"bin"}, Vega-Lite uses {"bin":true} or {"bin":{...}}
-    (['"bin":true', '"bin":{', "transform_bin", '"type":"bin"'], "transform:bin"),
+    (
+        ['"bin":true', '"bin":{', "transform_bin", '"type":"bin"', "bin=True", ".bin("],
+        "transform:bin",
+    ),
     (
         ['"calculate":', "transform_calculate", '"type":"formula"'],
         "transform:calculate",
@@ -1790,7 +1793,7 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     # Vega-Lite: only detects EXPLICIT configs ("stack":"zero"|"normalize"|
     # transform array form). Implicit stacking (default for bar/area with
     # color) is invisible in the spec — known limitation, acceptable tradeoff.
-    (['"stack":', '"type":"stack"'], "transform:stack"),
+    (['"stack":', '"type":"stack"', ".stack("], "transform:stack"),
     # TimeUnit transform - discretizes temporal values
     # Vega-Lite: {"timeUnit":"yearmonth"} in encoding or transform
     # Altair: .transform_timeunit()  |  Vega: {"type":"timeunit"}
@@ -1850,13 +1853,23 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
         "composition:concat",
     ),
     (
-        ['"facet":', '"row":{', '"column":{', ".facet(", "row=", "column="],
+        [
+            '"facet":',
+            '"row":{',
+            '"column":{',
+            ".facet(",
+            "row=",
+            "column=",
+            "alt.Row(",
+            "alt.Column(",
+        ],
         "composition:facet",
     ),
     (['"layer":[', "alt.layer("], "composition:layer"),
     (['"repeat":', ".repeat("], "composition:repeat"),
     #
     # --- Notable marks ---
+    (['"arc"', "mark_arc"], "mark:arc"),
     (['"boxplot"', "mark_boxplot"], "mark:boxplot"),
     (['"errorbar"', '"errorband"', "mark_errorbar", "mark_errorband"], "mark:error"),
     (['"trail"', "mark_trail"], "mark:trail"),
