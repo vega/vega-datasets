@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-02-06T03:18:08.641542+00:00",
+  "created": "2026-02-06T03:35:56.119502+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -4024,8 +4024,8 @@
       "format": "json",
       "mediatype": "application/json",
       "encoding": "utf-8",
-      "hash": "sha1:67ddb70cac67450989a40a16ea0c85719f51baa2",
-      "bytes": 298799,
+      "hash": "sha1:35e63b2ef7e5d9d802710e81bb10ab62898563f0",
+      "bytes": 300960,
       "schema": {
         "fields": [
           {
