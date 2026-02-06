@@ -357,6 +357,31 @@ class TestVegaGeoTransforms:
         assert "geo:geojson" in techniques
 
 
+class TestVegaHierarchyTransforms:
+    """Test Vega-only hierarchy data transforms."""
+
+    def test_detects_stratify(self):
+        spec = {
+            "data": [{"name": "tree", "transform": [{"type": "stratify", "key": "id", "parentKey": "parent"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:stratify" in techniques
+
+    def test_detects_nest(self):
+        spec = {
+            "data": [{"name": "tree", "transform": [{"type": "nest", "keys": ["category"]}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:nest" in techniques
+
+    def test_detects_treelinks(self):
+        spec = {
+            "data": [{"name": "links", "source": "tree", "transform": [{"type": "treelinks"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:treelinks" in techniques
+
+
 if __name__ == "__main__":
     import pytest
 
