@@ -1776,6 +1776,13 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     # Crossfilter transform (Vega-only) - multi-dimensional filtering
     # resolvefilter is always used with crossfilter
     (['"type":"crossfilter"', '"type":"resolvefilter"'], "transform:crossfilter"),
+    # Hierarchy data preparation transforms (Vega-only)
+    # stratify builds a tree from flat parent-child data
+    (['"type":"stratify"'], "transform:stratify"),
+    # nest groups data into a tree by key fields
+    (['"type":"nest"'], "transform:nest"),
+    # treelinks generates link objects from a tree structure
+    (['"type":"treelinks"'], "transform:treelinks"),
     # === INTERACTION ===
     # Vega-Lite: "params":[{"select":"point"}] or {"select":"interval"}
     # Altair: selection_point(), selection_interval(), add_params()
