@@ -11,7 +11,10 @@
     "datasets": [
       "movies"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate",
+      "transform:bin"
+    ],
     "id": 1
   },
   {
@@ -26,7 +29,10 @@
     "datasets": [
       "movies"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate",
+      "transform:bin"
+    ],
     "id": 2
   },
   {
@@ -191,7 +197,9 @@
     "datasets": [
       "barley"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 12
   },
   {
@@ -285,7 +293,9 @@
     "datasets": [
       "seattle_weather"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate"
+    ],
     "id": 18
   },
   {
@@ -313,7 +323,9 @@
     "datasets": [
       "barley"
     ],
-    "techniques": [],
+    "techniques": [
+      "composition:facet"
+    ],
     "id": 20
   },
   {
@@ -466,8 +478,8 @@
     ],
     "description": "A choropleth map of unemployment rate per county in the US",
     "datasets": [
-      "us_10m",
-      "unemployment"
+      "unemployment",
+      "us_10m"
     ],
     "techniques": [
       "geo:shape",
@@ -489,6 +501,7 @@
       "barley"
     ],
     "techniques": [
+      "composition:facet",
       "mark:trail",
       "transform:calculate",
       "transform:fold",
@@ -506,7 +519,9 @@
     ],
     "description": "A simple grid of bar charts to compare performance data, one subchart for each subset of the data.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "composition:facet"
+    ],
     "id": 31
   },
   {
@@ -534,9 +549,9 @@
     ],
     "description": "This example shows all the connections between major U.S. airports. Lookup transformations are used to find the coordinates of each airport and connecting airports. Connections are displayed on pointerover via a single selection.",
     "datasets": [
-      "us_10m",
+      "airports",
       "flights_airport",
-      "airports"
+      "us_10m"
     ],
     "techniques": [
       "geo:coordinates",
@@ -563,6 +578,8 @@
       "movies"
     ],
     "techniques": [
+      "transform:aggregate",
+      "transform:stack",
       "transform:window"
     ],
     "id": 34
@@ -591,6 +608,7 @@
     "description": "Distributions and Medians of Likert Scale Ratings. (Figure 9 from @jhoffswell and @zcliu’s ‘Interactive Repair of Tables Extracted from PDF Documents on Mobile Devices’ – http://idl.cs.washington.edu/files/2019-InteractiveTableRepair-CHI.pdf). Adapted from `Distributions and Medians of Likert Scale Ratings <https://vega.github.io/vega-lite/examples/layer_likert.html>`_.",
     "datasets": [],
     "techniques": [
+      "transform:aggregate",
       "transform:filter"
     ],
     "id": 36
@@ -618,7 +636,9 @@
     ],
     "description": "This example shows how to make a Donut Chart using ``mark_arc``. This is adapted from a corresponding Vega-Lite Example: `Donut Chart <https://vega.github.io/vega-lite/examples/arc_donut.html>`_.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc"
+    ],
     "id": 38
   },
   {
@@ -719,8 +739,8 @@
     ],
     "description": "A set of maps arranged in a grid, each showing the distribution of a species' projected habitat across US counties. Each choropleth map uses color intensity to represent the percentage values within county boundaries.",
     "datasets": [
-      "us_10m",
-      "species"
+      "species",
+      "us_10m"
     ],
     "techniques": [
       "composition:facet",
@@ -743,7 +763,9 @@
       "cars"
     ],
     "techniques": [
-      "composition:facet"
+      "composition:facet",
+      "transform:aggregate",
+      "transform:bin"
     ],
     "id": 45
   },
@@ -936,8 +958,8 @@
     ],
     "description": "This is a layered geographic visualization that groups points by state.",
     "datasets": [
-      "us_10m",
-      "airports"
+      "airports",
+      "us_10m"
     ],
     "techniques": [
       "geo:coordinates",
@@ -996,7 +1018,10 @@
     "datasets": [
       "movies"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate",
+      "transform:bin"
+    ],
     "id": 60
   },
   {
@@ -1015,6 +1040,8 @@
       "composition:concat",
       "interaction:param",
       "interaction:selection",
+      "transform:aggregate",
+      "transform:bin",
       "transform:calculate"
     ],
     "id": 61
@@ -1031,7 +1058,10 @@
     "datasets": [
       "movies"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate",
+      "transform:bin"
+    ],
     "id": 62
   },
   {
@@ -1133,6 +1163,8 @@
       "composition:layer",
       "interaction:binding",
       "interaction:param",
+      "transform:aggregate",
+      "transform:bin",
       "transform:filter"
     ],
     "id": 68
@@ -1154,6 +1186,8 @@
       "interaction:conditional",
       "interaction:param",
       "interaction:selection",
+      "transform:aggregate",
+      "transform:bin",
       "transform:filter"
     ],
     "id": 69
@@ -1176,6 +1210,8 @@
       "composition:repeat",
       "interaction:param",
       "interaction:selection",
+      "transform:aggregate",
+      "transform:bin",
       "transform:calculate",
       "transform:filter"
     ],
@@ -1196,7 +1232,8 @@
     "techniques": [
       "interaction:conditional",
       "interaction:param",
-      "interaction:selection"
+      "interaction:selection",
+      "transform:stack"
     ],
     "id": 71
   },
@@ -1233,7 +1270,10 @@
       "interaction:conditional",
       "interaction:param",
       "interaction:selection",
-      "transform:filter"
+      "transform:aggregate",
+      "transform:bin",
+      "transform:filter",
+      "transform:stack"
     ],
     "id": 73
   },
@@ -1253,7 +1293,8 @@
       "interaction:selection",
       "transform:calculate",
       "transform:filter",
-      "transform:pivot"
+      "transform:pivot",
+      "transform:stack"
     ],
     "id": 74
   },
@@ -1267,8 +1308,8 @@
     ],
     "description": "This is an example of a binned bar chart on the right where the filtered overlay is adjusted by interacting with the map on the left.",
     "datasets": [
-      "world_110m",
-      "earthquakes"
+      "earthquakes",
+      "world_110m"
     ],
     "techniques": [
       "composition:layer",
@@ -1277,6 +1318,7 @@
       "interaction:conditional",
       "interaction:param",
       "interaction:selection",
+      "transform:bin",
       "transform:calculate",
       "transform:filter"
     ],
@@ -1312,7 +1354,9 @@
     "datasets": [
       "iowa_electricity"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 77
   },
   {
@@ -1326,6 +1370,7 @@
     "description": "Isotype Visualization shows the distribution of animals across UK and US. Inspired by `Only An Ocean Between, 1943 <http://www.thomwhite.co.uk/?p=1303>`_. Population Live Stock, p.13. This is adapted from Vega-Lite example https://vega.github.io/editor/#/examples/vega-lite/isotype_bar_chart",
     "datasets": [],
     "techniques": [
+      "composition:facet",
       "transform:window"
     ],
     "id": 78
@@ -1341,6 +1386,7 @@
     "description": "Isotype Visualization shows the distribution of animals across UK and US, using unicode emoji marks rather than custom SVG paths (see https://altair-viz.github.io/gallery/isotype.html). This is adapted from Vega-Lite example https://vega.github.io/vega-lite/examples/isotype_bar_chart_emoji.html.",
     "datasets": [],
     "techniques": [
+      "composition:facet",
       "transform:calculate",
       "transform:window"
     ],
@@ -1392,7 +1438,9 @@
     "datasets": [
       "iowa_electricity"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 82
   },
   {
@@ -1407,7 +1455,9 @@
     "datasets": [
       "iowa_electricity"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 83
   },
   {
@@ -1421,7 +1471,10 @@
     "description": "This example shows how to use opacity to make a layered histogram in Altair.",
     "datasets": [],
     "techniques": [
-      "transform:fold"
+      "transform:aggregate",
+      "transform:bin",
+      "transform:fold",
+      "transform:stack"
     ],
     "id": 84
   },
@@ -1552,7 +1605,8 @@
       "movies"
     ],
     "techniques": [
-      "composition:repeat"
+      "composition:repeat",
+      "transform:bin"
     ],
     "id": 92
   },
@@ -1708,9 +1762,9 @@
     ],
     "description": "This example shows the London tube lines against the background of the borough boundaries. It is based on the vega-lite example at https://vega.github.io/vega-lite/examples/geo_layer_line_london.html.",
     "datasets": [
+      "london_tube_lines",
       "london_boroughs",
-      "london_centroids",
-      "london_tube_lines"
+      "london_centroids"
     ],
     "techniques": [
       "geo:shape",
@@ -1879,6 +1933,7 @@
       "penguins"
     ],
     "techniques": [
+      "transform:aggregate",
       "transform:calculate",
       "transform:fold",
       "transform:joinaggregate",
@@ -1898,7 +1953,9 @@
     "datasets": [
       "iowa_electricity"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 112
   },
   {
@@ -1913,7 +1970,9 @@
     "datasets": [
       "barley"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 113
   },
   {
@@ -1944,7 +2003,9 @@
     ],
     "description": "Chart made using ``mark_arc`` and constant values. This could also be made using ``alt.Chart(source).mark_arc(color = \"gold\", theta = (5/8)*np.pi, theta2 = (19/8)*np.pi,radius=100)``.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc"
+    ],
     "id": 115
   },
   {
@@ -1960,6 +2021,7 @@
       "penguins"
     ],
     "techniques": [
+      "transform:aggregate",
       "transform:fold",
       "transform:window"
     ],
@@ -1975,7 +2037,9 @@
     ],
     "description": "This example shows how to make a Pie Chart using ``mark_arc``. This is adapted from a corresponding Vega-Lite Example: `Pie Chart <https://vega.github.io/vega-lite/examples/arc_pie.html>`_.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc"
+    ],
     "id": 117
   },
   {
@@ -1988,7 +2052,10 @@
     ],
     "description": "This example shows how to layer text over arc marks (``mark_arc``) to label pie charts. This is adapted from a corresponding Vega-Lite Example: `Pie Chart with Labels <https://vega.github.io/vega-lite/examples/layer_arc_label.html>`_.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc",
+      "transform:stack"
+    ],
     "id": 118
   },
   {
@@ -2001,8 +2068,8 @@
     ],
     "description": "This is a layered map that shows the positions of airports on a background of U.S. states.",
     "datasets": [
-      "us_10m",
-      "airports"
+      "airports",
+      "us_10m"
     ],
     "techniques": [
       "geo:coordinates",
@@ -2022,7 +2089,9 @@
     "description": "This example shows how to make a polar bar chart using ``mark_arc``. This could also have been called a \"pie chart with axis labels\", but is more commonly referred to as a polar bar chart. The axis lines are created using pie charts with only the stroke visible.",
     "datasets": [],
     "techniques": [
-      "composition:layer"
+      "composition:layer",
+      "mark:arc",
+      "transform:stack"
     ],
     "id": 120
   },
@@ -2066,7 +2135,9 @@
     ],
     "description": "Altair reproduction of http://robslink.com/SAS/democd91/pyramid_pie.htm",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc"
+    ],
     "id": 123
   },
   {
@@ -2097,7 +2168,10 @@
     ],
     "description": "This radial plot uses both angular and radial extent to convey multiple dimensions of data. This is adapted from a corresponding Vega-Lite Example: `Radial Plot <https://vega.github.io/vega-lite/examples/arc_radial.html>`_.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc",
+      "transform:stack"
+    ],
     "id": 125
   },
   {
@@ -2147,8 +2221,8 @@
     ],
     "description": "Three choropleths representing disjoint data from the same table.",
     "datasets": [
-      "us_10m",
-      "population_engineers_hurricanes"
+      "population_engineers_hurricanes",
+      "us_10m"
     ],
     "techniques": [
       "composition:facet",
@@ -2172,6 +2246,7 @@
       "penguins"
     ],
     "techniques": [
+      "composition:facet",
       "transform:density",
       "transform:fold"
     ],
@@ -2232,6 +2307,7 @@
       "interaction:conditional",
       "interaction:param",
       "interaction:selection",
+      "transform:aggregate",
       "transform:bin",
       "transform:filter"
     ],
@@ -2249,7 +2325,11 @@
     "datasets": [
       "penguins"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate",
+      "transform:bin",
+      "transform:stack"
+    ],
     "id": 133
   },
   {
@@ -2377,6 +2457,7 @@
       "interaction:conditional",
       "interaction:param",
       "interaction:selection",
+      "transform:aggregate",
       "transform:filter"
     ],
     "id": 140
@@ -2476,7 +2557,10 @@
     "datasets": [
       "movies"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate",
+      "transform:bin"
+    ],
     "id": 146
   },
   {
@@ -2685,7 +2769,9 @@
     "datasets": [
       "barley"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 160
   },
   {
@@ -2715,7 +2801,9 @@
     ],
     "description": "This example shows how to make a stem and leaf plot.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "transform:aggregate"
+    ],
     "id": 162
   },
   {
@@ -2747,7 +2835,9 @@
     "datasets": [
       "unemployment_across_industries"
     ],
-    "techniques": [],
+    "techniques": [
+      "transform:stack"
+    ],
     "id": 164
   },
   {
@@ -2882,8 +2972,8 @@
     ],
     "description": "This is a layered geographic visualization that shows US capitals overlaid on a map.",
     "datasets": [
-      "us_10m",
-      "us_state_capitals"
+      "us_state_capitals",
+      "us_10m"
     ],
     "techniques": [
       "geo:shape",
@@ -2928,6 +3018,7 @@
       "population"
     ],
     "techniques": [
+      "composition:facet",
       "interaction:binding",
       "interaction:param",
       "interaction:selection",
@@ -3006,7 +3097,9 @@
       "cars"
     ],
     "techniques": [
-      "transform:density"
+      "composition:facet",
+      "transform:density",
+      "transform:stack"
     ],
     "id": 178
   },
@@ -3038,10 +3131,11 @@
     ],
     "description": "A recreation of William Playfair's classic chart visualizing the price of wheat, the wages of a mechanic, and the reigning British monarch. This is a more polished version of the simpler chart in :ref:`gallery_bar_and_line_with_dual_axis`.",
     "datasets": [
-      "monarchs",
-      "wheat"
+      "wheat",
+      "monarchs"
     ],
     "techniques": [
+      "transform:bin",
       "transform:calculate"
     ],
     "id": 180
@@ -3221,6 +3315,7 @@
     ],
     "techniques": [
       "layout:linkpath",
+      "mark:arc",
       "transform:aggregate",
       "transform:calculate",
       "transform:lookup",
@@ -3450,6 +3545,7 @@
     "datasets": [],
     "techniques": [
       "interaction:param",
+      "mark:arc",
       "transform:calculate"
     ],
     "id": 201
@@ -3592,7 +3688,8 @@
     "techniques": [
       "interaction:binding",
       "interaction:param",
-      "layout:pie"
+      "layout:pie",
+      "mark:arc"
     ],
     "id": 208
   },
@@ -3610,6 +3707,7 @@
       "interaction:binding",
       "interaction:param",
       "layout:pie",
+      "mark:arc",
       "transform:bin",
       "transform:calculate",
       "transform:extent",
@@ -4122,6 +4220,7 @@
     "datasets": [],
     "techniques": [
       "interaction:param",
+      "mark:arc",
       "transform:calculate"
     ],
     "id": 235
@@ -4157,6 +4256,7 @@
     "techniques": [
       "interaction:binding",
       "interaction:param",
+      "mark:arc",
       "transform:calculate",
       "transform:filter",
       "transform:window"
@@ -4176,7 +4276,8 @@
     "techniques": [
       "interaction:binding",
       "interaction:param",
-      "layout:pie"
+      "layout:pie",
+      "mark:arc"
     ],
     "id": 238
   },
@@ -4327,7 +4428,8 @@
     "description": "A basic radial plot that encodes two values as the angle and radius of an arc.",
     "datasets": [],
     "techniques": [
-      "layout:pie"
+      "layout:pie",
+      "mark:arc"
     ],
     "id": 246
   },
@@ -4522,6 +4624,7 @@
     ],
     "techniques": [
       "layout:partition",
+      "mark:arc",
       "transform:stratify"
     ],
     "id": 256
@@ -4752,6 +4855,7 @@
     "datasets": [],
     "techniques": [
       "interaction:param",
+      "mark:arc",
       "transform:calculate"
     ],
     "id": 268
@@ -5900,7 +6004,9 @@
     ],
     "description": "A donut chart encodes proportional differences among a set of numeric values using angular extents.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc"
+    ],
     "id": 331
   },
   {
@@ -7393,7 +7499,9 @@
     ],
     "description": "A pie chart encodes proportional differences among a set of numeric values as the angular extent and area of a circular slice.",
     "datasets": [],
-    "techniques": [],
+    "techniques": [
+      "mark:arc"
+    ],
     "id": 411
   },
   {
@@ -7408,6 +7516,7 @@
     "datasets": [],
     "techniques": [
       "composition:layer",
+      "mark:arc",
       "transform:stack"
     ],
     "id": 412
@@ -7423,6 +7532,7 @@
     "description": "A pie chart with a tooltip that shows the percentage covered by the hovered slice.",
     "datasets": [],
     "techniques": [
+      "mark:arc",
       "transform:stack"
     ],
     "id": 413
@@ -7479,6 +7589,7 @@
     "description": "Reproducing http://robslink.com/SAS/democd91/pyramid_pie.htm",
     "datasets": [],
     "techniques": [
+      "mark:arc",
       "transform:stack"
     ],
     "id": 416
@@ -7536,6 +7647,7 @@
     "datasets": [],
     "techniques": [
       "composition:layer",
+      "mark:arc",
       "transform:stack"
     ],
     "id": 419
