@@ -382,6 +382,38 @@ class TestVegaHierarchyTransforms:
         assert "transform:treelinks" in techniques
 
 
+class TestVegaDataTransforms:
+    """Test Vega-only statistical and data transforms."""
+
+    def test_detects_kde2d(self):
+        spec = {
+            "data": [{"name": "density", "transform": [{"type": "kde2d", "size": [500, 500]}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:kde2d" in techniques
+
+    def test_detects_dotbin(self):
+        spec = {
+            "data": [{"name": "dots", "transform": [{"type": "dotbin", "field": "value"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:dotbin" in techniques
+
+    def test_detects_countpattern(self):
+        spec = {
+            "data": [{"name": "table", "transform": [{"type": "countpattern", "field": "text"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:countpattern" in techniques
+
+    def test_detects_cross(self):
+        spec = {
+            "data": [{"name": "crossed", "transform": [{"type": "cross"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "transform:cross" in techniques
+
+
 if __name__ == "__main__":
     import pytest
 
