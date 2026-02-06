@@ -1752,6 +1752,16 @@ TECHNIQUE_PATTERNS: list[tuple[list[str], str]] = [
     (['"loess":', "transform_loess", '"type":"loess"'], "transform:loess"),
     (['"flatten":', "transform_flatten", '"type":"flatten"'], "transform:flatten"),
     (['"sample":', "transform_sample", '"type":"sample"'], "transform:sample"),
+    # Stack transform - Vega always uses explicit {"type":"stack"}.
+    # Vega-Lite: only detects EXPLICIT configs ("stack":"zero"|"normalize"|
+    # transform array form). Implicit stacking (default for bar/area with
+    # color) is invisible in the spec — known limitation, acceptable tradeoff.
+    (['"stack":', '"type":"stack"'], "transform:stack"),
+    # TimeUnit transform - discretizes temporal values
+    # Vega-Lite: {"timeUnit":"yearmonth"} in encoding or transform
+    # Altair: .transform_timeunit()
+    # Vega: {"type":"timeunit"}
+    (['"timeunit":', "transform_timeunit", '"type":"timeunit"'], "transform:timeunit"),
     (['"quantile":', "transform_quantile", '"type":"quantile"'], "transform:quantile"),
     (['"impute":', "transform_impute", '"type":"impute"'], "transform:impute"),
     (
