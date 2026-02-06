@@ -325,6 +325,38 @@ class TestVegaLayoutTransforms:
         assert "layout:linkpath" in techniques
 
 
+class TestVegaGeoTransforms:
+    """Test Vega-only geographic transforms."""
+
+    def test_detects_graticule(self):
+        spec = {
+            "data": [{"name": "graticule", "transform": [{"type": "graticule"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "geo:graticule" in techniques
+
+    def test_detects_geopoint(self):
+        spec = {
+            "data": [{"name": "points", "transform": [{"type": "geopoint", "projection": "projection"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "geo:geopoint" in techniques
+
+    def test_detects_geopath(self):
+        spec = {
+            "data": [{"name": "paths", "transform": [{"type": "geopath", "projection": "projection"}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "geo:geopath" in techniques
+
+    def test_detects_geojson(self):
+        spec = {
+            "data": [{"name": "geo", "transform": [{"type": "geojson", "fields": ["lon", "lat"]}]}]
+        }
+        techniques = detect_techniques(spec, "vega")
+        assert "geo:geojson" in techniques
+
+
 if __name__ == "__main__":
     import pytest
 
