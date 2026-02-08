@@ -38,6 +38,8 @@
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "release-it": "^19.0.4",
     "rollup": "^4.47.1",
     "rollup-plugin-bundle-size": "^1.0.3",
@@ -47,6 +49,10 @@
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
     "build": "rollup -c",
     "github": "python scripts/github.py",
-    "release": "release-it"
+    "release": "release-it",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts,mjs,cjs}": "tsc --noEmit"
   }
 }
