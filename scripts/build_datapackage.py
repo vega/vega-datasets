@@ -653,6 +653,79 @@ def _current_branch(*, ci_env_var: str = "GITHUB_SHA") -> str:
     return os.environ.get(ci_env_var) or run_check(CMD).stdout.rstrip()
 
 
+def compute_file_hash(file_path: Path, /) -> str:
+    """
+    Compute SHA1 hash for a single file using git hash-object.
+
+    Parameters
+    ----------
+    file_path
+        Path to the file to hash.
+
+    Returns
+    -------
+    str
+        Hash in format "sha1:<hash>".
+    """
+    CMD = ("git", "hash-object", str(file_path))
+    result = run_check(CMD)
+    return f"sha1:{result.stdout.strip()}"
+
+
+def create_gallery_examples_resource(
+    repo_dir: Path, overrides: dict[str, ResourceMeta]
+) -> Resource | None:
+    """
+    Create a Resource for gallery_examples.json if it exists.
+
+    This handles the special case of gallery_examples.json which lives
+    in the repo root (not /data/) and is a meta-resource that references
+    other resources in the package.
+
+    Parameters
+    ----------
+    repo_dir
+        Repository root directory.
+    overrides
+        Metadata overrides from datapackage_additions.toml.
+
+    Returns
+    -------
+    Resource | None
+        A JsonResource for gallery_examples.json, or None if the file
+        doesn't exist.
+    """
+    gallery_path = repo_dir / "gallery_examples.json"
+    if not gallery_path.exists():
+        logger.info("gallery_examples.json not found, skipping")
+        return None
+
+    logger.info("Creating resource for gallery_examples.json")
+
+    # Compute hash
+    file_hash = compute_file_hash(gallery_path)
+
+    # Create base resource
+    resource = JsonResource(
+        name="gallery_examples",
+        path="gallery_examples.json",
+        scheme="file",
+        format="json",
+        mediatype="application/json",
+        encoding="utf-8",
+        hash=file_hash,
+        bytes=gallery_path.stat().st_size,
+    )
+
+    # Apply overrides from TOML (description, sources, licenses, schema)
+    if "gallery_examples.json" in overrides:
+        resource = ResourceAdapter.with_extras(
+            resource, **overrides["gallery_examples.json"]
+        )
+
+    return resource
+
+
 def read_toml(fp: Path, /) -> dict[str, Any]:
     return tomllib.loads(fp.read_text("utf-8"))
 
@@ -724,8 +797,17 @@ def main(
     gh_sha1 = extract_sha(data_dir)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
+
+    # Collect resources from /data/ directory
+    resources = list(iter_resources(data_dir, overrides, gh_sha1))
+
+    # Conditionally add gallery_examples.json if it exists (repo root meta-resource)
+    gallery_resource = create_gallery_examples_resource(repo_dir, overrides)
+    if gallery_resource is not None:
+        resources.append(gallery_resource)
+
     pkg = Package(
-        resources=list(iter_resources(data_dir, overrides, gh_sha1)),
+        resources=resources,
         **pkg_meta,  # type: ignore[arg-type]
     )
     msg = f"Collected {len(pkg.resources)} resources"

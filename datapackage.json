@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-02-02T13:19:39.437222+00:00",
+  "created": "2026-02-06T03:35:56.119502+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -3990,6 +3990,95 @@
           {
             "name": "county",
             "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "gallery_examples",
+      "type": "json",
+      "description": "Cross-reference catalog mapping gallery examples to vega-datasets resources.\nTracks which datasets from the vega-datasets collection are used in example\nvisualizations across Vega, Vega-Lite, and Altair galleries. Enables discovery\nof visualization patterns by dataset or technique, supports learning paths,\nand provides structured context for AI coding assistants.",
+      "licenses": [
+        {
+          "name": "BSD-3-Clause",
+          "title": "The 3-Clause BSD License",
+          "path": "https://opensource.org/license/bsd-3-clause"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vega Gallery",
+          "path": "https://vega.github.io/vega/examples/"
+        },
+        {
+          "title": "Vega-Lite Gallery",
+          "path": "https://vega.github.io/vega-lite/examples/"
+        },
+        {
+          "title": "Altair Gallery",
+          "path": "https://altair-viz.github.io/gallery/"
+        }
+      ],
+      "path": "gallery_examples.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "application/json",
+      "encoding": "utf-8",
+      "hash": "sha1:35e63b2ef7e5d9d802710e81bb10ab62898563f0",
+      "bytes": 300960,
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "Unique sequential identifier for the example"
+          },
+          {
+            "name": "gallery_name",
+            "type": "string",
+            "description": "Name of the gallery this example belongs to",
+            "constraints": {
+              "enum": [
+                "vega",
+                "vega-lite",
+                "altair"
+              ]
+            }
+          },
+          {
+            "name": "example_name",
+            "type": "string",
+            "description": "Human-readable example title"
+          },
+          {
+            "name": "example_url",
+            "type": "string",
+            "description": "URL to rendered example in the gallery"
+          },
+          {
+            "name": "spec_url",
+            "type": "string",
+            "description": "URL to source specification or code"
+          },
+          {
+            "name": "categories",
+            "type": "array",
+            "description": "Tags or categories for the example (e.g., 'Bar Charts', 'Interactive')"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Optional description of what the example demonstrates (may be null)"
+          },
+          {
+            "name": "datasets",
+            "type": "array",
+            "description": "Dataset names referencing resource.name in this package"
+          },
+          {
+            "name": "techniques",
+            "type": "array",
+            "description": "Visualization techniques used (e.g., 'transform:window', 'interaction:selection')"
           }
         ]
       }
