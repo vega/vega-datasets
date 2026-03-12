@@ -34,7 +34,7 @@
     "@release-it/conventional-changelog": "^10.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
