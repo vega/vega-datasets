@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-02 13:19:39 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-06 03:35:56 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -1712,9 +1712,9 @@ in turn is a redistribution of the Census Bureau's cartographic boundary shapefi
 | TopoJSON US Atlas                            | https://github.com/topojson/us-atlas                                                        |
 | US Census Bureau Cartographic Boundary FIles | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
 ### licenses
-| name   | title                         | path                                                        |
-|:-------|:------------------------------|:------------------------------------------------------------|
-| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
+| name   | title                         | path                                                     |
+|:-------|:------------------------------|:---------------------------------------------------------|
+| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE |
 ## `us_employment`
 ### path
 us-employment.csv
@@ -1911,10 +1911,10 @@ resource for creating web-based world maps where precise boundary detail isn't r
 | TopoJSON World Atlas (Likely original source, processed from Natural Earth data) | https://github.com/topojson/world-atlas                                                  |
 | Natural Earth Data - Admin 0 Countries (1:110m)                                  | https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ |
 ### licenses
-| name     | title                            | path                                                           |
-|:---------|:---------------------------------|:---------------------------------------------------------------|
-| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
-| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
+| name     | title                            | path                                                        |
+|:---------|:---------------------------------|:------------------------------------------------------------|
+| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE |
+| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/        |
 ## `zipcodes`
 ### path
 zipcodes.csv
@@ -1946,3 +1946,35 @@ data was collected. For current postal code data, refer to the main GeoNames dat
 | name      | title                                          | path                                         |
 |:----------|:-----------------------------------------------|:---------------------------------------------|
 | CC-BY-4.0 | Creative Commons Attribution 4.0 International | https://creativecommons.org/licenses/by/4.0/ |
+## `gallery_examples`
+### path
+gallery_examples.json
+### description
+Cross-reference catalog mapping gallery examples to vega-datasets resources.
+Tracks which datasets from the vega-datasets collection are used in example
+visualizations across Vega, Vega-Lite, and Altair galleries. Enables discovery
+of visualization patterns by dataset or technique, supports learning paths,
+and provides structured context for AI coding assistants.
+### schema
+    
+| name         | type    | description                                                                       | constraints                               |
+|:-------------|:--------|:----------------------------------------------------------------------------------|:------------------------------------------|
+| id           | integer | Unique sequential identifier for the example                                      |                                           |
+| gallery_name | string  | Name of the gallery this example belongs to                                       | {'enum': ['vega', 'vega-lite', 'altair']} |
+| example_name | string  | Human-readable example title                                                      |                                           |
+| example_url  | string  | URL to rendered example in the gallery                                            |                                           |
+| spec_url     | string  | URL to source specification or code                                               |                                           |
+| categories   | array   | Tags or categories for the example (e.g., 'Bar Charts', 'Interactive')            |                                           |
+| description  | string  | Optional description of what the example demonstrates (may be null)               |                                           |
+| datasets     | array   | Dataset names referencing resource.name in this package                           |                                           |
+| techniques   | array   | Visualization techniques used (e.g., 'transform:window', 'interaction:selection') |                                           |
+### sources
+| title             | path                                       |
+|:------------------|:-------------------------------------------|
+| Vega Gallery      | https://vega.github.io/vega/examples/      |
+| Vega-Lite Gallery | https://vega.github.io/vega-lite/examples/ |
+| Altair Gallery    | https://altair-viz.github.io/gallery/      |
+### licenses
+| name         | title                    | path                                        |
+|:-------------|:-------------------------|:--------------------------------------------|
+| BSD-3-Clause | The 3-Clause BSD License | https://opensource.org/license/bsd-3-clause |
