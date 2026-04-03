@@ -119,17 +119,28 @@ select = [
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb"      = ["ANN", "F401", "W391"]
 "*/**/*.ipynb" = ["ANN", "F401", "W391"]
+# generate_gallery_examples.py: Allow intentional patterns for robustness
+# - BLE001: Broad exception catching needed to continue processing on errors
+# - C901: Complex functions handle nested spec structures from Vega/VL/Altair
+# - SIM102: Nested ifs improve readability when validating deeply nested data
+"scripts/generate_gallery_examples.py" = ["BLE001", "C901", "SIM102"]
+# Test files: Relax annotation and docstring requirements
+"tests/**/*.py" = ["ANN", "D"]
 
 [tool.pyright]
 enableExperimentalFeatures = true
-ignore = ["../../../**/Lib", ".venv"]
+ignore = ["../../../**/Lib"]
 include = [
   "./scripts/build_datapackage.py",
   "./scripts/flights.py",
+  "./scripts/generate_gallery_examples.py",
   "./scripts/income.py",
   "./scripts/species.py",
+  "./scripts/us-state-capitals.py",
 ]
 pythonPlatform = "All"
 pythonVersion = "3.12"
 reportUnusedExpression = "none"
 typeCheckingMode = "basic"
+venv = ".venv"
+venvPath = "."

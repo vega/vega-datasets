@@ -25,7 +25,8 @@
     "src",
     "build",
     "data",
-    "datapackage.json"
+    "datapackage.json",
+    "gallery_examples.json"
   ],
   "dependencies": {
     "d3-dsv": "^3.0.1"
@@ -47,6 +48,7 @@
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
     "build": "rollup -c",
     "github": "python scripts/github.py",
-    "release": "release-it"
+    "release": "release-it",
+    "update-gallery": "uv run scripts/generate_gallery_examples.py"
   }
 }
