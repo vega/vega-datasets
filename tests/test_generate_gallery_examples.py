@@ -61,6 +61,11 @@ def test_normalize_vega_datasets_unresolved():
         normalize_dataset_reference(url, NAME_MAP)
 
 
+def test_normalize_bare_filename_with_data_prefix_fallback():
+    """A bare filename not in name_map resolves via data/ prefix lookup."""
+    assert normalize_dataset_reference("cars.json", NAME_MAP) == "cars"
+
+
 def test_normalize_external_url():
     url = "https://example.com/other-data/stuff.json"
     result = normalize_dataset_reference(url, NAME_MAP)
@@ -136,6 +141,17 @@ def test_extract_vegalite_facet():
             "data": {"url": "data/movies.json"},
             "mark": "point",
         },
+    }
+    result = extract_vegalite_datasets(spec, NAME_MAP)
+    assert sorted(result) == ["cars", "movies"]
+
+
+def test_extract_vegalite_concat():
+    spec = {
+        "concat": [
+            {"data": {"url": "data/cars.json"}, "mark": "bar"},
+            {"data": {"url": "data/movies.json"}, "mark": "point"},
+        ]
     }
     result = extract_vegalite_datasets(spec, NAME_MAP)
     assert sorted(result) == ["cars", "movies"]
@@ -280,24 +296,26 @@ chart = alt.Chart(source)
 
 
 def test_build_name_map():
-    # Real datapackage uses filename-only paths (no data/ prefix)
     datapackage = {
         "resources": [
             {"name": "cars", "path": "cars.json"},
             {"name": "us_state_capitals", "path": "us-state-capitals.json"},
-            {"name": "flights_200k_arrow", "path": "flights-200k.arrow"},
         ]
     }
     name_map = build_name_map(datapackage)
 
-    # Original path from datapackage
-    assert name_map["cars.json"] == "cars"
+    # Each resource produces 3 entries: path, data/filename, filename
+    assert name_map == {
+        "cars.json": "cars",
+        "data/cars.json": "cars",
+        "us-state-capitals.json": "us_state_capitals",
+        "data/us-state-capitals.json": "us_state_capitals",
+    }
 
-    # With data/ prefix (for URL normalization)
-    assert name_map["data/cars.json"] == "cars"
 
-    # Kebab-case path with data/ prefix
-    assert name_map["data/us-state-capitals.json"] == "us_state_capitals"
+def test_build_name_map_skips_empty_path():
+    datapackage = {"resources": [{"name": "x", "path": ""}, {"name": "y"}]}
+    assert build_name_map(datapackage) == {}
 
 
 # ---------------------------------------------------------------------------
