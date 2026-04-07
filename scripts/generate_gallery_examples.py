@@ -335,10 +335,11 @@ def _build_vegalite_examples(vl_index: Any) -> list[dict[str, Any]]:
     """Build Vega-Lite example list from nested index."""
     examples: list[dict[str, Any]] = []
     seen: dict[str, dict[str, Any]] = {}
-    for section in vl_index.values():
+    for section_name, section in vl_index.items():
         if not isinstance(section, dict):
             continue
         for category, items in section.items():
+            category = category or section_name
             for item in items:
                 slug = item["name"]
                 title = item.get(

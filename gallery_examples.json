@@ -3366,7 +3366,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_choropleth.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_choropleth.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": null,
     "datasets": [
@@ -3608,7 +3608,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_geo_earthquakes.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/interactive_geo_earthquakes.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": "Interactive globe visualization of earthquakes",
     "datasets": [
@@ -3651,7 +3651,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_geo_facet_species.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/interactive_geo_facet_species.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": "A grid of choropleth maps, each displaying the projected habitat distribution for a different species across US counties. Color intensity within each county represents the percentage of suitable habitat.",
     "datasets": [
@@ -3892,7 +3892,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_trellis.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_trellis.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": null,
     "datasets": [
@@ -4248,7 +4248,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_line.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_line.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": "Line drawn between airports in the U.S. simulating a flight itinerary",
     "datasets": [
@@ -4329,7 +4329,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_layer_line_london.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_layer_line_london.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": "This example was created by @jwoLondon.",
     "datasets": [
@@ -4568,7 +4568,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_layer.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_layer.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": null,
     "datasets": [
@@ -4583,7 +4583,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_circle.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_circle.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": null,
     "datasets": [
@@ -4689,7 +4689,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_params_projections.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_params_projections.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": "Compare different projections.",
     "datasets": [
@@ -4824,7 +4824,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_rule.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_rule.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": null,
     "datasets": [
@@ -5168,7 +5168,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_repeat.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_repeat.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": "the population per state, engineers per state, and hurricanes per state",
     "datasets": [
@@ -5309,7 +5309,7 @@
     "example_url": "https://vega.github.io/vega-lite/examples/geo_text.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/geo_text.vl.json",
     "categories": [
-      ""
+      "Maps (Geographic Displays)"
     ],
     "description": null,
     "datasets": [
