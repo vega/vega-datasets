@@ -2892,7 +2892,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A bar chart that directly encodes color names in the data.",
     "datasets": [],
     "id": 214
   },
@@ -2918,7 +2918,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A bar chart showing the US population distribution of age groups in 2000.",
     "datasets": [
       "population"
     ],
@@ -2932,7 +2932,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A bar chart that sorts the y-values by the x-values.",
     "datasets": [
       "population"
     ],
@@ -2988,7 +2988,7 @@
     "categories": [
       "Area Charts & Streamgraphs"
     ],
-    "description": null,
+    "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
     ],
@@ -3002,7 +3002,7 @@
     "categories": [
       "Area Charts & Streamgraphs"
     ],
-    "description": null,
+    "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
     ],
@@ -3016,7 +3016,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "In this example, we apply an `interval` selection to select subset of data in an area chart. The selected data is highlighted in gold by the second layer of an area mark that `filter`s its data by the `brush` selection.",
     "datasets": [
       "unemployment_across_industries"
     ],
@@ -3042,7 +3042,7 @@
     "categories": [
       "Advanced Calculations"
     ],
-    "description": null,
+    "description": "The production budget of the movie that has the highest US Gross in each major genre.",
     "datasets": [
       "movies"
     ],
@@ -3056,7 +3056,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "Using `labelExpr` to show only initial letters of month names.",
     "datasets": [
       "seattle_weather"
     ],
@@ -3070,7 +3070,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "A bar chart with highlighting on hover and selecting on click. (Inspired by Tableau's interaction style.)",
     "datasets": [],
     "id": 227
   },
@@ -3097,7 +3097,7 @@
       "Bar Charts",
       "Labeling & Annotation"
     ],
-    "description": null,
+    "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
     "datasets": [],
     "id": 229
   },
@@ -3109,7 +3109,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
     "datasets": [],
     "id": 230
   },
@@ -3135,7 +3135,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "Bar Chart with a spacing-saving y-axis",
     "datasets": [
       "cars"
     ],
@@ -3163,7 +3163,7 @@
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
-    "description": null,
+    "description": "The Trellis display by Becker et al. helped establish small multiples as a “powerful mechanism for understanding interactions in studies of how a response depends on explanatory variables”. Here we reproduce a trellis of Barley yields from the 1930s, complete with main-effects ordering to facilitate comparison.",
     "datasets": [
       "barley"
     ],
@@ -3177,7 +3177,7 @@
     "categories": [
       "Box Plots"
     ],
-    "description": null,
+    "description": "A vertical box plot showing median, min, and max body mass of penguins.",
     "datasets": [
       "penguins"
     ],
@@ -3203,7 +3203,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "Drag a rectangular brush to show (first 20) selected points in a table.",
     "datasets": [
       "cars"
     ],
@@ -3217,7 +3217,7 @@
     "categories": [
       "Scatter & Strip Plots"
     ],
-    "description": null,
+    "description": "A bubbleplot showing horsepower on x, miles per gallons on y, and binned acceleration on size.",
     "datasets": [
       "cars"
     ],
@@ -3231,7 +3231,7 @@
     "categories": [
       "Scatter & Strip Plots"
     ],
-    "description": null,
+    "description": "A bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost's blog post 'One Chart, Twelve Charting Libraries' --http://lisacharlotterost.github.io/2016/05/17/one-chart-code/).",
     "datasets": [
       "gapminder_health_income"
     ],
@@ -3271,7 +3271,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Bump chart",
     "datasets": [],
     "id": 242
   },
@@ -3283,7 +3283,7 @@
     "categories": [
       "Advanced Calculations"
     ],
-    "description": null,
+    "description": "Bar graph showing the best films for the year they were produced, where best is defined by at least 2.5 points above average for that year. The red point shows the average rating for a film in that year, and the bar is the rating that the film recieved.",
     "datasets": [
       "movies"
     ],
@@ -3311,7 +3311,7 @@
     "categories": [
       "Advanced Calculations"
     ],
-    "description": null,
+    "description": "A dot plot showing each movie in the database, and the difference from the average movie rating. The display is sorted by year to visualize everything in sequential order. The graph is for all Movies before 2019.",
     "datasets": [
       "movies"
     ],
@@ -3325,7 +3325,7 @@
     "categories": [
       "Other Layered Plots"
     ],
-    "description": null,
+    "description": "A candlestick chart inspired by an example in Protovis (http://mbostock.github.io/protovis/ex/candlestick.html)",
     "datasets": [
       "ohlc"
     ],
@@ -3383,7 +3383,7 @@
     "categories": [
       "Scatter & Strip Plots"
     ],
-    "description": null,
+    "description": "A scatterplot showing body mass and flipper lengths of penguins.",
     "datasets": [
       "penguins"
     ],
@@ -3397,7 +3397,7 @@
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
-    "description": null,
+    "description": "A simple grid of bar charts to compare performance data.",
     "datasets": [],
     "id": 251
   },
@@ -3435,7 +3435,7 @@
     "categories": [
       "Interactive Multi-View Displays"
     ],
-    "description": null,
+    "description": "An interactive visualization of connections among major U.S. airports in 2008. Based on a U.S. airports example by Mike Bostock.",
     "datasets": [
       "us_10m",
       "flights_airport",
@@ -3532,7 +3532,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A population pyramid for the US in 2000, created using stack. See https://vega.github.io/vega-lite/examples/concat_population_pyramid.html for a variant of this created using concat.",
     "datasets": [
       "population"
     ],
@@ -3546,7 +3546,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A diverging stacked bar chart for sentiments towards a set of eight questions, displayed as percentages with neutral responses straddling the 0% mark",
     "datasets": [],
     "id": 262
   },
@@ -3570,7 +3570,7 @@
     "categories": [
       "Scatter & Strip Plots"
     ],
-    "description": null,
+    "description": "Shows the relationship between horsepower and the number of cylinders using point marks with random offset (jittering).",
     "datasets": [
       "cars"
     ],
@@ -3584,7 +3584,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Plots two functions using a generated sequence.",
     "datasets": [],
     "id": 265
   },
@@ -3708,7 +3708,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A simple bar chart with ranged data (aka Gantt Chart).",
     "datasets": [],
     "id": 274
   },
@@ -3746,7 +3746,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "Heat lane chart based on https://www.smashingmagazine.com/2022/07/accessibility-first-approach-chart-visual-design/",
     "datasets": [
       "cars"
     ],
@@ -3830,7 +3830,7 @@
       "Area Charts & Streamgraphs",
       "Other Layered Plots"
     ],
-    "description": null,
+    "description": "Horizon Graph with 2 layers. (See https://idl.cs.washington.edu/papers/horizon/ for more details on Horizon Graphs.)",
     "datasets": [],
     "id": 283
   },
@@ -3842,7 +3842,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
     "datasets": [],
     "id": 284
   },
@@ -3923,7 +3923,7 @@
     "categories": [
       "Interactive Multi-View Displays"
     ],
-    "description": null,
+    "description": "A dashboard with cross-highlighting.",
     "datasets": [
       "movies"
     ],
@@ -4030,7 +4030,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A bar chart showing the US population distribution of age groups and gender in 2000.",
     "datasets": [
       "population"
     ],
@@ -4059,7 +4059,7 @@
     "categories": [
       "Other Layered Plots"
     ],
-    "description": null,
+    "description": "A dual axis chart, created by setting y's scale resolution to `\"independent\"`",
     "datasets": [
       "weather"
     ],
@@ -4074,7 +4074,7 @@
       "Advanced Calculations",
       "Labeling & Annotation"
     ],
-    "description": null,
+    "description": "Plot showing average data with raw values in the background.",
     "datasets": [
       "stocks"
     ],
@@ -4089,7 +4089,7 @@
       "Advanced Calculations",
       "Labeling & Annotation"
     ],
-    "description": null,
+    "description": "Plot showing a 30 day rolling average with raw values in the background.",
     "datasets": [
       "seattle_weather"
     ],
@@ -4103,7 +4103,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
     ],
@@ -4129,7 +4129,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Line chart with conditional axis ticks, labels, and grid.",
     "datasets": [
       "stocks"
     ],
@@ -4157,7 +4157,7 @@
     "categories": [
       "Labeling & Annotation"
     ],
-    "description": null,
+    "description": "The population of the German city of Falkensee over time",
     "datasets": [],
     "id": 307
   },
@@ -4223,7 +4223,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Stock prices of 5 Tech Companies over Time.",
     "datasets": [
       "stocks"
     ],
@@ -4250,7 +4250,7 @@
     "categories": [
       ""
     ],
-    "description": null,
+    "description": "Line drawn between airports in the U.S. simulating a flight itinerary",
     "datasets": [
       "us_10m",
       "airports"
@@ -4265,7 +4265,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Line chart with a dashed part created by drawing multiple connecting lines. Note that the data source contains the data point at (E, 81) twice.",
     "datasets": [],
     "id": 315
   },
@@ -4277,7 +4277,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Stock prices of 5 Tech Companies over Time.",
     "datasets": [
       "stocks"
     ],
@@ -4319,7 +4319,7 @@
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
-    "description": null,
+    "description": "Log-scaled Histogram.  We may improve the support of this. See https://github.com/vega/vega-lite/issues/4792.",
     "datasets": [],
     "id": 319
   },
@@ -4389,7 +4389,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Stock prices of 5 Tech Companies over Time.",
     "datasets": [
       "stocks"
     ],
@@ -4403,7 +4403,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Multi-series Line Chart with Halo. Use pivot and repeat-layer as a workaround to facet groups of lines and their halo strokes. See https://github.com/vega/vega-lite/issues/6192 for more discussion.",
     "datasets": [
       "stocks"
     ],
@@ -4488,7 +4488,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "Stock prices of 5 Tech Companies over Time, with a point marker on hover. Note that the hidden markers are intentionally bigger to make it easier for readers to hover.",
     "datasets": [
       "stocks"
     ],
@@ -4502,7 +4502,7 @@
     "categories": [
       "Repeat & Concatenation"
     ],
-    "description": null,
+    "description": "Nested concatenation aligned by setting axis minExtent",
     "datasets": [
       "movies"
     ],
@@ -4516,7 +4516,7 @@
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
-    "description": null,
+    "description": "A histogram for a data source that provides non-linear bins. Thanks to [@Saba9](https://github.com/Saba9) who helps create this example.",
     "datasets": [],
     "id": 333
   },
@@ -4613,7 +4613,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "Select multiple points with the shift key.",
     "datasets": [
       "cars"
     ],
@@ -4627,7 +4627,7 @@
     "categories": [
       "Advanced Calculations"
     ],
-    "description": null,
+    "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
     "datasets": [
       "penguins"
     ],
@@ -4677,7 +4677,7 @@
     "categories": [
       "Repeat & Concatenation"
     ],
-    "description": null,
+    "description": "A population pyramid for the US in 2000.",
     "datasets": [
       "population"
     ],
@@ -4705,7 +4705,7 @@
     "categories": [
       "Circular Plots"
     ],
-    "description": null,
+    "description": "Reproducing http://robslink.com/SAS/democd91/pyramid_pie.htm",
     "datasets": [],
     "id": 347
   },
@@ -4731,7 +4731,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "Drag the sliders to highlight points.",
     "datasets": [
       "cars"
     ],
@@ -4757,7 +4757,7 @@
     "categories": [
       "Other Layered Plots"
     ],
-    "description": null,
+    "description": "A ranged dot plot that uses 'layer' to convey changing life expectancy for the five most populous countries (between 1955 and 2000).",
     "datasets": [
       "countries"
     ],
@@ -4771,7 +4771,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "Drag out a rectangular brush to highlight points.",
     "datasets": [
       "cars"
     ],
@@ -4786,7 +4786,7 @@
       "Histograms, Density Plots, and Dot Plots",
       "Advanced Calculations"
     ],
-    "description": null,
+    "description": "A bar graph showing what activites consume what percentage of the day.",
     "datasets": [],
     "id": 353
   },
@@ -4798,7 +4798,7 @@
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
-    "description": null,
+    "description": "Relative frequency histogram. The data is binned with first transform. The number of values per bin and the total number are calculated in the second and third transform to calculate the relative frequency in the last transformation step.",
     "datasets": [
       "cars"
     ],
@@ -4856,7 +4856,7 @@
     "categories": [
       "Scatter & Strip Plots"
     ],
-    "description": null,
+    "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
     "datasets": [
       "cars"
     ],
@@ -4884,7 +4884,7 @@
     "categories": [
       "Interactive Charts"
     ],
-    "description": null,
+    "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
     "datasets": [
       "cars"
     ],
@@ -4912,7 +4912,7 @@
     "categories": [
       "Error Bars & Error Bands"
     ],
-    "description": null,
+    "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
     "datasets": [
       "cars"
     ],
@@ -4992,7 +4992,7 @@
     "categories": [
       "Labeling & Annotation"
     ],
-    "description": null,
+    "description": "Vega-Lite version of bar chart from https://observablehq.com/@d3/learn-d3-scales.",
     "datasets": [],
     "id": 368
   },
@@ -5004,7 +5004,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Slope graph showing the change in yield for different barley sites. It shows the error in the year labels for the Morris site.",
     "datasets": [
       "barley"
     ],
@@ -5074,7 +5074,7 @@
     "categories": [
       "Line Charts"
     ],
-    "description": null,
+    "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
     ],
@@ -5102,7 +5102,7 @@
     "categories": [
       "Scatter & Strip Plots"
     ],
-    "description": null,
+    "description": "Shows the relationship between horsepower and the number of cylinders using tick marks.",
     "datasets": [
       "cars"
     ],
@@ -5130,7 +5130,7 @@
     "categories": [
       "Table-based Plots"
     ],
-    "description": null,
+    "description": "Punchcard Visualization like on Github. The day on y-axis uses a custom order from Monday to Sunday.  The sort property supports both full day names (e.g., 'Monday') and their three letter initials (e.g., 'mon') -- both of which are case insensitive.",
     "datasets": [
       "github"
     ],
@@ -5170,7 +5170,7 @@
     "categories": [
       ""
     ],
-    "description": null,
+    "description": "the population per state, engineers per state, and hurricanes per state",
     "datasets": [
       "population_engineers_hurricanes",
       "us_10m"
@@ -5199,7 +5199,7 @@
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
-    "description": null,
+    "description": "Stock prices of four large companies as a small multiples of area charts.",
     "datasets": [
       "stocks"
     ],
@@ -5213,7 +5213,7 @@
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
-    "description": null,
+    "description": "Temperature normals in Seattle. Derived from [Seattle Annual Temperate](https://vega.github.io/vega/examples/annual-temperature/) example from the Vega example gallery.",
     "datasets": [
       "seattle_weather_hourly_normals"
     ],
@@ -5227,7 +5227,7 @@
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
-    "description": null,
+    "description": "A trellis bar chart showing the US population distribution of age groups and gender in 2000.",
     "datasets": [
       "population"
     ],
@@ -5269,7 +5269,7 @@
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
-    "description": null,
+    "description": "Anscombe's Quartet",
     "datasets": [
       "anscombe"
     ],
@@ -5297,7 +5297,7 @@
     "categories": [
       "Box Plots"
     ],
-    "description": null,
+    "description": "A vertical box plot showing median and lower and upper quartiles of the distribution of body mass of penguins.",
     "datasets": [
       "penguins"
     ],
@@ -5341,7 +5341,7 @@
     "categories": [
       "Advanced Calculations"
     ],
-    "description": null,
+    "description": "Using window transform to impute missing values in a line chart by averaging the previous and next values.",
     "datasets": [],
     "id": 393
   },
@@ -5408,7 +5408,7 @@
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
-    "description": null,
+    "description": "A Wilkinson Dot Plot",
     "datasets": [],
     "id": 398
   },
@@ -5420,7 +5420,7 @@
     "categories": [
       "Table-based Plots"
     ],
-    "description": null,
+    "description": "Vector array map showing wind speed and direction.",
     "datasets": [
       "windvectors"
     ],
