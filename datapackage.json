@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-02-02T13:19:39.437222+00:00",
+  "created": "2026-04-07T04:17:56.391305+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -3990,6 +3990,90 @@
           {
             "name": "county",
             "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "gallery_examples",
+      "type": "json",
+      "description": "Cross-reference mapping Vega, Vega-Lite, and Altair gallery examples\nto the vega-datasets resources they use. Each record links a gallery example to\nits datasets, categories, and source specification.",
+      "licenses": [
+        {
+          "name": "BSD-3-Clause",
+          "title": "The 3-Clause BSD License",
+          "path": "https://opensource.org/license/bsd-3-clause"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vega Gallery",
+          "path": "https://vega.github.io/vega/examples/"
+        },
+        {
+          "title": "Vega-Lite Gallery",
+          "path": "https://vega.github.io/vega-lite/examples/"
+        },
+        {
+          "title": "Altair Gallery",
+          "path": "https://altair-viz.github.io/gallery/"
+        }
+      ],
+      "path": "gallery_examples.json",
+      "scheme": "file",
+      "format": "json",
+      "mediatype": "application/json",
+      "encoding": "utf-8",
+      "hash": "sha1:4768ac23feddd40a65c68bae5c0a2df99f6eda90",
+      "bytes": 197067,
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "Unique sequential identifier for the example"
+          },
+          {
+            "name": "gallery_name",
+            "type": "string",
+            "description": "Name of the gallery this example belongs to",
+            "constraints": {
+              "enum": [
+                "vega",
+                "vega-lite",
+                "altair"
+              ]
+            }
+          },
+          {
+            "name": "example_name",
+            "type": "string",
+            "description": "Human-readable example title"
+          },
+          {
+            "name": "example_url",
+            "type": "string",
+            "description": "URL to rendered example in the gallery"
+          },
+          {
+            "name": "spec_url",
+            "type": "string",
+            "description": "URL to source specification or code"
+          },
+          {
+            "name": "categories",
+            "type": "array",
+            "description": "Tags or categories for the example (e.g., 'Bar Charts', 'Interactive')"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Optional description of what the example demonstrates (may be null)"
+          },
+          {
+            "name": "datasets",
+            "type": "array",
+            "description": "Dataset names referencing resource.name in this package"
           }
         ]
       }
