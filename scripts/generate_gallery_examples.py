@@ -432,6 +432,8 @@ async def enrich_with_datasets(
         elif gallery == "vega-lite":
             spec = json.loads(resp.text)
             example["datasets"] = extract_vegalite_datasets(spec, name_map)
+            if not example.get("description"):
+                example["description"] = spec.get("description")
         elif gallery == "vega":
             spec = json.loads(resp.text)
             example["datasets"] = extract_vega_datasets(spec, name_map)
@@ -476,7 +478,7 @@ async def async_main() -> None:
     valid_names = set(name_map.values())
     logger.info("Built name map: %d datasets", len(valid_names))
 
-    async with niquests.AsyncSession() as session:
+    async with niquests.AsyncSession(disable_http2=True) as session:
         # Fetch indexes
         vl_index, vega_index, altair_files = await fetch_indexes(session, config)
 
