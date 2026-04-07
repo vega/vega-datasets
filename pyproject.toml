@@ -141,5 +141,5 @@ venv = ".venv"
 venvPath = "."
 
 [tool.pytest.ini_options]
-markers = ["network: marks tests that hit the network"]
 addopts = "-m 'not network'"
+markers = ["network: marks tests that hit the network"]
