@@ -40,7 +40,9 @@ def normalize_dataset_reference(ref: str, name_map: dict[str, str]) -> str | Non
     (not a vega-datasets URL). Raises ValueError if the reference
     looks like a vega-datasets URL but can't be resolved.
     """
-    is_vega_datasets = "vega-datasets" in ref
+    if not isinstance(ref, str):
+        return None
+    is_vega_datasets = any(ref.startswith(p) for p in _VEGA_DATASETS_PREFIXES)
 
     # Strip known URL prefixes down to a relative path like "data/cars.json"
     path = ref
@@ -338,12 +340,12 @@ def _build_vegalite_examples(vl_index: Any) -> list[dict[str, Any]]:
         if not isinstance(section, dict):
             continue
         for category, items in section.items():
+            if not isinstance(items, list):
+                continue
             category = category or section_name
             for item in items:
                 slug = item["name"]
-                title = item.get(
-                    "title", slug.replace("_", " ").replace("-", " ").title()
-                )
+                title = item.get("title") or slug.replace("_", " ").replace("-", " ").title()
                 if slug in seen:
                     seen[slug]["categories"].append(category)
                 else:
