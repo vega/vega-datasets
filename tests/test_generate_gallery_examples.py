@@ -16,6 +16,8 @@ import json
 
 from generate_gallery_examples import (
     REPO_ROOT,
+    _build_vegalite_examples,  # noqa: PLC2701
+    _parse_altair_metadata,  # noqa: PLC2701
     async_main,
     build_name_map,
     extract_altair_datasets,
@@ -291,6 +293,66 @@ chart = alt.Chart(source)
 
 
 # ---------------------------------------------------------------------------
+# _parse_altair_metadata
+# ---------------------------------------------------------------------------
+
+
+def test_parse_altair_metadata_title():
+    code = '"""\nScatter Plot\n------------\nA scatter plot.\n"""\n# category: basic\n'
+    result = _parse_altair_metadata(code, "scatter_plot.py")
+    assert result["example_name"] == "Scatter Plot"
+
+
+def test_parse_altair_metadata_title_fallback():
+    """When no docstring title exists, falls back to humanized filename."""
+    code = "import altair as alt\n"
+    result = _parse_altair_metadata(code, "scatter_plot.py")
+    assert result["example_name"] == "Scatter Plot"
+
+
+def test_parse_altair_metadata_description():
+    code = '"""\nScatter Plot\n------------\nA basic scatter plot example.\n"""\n'
+    result = _parse_altair_metadata(code, "scatter_plot.py")
+    assert result["description"] == "A basic scatter plot example."
+
+
+def test_parse_altair_metadata_description_null():
+    """Description is None when docstring has no body after the underline."""
+    code = '"""\nScatter Plot\n------------\n"""\n'
+    result = _parse_altair_metadata(code, "scatter_plot.py")
+    assert result["description"] is None
+
+
+def test_parse_altair_metadata_category():
+    code = '"""\nTitle\n-----\n"""\n# category: interactive charts\n'
+    result = _parse_altair_metadata(code, "example.py")
+    assert result["categories"] == ["interactive charts"]
+
+
+def test_parse_altair_metadata_no_category():
+    code = '"""\nTitle\n-----\n"""\nimport altair\n'
+    result = _parse_altair_metadata(code, "example.py")
+    assert result["categories"] == []
+
+
+# ---------------------------------------------------------------------------
+# _build_vegalite_examples
+# ---------------------------------------------------------------------------
+
+
+def test_build_vegalite_examples_empty_subcategory_fallback():
+    """When a subcategory key is empty string, fall back to section name."""
+    vl_index = {
+        "Single-View Plots": {
+            "": [{"name": "bar_simple", "title": "Simple Bar"}],
+        }
+    }
+    examples = _build_vegalite_examples(vl_index)
+    assert len(examples) == 1
+    assert examples[0]["categories"] == ["Single-View Plots"]
+
+
+# ---------------------------------------------------------------------------
 # build_name_map
 # ---------------------------------------------------------------------------
 
@@ -304,7 +366,8 @@ def test_build_name_map():
     }
     name_map = build_name_map(datapackage)
 
-    # Each resource produces 3 entries: path, data/filename, filename
+    # Each resource produces 2-3 entries: path, data/filename, filename
+    # (bare filenames like "cars.json" collide with the path, producing 2)
     assert name_map == {
         "cars.json": "cars",
         "data/cars.json": "cars",

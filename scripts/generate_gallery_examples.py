@@ -26,7 +26,6 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 TIMEOUT = 30
 
 # URL prefixes that indicate a vega-datasets reference.
-# Order matters: check longer prefixes first.
 _VEGA_DATASETS_PREFIXES = (
     "https://cdn.jsdelivr.net/npm/vega-datasets",
     "https://raw.githubusercontent.com/vega/vega-datasets",
@@ -408,7 +407,7 @@ def build_example_list(
     return examples
 
 
-async def enrich_with_datasets(
+async def enrich_with_datasets(  # noqa: C901
     examples: list[dict[str, Any]],
     session: niquests.AsyncSession,
     name_map: dict[str, str],
@@ -425,6 +424,9 @@ async def enrich_with_datasets(
         gallery = example["gallery_name"]
         if gallery == "altair":
             code = resp.text
+            if not _DATA_IMPORT.search(code) and not _CATEGORY_PATTERN.search(code):
+                msg = f"Altair response has no data import or category marker: {example['spec_url']}"
+                raise ValueError(msg)
             meta = _parse_altair_metadata(code, example.get("_filename", ""))
             example["example_name"] = meta["example_name"]
             example["description"] = meta["description"]
@@ -445,6 +447,11 @@ async def enrich_with_datasets(
     results = await asyncio.gather(
         *(enrich_one(ex) for ex in examples), return_exceptions=True
     )
+    # Re-raise BaseException subclasses (KeyboardInterrupt, SystemExit)
+    # that return_exceptions=True captured as values
+    for r in results:
+        if isinstance(r, BaseException) and not isinstance(r, Exception):
+            raise r
     errors = [
         (ex, r)
         for ex, r in zip(examples, results, strict=True)
@@ -460,10 +467,10 @@ async def enrich_with_datasets(
 def assign_ids(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Sort by (gallery_name, example_name) and assign sequential IDs."""
     examples.sort(key=operator.itemgetter("gallery_name", "example_name"))
-    for i, ex in enumerate(examples, 1):
-        ex["id"] = i
-        ex.pop("_filename", None)  # remove internal field
-    return examples
+    return [
+        {"id": i, **{k: v for k, v in ex.items() if k != "_filename"}}
+        for i, ex in enumerate(examples, 1)
+    ]
 
 
 async def async_main() -> None:
@@ -482,6 +489,16 @@ async def async_main() -> None:
     async with niquests.AsyncSession(disable_http2=True) as session:
         # Fetch indexes
         vl_index, vega_index, altair_files = await fetch_indexes(session, config)
+
+        if not isinstance(vl_index, dict):
+            msg = f"Expected dict for Vega-Lite index, got {type(vl_index).__name__}"
+            raise TypeError(msg)
+        if not isinstance(vega_index, dict):
+            msg = f"Expected dict for Vega index, got {type(vega_index).__name__}"
+            raise TypeError(msg)
+        if not isinstance(altair_files, list):
+            msg = f"Expected list for Altair file listing, got {type(altair_files).__name__}"
+            raise TypeError(msg)
 
         # Build example list
         examples = build_example_list(
@@ -502,10 +519,11 @@ async def async_main() -> None:
     parts = ", ".join(f"{count} {name}" for name, count in sorted(by_gallery.items()))
     logger.info("Collected %d examples (%s)", len(examples), parts)
 
-    for name, count in by_gallery.items():
-        if count == 0:
-            msg = f"Gallery {name!r} produced 0 examples — possible upstream format change"
-            raise RuntimeError(msg)
+    expected_galleries = {"vega", "vega-lite", "altair"}
+    missing = expected_galleries - by_gallery.keys()
+    if missing:
+        msg = f"Missing galleries: {', '.join(sorted(missing))} — possible upstream format change"
+        raise RuntimeError(msg)
 
     output_path = REPO_ROOT / "gallery_examples.json"
     output_path.write_text(json.dumps(examples, indent=2, ensure_ascii=False) + "\n")
