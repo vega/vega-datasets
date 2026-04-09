@@ -67,7 +67,7 @@ Reference a dataset via URL:
 ## Language Interfaces
 
 - **JavaScript/Observable**: Directly import Vega Datasets in Observable. See the [example notebook](https://observablehq.com/@vega/vega-datasets).
-- **Python**: Access datasets using the [Vega Datasets Python package](https://github.com/altair-viz/vega_datasets).
+- **Python**: Retrieve datasets using the integrated `altair.datasets` module in [Altair](https://github.com/vega/altair) (e.g., `from altair.datasets import data`).
 - **Julia**: Utilize the [VegaDatasets.jl package](https://github.com/davidanthoff/VegaDatasets.jl) for Julia integrations.
 
 ## Available Datasets
