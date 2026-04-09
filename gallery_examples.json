@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "gallery_name": "altair",
     "example_name": "2D Histogram Heatmap",
     "example_url": "https://altair-viz.github.io/gallery/histogram_heatmap.html",
@@ -10,10 +11,10 @@
     "description": "This example shows how to make a heatmap from binned quantitative data.",
     "datasets": [
       "movies"
-    ],
-    "id": 1
+    ]
   },
   {
+    "id": 2,
     "gallery_name": "altair",
     "example_name": "2D Histogram Scatter Plot",
     "example_url": "https://altair-viz.github.io/gallery/histogram_scatterplot.html",
@@ -24,10 +25,10 @@
     "description": "This example shows how to make a 2d histogram scatter plot.",
     "datasets": [
       "movies"
-    ],
-    "id": 2
+    ]
   },
   {
+    "id": 3,
     "gallery_name": "altair",
     "example_name": "Annual Weather Heatmap",
     "example_url": "https://altair-viz.github.io/gallery/annual_weather_heatmap.html",
@@ -38,10 +39,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 3
+    ]
   },
   {
+    "id": 4,
     "gallery_name": "altair",
     "example_name": "Anscombe's Quartet",
     "example_url": "https://altair-viz.github.io/gallery/anscombe_plot.html",
@@ -52,10 +53,10 @@
     "description": "`Anscombe's Quartet <https://en.wikipedia.org/wiki/Anscombe%27s_quartet>`_\nis a famous dataset constructed by Francis Anscombe.\nIt is made of 4 different subsets of data.\nEach subset has very different characteristics, even though common summary\nstatistics such as mean and variance are identical.\n\nThis example shows how to make a faceted plot, with each facet\nshowing a different subset of the data.",
     "datasets": [
       "anscombe"
-    ],
-    "id": 4
+    ]
   },
   {
+    "id": 5,
     "gallery_name": "altair",
     "example_name": "Atmospheric CO2 Concentration",
     "example_url": "https://altair-viz.github.io/gallery/co2_concentration.html",
@@ -66,10 +67,10 @@
     "description": "This example is a fully developed line chart that uses a window transformation.\nIt was inspired by `Gregor Aisch's work at datawrapper\n<https://www.datawrapper.de/_/OHgEm/>`_.",
     "datasets": [
       "co2_concentration"
-    ],
-    "id": 5
+    ]
   },
   {
+    "id": 6,
     "gallery_name": "altair",
     "example_name": "Bar Chart Highlighting Values beyond a Threshold",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_single_threshold.html",
@@ -78,10 +79,10 @@
       "bar charts"
     ],
     "description": "This example shows a bar chart highlighting values beyond a threshold.",
-    "datasets": [],
-    "id": 6
+    "datasets": []
   },
   {
+    "id": 7,
     "gallery_name": "altair",
     "example_name": "Bar Chart with Highlighting on Hover and Selection on Click",
     "example_url": "https://altair-viz.github.io/gallery/interactive_bar_select_highlight.html",
@@ -90,10 +91,10 @@
       "interactive charts"
     ],
     "description": "This example shows a bar chart with highlighting on hover and selecting on click. (Inspired by Tableau's interaction style.)\n\nBased on https://vega.github.io/vega-lite/examples/interactive_bar_select_highlight.html",
-    "datasets": [],
-    "id": 7
+    "datasets": []
   },
   {
+    "id": 8,
     "gallery_name": "altair",
     "example_name": "Bar Chart with Labels based on Measured Luminance",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_labels_measured_luminance.html",
@@ -104,10 +105,10 @@
     "description": "This example shows a basic horizontal bar chart with labels where the measured luminance to decides if the text overlay is be colored ``black`` or ``white``.",
     "datasets": [
       "barley"
-    ],
-    "id": 8
+    ]
   },
   {
+    "id": 9,
     "gallery_name": "altair",
     "example_name": "Bar Chart with Range",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_range.html",
@@ -118,10 +119,10 @@
     "description": "This example shows a range bar chart where each bar displays information of a low and high value.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 9
+    ]
   },
   {
+    "id": 10,
     "gallery_name": "altair",
     "example_name": "Becker's Barley Faceted Plot",
     "example_url": "https://altair-viz.github.io/gallery/beckers_barley_facet.html",
@@ -132,10 +133,10 @@
     "description": "The example demonstrates the faceted charts created by Richard Becker,\nWilliam Cleveland and others in the 1990s. Using the visualization technique\nwhere each row is a different site (i.e. the chart is faceted by site),\nthey identified an anomaly in a widely used agriculatural dataset,\nwhere the \"Morris\" site accidentally had the years 1931 and 1932 swapped.\nThey named this\n`\"The Morris Mistake.\" <https://www.stat.auckland.ac.nz/~ihaka/courses/120/trellis.user.pdf>`_.",
     "datasets": [
       "barley"
-    ],
-    "id": 10
+    ]
   },
   {
+    "id": 11,
     "gallery_name": "altair",
     "example_name": "Becker's Barley Wrapped Facet Plot",
     "example_url": "https://altair-viz.github.io/gallery/beckers_barley_wrapped_facet.html",
@@ -146,10 +147,10 @@
     "description": "The example demonstrates the faceted charts created by Richard Becker,\nWilliam Cleveland and others in the 1990s. Using the visualization technique\nwhere each row is a different site (i.e. the chart is faceted by site),\nthey identified an anomaly in a widely used agriculatural dataset,\nwhere the \"Morris\" site accidentally had the years 1931 and 1932 swapped.\nThey named this\n`\"The Morris Mistake.\" <https://www.stat.auckland.ac.nz/~ihaka/courses/120/trellis.user.pdf>`_.",
     "datasets": [
       "barley"
-    ],
-    "id": 11
+    ]
   },
   {
+    "id": 12,
     "gallery_name": "altair",
     "example_name": "Brushing Scatter Plot to Show Data on a Table",
     "example_url": "https://altair-viz.github.io/gallery/scatter_linked_table.html",
@@ -160,10 +161,10 @@
     "description": "A scatter plot of the cars dataset, with data tables for horsepower, MPG, and origin.\nThe tables update to reflect the selection on the scatter plot.",
     "datasets": [
       "cars"
-    ],
-    "id": 12
+    ]
   },
   {
+    "id": 13,
     "gallery_name": "altair",
     "example_name": "Bump Chart",
     "example_url": "https://altair-viz.github.io/gallery/bump_chart.html",
@@ -174,10 +175,10 @@
     "description": "This example shows a bump chart.  The data is first grouped into six-month\nintervals using pandas. The ranks are computed by Altair using a \nwindow transform.",
     "datasets": [
       "stocks"
-    ],
-    "id": 13
+    ]
   },
   {
+    "id": 14,
     "gallery_name": "altair",
     "example_name": "Calculate Residuals",
     "example_url": "https://altair-viz.github.io/gallery/calculate_residuals.html",
@@ -188,10 +189,10 @@
     "description": "A dot plot showing each movie in the database, and the difference from the average movie rating.\nThe display is sorted by year to visualize everything in sequential order. \nThe graph is for all Movies before 2019.\n\nAdapted from `Calculate Residuals <https://vega.github.io/vega-lite/examples/joinaggregate_residual_graph.html>`_.",
     "datasets": [
       "movies"
-    ],
-    "id": 14
+    ]
   },
   {
+    "id": 15,
     "gallery_name": "altair",
     "example_name": "Calculating Percentage of Total",
     "example_url": "https://altair-viz.github.io/gallery/percentage_of_total.html",
@@ -200,10 +201,10 @@
       "bar charts"
     ],
     "description": "This chart demonstrates how to use a joinaggregate transform to display\ndata values as a percentage of total.",
-    "datasets": [],
-    "id": 15
+    "datasets": []
   },
   {
+    "id": 16,
     "gallery_name": "altair",
     "example_name": "Candlestick Chart",
     "example_url": "https://altair-viz.github.io/gallery/candlestick_chart.html",
@@ -214,10 +215,10 @@
     "description": "A candlestick chart inspired from `Protovis <http://mbostock.github.io/protovis/ex/candlestick.html>`_. \nThis example shows the performance of the Chicago Board Options Exchange `Volatility Index <https://en.wikipedia.org/wiki/VIX>`_ (VIX) \nin the summer of 2009. The thick bar represents the opening and closing prices, \nwhile the thin bar shows intraday high and low prices; if the index closed higher on a given day, the bars are colored green rather than red.",
     "datasets": [
       "ohlc"
-    ],
-    "id": 16
+    ]
   },
   {
+    "id": 17,
     "gallery_name": "altair",
     "example_name": "Comet Chart",
     "example_url": "https://altair-viz.github.io/gallery/comet_chart.html",
@@ -228,10 +229,10 @@
     "description": "Inspired by `Zan Armstrong's comet chart <https://www.zanarmstrong.com/>`_\nthis plot uses ``mark_trail`` to visualize change of grouped data over time.\nA more elaborate example and explanation of creating comet charts in Altair\nis shown in `this blogpost <https://medium.com/de-dataverbinders/comet-charts-in-python-visualizing-statistical-mix-effects-and-simpsons-paradox-with-altair-6cd51fb58b7c>`_.",
     "datasets": [
       "barley"
-    ],
-    "id": 17
+    ]
   },
   {
+    "id": 18,
     "gallery_name": "altair",
     "example_name": "Compact Faceted Grid of Bar Charts",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_faceted_compact.html",
@@ -240,10 +241,10 @@
       "bar charts"
     ],
     "description": "A simple grid of bar charts to compare performance data,\none subchart for each subset of the data.",
-    "datasets": [],
-    "id": 18
+    "datasets": []
   },
   {
+    "id": 19,
     "gallery_name": "altair",
     "example_name": "Confidence Interval Ellipses",
     "example_url": "https://altair-viz.github.io/gallery/deviation_ellipses.html",
@@ -254,10 +255,10 @@
     "description": "This example shows bivariate deviation ellipses of flipper length and body mass of three penguin species.\n\nInspired by `ggplot2.stat_ellipse`_ and directly based on `Deviation ellipses example`_ by `@essicolo`_\n\n.. _ggplot2.stat_ellipse:\n    https://ggplot2.tidyverse.org/reference/stat_ellipse.html#ref-examples\n.. _Deviation ellipses example:\n    https://github.com/vega/altair/pull/514\n.. _@essicolo:\n    https://github.com/essicolo",
     "datasets": [
       "penguins"
-    ],
-    "id": 19
+    ]
   },
   {
+    "id": 20,
     "gallery_name": "altair",
     "example_name": "Connections Among U.S. Airports Interactive",
     "example_url": "https://altair-viz.github.io/gallery/airport_connections.html",
@@ -270,10 +271,10 @@
       "airports",
       "flights_airport",
       "us_10m"
-    ],
-    "id": 20
+    ]
   },
   {
+    "id": 21,
     "gallery_name": "altair",
     "example_name": "Cumulative Count Chart",
     "example_url": "https://altair-viz.github.io/gallery/cumulative_count_chart.html",
@@ -284,10 +285,10 @@
     "description": "This example shows an area chart with cumulative count.\nAdapted from https://vega.github.io/vega-lite/examples/area_cumulative_freq.html",
     "datasets": [
       "movies"
-    ],
-    "id": 21
+    ]
   },
   {
+    "id": 22,
     "gallery_name": "altair",
     "example_name": "Distributions and Medians of Likert Scale Ratings",
     "example_url": "https://altair-viz.github.io/gallery/distributions_and_medians_of_likert_scale_ratings.html",
@@ -296,10 +297,10 @@
       "distributions"
     ],
     "description": "Distributions and Medians of Likert Scale Ratings. (Figure 9 from @jhoffswell and @zcliu’s ‘Interactive Repair of Tables Extracted from PDF Documents on Mobile Devices’ – http://idl.cs.washington.edu/files/2019-InteractiveTableRepair-CHI.pdf).\n\nAdapted from `Distributions and Medians of Likert Scale Ratings <https://vega.github.io/vega-lite/examples/layer_likert.html>`_.",
-    "datasets": [],
-    "id": 22
+    "datasets": []
   },
   {
+    "id": 23,
     "gallery_name": "altair",
     "example_name": "Diverging Stacked Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/diverging_stacked_bar_chart.html",
@@ -308,10 +309,10 @@
       "bar charts"
     ],
     "description": "This example shows a diverging stacked bar chart for sentiments towards a set of eight questions, displayed as percentages with neutral responses straddling the 0% mark.",
-    "datasets": [],
-    "id": 23
+    "datasets": []
   },
   {
+    "id": 24,
     "gallery_name": "altair",
     "example_name": "Donut Chart",
     "example_url": "https://altair-viz.github.io/gallery/donut_chart.html",
@@ -320,10 +321,10 @@
       "circular plots"
     ],
     "description": "This example shows how to make a Donut Chart using ``mark_arc``.\nThis is adapted from a corresponding Vega-Lite Example:\n`Donut Chart <https://vega.github.io/vega-lite/examples/arc_donut.html>`_.",
-    "datasets": [],
-    "id": 24
+    "datasets": []
   },
   {
+    "id": 25,
     "gallery_name": "altair",
     "example_name": "Error Bars with Confidence Interval",
     "example_url": "https://altair-viz.github.io/gallery/errorbars_with_ci.html",
@@ -334,10 +335,10 @@
     "description": "This example shows how to show error bars using confidence intervals.\nThe confidence intervals are computed internally in vega by a non-parametric\n`bootstrap of the mean <https://github.com/vega/vega-statistics/blob/master/src/bootstrapCI.js>`_.",
     "datasets": [
       "barley"
-    ],
-    "id": 25
+    ]
   },
   {
+    "id": 26,
     "gallery_name": "altair",
     "example_name": "Error Bars with Standard Deviation",
     "example_url": "https://altair-viz.github.io/gallery/errorbars_with_std.html",
@@ -348,10 +349,10 @@
     "description": "This example shows how to show error bars with standard deviation using crop yields data of different\nin the years of 1930s.",
     "datasets": [
       "barley"
-    ],
-    "id": 26
+    ]
   },
   {
+    "id": 27,
     "gallery_name": "altair",
     "example_name": "Faceted Area Chart",
     "example_url": "https://altair-viz.github.io/gallery/area_faceted.html",
@@ -362,10 +363,10 @@
     "description": "Multiple area subcharts, one for each company.\nWe also show filtering out one of the companies,\nand sorting the companies in a custom order.",
     "datasets": [
       "stocks"
-    ],
-    "id": 27
+    ]
   },
   {
+    "id": 28,
     "gallery_name": "altair",
     "example_name": "Faceted County-Level Choropleth Maps",
     "example_url": "https://altair-viz.github.io/gallery/maps_faceted_species.html",
@@ -377,10 +378,10 @@
     "datasets": [
       "species",
       "us_10m"
-    ],
-    "id": 28
+    ]
   },
   {
+    "id": 29,
     "gallery_name": "altair",
     "example_name": "Faceted Histogram",
     "example_url": "https://altair-viz.github.io/gallery/distributions_faceted_histogram.html",
@@ -391,10 +392,10 @@
     "description": "This example shows how to make a basic faceted histogram,\nwith one histogram subplot for different subsets of the data.\n\nBased off the vega-lite example:\nhttps://vega.github.io/vega-lite/examples/trellis_bar_histogram.html",
     "datasets": [
       "cars"
-    ],
-    "id": 29
+    ]
   },
   {
+    "id": 30,
     "gallery_name": "altair",
     "example_name": "Faceted Line Chart with Cumulative Sum",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_cumsum_faceted.html",
@@ -405,10 +406,10 @@
     "description": "This chart creates one facet per natural disaster and shows the cumulative number of deaths for that category.\nNote the use of different predicates to filter based on both a list and a range.",
     "datasets": [
       "disasters"
-    ],
-    "id": 30
+    ]
   },
   {
+    "id": 31,
     "gallery_name": "altair",
     "example_name": "Gapminder Bubble Plot",
     "example_url": "https://altair-viz.github.io/gallery/gapminder_bubble_plot.html",
@@ -419,10 +420,10 @@
     "description": "This example shows how to make a bubble plot showing the correlation between\nhealth and income for 187 countries in the world (modified from an example\nin Lisa Charlotte Rost's blog post `'One Chart, Twelve Charting Libraries' <http://lisacharlotterost.github.io/2016/05/17/one-chart-code/>`_.",
     "datasets": [
       "gapminder_health_income"
-    ],
-    "id": 31
+    ]
   },
   {
+    "id": 32,
     "gallery_name": "altair",
     "example_name": "Global Deaths from Natural Disasters",
     "example_url": "https://altair-viz.github.io/gallery/natural_disasters.html",
@@ -433,10 +434,10 @@
     "description": "This example shows a proportional symbols visualization of deaths from natural disasters by year and type.",
     "datasets": [
       "disasters"
-    ],
-    "id": 32
+    ]
   },
   {
+    "id": 33,
     "gallery_name": "altair",
     "example_name": "Grouped Bar Chart with Error Bars",
     "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart_with_error_bars.html",
@@ -447,10 +448,10 @@
     "description": "This example shows a grouped bar chart with error bars.",
     "datasets": [
       "barley"
-    ],
-    "id": 33
+    ]
   },
   {
+    "id": 34,
     "gallery_name": "altair",
     "example_name": "Grouped Bar Chart with xOffset",
     "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart2.html",
@@ -459,10 +460,10 @@
       "bar charts"
     ],
     "description": "Like :ref:`gallery_grouped_bar_chart`, this example shows a grouped bar chart.  Whereas :ref:`gallery_grouped_bar_chart` used the ``column`` encoding channel, this example uses the ``xOffset`` encoding channel.  This is adapted from a corresponding Vega-Lite Example:\n`Grouped Bar Chart <https://vega.github.io/vega-lite/examples/bar_grouped.html>`_.",
-    "datasets": [],
-    "id": 34
+    "datasets": []
   },
   {
+    "id": 35,
     "gallery_name": "altair",
     "example_name": "Grouped Bar Chart with xOffset and overlapping bars",
     "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart_overlapping_bars.html",
@@ -471,10 +472,10 @@
       "bar charts"
     ],
     "description": "Like :ref:`gallery_grouped_bar_chart2`, this example shows a grouped bar chart using the ``xOffset`` encoding channel, but in this example the bars are partly overlapping within each group.",
-    "datasets": [],
-    "id": 35
+    "datasets": []
   },
   {
+    "id": 36,
     "gallery_name": "altair",
     "example_name": "Grouped Points with Proportional Symbols Map",
     "example_url": "https://altair-viz.github.io/gallery/groupby-map.html",
@@ -486,10 +487,10 @@
     "datasets": [
       "airports",
       "us_10m"
-    ],
-    "id": 36
+    ]
   },
   {
+    "id": 37,
     "gallery_name": "altair",
     "example_name": "Heat Lane Chart",
     "example_url": "https://altair-viz.github.io/gallery/heat_lane.html",
@@ -500,10 +501,10 @@
     "description": "This example shows how to make an alternative form of a histogram `designed at Google <https://www.smashingmagazine.com/2022/07/accessibility-first-approach-chart-visual-design/>`_ with the goal of increasing accessibility.",
     "datasets": [
       "cars"
-    ],
-    "id": 37
+    ]
   },
   {
+    "id": 38,
     "gallery_name": "altair",
     "example_name": "Hexbin Chart",
     "example_url": "https://altair-viz.github.io/gallery/hexbins.html",
@@ -514,10 +515,10 @@
     "description": "This example shows a hexbin chart.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 38
+    ]
   },
   {
+    "id": 39,
     "gallery_name": "altair",
     "example_name": "Histogram with Gradient Color",
     "example_url": "https://altair-viz.github.io/gallery/histogram_gradient_color.html",
@@ -528,10 +529,10 @@
     "description": "This example shows how to make a histogram with gradient color.\nThe low-high IMDB rating is represented with the color scheme `pinkyellowgreen`.",
     "datasets": [
       "movies"
-    ],
-    "id": 39
+    ]
   },
   {
+    "id": 40,
     "gallery_name": "altair",
     "example_name": "Histogram with Responsive Bins",
     "example_url": "https://altair-viz.github.io/gallery/histogram_responsive.html",
@@ -542,10 +543,10 @@
     "description": "This shows an example of a histogram with bins that are responsive to a\nselection domain. Click and drag on the bottom panel to see the bins\nchange on the top panel.",
     "datasets": [
       "flights_5k"
-    ],
-    "id": 40
+    ]
   },
   {
+    "id": 41,
     "gallery_name": "altair",
     "example_name": "Histogram with a Global Mean Overlay",
     "example_url": "https://altair-viz.github.io/gallery/histogram_with_a_global_mean_overlay.html",
@@ -556,10 +557,10 @@
     "description": "This example shows a histogram with a global mean overlay.",
     "datasets": [
       "movies"
-    ],
-    "id": 41
+    ]
   },
   {
+    "id": 42,
     "gallery_name": "altair",
     "example_name": "Horizon Graph",
     "example_url": "https://altair-viz.github.io/gallery/horizon_graph.html",
@@ -568,10 +569,10 @@
       "area charts"
     ],
     "description": "This example shows how to make a Horizon Graph with 2 layers. (See https://idl.cs.washington.edu/papers/horizon/ for more details on Horizon Graphs.)",
-    "datasets": [],
-    "id": 42
+    "datasets": []
   },
   {
+    "id": 43,
     "gallery_name": "altair",
     "example_name": "Interactive Chart with Aggregation",
     "example_url": "https://altair-viz.github.io/gallery/interactive_aggregation.html",
@@ -582,10 +583,10 @@
     "description": "This example shows an interactive chart where the range binder controls a\nthreshold as rule where the datapoints on the left-side are aggregated and on the\nright-side are drawn as is. \nThe ability to slide back and fourth may help you understand how the visualization\nrepresents the aggregation. Adapted from an example by @dwootton.",
     "datasets": [
       "movies"
-    ],
-    "id": 43
+    ]
   },
   {
+    "id": 44,
     "gallery_name": "altair",
     "example_name": "Interactive Chart with Cross-Highlight",
     "example_url": "https://altair-viz.github.io/gallery/interactive_cross_highlight.html",
@@ -596,10 +597,10 @@
     "description": "This example shows an interactive chart where selections in one portion of\nthe chart affect what is shown in other panels. Click on the bar chart to\nsee a detail of the distribution in the upper panel.",
     "datasets": [
       "movies"
-    ],
-    "id": 44
+    ]
   },
   {
+    "id": 45,
     "gallery_name": "altair",
     "example_name": "Interactive Crossfilter",
     "example_url": "https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html",
@@ -610,10 +611,10 @@
     "description": "This example shows a multi-panel view of the same data, where you can interactively\nselect a portion of the data in any of the panels to highlight that portion in any\nof the other panels.",
     "datasets": [
       "flights_2k"
-    ],
-    "id": 45
+    ]
   },
   {
+    "id": 46,
     "gallery_name": "altair",
     "example_name": "Interactive Legend",
     "example_url": "https://altair-viz.github.io/gallery/interactive_legend.html",
@@ -624,10 +625,10 @@
     "description": "The following shows how to create a chart with an interactive legend, by\nbinding the selection to ``\"legend\"``. Such a binding only works with\n``selection_point`` when projected over a single field or encoding.",
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 46
+    ]
   },
   {
+    "id": 47,
     "gallery_name": "altair",
     "example_name": "Interactive Scatter Plot and Linked Layered Histogram",
     "example_url": "https://altair-viz.github.io/gallery/scatter_with_layered_histogram.html",
@@ -636,10 +637,10 @@
       "interactive charts"
     ],
     "description": "This example shows how to link a scatter plot and a histogram\ntogether such that clicking on a point in the scatter plot will\nisolate the distribution corresponding to that point, and vice versa.",
-    "datasets": [],
-    "id": 47
+    "datasets": []
   },
   {
+    "id": 48,
     "gallery_name": "altair",
     "example_name": "Interactive Selection of Columns",
     "example_url": "https://altair-viz.github.io/gallery/interactive_column_selection.html",
@@ -648,10 +649,10 @@
       "interactive charts"
     ],
     "description": "This example shows how columns can be selected interactively\nby accessing the values from selector widgets,\nand then compute the difference of the selected columns.\nIt also illustrates how to use `indexof` to filter\ncolumns based on active selection values.",
-    "datasets": [],
-    "id": 48
+    "datasets": []
   },
   {
+    "id": 49,
     "gallery_name": "altair",
     "example_name": "Interval Selection on a Map",
     "example_url": "https://altair-viz.github.io/gallery/interval_selection_map_quakes.html",
@@ -663,10 +664,10 @@
     "datasets": [
       "earthquakes",
       "world_110m"
-    ],
-    "id": 49
+    ]
   },
   {
+    "id": 50,
     "gallery_name": "altair",
     "example_name": "Interval Selection with Initial Date Range",
     "example_url": "https://altair-viz.github.io/gallery/interval_selection.html",
@@ -677,10 +678,10 @@
     "description": "This is an example of creating a stacked chart for which the domain of the\ntop chart can be selected by interacting with the bottom chart. The initial\nselection range is set using Python's native datetime objects.",
     "datasets": [
       "sp500"
-    ],
-    "id": 50
+    ]
   },
   {
+    "id": 51,
     "gallery_name": "altair",
     "example_name": "Iowa's Renewable Energy Boom",
     "example_url": "https://altair-viz.github.io/gallery/iowa_electricity.html",
@@ -691,10 +692,10 @@
     "description": "This example is a fully developed stacked chart using the sample dataset of Iowa's electricity sources.",
     "datasets": [
       "iowa_electricity"
-    ],
-    "id": 51
+    ]
   },
   {
+    "id": 52,
     "gallery_name": "altair",
     "example_name": "Isotype",
     "example_url": "https://altair-viz.github.io/gallery/isotype.html",
@@ -703,10 +704,10 @@
       "advanced calculations"
     ],
     "description": null,
-    "datasets": [],
-    "id": 52
+    "datasets": []
   },
   {
+    "id": 53,
     "gallery_name": "altair",
     "example_name": "Isotype Emoji",
     "example_url": "https://altair-viz.github.io/gallery/isotype_emoji.html",
@@ -715,10 +716,10 @@
       "advanced calculations"
     ],
     "description": null,
-    "datasets": [],
-    "id": 53
+    "datasets": []
   },
   {
+    "id": 54,
     "gallery_name": "altair",
     "example_name": "Isotype Grid",
     "example_url": "https://altair-viz.github.io/gallery/isotype_grid.html",
@@ -727,10 +728,10 @@
       "advanced calculations"
     ],
     "description": "This example is a grid of isotype figures.",
-    "datasets": [],
-    "id": 54
+    "datasets": []
   },
   {
+    "id": 55,
     "gallery_name": "altair",
     "example_name": "Lasagna Plot (Dense Time-Series Heatmap)",
     "example_url": "https://altair-viz.github.io/gallery/lasagna_plot.html",
@@ -741,10 +742,10 @@
     "description": null,
     "datasets": [
       "stocks"
-    ],
-    "id": 55
+    ]
   },
   {
+    "id": 56,
     "gallery_name": "altair",
     "example_name": "Layered Area Chart",
     "example_url": "https://altair-viz.github.io/gallery/layered_area_chart.html",
@@ -755,10 +756,10 @@
     "description": "This example shows a layered area chart.",
     "datasets": [
       "iowa_electricity"
-    ],
-    "id": 56
+    ]
   },
   {
+    "id": 57,
     "gallery_name": "altair",
     "example_name": "Layered Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/layered_bar_chart.html",
@@ -769,10 +770,10 @@
     "description": "This example shows a segmented bar chart that is layered rather than stacked.",
     "datasets": [
       "iowa_electricity"
-    ],
-    "id": 57
+    ]
   },
   {
+    "id": 58,
     "gallery_name": "altair",
     "example_name": "Layered Histogram",
     "example_url": "https://altair-viz.github.io/gallery/layered_histogram.html",
@@ -781,10 +782,10 @@
       "distributions"
     ],
     "description": "This example shows how to use opacity to make a layered histogram in Altair.",
-    "datasets": [],
-    "id": 58
+    "datasets": []
   },
   {
+    "id": 59,
     "gallery_name": "altair",
     "example_name": "Layered chart with Dual-Axis",
     "example_url": "https://altair-viz.github.io/gallery/layered_chart_with_dual_axis.html",
@@ -795,10 +796,10 @@
     "description": "This example shows how to create a second independent y axis.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 59
+    ]
   },
   {
+    "id": 60,
     "gallery_name": "altair",
     "example_name": "Line Chart with Confidence Interval Band",
     "example_url": "https://altair-viz.github.io/gallery/line_with_ci.html",
@@ -809,10 +810,10 @@
     "description": "How to make a line chart with a bootstrapped 95% confidence interval band.",
     "datasets": [
       "cars"
-    ],
-    "id": 60
+    ]
   },
   {
+    "id": 61,
     "gallery_name": "altair",
     "example_name": "Line Chart with Cumulative Sum",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_cumsum.html",
@@ -823,10 +824,10 @@
     "description": "This chart creates a simple line chart from the cumulative sum of a fields.",
     "datasets": [
       "wheat"
-    ],
-    "id": 61
+    ]
   },
   {
+    "id": 62,
     "gallery_name": "altair",
     "example_name": "Line Chart with Custom Legend",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_custom_legend.html",
@@ -837,10 +838,10 @@
     "description": "This example uses the argmax aggregation function in order to create a custom\nlegend for a line chart.",
     "datasets": [
       "stocks"
-    ],
-    "id": 62
+    ]
   },
   {
+    "id": 63,
     "gallery_name": "altair",
     "example_name": "Line Chart with Custom Order",
     "example_url": "https://altair-viz.github.io/gallery/line_custom_order.html",
@@ -851,10 +852,10 @@
     "description": "By default, the line's path (order of points in the line) is\ndetermined by data values on the temporal/ordinal field.\nHowever, a field can be mapped to the order channel for a custom path.\n\nFor example, to show a pattern of data change over time between\ngasoline price and average miles driven per capita we use\norder channel to sort the points in the line by time field (year).\nThe earliest year (1956) is one endpoint and the latest year (2010)\nis the other endpoint.\n\nThis is based on Hannah Fairfield's article 'Driving Shifts Into Reverse'.\nSee https://archive.nytimes.com/www.nytimes.com/imagepages/2010/05/02/business/02metrics.html.",
     "datasets": [
       "driving"
-    ],
-    "id": 63
+    ]
   },
   {
+    "id": 64,
     "gallery_name": "altair",
     "example_name": "Line Chart with Datum for Color",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_color_datum.html",
@@ -865,10 +866,10 @@
     "description": "An example of using ``repeat`` inside ``datum`` to color a multi-series line chart.\nThis is adapted from this corresponding Vega-Lite Example:\n`Repeat and Layer to Show Different Movie Measures <https://vega.github.io/vega-lite/examples/repeat_layer.html>`_.",
     "datasets": [
       "movies"
-    ],
-    "id": 64
+    ]
   },
   {
+    "id": 65,
     "gallery_name": "altair",
     "example_name": "Line Chart with Last Value Labeled",
     "example_url": "https://altair-viz.github.io/gallery/line_with_last_value_labeled.html",
@@ -879,10 +880,10 @@
     "description": "This chart shows a line chart with a label annotating the final value",
     "datasets": [
       "stocks"
-    ],
-    "id": 65
+    ]
   },
   {
+    "id": 66,
     "gallery_name": "altair",
     "example_name": "Line Chart with Logarithmic Scale",
     "example_url": "https://altair-viz.github.io/gallery/line_with_log_scale.html",
@@ -893,10 +894,10 @@
     "description": "How to make a line chart on a `Logarithmic scale <https://en.wikipedia.org/wiki/Logarithmic_scale>`_.",
     "datasets": [
       "population"
-    ],
-    "id": 66
+    ]
   },
   {
+    "id": 67,
     "gallery_name": "altair",
     "example_name": "Line Chart with Percent axis",
     "example_url": "https://altair-viz.github.io/gallery/line_percent.html",
@@ -907,10 +908,10 @@
     "description": "This example shows how to format the tick labels of the y-axis of a chart as percentages.",
     "datasets": [
       "jobs"
-    ],
-    "id": 67
+    ]
   },
   {
+    "id": 68,
     "gallery_name": "altair",
     "example_name": "London Tube Lines",
     "example_url": "https://altair-viz.github.io/gallery/london_tube.html",
@@ -923,10 +924,10 @@
       "london_boroughs",
       "london_centroids",
       "london_tube_lines"
-    ],
-    "id": 68
+    ]
   },
   {
+    "id": 69,
     "gallery_name": "altair",
     "example_name": "Mosaic Chart with Labels",
     "example_url": "https://altair-viz.github.io/gallery/mosaic_with_labels.html",
@@ -937,10 +938,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 69
+    ]
   },
   {
+    "id": 70,
     "gallery_name": "altair",
     "example_name": "Multi-Line Highlight",
     "example_url": "https://altair-viz.github.io/gallery/multiline_highlight.html",
@@ -951,10 +952,10 @@
     "description": "This multi-line chart uses an invisible Voronoi tessellation to handle pointerover to\nidentify the nearest point and then highlight the line on which the point falls.\nIt is adapted from the Vega-Lite example found at\nhttps://bl.ocks.org/amitkaps/fe4238e716db53930b2f1a70d3401701",
     "datasets": [
       "stocks"
-    ],
-    "id": 70
+    ]
   },
   {
+    "id": 71,
     "gallery_name": "altair",
     "example_name": "Multi-Line Tooltip",
     "example_url": "https://altair-viz.github.io/gallery/multiline_tooltip.html",
@@ -963,10 +964,10 @@
       "interactive charts"
     ],
     "description": "This example shows how you can use selections and layers to create a\ntooltip-like behavior tied to the x position of the cursor.\nIf you are looking for more standard tooltips, see the :ref:`gallery_multiline_tooltip_standard` example.\n\nIn this example, we'll employ a little trick to isolate the x-position of the\ncursor: we add some transparent points with only an x encoding (no y encoding)\nand tie a *nearest* selection to these, tied to the \"x\" field.",
-    "datasets": [],
-    "id": 71
+    "datasets": []
   },
   {
+    "id": 72,
     "gallery_name": "altair",
     "example_name": "Multi-Line Tooltip (Standard)",
     "example_url": "https://altair-viz.github.io/gallery/multiline_tooltip_standard.html",
@@ -975,10 +976,10 @@
       "interactive charts"
     ],
     "description": "This example shows how to add a standard tooltip to the same chart \nas in :ref:`gallery_multiline_tooltip`. You can find another example\nusing this approach in the documentation on the :ref:`user-guide-pivot-transform` transformation.",
-    "datasets": [],
-    "id": 72
+    "datasets": []
   },
   {
+    "id": 73,
     "gallery_name": "altair",
     "example_name": "Multifeature Scatter Plot",
     "example_url": "https://altair-viz.github.io/gallery/multifeature_scatter_plot.html",
@@ -989,10 +990,10 @@
     "description": "This example shows how to make a scatter plot with multiple feature encodings.",
     "datasets": [
       "penguins"
-    ],
-    "id": 73
+    ]
   },
   {
+    "id": 74,
     "gallery_name": "altair",
     "example_name": "Multiple Interactions",
     "example_url": "https://altair-viz.github.io/gallery/multiple_interactions.html",
@@ -1003,10 +1004,10 @@
     "description": "This example shows how multiple user inputs can be layered onto a chart. The four inputs have functionality as follows:\n\n* Dropdown: Filters the movies by genre\n* Radio Buttons: Highlights certain films by Worldwide Gross\n* Mouse Drag and Scroll: Zooms the x and y scales to allow for panning\n* Checkbox: Scales the marker size of big budget films",
     "datasets": [
       "movies"
-    ],
-    "id": 74
+    ]
   },
   {
+    "id": 75,
     "gallery_name": "altair",
     "example_name": "Normalized Stacked Area Chart",
     "example_url": "https://altair-viz.github.io/gallery/normalized_stacked_area_chart.html",
@@ -1017,10 +1018,10 @@
     "description": "This example shows how to make a normalized stacked area chart.",
     "datasets": [
       "iowa_electricity"
-    ],
-    "id": 75
+    ]
   },
   {
+    "id": 76,
     "gallery_name": "altair",
     "example_name": "Normalized Stacked Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/normalized_stacked_bar_chart.html",
@@ -1031,10 +1032,10 @@
     "description": "This is an example of a normalized stacked bar chart using data which contains crop yields over different regions and different years in the 1930s.",
     "datasets": [
       "barley"
-    ],
-    "id": 76
+    ]
   },
   {
+    "id": 77,
     "gallery_name": "altair",
     "example_name": "Pacman Chart",
     "example_url": "https://altair-viz.github.io/gallery/pacman_chart.html",
@@ -1043,10 +1044,10 @@
       "circular plots"
     ],
     "description": "Chart made using ``mark_arc`` and constant values.\nThis could also be made using \n``alt.Chart(source).mark_arc(color = \"gold\", theta = (5/8)*np.pi, theta2 = (19/8)*np.pi,radius=100)``.",
-    "datasets": [],
-    "id": 77
+    "datasets": []
   },
   {
+    "id": 78,
     "gallery_name": "altair",
     "example_name": "Parallel Coordinates",
     "example_url": "https://altair-viz.github.io/gallery/parallel_coordinates.html",
@@ -1057,10 +1058,10 @@
     "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_\nchart is a chart that lets you visualize the individual data points by drawing\na single line for each of them.\nSuch a chart can be created in Altair by first transforming the data into a\nsuitable representation.\nThis example shows a parallel coordinates chart with the Penguins dataset.",
     "datasets": [
       "penguins"
-    ],
-    "id": 78
+    ]
   },
   {
+    "id": 79,
     "gallery_name": "altair",
     "example_name": "Pie Chart",
     "example_url": "https://altair-viz.github.io/gallery/pie_chart.html",
@@ -1069,10 +1070,10 @@
       "circular plots"
     ],
     "description": "This example shows how to make a Pie Chart using ``mark_arc``.\nThis is adapted from a corresponding Vega-Lite Example:\n`Pie Chart <https://vega.github.io/vega-lite/examples/arc_pie.html>`_.",
-    "datasets": [],
-    "id": 79
+    "datasets": []
   },
   {
+    "id": 80,
     "gallery_name": "altair",
     "example_name": "Pie Chart with Labels",
     "example_url": "https://altair-viz.github.io/gallery/pie_chart_with_labels.html",
@@ -1081,10 +1082,10 @@
       "circular plots"
     ],
     "description": "This example shows how to layer text over arc marks (``mark_arc``) to label pie charts.\nThis is adapted from a corresponding Vega-Lite Example:\n`Pie Chart with Labels <https://vega.github.io/vega-lite/examples/layer_arc_label.html>`_.",
-    "datasets": [],
-    "id": 80
+    "datasets": []
   },
   {
+    "id": 81,
     "gallery_name": "altair",
     "example_name": "Polar Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/polar_bar_chart.html",
@@ -1093,10 +1094,10 @@
       "circular plots"
     ],
     "description": "This example shows how to make a polar bar chart using ``mark_arc``.\nThis could also have been called a \"pie chart with axis labels\",\nbut is more commonly referred to as a polar bar chart.\nThe axis lines are created using pie charts with only the stroke visible.",
-    "datasets": [],
-    "id": 81
+    "datasets": []
   },
   {
+    "id": 82,
     "gallery_name": "altair",
     "example_name": "Polynomial Fit Plot with Regression Transform",
     "example_url": "https://altair-viz.github.io/gallery/poly_fit_regression.html",
@@ -1105,10 +1106,10 @@
       "uncertainties and trends"
     ],
     "description": "This example shows how to overlay data with multiple fitted polynomials using\nthe regression transform.",
-    "datasets": [],
-    "id": 82
+    "datasets": []
   },
   {
+    "id": 83,
     "gallery_name": "altair",
     "example_name": "Population of Falkensee from 1875 to 2014",
     "example_url": "https://altair-viz.github.io/gallery/falkensee.html",
@@ -1117,10 +1118,10 @@
       "case studies"
     ],
     "description": "This example is a reproduction of the Falkensee plot found in the Vega-Lite examples.",
-    "datasets": [],
-    "id": 83
+    "datasets": []
   },
   {
+    "id": 84,
     "gallery_name": "altair",
     "example_name": "Pyramid Pie Chart",
     "example_url": "https://altair-viz.github.io/gallery/pyramid.html",
@@ -1129,10 +1130,10 @@
       "case studies"
     ],
     "description": "Altair reproduction of http://robslink.com/SAS/democd91/pyramid_pie.htm",
-    "datasets": [],
-    "id": 84
+    "datasets": []
   },
   {
+    "id": 85,
     "gallery_name": "altair",
     "example_name": "Radial Chart",
     "example_url": "https://altair-viz.github.io/gallery/radial_chart.html",
@@ -1141,10 +1142,10 @@
       "circular plots"
     ],
     "description": "This radial plot uses both angular and radial extent to convey multiple dimensions of data.\nThis is adapted from a corresponding Vega-Lite Example:\n`Radial Plot <https://vega.github.io/vega-lite/examples/arc_radial.html>`_.",
-    "datasets": [],
-    "id": 85
+    "datasets": []
   },
   {
+    "id": 86,
     "gallery_name": "altair",
     "example_name": "Ranged Dot Plot",
     "example_url": "https://altair-viz.github.io/gallery/ranged_dot_plot.html",
@@ -1155,10 +1156,10 @@
     "description": "This example shows a ranged dot plot to convey changing life expectancy for the five most populous countries (between 1955 and 2000).",
     "datasets": [
       "countries"
-    ],
-    "id": 86
+    ]
   },
   {
+    "id": 87,
     "gallery_name": "altair",
     "example_name": "Repeated Density Estimates",
     "example_url": "https://altair-viz.github.io/gallery/density_repeat.html",
@@ -1169,10 +1170,10 @@
     "description": "Density estimates for each measurement of penguins.\nThis is what we call a \"repeated\" plot, with one subplot\nfor each measurement type. All measurements are in millimeters,\nmaking them directly comparable on a shared x-axis.",
     "datasets": [
       "penguins"
-    ],
-    "id": 87
+    ]
   },
   {
+    "id": 88,
     "gallery_name": "altair",
     "example_name": "Ridgeline plot",
     "example_url": "https://altair-viz.github.io/gallery/ridgeline_plot.html",
@@ -1183,10 +1184,10 @@
     "description": "A `Ridgeline plot <https://clauswilke.com/blog/2017/09/15/goodbye-joyplots/>`_\nlets you visualize distribution of a numeric value for different\nsubsets of data (what we call \"facets\" in Altair).\n\nSuch a chart can be created in Altair by first transforming the data into a\nsuitable representation.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 88
+    ]
   },
   {
+    "id": 89,
     "gallery_name": "altair",
     "example_name": "Scatter Plot with Faceted Marginal Histograms",
     "example_url": "https://altair-viz.github.io/gallery/scatter_marginal_hist.html",
@@ -1197,10 +1198,10 @@
     "description": "This example demonstrates how to generate a scatter plot,\nwith faceted marginal histograms that share their respective x- and y-limits.",
     "datasets": [
       "penguins"
-    ],
-    "id": 89
+    ]
   },
   {
+    "id": 90,
     "gallery_name": "altair",
     "example_name": "Scatter Plot with Minimap",
     "example_url": "https://altair-viz.github.io/gallery/scatter_with_minimap.html",
@@ -1211,10 +1212,10 @@
     "description": "This example shows how to create a miniature version of a plot\nsuch that creating a selection in the miniature version\nadjusts the axis limits in another, more detailed view.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 90
+    ]
   },
   {
+    "id": 91,
     "gallery_name": "altair",
     "example_name": "Scatter Plot with Rolling Mean",
     "example_url": "https://altair-viz.github.io/gallery/scatter_with_rolling_mean.html",
@@ -1225,10 +1226,10 @@
     "description": "A scatter plot with a rolling mean overlay. In this example a 30 day window\nis used to calculate the mean of the maximum temperature around each date.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 91
+    ]
   },
   {
+    "id": 92,
     "gallery_name": "altair",
     "example_name": "Scatter plot with point paths on hover with search box",
     "example_url": "https://altair-viz.github.io/gallery/scatter_point_paths_hover.html",
@@ -1239,10 +1240,10 @@
     "description": "This example combines cross-sectional analysis (comparing countries at a single point in time) \nwith longitudinal analysis (tracking changes in individual countries over time), using\nan interactive visualization technique inspired by [this Vega example](https://vega.github.io/vega/examples/global-development/)\n\nKey features:\n1. Point Paths. On hover, shows data trajectories using a trail mark that\nthickens from past to present, clearly indicating the direction of time.\n2. Search Box. Implements a case-insensitive regex filter for country names,\nenabling dynamic, flexible data point selection to enhance exploratory analysis.",
     "datasets": [
       "gapminder"
-    ],
-    "id": 92
+    ]
   },
   {
+    "id": 93,
     "gallery_name": "altair",
     "example_name": "Seattle Weather Interactive",
     "example_url": "https://altair-viz.github.io/gallery/seattle_weather_interactive.html",
@@ -1253,10 +1254,10 @@
     "description": "This chart provides an interactive exploration of Seattle weather over the\ncourse of the year. It includes a one-axis brush selection to easily\nsee the distribution of weather types in a particular date range.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 93
+    ]
   },
   {
+    "id": 94,
     "gallery_name": "altair",
     "example_name": "Selection Detail",
     "example_url": "https://altair-viz.github.io/gallery/select_detail.html",
@@ -1265,10 +1266,10 @@
       "interactive charts"
     ],
     "description": "This example shows a selection that links two views of data: the left panel\ncontains one point per object, and the right panel contains one line per\nobject. Clicking on either the points or lines will select the corresponding\nobjects in both views of the data.\n\nThe challenge lies in expressing such hierarchical data in a way that Altair\ncan handle. We do this by merging the data into a \"long form\" dataframe, and\naggregating identical metadata for the final plot.",
-    "datasets": [],
-    "id": 94
+    "datasets": []
   },
   {
+    "id": 95,
     "gallery_name": "altair",
     "example_name": "Simple Scatter Plot with Errorbars",
     "example_url": "https://altair-viz.github.io/gallery/simple_scatter_with_errorbars.html",
@@ -1277,10 +1278,10 @@
       "uncertainties and trends"
     ],
     "description": "A simple scatter plot of a data set with errorbars.",
-    "datasets": [],
-    "id": 95
+    "datasets": []
   },
   {
+    "id": 96,
     "gallery_name": "altair",
     "example_name": "Sorted Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_sorted.html",
@@ -1291,10 +1292,10 @@
     "description": "This example shows a bar chart sorted by a calculated value.",
     "datasets": [
       "barley"
-    ],
-    "id": 96
+    ]
   },
   {
+    "id": 97,
     "gallery_name": "altair",
     "example_name": "Sorted Error Bars showing Confidence Interval",
     "example_url": "https://altair-viz.github.io/gallery/sorted_error_bars_with_ci.html",
@@ -1305,10 +1306,10 @@
     "description": "This example shows how to show error bars using confidence intervals, while also sorting the y-axis based on x-axis values.",
     "datasets": [
       "barley"
-    ],
-    "id": 97
+    ]
   },
   {
+    "id": 98,
     "gallery_name": "altair",
     "example_name": "Stacked Bar Chart with Sorted Segments",
     "example_url": "https://altair-viz.github.io/gallery/stacked_bar_chart_sorted_segments.html",
@@ -1319,10 +1320,10 @@
     "description": "This is an example of a stacked-bar chart with the segments of each bar resorted.",
     "datasets": [
       "barley"
-    ],
-    "id": 98
+    ]
   },
   {
+    "id": 99,
     "gallery_name": "altair",
     "example_name": "Stacked Bar Chart with Text Overlay",
     "example_url": "https://altair-viz.github.io/gallery/stacked_bar_chart_with_text.html",
@@ -1333,10 +1334,10 @@
     "description": "This example shows how to overlay text on a stacked bar chart. For both the\nbar and text marks, we use the ``stack`` argument in the ``x`` encoding to\ncause the values to be stacked horizontally.",
     "datasets": [
       "barley"
-    ],
-    "id": 99
+    ]
   },
   {
+    "id": 100,
     "gallery_name": "altair",
     "example_name": "Stacked Density Estimates",
     "example_url": "https://altair-viz.github.io/gallery/density_stack.html",
@@ -1347,10 +1348,10 @@
     "description": "To plot a stacked graph of estimates, use a shared ``extent`` and a fixed\nnumber of subdivision ``steps`` to ensure that the points for each area align\nwell.  Density estimates of body mass for each penguin species are plotted\nin a stacked method.  In addition, setting ``counts`` to true multiplies the\ndensities by the number of data points in each group, preserving proportional\ndifferences.",
     "datasets": [
       "penguins"
-    ],
-    "id": 100
+    ]
   },
   {
+    "id": 101,
     "gallery_name": "altair",
     "example_name": "Stem and Leaf Plot",
     "example_url": "https://altair-viz.github.io/gallery/stem_and_leaf.html",
@@ -1359,10 +1360,10 @@
       "advanced calculations"
     ],
     "description": "This example shows how to make a stem and leaf plot.",
-    "datasets": [],
-    "id": 101
+    "datasets": []
   },
   {
+    "id": 102,
     "gallery_name": "altair",
     "example_name": "Streamgraph",
     "example_url": "https://altair-viz.github.io/gallery/streamgraph.html",
@@ -1373,10 +1374,10 @@
     "description": "This example shows the streamgraph from vega-lite examples.",
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 102
+    ]
   },
   {
+    "id": 103,
     "gallery_name": "altair",
     "example_name": "Strip Plot with Jitter",
     "example_url": "https://altair-viz.github.io/gallery/strip_plot_jitter.html",
@@ -1387,10 +1388,10 @@
     "description": "In this chart, we encode the ``Major Genre`` column from the ``movies`` dataset\nin the ``y``-channel. In the default presentation of this data, it would be\ndifficult to gauge the relative frequencies with which different values occur\nbecause there would be so much overlap. To address this, we use the ``yOffset``\nchannel to incorporate a random offset (jittering). The example is shown twice,\non the left side using normally distributed and on the right side using\nuniformally distributed jitter.",
     "datasets": [
       "movies"
-    ],
-    "id": 103
+    ]
   },
   {
+    "id": 104,
     "gallery_name": "altair",
     "example_name": "Text over a Heatmap",
     "example_url": "https://altair-viz.github.io/gallery/layered_heatmap_text.html",
@@ -1401,10 +1402,10 @@
     "description": "An example of a layered chart of text over a heatmap using the cars dataset.",
     "datasets": [
       "cars"
-    ],
-    "id": 104
+    ]
   },
   {
+    "id": 105,
     "gallery_name": "altair",
     "example_name": "The U.S. Employment Crash During the Great Recession",
     "example_url": "https://altair-viz.github.io/gallery/us_employment.html",
@@ -1415,10 +1416,10 @@
     "description": "This example is a fully developed bar chart with negative values using the sample dataset of U.S. employment changes during the Great Recession.",
     "datasets": [
       "us_employment"
-    ],
-    "id": 105
+    ]
   },
   {
+    "id": 106,
     "gallery_name": "altair",
     "example_name": "Top K Items",
     "example_url": "https://altair-viz.github.io/gallery/top_k_items.html",
@@ -1429,10 +1430,10 @@
     "description": "This example shows how to use the window and transformation filter to display\nthe Top items of a long list of items in decreasing order.\nHere we sort the top 10 highest ranking movies of IMDB.",
     "datasets": [
       "movies"
-    ],
-    "id": 106
+    ]
   },
   {
+    "id": 107,
     "gallery_name": "altair",
     "example_name": "Top K Letters",
     "example_url": "https://altair-viz.github.io/gallery/top_k_letters.html",
@@ -1441,10 +1442,10 @@
       "advanced calculations"
     ],
     "description": "This example shows how to use a window transform in order to display only the\ntop K categories by number of entries. In this case, we rank the characters in\nthe first paragraph of Dickens' *A Tale of Two Cities* by number of occurrences.",
-    "datasets": [],
-    "id": 107
+    "datasets": []
   },
   {
+    "id": 108,
     "gallery_name": "altair",
     "example_name": "Top-K Plot with Others",
     "example_url": "https://altair-viz.github.io/gallery/top_k_with_others.html",
@@ -1455,10 +1456,10 @@
     "description": "This example shows how to use aggregate, window, and calculate transformations\nto display the top-k directors by average worldwide gross while grouping the \nremaining directors as 'All Others'.",
     "datasets": [
       "movies"
-    ],
-    "id": 108
+    ]
   },
   {
+    "id": 109,
     "gallery_name": "altair",
     "example_name": "U.S. State Capitals Overlaid on a Map of the U.S",
     "example_url": "https://altair-viz.github.io/gallery/us_state_capitals.html",
@@ -1470,10 +1471,10 @@
     "datasets": [
       "us_10m",
       "us_state_capitals"
-    ],
-    "id": 109
+    ]
   },
   {
+    "id": 110,
     "gallery_name": "altair",
     "example_name": "US Population by Age and Sex",
     "example_url": "https://altair-viz.github.io/gallery/us_population_over_time.html",
@@ -1484,10 +1485,10 @@
     "description": "This chart visualizes the age distribution of the US population over time.\nIt uses a slider widget that is bound to the year to visualize the age\ndistribution over time.",
     "datasets": [
       "population"
-    ],
-    "id": 110
+    ]
   },
   {
+    "id": 111,
     "gallery_name": "altair",
     "example_name": "US Population: Wrapped Facet",
     "example_url": "https://altair-viz.github.io/gallery/us_population_over_time_facet.html",
@@ -1498,10 +1499,10 @@
     "description": "This chart visualizes the age distribution of the US population over time,\nusing a wrapped faceting of the data by decade.",
     "datasets": [
       "population"
-    ],
-    "id": 111
+    ]
   },
   {
+    "id": 112,
     "gallery_name": "altair",
     "example_name": "Us Population Pyramid Over Time",
     "example_url": "https://altair-viz.github.io/gallery/us_population_pyramid_over_time.html",
@@ -1512,10 +1513,10 @@
     "description": null,
     "datasets": [
       "population"
-    ],
-    "id": 112
+    ]
   },
   {
+    "id": 113,
     "gallery_name": "altair",
     "example_name": "Violin Plot",
     "example_url": "https://altair-viz.github.io/gallery/violin_plot.html",
@@ -1526,10 +1527,10 @@
     "description": "This example shows how to make a Violin Plot using Altair's density transform.",
     "datasets": [
       "cars"
-    ],
-    "id": 113
+    ]
   },
   {
+    "id": 114,
     "gallery_name": "altair",
     "example_name": "Wheat and Wages",
     "example_url": "https://altair-viz.github.io/gallery/wheat_wages.html",
@@ -1541,10 +1542,10 @@
     "datasets": [
       "monarchs",
       "wheat"
-    ],
-    "id": 114
+    ]
   },
   {
+    "id": 115,
     "gallery_name": "altair",
     "example_name": "Wilkinson Dot Plot",
     "example_url": "https://altair-viz.github.io/gallery/wilkinson-dot-plot.html",
@@ -1553,10 +1554,10 @@
       "advanced calculations"
     ],
     "description": "An example of a `Wilkinson Dot Plot <https://en.wikipedia.org/wiki/Dot_plot_(statistics)>`_",
-    "datasets": [],
-    "id": 115
+    "datasets": []
   },
   {
+    "id": 116,
     "gallery_name": "altair",
     "example_name": "Wind Vector Map",
     "example_url": "https://altair-viz.github.io/gallery/wind_vector_map.html",
@@ -1568,10 +1569,10 @@
     "datasets": [
       "windvectors",
       "world_110m"
-    ],
-    "id": 116
+    ]
   },
   {
+    "id": 117,
     "gallery_name": "altair",
     "example_name": "Window Rank Line Chart",
     "example_url": "https://altair-viz.github.io/gallery/window_rank.html",
@@ -1580,10 +1581,10 @@
       "line charts"
     ],
     "description": "This example shows the Group F rankings in the 2018 World Cup after each matchday. \nA window transformation is used to rank each after each match day, sorting by points and difference.",
-    "datasets": [],
-    "id": 117
+    "datasets": []
   },
   {
+    "id": 118,
     "gallery_name": "vega",
     "example_name": "Airport Connections",
     "example_url": "https://vega.github.io/vega/examples/airport-connections/",
@@ -1596,10 +1597,10 @@
       "us_10m",
       "flights_airport",
       "airports"
-    ],
-    "id": 118
+    ]
   },
   {
+    "id": 119,
     "gallery_name": "vega",
     "example_name": "Annual Precipitation",
     "example_url": "https://vega.github.io/vega/examples/annual-precipitation/",
@@ -1611,10 +1612,10 @@
     "datasets": [
       "annual_precip",
       "world_110m"
-    ],
-    "id": 119
+    ]
   },
   {
+    "id": 120,
     "gallery_name": "vega",
     "example_name": "Annual Temperature",
     "example_url": "https://vega.github.io/vega/examples/annual-temperature/",
@@ -1625,10 +1626,10 @@
     "description": null,
     "datasets": [
       "seattle_weather_hourly_normals"
-    ],
-    "id": 120
+    ]
   },
   {
+    "id": 121,
     "gallery_name": "vega",
     "example_name": "Arc Diagram",
     "example_url": "https://vega.github.io/vega/examples/arc-diagram/",
@@ -1639,10 +1640,10 @@
     "description": null,
     "datasets": [
       "miserables"
-    ],
-    "id": 121
+    ]
   },
   {
+    "id": 122,
     "gallery_name": "vega",
     "example_name": "Area Chart",
     "example_url": "https://vega.github.io/vega/examples/area-chart/",
@@ -1651,10 +1652,10 @@
       "Line & Area Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 122
+    "datasets": []
   },
   {
+    "id": 123,
     "gallery_name": "vega",
     "example_name": "Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/bar-chart/",
@@ -1663,10 +1664,10 @@
       "Bar Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 123
+    "datasets": []
   },
   {
+    "id": 124,
     "gallery_name": "vega",
     "example_name": "Bar Line Toggle",
     "example_url": "https://vega.github.io/vega/examples/bar-line-toggle/",
@@ -1675,10 +1676,10 @@
       "Interaction Techniques"
     ],
     "description": null,
-    "datasets": [],
-    "id": 124
+    "datasets": []
   },
   {
+    "id": 125,
     "gallery_name": "vega",
     "example_name": "Barley Trellis Plot",
     "example_url": "https://vega.github.io/vega/examples/barley-trellis-plot/",
@@ -1689,10 +1690,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 125
+    ]
   },
   {
+    "id": 126,
     "gallery_name": "vega",
     "example_name": "Beeswarm Plot",
     "example_url": "https://vega.github.io/vega/examples/beeswarm-plot/",
@@ -1703,10 +1704,10 @@
     "description": null,
     "datasets": [
       "miserables"
-    ],
-    "id": 126
+    ]
   },
   {
+    "id": 127,
     "gallery_name": "vega",
     "example_name": "Binned Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/binned-scatter-plot/",
@@ -1717,10 +1718,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 127
+    ]
   },
   {
+    "id": 128,
     "gallery_name": "vega",
     "example_name": "Box Plot",
     "example_url": "https://vega.github.io/vega/examples/box-plot/",
@@ -1731,10 +1732,10 @@
     "description": null,
     "datasets": [
       "penguins"
-    ],
-    "id": 128
+    ]
   },
   {
+    "id": 129,
     "gallery_name": "vega",
     "example_name": "Brushing Scatter Plots",
     "example_url": "https://vega.github.io/vega/examples/brushing-scatter-plots/",
@@ -1745,10 +1746,10 @@
     "description": null,
     "datasets": [
       "penguins"
-    ],
-    "id": 129
+    ]
   },
   {
+    "id": 130,
     "gallery_name": "vega",
     "example_name": "Budget Forecasts",
     "example_url": "https://vega.github.io/vega/examples/budget-forecasts/",
@@ -1759,10 +1760,10 @@
     "description": null,
     "datasets": [
       "budgets"
-    ],
-    "id": 130
+    ]
   },
   {
+    "id": 131,
     "gallery_name": "vega",
     "example_name": "Calendar View",
     "example_url": "https://vega.github.io/vega/examples/calendar-view/",
@@ -1773,10 +1774,10 @@
     "description": null,
     "datasets": [
       "sp500_2000"
-    ],
-    "id": 131
+    ]
   },
   {
+    "id": 132,
     "gallery_name": "vega",
     "example_name": "Circle Packing",
     "example_url": "https://vega.github.io/vega/examples/circle-packing/",
@@ -1787,10 +1788,10 @@
     "description": null,
     "datasets": [
       "flare"
-    ],
-    "id": 132
+    ]
   },
   {
+    "id": 133,
     "gallery_name": "vega",
     "example_name": "Clock",
     "example_url": "https://vega.github.io/vega/examples/clock/",
@@ -1799,10 +1800,10 @@
       "Custom Designs"
     ],
     "description": null,
-    "datasets": [],
-    "id": 133
+    "datasets": []
   },
   {
+    "id": 134,
     "gallery_name": "vega",
     "example_name": "Connected Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/connected-scatter-plot/",
@@ -1813,10 +1814,10 @@
     "description": null,
     "datasets": [
       "driving"
-    ],
-    "id": 134
+    ]
   },
   {
+    "id": 135,
     "gallery_name": "vega",
     "example_name": "Contour Plot",
     "example_url": "https://vega.github.io/vega/examples/contour-plot/",
@@ -1827,10 +1828,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 135
+    ]
   },
   {
+    "id": 136,
     "gallery_name": "vega",
     "example_name": "County Unemployment",
     "example_url": "https://vega.github.io/vega/examples/county-unemployment/",
@@ -1842,10 +1843,10 @@
     "datasets": [
       "unemployment",
       "us_10m"
-    ],
-    "id": 136
+    ]
   },
   {
+    "id": 137,
     "gallery_name": "vega",
     "example_name": "Crossfilter Flights",
     "example_url": "https://vega.github.io/vega/examples/crossfilter-flights/",
@@ -1856,10 +1857,10 @@
     "description": null,
     "datasets": [
       "flights_200k_json"
-    ],
-    "id": 137
+    ]
   },
   {
+    "id": 138,
     "gallery_name": "vega",
     "example_name": "Density Heatmaps",
     "example_url": "https://vega.github.io/vega/examples/density-heatmaps/",
@@ -1870,10 +1871,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 138
+    ]
   },
   {
+    "id": 139,
     "gallery_name": "vega",
     "example_name": "Distortion Comparison",
     "example_url": "https://vega.github.io/vega/examples/distortion-comparison/",
@@ -1884,10 +1885,10 @@
     "description": null,
     "datasets": [
       "world_110m"
-    ],
-    "id": 139
+    ]
   },
   {
+    "id": 140,
     "gallery_name": "vega",
     "example_name": "Donut Chart",
     "example_url": "https://vega.github.io/vega/examples/donut-chart/",
@@ -1896,10 +1897,10 @@
       "Circular Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 140
+    "datasets": []
   },
   {
+    "id": 141,
     "gallery_name": "vega",
     "example_name": "Donut Chart Labelled",
     "example_url": "https://vega.github.io/vega/examples/donut-chart-labelled/",
@@ -1908,10 +1909,10 @@
       "Circular Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 141
+    "datasets": []
   },
   {
+    "id": 142,
     "gallery_name": "vega",
     "example_name": "Dorling Cartogram",
     "example_url": "https://vega.github.io/vega/examples/dorling-cartogram/",
@@ -1923,10 +1924,10 @@
     "datasets": [
       "us_10m",
       "obesity"
-    ],
-    "id": 142
+    ]
   },
   {
+    "id": 143,
     "gallery_name": "vega",
     "example_name": "Dot Plot",
     "example_url": "https://vega.github.io/vega/examples/dot-plot/",
@@ -1935,10 +1936,10 @@
       "Distributions"
     ],
     "description": null,
-    "datasets": [],
-    "id": 143
+    "datasets": []
   },
   {
+    "id": 144,
     "gallery_name": "vega",
     "example_name": "Earthquakes",
     "example_url": "https://vega.github.io/vega/examples/earthquakes/",
@@ -1950,10 +1951,10 @@
     "datasets": [
       "world_110m",
       "earthquakes"
-    ],
-    "id": 144
+    ]
   },
   {
+    "id": 145,
     "gallery_name": "vega",
     "example_name": "Earthquakes Globe",
     "example_url": "https://vega.github.io/vega/examples/earthquakes-globe/",
@@ -1965,10 +1966,10 @@
     "datasets": [
       "world_110m",
       "earthquakes"
-    ],
-    "id": 145
+    ]
   },
   {
+    "id": 146,
     "gallery_name": "vega",
     "example_name": "Edge Bundling",
     "example_url": "https://vega.github.io/vega/examples/edge-bundling/",
@@ -1980,10 +1981,10 @@
     "datasets": [
       "flare",
       "flare_dependencies"
-    ],
-    "id": 146
+    ]
   },
   {
+    "id": 147,
     "gallery_name": "vega",
     "example_name": "Error Bars",
     "example_url": "https://vega.github.io/vega/examples/error-bars/",
@@ -1994,10 +1995,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 147
+    ]
   },
   {
+    "id": 148,
     "gallery_name": "vega",
     "example_name": "Falkensee Population",
     "example_url": "https://vega.github.io/vega/examples/falkensee-population/",
@@ -2006,10 +2007,10 @@
       "Custom Designs"
     ],
     "description": null,
-    "datasets": [],
-    "id": 148
+    "datasets": []
   },
   {
+    "id": 149,
     "gallery_name": "vega",
     "example_name": "Flight Passengers",
     "example_url": "https://vega.github.io/vega/examples/flight-passengers/",
@@ -2018,10 +2019,10 @@
       "Custom Designs"
     ],
     "description": null,
-    "datasets": [],
-    "id": 149
+    "datasets": []
   },
   {
+    "id": 150,
     "gallery_name": "vega",
     "example_name": "Force Directed Layout",
     "example_url": "https://vega.github.io/vega/examples/force-directed-layout/",
@@ -2032,10 +2033,10 @@
     "description": null,
     "datasets": [
       "miserables"
-    ],
-    "id": 150
+    ]
   },
   {
+    "id": 151,
     "gallery_name": "vega",
     "example_name": "Global Development",
     "example_url": "https://vega.github.io/vega/examples/global-development/",
@@ -2046,10 +2047,10 @@
     "description": null,
     "datasets": [
       "gapminder"
-    ],
-    "id": 151
+    ]
   },
   {
+    "id": 152,
     "gallery_name": "vega",
     "example_name": "Grouped Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/grouped-bar-chart/",
@@ -2058,10 +2059,10 @@
       "Bar Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 152
+    "datasets": []
   },
   {
+    "id": 153,
     "gallery_name": "vega",
     "example_name": "Heatmap",
     "example_url": "https://vega.github.io/vega/examples/heatmap/",
@@ -2072,10 +2073,10 @@
     "description": null,
     "datasets": [
       "seattle_weather_hourly_normals"
-    ],
-    "id": 153
+    ]
   },
   {
+    "id": 154,
     "gallery_name": "vega",
     "example_name": "Histogram",
     "example_url": "https://vega.github.io/vega/examples/histogram/",
@@ -2086,10 +2087,10 @@
     "description": null,
     "datasets": [
       "normal_2d"
-    ],
-    "id": 154
+    ]
   },
   {
+    "id": 155,
     "gallery_name": "vega",
     "example_name": "Histogram Null Values",
     "example_url": "https://vega.github.io/vega/examples/histogram-null-values/",
@@ -2100,10 +2101,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 155
+    ]
   },
   {
+    "id": 156,
     "gallery_name": "vega",
     "example_name": "Horizon Graph",
     "example_url": "https://vega.github.io/vega/examples/horizon-graph/",
@@ -2112,10 +2113,10 @@
       "Line & Area Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 156
+    "datasets": []
   },
   {
+    "id": 157,
     "gallery_name": "vega",
     "example_name": "Hypothetical Outcome Plots",
     "example_url": "https://vega.github.io/vega/examples/hypothetical-outcome-plots/",
@@ -2124,10 +2125,10 @@
       "Distributions"
     ],
     "description": null,
-    "datasets": [],
-    "id": 157
+    "datasets": []
   },
   {
+    "id": 158,
     "gallery_name": "vega",
     "example_name": "Interactive Legend",
     "example_url": "https://vega.github.io/vega/examples/interactive-legend/",
@@ -2138,10 +2139,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 158
+    ]
   },
   {
+    "id": 159,
     "gallery_name": "vega",
     "example_name": "Job Voyager",
     "example_url": "https://vega.github.io/vega/examples/job-voyager/",
@@ -2152,10 +2153,10 @@
     "description": null,
     "datasets": [
       "jobs"
-    ],
-    "id": 159
+    ]
   },
   {
+    "id": 160,
     "gallery_name": "vega",
     "example_name": "Labeled Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/labeled-scatter-plot/",
@@ -2166,10 +2167,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 160
+    ]
   },
   {
+    "id": 161,
     "gallery_name": "vega",
     "example_name": "Line Chart",
     "example_url": "https://vega.github.io/vega/examples/line-chart/",
@@ -2178,10 +2179,10 @@
       "Line & Area Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 161
+    "datasets": []
   },
   {
+    "id": 162,
     "gallery_name": "vega",
     "example_name": "Loess Regression",
     "example_url": "https://vega.github.io/vega/examples/loess-regression/",
@@ -2192,10 +2193,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 162
+    ]
   },
   {
+    "id": 163,
     "gallery_name": "vega",
     "example_name": "Map With Tooltip",
     "example_url": "https://vega.github.io/vega/examples/map-with-tooltip/",
@@ -2207,10 +2208,10 @@
     "datasets": [
       "unemployment",
       "us_10m"
-    ],
-    "id": 163
+    ]
   },
   {
+    "id": 164,
     "gallery_name": "vega",
     "example_name": "Nested Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/nested-bar-chart/",
@@ -2219,10 +2220,10 @@
       "Bar Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 164
+    "datasets": []
   },
   {
+    "id": 165,
     "gallery_name": "vega",
     "example_name": "Overview Plus Detail",
     "example_url": "https://vega.github.io/vega/examples/overview-plus-detail/",
@@ -2233,10 +2234,10 @@
     "description": null,
     "datasets": [
       "sp500"
-    ],
-    "id": 165
+    ]
   },
   {
+    "id": 166,
     "gallery_name": "vega",
     "example_name": "Packed Bubble Chart",
     "example_url": "https://vega.github.io/vega/examples/packed-bubble-chart/",
@@ -2245,10 +2246,10 @@
       "Other Chart Types"
     ],
     "description": null,
-    "datasets": [],
-    "id": 166
+    "datasets": []
   },
   {
+    "id": 167,
     "gallery_name": "vega",
     "example_name": "Pacman",
     "example_url": "https://vega.github.io/vega/examples/pacman/",
@@ -2257,10 +2258,10 @@
       "Interaction Techniques"
     ],
     "description": null,
-    "datasets": [],
-    "id": 167
+    "datasets": []
   },
   {
+    "id": 168,
     "gallery_name": "vega",
     "example_name": "Parallel Coordinates",
     "example_url": "https://vega.github.io/vega/examples/parallel-coordinates/",
@@ -2271,10 +2272,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 168
+    ]
   },
   {
+    "id": 169,
     "gallery_name": "vega",
     "example_name": "Pi Monte Carlo",
     "example_url": "https://vega.github.io/vega/examples/pi-monte-carlo/",
@@ -2283,10 +2284,10 @@
       "Interaction Techniques"
     ],
     "description": null,
-    "datasets": [],
-    "id": 169
+    "datasets": []
   },
   {
+    "id": 170,
     "gallery_name": "vega",
     "example_name": "Pie Chart",
     "example_url": "https://vega.github.io/vega/examples/pie-chart/",
@@ -2295,10 +2296,10 @@
       "Circular Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 170
+    "datasets": []
   },
   {
+    "id": 171,
     "gallery_name": "vega",
     "example_name": "Platformer",
     "example_url": "https://vega.github.io/vega/examples/platformer/",
@@ -2309,10 +2310,10 @@
     "description": null,
     "datasets": [
       "platformer_terrain"
-    ],
-    "id": 171
+    ]
   },
   {
+    "id": 172,
     "gallery_name": "vega",
     "example_name": "Population Pyramid",
     "example_url": "https://vega.github.io/vega/examples/population-pyramid/",
@@ -2323,10 +2324,10 @@
     "description": null,
     "datasets": [
       "population"
-    ],
-    "id": 172
+    ]
   },
   {
+    "id": 173,
     "gallery_name": "vega",
     "example_name": "Probability Density",
     "example_url": "https://vega.github.io/vega/examples/probability-density/",
@@ -2337,10 +2338,10 @@
     "description": null,
     "datasets": [
       "normal_2d"
-    ],
-    "id": 173
+    ]
   },
   {
+    "id": 174,
     "gallery_name": "vega",
     "example_name": "Projections",
     "example_url": "https://vega.github.io/vega/examples/projections/",
@@ -2351,10 +2352,10 @@
     "description": null,
     "datasets": [
       "world_110m"
-    ],
-    "id": 174
+    ]
   },
   {
+    "id": 175,
     "gallery_name": "vega",
     "example_name": "Quantile Dot Plot",
     "example_url": "https://vega.github.io/vega/examples/quantile-dot-plot/",
@@ -2363,10 +2364,10 @@
       "Distributions"
     ],
     "description": null,
-    "datasets": [],
-    "id": 175
+    "datasets": []
   },
   {
+    "id": 176,
     "gallery_name": "vega",
     "example_name": "Quantile Quantile Plot",
     "example_url": "https://vega.github.io/vega/examples/quantile-quantile-plot/",
@@ -2378,10 +2379,10 @@
     "datasets": [
       "normal_2d",
       "uniform_2d"
-    ],
-    "id": 176
+    ]
   },
   {
+    "id": 177,
     "gallery_name": "vega",
     "example_name": "Radar Chart",
     "example_url": "https://vega.github.io/vega/examples/radar-chart/",
@@ -2390,10 +2391,10 @@
       "Circular Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 177
+    "datasets": []
   },
   {
+    "id": 178,
     "gallery_name": "vega",
     "example_name": "Radial Plot",
     "example_url": "https://vega.github.io/vega/examples/radial-plot/",
@@ -2402,10 +2403,10 @@
       "Circular Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 178
+    "datasets": []
   },
   {
+    "id": 179,
     "gallery_name": "vega",
     "example_name": "Radial Tree Layout",
     "example_url": "https://vega.github.io/vega/examples/radial-tree-layout/",
@@ -2416,10 +2417,10 @@
     "description": null,
     "datasets": [
       "flare"
-    ],
-    "id": 179
+    ]
   },
   {
+    "id": 180,
     "gallery_name": "vega",
     "example_name": "Regression",
     "example_url": "https://vega.github.io/vega/examples/regression/",
@@ -2430,10 +2431,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 180
+    ]
   },
   {
+    "id": 181,
     "gallery_name": "vega",
     "example_name": "Reorderable Matrix",
     "example_url": "https://vega.github.io/vega/examples/reorderable-matrix/",
@@ -2444,10 +2445,10 @@
     "description": null,
     "datasets": [
       "miserables"
-    ],
-    "id": 181
+    ]
   },
   {
+    "id": 182,
     "gallery_name": "vega",
     "example_name": "Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/scatter-plot/",
@@ -2458,10 +2459,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 182
+    ]
   },
   {
+    "id": 183,
     "gallery_name": "vega",
     "example_name": "Scatter Plot Null Values",
     "example_url": "https://vega.github.io/vega/examples/scatter-plot-null-values/",
@@ -2472,10 +2473,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 183
+    ]
   },
   {
+    "id": 184,
     "gallery_name": "vega",
     "example_name": "Serpentine Timeline",
     "example_url": "https://vega.github.io/vega/examples/serpentine-timeline/",
@@ -2484,10 +2485,10 @@
       "Custom Designs"
     ],
     "description": null,
-    "datasets": [],
-    "id": 184
+    "datasets": []
   },
   {
+    "id": 185,
     "gallery_name": "vega",
     "example_name": "Stacked Area Chart",
     "example_url": "https://vega.github.io/vega/examples/stacked-area-chart/",
@@ -2496,10 +2497,10 @@
       "Line & Area Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 185
+    "datasets": []
   },
   {
+    "id": 186,
     "gallery_name": "vega",
     "example_name": "Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/stacked-bar-chart/",
@@ -2508,10 +2509,10 @@
       "Bar Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 186
+    "datasets": []
   },
   {
+    "id": 187,
     "gallery_name": "vega",
     "example_name": "Stock Index Chart",
     "example_url": "https://vega.github.io/vega/examples/stock-index-chart/",
@@ -2522,10 +2523,10 @@
     "description": null,
     "datasets": [
       "stocks"
-    ],
-    "id": 187
+    ]
   },
   {
+    "id": 188,
     "gallery_name": "vega",
     "example_name": "Sunburst",
     "example_url": "https://vega.github.io/vega/examples/sunburst/",
@@ -2536,10 +2537,10 @@
     "description": null,
     "datasets": [
       "flare"
-    ],
-    "id": 188
+    ]
   },
   {
+    "id": 189,
     "gallery_name": "vega",
     "example_name": "Table Scrollbar",
     "example_url": "https://vega.github.io/vega/examples/table-scrollbar/",
@@ -2548,10 +2549,10 @@
       "Interaction Techniques"
     ],
     "description": null,
-    "datasets": [],
-    "id": 189
+    "datasets": []
   },
   {
+    "id": 190,
     "gallery_name": "vega",
     "example_name": "Time Units",
     "example_url": "https://vega.github.io/vega/examples/time-units/",
@@ -2562,10 +2563,10 @@
     "description": null,
     "datasets": [
       "flights_20k"
-    ],
-    "id": 190
+    ]
   },
   {
+    "id": 191,
     "gallery_name": "vega",
     "example_name": "Timelines",
     "example_url": "https://vega.github.io/vega/examples/timelines/",
@@ -2574,10 +2575,10 @@
       "Custom Designs"
     ],
     "description": null,
-    "datasets": [],
-    "id": 191
+    "datasets": []
   },
   {
+    "id": 192,
     "gallery_name": "vega",
     "example_name": "Top K Plot",
     "example_url": "https://vega.github.io/vega/examples/top-k-plot/",
@@ -2588,10 +2589,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 192
+    ]
   },
   {
+    "id": 193,
     "gallery_name": "vega",
     "example_name": "Top K Plot With Others",
     "example_url": "https://vega.github.io/vega/examples/top-k-plot-with-others/",
@@ -2602,10 +2603,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 193
+    ]
   },
   {
+    "id": 194,
     "gallery_name": "vega",
     "example_name": "Tree Layout",
     "example_url": "https://vega.github.io/vega/examples/tree-layout/",
@@ -2616,10 +2617,10 @@
     "description": null,
     "datasets": [
       "flare"
-    ],
-    "id": 194
+    ]
   },
   {
+    "id": 195,
     "gallery_name": "vega",
     "example_name": "Treemap",
     "example_url": "https://vega.github.io/vega/examples/treemap/",
@@ -2630,10 +2631,10 @@
     "description": null,
     "datasets": [
       "flare"
-    ],
-    "id": 195
+    ]
   },
   {
+    "id": 196,
     "gallery_name": "vega",
     "example_name": "U District Cuisine",
     "example_url": "https://vega.github.io/vega/examples/u-district-cuisine/",
@@ -2644,10 +2645,10 @@
     "description": null,
     "datasets": [
       "udistrict"
-    ],
-    "id": 196
+    ]
   },
   {
+    "id": 197,
     "gallery_name": "vega",
     "example_name": "Violin Plot",
     "example_url": "https://vega.github.io/vega/examples/violin-plot/",
@@ -2658,10 +2659,10 @@
     "description": null,
     "datasets": [
       "penguins"
-    ],
-    "id": 197
+    ]
   },
   {
+    "id": 198,
     "gallery_name": "vega",
     "example_name": "Volcano Contours",
     "example_url": "https://vega.github.io/vega/examples/volcano-contours/",
@@ -2672,10 +2673,10 @@
     "description": null,
     "datasets": [
       "volcano"
-    ],
-    "id": 198
+    ]
   },
   {
+    "id": 199,
     "gallery_name": "vega",
     "example_name": "Warming Stripes",
     "example_url": "https://vega.github.io/vega/examples/warming-stripes/",
@@ -2686,10 +2687,10 @@
     "description": null,
     "datasets": [
       "global_temp"
-    ],
-    "id": 199
+    ]
   },
   {
+    "id": 200,
     "gallery_name": "vega",
     "example_name": "Watch",
     "example_url": "https://vega.github.io/vega/examples/watch/",
@@ -2698,10 +2699,10 @@
       "Custom Designs"
     ],
     "description": null,
-    "datasets": [],
-    "id": 200
+    "datasets": []
   },
   {
+    "id": 201,
     "gallery_name": "vega",
     "example_name": "Weekly Temperature",
     "example_url": "https://vega.github.io/vega/examples/weekly-temperature/",
@@ -2712,10 +2713,10 @@
     "description": null,
     "datasets": [
       "weekly_weather"
-    ],
-    "id": 201
+    ]
   },
   {
+    "id": 202,
     "gallery_name": "vega",
     "example_name": "Wheat And Wages",
     "example_url": "https://vega.github.io/vega/examples/wheat-and-wages/",
@@ -2727,10 +2728,10 @@
     "datasets": [
       "wheat",
       "monarchs"
-    ],
-    "id": 202
+    ]
   },
   {
+    "id": 203,
     "gallery_name": "vega",
     "example_name": "Wheat Plot",
     "example_url": "https://vega.github.io/vega/examples/wheat-plot/",
@@ -2741,10 +2742,10 @@
     "description": null,
     "datasets": [
       "normal_2d"
-    ],
-    "id": 203
+    ]
   },
   {
+    "id": 204,
     "gallery_name": "vega",
     "example_name": "Wind Vectors",
     "example_url": "https://vega.github.io/vega/examples/wind-vectors/",
@@ -2755,10 +2756,10 @@
     "description": null,
     "datasets": [
       "windvectors"
-    ],
-    "id": 204
+    ]
   },
   {
+    "id": 205,
     "gallery_name": "vega",
     "example_name": "Word Cloud",
     "example_url": "https://vega.github.io/vega/examples/word-cloud/",
@@ -2767,10 +2768,10 @@
       "Other Chart Types"
     ],
     "description": null,
-    "datasets": [],
-    "id": 205
+    "datasets": []
   },
   {
+    "id": 206,
     "gallery_name": "vega",
     "example_name": "World Map",
     "example_url": "https://vega.github.io/vega/examples/world-map/",
@@ -2781,10 +2782,10 @@
     "description": null,
     "datasets": [
       "world_110m"
-    ],
-    "id": 206
+    ]
   },
   {
+    "id": 207,
     "gallery_name": "vega",
     "example_name": "Zoomable Binned Plot",
     "example_url": "https://vega.github.io/vega/examples/zoomable-binned-plot/",
@@ -2795,10 +2796,10 @@
     "description": null,
     "datasets": [
       "normal_2d"
-    ],
-    "id": 207
+    ]
   },
   {
+    "id": 208,
     "gallery_name": "vega",
     "example_name": "Zoomable Circle Packing",
     "example_url": "https://vega.github.io/vega/examples/zoomable-circle-packing/",
@@ -2809,10 +2810,10 @@
     "description": null,
     "datasets": [
       "flare"
-    ],
-    "id": 208
+    ]
   },
   {
+    "id": 209,
     "gallery_name": "vega",
     "example_name": "Zoomable Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/zoomable-scatter-plot/",
@@ -2823,10 +2824,10 @@
     "description": null,
     "datasets": [
       "normal_2d"
-    ],
-    "id": 209
+    ]
   },
   {
+    "id": 210,
     "gallery_name": "vega",
     "example_name": "Zoomable World Map",
     "example_url": "https://vega.github.io/vega/examples/zoomable-world-map/",
@@ -2837,10 +2838,10 @@
     "description": null,
     "datasets": [
       "world_110m"
-    ],
-    "id": 210
+    ]
   },
   {
+    "id": 211,
     "gallery_name": "vega-lite",
     "example_name": "1D Strip Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/tick_dot.html",
@@ -2851,10 +2852,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 211
+    ]
   },
   {
+    "id": 212,
     "gallery_name": "vega-lite",
     "example_name": "2D Histogram Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_binned_heatmap.html",
@@ -2866,10 +2867,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 212
+    ]
   },
   {
+    "id": 213,
     "gallery_name": "vega-lite",
     "example_name": "2D Histogram Scatterplot",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_binned.html",
@@ -2881,10 +2882,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 213
+    ]
   },
   {
+    "id": 214,
     "gallery_name": "vega-lite",
     "example_name": "A Bar Chart Encoding Color Names in the Data",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_color_disabled_scale.html",
@@ -2893,10 +2894,10 @@
       "Bar Charts"
     ],
     "description": "A bar chart that directly encodes color names in the data.",
-    "datasets": [],
-    "id": 214
+    "datasets": []
   },
   {
+    "id": 215,
     "gallery_name": "vega-lite",
     "example_name": "A comet chart showing changes between between two states",
     "example_url": "https://vega.github.io/vega-lite/examples/trail_comet.html",
@@ -2907,10 +2908,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 215
+    ]
   },
   {
+    "id": 216,
     "gallery_name": "vega-lite",
     "example_name": "Aggregate Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_aggregate.html",
@@ -2921,10 +2922,10 @@
     "description": "A bar chart showing the US population distribution of age groups in 2000.",
     "datasets": [
       "population"
-    ],
-    "id": 216
+    ]
   },
   {
+    "id": 217,
     "gallery_name": "vega-lite",
     "example_name": "Aggregate Bar Chart (Sorted)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_aggregate_sort_by_encoding.html",
@@ -2935,10 +2936,10 @@
     "description": "A bar chart that sorts the y-values by the x-values.",
     "datasets": [
       "population"
-    ],
-    "id": 217
+    ]
   },
   {
+    "id": 218,
     "gallery_name": "vega-lite",
     "example_name": "An interactive scatter plot of global health statistics by country and year.",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_global_development.html",
@@ -2949,10 +2950,10 @@
     "description": "Similar to the Vega version at https://vega.github.io/vega/examples/global-development/.",
     "datasets": [
       "gapminder"
-    ],
-    "id": 218
+    ]
   },
   {
+    "id": 219,
     "gallery_name": "vega-lite",
     "example_name": "Annual Weather Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_heatmap_weather.html",
@@ -2963,10 +2964,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 219
+    ]
   },
   {
+    "id": 220,
     "gallery_name": "vega-lite",
     "example_name": "Area Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/area.html",
@@ -2977,10 +2978,10 @@
     "description": null,
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 220
+    ]
   },
   {
+    "id": 221,
     "gallery_name": "vega-lite",
     "example_name": "Area Chart with Gradient",
     "example_url": "https://vega.github.io/vega-lite/examples/area_gradient.html",
@@ -2991,10 +2992,10 @@
     "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 221
+    ]
   },
   {
+    "id": 222,
     "gallery_name": "vega-lite",
     "example_name": "Area Chart with Overlaying Lines and Point Markers",
     "example_url": "https://vega.github.io/vega-lite/examples/area_overlay.html",
@@ -3005,10 +3006,10 @@
     "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 222
+    ]
   },
   {
+    "id": 223,
     "gallery_name": "vega-lite",
     "example_name": "Area Chart with Rectangular Brush",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_area_brush.html",
@@ -3019,10 +3020,10 @@
     "description": "In this example, we apply an `interval` selection to select subset of data in an area chart. The selected data is highlighted in gold by the second layer of an area mark that `filter`s its data by the `brush` selection.",
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 223
+    ]
   },
   {
+    "id": 224,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart Highlighting Values beyond a Threshold",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_annotations.html",
@@ -3031,10 +3032,10 @@
       "Labeling & Annotation"
     ],
     "description": "To create a bar chart that highlights values beyond a threshold, we use two `layer`s of `bar` marks. The lower layer shows all the bars while the upper layer shows bar with values above the threshold in red (`#e45755`).  We then `layer` a `rule` mark and a `text` mark over the bars to annotate the threshold value.",
-    "datasets": [],
-    "id": 224
+    "datasets": []
   },
   {
+    "id": 225,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart Showing Argmax Value",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_argmax.html",
@@ -3045,10 +3046,10 @@
     "description": "The production budget of the movie that has the highest US Gross in each major genre.",
     "datasets": [
       "movies"
-    ],
-    "id": 225
+    ]
   },
   {
+    "id": 226,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart showing Initials of Month Names",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_month_temporal_initial.html",
@@ -3059,10 +3060,10 @@
     "description": "Using `labelExpr` to show only initial letters of month names.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 226
+    ]
   },
   {
+    "id": 227,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Highlighting on Hover and Selection on Click",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_bar_select_highlight.html",
@@ -3071,10 +3072,10 @@
       "Interactive Charts"
     ],
     "description": "A bar chart with highlighting on hover and selecting on click. (Inspired by Tableau's interaction style.)",
-    "datasets": [],
-    "id": 227
+    "datasets": []
   },
   {
+    "id": 228,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Label Overlays",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_labels_grey.html",
@@ -3085,10 +3086,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 228
+    ]
   },
   {
+    "id": 229,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_labels.html",
@@ -3098,10 +3099,10 @@
       "Labeling & Annotation"
     ],
     "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
-    "datasets": [],
-    "id": 229
+    "datasets": []
   },
   {
+    "id": 230,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Negative Values and a Zero-Baseline",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_negative.html",
@@ -3110,10 +3111,10 @@
       "Bar Charts"
     ],
     "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
-    "datasets": [],
-    "id": 230
+    "datasets": []
   },
   {
+    "id": 231,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with a Minimap",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_count_minimap.html",
@@ -3124,10 +3125,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 231
+    ]
   },
   {
+    "id": 232,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with a Spacing-Saving Y-Axis",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_axis_space_saving.html",
@@ -3138,10 +3139,10 @@
     "description": "Bar Chart with a spacing-saving y-axis",
     "datasets": [
       "cars"
-    ],
-    "id": 232
+    ]
   },
   {
+    "id": 233,
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with bars center-aligned with time unit ticks",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_month_temporal_band_center.html",
@@ -3152,10 +3153,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 233
+    ]
   },
   {
+    "id": 234,
     "gallery_name": "vega-lite",
     "example_name": "Becker's Barley Trellis Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_barley.html",
@@ -3166,10 +3167,10 @@
     "description": "The Trellis display by Becker et al. helped establish small multiples as a “powerful mechanism for understanding interactions in studies of how a response depends on explanatory variables”. Here we reproduce a trellis of Barley yields from the 1930s, complete with main-effects ordering to facilitate comparison.",
     "datasets": [
       "barley"
-    ],
-    "id": 234
+    ]
   },
   {
+    "id": 235,
     "gallery_name": "vega-lite",
     "example_name": "Box Plot with Min/Max Whiskers",
     "example_url": "https://vega.github.io/vega-lite/examples/boxplot_minmax_2D_vertical.html",
@@ -3180,10 +3181,10 @@
     "description": "A vertical box plot showing median, min, and max body mass of penguins.",
     "datasets": [
       "penguins"
-    ],
-    "id": 235
+    ]
   },
   {
+    "id": 236,
     "gallery_name": "vega-lite",
     "example_name": "Box Plot with Pre-Calculated Summaries",
     "example_url": "https://vega.github.io/vega-lite/examples/boxplot_preaggregated.html",
@@ -3192,10 +3193,10 @@
       "Box Plots"
     ],
     "description": null,
-    "datasets": [],
-    "id": 236
+    "datasets": []
   },
   {
+    "id": 237,
     "gallery_name": "vega-lite",
     "example_name": "Brushing Scatter Plot to show data on a table",
     "example_url": "https://vega.github.io/vega-lite/examples/brush_table.html",
@@ -3206,10 +3207,10 @@
     "description": "Drag a rectangular brush to show (first 20) selected points in a table.",
     "datasets": [
       "cars"
-    ],
-    "id": 237
+    ]
   },
   {
+    "id": 238,
     "gallery_name": "vega-lite",
     "example_name": "Bubble Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/point_bubble.html",
@@ -3220,10 +3221,10 @@
     "description": "A bubbleplot showing horsepower on x, miles per gallons on y, and binned acceleration on size.",
     "datasets": [
       "cars"
-    ],
-    "id": 238
+    ]
   },
   {
+    "id": 239,
     "gallery_name": "vega-lite",
     "example_name": "Bubble Plot (Gapminder)",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_bubble_health_income.html",
@@ -3234,10 +3235,10 @@
     "description": "A bubble plot showing the correlation between health and income for 187 countries in the world (modified from an example in Lisa Charlotte Rost's blog post 'One Chart, Twelve Charting Libraries' --http://lisacharlotterost.github.io/2016/05/17/one-chart-code/).",
     "datasets": [
       "gapminder_health_income"
-    ],
-    "id": 239
+    ]
   },
   {
+    "id": 240,
     "gallery_name": "vega-lite",
     "example_name": "Bubble Plot (Natural Disasters)",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_natural_disasters.html",
@@ -3248,10 +3249,10 @@
     "description": "Visualization of global deaths from natural disasters. Copy of chart from [Our World in Data](https://ourworldindata.org/natural-catastrophes).",
     "datasets": [
       "disasters"
-    ],
-    "id": 240
+    ]
   },
   {
+    "id": 241,
     "gallery_name": "vega-lite",
     "example_name": "Bullet Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/facet_bullet.html",
@@ -3260,10 +3261,10 @@
       "Other Layered Plots"
     ],
     "description": null,
-    "datasets": [],
-    "id": 241
+    "datasets": []
   },
   {
+    "id": 242,
     "gallery_name": "vega-lite",
     "example_name": "Bump Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line_bump.html",
@@ -3272,10 +3273,10 @@
       "Line Charts"
     ],
     "description": "Bump chart",
-    "datasets": [],
-    "id": 242
+    "datasets": []
   },
   {
+    "id": 243,
     "gallery_name": "vega-lite",
     "example_name": "Calculate Difference from Annual Average",
     "example_url": "https://vega.github.io/vega-lite/examples/joinaggregate_mean_difference_by_year.html",
@@ -3286,10 +3287,10 @@
     "description": "Bar graph showing the best films for the year they were produced, where best is defined by at least 2.5 points above average for that year. The red point shows the average rating for a film in that year, and the bar is the rating that the film recieved.",
     "datasets": [
       "movies"
-    ],
-    "id": 243
+    ]
   },
   {
+    "id": 244,
     "gallery_name": "vega-lite",
     "example_name": "Calculate Difference from Average",
     "example_url": "https://vega.github.io/vega-lite/examples/joinaggregate_mean_difference.html",
@@ -3300,10 +3301,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 244
+    ]
   },
   {
+    "id": 245,
     "gallery_name": "vega-lite",
     "example_name": "Calculate Residuals",
     "example_url": "https://vega.github.io/vega-lite/examples/joinaggregate_residual_graph.html",
@@ -3314,10 +3315,10 @@
     "description": "A dot plot showing each movie in the database, and the difference from the average movie rating. The display is sorted by year to visualize everything in sequential order. The graph is for all Movies before 2019.",
     "datasets": [
       "movies"
-    ],
-    "id": 245
+    ]
   },
   {
+    "id": 246,
     "gallery_name": "vega-lite",
     "example_name": "Candlestick Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_candlestick.html",
@@ -3328,10 +3329,10 @@
     "description": "A candlestick chart inspired by an example in Protovis (http://mbostock.github.io/protovis/ex/candlestick.html)",
     "datasets": [
       "ohlc"
-    ],
-    "id": 246
+    ]
   },
   {
+    "id": 247,
     "gallery_name": "vega-lite",
     "example_name": "Carbon Dioxide in the Atmosphere",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_co2_concentration.html",
@@ -3343,10 +3344,10 @@
     "description": "This example was inspired by [Gregor Aisch](https://github.com/gka)'s [Carbon Dioxide Concentration By Decade](https://www.datawrapper.de/_/OHgEm/).",
     "datasets": [
       "co2_concentration"
-    ],
-    "id": 247
+    ]
   },
   {
+    "id": 248,
     "gallery_name": "vega-lite",
     "example_name": "Change zorder on hover",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_type_point_zorder.html",
@@ -3357,10 +3358,10 @@
     "description": "Show points on top when hovered over with the pointer",
     "datasets": [
       "cars"
-    ],
-    "id": 248
+    ]
   },
   {
+    "id": 249,
     "gallery_name": "vega-lite",
     "example_name": "Choropleth of Unemployment Rate per County",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_choropleth.html",
@@ -3372,10 +3373,10 @@
     "datasets": [
       "us_10m",
       "unemployment"
-    ],
-    "id": 249
+    ]
   },
   {
+    "id": 250,
     "gallery_name": "vega-lite",
     "example_name": "Colored Scatterplot",
     "example_url": "https://vega.github.io/vega-lite/examples/point_color_with_shape.html",
@@ -3386,10 +3387,10 @@
     "description": "A scatterplot showing body mass and flipper lengths of penguins.",
     "datasets": [
       "penguins"
-    ],
-    "id": 250
+    ]
   },
   {
+    "id": 251,
     "gallery_name": "vega-lite",
     "example_name": "Compact Trellis Grid of Bar Charts",
     "example_url": "https://vega.github.io/vega-lite/examples/facet_grid_bar.html",
@@ -3398,10 +3399,10 @@
       "Faceting (Trellis Plot / Small Multiples)"
     ],
     "description": "A simple grid of bar charts to compare performance data.",
-    "datasets": [],
-    "id": 251
+    "datasets": []
   },
   {
+    "id": 252,
     "gallery_name": "vega-lite",
     "example_name": "Comparative Likert Scale Ratings",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_layer_voyager_result.html",
@@ -3410,10 +3411,10 @@
       "Labeling & Annotation"
     ],
     "description": "Comparing Likert scale ratings between two conditions. (Figure 10. from @kanitw et al.'s \"Voyager 2: Augmenting Visual Analysis with Partial View Specifications\" -- http://idl.cs.washington.edu/files/2017-Voyager2-CHI.pdf).",
-    "datasets": [],
-    "id": 252
+    "datasets": []
   },
   {
+    "id": 253,
     "gallery_name": "vega-lite",
     "example_name": "Connected Scatterplot (Lines with Custom Paths)",
     "example_url": "https://vega.github.io/vega-lite/examples/connected_scatterplot.html",
@@ -3424,10 +3425,10 @@
     "description": "A connected scatterplot can be created by customizing line `order` and adding `point` overlay in the line mark definition.",
     "datasets": [
       "driving"
-    ],
-    "id": 253
+    ]
   },
   {
+    "id": 254,
     "gallery_name": "vega-lite",
     "example_name": "Connections among Major U.S. Airports.",
     "example_url": "https://vega.github.io/vega-lite/examples/airport_connections.html",
@@ -3440,10 +3441,10 @@
       "us_10m",
       "flights_airport",
       "airports"
-    ],
-    "id": 254
+    ]
   },
   {
+    "id": 255,
     "gallery_name": "vega-lite",
     "example_name": "Crossfilter (Filter)",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_crossfilter.html",
@@ -3454,10 +3455,10 @@
     "description": null,
     "datasets": [
       "flights_2k"
-    ],
-    "id": 255
+    ]
   },
   {
+    "id": 256,
     "gallery_name": "vega-lite",
     "example_name": "Crossfilter (Highlight)",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_layered_crossfilter.html",
@@ -3468,10 +3469,10 @@
     "description": null,
     "datasets": [
       "flights_2k"
-    ],
-    "id": 256
+    ]
   },
   {
+    "id": 257,
     "gallery_name": "vega-lite",
     "example_name": "Cumulative Frequency Distribution",
     "example_url": "https://vega.github.io/vega-lite/examples/area_cumulative_freq.html",
@@ -3483,10 +3484,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 257
+    ]
   },
   {
+    "id": 258,
     "gallery_name": "vega-lite",
     "example_name": "Density Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/area_density.html",
@@ -3497,10 +3498,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 258
+    ]
   },
   {
+    "id": 259,
     "gallery_name": "vega-lite",
     "example_name": "Discretizing scales",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_bar_scales_discretize.html",
@@ -3509,10 +3510,10 @@
       "Repeat & Concatenation"
     ],
     "description": "Horizontally concatenated charts that show different types of discretizing scales.",
-    "datasets": [],
-    "id": 259
+    "datasets": []
   },
   {
+    "id": 260,
     "gallery_name": "vega-lite",
     "example_name": "Distributions and Medians of Likert Scale Ratings",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_likert.html",
@@ -3521,10 +3522,10 @@
       "Labeling & Annotation"
     ],
     "description": "Distributions and Medians of Likert Scale Ratings. (Figure 9 from @jhoffswell and @zcliu's 'Interactive Repair of Tables Extracted from PDF Documents on Mobile Devices' -- http://idl.cs.washington.edu/files/2019-InteractiveTableRepair-CHI.pdf).",
-    "datasets": [],
-    "id": 260
+    "datasets": []
   },
   {
+    "id": 261,
     "gallery_name": "vega-lite",
     "example_name": "Diverging Stacked Bar Chart (Population Pyramid)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_diverging_stack_population_pyramid.html",
@@ -3535,10 +3536,10 @@
     "description": "A population pyramid for the US in 2000, created using stack. See https://vega.github.io/vega-lite/examples/concat_population_pyramid.html for a variant of this created using concat.",
     "datasets": [
       "population"
-    ],
-    "id": 261
+    ]
   },
   {
+    "id": 262,
     "gallery_name": "vega-lite",
     "example_name": "Diverging Stacked Bar Chart (with Neutral Parts)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_diverging_stack_transform.html",
@@ -3547,10 +3548,10 @@
       "Bar Charts"
     ],
     "description": "A diverging stacked bar chart for sentiments towards a set of eight questions, displayed as percentages with neutral responses straddling the 0% mark",
-    "datasets": [],
-    "id": 262
+    "datasets": []
   },
   {
+    "id": 263,
     "gallery_name": "vega-lite",
     "example_name": "Donut Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_donut.html",
@@ -3559,10 +3560,10 @@
       "Circular Plots"
     ],
     "description": "A donut chart encodes proportional differences among a set of numeric values using angular extents.",
-    "datasets": [],
-    "id": 263
+    "datasets": []
   },
   {
+    "id": 264,
     "gallery_name": "vega-lite",
     "example_name": "Dot Plot with Jittering",
     "example_url": "https://vega.github.io/vega-lite/examples/point_offset_random.html",
@@ -3573,10 +3574,10 @@
     "description": "Shows the relationship between horsepower and the number of cylinders using point marks with random offset (jittering).",
     "datasets": [
       "cars"
-    ],
-    "id": 264
+    ]
   },
   {
+    "id": 265,
     "gallery_name": "vega-lite",
     "example_name": "Drawing Sine and Cosine Curves with the Sequence Generator",
     "example_url": "https://vega.github.io/vega-lite/examples/sequence_line_fold.html",
@@ -3585,10 +3586,10 @@
       "Line Charts"
     ],
     "description": "Plots two functions using a generated sequence.",
-    "datasets": [],
-    "id": 265
+    "datasets": []
   },
   {
+    "id": 266,
     "gallery_name": "vega-lite",
     "example_name": "Dynamic Color Legend",
     "example_url": "https://vega.github.io/vega-lite/examples/dynamic_color_legend.html",
@@ -3599,10 +3600,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 266
+    ]
   },
   {
+    "id": 267,
     "gallery_name": "vega-lite",
     "example_name": "Earthquakes Example",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_geo_earthquakes.html",
@@ -3614,10 +3615,10 @@
     "datasets": [
       "world_110m",
       "earthquakes"
-    ],
-    "id": 267
+    ]
   },
   {
+    "id": 268,
     "gallery_name": "vega-lite",
     "example_name": "Error Bars Showing Confidence Interval",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_errorbar_ci.html",
@@ -3628,10 +3629,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 268
+    ]
   },
   {
+    "id": 269,
     "gallery_name": "vega-lite",
     "example_name": "Error Bars Showing Standard Deviation",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_errorbar_stdev.html",
@@ -3642,10 +3643,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 269
+    ]
   },
   {
+    "id": 270,
     "gallery_name": "vega-lite",
     "example_name": "Faceted County-Level Species Habitat Maps",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_geo_facet_species.html",
@@ -3657,10 +3658,10 @@
     "datasets": [
       "species",
       "us_10m"
-    ],
-    "id": 270
+    ]
   },
   {
+    "id": 271,
     "gallery_name": "vega-lite",
     "example_name": "Faceted Density Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/area_density_facet.html",
@@ -3671,10 +3672,10 @@
     "description": null,
     "datasets": [
       "penguins"
-    ],
-    "id": 271
+    ]
   },
   {
+    "id": 272,
     "gallery_name": "vega-lite",
     "example_name": "Filtering Top-K Items",
     "example_url": "https://vega.github.io/vega-lite/examples/window_top_k.html",
@@ -3683,10 +3684,10 @@
       "Advanced Calculations"
     ],
     "description": "Here we use window transform to derive the total number of students along with the rank of the current student to determine the top K students and display their score.",
-    "datasets": [],
-    "id": 272
+    "datasets": []
   },
   {
+    "id": 273,
     "gallery_name": "vega-lite",
     "example_name": "Focus + Context - Smooth Histogram Zooming",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_bin_extent.html",
@@ -3697,10 +3698,10 @@
     "description": null,
     "datasets": [
       "flights_5k"
-    ],
-    "id": 273
+    ]
   },
   {
+    "id": 274,
     "gallery_name": "vega-lite",
     "example_name": "Gantt Chart (Ranged Bar Marks)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_gantt.html",
@@ -3709,10 +3710,10 @@
       "Bar Charts"
     ],
     "description": "A simple bar chart with ranged data (aka Gantt Chart).",
-    "datasets": [],
-    "id": 274
+    "datasets": []
   },
   {
+    "id": 275,
     "gallery_name": "vega-lite",
     "example_name": "Grouped Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_grouped.html",
@@ -3721,10 +3722,10 @@
       "Bar Charts"
     ],
     "description": "Read [here](https://vega.github.io/vega-lite/docs/size.html#offset-step) for more details about how to set step size for grouped bar. ",
-    "datasets": [],
-    "id": 275
+    "datasets": []
   },
   {
+    "id": 276,
     "gallery_name": "vega-lite",
     "example_name": "Grouped Bar Chart (Multiple Measure with Repeat)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html",
@@ -3735,10 +3736,10 @@
     "description": "Read [here](https://vega.github.io/vega-lite/docs/size.html#offset-step) for more details about how to set step size for grouped bar. ",
     "datasets": [
       "movies"
-    ],
-    "id": 276
+    ]
   },
   {
+    "id": 277,
     "gallery_name": "vega-lite",
     "example_name": "Heat Lane Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_heatlane.html",
@@ -3749,10 +3750,10 @@
     "description": "Heat lane chart based on https://www.smashingmagazine.com/2022/07/accessibility-first-approach-chart-visual-design/",
     "datasets": [
       "cars"
-    ],
-    "id": 277
+    ]
   },
   {
+    "id": 278,
     "gallery_name": "vega-lite",
     "example_name": "Heatmap with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_text_heatmap.html",
@@ -3764,10 +3765,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 278
+    ]
   },
   {
+    "id": 279,
     "gallery_name": "vega-lite",
     "example_name": "Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram.html",
@@ -3778,10 +3779,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 279
+    ]
   },
   {
+    "id": 280,
     "gallery_name": "vega-lite",
     "example_name": "Histogram (from Binned Data)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_binned_data.html",
@@ -3790,10 +3791,10 @@
       "Histograms, Density Plots, and Dot Plots"
     ],
     "description": null,
-    "datasets": [],
-    "id": 280
+    "datasets": []
   },
   {
+    "id": 281,
     "gallery_name": "vega-lite",
     "example_name": "Histogram with Full-Height Hover Targets for Tooltip",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_histogram_full_height_hover.html",
@@ -3804,10 +3805,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 281
+    ]
   },
   {
+    "id": 282,
     "gallery_name": "vega-lite",
     "example_name": "Histogram with a Global Mean Overlay",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_histogram_global_mean.html",
@@ -3818,10 +3819,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 282
+    ]
   },
   {
+    "id": 283,
     "gallery_name": "vega-lite",
     "example_name": "Horizon Graph",
     "example_url": "https://vega.github.io/vega-lite/examples/area_horizon.html",
@@ -3831,10 +3832,10 @@
       "Other Layered Plots"
     ],
     "description": "Horizon Graph with 2 layers. (See https://idl.cs.washington.edu/papers/horizon/ for more details on Horizon Graphs.)",
-    "datasets": [],
-    "id": 283
+    "datasets": []
   },
   {
+    "id": 284,
     "gallery_name": "vega-lite",
     "example_name": "Horizontal Bar Chart with Negative Values and Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_negative_horizontal_label.html",
@@ -3843,10 +3844,10 @@
       "Bar Charts"
     ],
     "description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
-    "datasets": [],
-    "id": 284
+    "datasets": []
   },
   {
+    "id": 285,
     "gallery_name": "vega-lite",
     "example_name": "Horizontal Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_h.html",
@@ -3857,10 +3858,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 285
+    ]
   },
   {
+    "id": 286,
     "gallery_name": "vega-lite",
     "example_name": "Horizontally Repeated Charts",
     "example_url": "https://vega.github.io/vega-lite/examples/repeat_histogram.html",
@@ -3871,10 +3872,10 @@
     "description": "Horizontally repeated charts that show the histograms of different parameters of cars in different countries.",
     "datasets": [
       "cars"
-    ],
-    "id": 286
+    ]
   },
   {
+    "id": 287,
     "gallery_name": "vega-lite",
     "example_name": "Image-based Scatter Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/scatter_image.html",
@@ -3883,10 +3884,10 @@
       "Scatter & Strip Plots"
     ],
     "description": null,
-    "datasets": [],
-    "id": 287
+    "datasets": []
   },
   {
+    "id": 288,
     "gallery_name": "vega-lite",
     "example_name": "Income in the U.S. by State, Faceted over Income Brackets",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_trellis.html",
@@ -3898,10 +3899,10 @@
     "datasets": [
       "income",
       "us_10m"
-    ],
-    "id": 288
+    ]
   },
   {
+    "id": 289,
     "gallery_name": "vega-lite",
     "example_name": "Interactive Average",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_layer_bar_month.html",
@@ -3912,10 +3913,10 @@
     "description": "The plot below uses an interval selection, which causes the chart to include an interactive brush (shown in grey). The brush selection parameterizes the red guideline, which visualizes the average value within the selected interval.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 289
+    ]
   },
   {
+    "id": 290,
     "gallery_name": "vega-lite",
     "example_name": "Interactive Dashboard with Cross Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_concat_layer.html",
@@ -3926,10 +3927,10 @@
     "description": "A dashboard with cross-highlighting.",
     "datasets": [
       "movies"
-    ],
-    "id": 290
+    ]
   },
   {
+    "id": 291,
     "gallery_name": "vega-lite",
     "example_name": "Interactive Index Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_index_chart.html",
@@ -3940,10 +3941,10 @@
     "description": null,
     "datasets": [
       "stocks"
-    ],
-    "id": 291
+    ]
   },
   {
+    "id": 292,
     "gallery_name": "vega-lite",
     "example_name": "Interactive Legend",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_legend.html",
@@ -3954,10 +3955,10 @@
     "description": null,
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 292
+    ]
   },
   {
+    "id": 293,
     "gallery_name": "vega-lite",
     "example_name": "Interactive Scatterplot Matrix",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_splom.html",
@@ -3969,10 +3970,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 293
+    ]
   },
   {
+    "id": 294,
     "gallery_name": "vega-lite",
     "example_name": "Isotype Dot Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/isotype_bar_chart.html",
@@ -3981,10 +3982,10 @@
       "Histograms, Density Plots, and Dot Plots"
     ],
     "description": "Inspired by this [Only An Ocean Between, 1943](http://www.thomwhite.co.uk/?p=1303). Population Live Stock, p.13. This example was created by [@jwoLondon](https://github.com/jwoLondon).",
-    "datasets": [],
-    "id": 294
+    "datasets": []
   },
   {
+    "id": 295,
     "gallery_name": "vega-lite",
     "example_name": "Isotype Dot Plot with Emoji",
     "example_url": "https://vega.github.io/vega-lite/examples/isotype_bar_chart_emoji.html",
@@ -3993,10 +3994,10 @@
       "Histograms, Density Plots, and Dot Plots"
     ],
     "description": "This example was inspired by [@jakevdp](https://github.com/jakevdp) and Isotype Bar Chart by [@jwoLondon](https://github.com/jwoLondon).",
-    "datasets": [],
-    "id": 295
+    "datasets": []
   },
   {
+    "id": 296,
     "gallery_name": "vega-lite",
     "example_name": "Isotype Grid",
     "example_url": "https://vega.github.io/vega-lite/examples/isotype_grid.html",
@@ -4005,10 +4006,10 @@
       "Interactive Charts"
     ],
     "description": "Inspired by this [D3 example by Alan Smith](http://bl.ocks.org/alansmithy/d832fc03f6e6a91e99f4). Drag region to select. This example was created by @jwoLondon.",
-    "datasets": [],
-    "id": 296
+    "datasets": []
   },
   {
+    "id": 297,
     "gallery_name": "vega-lite",
     "example_name": "Lasagna Plot (Dense Time-Series Heatmap)",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_lasagna.html",
@@ -4019,10 +4020,10 @@
     "description": null,
     "datasets": [
       "stocks"
-    ],
-    "id": 297
+    ]
   },
   {
+    "id": 298,
     "gallery_name": "vega-lite",
     "example_name": "Layered Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_layered_transparent.html",
@@ -4033,10 +4034,10 @@
     "description": "A bar chart showing the US population distribution of age groups and gender in 2000.",
     "datasets": [
       "population"
-    ],
-    "id": 298
+    ]
   },
   {
+    "id": 299,
     "gallery_name": "vega-lite",
     "example_name": "Layered Histogram and Cumulative Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_cumulative_histogram.html",
@@ -4048,10 +4049,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 299
+    ]
   },
   {
+    "id": 300,
     "gallery_name": "vega-lite",
     "example_name": "Layered Plot with Dual-Axis",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_dual_axis.html",
@@ -4062,10 +4063,10 @@
     "description": "A dual axis chart, created by setting y's scale resolution to `\"independent\"`",
     "datasets": [
       "weather"
-    ],
-    "id": 300
+    ]
   },
   {
+    "id": 301,
     "gallery_name": "vega-lite",
     "example_name": "Layering Averages over Raw Values",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_mean_point_raw.html",
@@ -4077,10 +4078,10 @@
     "description": "Plot showing average data with raw values in the background.",
     "datasets": [
       "stocks"
-    ],
-    "id": 301
+    ]
   },
   {
+    "id": 302,
     "gallery_name": "vega-lite",
     "example_name": "Layering Rolling Averages over Raw Values",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_rolling_mean_point_raw.html",
@@ -4092,10 +4093,10 @@
     "description": "Plot showing a 30 day rolling average with raw values in the background.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 302
+    ]
   },
   {
+    "id": 303,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line.html",
@@ -4106,10 +4107,10 @@
     "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 303
+    ]
   },
   {
+    "id": 304,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart to Show Benchmarking Results",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_window.html",
@@ -4118,10 +4119,10 @@
       "Advanced Calculations"
     ],
     "description": null,
-    "datasets": [],
-    "id": 304
+    "datasets": []
   },
   {
+    "id": 305,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Conditional Axis Properties",
     "example_url": "https://vega.github.io/vega-lite/examples/line_conditional_axis.html",
@@ -4132,10 +4133,10 @@
     "description": "Line chart with conditional axis ticks, labels, and grid.",
     "datasets": [
       "stocks"
-    ],
-    "id": 305
+    ]
   },
   {
+    "id": 306,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Confidence Interval Band",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_errorband_ci.html",
@@ -4146,10 +4147,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 306
+    ]
   },
   {
+    "id": 307,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Highlighted Rectangles",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_falkensee.html",
@@ -4158,10 +4159,10 @@
       "Labeling & Annotation"
     ],
     "description": "The population of the German city of Falkensee over time",
-    "datasets": [],
-    "id": 307
+    "datasets": []
   },
   {
+    "id": 308,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Markers and Invalid Values",
     "example_url": "https://vega.github.io/vega-lite/examples/line_skip_invalid_mid_overlay.html",
@@ -4170,10 +4171,10 @@
       "Line Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 308
+    "datasets": []
   },
   {
+    "id": 309,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Monotone Interpolation",
     "example_url": "https://vega.github.io/vega-lite/examples/line_monotone.html",
@@ -4184,10 +4185,10 @@
     "description": null,
     "datasets": [
       "stocks"
-    ],
-    "id": 309
+    ]
   },
   {
+    "id": 310,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Point Markers",
     "example_url": "https://vega.github.io/vega-lite/examples/line_overlay.html",
@@ -4198,10 +4199,10 @@
     "description": "By setting the `point` property of the line mark definition to an object defining a property of the overlaying point marks, we can overlay point markers on top of line. \n\n Notes&#58; (1) This is equivalent to adding another layer of point marks. \n (2) While `\"point\"` marks are normally semi-transparent, the overlay point marker has `opacity` = 1 by default.",
     "datasets": [
       "stocks"
-    ],
-    "id": 310
+    ]
   },
   {
+    "id": 311,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Stroked Point Markers",
     "example_url": "https://vega.github.io/vega-lite/examples/line_overlay_stroked.html",
@@ -4212,10 +4213,10 @@
     "description": "By setting the `point` property of the line mark definition to an object defining a property of the overlaying point marks, we can overlay point markers on top of line. Here we create stroked points by setting their `\"filled\"` to `false` and their `fill` to `\"white\"`. \n\n Notes&#58; (1) This is equivalent to adding another layer of point marks. \n (2) While `\"point\"` marks are normally semi-transparent, the overlay point marker has `opacity` = 1 by default.",
     "datasets": [
       "stocks"
-    ],
-    "id": 311
+    ]
   },
   {
+    "id": 312,
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Varying Size (using the trail mark)",
     "example_url": "https://vega.github.io/vega-lite/examples/trail_color.html",
@@ -4226,10 +4227,10 @@
     "description": "Stock prices of 5 Tech Companies over Time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 312
+    ]
   },
   {
+    "id": 313,
     "gallery_name": "vega-lite",
     "example_name": "Line Charts Showing Ranks Over Time",
     "example_url": "https://vega.github.io/vega-lite/examples/window_rank.html",
@@ -4239,10 +4240,10 @@
       "Advanced Calculations"
     ],
     "description": null,
-    "datasets": [],
-    "id": 313
+    "datasets": []
   },
   {
+    "id": 314,
     "gallery_name": "vega-lite",
     "example_name": "Line between Airports in the U.S.",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_line.html",
@@ -4254,10 +4255,10 @@
     "datasets": [
       "us_10m",
       "airports"
-    ],
-    "id": 314
+    ]
   },
   {
+    "id": 315,
     "gallery_name": "vega-lite",
     "example_name": "Line chart with a dashed part",
     "example_url": "https://vega.github.io/vega-lite/examples/line_dashed_part.html",
@@ -4266,10 +4267,10 @@
       "Line Charts"
     ],
     "description": "Line chart with a dashed part created by drawing multiple connecting lines. Note that the data source contains the data point at (E, 81) twice.",
-    "datasets": [],
-    "id": 315
+    "datasets": []
   },
   {
+    "id": 316,
     "gallery_name": "vega-lite",
     "example_name": "Line chart with varying stroke dash",
     "example_url": "https://vega.github.io/vega-lite/examples/line_strokedash.html",
@@ -4280,10 +4281,10 @@
     "description": "Stock prices of 5 Tech Companies over Time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 316
+    ]
   },
   {
+    "id": 317,
     "gallery_name": "vega-lite",
     "example_name": "Linear Regression",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_line_regression.html",
@@ -4294,10 +4295,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 317
+    ]
   },
   {
+    "id": 318,
     "gallery_name": "vega-lite",
     "example_name": "Loess Regression",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_line_loess.html",
@@ -4308,10 +4309,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 318
+    ]
   },
   {
+    "id": 319,
     "gallery_name": "vega-lite",
     "example_name": "Log-scaled Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram_log.html",
@@ -4320,10 +4321,10 @@
       "Histograms, Density Plots, and Dot Plots"
     ],
     "description": "Log-scaled Histogram.  We may improve the support of this. See https://github.com/vega/vega-lite/issues/4792.",
-    "datasets": [],
-    "id": 319
+    "datasets": []
   },
   {
+    "id": 320,
     "gallery_name": "vega-lite",
     "example_name": "London Tube Lines",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_layer_line_london.html",
@@ -4336,10 +4337,10 @@
       "london_boroughs",
       "london_centroids",
       "london_tube_lines"
-    ],
-    "id": 320
+    ]
   },
   {
+    "id": 321,
     "gallery_name": "vega-lite",
     "example_name": "Marginal Histograms",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_marginal_histograms.html",
@@ -4350,10 +4351,10 @@
     "description": "Marginal histograms show the counts along the x and y dimension.",
     "datasets": [
       "movies"
-    ],
-    "id": 321
+    ]
   },
   {
+    "id": 322,
     "gallery_name": "vega-lite",
     "example_name": "Mean overlay over precipitation chart",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_precipitation_mean.html",
@@ -4364,10 +4365,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 322
+    ]
   },
   {
+    "id": 323,
     "gallery_name": "vega-lite",
     "example_name": "Mosaic Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_mosaic_labelled_with_offset.html",
@@ -4378,10 +4379,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 323
+    ]
   },
   {
+    "id": 324,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line_color.html",
@@ -4392,10 +4393,10 @@
     "description": "Stock prices of 5 Tech Companies over Time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 324
+    ]
   },
   {
+    "id": 325,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Halo Stroke",
     "example_url": "https://vega.github.io/vega-lite/examples/line_color_halo.html",
@@ -4406,10 +4407,10 @@
     "description": "Multi-series Line Chart with Halo. Use pivot and repeat-layer as a workaround to facet groups of lines and their halo strokes. See https://github.com/vega/vega-lite/issues/6192 for more discussion.",
     "datasets": [
       "stocks"
-    ],
-    "id": 325
+    ]
   },
   {
+    "id": 326,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_multi_line_label.html",
@@ -4420,10 +4421,10 @@
     "description": "The plot displays labels for all stock prices of the hovered time. The example is forked/modified from [@jakevdp's block](https://bl.ocks.org/jakevdp/a414950f61e4b224765f2439dd1f09b9).",
     "datasets": [
       "stocks"
-    ],
-    "id": 326
+    ]
   },
   {
+    "id": 327,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Repeat Operator",
     "example_url": "https://vega.github.io/vega-lite/examples/repeat_layer.html",
@@ -4435,10 +4436,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 327
+    ]
   },
   {
+    "id": 328,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Tooltip",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_multi_line_tooltip.html",
@@ -4449,10 +4450,10 @@
     "description": "This plot requires the data to have different series in different fields.  See [#1274](https://github.com/vega/vega-lite/issues/1274) and [#1552](https://github.com/vega/vega-lite/issues/1552) for relevant future syntax improvements.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 328
+    ]
   },
   {
+    "id": 329,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Tooltip via Pivot",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_multi_line_pivot_tooltip.html",
@@ -4463,10 +4464,10 @@
     "description": "The plot displays labels for all stock prices of the hovered time. This example uses a pivot transform to compute the data for the tooltip.",
     "datasets": [
       "stocks"
-    ],
-    "id": 329
+    ]
   },
   {
+    "id": 330,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with an Interactive Line Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_line_hover.html",
@@ -4477,10 +4478,10 @@
     "description": "The plot below uses argmax to position text labels at the end of line.  It also applies single selection to highlight a hovered line.  Note that we can hidden thick lines to make it easier to hover.",
     "datasets": [
       "stocks"
-    ],
-    "id": 330
+    ]
   },
   {
+    "id": 331,
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with an Interactive Point Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_line_point_hover.html",
@@ -4491,10 +4492,10 @@
     "description": "Stock prices of 5 Tech Companies over Time, with a point marker on hover. Note that the hidden markers are intentionally bigger to make it easier for readers to hover.",
     "datasets": [
       "stocks"
-    ],
-    "id": 331
+    ]
   },
   {
+    "id": 332,
     "gallery_name": "vega-lite",
     "example_name": "Nested View Concatenation Aligned with Axis `minExtent`",
     "example_url": "https://vega.github.io/vega-lite/examples/nested_concat_align.html",
@@ -4505,10 +4506,10 @@
     "description": "Nested concatenation aligned by setting axis minExtent",
     "datasets": [
       "movies"
-    ],
-    "id": 332
+    ]
   },
   {
+    "id": 333,
     "gallery_name": "vega-lite",
     "example_name": "Non-linear Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram_nonlinear.html",
@@ -4517,10 +4518,10 @@
       "Histograms, Density Plots, and Dot Plots"
     ],
     "description": "A histogram for a data source that provides non-linear bins. Thanks to [@Saba9](https://github.com/Saba9) who helps create this example.",
-    "datasets": [],
-    "id": 333
+    "datasets": []
   },
   {
+    "id": 334,
     "gallery_name": "vega-lite",
     "example_name": "Normalized (Percentage) Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_normalize.html",
@@ -4531,10 +4532,10 @@
     "description": null,
     "datasets": [
       "population"
-    ],
-    "id": 334
+    ]
   },
   {
+    "id": 335,
     "gallery_name": "vega-lite",
     "example_name": "Normalized (Percentage) Stacked Bar Chart With Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_h_normalized_labeled.html",
@@ -4545,10 +4546,10 @@
     "description": null,
     "datasets": [
       "population"
-    ],
-    "id": 335
+    ]
   },
   {
+    "id": 336,
     "gallery_name": "vega-lite",
     "example_name": "Normalized Stacked Area Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_area_normalize.html",
@@ -4559,10 +4560,10 @@
     "description": null,
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 336
+    ]
   },
   {
+    "id": 337,
     "gallery_name": "vega-lite",
     "example_name": "One Dot per Airport in the U.S. Overlayed on Geoshape",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_layer.html",
@@ -4574,10 +4575,10 @@
     "datasets": [
       "us_10m",
       "airports"
-    ],
-    "id": 337
+    ]
   },
   {
+    "id": 338,
     "gallery_name": "vega-lite",
     "example_name": "One Dot per Zipcode in the U.S.",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_circle.html",
@@ -4588,10 +4589,10 @@
     "description": null,
     "datasets": [
       "zipcodes"
-    ],
-    "id": 338
+    ]
   },
   {
+    "id": 339,
     "gallery_name": "vega-lite",
     "example_name": "Overview and Detail",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_overview_detail.html",
@@ -4602,10 +4603,10 @@
     "description": null,
     "datasets": [
       "sp500"
-    ],
-    "id": 339
+    ]
   },
   {
+    "id": 340,
     "gallery_name": "vega-lite",
     "example_name": "Paintbrush Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_paintbrush.html",
@@ -4616,10 +4617,10 @@
     "description": "Select multiple points with the shift key.",
     "datasets": [
       "cars"
-    ],
-    "id": 340
+    ]
   },
   {
+    "id": 341,
     "gallery_name": "vega-lite",
     "example_name": "Parallel Coordinate Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/parallel_coordinate.html",
@@ -4630,10 +4631,10 @@
     "description": "Though Vega-Lite supports only one scale per axes, one can create a parallel coordinate plot by folding variables, using `joinaggregate` to normalize their values and using ticks and rules to manually create axes.",
     "datasets": [
       "penguins"
-    ],
-    "id": 341
+    ]
   },
   {
+    "id": 342,
     "gallery_name": "vega-lite",
     "example_name": "Pie Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_pie.html",
@@ -4642,10 +4643,10 @@
       "Circular Plots"
     ],
     "description": "A pie chart encodes proportional differences among a set of numeric values as the angular extent and area of a circular slice.",
-    "datasets": [],
-    "id": 342
+    "datasets": []
   },
   {
+    "id": 343,
     "gallery_name": "vega-lite",
     "example_name": "Pie Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_arc_label.html",
@@ -4654,10 +4655,10 @@
       "Circular Plots"
     ],
     "description": "Layering text over arc marks to label pie charts. For now, [you need to add `stack: true`](https://github.com/vega/vega-lite/issues/5078) to theta to force the text to apply the same polar stacking layout.",
-    "datasets": [],
-    "id": 343
+    "datasets": []
   },
   {
+    "id": 344,
     "gallery_name": "vega-lite",
     "example_name": "Pie Chart with percentage_tooltip",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_pie_normalize_tooltip.html",
@@ -4666,10 +4667,10 @@
       "Circular Plots"
     ],
     "description": "A pie chart with a tooltip that shows the percentage covered by the hovered slice.",
-    "datasets": [],
-    "id": 344
+    "datasets": []
   },
   {
+    "id": 345,
     "gallery_name": "vega-lite",
     "example_name": "Population Pyramid",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_population_pyramid.html",
@@ -4680,10 +4681,10 @@
     "description": "A population pyramid for the US in 2000.",
     "datasets": [
       "population"
-    ],
-    "id": 345
+    ]
   },
   {
+    "id": 346,
     "gallery_name": "vega-lite",
     "example_name": "Projection explorer",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_params_projections.html",
@@ -4694,10 +4695,10 @@
     "description": "Compare different projections.",
     "datasets": [
       "world_110m"
-    ],
-    "id": 346
+    ]
   },
   {
+    "id": 347,
     "gallery_name": "vega-lite",
     "example_name": "Pyramid Pie Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_pie_pyramid.html",
@@ -4706,10 +4707,10 @@
       "Circular Plots"
     ],
     "description": "Reproducing http://robslink.com/SAS/democd91/pyramid_pie.htm",
-    "datasets": [],
-    "id": 347
+    "datasets": []
   },
   {
+    "id": 348,
     "gallery_name": "vega-lite",
     "example_name": "Quantile-Quantile Plot (QQ Plot)",
     "example_url": "https://vega.github.io/vega-lite/examples/point_quantile_quantile.html",
@@ -4720,10 +4721,10 @@
     "description": null,
     "datasets": [
       "normal_2d"
-    ],
-    "id": 348
+    ]
   },
   {
+    "id": 349,
     "gallery_name": "vega-lite",
     "example_name": "Query Widgets",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_query_widgets.html",
@@ -4734,10 +4735,10 @@
     "description": "Drag the sliders to highlight points.",
     "datasets": [
       "cars"
-    ],
-    "id": 349
+    ]
   },
   {
+    "id": 350,
     "gallery_name": "vega-lite",
     "example_name": "Radial Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_radial.html",
@@ -4746,10 +4747,10 @@
       "Circular Plots"
     ],
     "description": "This radial plot uses both angular and radial extent to convey multiple dimensions of data. However, this approach is not perceptually effective, as viewers will most likely be drawn to the total area of the shape, conflating the two dimensions. This example also demonstrates a way to add labels to circular plots.",
-    "datasets": [],
-    "id": 350
+    "datasets": []
   },
   {
+    "id": 351,
     "gallery_name": "vega-lite",
     "example_name": "Ranged Dot Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_ranged_dot.html",
@@ -4760,10 +4761,10 @@
     "description": "A ranged dot plot that uses 'layer' to convey changing life expectancy for the five most populous countries (between 1955 and 2000).",
     "datasets": [
       "countries"
-    ],
-    "id": 351
+    ]
   },
   {
+    "id": 352,
     "gallery_name": "vega-lite",
     "example_name": "Rectangular Brush",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_brush.html",
@@ -4774,10 +4775,10 @@
     "description": "Drag out a rectangular brush to highlight points.",
     "datasets": [
       "cars"
-    ],
-    "id": 352
+    ]
   },
   {
+    "id": 353,
     "gallery_name": "vega-lite",
     "example_name": "Relative Bar Chart (Calculate Percentage of Total)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_percent_of_total.html",
@@ -4787,10 +4788,10 @@
       "Advanced Calculations"
     ],
     "description": "A bar graph showing what activites consume what percentage of the day.",
-    "datasets": [],
-    "id": 353
+    "datasets": []
   },
   {
+    "id": 354,
     "gallery_name": "vega-lite",
     "example_name": "Relative Frequency Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram_rel_freq.html",
@@ -4801,10 +4802,10 @@
     "description": "Relative frequency histogram. The data is binned with first transform. The number of values per bin and the total number are calculated in the second and third transform to calculate the relative frequency in the last transformation step.",
     "datasets": [
       "cars"
-    ],
-    "id": 354
+    ]
   },
   {
+    "id": 355,
     "gallery_name": "vega-lite",
     "example_name": "Responsive Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_size_responsive.html",
@@ -4815,10 +4816,10 @@
     "description": "The bar gets automatically resized based on container size. To see how the bar gets automatically resized try this in [the editor](https://vega.github.io/editor/#/examples/vega-lite/bar_size_responsive).",
     "datasets": [
       "cars"
-    ],
-    "id": 355
+    ]
   },
   {
+    "id": 356,
     "gallery_name": "vega-lite",
     "example_name": "Rules (line segments) Connecting SEA to every Airport Reachable via Direct Flights",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_rule.html",
@@ -4831,10 +4832,10 @@
       "us_10m",
       "airports",
       "flights_airport"
-    ],
-    "id": 356
+    ]
   },
   {
+    "id": 357,
     "gallery_name": "vega-lite",
     "example_name": "Scatter Plot with Text Marks",
     "example_url": "https://vega.github.io/vega-lite/examples/text_scatterplot_colored.html",
@@ -4845,10 +4846,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 357
+    ]
   },
   {
+    "id": 358,
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot",
     "example_url": "https://vega.github.io/vega-lite/examples/point_2d.html",
@@ -4859,10 +4860,10 @@
     "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
     "datasets": [
       "cars"
-    ],
-    "id": 358
+    ]
   },
   {
+    "id": 359,
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot Pan & Zoom",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_translate_scatterplot_drag.html",
@@ -4873,10 +4874,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 359
+    ]
   },
   {
+    "id": 360,
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with External Links and Tooltips",
     "example_url": "https://vega.github.io/vega-lite/examples/point_href.html",
@@ -4887,10 +4888,10 @@
     "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
     "datasets": [
       "cars"
-    ],
-    "id": 360
+    ]
   },
   {
+    "id": 361,
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with Filled Circles",
     "example_url": "https://vega.github.io/vega-lite/examples/circle.html",
@@ -4901,10 +4902,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 361
+    ]
   },
   {
+    "id": 362,
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with Mean and Standard Deviation Overlay",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_scatter_errorband_1D_stdev_global_mean.html",
@@ -4915,10 +4916,10 @@
     "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
     "datasets": [
       "cars"
-    ],
-    "id": 362
+    ]
   },
   {
+    "id": 363,
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with Null Values in Grey",
     "example_url": "https://vega.github.io/vega-lite/examples/point_invalid_color.html",
@@ -4929,10 +4930,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 363
+    ]
   },
   {
+    "id": 364,
     "gallery_name": "vega-lite",
     "example_name": "Search Input",
     "example_url": "https://vega.github.io/vega-lite/examples/param_search_input.html",
@@ -4943,10 +4944,10 @@
     "description": "Search to highlight the relevant car models. Regexes are supported so you can type e.g. `mazda|ford`",
     "datasets": [
       "cars"
-    ],
-    "id": 364
+    ]
   },
   {
+    "id": 365,
     "gallery_name": "vega-lite",
     "example_name": "Seattle Weather Exploration",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_seattle_weather.html",
@@ -4957,10 +4958,10 @@
     "description": "This graph shows an interactive view of Seattle's weather, including maximum temperature, amount of precipitation, and type of weather. By clicking and dragging on the scatter plot, you can see the proportion of days in that range that have sun, rain, fog, snow, etc. Created by @jakevdp.",
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 365
+    ]
   },
   {
+    "id": 366,
     "gallery_name": "vega-lite",
     "example_name": "Selectable Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_heatmap.html",
@@ -4969,10 +4970,10 @@
       "Interactive Charts"
     ],
     "description": null,
-    "datasets": [],
-    "id": 366
+    "datasets": []
   },
   {
+    "id": 367,
     "gallery_name": "vega-lite",
     "example_name": "Simple Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar.html",
@@ -4981,10 +4982,10 @@
       "Bar Charts"
     ],
     "description": "A bar chart encodes quantitative values as the extent of rectangular bars.",
-    "datasets": [],
-    "id": 367
+    "datasets": []
   },
   {
+    "id": 368,
     "gallery_name": "vega-lite",
     "example_name": "Simple Bar Chart with Labels and Emojis",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_fruit.html",
@@ -4993,10 +4994,10 @@
       "Labeling & Annotation"
     ],
     "description": "Vega-Lite version of bar chart from https://observablehq.com/@d3/learn-d3-scales.",
-    "datasets": [],
-    "id": 368
+    "datasets": []
   },
   {
+    "id": 369,
     "gallery_name": "vega-lite",
     "example_name": "Slope Graph",
     "example_url": "https://vega.github.io/vega-lite/examples/line_slope.html",
@@ -5007,10 +5008,10 @@
     "description": "Slope graph showing the change in yield for different barley sites. It shows the error in the year labels for the Morris site.",
     "datasets": [
       "barley"
-    ],
-    "id": 369
+    ]
   },
   {
+    "id": 370,
     "gallery_name": "vega-lite",
     "example_name": "Stacked Area Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_area.html",
@@ -5021,10 +5022,10 @@
     "description": null,
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 370
+    ]
   },
   {
+    "id": 371,
     "gallery_name": "vega-lite",
     "example_name": "Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_weather.html",
@@ -5035,10 +5036,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 371
+    ]
   },
   {
+    "id": 372,
     "gallery_name": "vega-lite",
     "example_name": "Stacked Bar Chart with Rounded Corners",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_count_corner_radius_mark.html",
@@ -5049,10 +5050,10 @@
     "description": null,
     "datasets": [
       "seattle_weather"
-    ],
-    "id": 372
+    ]
   },
   {
+    "id": 373,
     "gallery_name": "vega-lite",
     "example_name": "Stacked Density Estimates",
     "example_url": "https://vega.github.io/vega-lite/examples/area_density_stacked.html",
@@ -5063,10 +5064,10 @@
     "description": null,
     "datasets": [
       "penguins"
-    ],
-    "id": 373
+    ]
   },
   {
+    "id": 374,
     "gallery_name": "vega-lite",
     "example_name": "Step Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line_step.html",
@@ -5077,10 +5078,10 @@
     "description": "Google's stock price over time.",
     "datasets": [
       "stocks"
-    ],
-    "id": 374
+    ]
   },
   {
+    "id": 375,
     "gallery_name": "vega-lite",
     "example_name": "Streamgraph",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_area_stream.html",
@@ -5091,10 +5092,10 @@
     "description": null,
     "datasets": [
       "unemployment_across_industries"
-    ],
-    "id": 375
+    ]
   },
   {
+    "id": 376,
     "gallery_name": "vega-lite",
     "example_name": "Strip Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/tick_strip.html",
@@ -5105,10 +5106,10 @@
     "description": "Shows the relationship between horsepower and the number of cylinders using tick marks.",
     "datasets": [
       "cars"
-    ],
-    "id": 376
+    ]
   },
   {
+    "id": 377,
     "gallery_name": "vega-lite",
     "example_name": "Strip plot with custom axis tick labels",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_custom_tick_labels.html",
@@ -5119,10 +5120,10 @@
     "description": "After using the numerical values to calculate the average rating, they are replaced by string labels.",
     "datasets": [
       "movies"
-    ],
-    "id": 377
+    ]
   },
   {
+    "id": 378,
     "gallery_name": "vega-lite",
     "example_name": "Table Bubble Plot (Github Punch Card)",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_github_punchcard.html",
@@ -5133,10 +5134,10 @@
     "description": "Punchcard Visualization like on Github. The day on y-axis uses a custom order from Monday to Sunday.  The sort property supports both full day names (e.g., 'Monday') and their three letter initials (e.g., 'mon') -- both of which are case insensitive.",
     "datasets": [
       "github"
-    ],
-    "id": 378
+    ]
   },
   {
+    "id": 379,
     "gallery_name": "vega-lite",
     "example_name": "Table Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_heatmap.html",
@@ -5147,10 +5148,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 379
+    ]
   },
   {
+    "id": 380,
     "gallery_name": "vega-lite",
     "example_name": "Ternary chart",
     "example_url": "https://vega.github.io/vega-lite/examples/ternary.html",
@@ -5159,10 +5160,10 @@
       "Advanced Calculations"
     ],
     "description": "A ternary chart example created by [Adrián Bazzana](https://www.linkedin.com/in/adrian-bazzana/).",
-    "datasets": [],
-    "id": 380
+    "datasets": []
   },
   {
+    "id": 381,
     "gallery_name": "vega-lite",
     "example_name": "Three Choropleths Representing Disjoint Data from the Same Table",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_repeat.html",
@@ -5174,10 +5175,10 @@
     "datasets": [
       "population_engineers_hurricanes",
       "us_10m"
-    ],
-    "id": 381
+    ]
   },
   {
+    "id": 382,
     "gallery_name": "vega-lite",
     "example_name": "Top-K Plot with \"Others\"",
     "example_url": "https://vega.github.io/vega-lite/examples/window_top_k_others.html",
@@ -5188,10 +5189,10 @@
     "description": "By @manzt, adapted from https://observablehq.com/@manzt/top-k-plot-with-others-vega-lite-example.",
     "datasets": [
       "movies"
-    ],
-    "id": 382
+    ]
   },
   {
+    "id": 383,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Area",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_area.html",
@@ -5202,10 +5203,10 @@
     "description": "Stock prices of four large companies as a small multiples of area charts.",
     "datasets": [
       "stocks"
-    ],
-    "id": 383
+    ]
   },
   {
+    "id": 384,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Area Plot Showing Annual Temperatures in Seattle",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_area_seattle.html",
@@ -5216,10 +5217,10 @@
     "description": "Temperature normals in Seattle. Derived from [Seattle Annual Temperate](https://vega.github.io/vega/examples/annual-temperature/) example from the Vega example gallery.",
     "datasets": [
       "seattle_weather_hourly_normals"
-    ],
-    "id": 384
+    ]
   },
   {
+    "id": 385,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_bar.html",
@@ -5230,10 +5231,10 @@
     "description": "A trellis bar chart showing the US population distribution of age groups and gender in 2000.",
     "datasets": [
       "population"
-    ],
-    "id": 385
+    ]
   },
   {
+    "id": 386,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Histograms",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_bar_histogram.html",
@@ -5244,10 +5245,10 @@
     "description": null,
     "datasets": [
       "cars"
-    ],
-    "id": 386
+    ]
   },
   {
+    "id": 387,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Scatter Plot (wrapped)",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_scatter.html",
@@ -5258,10 +5259,10 @@
     "description": null,
     "datasets": [
       "movies"
-    ],
-    "id": 387
+    ]
   },
   {
+    "id": 388,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Scatter Plot Showing Anscombe's Quartet",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_anscombe.html",
@@ -5272,10 +5273,10 @@
     "description": "Anscombe's Quartet",
     "datasets": [
       "anscombe"
-    ],
-    "id": 388
+    ]
   },
   {
+    "id": 389,
     "gallery_name": "vega-lite",
     "example_name": "Trellis Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_stacked_bar.html",
@@ -5286,10 +5287,10 @@
     "description": null,
     "datasets": [
       "barley"
-    ],
-    "id": 389
+    ]
   },
   {
+    "id": 390,
     "gallery_name": "vega-lite",
     "example_name": "Tukey Box Plot (1.5 IQR)",
     "example_url": "https://vega.github.io/vega-lite/examples/boxplot_2D_vertical.html",
@@ -5300,10 +5301,10 @@
     "description": "A vertical box plot showing median and lower and upper quartiles of the distribution of body mass of penguins.",
     "datasets": [
       "penguins"
-    ],
-    "id": 390
+    ]
   },
   {
+    "id": 391,
     "gallery_name": "vega-lite",
     "example_name": "U.S. State Capitals Overlayed on a Map of U.S.",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_text.html",
@@ -5315,10 +5316,10 @@
     "datasets": [
       "us_10m",
       "us_state_capitals"
-    ],
-    "id": 391
+    ]
   },
   {
+    "id": 392,
     "gallery_name": "vega-lite",
     "example_name": "Using the lookup transform to combine data",
     "example_url": "https://vega.github.io/vega-lite/examples/lookup.html",
@@ -5330,10 +5331,10 @@
     "datasets": [
       "lookup_groups",
       "lookup_people"
-    ],
-    "id": 392
+    ]
   },
   {
+    "id": 393,
     "gallery_name": "vega-lite",
     "example_name": "Using window transform to impute missing values by averaging the previous and next values.",
     "example_url": "https://vega.github.io/vega-lite/examples/window_impute_null.html",
@@ -5342,10 +5343,10 @@
       "Advanced Calculations"
     ],
     "description": "Using window transform to impute missing values in a line chart by averaging the previous and next values.",
-    "datasets": [],
-    "id": 393
+    "datasets": []
   },
   {
+    "id": 394,
     "gallery_name": "vega-lite",
     "example_name": "Vertical Concatenation",
     "example_url": "https://vega.github.io/vega-lite/examples/vconcat_weather.html",
@@ -5356,10 +5357,10 @@
     "description": "Two vertically concatenated charts",
     "datasets": [
       "weather"
-    ],
-    "id": 394
+    ]
   },
   {
+    "id": 395,
     "gallery_name": "vega-lite",
     "example_name": "Waterfall Chart of Monthly Profit and Loss",
     "example_url": "https://vega.github.io/vega-lite/examples/waterfall_chart.html",
@@ -5368,10 +5369,10 @@
       "Advanced Calculations"
     ],
     "description": null,
-    "datasets": [],
-    "id": 395
+    "datasets": []
   },
   {
+    "id": 396,
     "gallery_name": "vega-lite",
     "example_name": "Weekly Weather Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_layered_weather.html",
@@ -5382,10 +5383,10 @@
     "description": "Inspired by <a href='https://vega.github.io/vega-editor/?mode=vega&spec=weather'>this Vega example</a>. Weekly weather data plot representing high/low ranges of record temperatures (light grey), average temperatures (dark grey), and both predicted and observed temperatures (black) for the given week. The first five days have high/low ranges of observed temperatures, and the last five days have ranges of predicted temperatures, where the upper barbell represents the range of high temperature predictions and the lower barbell represents the range of low temperature predictions. Created by @melissatdiamond.",
     "datasets": [
       "weekly_weather"
-    ],
-    "id": 396
+    ]
   },
   {
+    "id": 397,
     "gallery_name": "vega-lite",
     "example_name": "Wheat and Wages Example",
     "example_url": "https://vega.github.io/vega-lite/examples/wheat_wages.html",
@@ -5397,10 +5398,10 @@
     "datasets": [
       "wheat",
       "monarchs"
-    ],
-    "id": 397
+    ]
   },
   {
+    "id": 398,
     "gallery_name": "vega-lite",
     "example_name": "Wilkinson Dot Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_wilkinson_dotplot.html",
@@ -5409,10 +5410,10 @@
       "Histograms, Density Plots, and Dot Plots"
     ],
     "description": "A Wilkinson Dot Plot",
-    "datasets": [],
-    "id": 398
+    "datasets": []
   },
   {
+    "id": 399,
     "gallery_name": "vega-lite",
     "example_name": "Wind Vector Map",
     "example_url": "https://vega.github.io/vega-lite/examples/point_angle_windvector.html",
@@ -5423,7 +5424,6 @@
     "description": "Vector array map showing wind speed and direction.",
     "datasets": [
       "windvectors"
-    ],
-    "id": 399
+    ]
   }
 ]

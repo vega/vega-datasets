@@ -316,13 +316,13 @@ async def fetch_indexes(
     async def fetch_json(url: str) -> Any:
         resp = await session.get(url, timeout=TIMEOUT)
         resp.raise_for_status()
-        return json.loads(resp.text)  # raw.githubusercontent.com returns text/plain
+        return resp.json()  # raw.githubusercontent.com returns text/plain
 
     async def fetch_altair_listing(directory: str) -> list[dict[str, Any]]:
         url = f"https://api.github.com/repos/vega/altair/contents/{directory}"
         resp = await session.get(url, timeout=TIMEOUT)
         resp.raise_for_status()
-        return json.loads(resp.text)
+        return resp.json()
 
     vl_index, vega_index, altair_files = await asyncio.gather(
         fetch_json(vl_url),
@@ -345,7 +345,10 @@ def _build_vegalite_examples(vl_index: Any) -> list[dict[str, Any]]:
             category = category or section_name
             for item in items:
                 slug = item["name"]
-                title = item.get("title") or slug.replace("_", " ").replace("-", " ").title()
+                title = (
+                    item.get("title")
+                    or slug.replace("_", " ").replace("-", " ").title()
+                )
                 if slug in seen:
                     seen[slug]["categories"].append(category)
                 else:
@@ -425,6 +428,7 @@ async def enrich_with_datasets(  # noqa: C901
 
         gallery = example["gallery_name"]
         if gallery == "altair":
+            assert resp.text is not None
             code = resp.text
             if not _DATA_IMPORT.search(code) and not _CATEGORY_PATTERN.search(code):
                 msg = f"Altair response has no data import or category marker: {example['spec_url']}"
@@ -435,12 +439,12 @@ async def enrich_with_datasets(  # noqa: C901
             example["categories"] = meta["categories"]
             example["datasets"] = extract_altair_datasets(code, valid_names)
         elif gallery == "vega-lite":
-            spec = json.loads(resp.text)
+            spec = resp.json()
             example["datasets"] = extract_vegalite_datasets(spec, name_map)
             if not example.get("description"):
                 example["description"] = spec.get("description")
         elif gallery == "vega":
-            spec = json.loads(resp.text)
+            spec = resp.json()
             example["datasets"] = extract_vega_datasets(spec, name_map)
 
         # Deduplicate datasets, preserve order
