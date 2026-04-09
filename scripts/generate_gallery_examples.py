@@ -446,6 +446,8 @@ async def enrich_with_datasets(  # noqa: C901
         elif gallery == "vega":
             spec = resp.json()
             example["datasets"] = extract_vega_datasets(spec, name_map)
+            if not example.get("description"):
+                example["description"] = spec.get("description")
 
         # Deduplicate datasets, preserve order
         example["datasets"] = list(dict.fromkeys(example["datasets"]))

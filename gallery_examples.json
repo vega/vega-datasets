@@ -1592,7 +1592,7 @@
     "categories": [
       "Network Diagrams"
     ],
-    "description": null,
+    "description": "Interactive map of U.S. airport connections in 2008.",
     "datasets": [
       "us_10m",
       "flights_airport",
@@ -1608,7 +1608,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A plot of 2016 annual global precipitation data from the NOAA Climate Forecast System (CFS) v2.",
     "datasets": [
       "annual_precip",
       "world_110m"
@@ -1623,7 +1623,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "Area charts showing average daily temperatures in Seattle for each hour of the day.",
     "datasets": [
       "seattle_weather_hourly_normals"
     ]
@@ -1637,7 +1637,7 @@
     "categories": [
       "Network Diagrams"
     ],
-    "description": null,
+    "description": "An arc diagram depicting character co-occurrence in the novel Les Misérables.",
     "datasets": [
       "miserables"
     ]
@@ -1651,7 +1651,7 @@
     "categories": [
       "Line & Area Charts"
     ],
-    "description": null,
+    "description": "A basic area chart example.",
     "datasets": []
   },
   {
@@ -1663,7 +1663,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A basic bar chart example, with value labels shown upon pointer hover.",
     "datasets": []
   },
   {
@@ -1675,7 +1675,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An example of Vega visualization that automatically switches between a column chart and a line chart depending on the number of data points",
     "datasets": []
   },
   {
@@ -1687,7 +1687,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A small multiples view of barley yields by site and variety.",
     "datasets": [
       "barley"
     ]
@@ -1701,7 +1701,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "A beeswarm chart example that uses a force-directed layout to group items by category.",
     "datasets": [
       "miserables"
     ]
@@ -1715,7 +1715,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A binned scatter plot example showing aggregate counts per binned cell.",
     "datasets": [
       "cars"
     ]
@@ -1729,7 +1729,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A box plot example showing aggregate statistics for penguin body mass.",
     "datasets": [
       "penguins"
     ]
@@ -1743,7 +1743,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "A scatter plot matrix of penguin data with interactive linked selections.",
     "datasets": [
       "penguins"
     ]
@@ -1757,7 +1757,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "A recreation of a New York Times chart showing U.S. budget forecasts versus reality.",
     "datasets": [
       "budgets"
     ]
@@ -1771,7 +1771,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "A calendar visualization of daily changes to the S&P 500 since 2000.",
     "datasets": [
       "sp500_2000"
     ]
@@ -1785,7 +1785,7 @@
     "categories": [
       "Tree Diagrams"
     ],
-    "description": null,
+    "description": "An example of a circle packing layout for hierarchical data.",
     "datasets": [
       "flare"
     ]
@@ -1799,7 +1799,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "A circular clock visualization showing the current time.",
     "datasets": []
   },
   {
@@ -1811,7 +1811,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "An example of a connected scatter plot, tracking changes in miles driven versus the price of gasoline.",
     "datasets": [
       "driving"
     ]
@@ -1825,7 +1825,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A contour plot example, overlaying a density estimate on scatter plot points.",
     "datasets": [
       "cars"
     ]
@@ -1839,7 +1839,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A choropleth map depicting U.S. unemployment rates by county in 2009.",
     "datasets": [
       "unemployment",
       "us_10m"
@@ -1854,7 +1854,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "Interactive cross-filtering among histograms of flight statistics.",
     "datasets": [
       "flights_200k_json"
     ]
@@ -1868,7 +1868,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "A small multiples view of 2D density heatmaps of automobile statistics.",
     "datasets": [
       "cars"
     ]
@@ -1882,7 +1882,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A map view comparing area distortions between two projections.",
     "datasets": [
       "world_110m"
     ]
@@ -1896,7 +1896,7 @@
     "categories": [
       "Circular Charts"
     ],
-    "description": null,
+    "description": "A basic donut chart example.",
     "datasets": []
   },
   {
@@ -1908,7 +1908,7 @@
     "categories": [
       "Circular Charts"
     ],
-    "description": null,
+    "description": "Donut with non-overlapping labels.",
     "datasets": []
   },
   {
@@ -1920,7 +1920,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A Dorling cartogram depicting U.S. state obesity rates.",
     "datasets": [
       "us_10m",
       "obesity"
@@ -1935,7 +1935,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A dot plot example depicting the distribution of animal sleep times.",
     "datasets": []
   },
   {
@@ -1947,7 +1947,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "An interactive globe depicting earthquake locations and magnitudes.",
     "datasets": [
       "world_110m",
       "earthquakes"
@@ -1962,7 +1962,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "Rotating globe animation depicting earthquake locations. Background - pseudorandomly distributed 'stars'.",
     "datasets": [
       "world_110m",
       "earthquakes"
@@ -1977,7 +1977,7 @@
     "categories": [
       "Network Diagrams"
     ],
-    "description": null,
+    "description": "A network diagram of software dependencies, with edges grouped via hierarchical edge bundling.",
     "datasets": [
       "flare",
       "flare_dependencies"
@@ -1992,7 +1992,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A basic error bar visualization example.",
     "datasets": [
       "barley"
     ]
@@ -2006,7 +2006,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "An annotated line chart of the population of Falkensee, Germany.",
     "datasets": []
   },
   {
@@ -2018,7 +2018,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "Passenger Traffic at Seattle-Tacoma International Airport, Percentage Change from October 2019 to March 2020",
     "datasets": []
   },
   {
@@ -2030,7 +2030,7 @@
     "categories": [
       "Network Diagrams"
     ],
-    "description": null,
+    "description": "A node-link diagram with force-directed layout, depicting character co-occurrence in the novel Les Misérables.",
     "datasets": [
       "miserables"
     ]
@@ -2044,7 +2044,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An interactive scatter plot of global health statistics by country and year.",
     "datasets": [
       "gapminder"
     ]
@@ -2058,7 +2058,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A basic grouped bar chart example.",
     "datasets": []
   },
   {
@@ -2070,7 +2070,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "A heatmap showing average daily temperatures in Seattle for each hour of the day.",
     "datasets": [
       "seattle_weather_hourly_normals"
     ]
@@ -2084,7 +2084,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "An interactive histogram for visualizing a univariate distribution.",
     "datasets": [
       "normal_2d"
     ]
@@ -2098,7 +2098,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A histogram of film ratings, modified to include null values.",
     "datasets": [
       "movies"
     ]
@@ -2112,7 +2112,7 @@
     "categories": [
       "Line & Area Charts"
     ],
-    "description": null,
+    "description": "A horizon graph, which preserves resolution by layering slices of an area chart.",
     "datasets": []
   },
   {
@@ -2124,7 +2124,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A hypothetical outcome plot that uses animated samples to convey uncertainty.",
     "datasets": []
   },
   {
@@ -2136,7 +2136,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "A scatter plot example with interactive legend and x-axis.",
     "datasets": [
       "cars"
     ]
@@ -2150,7 +2150,7 @@
     "categories": [
       "Line & Area Charts"
     ],
-    "description": null,
+    "description": "A searchable, stacked area chart of U.S. occupations from 1850 to 2000.",
     "datasets": [
       "jobs"
     ]
@@ -2164,7 +2164,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A labeled scatter plot of films showing Rotten Tomatoes ratings versus IMDB ratings.",
     "datasets": [
       "movies"
     ]
@@ -2178,7 +2178,7 @@
     "categories": [
       "Line & Area Charts"
     ],
-    "description": null,
+    "description": "A basic line chart example.",
     "datasets": []
   },
   {
@@ -2190,7 +2190,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A scatter plot with trend line calculated via locally-weighted (loess) regression.",
     "datasets": [
       "movies"
     ]
@@ -2204,7 +2204,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An example of a custom tooltip (on a map)",
     "datasets": [
       "unemployment",
       "us_10m"
@@ -2219,7 +2219,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A nested bar chart example, with bars grouped by category.",
     "datasets": []
   },
   {
@@ -2231,7 +2231,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "Area charts of stock prices, with an interactive overview and filtered detail views.",
     "datasets": [
       "sp500"
     ]
@@ -2245,7 +2245,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "A packed bubble chart.",
     "datasets": []
   },
   {
@@ -2257,7 +2257,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An implementation of the classic video game Pacman.",
     "datasets": []
   },
   {
@@ -2269,7 +2269,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "Parallel coordinates plot showing 7 dimensions of automobile statistics.",
     "datasets": [
       "cars"
     ]
@@ -2283,7 +2283,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "Estimating the value of π via random sampling methods.",
     "datasets": []
   },
   {
@@ -2295,7 +2295,7 @@
     "categories": [
       "Circular Charts"
     ],
-    "description": null,
+    "description": "A basic pie chart example.",
     "datasets": []
   },
   {
@@ -2307,7 +2307,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "A simple platformer. WASD to move, shift to dash.",
     "datasets": [
       "platformer_terrain"
     ]
@@ -2321,7 +2321,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A population pyramid showing U.S. demographics from 1850 to 2000.",
     "datasets": [
       "population"
     ]
@@ -2335,7 +2335,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "Area chart using density estimation to show a probability density or cumulative distribution.",
     "datasets": [
       "normal_2d"
     ]
@@ -2349,7 +2349,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A gallery of maps showcasing different cartographic projections.",
     "datasets": [
       "world_110m"
     ]
@@ -2363,7 +2363,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A quantile dot plot conveying the uncertainty of bus arrival times.",
     "datasets": []
   },
   {
@@ -2375,7 +2375,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A quantile-quantile plot example, comparing distributions by quantile values.",
     "datasets": [
       "normal_2d",
       "uniform_2d"
@@ -2390,7 +2390,7 @@
     "categories": [
       "Circular Charts"
     ],
-    "description": null,
+    "description": "A radar chart example, showing multiple dimensions in a radial layout.",
     "datasets": []
   },
   {
@@ -2402,7 +2402,7 @@
     "categories": [
       "Circular Charts"
     ],
-    "description": null,
+    "description": "A basic radial plot that encodes two values as the angle and radius of an arc.",
     "datasets": []
   },
   {
@@ -2414,7 +2414,7 @@
     "categories": [
       "Tree Diagrams"
     ],
-    "description": null,
+    "description": "An example of a radial layout for a node-link diagram of hierarchical data.",
     "datasets": [
       "flare"
     ]
@@ -2428,7 +2428,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A scatter plot with trend line calculated via user-configurable regression methods.",
     "datasets": [
       "movies"
     ]
@@ -2442,7 +2442,7 @@
     "categories": [
       "Network Diagrams"
     ],
-    "description": null,
+    "description": "A re-orderable adjacency matrix depicting character co-occurrence in the novel Les Misérables.",
     "datasets": [
       "miserables"
     ]
@@ -2456,7 +2456,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A basic scatter plot example depicting automobile statistics.",
     "datasets": [
       "cars"
     ]
@@ -2470,7 +2470,7 @@
     "categories": [
       "Scatter Plots"
     ],
-    "description": null,
+    "description": "A scatter plot of film statistics, with null values visualized along the axes.",
     "datasets": [
       "movies"
     ]
@@ -2484,7 +2484,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "a serpentine timeline. The serpentine shape can be an option for instances where an oblong canvas is not ideal. The shape can be customized using many of the signals below. Input bindings have been included for demonstration purposes",
     "datasets": []
   },
   {
@@ -2496,7 +2496,7 @@
     "categories": [
       "Line & Area Charts"
     ],
-    "description": null,
+    "description": "A basic stacked area chart example.",
     "datasets": []
   },
   {
@@ -2508,7 +2508,7 @@
     "categories": [
       "Bar Charts"
     ],
-    "description": null,
+    "description": "A basic stacked bar chart example.",
     "datasets": []
   },
   {
@@ -2520,7 +2520,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An interactive line chart of stock prices, with returns shown relative to a selected date.",
     "datasets": [
       "stocks"
     ]
@@ -2534,7 +2534,7 @@
     "categories": [
       "Tree Diagrams"
     ],
-    "description": null,
+    "description": "An example of a space-fulling radial layout for hierarchical data.",
     "datasets": [
       "flare"
     ]
@@ -2548,7 +2548,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An example of a simple table with a scrollbar",
     "datasets": []
   },
   {
@@ -2560,7 +2560,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A bar chart of flight statistics, aggregated by the selected time unit.",
     "datasets": [
       "flights_20k"
     ]
@@ -2574,7 +2574,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "A timeline visualization of the lives of the first five U.S. presidents.",
     "datasets": []
   },
   {
@@ -2586,7 +2586,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A top-k bar chart ranking film directors by revenue.",
     "datasets": [
       "movies"
     ]
@@ -2600,7 +2600,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A top-k bar chart ranking film directors by revenue, including an aggregate others category.",
     "datasets": [
       "movies"
     ]
@@ -2614,7 +2614,7 @@
     "categories": [
       "Tree Diagrams"
     ],
-    "description": null,
+    "description": "An example of Cartesian layouts for a node-link diagram of hierarchical data.",
     "datasets": [
       "flare"
     ]
@@ -2628,7 +2628,7 @@
     "categories": [
       "Tree Diagrams"
     ],
-    "description": null,
+    "description": "An example of treemap layout for hierarchical data.",
     "datasets": [
       "flare"
     ]
@@ -2642,7 +2642,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "Area charts showing the density of cuisine options in Seattle's U-District.",
     "datasets": [
       "udistrict"
     ]
@@ -2656,7 +2656,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A violin plot example showing distributions for pengiun body mass.",
     "datasets": [
       "penguins"
     ]
@@ -2670,7 +2670,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A contour plot of the Maungawhau volcano in New Zealand.",
     "datasets": [
       "volcano"
     ]
@@ -2684,7 +2684,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "Warming Stripes Chart. Originally designed by Ed Hawkins.",
     "datasets": [
       "global_temp"
     ]
@@ -2698,7 +2698,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "A watch face clock visualization showing the current time.",
     "datasets": []
   },
   {
@@ -2710,7 +2710,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "Overlaid plots of weekly record, normal, actual, and forecasted temperatures.",
     "datasets": [
       "weekly_weather"
     ]
@@ -2724,7 +2724,7 @@
     "categories": [
       "Custom Designs"
     ],
-    "description": null,
+    "description": "A recreation of William Playfair's classic chart of wheat prices and wages.",
     "datasets": [
       "wheat",
       "monarchs"
@@ -2739,7 +2739,7 @@
     "categories": [
       "Distributions"
     ],
-    "description": null,
+    "description": "A wheat plot example, which combines elements of dot plots and histograms.",
     "datasets": [
       "normal_2d"
     ]
@@ -2753,7 +2753,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A flow map of wind direction and speed over northwest Europe.",
     "datasets": [
       "windvectors"
     ]
@@ -2767,7 +2767,7 @@
     "categories": [
       "Other Chart Types"
     ],
-    "description": null,
+    "description": "A word cloud visualization depicting Vega research paper abstracts.",
     "datasets": []
   },
   {
@@ -2779,7 +2779,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "A configurable map of countries of the world.",
     "datasets": [
       "world_110m"
     ]
@@ -2793,7 +2793,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An interactive scatter plot example with binned aggregation supporting pan and zoom.",
     "datasets": [
       "normal_2d"
     ]
@@ -2807,7 +2807,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An example of a zoomable circle packing layout for hierarchical data.",
     "datasets": [
       "flare"
     ]
@@ -2821,7 +2821,7 @@
     "categories": [
       "Interaction Techniques"
     ],
-    "description": null,
+    "description": "An interactive scatter plot example supporting pan and zoom.",
     "datasets": [
       "normal_2d"
     ]
@@ -2835,7 +2835,7 @@
     "categories": [
       "Geographic Maps"
     ],
-    "description": null,
+    "description": "An interactive world map supporting pan and zoom.",
     "datasets": [
       "world_110m"
     ]
