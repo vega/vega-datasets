@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-04-12 04:41:20 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-04-12 16:06:21 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -775,7 +775,7 @@ chosen divisions over the time period.
 | other-pd | https://github.com/openfootball/football.json?tab=readme-ov-file#license |
 ## `gallery_examples`
 ### path
-gallery_examples.json
+gallery-examples.json
 ### description
 Cross-reference mapping Vega, Vega-Lite, and Altair gallery examples
 to the vega-datasets resources they use. Each record links a gallery example to
@@ -789,7 +789,7 @@ its datasets, categories, and source specification.
 | example_url  | string | URL to rendered example in the gallery                                 |                                           |
 | spec_url     | string | URL to source specification or code                                    |                                           |
 | categories   | array  | Tags or categories for the example (e.g., 'Bar Charts', 'Interactive') |                                           |
-| description  | string | Optional description of what the example demonstrates (may be null)    |                                           |
+| description  | string | Optional description of what the example demonstrates (may be null)    | {'required': False}                       |
 | datasets     | array  | Dataset names referencing resource.name in this package                |                                           |
 ### sources
 | title             | path                                       |
