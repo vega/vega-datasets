@@ -36,6 +36,9 @@ jobs:
           uv run ruff check
           uv run ruff format --check
 
+      - name: Test (python)
+        run: uv run pytest
+
       - name: Install Node dependencies
         run: npm ci
 
