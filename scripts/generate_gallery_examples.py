@@ -506,18 +506,44 @@ def finalize_examples(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [{k: v for k, v in ex.items() if k != "_filename"} for ex in examples]
 
 
+# Per-gallery count floors. Trip-wires for catastrophic regressions
+# (upstream restructuring, parser breakage), not tight estimates. Current
+# counts (2026-04): altair=117, vega=93, vega-lite=189. Bump if upstream
+# genuinely prunes a gallery; loosen if you want to tolerate more attrition.
+_MIN_EXPECTED_PER_GALLERY = {
+    "altair": 100,
+    "vega": 80,
+    "vega-lite": 160,
+}
+
+
 def assert_expected_galleries(examples: list[dict[str, Any]]) -> None:
-    """Raise if any of the three expected gallery sources is missing."""
+    """
+    Raise if any expected gallery is missing or drops below its count floor.
+
+    Floors are deliberately loose — they catch ~15%+ regressions, not small
+    attrition. A missing gallery counts as zero and trips the same check.
+    """
     by_gallery: dict[str, int] = {}
     for ex in examples:
         by_gallery[ex["gallery_name"]] = by_gallery.get(ex["gallery_name"], 0) + 1
     parts = ", ".join(f"{count} {name}" for name, count in sorted(by_gallery.items()))
     logger.info("Collected %d examples (%s)", len(examples), parts)
 
-    expected = {"vega", "vega-lite", "altair"}
-    missing = expected - by_gallery.keys()
-    if missing:
-        msg = f"Missing galleries: {', '.join(sorted(missing))} — possible upstream format change"
+    below_floor = [
+        (name, by_gallery.get(name, 0), floor)
+        for name, floor in _MIN_EXPECTED_PER_GALLERY.items()
+        if by_gallery.get(name, 0) < floor
+    ]
+    if below_floor:
+        details = ", ".join(
+            f"{name}: got {got}, expected >= {floor}"
+            for name, got, floor in below_floor
+        )
+        msg = (
+            f"Gallery count below expected floor — possible upstream "
+            f"format change. {details}"
+        )
         raise RuntimeError(msg)
 
 

@@ -7,6 +7,7 @@ import pytest
 from scripts.generate_gallery_examples import (
     _build_vegalite_examples,  # noqa: PLC2701
     _parse_altair_metadata,  # noqa: PLC2701
+    assert_expected_galleries,
     assert_unique_spec_urls,
     build_name_map,
     extract_altair_datasets,
@@ -450,3 +451,46 @@ def test_assert_unique_spec_urls_raises_on_duplicate():
             {"spec_url": "https://example.com/b"},
             {"spec_url": "https://example.com/a"},
         ])
+
+
+# ---------------------------------------------------------------------------
+# assert_expected_galleries (per-gallery count floor)
+# ---------------------------------------------------------------------------
+
+
+def _fake_examples(counts: dict[str, int]) -> list[dict[str, str]]:
+    """Build a minimal example list with the given per-gallery counts."""
+    return [
+        {"gallery_name": name} for name, n in counts.items() for _ in range(n)
+    ]
+
+
+def test_assert_expected_galleries_passes_at_floor():
+    """Every gallery exactly at its floor passes."""
+    assert_expected_galleries(
+        _fake_examples({"altair": 100, "vega": 80, "vega-lite": 160})
+    )
+
+
+def test_assert_expected_galleries_raises_when_one_below_floor():
+    """One gallery under its floor trips a detailed error."""
+    examples = _fake_examples({"altair": 100, "vega": 10, "vega-lite": 160})
+    with pytest.raises(RuntimeError, match=r"vega: got 10, expected >= 80"):
+        assert_expected_galleries(examples)
+
+
+def test_assert_expected_galleries_raises_when_gallery_missing():
+    """A missing gallery counts as zero and trips the floor check."""
+    examples = _fake_examples({"altair": 100, "vega-lite": 160})
+    with pytest.raises(RuntimeError, match=r"vega: got 0, expected >= 80"):
+        assert_expected_galleries(examples)
+
+
+def test_assert_expected_galleries_raises_with_multiple_gaps():
+    """Multiple below-floor galleries all appear in the error message."""
+    examples = _fake_examples({"altair": 10, "vega": 10, "vega-lite": 160})
+    with pytest.raises(
+        RuntimeError,
+        match=r"altair: got 10.*vega: got 10",
+    ):
+        assert_expected_galleries(examples)
