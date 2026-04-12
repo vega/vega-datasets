@@ -52,7 +52,7 @@ For datasets requiring processing:
 
 ### Gallery Examples Registry
 
-The `data/gallery_examples.json` file catalogs examples from Vega, Vega-Lite, and Altair galleries, tracking which datasets each example uses.
+The `data/gallery-examples.json` file catalogs examples from Vega, Vega-Lite, and Altair galleries, tracking which datasets each example uses.
 
 **When to regenerate:**
 - After new releases of Vega, Vega-Lite, or Altair that add/remove examples

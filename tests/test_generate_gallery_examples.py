@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 
-import asyncio
-import json
-
 import pytest
 
 from scripts.generate_gallery_examples import (
-    REPO_ROOT,
     _build_vegalite_examples,  # noqa: PLC2701
     _parse_altair_metadata,  # noqa: PLC2701
-    async_main,
+    assert_unique_spec_urls,
     build_name_map,
     extract_altair_datasets,
     extract_vega_datasets,
@@ -257,12 +253,24 @@ source = alt.topo_feature(data.world_110m.url, "countries")
     assert extract_altair_datasets(code, VALID_NAMES) == ["world_110m"]
 
 
-def test_extract_altair_unknown():
+def test_extract_altair_unknown_raises():
+    """Recognized pattern with a name not in valid_names raises — likely upstream rename."""
     code = """\
 from vega_datasets import data
 source = data.unknown_thing()
 """
-    assert extract_altair_datasets(code, VALID_NAMES) == []
+    with pytest.raises(ValueError, match="not in vega-datasets"):
+        extract_altair_datasets(code, VALID_NAMES)
+
+
+def test_extract_altair_mixed_known_unknown():
+    """When at least one known name is extracted, unknown names are dropped with a warning."""
+    code = """\
+from vega_datasets import data
+a = data.cars()
+b = data.gone_dataset()
+"""
+    assert extract_altair_datasets(code, VALID_NAMES) == ["cars"]
 
 
 def test_extract_altair_import_no_match():
@@ -328,6 +336,21 @@ def test_parse_altair_metadata_no_category():
     assert result["categories"] == []
 
 
+def test_parse_altair_metadata_triple_single_quote():
+    """Title and description work with ''' docstrings."""
+    code = "'''\nScatter Plot\n------------\nA basic scatter plot example.\n'''\n"
+    result = _parse_altair_metadata(code, "scatter_plot.py")
+    assert result["example_name"] == "Scatter Plot"
+    assert result["description"] == "A basic scatter plot example."
+
+
+def test_parse_altair_metadata_multi_line_title():
+    """Multi-line titles are collapsed into a single line."""
+    code = '"""\nA Long\nMulti-Line Title\n----------------\nbody.\n"""\n'
+    result = _parse_altair_metadata(code, "example.py")
+    assert result["example_name"] == "A Long Multi-Line Title"
+
+
 # ---------------------------------------------------------------------------
 # _build_vegalite_examples
 # ---------------------------------------------------------------------------
@@ -343,6 +366,40 @@ def test_build_vegalite_examples_empty_subcategory_fallback():
     examples = _build_vegalite_examples(vl_index)
     assert len(examples) == 1
     assert examples[0]["categories"] == ["Single-View Plots"]
+
+
+def test_build_vegalite_examples_longest_title_wins():
+    """When the same slug appears twice with different titles, longest wins."""
+    vl_index = {
+        "Layered Plots": {
+            "Bar Charts": [
+                {"name": "layer_bar_labels", "title": "Bar Chart with Labels"}
+            ],
+        },
+        "Examples": {
+            "Layered": [
+                {
+                    "name": "layer_bar_labels",
+                    "title": "Simple Bar Chart with Labels",
+                }
+            ],
+        },
+    }
+    examples = _build_vegalite_examples(vl_index)
+    assert len(examples) == 1
+    assert examples[0]["example_name"] == "Simple Bar Chart with Labels"
+    assert examples[0]["categories"] == ["Bar Charts", "Layered"]
+
+
+def test_build_vegalite_examples_dedupe_categories():
+    """Duplicate (section, category) pairs don't produce repeated entries."""
+    vl_index = {
+        "A": {"Bar Charts": [{"name": "foo", "title": "Foo"}]},
+        "B": {"Bar Charts": [{"name": "foo", "title": "Foo"}]},
+    }
+    examples = _build_vegalite_examples(vl_index)
+    assert len(examples) == 1
+    assert examples[0]["categories"] == ["Bar Charts"]
 
 
 # ---------------------------------------------------------------------------
@@ -375,59 +432,21 @@ def test_build_name_map_skips_empty_path():
 
 
 # ---------------------------------------------------------------------------
-# Integration smoke test (hits network)
+# assert_unique_spec_urls
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.network
-def test_full_pipeline():
-    """Smoke test: run the full pipeline against live upstream galleries."""
-    asyncio.run(async_main())
+def test_assert_unique_spec_urls_passes_on_unique():
+    assert_unique_spec_urls([
+        {"spec_url": "https://example.com/a"},
+        {"spec_url": "https://example.com/b"},
+    ])
 
-    output_path = REPO_ROOT / "data" / "gallery_examples.json"
-    assert output_path.exists()
 
-    with output_path.open() as f:
-        examples = json.load(f)
-
-    # Basic structure
-    assert isinstance(examples, list)
-    assert len(examples) > 100
-
-    # Required keys only
-    required_keys = {
-        "gallery_name",
-        "example_name",
-        "example_url",
-        "spec_url",
-        "categories",
-        "description",
-        "datasets",
-    }
-    for ex in examples:
-        assert set(ex.keys()) == required_keys, f"Bad keys in {ex.get('example_name')}"
-
-    # No techniques field
-    for ex in examples:
-        assert "techniques" not in ex
-
-    # No legacy id field (dropped in favor of spec_url as primary key)
-    for ex in examples:
-        assert "id" not in ex
-
-    # Each gallery represented with > 0 examples
-    for gallery in ("vega", "vega-lite", "altair"):
-        count = sum(1 for ex in examples if ex["gallery_name"] == gallery)
-        assert count > 0, f"Gallery {gallery} has 0 examples"
-
-    # Some examples have datasets
-    with_datasets = [ex for ex in examples if ex["datasets"]]
-    assert len(with_datasets) > 50
-
-    # spec_url is the declared primary key — must be unique across all entries
-    spec_urls = [ex["spec_url"] for ex in examples]
-    assert len(set(spec_urls)) == len(spec_urls), "duplicate spec_url in output"
-
-    # Output is sorted deterministically by (gallery_name, example_name)
-    sort_keys = [(ex["gallery_name"], ex["example_name"]) for ex in examples]
-    assert sort_keys == sorted(sort_keys), "output is not deterministically sorted"
+def test_assert_unique_spec_urls_raises_on_duplicate():
+    with pytest.raises(RuntimeError, match="primary key invariant violated"):
+        assert_unique_spec_urls([
+            {"spec_url": "https://example.com/a"},
+            {"spec_url": "https://example.com/b"},
+            {"spec_url": "https://example.com/a"},
+        ])

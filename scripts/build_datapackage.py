@@ -653,28 +653,6 @@ def _current_branch(*, ci_env_var: str = "GITHUB_SHA") -> str:
     return os.environ.get(ci_env_var) or run_check(CMD).stdout.rstrip()
 
 
-def compute_file_hash(file_path: Path, /) -> str:
-    """
-    Compute SHA1 hash for a single file using git hash-object.
-
-    Parameters
-    ----------
-    file_path
-        Path to the file to hash.
-
-    Returns
-    -------
-    str
-        Hash in format "sha1:<hash>".
-    """
-    CMD = ("git", "hash-object", str(file_path))
-    result = run_check(CMD)
-    return f"sha1:{result.stdout.strip()}"
-
-
-# gallery_examples.json now lives in data/ and is handled by iter_resources
-
-
 def read_toml(fp: Path, /) -> dict[str, Any]:
     return tomllib.loads(fp.read_text("utf-8"))
 
@@ -748,11 +726,8 @@ def main(
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
 
-    # Collect resources from /data/ directory
-    resources = list(iter_resources(data_dir, overrides, gh_sha1))
-
     pkg = Package(
-        resources=resources,
+        resources=list(iter_resources(data_dir, overrides, gh_sha1)),
         **pkg_meta,  # type: ignore[arg-type]
     )
     msg = f"Collected {len(pkg.resources)} resources"

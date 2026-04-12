@@ -645,28 +645,6 @@
   },
   {
     "gallery_name": "altair",
-    "example_name": "Isotype",
-    "example_url": "https://altair-viz.github.io/gallery/isotype.html",
-    "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/isotype.py",
-    "categories": [
-      "advanced calculations"
-    ],
-    "description": null,
-    "datasets": []
-  },
-  {
-    "gallery_name": "altair",
-    "example_name": "Isotype Emoji",
-    "example_url": "https://altair-viz.github.io/gallery/isotype_emoji.html",
-    "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/isotype_emoji.py",
-    "categories": [
-      "advanced calculations"
-    ],
-    "description": null,
-    "datasets": []
-  },
-  {
-    "gallery_name": "altair",
     "example_name": "Isotype Grid",
     "example_url": "https://altair-viz.github.io/gallery/isotype_grid.html",
     "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/isotype_grid.py",
@@ -674,6 +652,28 @@
       "advanced calculations"
     ],
     "description": "This example is a grid of isotype figures.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Isotype Visualization",
+    "example_url": "https://altair-viz.github.io/gallery/isotype.html",
+    "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/isotype.py",
+    "categories": [
+      "advanced calculations"
+    ],
+    "description": "Isotype Visualization shows the distribution of animals across UK and US.\nInspired by `Only An Ocean Between, 1943 <http://www.thomwhite.co.uk/?p=1303>`_. Population Live Stock, p.13.\nThis is adapted from Vega-Lite example https://vega.github.io/editor/#/examples/vega-lite/isotype_bar_chart",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Isotype Visualization with Emoji",
+    "example_url": "https://altair-viz.github.io/gallery/isotype_emoji.html",
+    "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/isotype_emoji.py",
+    "categories": [
+      "advanced calculations"
+    ],
+    "description": "Isotype Visualization shows the distribution of animals across UK and US, using unicode emoji\nmarks rather than custom SVG paths (see https://altair-viz.github.io/gallery/isotype.html).\nThis is adapted from Vega-Lite example https://vega.github.io/vega-lite/examples/isotype_bar_chart_emoji.html.",
     "datasets": []
   },
   {
@@ -1366,6 +1366,19 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "US Population Pyramid Over Time",
+    "example_url": "https://altair-viz.github.io/gallery/us_population_pyramid_over_time.html",
+    "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/us_population_pyramid_over_time.py",
+    "categories": [
+      "case studies"
+    ],
+    "description": "A population pyramid shows the distribution of age groups within a population.\nIt uses a slider widget that is bound to the year to visualize the age\ndistribution over time.",
+    "datasets": [
+      "population"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "US Population by Age and Sex",
     "example_url": "https://altair-viz.github.io/gallery/us_population_over_time.html",
     "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/us_population_over_time.py",
@@ -1386,19 +1399,6 @@
       "case studies"
     ],
     "description": "This chart visualizes the age distribution of the US population over time,\nusing a wrapped faceting of the data by decade.",
-    "datasets": [
-      "population"
-    ]
-  },
-  {
-    "gallery_name": "altair",
-    "example_name": "Us Population Pyramid Over Time",
-    "example_url": "https://altair-viz.github.io/gallery/us_population_pyramid_over_time.html",
-    "spec_url": "https://raw.githubusercontent.com/vega/altair/main/tests/examples_methods_syntax/us_population_pyramid_over_time.py",
-    "categories": [
-      "case studies"
-    ],
-    "description": null,
     "datasets": [
       "population"
     ]
@@ -2862,18 +2862,6 @@
   },
   {
     "gallery_name": "vega-lite",
-    "example_name": "Bar Chart with Labels",
-    "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_labels.html",
-    "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/layer_bar_labels.vl.json",
-    "categories": [
-      "Bar Charts",
-      "Labeling & Annotation"
-    ],
-    "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
-    "datasets": []
-  },
-  {
-    "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Negative Values and a Zero-Baseline",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_negative.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/bar_negative.vl.json",
@@ -3477,20 +3465,6 @@
   },
   {
     "gallery_name": "vega-lite",
-    "example_name": "Heatmap with Labels",
-    "example_url": "https://vega.github.io/vega-lite/examples/layer_text_heatmap.html",
-    "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/layer_text_heatmap.vl.json",
-    "categories": [
-      "Table-based Plots",
-      "Labeling & Annotation"
-    ],
-    "description": null,
-    "datasets": [
-      "cars"
-    ]
-  },
-  {
-    "gallery_name": "vega-lite",
     "example_name": "Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/histogram.vl.json",
@@ -3795,6 +3769,20 @@
   },
   {
     "gallery_name": "vega-lite",
+    "example_name": "Layering text over heatmap",
+    "example_url": "https://vega.github.io/vega-lite/examples/layer_text_heatmap.html",
+    "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/layer_text_heatmap.vl.json",
+    "categories": [
+      "Table-based Plots",
+      "Labeling & Annotation"
+    ],
+    "description": null,
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "vega-lite",
     "example_name": "Line Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/line.vl.json",
@@ -4095,20 +4083,6 @@
     "description": "The plot displays labels for all stock prices of the hovered time. The example is forked/modified from [@jakevdp's block](https://bl.ocks.org/jakevdp/a414950f61e4b224765f2439dd1f09b9).",
     "datasets": [
       "stocks"
-    ]
-  },
-  {
-    "gallery_name": "vega-lite",
-    "example_name": "Multi Series Line Chart with Repeat Operator",
-    "example_url": "https://vega.github.io/vega-lite/examples/repeat_layer.html",
-    "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/repeat_layer.vl.json",
-    "categories": [
-      "Line Charts",
-      "Repeat & Concatenation"
-    ],
-    "description": null,
-    "datasets": [
-      "movies"
     ]
   },
   {
@@ -4452,6 +4426,20 @@
   },
   {
     "gallery_name": "vega-lite",
+    "example_name": "Repeat and Layer to Show Different Movie Measures",
+    "example_url": "https://vega.github.io/vega-lite/examples/repeat_layer.html",
+    "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/repeat_layer.vl.json",
+    "categories": [
+      "Line Charts",
+      "Repeat & Concatenation"
+    ],
+    "description": null,
+    "datasets": [
+      "movies"
+    ]
+  },
+  {
+    "gallery_name": "vega-lite",
     "example_name": "Responsive Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_size_responsive.html",
     "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/bar_size_responsive.vl.json",
@@ -4615,6 +4603,18 @@
       "Bar Charts"
     ],
     "description": "A bar chart encodes quantitative values as the extent of rectangular bars.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "vega-lite",
+    "example_name": "Simple Bar Chart with Labels",
+    "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_labels.html",
+    "spec_url": "https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/layer_bar_labels.vl.json",
+    "categories": [
+      "Bar Charts",
+      "Labeling & Annotation"
+    ],
+    "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
     "datasets": []
   },
   {

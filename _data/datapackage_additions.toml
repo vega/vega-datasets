@@ -1894,7 +1894,7 @@ path  = "https://creativecommons.org/licenses/by/4.0/"
 # ==============================================================================
 
 [[resources]]
-path = "gallery_examples.json"
+path = "gallery-examples.json"
 description = """Cross-reference mapping Vega, Vega-Lite, and Altair gallery examples
 to the vega-datasets resources they use. Each record links a gallery example to
 its datasets, categories, and source specification."""
@@ -1949,6 +1949,7 @@ description = "Tags or categories for the example (e.g., 'Bar Charts', 'Interact
 name        = "description"
 type        = "string"
 description = "Optional description of what the example demonstrates (may be null)"
+constraints = { required = false }
 
 [[resources.schema.fields]]
 name        = "datasets"
