@@ -21,6 +21,7 @@ export default {
   'flights-2k.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-2k.json`,
   'flights-5k.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/flights-5k.json`,
   'football.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/football.json`,
+  'gallery_examples.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/gallery_examples.json`,
   'gapminder.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/gapminder.json`,
   'income.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/income.json`,
   'jobs.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/jobs.json`,
