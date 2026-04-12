@@ -460,9 +460,7 @@ def test_assert_unique_spec_urls_raises_on_duplicate():
 
 def _fake_examples(counts: dict[str, int]) -> list[dict[str, str]]:
     """Build a minimal example list with the given per-gallery counts."""
-    return [
-        {"gallery_name": name} for name, n in counts.items() for _ in range(n)
-    ]
+    return [{"gallery_name": name} for name, n in counts.items() for _ in range(n)]
 
 
 def test_assert_expected_galleries_passes_at_floor():
