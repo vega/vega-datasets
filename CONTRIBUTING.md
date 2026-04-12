@@ -52,7 +52,7 @@ For datasets requiring processing:
 
 ### Gallery Examples Registry
 
-The `gallery_examples.json` file catalogs examples from Vega, Vega-Lite, and Altair galleries, tracking which datasets each example uses.
+The `data/gallery_examples.json` file catalogs examples from Vega, Vega-Lite, and Altair galleries, tracking which datasets each example uses.
 
 **When to regenerate:**
 - After new releases of Vega, Vega-Lite, or Altair that add/remove examples
@@ -191,6 +191,9 @@ uv run taplo fmt --check --diff
 # Python linting and formatting
 uv run ruff check
 uv run ruff format --check
+
+# Python tests
+uv run pytest
 ```
 
 To automatically fix issues:
@@ -210,7 +213,7 @@ uv run ruff format
 
 3. Run checks and build:
    ```
-   uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check
+   uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check && uv run pytest
    npm run build
    ```
 

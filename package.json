@@ -25,8 +25,7 @@
     "src",
     "build",
     "data",
-    "datapackage.json",
-    "gallery_examples.json"
+    "datapackage.json"
   ],
   "dependencies": {
     "d3-dsv": "^3.0.1"

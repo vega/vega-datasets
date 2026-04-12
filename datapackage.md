@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-04-07 23:22:31 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-04-12 04:41:20 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -773,6 +773,34 @@ chosen divisions over the time period.
 | name     | path                                                                     |
 |:---------|:-------------------------------------------------------------------------|
 | other-pd | https://github.com/openfootball/football.json?tab=readme-ov-file#license |
+## `gallery_examples`
+### path
+gallery_examples.json
+### description
+Cross-reference mapping Vega, Vega-Lite, and Altair gallery examples
+to the vega-datasets resources they use. Each record links a gallery example to
+its datasets, categories, and source specification.
+### schema
+    - `primaryKey` ['spec_url']
+| name         | type   | description                                                            | constraints                               |
+|:-------------|:-------|:-----------------------------------------------------------------------|:------------------------------------------|
+| gallery_name | string | Name of the gallery this example belongs to                            | {'enum': ['vega', 'vega-lite', 'altair']} |
+| example_name | string | Human-readable example title                                           |                                           |
+| example_url  | string | URL to rendered example in the gallery                                 |                                           |
+| spec_url     | string | URL to source specification or code                                    |                                           |
+| categories   | array  | Tags or categories for the example (e.g., 'Bar Charts', 'Interactive') |                                           |
+| description  | string | Optional description of what the example demonstrates (may be null)    |                                           |
+| datasets     | array  | Dataset names referencing resource.name in this package                |                                           |
+### sources
+| title             | path                                       |
+|:------------------|:-------------------------------------------|
+| Vega Gallery      | https://vega.github.io/vega/examples/      |
+| Vega-Lite Gallery | https://vega.github.io/vega-lite/examples/ |
+| Altair Gallery    | https://altair-viz.github.io/gallery/      |
+### licenses
+| name         | title                    | path                                        |
+|:-------------|:-------------------------|:--------------------------------------------|
+| BSD-3-Clause | The 3-Clause BSD License | https://opensource.org/license/bsd-3-clause |
 ## `gapminder_health_income`
 ### path
 gapminder-health-income.csv
@@ -1946,32 +1974,3 @@ data was collected. For current postal code data, refer to the main GeoNames dat
 | name      | title                                          | path                                         |
 |:----------|:-----------------------------------------------|:---------------------------------------------|
 | CC-BY-4.0 | Creative Commons Attribution 4.0 International | https://creativecommons.org/licenses/by/4.0/ |
-## `gallery_examples`
-### path
-gallery_examples.json
-### description
-Cross-reference mapping Vega, Vega-Lite, and Altair gallery examples
-to the vega-datasets resources they use. Each record links a gallery example to
-its datasets, categories, and source specification.
-### schema
-    
-| name         | type    | description                                                            | constraints                               |
-|:-------------|:--------|:-----------------------------------------------------------------------|:------------------------------------------|
-| id           | integer | Unique sequential identifier for the example                           |                                           |
-| gallery_name | string  | Name of the gallery this example belongs to                            | {'enum': ['vega', 'vega-lite', 'altair']} |
-| example_name | string  | Human-readable example title                                           |                                           |
-| example_url  | string  | URL to rendered example in the gallery                                 |                                           |
-| spec_url     | string  | URL to source specification or code                                    |                                           |
-| categories   | array   | Tags or categories for the example (e.g., 'Bar Charts', 'Interactive') |                                           |
-| description  | string  | Optional description of what the example demonstrates (may be null)    |                                           |
-| datasets     | array   | Dataset names referencing resource.name in this package                |                                           |
-### sources
-| title             | path                                       |
-|:------------------|:-------------------------------------------|
-| Vega Gallery      | https://vega.github.io/vega/examples/      |
-| Vega-Lite Gallery | https://vega.github.io/vega-lite/examples/ |
-| Altair Gallery    | https://altair-viz.github.io/gallery/      |
-### licenses
-| name         | title                    | path                                        |
-|:-------------|:-------------------------|:--------------------------------------------|
-| BSD-3-Clause | The 3-Clause BSD License | https://opensource.org/license/bsd-3-clause |

@@ -2,19 +2,12 @@
 
 from __future__ import annotations
 
-# The script uses inline script metadata (PEP 723), so we import from the file path.
-# Add scripts/ to the path so we can import the module.
-import sys
-from pathlib import Path
-
-import pytest
-
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
-
 import asyncio
 import json
 
-from generate_gallery_examples import (
+import pytest
+
+from scripts.generate_gallery_examples import (
     REPO_ROOT,
     _build_vegalite_examples,  # noqa: PLC2701
     _parse_altair_metadata,  # noqa: PLC2701
@@ -391,7 +384,7 @@ def test_full_pipeline():
     """Smoke test: run the full pipeline against live upstream galleries."""
     asyncio.run(async_main())
 
-    output_path = REPO_ROOT / "gallery_examples.json"
+    output_path = REPO_ROOT / "data" / "gallery_examples.json"
     assert output_path.exists()
 
     with output_path.open() as f:
@@ -403,7 +396,6 @@ def test_full_pipeline():
 
     # Required keys only
     required_keys = {
-        "id",
         "gallery_name",
         "example_name",
         "example_url",
@@ -419,6 +411,10 @@ def test_full_pipeline():
     for ex in examples:
         assert "techniques" not in ex
 
+    # No legacy id field (dropped in favor of spec_url as primary key)
+    for ex in examples:
+        assert "id" not in ex
+
     # Each gallery represented with > 0 examples
     for gallery in ("vega", "vega-lite", "altair"):
         count = sum(1 for ex in examples if ex["gallery_name"] == gallery)
@@ -428,6 +424,10 @@ def test_full_pipeline():
     with_datasets = [ex for ex in examples if ex["datasets"]]
     assert len(with_datasets) > 50
 
-    # IDs are sequential
-    ids = [ex["id"] for ex in examples]
-    assert ids == list(range(1, len(examples) + 1))
+    # spec_url is the declared primary key — must be unique across all entries
+    spec_urls = [ex["spec_url"] for ex in examples]
+    assert len(set(spec_urls)) == len(spec_urls), "duplicate spec_url in output"
+
+    # Output is sorted deterministically by (gallery_name, example_name)
+    sort_keys = [(ex["gallery_name"], ex["example_name"]) for ex in examples]
+    assert sort_keys == sorted(sort_keys), "output is not deterministically sorted"
