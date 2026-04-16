@@ -682,12 +682,13 @@ def write_string_overrides_ts(pkg: Package, repo_dir: Path) -> None:
     string_fields_by_csv: dict[str, list[str]] = {}
 
     for resource in pkg.resources:
-        if resource.path.endswith(".csv") and resource.schema:
+        path = resource.path
+        if path and path.endswith(".csv") and resource.schema:
             string_fields = [
                 f.name for f in resource.schema.fields if f.type == "string"
             ]
             if string_fields:
-                string_fields_by_csv[resource.path] = string_fields
+                string_fields_by_csv[path] = string_fields
 
     ts_path = repo_dir / "src" / "stringOverrides.ts"
     with ts_path.open("w", encoding="utf-8") as f:
@@ -724,6 +725,7 @@ def main(
     gh_sha1 = extract_sha(data_dir)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
+
     pkg = Package(
         resources=list(iter_resources(data_dir, overrides, gh_sha1)),
         **pkg_meta,  # type: ignore[arg-type]

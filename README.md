@@ -100,6 +100,8 @@ Visualizations built with these datasets are showcased in several galleries:
 - [Altair Example Gallery](https://altair-viz.github.io/gallery/index.html)
 - [Observable Vega Examples](https://observablehq.com/@vega)
 
+The [gallery-examples.json](data/gallery-examples.json) file maps gallery examples from Vega, Vega-Lite, and Altair to the datasets they use.
+
 ## Data Usage Note
 
 - The datasets are designed for instructional and demonstration purposes.

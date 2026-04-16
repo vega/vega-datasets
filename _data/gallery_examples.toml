@@ -1,0 +1,4 @@
+[sources]
+vega_lite_examples_url = "https://raw.githubusercontent.com/vega/vega-lite/main/site/_data/examples.json"
+vega_examples_url = "https://raw.githubusercontent.com/vega/vega/main/docs/_data/examples.json"
+altair_examples_dir = "tests/examples_methods_syntax"

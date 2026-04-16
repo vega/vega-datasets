@@ -50,6 +50,22 @@ For datasets requiring processing:
 - Ensure reproducibility with deterministic outputs and fixed random seeds when applicable
 - See `scripts/flights.py` as an example
 
+### Gallery Examples Registry
+
+The `data/gallery-examples.json` file catalogs examples from Vega, Vega-Lite, and Altair galleries, tracking which datasets each example uses.
+
+**When to regenerate:**
+- After new releases of Vega, Vega-Lite, or Altair that add/remove examples
+- When examples are renamed or reorganized upstream
+- Periodically (e.g., quarterly) to pick up new examples
+
+**Commands:**
+```bash
+uv run scripts/generate_gallery_examples.py         # Regenerate the file
+```
+
+Configuration lives in `_data/gallery_examples.toml` (source URLs). Runtime is ~45 seconds (async fetching of ~400 specs).
+
 ## Metadata and Documentation
 
 We follow the [Data Package Standard 2.0](https://datapackage.org/) with:
@@ -175,6 +191,9 @@ uv run taplo fmt --check --diff
 # Python linting and formatting
 uv run ruff check
 uv run ruff format --check
+
+# Python tests
+uv run pytest
 ```
 
 To automatically fix issues:
@@ -194,7 +213,7 @@ uv run ruff format
 
 3. Run checks and build:
    ```
-   uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check
+   uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check && uv run pytest
    npm run build
    ```
 
