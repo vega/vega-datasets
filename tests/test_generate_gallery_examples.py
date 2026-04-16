@@ -6,15 +6,25 @@ import pytest
 
 from scripts.generate_gallery_examples import (
     _build_vegalite_examples,  # noqa: PLC2701
+    _format_refs,  # noqa: PLC2701
     _parse_altair_metadata,  # noqa: PLC2701
     assert_expected_galleries,
     assert_unique_spec_urls,
+    build_example_list,
     build_name_map,
     extract_altair_datasets,
     extract_vega_datasets,
     extract_vegalite_datasets,
+    load_config,
     normalize_dataset_reference,
 )
+
+# Fixture: fake resolved-refs struct matching resolve_refs() return shape.
+FAKE_REFS = {
+    "vega-lite": {"commit": "abcdef0123456789", "tree": "tree-vl-sha"},
+    "vega": {"commit": "1234567890abcdef", "tree": "tree-vega-sha"},
+    "altair": {"commit": "fedcba9876543210", "tree": "tree-altair-sha"},
+}
 
 # Fixture: minimal name map matching real datapackage.json structure
 NAME_MAP = {
@@ -357,6 +367,9 @@ def test_parse_altair_metadata_multi_line_title():
 # ---------------------------------------------------------------------------
 
 
+_VL_SHA = "abcdef0123456789"
+
+
 def test_build_vegalite_examples_empty_subcategory_fallback():
     """When a subcategory key is empty string, fall back to section name."""
     vl_index = {
@@ -364,7 +377,7 @@ def test_build_vegalite_examples_empty_subcategory_fallback():
             "": [{"name": "bar_simple", "title": "Simple Bar"}],
         }
     }
-    examples = _build_vegalite_examples(vl_index)
+    examples = _build_vegalite_examples(vl_index, _VL_SHA)
     assert len(examples) == 1
     assert examples[0]["categories"] == ["Single-View Plots"]
 
@@ -386,7 +399,7 @@ def test_build_vegalite_examples_longest_title_wins():
             ],
         },
     }
-    examples = _build_vegalite_examples(vl_index)
+    examples = _build_vegalite_examples(vl_index, _VL_SHA)
     assert len(examples) == 1
     assert examples[0]["example_name"] == "Simple Bar Chart with Labels"
     assert examples[0]["categories"] == ["Bar Charts", "Layered"]
@@ -398,9 +411,19 @@ def test_build_vegalite_examples_dedupe_categories():
         "A": {"Bar Charts": [{"name": "foo", "title": "Foo"}]},
         "B": {"Bar Charts": [{"name": "foo", "title": "Foo"}]},
     }
-    examples = _build_vegalite_examples(vl_index)
+    examples = _build_vegalite_examples(vl_index, _VL_SHA)
     assert len(examples) == 1
     assert examples[0]["categories"] == ["Bar Charts"]
+
+
+def test_build_vegalite_examples_spec_url_uses_jsdelivr_with_sha():
+    """Spec URL must embed the vega-lite commit SHA, not `main`."""
+    vl_index = {"Single-View Plots": {"": [{"name": "bar_simple"}]}}
+    examples = _build_vegalite_examples(vl_index, _VL_SHA)
+    assert (
+        examples[0]["spec_url"]
+        == f"https://cdn.jsdelivr.net/gh/vega/vega-lite@{_VL_SHA}/examples/specs/bar_simple.vl.json"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -492,3 +515,75 @@ def test_assert_expected_galleries_raises_with_multiple_gaps():
         match=r"altair: got 10.*vega: got 10",
     ):
         assert_expected_galleries(examples)
+
+
+# ---------------------------------------------------------------------------
+# SHA pinning: load_config, _format_refs, build_example_list URL shapes
+# ---------------------------------------------------------------------------
+
+
+def test_load_config_parses_ref_and_sources():
+    """Real TOML file must yield both [ref] and [sources] tables with
+    underscore→hyphen normalized keys."""
+    config = load_config()
+    assert set(config["refs"].keys()) == {"vega-lite", "vega", "altair"}
+    # Defaults ship as `main`; tag-pinning is a supported override.
+    for ref in config["refs"].values():
+        assert isinstance(ref, str) and ref
+    assert "vega_lite_examples_url" in config["sources"]
+    assert "vega_examples_url" in config["sources"]
+    assert "altair_examples_dir" in config["sources"]
+
+
+def test_load_config_urls_use_jsdelivr_template():
+    """Source URL templates route through jsDelivr, not raw.githubusercontent."""
+    config = load_config()
+    assert "cdn.jsdelivr.net/gh/" in config["sources"]["vega_lite_examples_url"]
+    assert "cdn.jsdelivr.net/gh/" in config["sources"]["vega_examples_url"]
+    assert "{vega_lite_ref}" in config["sources"]["vega_lite_examples_url"]
+    assert "{vega_ref}" in config["sources"]["vega_examples_url"]
+
+
+def test_format_refs_maps_hyphen_keys_to_placeholder_names():
+    """_format_refs bridges resolve_refs output → str.format kwargs."""
+    fmt = _format_refs(FAKE_REFS)
+    assert fmt == {
+        "vega_lite_ref": "abcdef0123456789",
+        "vega_ref": "1234567890abcdef",
+        "altair_ref": "fedcba9876543210",
+    }
+
+
+def test_build_example_list_vega_spec_url_uses_jsdelivr_with_sha():
+    """Vega example spec_urls embed the resolved vega SHA via jsDelivr."""
+    vl_index: dict[str, dict[str, list[dict[str, str]]]] = {}
+    vega_index = {"Basic": [{"name": "bar"}]}
+    altair_files: list[dict[str, str]] = []
+    examples = build_example_list(vl_index, vega_index, altair_files, FAKE_REFS)
+    vega_entries = [ex for ex in examples if ex["gallery_name"] == "vega"]
+    assert len(vega_entries) == 1
+    assert (
+        vega_entries[0]["spec_url"]
+        == "https://cdn.jsdelivr.net/gh/vega/vega@1234567890abcdef/docs/examples/bar.vg.json"
+    )
+
+
+def test_build_example_list_altair_spec_url_uses_jsdelivr_with_path():
+    """Altair entries derive spec_url from the full Trees API path +
+    altair commit SHA. No regression to Contents API `name`-only shape."""
+    altair_files = [
+        {"path": "tests/examples_methods_syntax/scatter_plot.py"},
+        {
+            "path": "tests/examples_methods_syntax/__init__.py"
+        },  # should be present here; filtering upstream
+    ]
+    examples = build_example_list({}, {}, altair_files, FAKE_REFS)
+    altair_entries = [ex for ex in examples if ex["gallery_name"] == "altair"]
+    # build_example_list itself doesn't re-filter; fetch_indexes does.
+    assert len(altair_entries) == 2
+    scatter = next(ex for ex in altair_entries if ex["_filename"] == "scatter_plot.py")
+    assert scatter["spec_url"] == (
+        "https://cdn.jsdelivr.net/gh/vega/altair@fedcba9876543210/"
+        "tests/examples_methods_syntax/scatter_plot.py"
+    )
+    assert scatter["example_name"] == "Scatter Plot"

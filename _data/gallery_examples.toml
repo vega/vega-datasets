@@ -1,4 +1,26 @@
+# Upstream gallery sources consumed by scripts/generate_gallery_examples.py.
+#
+# Strategy: track each upstream repo's `main` branch because the deployed
+# vega/vega-lite/altair galleries users see are also built from main. The
+# script resolves main → commit SHA once per run and pins all subsequent
+# URLs to that SHA so examples.json and every spec come from the same
+# upstream snapshot. Resolved SHAs are logged at INFO for triage.
+#
+# Read-path: jsDelivr (`cdn.jsdelivr.net/gh/…`) — CDN-cached, no rate limit,
+# follows the same refs (branches/tags/SHAs) as raw.githubusercontent.com.
+# When URLs embed a commit SHA, jsDelivr caches forever with zero
+# invalidation risk since SHAs are immutable.
+
+[ref]
+# `main` is resolved to a SHA at script start. Change to a tag like "v6.4.2"
+# to pin a gallery to a released version instead of tracking main.
+vega_lite = "main"
+vega      = "main"
+altair    = "main"
+
 [sources]
-vega_lite_examples_url = "https://raw.githubusercontent.com/vega/vega-lite/main/site/_data/examples.json"
-vega_examples_url = "https://raw.githubusercontent.com/vega/vega/main/docs/_data/examples.json"
-altair_examples_dir = "tests/examples_methods_syntax"
+# `{…_ref}` placeholders are substituted with the resolved SHAs (or the
+# literal tag/branch if the ref is pinned in [ref] above).
+vega_lite_examples_url = "https://cdn.jsdelivr.net/gh/vega/vega-lite@{vega_lite_ref}/site/_data/examples.json"
+vega_examples_url      = "https://cdn.jsdelivr.net/gh/vega/vega@{vega_ref}/docs/_data/examples.json"
+altair_examples_dir    = "tests/examples_methods_syntax"

@@ -2,7 +2,7 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "niquests>=3.11.2,<4",
+#     "httpx>=0.27,<1",
 # ]
 # ///
 """Generate gallery-examples.json from Vega ecosystem galleries."""
@@ -13,17 +13,40 @@ import asyncio
 import json
 import logging
 import operator
+import os
 import re
 import tomllib
 from pathlib import Path
 from typing import Any
 
-import niquests
+import httpx
 
 logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TIMEOUT = 30
+
+# Spec URL format strings. jsDelivr proxies GitHub raw content with aggressive
+# CDN caching; embedding an immutable commit SHA gives 100% cache hits with
+# zero invalidation risk. Consumers can verify these URLs match the TOML
+# read-path strategy documented in _data/gallery_examples.toml.
+_VEGA_LITE_SPEC_URL = (
+    "https://cdn.jsdelivr.net/gh/vega/vega-lite@{sha}/examples/specs/{slug}.vl.json"
+)
+_VEGA_SPEC_URL = (
+    "https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/{slug}.vg.json"
+)
+_ALTAIR_SPEC_URL = "https://cdn.jsdelivr.net/gh/vega/altair@{sha}/{path}"
+
+# Internal repo keys match the `gallery_name` field in output. The TOML file
+# uses underscore variants (vega_lite) because hyphens aren't str.format-safe
+# in placeholder names; we translate at load time.
+_GALLERIES = ("vega-lite", "vega", "altair")
+_REPO_SLUGS = {
+    "vega-lite": "vega/vega-lite",
+    "vega": "vega/vega",
+    "altair": "vega/altair",
+}
 
 # URL prefixes that indicate a vega-datasets reference. Trailing `/` prevents
 # false-positive matches against sibling packages like `vega-datasets-extra`.
@@ -268,12 +291,29 @@ def build_name_map(datapackage: dict[str, Any]) -> dict[str, str]:
     return name_map
 
 
-def load_sources() -> dict[str, str]:
-    """Read source URLs from _data/gallery_examples.toml."""
+def load_config() -> dict[str, Any]:
+    """
+    Read ref-pinning strategy + source URL templates from the TOML config.
+
+    Returns a dict with two keys:
+      - ``refs``: ``{"vega-lite": "main", "vega": "main", "altair": "main"}``
+        (keys normalized from underscore → hyphen to match ``gallery_name``)
+      - ``sources``: the raw ``[sources]`` table — URL format strings with
+        ``{…_ref}`` placeholders still present; substituted later once SHAs
+        are resolved.
+    """
     config_path = REPO_ROOT / "_data" / "gallery_examples.toml"
     with config_path.open("rb") as f:
-        config = tomllib.load(f)
-    return config["sources"]
+        raw = tomllib.load(f)
+
+    # TOML uses underscore keys; normalize to hyphen to match gallery_name.
+    ref_toml = raw.get("ref", {})
+    refs = {
+        "vega-lite": ref_toml["vega_lite"],
+        "vega": ref_toml["vega"],
+        "altair": ref_toml["altair"],
+    }
+    return {"refs": refs, "sources": raw["sources"]}
 
 
 # Docstring delimiter is captured so the description regex can reuse it —
@@ -308,34 +348,105 @@ def _parse_altair_metadata(code: str, filename: str) -> dict[str, Any]:
     return {"example_name": title, "description": description, "categories": categories}
 
 
-async def _fetch_text(session: niquests.AsyncSession, url: str) -> str:
-    # raw.githubusercontent.com returns text/plain, which causes niquests
-    # .json() to reject the response — callers parse JSON manually from text.
-    resp = await session.get(url, timeout=TIMEOUT)
+async def _fetch_text(session: httpx.AsyncClient, url: str) -> str:
+    # Callers parse JSON manually from text because some endpoints return
+    # text/plain or vendor-specific content types that rejected the old
+    # niquests `.json()` helper.
+    resp = await session.get(url)
     resp.raise_for_status()
-    if resp.text is None:
+    if not resp.text:
         msg = f"Empty response body from {url}"
         raise RuntimeError(msg)
     return resp.text
 
 
+async def resolve_refs(
+    session: httpx.AsyncClient, refs: dict[str, str]
+) -> dict[str, dict[str, str]]:
+    """
+    Resolve each gallery's ref (branch/tag/SHA) to the commit + tree SHAs.
+
+    Returns ``{"vega-lite": {"commit": "<sha>", "tree": "<sha>"}, ...}``.
+    One GitHub API call per repo (three total) — fetches
+    ``/repos/{owner}/{repo}/commits/{ref}`` which returns both the commit
+    SHA and ``commit.tree.sha`` in the same payload. This pins every
+    subsequent URL in the run to one immutable snapshot per upstream repo
+    and gives us the tree SHA the altair Trees API call needs, for free.
+    """
+
+    async def one(name: str) -> tuple[str, dict[str, str]]:
+        slug = _REPO_SLUGS[name]
+        ref = refs[name]
+        url = f"https://api.github.com/repos/{slug}/commits/{ref}"
+        resp = await session.get(url)
+        resp.raise_for_status()
+        data = json.loads(resp.text)
+        return name, {"commit": data["sha"], "tree": data["commit"]["tree"]["sha"]}
+
+    pairs = await asyncio.gather(*(one(name) for name in _GALLERIES))
+    return dict(pairs)
+
+
+def _format_refs(refs: dict[str, dict[str, str]]) -> dict[str, str]:
+    """Build the ``{…_ref: sha}`` substitution dict for TOML URL templates."""
+    return {
+        "vega_lite_ref": refs["vega-lite"]["commit"],
+        "vega_ref": refs["vega"]["commit"],
+        "altair_ref": refs["altair"]["commit"],
+    }
+
+
 async def fetch_indexes(
-    session: niquests.AsyncSession, config: dict[str, str]
+    session: httpx.AsyncClient,
+    sources: dict[str, str],
+    refs: dict[str, dict[str, str]],
 ) -> tuple[Any, Any, list[dict[str, Any]]]:
-    """Fetch all three gallery indexes concurrently."""
-    vl_url = config["vega_lite_examples_url"]
-    vega_url = config["vega_examples_url"]
-    altair_dir = config["altair_examples_dir"]
-    altair_url = f"https://api.github.com/repos/vega/altair/contents/{altair_dir}"
+    """
+    Fetch all three gallery indexes concurrently, pinned to resolved SHAs.
+
+    vega-lite and vega indexes come via jsDelivr (URL templates in TOML
+    are substituted with commit SHAs). Altair uses the GitHub Trees API
+    at the repo's tree SHA, filtered to ``tests/examples_methods_syntax/*.py``.
+    The Contents API was dropped in favor of Trees API because the payload
+    is ~4x smaller and composes cleanly with SHA pinning.
+    """
+    fmt = _format_refs(refs)
+    vl_url = sources["vega_lite_examples_url"].format(**fmt)
+    vega_url = sources["vega_examples_url"].format(**fmt)
+    altair_tree_url = (
+        f"https://api.github.com/repos/vega/altair/git/trees/"
+        f"{refs['altair']['tree']}?recursive=1"
+    )
 
     async def fetch_json(url: str) -> Any:
         return json.loads(await _fetch_text(session, url))
 
-    vl_index, vega_index, altair_files = await asyncio.gather(
+    vl_index, vega_index, altair_tree = await asyncio.gather(
         fetch_json(vl_url),
         fetch_json(vega_url),
-        fetch_json(altair_url),
+        fetch_json(altair_tree_url),
     )
+
+    # Trees API returns {"sha": ..., "tree": [{"path": ..., "type": ...}, ...],
+    # "truncated": bool}. Our three repos all fit within the 100k-entry /
+    # 7 MB limits (measured 2026-04-12: altair=603, vl=3498, vega=2022).
+    if altair_tree.get("truncated"):
+        msg = (
+            "Altair git tree response was truncated. The repo has grown past "
+            "the Trees API single-response limit; switch to a pagination "
+            "strategy or a sub-tree fetch."
+        )
+        raise RuntimeError(msg)
+
+    altair_dir = sources["altair_examples_dir"]
+    altair_files = [
+        {"path": entry["path"]}
+        for entry in altair_tree["tree"]
+        if entry.get("type") == "blob"
+        and entry["path"].startswith(f"{altair_dir}/")
+        and entry["path"].endswith(".py")
+        and not Path(entry["path"]).name.startswith("__")
+    ]
     return vl_index, vega_index, altair_files
 
 
@@ -350,7 +461,7 @@ def _longest_wins(current: str | None, candidate: str | None) -> str | None:
     return current
 
 
-def _build_vegalite_examples(vl_index: Any) -> list[dict[str, Any]]:
+def _build_vegalite_examples(vl_index: Any, commit_sha: str) -> list[dict[str, Any]]:
     """
     Build Vega-Lite example list from nested index.
 
@@ -386,7 +497,9 @@ def _build_vegalite_examples(vl_index: Any) -> list[dict[str, Any]]:
                         "gallery_name": "vega-lite",
                         "example_name": title,
                         "example_url": f"https://vega.github.io/vega-lite/examples/{slug}.html",
-                        "spec_url": f"https://raw.githubusercontent.com/vega/vega-lite/main/examples/specs/{slug}.vl.json",
+                        "spec_url": _VEGA_LITE_SPEC_URL.format(
+                            sha=commit_sha, slug=slug
+                        ),
                         "categories": [category],
                         "description": description,
                         "datasets": [],
@@ -400,10 +513,13 @@ def build_example_list(
     vl_index: Any,
     vega_index: Any,
     altair_files: list[dict[str, Any]],
-    altair_dir: str,
+    refs: dict[str, dict[str, str]],
 ) -> list[dict[str, Any]]:
     """Normalize three gallery indexes into a flat example list."""
-    examples = _build_vegalite_examples(vl_index)
+    examples = _build_vegalite_examples(vl_index, refs["vega-lite"]["commit"])
+
+    vega_sha = refs["vega"]["commit"]
+    altair_sha = refs["altair"]["commit"]
 
     # Vega: index is {category: [list of {name}]}
     seen_vega: set[str] = set()
@@ -421,22 +537,23 @@ def build_example_list(
                 "gallery_name": "vega",
                 "example_name": slug.replace("-", " ").replace("_", " ").title(),
                 "example_url": f"https://vega.github.io/vega/examples/{slug}/",
-                "spec_url": f"https://raw.githubusercontent.com/vega/vega/main/docs/examples/{slug}.vg.json",
+                "spec_url": _VEGA_SPEC_URL.format(sha=vega_sha, slug=slug),
                 "categories": [category],
                 "description": None,
                 "datasets": [],
             })
 
-    # Altair: directory listing -> stubs (metadata filled during enrichment)
+    # Altair: Trees API-filtered listing -> stubs (metadata filled during
+    # enrichment). Entries have shape {"path": "tests/examples_methods_syntax/foo.py"};
+    # fetch_indexes already filtered out non-blob, non-.py, and dunder files.
     for file_info in altair_files:
-        name = file_info["name"]
-        if not name.endswith(".py") or name.startswith("__"):
-            continue
+        path = file_info["path"]
+        name = Path(path).name
         examples.append({
             "gallery_name": "altair",
             "example_name": name.removesuffix(".py").replace("_", " ").title(),
             "example_url": f"https://altair-viz.github.io/gallery/{name.removesuffix('.py')}.html",
-            "spec_url": f"https://raw.githubusercontent.com/vega/altair/main/{altair_dir}/{name}",
+            "spec_url": _ALTAIR_SPEC_URL.format(sha=altair_sha, path=path),
             "categories": [],
             "description": None,
             "datasets": [],
@@ -448,7 +565,7 @@ def build_example_list(
 
 async def enrich_with_datasets(
     examples: list[dict[str, Any]],
-    session: niquests.AsyncSession,
+    session: httpx.AsyncClient,
     name_map: dict[str, str],
     valid_names: set[str],
 ) -> None:
@@ -569,8 +686,14 @@ async def run_pipeline() -> list[dict[str, Any]]:
     Returns the finalized, validated example list. Callers are responsible
     for serializing it (see ``async_main``).
     """
-    sources = load_sources()
-    logger.info("Loaded config: %d source URLs", len(sources))
+    config = load_config()
+    sources = config["sources"]
+    requested_refs = config["refs"]
+    logger.info(
+        "Loaded config: %d source URLs, refs=%s",
+        len(sources),
+        requested_refs,
+    )
 
     datapackage_path = REPO_ROOT / "datapackage.json"
     with datapackage_path.open() as f:
@@ -579,8 +702,40 @@ async def run_pipeline() -> list[dict[str, Any]]:
     valid_names = set(name_map.values())
     logger.info("Built name map: %d datasets", len(valid_names))
 
-    async with niquests.AsyncSession(disable_http2=True) as session:
-        vl_index, vega_index, altair_files = await fetch_indexes(session, sources)
+    # Opportunistic auth: lifts api.github.com rate limit from 60/hr to
+    # 5000/hr when a token is available. No-op when absent. jsDelivr
+    # ignores the header, so scoping isn't needed.
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    headers = {"Authorization": f"Bearer {token}"} if token else {}
+
+    # httpx default: HTTP/1.1 only, no multiplexing — avoids the
+    # concurrent-body-swapping bug we hit with niquests when fetching
+    # across multiple hosts (jsDelivr + api.github.com) under asyncio
+    # concurrency. Timeout is set client-wide so per-call TIMEOUT arg
+    # isn't needed.
+    async with httpx.AsyncClient(
+        headers=headers,
+        timeout=TIMEOUT,
+        follow_redirects=True,
+    ) as session:
+        resolved_refs = await resolve_refs(session, requested_refs)
+        for name in _GALLERIES:
+            logger.info(
+                "Resolved %s@%s → %s",
+                name,
+                requested_refs[name],
+                resolved_refs[name]["commit"],
+            )
+        logger.info(
+            "Upstream provenance: vega-lite=%s vega=%s altair=%s",
+            resolved_refs["vega-lite"]["commit"][:12],
+            resolved_refs["vega"]["commit"][:12],
+            resolved_refs["altair"]["commit"][:12],
+        )
+
+        vl_index, vega_index, altair_files = await fetch_indexes(
+            session, sources, resolved_refs
+        )
 
         if not isinstance(vl_index, dict):
             msg = f"Expected dict for Vega-Lite index, got {type(vl_index).__name__}"
@@ -592,9 +747,7 @@ async def run_pipeline() -> list[dict[str, Any]]:
             msg = f"Expected list for Altair file listing, got {type(altair_files).__name__}"
             raise TypeError(msg)
 
-        examples = build_example_list(
-            vl_index, vega_index, altair_files, sources["altair_examples_dir"]
-        )
+        examples = build_example_list(vl_index, vega_index, altair_files, resolved_refs)
         logger.info("Built example list: %d examples", len(examples))
 
         await enrich_with_datasets(examples, session, name_map, valid_names)
@@ -619,6 +772,9 @@ def main() -> None:
         level=logging.INFO,
         format="%(levelname)s: %(message)s",
     )
+    # httpx emits one INFO line per request (~400 requests in this run),
+    # which drowns out the pipeline's own progress and provenance lines.
+    logging.getLogger("httpx").setLevel(logging.WARNING)
     asyncio.run(async_main())
 
 
