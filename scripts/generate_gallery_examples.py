@@ -234,6 +234,14 @@ def extract_altair_datasets(code: str, valid_names: set[str]) -> list[str]:
     because no pattern matched (patterns may need updating) or because every
     matched name is unknown to vega-datasets (likely an upstream rename).
     Mixed known/unknown is permitted: unknowns are dropped with a warning.
+
+    Transitional. Vega + Vega-Lite ship a structured ``examples.json`` and the
+    generator walks specs mechanically; altair ships no such index today, so
+    this function scrapes source text. If altair begins publishing an index
+    with a ``datasets`` field (see vega/altair#4002), this collapses to a
+    field read. Note that ``data.cars()`` returns a DataFrame and compiles to
+    inline ``values``, losing the filename — only altair itself can recover
+    the dataset name, which is why an upstream-published index matters.
     """
     has_data_import = bool(_DATA_IMPORT.search(code))
 
@@ -329,7 +337,15 @@ _CATEGORY_PATTERN = re.compile(r"^#\s*category:\s*(.+)", re.MULTILINE)
 
 
 def _parse_altair_metadata(code: str, filename: str) -> dict[str, Any]:
-    """Extract title, description, and category from Altair source code."""
+    """
+    Extract title, description, and category from Altair source code.
+
+    Transitional. Vega-Lite and Vega publish title/description/category
+    as fields in their respective ``examples.json``; altair embeds the same
+    data in docstrings and ``# category:`` comments, so this function exists
+    to recover it from source. If altair publishes an examples index
+    (vega/altair#4002), this is replaced by a field read.
+    """
     title_match = _TITLE_PATTERN.search(code)
     if title_match:
         # Collapse multi-line titles (rare but upstream permits them).
@@ -578,6 +594,10 @@ async def enrich_with_datasets(
 
         gallery = example["gallery_name"]
         if gallery == "altair":
+            # Response-health canary: a file missing BOTH markers is not an
+            # altair example (an HTML error page, a 404, or the wrong URL).
+            # `and` is intentional — many legitimate altair examples have
+            # only one of the two markers, so `or` would reject valid files.
             if not _DATA_IMPORT.search(text) and not _CATEGORY_PATTERN.search(text):
                 msg = f"Altair response has no data import or category marker: {example['spec_url']}"
                 raise ValueError(msg)
