@@ -16,45 +16,121 @@ import operator
 import os
 import re
 import tomllib
+from collections import Counter
 from pathlib import Path
-from typing import Any
+from types import MappingProxyType
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Final,
+    Literal,
+    NamedTuple,
+    NotRequired,
+    TypedDict,
+)
 
 import httpx
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-TIMEOUT = 30
+_CLIENT_TIMEOUT: Final = 30
+_ENRICH_CONCURRENCY: Final = 20
 
-# Spec URL format strings. jsDelivr proxies GitHub raw content with aggressive
-# CDN caching; embedding an immutable commit SHA gives 100% cache hits with
-# zero invalidation risk. Consumers can verify these URLs match the TOML
-# read-path strategy documented in _data/gallery_examples.toml.
-_VEGA_LITE_SPEC_URL = (
-    "https://cdn.jsdelivr.net/gh/vega/vega-lite@{sha}/examples/specs/{slug}.vl.json"
-)
-_VEGA_SPEC_URL = (
-    "https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/{slug}.vg.json"
-)
-_ALTAIR_SPEC_URL = "https://cdn.jsdelivr.net/gh/vega/altair@{sha}/{path}"
 
-# Internal repo keys match the `gallery_name` field in output. The TOML file
-# uses underscore variants (vega_lite) because hyphens aren't str.format-safe
-# in placeholder names; we translate at load time.
-_GALLERIES = ("vega-lite", "vega", "altair")
-_REPO_SLUGS = {
-    "vega-lite": "vega/vega-lite",
-    "vega": "vega/vega",
-    "altair": "vega/altair",
-}
+# ---------------------------------------------------------------------------
+# Types
+# ---------------------------------------------------------------------------
+
+
+class Example(TypedDict):
+    """
+    Intermediate gallery-example record carried through build + enrichment.
+
+    ``_filename`` (underscore-prefixed) is an internal back-channel from
+    construction to altair enrichment; ``finalize_examples`` strips any
+    underscore-prefixed key before output. ``example_name`` is ``str | None``
+    during construction — a vega-lite entry without a real upstream title in
+    any section falls back to a slug-humanized synthesis before output.
+    """
+
+    gallery_name: Literal["vega", "vega-lite", "altair"]
+    example_name: str | None
+    example_url: str
+    spec_url: str
+    categories: list[str]
+    description: str | None
+    datasets: list[str]
+    _filename: NotRequired[str]
+
+
+class ResolvedRef(TypedDict):
+    commit: str
+    tree: str
+
+
+class Config(TypedDict):
+    """
+    Parsed _data/gallery_examples.toml.
+
+    TypedDict (not NamedTuple) so callers can keep using ``config["refs"]``
+    / ``config["sources"]``.
+    """
+
+    refs: dict[str, str]
+    sources: dict[str, str]
+
+
+class FetchedIndexes(NamedTuple):
+    vl_index: dict[str, Any]
+    vega_index: dict[str, Any]
+    altair_files: list[dict[str, str]]
+
+
+# ---------------------------------------------------------------------------
+# Constants
+# ---------------------------------------------------------------------------
+
+# Per-gallery URL conventions. All four URL slots for each gallery live
+# here so adding a new gallery is a single-entry edit. `spec` and
+# `example_page` use str.format placeholders substituted at build time;
+# jsDelivr spec URLs pin an immutable commit SHA so the CDN caches with
+# 100 % hit rate and zero invalidation risk. See also the TOML read-path
+# strategy in _data/gallery_examples.toml.
+_GALLERIES: Final[tuple[str, ...]] = ("vega-lite", "vega", "altair")
+_GALLERY_URLS: Final[Mapping[str, Mapping[str, str]]] = MappingProxyType({
+    "vega-lite": MappingProxyType({
+        "repo": "vega/vega-lite",
+        "example_page": "https://vega.github.io/vega-lite/examples/{slug}.html",
+        "spec": "https://cdn.jsdelivr.net/gh/vega/vega-lite@{sha}/examples/specs/{slug}.vl.json",
+    }),
+    "vega": MappingProxyType({
+        "repo": "vega/vega",
+        "example_page": "https://vega.github.io/vega/examples/{slug}/",
+        "spec": "https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/{slug}.vg.json",
+    }),
+    "altair": MappingProxyType({
+        "repo": "vega/altair",
+        "example_page": "https://altair-viz.github.io/gallery/{stem}.html",
+        "spec": "https://cdn.jsdelivr.net/gh/vega/altair@{sha}/{path}",
+    }),
+})
 
 # URL prefixes that indicate a vega-datasets reference. Trailing `/` prevents
 # false-positive matches against sibling packages like `vega-datasets-extra`.
-_VEGA_DATASETS_PREFIXES = (
+_VEGA_DATASETS_PREFIXES: Final[tuple[str, ...]] = (
     "https://cdn.jsdelivr.net/npm/vega-datasets/",
     "https://cdn.jsdelivr.net/npm/vega-datasets@",
     "https://raw.githubusercontent.com/vega/vega-datasets/",
 )
+
+
+# ---------------------------------------------------------------------------
+# Dataset reference normalization + extraction
+# ---------------------------------------------------------------------------
 
 
 def normalize_dataset_reference(ref: str, name_map: dict[str, str]) -> str | None:
@@ -67,14 +143,17 @@ def normalize_dataset_reference(ref: str, name_map: dict[str, str]) -> str | Non
     """
     if not isinstance(ref, str):
         return None
-    is_vega_datasets = any(ref.startswith(p) for p in _VEGA_DATASETS_PREFIXES)
 
+    # Single pass: identify the vega-datasets prefix and rewrite to a
+    # `data/…` path in one scan (was two passes in .v2).
     path = ref
+    is_vega_datasets = False
     for prefix in _VEGA_DATASETS_PREFIXES:
-        if path.startswith(prefix):
-            idx = path.find("/data/", len(prefix))
+        if ref.startswith(prefix):
+            is_vega_datasets = True
+            idx = ref.find("/data/", len(prefix))
             if idx != -1:
-                path = "data/" + path[idx + len("/data/") :]
+                path = "data/" + ref[idx + len("/data/") :]
             break
 
     # Direct lookup
@@ -100,10 +179,16 @@ def normalize_dataset_reference(ref: str, name_map: dict[str, str]) -> str | Non
     return None
 
 
-def _collect_url_ref(url: str, name_map: dict[str, str]) -> list[str]:
-    """Normalize a URL and return a single-element list, or empty list if None."""
-    ref = normalize_dataset_reference(url, name_map)
-    return [ref] if ref is not None else []
+def _append_ref(datasets: list[str], url: Any, name_map: dict[str, str]) -> None:
+    """
+    Resolve ``url`` and append the canonical name to ``datasets`` if it resolves.
+
+    Accepts Any for ``url`` so call sites don't need isinstance-guard
+    boilerplate before calling; normalize_dataset_reference returns None
+    for non-strings.
+    """
+    if (ref := normalize_dataset_reference(url, name_map)) is not None:
+        datasets.append(ref)
 
 
 def _vegalite_lookup_refs(spec: dict[str, Any], name_map: dict[str, str]) -> list[str]:
@@ -117,7 +202,7 @@ def _vegalite_lookup_refs(spec: dict[str, Any], name_map: dict[str, str]) -> lis
             continue
         from_data = from_field.get("data")
         if isinstance(from_data, dict) and "url" in from_data:
-            datasets.extend(_collect_url_ref(from_data["url"], name_map))
+            _append_ref(datasets, from_data["url"], name_map)
     return datasets
 
 
@@ -128,7 +213,7 @@ def extract_vegalite_datasets(
     datasets: list[str] = []
 
     if isinstance(spec.get("data"), dict) and "url" in spec["data"]:
-        datasets.extend(_collect_url_ref(spec["data"]["url"], name_map))
+        _append_ref(datasets, spec["data"]["url"], name_map)
 
     datasets.extend(_vegalite_lookup_refs(spec, name_map))
 
@@ -154,16 +239,19 @@ def _vega_signal_refs(
 ) -> list[str]:
     """Extract dataset refs from a signal-based Vega data URL."""
     signal_name = url_value["signal"]
+    signal = next(
+        (s for s in spec.get("signals") or [] if s.get("name") == signal_name),
+        None,
+    )
+    if signal is None:
+        return []
+
     datasets: list[str] = []
-    for signal in spec.get("signals") or []:
-        if signal.get("name") != signal_name:
-            continue
-        if isinstance(signal.get("value"), str):
-            datasets.extend(_collect_url_ref(signal["value"], name_map))
-        for opt in (signal.get("bind") or {}).get("options") or []:
-            if isinstance(opt, str):
-                datasets.extend(_collect_url_ref(opt, name_map))
-        break
+    if isinstance(signal.get("value"), str):
+        _append_ref(datasets, signal["value"], name_map)
+    for opt in (signal.get("bind") or {}).get("options") or []:
+        if isinstance(opt, str):
+            _append_ref(datasets, opt, name_map)
     return datasets
 
 
@@ -180,7 +268,7 @@ def _vega_lookup_transform_refs(
             continue  # "from" can be a string (named data reference)
         from_data = from_field.get("data")
         if isinstance(from_data, dict) and "url" in from_data:
-            datasets.extend(_collect_url_ref(from_data["url"], name_map))
+            _append_ref(datasets, from_data["url"], name_map)
     return datasets
 
 
@@ -194,7 +282,7 @@ def extract_vega_datasets(spec: dict[str, Any], name_map: dict[str, str]) -> lis
 
         url_value = data_item.get("url")
         if isinstance(url_value, str):
-            datasets.extend(_collect_url_ref(url_value, name_map))
+            _append_ref(datasets, url_value, name_map)
         elif isinstance(url_value, dict) and "signal" in url_value:
             datasets.extend(_vega_signal_refs(url_value, spec, name_map))
 
@@ -203,26 +291,30 @@ def extract_vega_datasets(spec: dict[str, Any], name_map: dict[str, str]) -> lis
     return datasets
 
 
-# Altair dataset reference patterns (convention-based, not mechanical).
-# Scoped to three explicit patterns that cover Altair v6+ API usage.
-_ALTAIR_PATTERNS = [
+# ---------------------------------------------------------------------------
+# Altair source-level patterns (convention-based, transitional)
+# ---------------------------------------------------------------------------
+
+# Three explicit patterns covering Altair v6+ API usage.
+_ALTAIR_PATTERNS: Final = [
     re.compile(r"data\.(\w+)\s*\("),  # data.cars()
     re.compile(r"data\.(\w+)\.url"),  # data.cars.url
-    re.compile(
-        r"alt\.topo_feature\s*\(\s*data\.(\w+)\.url"
-    ),  # alt.topo_feature(data.X.url
+    re.compile(r"alt\.topo_feature\s*\(\s*data\.(\w+)\.url"),
 ]
 
-# Patterns that indicate inline data (not a missing dataset reference)
-_INLINE_DATA_PATTERNS = re.compile(
+# Patterns that indicate inline data (not a missing dataset reference).
+_INLINE_DATA_PATTERNS: Final = re.compile(
     r"pd\.DataFrame|alt\.InlineData|DataFrame\(|\.from_dict\("
 )
 
-# Patterns that indicate an import of vega_datasets data object
-_DATA_IMPORT = re.compile(r"from\s+(?:vega_datasets|altair\.datasets)\s+import\s+data")
+# Pattern that indicates an import of the vega_datasets data object.
+_DATA_IMPORT: Final = re.compile(
+    r"from\s+(?:vega_datasets|altair\.datasets)\s+import\s+data"
+)
 
-# Patterns that indicate unrecognized vega_datasets API usage (method call with args)
-_UNRECOGNIZED_API_PATTERNS = re.compile(r"data\.\w+\(['\"\w]")
+# Pattern that indicates unrecognized vega_datasets API usage
+# (method call with args). Singular because it's a single regex.
+_UNRECOGNIZED_DATA_API: Final = re.compile(r"data\.\w+\(['\"\w]")
 
 
 def extract_altair_datasets(code: str, valid_names: set[str]) -> list[str]:
@@ -256,7 +348,7 @@ def extract_altair_datasets(code: str, valid_names: set[str]) -> list[str]:
         logger.warning("External Altair dataset (not in vega-datasets): %s", name)
 
     if has_data_import and not known and not _INLINE_DATA_PATTERNS.search(code):
-        if extracted and not _UNRECOGNIZED_API_PATTERNS.search(code):
+        if extracted and not _UNRECOGNIZED_DATA_API.search(code):
             msg = (
                 f"Altair example uses recognized pattern but dataset name(s) "
                 f"{unknown} not in vega-datasets. Likely upstream rename — "
@@ -270,6 +362,11 @@ def extract_altair_datasets(code: str, valid_names: set[str]) -> list[str]:
         raise ValueError(msg)
 
     return known
+
+
+# ---------------------------------------------------------------------------
+# Name map + config
+# ---------------------------------------------------------------------------
 
 
 def build_name_map(datapackage: dict[str, Any]) -> dict[str, str]:
@@ -299,11 +396,11 @@ def build_name_map(datapackage: dict[str, Any]) -> dict[str, str]:
     return name_map
 
 
-def load_config() -> dict[str, Any]:
+def load_config() -> Config:
     """
     Read ref-pinning strategy + source URL templates from the TOML config.
 
-    Returns a dict with two keys:
+    Returns a Config dict with two keys:
       - ``refs``: ``{"vega-lite": "main", "vega": "main", "altair": "main"}``
         (keys normalized from underscore → hyphen to match ``gallery_name``)
       - ``sources``: the raw ``[sources]`` table — URL format strings with
@@ -321,19 +418,31 @@ def load_config() -> dict[str, Any]:
         "vega": ref_toml["vega"],
         "altair": ref_toml["altair"],
     }
+    # Surface TOML mistakes here (empty or non-string refs) rather than as
+    # opaque 404s from GitHub's /commits/{ref} endpoint later in the run.
+    for name, ref in refs.items():
+        if not isinstance(ref, str) or not ref.strip():
+            msg = (
+                f"Empty or non-string ref for gallery '{name}' in gallery_examples.toml"
+            )
+            raise ValueError(msg)
     return {"refs": refs, "sources": raw["sources"]}
 
 
+# ---------------------------------------------------------------------------
+# Altair metadata parsing (transitional — see vega/altair#4002)
+# ---------------------------------------------------------------------------
+
 # Docstring delimiter is captured so the description regex can reuse it —
 # supports both triple-double and triple-single quote docstrings.
-_TITLE_PATTERN = re.compile(
+_TITLE_PATTERN: Final = re.compile(
     r'^(?P<q>"""|\'\'\')\s*\n(?P<title>.*?)\n[-=]+\s*\n', re.MULTILINE | re.DOTALL
 )
-_DESCRIPTION_PATTERN = re.compile(
+_DESCRIPTION_PATTERN: Final = re.compile(
     r'^(?P<q>"""|\'\'\')\s*\n.*?\n[-=]+\s*\n(?P<body>.*?)(?P=q)',
     re.MULTILINE | re.DOTALL,
 )
-_CATEGORY_PATTERN = re.compile(r"^#\s*category:\s*(.+)", re.MULTILINE)
+_CATEGORY_PATTERN: Final = re.compile(r"^#\s*category:\s*(.+)", re.MULTILINE)
 
 
 def _parse_altair_metadata(code: str, filename: str) -> dict[str, Any]:
@@ -364,10 +473,20 @@ def _parse_altair_metadata(code: str, filename: str) -> dict[str, Any]:
     return {"example_name": title, "description": description, "categories": categories}
 
 
+# ---------------------------------------------------------------------------
+# HTTP + ref resolution
+# ---------------------------------------------------------------------------
+
+
 async def _fetch_text(session: httpx.AsyncClient, url: str) -> str:
-    # Callers parse JSON manually from text because some endpoints return
-    # text/plain or vendor-specific content types that rejected the old
-    # niquests `.json()` helper.
+    """
+    GET ``url`` and return the response body as text.
+
+    Used for altair ``.py`` source, which isn't JSON. For JSON endpoints use
+    ``_fetch_json``. Raises ``RuntimeError`` on an empty body so that a
+    silently truncated upstream response doesn't cascade into a parser error
+    two stages downstream.
+    """
     resp = await session.get(url)
     resp.raise_for_status()
     if not resp.text:
@@ -376,9 +495,16 @@ async def _fetch_text(session: httpx.AsyncClient, url: str) -> str:
     return resp.text
 
 
+async def _fetch_json(session: httpx.AsyncClient, url: str) -> Any:
+    """GET ``url`` and return parsed JSON (content-type-agnostic)."""
+    resp = await session.get(url)
+    resp.raise_for_status()
+    return resp.json()
+
+
 async def resolve_refs(
     session: httpx.AsyncClient, refs: dict[str, str]
-) -> dict[str, dict[str, str]]:
+) -> dict[str, ResolvedRef]:
     """
     Resolve each gallery's ref (branch/tag/SHA) to the commit + tree SHAs.
 
@@ -390,20 +516,18 @@ async def resolve_refs(
     and gives us the tree SHA the altair Trees API call needs, for free.
     """
 
-    async def one(name: str) -> tuple[str, dict[str, str]]:
-        slug = _REPO_SLUGS[name]
+    async def one(name: str) -> tuple[str, ResolvedRef]:
+        slug = _GALLERY_URLS[name]["repo"]
         ref = refs[name]
         url = f"https://api.github.com/repos/{slug}/commits/{ref}"
-        resp = await session.get(url)
-        resp.raise_for_status()
-        data = json.loads(resp.text)
+        data = await _fetch_json(session, url)
         return name, {"commit": data["sha"], "tree": data["commit"]["tree"]["sha"]}
 
     pairs = await asyncio.gather(*(one(name) for name in _GALLERIES))
     return dict(pairs)
 
 
-def _format_refs(refs: dict[str, dict[str, str]]) -> dict[str, str]:
+def _format_refs(refs: dict[str, ResolvedRef]) -> dict[str, str]:
     """Build the ``{…_ref: sha}`` substitution dict for TOML URL templates."""
     return {
         "vega_lite_ref": refs["vega-lite"]["commit"],
@@ -415,8 +539,8 @@ def _format_refs(refs: dict[str, dict[str, str]]) -> dict[str, str]:
 async def fetch_indexes(
     session: httpx.AsyncClient,
     sources: dict[str, str],
-    refs: dict[str, dict[str, str]],
-) -> tuple[Any, Any, list[dict[str, Any]]]:
+    refs: dict[str, ResolvedRef],
+) -> FetchedIndexes:
     """
     Fetch all three gallery indexes concurrently, pinned to resolved SHAs.
 
@@ -434,13 +558,10 @@ async def fetch_indexes(
         f"{refs['altair']['tree']}?recursive=1"
     )
 
-    async def fetch_json(url: str) -> Any:
-        return json.loads(await _fetch_text(session, url))
-
     vl_index, vega_index, altair_tree = await asyncio.gather(
-        fetch_json(vl_url),
-        fetch_json(vega_url),
-        fetch_json(altair_tree_url),
+        _fetch_json(session, vl_url),
+        _fetch_json(session, vega_url),
+        _fetch_json(session, altair_tree_url),
     )
 
     # Trees API returns {"sha": ..., "tree": [{"path": ..., "type": ...}, ...],
@@ -463,7 +584,12 @@ async def fetch_indexes(
         and entry["path"].endswith(".py")
         and not Path(entry["path"]).name.startswith("__")
     ]
-    return vl_index, vega_index, altair_files
+    return FetchedIndexes(vl_index, vega_index, altair_files)
+
+
+# ---------------------------------------------------------------------------
+# Example list construction
+# ---------------------------------------------------------------------------
 
 
 def _longest_wins(current: str | None, candidate: str | None) -> str | None:
@@ -477,15 +603,19 @@ def _longest_wins(current: str | None, candidate: str | None) -> str | None:
     return current
 
 
-def _build_vegalite_examples(vl_index: Any, commit_sha: str) -> list[dict[str, Any]]:
+def _build_vegalite_examples(
+    vl_index: dict[str, Any], commit_sha: str
+) -> list[Example]:
     """
-    Build Vega-Lite example list from nested index.
+    Build Vega-Lite example list from the nested index.
 
-    When the same slug appears under multiple sections, longest-wins for
-    title and description, and categories are merged with dedup.
+    When the same slug appears under multiple sections, categories merge with
+    dedup. Titles stay ``None`` until a real upstream title is seen anywhere
+    in the index; a slug-humanized fallback is synthesized after the walk so
+    a real title in a later section always beats an earlier absence. Between
+    real titles, longest wins.
     """
-    examples: list[dict[str, Any]] = []
-    seen: dict[str, dict[str, Any]] = {}
+    seen: dict[str, Example] = {}
     for section_name, section in vl_index.items():
         if not isinstance(section, dict):
             continue
@@ -495,10 +625,7 @@ def _build_vegalite_examples(vl_index: Any, commit_sha: str) -> list[dict[str, A
             category = category or section_name
             for item in items:
                 slug = item["name"]
-                title = (
-                    item.get("title")
-                    or slug.replace("_", " ").replace("-", " ").title()
-                )
+                title = item.get("title")  # None → synthesized after the walk
                 description = item.get("description")
                 if slug in seen:
                     entry = seen[slug]
@@ -509,33 +636,40 @@ def _build_vegalite_examples(vl_index: Any, commit_sha: str) -> list[dict[str, A
                         entry["description"], description
                     )
                 else:
-                    entry = {
+                    vl_urls = _GALLERY_URLS["vega-lite"]
+                    seen[slug] = {
                         "gallery_name": "vega-lite",
                         "example_name": title,
-                        "example_url": f"https://vega.github.io/vega-lite/examples/{slug}.html",
-                        "spec_url": _VEGA_LITE_SPEC_URL.format(
-                            sha=commit_sha, slug=slug
-                        ),
+                        "example_url": vl_urls["example_page"].format(slug=slug),
+                        "spec_url": vl_urls["spec"].format(sha=commit_sha, slug=slug),
                         "categories": [category],
                         "description": description,
                         "datasets": [],
                     }
-                    seen[slug] = entry
-                    examples.append(entry)
-    return examples
+
+    # Synthesize slug-humanized fallbacks only where no upstream title was
+    # ever seen. The `seen` dict is keyed by slug, so no back-channel field
+    # is needed on the entry itself.
+    for slug, entry in seen.items():
+        if not entry["example_name"]:
+            entry["example_name"] = slug.replace("_", " ").replace("-", " ").title()
+
+    return list(seen.values())
 
 
 def build_example_list(
-    vl_index: Any,
-    vega_index: Any,
+    vl_index: dict[str, Any],
+    vega_index: dict[str, Any],
     altair_files: list[dict[str, Any]],
-    refs: dict[str, dict[str, str]],
-) -> list[dict[str, Any]]:
+    refs: dict[str, ResolvedRef],
+) -> list[Example]:
     """Normalize three gallery indexes into a flat example list."""
     examples = _build_vegalite_examples(vl_index, refs["vega-lite"]["commit"])
 
     vega_sha = refs["vega"]["commit"]
     altair_sha = refs["altair"]["commit"]
+    vega_urls = _GALLERY_URLS["vega"]
+    altair_urls = _GALLERY_URLS["altair"]
 
     # Vega: index is {category: [list of {name}]}
     seen_vega: set[str] = set()
@@ -552,8 +686,8 @@ def build_example_list(
             examples.append({
                 "gallery_name": "vega",
                 "example_name": slug.replace("-", " ").replace("_", " ").title(),
-                "example_url": f"https://vega.github.io/vega/examples/{slug}/",
-                "spec_url": _VEGA_SPEC_URL.format(sha=vega_sha, slug=slug),
+                "example_url": vega_urls["example_page"].format(slug=slug),
+                "spec_url": vega_urls["spec"].format(sha=vega_sha, slug=slug),
                 "categories": [category],
                 "description": None,
                 "datasets": [],
@@ -565,57 +699,81 @@ def build_example_list(
     for file_info in altair_files:
         path = file_info["path"]
         name = Path(path).name
+        stem = name.removesuffix(".py")
         examples.append({
             "gallery_name": "altair",
-            "example_name": name.removesuffix(".py").replace("_", " ").title(),
-            "example_url": f"https://altair-viz.github.io/gallery/{name.removesuffix('.py')}.html",
-            "spec_url": _ALTAIR_SPEC_URL.format(sha=altair_sha, path=path),
+            "example_name": stem.replace("_", " ").title(),
+            "example_url": altair_urls["example_page"].format(stem=stem),
+            "spec_url": altair_urls["spec"].format(sha=altair_sha, path=path),
             "categories": [],
             "description": None,
             "datasets": [],
-            "_filename": name,  # internal, removed before output
+            "_filename": name,  # internal, stripped by finalize_examples
         })
 
     return examples
 
 
+# ---------------------------------------------------------------------------
+# Enrichment
+# ---------------------------------------------------------------------------
+
+
+# vega-lite and vega enrichment share a shape: parse JSON, run an extractor,
+# fall back to the spec-level description. Altair is structurally different
+# (text source, needs docstring parsing), so it keeps its own branch.
+_SPEC_EXTRACTORS: Final = {
+    "vega-lite": extract_vegalite_datasets,
+    "vega": extract_vega_datasets,
+}
+
+
 async def enrich_with_datasets(
-    examples: list[dict[str, Any]],
+    examples: list[Example],
     session: httpx.AsyncClient,
     name_map: dict[str, str],
     valid_names: set[str],
 ) -> None:
     """Fetch specs concurrently and fill in datasets (and Altair metadata)."""
-    sem = asyncio.Semaphore(20)
+    sem = asyncio.Semaphore(_ENRICH_CONCURRENCY)
 
-    async def enrich_one(example: dict[str, Any]) -> None:
+    async def enrich_one(example: Example) -> None:
         async with sem:
             text = await _fetch_text(session, example["spec_url"])
 
         gallery = example["gallery_name"]
         if gallery == "altair":
             # Response-health canary: a file missing BOTH markers is not an
-            # altair example (an HTML error page, a 404, or the wrong URL).
+            # altair example file (HTML error page, 404, or misrouted body).
             # `and` is intentional — many legitimate altair examples have
             # only one of the two markers, so `or` would reject valid files.
             if not _DATA_IMPORT.search(text) and not _CATEGORY_PATTERN.search(text):
-                msg = f"Altair response has no data import or category marker: {example['spec_url']}"
+                msg = (
+                    f"Not an altair example file — response missing both "
+                    f"`from … import data` and `# category:` markers "
+                    f"(likely HTML error page, 404, or misrouted body): "
+                    f"{example['spec_url']}"
+                )
                 raise ValueError(msg)
-            meta = _parse_altair_metadata(text, example.get("_filename", ""))
+            # build_example_list always sets _filename on altair entries;
+            # assert documents the invariant and narrows the NotRequired type.
+            assert "_filename" in example
+            meta = _parse_altair_metadata(text, example["_filename"])
             example["example_name"] = meta["example_name"]
             example["description"] = meta["description"]
             example["categories"] = meta["categories"]
             example["datasets"] = extract_altair_datasets(text, valid_names)
-        elif gallery == "vega-lite":
+        elif gallery in _SPEC_EXTRACTORS:
             spec = json.loads(text)
-            example["datasets"] = extract_vegalite_datasets(spec, name_map)
+            example["datasets"] = _SPEC_EXTRACTORS[gallery](spec, name_map)
             if not example.get("description"):
                 example["description"] = spec.get("description")
-        elif gallery == "vega":
-            spec = json.loads(text)
-            example["datasets"] = extract_vega_datasets(spec, name_map)
-            if not example.get("description"):
-                example["description"] = spec.get("description")
+        else:
+            # Contract invariant: gallery_name is Literal["vega","vega-lite","altair"]
+            # and every value must have a branch above. Fires only if
+            # build_example_list introduces a new gallery without updating here.
+            msg = f"Unhandled gallery_name during enrichment: {gallery!r}"
+            raise ValueError(msg)
 
         # Deduplicate datasets, preserve order
         example["datasets"] = list(dict.fromkeys(example["datasets"]))
@@ -637,21 +795,31 @@ async def enrich_with_datasets(
         raise RuntimeError(msg)
 
 
-def finalize_examples(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Sort deterministically and strip internal `_filename` key."""
+# ---------------------------------------------------------------------------
+# Finalize + invariants
+# ---------------------------------------------------------------------------
+
+
+def finalize_examples(examples: list[Example]) -> list[dict[str, Any]]:
+    """
+    Sort deterministically and strip any underscore-prefixed internal keys.
+
+    Underscore-prefixed keys (``_filename``) are build-time back-channels
+    that must not appear in the public dataset.
+    """
     examples.sort(key=operator.itemgetter("gallery_name", "example_name"))
-    return [{k: v for k, v in ex.items() if k != "_filename"} for ex in examples]
+    return [{k: v for k, v in ex.items() if not k.startswith("_")} for ex in examples]
 
 
 # Per-gallery count floors. Trip-wires for catastrophic regressions
 # (upstream restructuring, parser breakage), not tight estimates. Current
 # counts (2026-04): altair=117, vega=93, vega-lite=189. Bump if upstream
 # genuinely prunes a gallery; loosen if you want to tolerate more attrition.
-_MIN_EXPECTED_PER_GALLERY = {
+_MIN_EXPECTED_PER_GALLERY: Final[Mapping[str, int]] = MappingProxyType({
     "altair": 100,
     "vega": 80,
     "vega-lite": 160,
-}
+})
 
 
 def assert_expected_galleries(examples: list[dict[str, Any]]) -> None:
@@ -661,9 +829,7 @@ def assert_expected_galleries(examples: list[dict[str, Any]]) -> None:
     Floors are deliberately loose — they catch ~15%+ regressions, not small
     attrition. A missing gallery counts as zero and trips the same check.
     """
-    by_gallery: dict[str, int] = {}
-    for ex in examples:
-        by_gallery[ex["gallery_name"]] = by_gallery.get(ex["gallery_name"], 0) + 1
+    by_gallery = Counter(ex["gallery_name"] for ex in examples)
     parts = ", ".join(f"{count} {name}" for name, count in sorted(by_gallery.items()))
     logger.info("Collected %d examples (%s)", len(examples), parts)
 
@@ -692,11 +858,19 @@ def assert_unique_spec_urls(examples: list[dict[str, Any]]) -> None:
     check is the real enforcement and catches scraper bugs that would
     otherwise silently emit duplicates.
     """
-    spec_urls = [ex["spec_url"] for ex in examples]
-    if len(set(spec_urls)) != len(spec_urls):
-        duplicates = sorted({u for u in spec_urls if spec_urls.count(u) > 1})
-        msg = f"duplicate spec_url in gallery_examples — primary key invariant violated: {duplicates}"
+    counts = Counter(ex["spec_url"] for ex in examples)
+    duplicates = sorted(u for u, n in counts.items() if n > 1)
+    if duplicates:
+        msg = (
+            f"duplicate spec_url in gallery_examples — primary key invariant "
+            f"violated: {duplicates}"
+        )
         raise RuntimeError(msg)
+
+
+# ---------------------------------------------------------------------------
+# Pipeline entrypoints
+# ---------------------------------------------------------------------------
 
 
 async def run_pipeline() -> list[dict[str, Any]]:
@@ -727,15 +901,21 @@ async def run_pipeline() -> list[dict[str, Any]]:
     # ignores the header, so scoping isn't needed.
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     headers = {"Authorization": f"Bearer {token}"} if token else {}
+    logger.info(
+        "GitHub auth: %s",
+        "authenticated (5000/hr)"
+        if token
+        else "unauthenticated (60/hr — set GITHUB_TOKEN to raise the ceiling)",
+    )
 
     # httpx default: HTTP/1.1 only, no multiplexing — avoids the
     # concurrent-body-swapping bug we hit with niquests when fetching
     # across multiple hosts (jsDelivr + api.github.com) under asyncio
-    # concurrency. Timeout is set client-wide so per-call TIMEOUT arg
-    # isn't needed.
+    # concurrency. Timeout is set client-wide so per-call argument isn't
+    # needed.
     async with httpx.AsyncClient(
         headers=headers,
-        timeout=TIMEOUT,
+        timeout=_CLIENT_TIMEOUT,
         follow_redirects=True,
     ) as session:
         resolved_refs = await resolve_refs(session, requested_refs)
@@ -753,36 +933,33 @@ async def run_pipeline() -> list[dict[str, Any]]:
             resolved_refs["altair"]["commit"][:12],
         )
 
-        vl_index, vega_index, altair_files = await fetch_indexes(
-            session, sources, resolved_refs
+        indexes = await fetch_indexes(session, sources, resolved_refs)
+
+        examples = build_example_list(
+            indexes.vl_index,
+            indexes.vega_index,
+            indexes.altair_files,
+            resolved_refs,
         )
-
-        if not isinstance(vl_index, dict):
-            msg = f"Expected dict for Vega-Lite index, got {type(vl_index).__name__}"
-            raise TypeError(msg)
-        if not isinstance(vega_index, dict):
-            msg = f"Expected dict for Vega index, got {type(vega_index).__name__}"
-            raise TypeError(msg)
-        if not isinstance(altair_files, list):
-            msg = f"Expected list for Altair file listing, got {type(altair_files).__name__}"
-            raise TypeError(msg)
-
-        examples = build_example_list(vl_index, vega_index, altair_files, resolved_refs)
         logger.info("Built example list: %d examples", len(examples))
 
         await enrich_with_datasets(examples, session, name_map, valid_names)
 
-    examples = finalize_examples(examples)
-    assert_expected_galleries(examples)
-    assert_unique_spec_urls(examples)
-    return examples
+    finalized = finalize_examples(examples)
+    assert_expected_galleries(finalized)
+    assert_unique_spec_urls(finalized)
+    return finalized
 
 
 async def async_main() -> None:
     """Run the pipeline and write output to data/gallery-examples.json."""
     examples = await run_pipeline()
     output_path = REPO_ROOT / "data" / "gallery-examples.json"
-    output_path.write_text(json.dumps(examples, indent=2, ensure_ascii=False) + "\n")
+    tmp_path = output_path.with_suffix(".json.tmp")
+    tmp_path.write_text(json.dumps(examples, indent=2, ensure_ascii=False) + "\n")
+    # Atomic replace: a mid-write crash cannot leave the tracked file
+    # half-written (which git would notice as a phantom change).
+    Path(tmp_path).replace(output_path)
     logger.info("Wrote %s", output_path)
 
 
