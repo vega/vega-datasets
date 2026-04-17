@@ -1,3 +1,9 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "niquests>=3.11.2",
+# ]
+# ///
 from __future__ import annotations
 
 import json

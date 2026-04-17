@@ -2,7 +2,6 @@
 [project]
 dependencies = [
   "frictionless[json,parquet]>=5.18.0",
-  "niquests>=3.11.2",
   "polars>=1.17.1",
   "tomli-w>=1.1.0",
 ]
@@ -13,11 +12,19 @@ requires-python = ">=3.12"
 version = "2.11.0"
 
 [dependency-groups]
+data-refresh = [
+  # Needed to import/run scripts/flights.py, scripts/income.py, and
+  # scripts/us-state-capitals.py; each script also declares this via PEP 723
+  # inline deps so `uv run scripts/…` works standalone. This group lets dev
+  # tooling + editor imports resolve too.
+  "niquests>=3.11.2",
+]
 dev = [
   "ipython[kernel]>=8.30.0",
   "pytest>=8.3.4",
   "ruff>=0.14.2",
   "taplo>=0.9.3",
+  { include-group = "data-refresh" },
   { include-group = "gallery-examples" },
 ]
 gallery-examples = [
