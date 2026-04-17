@@ -18,6 +18,13 @@ dev = [
   "pytest>=8.3.4",
   "ruff>=0.14.2",
   "taplo>=0.9.3",
+  { include-group = "gallery-examples" },
+]
+gallery-examples = [
+  # Needed to import/run scripts/generate_gallery_examples.py; the script
+  # also declares this via PEP 723 inline deps so `uv run scripts/…` works
+  # standalone. This group lets tests + dev tooling resolve the import too.
+  "httpx>=0.27,<1",
 ]
 geo-species = [
   "exactextract>=0.2.1",
