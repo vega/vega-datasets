@@ -1,17 +1,25 @@
 #:schema https://json.schemastore.org/pyproject.json
 [project]
-dependencies = [
-  "frictionless[json,parquet]>=5.18.0",
-  "polars>=1.17.1",
-  "tomli-w>=1.1.0",
-]
-description = "Common repository for example datasets used by Vega related projects."
-name = "vega-datasets"
-readme = "README.md"
+dependencies    = ["tomli-w>=1.1.0"]
+description     = "Common repository for example datasets used by Vega related projects."
+name            = "vega-datasets"
+readme          = "README.md"
 requires-python = ">=3.12"
-version = "2.11.0"
+version         = "2.11.0"
 
 [dependency-groups]
+build-datapackage = [
+  # Needed to import/run scripts/build_datapackage.py (the datapackage.json
+  # generator invoked by `npm run prebuild`). The script also declares this
+  # via PEP 723 inline deps so the shebang-based `./scripts/build_datapackage.py`
+  # invocation resolves without a project sync. This group lets dev tooling +
+  # editor imports resolve too.
+  # NOTE: pandas is a runtime requirement of frictionless's parquet parser
+  # (calls pyarrow Table.to_pandas()), not declared by frictionless itself.
+  "frictionless[json,parquet]>=5.18.0",
+  "pandas",
+  "polars>=1.17.1",
+]
 data-refresh = [
   # Needed to import/run scripts/flights.py, scripts/income.py, and
   # scripts/us-state-capitals.py; each script also declares this via PEP 723
@@ -24,6 +32,7 @@ dev = [
   "pytest>=8.3.4",
   "ruff>=0.14.2",
   "taplo>=0.9.3",
+  { include-group = "build-datapackage" },
   { include-group = "data-refresh" },
   { include-group = "gallery-examples" },
 ]

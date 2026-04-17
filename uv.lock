@@ -1686,19 +1686,23 @@ name = "vega-datasets"
 version = "2.11.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "frictionless", extra = ["json", "parquet"] },
-    { name = "polars" },
     { name = "tomli-w" },
 ]
 
 [package.dev-dependencies]
+build-datapackage = [
+    { name = "frictionless", extra = ["json", "parquet"] },
+    { name = "polars" },
+]
 data-refresh = [
     { name = "niquests" },
 ]
 dev = [
+    { name = "frictionless", extra = ["json", "parquet"] },
     { name = "httpx" },
     { name = "ipython", extra = ["kernel"] },
     { name = "niquests" },
+    { name = "polars" },
     { name = "pytest" },
     { name = "ruff" },
     { name = "taplo" },
@@ -1719,18 +1723,20 @@ geo-species = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "frictionless", extras = ["json", "parquet"], specifier = ">=5.18.0" },
-    { name = "polars", specifier = ">=1.17.1" },
-    { name = "tomli-w", specifier = ">=1.1.0" },
-]
+requires-dist = [{ name = "tomli-w", specifier = ">=1.1.0" }]
 
 [package.metadata.requires-dev]
+build-datapackage = [
+    { name = "frictionless", extras = ["json", "parquet"], specifier = ">=5.18.0" },
+    { name = "polars", specifier = ">=1.17.1" },
+]
 data-refresh = [{ name = "niquests", specifier = ">=3.11.2" }]
 dev = [
+    { name = "frictionless", extras = ["json", "parquet"], specifier = ">=5.18.0" },
     { name = "httpx", specifier = ">=0.27,<1" },
     { name = "ipython", extras = ["kernel"], specifier = ">=8.30.0" },
     { name = "niquests", specifier = ">=3.11.2" },
+    { name = "polars", specifier = ">=1.17.1" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "ruff", specifier = ">=0.14.2" },
     { name = "taplo", specifier = ">=0.9.3" },
