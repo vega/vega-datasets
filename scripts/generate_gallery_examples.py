@@ -74,7 +74,7 @@ class ResolvedRef(TypedDict):
 
 class Config(TypedDict):
     """
-    Parsed _data/gallery_examples.toml.
+    Parsed _data/gallery-examples.toml.
 
     TypedDict (not NamedTuple) so callers can keep using ``config["refs"]``
     / ``config["sources"]``.
@@ -99,7 +99,7 @@ class FetchedIndexes(NamedTuple):
 # `example_page` use str.format placeholders substituted at build time;
 # jsDelivr spec URLs pin an immutable commit SHA so the CDN caches with
 # 100 % hit rate and zero invalidation risk. See also the TOML read-path
-# strategy in _data/gallery_examples.toml.
+# strategy in _data/gallery-examples.toml.
 _GALLERIES: Final[tuple[str, ...]] = ("vega-lite", "vega", "altair")
 _GALLERY_URLS: Final[Mapping[str, Mapping[str, str]]] = MappingProxyType({
     "vega-lite": MappingProxyType({
@@ -407,7 +407,7 @@ def load_config() -> Config:
         ``{…_ref}`` placeholders still present; substituted later once SHAs
         are resolved.
     """
-    config_path = REPO_ROOT / "_data" / "gallery_examples.toml"
+    config_path = REPO_ROOT / "_data" / "gallery-examples.toml"
     with config_path.open("rb") as f:
         raw = tomllib.load(f)
 
@@ -423,7 +423,7 @@ def load_config() -> Config:
     for name, ref in refs.items():
         if not isinstance(ref, str) or not ref.strip():
             msg = (
-                f"Empty or non-string ref for gallery '{name}' in gallery_examples.toml"
+                f"Empty or non-string ref for gallery '{name}' in gallery-examples.toml"
             )
             raise ValueError(msg)
     return {"refs": refs, "sources": raw["sources"]}

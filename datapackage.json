@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-04-16T22:42:54.193612+00:00",
+  "created": "2026-04-18T12:44:48.539720+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -1724,12 +1724,14 @@
           {
             "name": "example_url",
             "type": "string",
-            "description": "URL to rendered example in the gallery"
+            "description": "URL to rendered example in the gallery",
+            "format": "uri"
           },
           {
             "name": "spec_url",
             "type": "string",
-            "description": "URL to source specification or code"
+            "description": "URL to source specification or code",
+            "format": "uri"
           },
           {
             "name": "categories",
@@ -1739,10 +1741,7 @@
           {
             "name": "description",
             "type": "string",
-            "description": "Optional description of what the example demonstrates (may be null)",
-            "constraints": {
-              "required": false
-            }
+            "description": "Optional description of what the example demonstrates (may be null)"
           },
           {
             "name": "datasets",
@@ -1752,7 +1751,9 @@
         ],
         "primaryKey": [
           "spec_url"
-        ]
+        ],
+        "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
+        "fieldsMatch": "subset"
       }
     },
     {

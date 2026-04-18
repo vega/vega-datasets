@@ -1692,6 +1692,7 @@ dependencies = [
 [package.dev-dependencies]
 build-datapackage = [
     { name = "frictionless", extra = ["json", "parquet"] },
+    { name = "pandas" },
     { name = "polars" },
 ]
 data-refresh = [
@@ -1702,6 +1703,7 @@ dev = [
     { name = "httpx" },
     { name = "ipython", extra = ["kernel"] },
     { name = "niquests" },
+    { name = "pandas" },
     { name = "polars" },
     { name = "pytest" },
     { name = "ruff" },
@@ -1728,6 +1730,7 @@ requires-dist = [{ name = "tomli-w", specifier = ">=1.1.0" }]
 [package.metadata.requires-dev]
 build-datapackage = [
     { name = "frictionless", extras = ["json", "parquet"], specifier = ">=5.18.0" },
+    { name = "pandas" },
     { name = "polars", specifier = ">=1.17.1" },
 ]
 data-refresh = [{ name = "niquests", specifier = ">=3.11.2" }]
@@ -1736,6 +1739,7 @@ dev = [
     { name = "httpx", specifier = ">=0.27,<1" },
     { name = "ipython", extras = ["kernel"], specifier = ">=8.30.0" },
     { name = "niquests", specifier = ">=3.11.2" },
+    { name = "pandas" },
     { name = "polars", specifier = ">=1.17.1" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "ruff", specifier = ">=0.14.2" },

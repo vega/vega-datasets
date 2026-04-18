@@ -64,7 +64,7 @@ The `data/gallery-examples.json` file catalogs examples from Vega, Vega-Lite, an
 uv run scripts/generate_gallery_examples.py         # Regenerate the file
 ```
 
-Configuration lives in `_data/gallery_examples.toml` (source URLs). Runtime is ~45 seconds (async fetching of ~400 specs).
+Configuration lives in `_data/gallery-examples.toml` (source URLs). Runtime is ~45 seconds (async fetching of ~400 specs).
 
 ## Metadata and Documentation
 

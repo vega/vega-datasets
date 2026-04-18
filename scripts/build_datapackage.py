@@ -380,7 +380,9 @@ def merge_schemas(resource: Resource, *, extra: Schema) -> fl.Schema:
         if name in overrides:
             field.update(overrides[name])
         fields.append(field)
-    return fl.Schema.from_descriptor({"fields": fields})
+    merged = {k: v for k, v in cast("dict[str, Any]", extra).items() if k != "fields"}
+    merged["fields"] = fields
+    return fl.Schema.from_descriptor(merged)
 
 
 def _flatten_schema(schema: Schema, /) -> dict[str, Field]:
@@ -685,42 +687,6 @@ def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
         fn(pkg, p)
 
 
-def write_gallery_examples_schema(repo_dir: Path) -> None:
-    """
-    Emit ``_data/gallery-examples-schema.json`` as a standalone Table Schema.
-
-    The gallery-examples registry doubles as a federated contract: any
-    collection of Vega / Vega-Lite / Altair examples can publish an index
-    conforming to this schema and be validated or consumed uniformly.
-    Publishing the schema as a discrete file (rather than only as a nested
-    entry in ``datapackage.json``) gives external publishers a fixed URL
-    to cite and validate against.
-
-    Derived from the ``gallery_examples`` resource entry in
-    ``_data/datapackage_additions.toml`` so the two cannot drift.
-    """
-    additions = read_toml(repo_dir / "_data" / ADDITIONS_TOML)
-    gallery_resource = next(
-        r for r in additions["resources"] if r.get("path") == "gallery-examples.json"
-    )
-    schema = gallery_resource["schema"]
-    payload = {
-        "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
-        "name": "gallery_examples",
-        "title": "Vega Gallery Examples Registry",
-        "description": (
-            "A cross-gallery registry that maps Vega, Vega-Lite, and Altair "
-            "gallery examples to the datasets they use. Any collection of "
-            "examples can publish an index conforming to this schema to join "
-            "the federated registry."
-        ),
-        **schema,
-    }
-    out_path = repo_dir / "_data" / "gallery-examples-schema.json"
-    out_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    logger.info("Wrote gallery-examples schema to %s", out_path)
-
-
 def write_string_overrides_ts(pkg: Package, repo_dir: Path) -> None:
     """Generate src/stringOverrides.ts listing fields that should remain strings."""
     string_fields_by_csv: dict[str, list[str]] = {}
@@ -779,7 +745,6 @@ def main(
     DEBUG_MARKDOWN = ("md",)
     write_package(pkg, repo_dir, output_format, *DEBUG_MARKDOWN)
     write_string_overrides_ts(pkg, repo_dir)
-    write_gallery_examples_schema(repo_dir)
 
 
 if __name__ == "__main__":
