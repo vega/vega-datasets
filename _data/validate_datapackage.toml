@@ -1,0 +1,38 @@
+# Configuration for scripts/validate_datapackage.py
+#
+# Resources whose Phase 2 (frictionless schema/row) failure is known and
+# non-actionable from this repository's perspective. Matching failures are
+# reported but do not trip the non-zero exit code, so the validator can
+# still be used to detect *new* failures.
+#
+# Each entry must include a `resource` name (matching Resource.name in
+# datapackage.json) and a `reason`. The first line of `reason` is used as
+# the inline summary in the validator's output, so keep it self-contained
+# (full explanation goes underneath). Remove an entry once the underlying
+# situation changes — that removal re-enables strict checking and surfaces
+# the fix in a PR.
+
+[[expected_failures]]
+resource = "movies"
+reason   = """
+intentional pedagogy — schema is aspirational, data has documented quirks.
+
+The descriptor's movies.json description explicitly frames the data as a
+teaching resource for data cleaning: numeric-looking titles (1776, 2012, 300)
+are stored as JSON numbers rather than strings, and release dates use
+MMM DD YYYY instead of ISO 8601. Widening the schema would defeat the
+teaching purpose and alter what downstream consumers (altair's datasets
+library, vega-lite galleries) see.
+"""
+
+[[expected_failures]]
+resource = "flights_200k_arrow"
+reason   = """
+no frictionless arrow parser (infrastructure gap, not a data issue).
+
+The shipped frictionless package has no `formats/arrow/` directory, so it
+emits `format-error: format ".arrow" is not supported`. The file itself is
+well-formed: pyarrow reads the schema and record batches, and altair
+consumes it without issue. Remove this entry once frictionless ships arrow
+support or a plugin is wired up.
+"""

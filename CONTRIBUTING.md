@@ -183,6 +183,29 @@ uv run taplo fmt
 uv run ruff format
 ```
 
+### Validating `datapackage.json` (optional, local)
+
+After editing data files or the descriptor, you can validate the data
+package end-to-end (file integrity, schemas, and row content) with:
+
+```bash
+# Fast: first 100k rows per resource (good for quick sanity checks)
+uv run scripts/validate_datapackage.py --limit-rows 100000
+
+# Comprehensive: full read, ~5 min (flights-3m.parquet is ~3M rows)
+uv run scripts/validate_datapackage.py
+```
+
+Exits 0 when no unexpected failures occur, 1 otherwise. Not run in CI.
+
+Resources whose schema/row failures are known and non-actionable (for
+example, `movies` whose schema is intentionally aspirational, or
+`flights-200k.arrow` which frictionless can't parse) are listed in
+[`_data/validate_datapackage.toml`](_data/validate_datapackage.toml). The
+validator reports them with a warning marker (⚠) but does not fail. Remove
+an entry from that file once the underlying situation is resolved — that's
+what surfaces the fix in a PR.
+
 ## Contributing Process
 
 1. Create a branch:
