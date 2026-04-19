@@ -1,7 +1,7 @@
 #:schema https://json.schemastore.org/pyproject.json
 [project]
 dependencies = [
-  "frictionless[json,parquet]>=5.18.0",
+  "frictionless[json,parquet]>=5.18.1",
   "niquests>=3.11.2",
   "polars>=1.17.1",
   "tomli-w>=1.1.0",
