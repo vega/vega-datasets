@@ -1593,6 +1593,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "frictionless", extra = ["json", "parquet"] },
     { name = "niquests" },
+    { name = "pandas" },
     { name = "polars" },
     { name = "tomli-w" },
 ]
@@ -1619,6 +1620,7 @@ geo-species = [
 requires-dist = [
     { name = "frictionless", extras = ["json", "parquet"], specifier = ">=5.18.1" },
     { name = "niquests", specifier = ">=3.11.2" },
+    { name = "pandas", specifier = ">=2.2.3" },
     { name = "polars", specifier = ">=1.17.1" },
     { name = "tomli-w", specifier = ">=1.1.0" },
 ]

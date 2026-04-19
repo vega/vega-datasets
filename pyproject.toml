@@ -3,6 +3,7 @@
 dependencies = [
   "frictionless[json,parquet]>=5.18.1",
   "niquests>=3.11.2",
+  "pandas>=2.2.3",
   "polars>=1.17.1",
   "tomli-w>=1.1.0",
 ]
