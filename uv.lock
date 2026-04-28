@@ -1601,6 +1601,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "ipython", extra = ["kernel"] },
+    { name = "pytest" },
     { name = "ruff" },
     { name = "taplo" },
 ]
@@ -1628,6 +1629,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "ipython", extras = ["kernel"], specifier = ">=8.30.0" },
+    { name = "pytest", specifier = ">=9" },
     { name = "ruff", specifier = ">=0.14.2" },
     { name = "taplo", specifier = ">=0.9.3" },
 ]

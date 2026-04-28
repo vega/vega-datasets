@@ -1,16 +1,15 @@
-# Configuration for scripts/validate_datapackage.py
+# Allowlist consumed by tests/test_datapackage.py.
 #
-# Resources whose Phase 2 (frictionless schema/row) failure is known and
-# non-actionable from this repository's perspective. Matching failures are
-# reported but do not trip the non-zero exit code, so the validator can
-# still be used to detect *new* failures.
+# Resources whose frictionless schema/row failure is known and non-actionable
+# from this repository's perspective. Each matching test_schema_and_rows[X]
+# is decorated with pytest.mark.xfail(reason=..., strict=True), so the test
+# does not fail the run today — but if the upstream issue ever resolves, the
+# test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
 #
 # Each entry must include a `resource` name (matching Resource.name in
-# datapackage.json) and a `reason`. The first line of `reason` is used as
-# the inline summary in the validator's output, so keep it self-contained
-# (full explanation goes underneath). Remove an entry once the underlying
-# situation changes — that removal re-enables strict checking and surfaces
-# the fix in a PR.
+# datapackage.json) and a `reason`. The first line of `reason` is the
+# summary used as the xfail reason; keep it self-contained (full explanation
+# goes underneath).
 
 [[expected_failures]]
 resource = "movies"
