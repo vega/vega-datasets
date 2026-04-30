@@ -1,8 +1,9 @@
 #:schema https://json.schemastore.org/pyproject.json
 [project]
 dependencies = [
-  "frictionless[json,parquet]>=5.18.0",
+  "frictionless[json,parquet]>=5.18.1",
   "niquests>=3.11.2",
+  "pandas>=2.2.3",
   "polars>=1.17.1",
   "tomli-w>=1.1.0",
 ]
@@ -13,7 +14,7 @@ requires-python = ">=3.12"
 version = "2.11.0"
 
 [dependency-groups]
-dev = ["ipython[kernel]>=8.30.0", "ruff>=0.14.2", "taplo>=0.9.3"]
+dev = ["ipython[kernel]>=8.30.0", "pytest>=9", "ruff>=0.14.2", "taplo>=0.9.3"]
 geo-species = [
   "exactextract>=0.2.1",
   "geopandas",
@@ -25,6 +26,12 @@ geo-species = [
   "setuptools",
   "tqdm",
 ]
+
+[tool.pytest.ini_options]
+markers = [
+  "slow: full schema/row validation via frictionless; opt in with --run-slow",
+]
+testpaths = ["tests"]
 
 [tool.ruff]
 extend-exclude = [
