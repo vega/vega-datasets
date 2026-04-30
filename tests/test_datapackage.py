@@ -29,6 +29,7 @@ import json
 import tomllib
 from copy import deepcopy
 from pathlib import Path
+from typing import Any
 
 import pytest
 from frictionless import Checklist, Package
@@ -115,7 +116,7 @@ def test_sha1_matches_git_blob(resource: dict) -> None:
     assert expected == actual, f"declared={expected[:10]}... disk={actual[:10]}..."
 
 
-def _slow_param(resource: dict) -> pytest.param:
+def _slow_param(resource: dict) -> Any:  # pytest.ParameterSet; not in public API
     """Build the parametrize entry for the slow tier; attach xfail strict if allowlisted."""
     name = resource["name"]
     marks = []
