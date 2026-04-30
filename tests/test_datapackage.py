@@ -133,9 +133,7 @@ def test_schema_and_rows(resource: dict, schema_limit_rows: int | None) -> None:
     # hash-count errors that phase 1 already covers more completely. Don't
     # flip without verifying upstream.
     checklist = Checklist(skip_errors=["byte-count", "hash-count"])
-    # Pass the descriptor as a dict (not a path) so basepath applies to the
-    # resource paths instead of the descriptor path — workaround for
-    # https://github.com/frictionlessdata/framework/issues/1435.
+    # basepath workaround: descriptor paths are bare filenames under data/ (see #758).
     package = Package({"resources": [deepcopy(resource)]}, basepath=str(DATA))
     report = package.validate(
         checklist=checklist, limit_rows=schema_limit_rows, parallel=False
