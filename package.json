@@ -31,14 +31,14 @@
     "d3-dsv": "^3.0.1"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^10.0.1",
+    "@release-it/conventional-changelog": "^11.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
-    "release-it": "^19.0.4",
+    "release-it": "^20.0.1",
     "rollup": "^4.47.1",
     "rollup-plugin-bundle-size": "^1.0.3",
     "typescript": "^6.0.2"
