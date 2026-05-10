@@ -29,7 +29,7 @@ geo-species = [
 
 [tool.pytest.ini_options]
 markers = [
-  "slow: full schema/row validation via frictionless; opt in with --run-slow",
+  "slow: full schema/row validation via frictionless; opt in with --runslow",
 ]
 testpaths = ["tests"]
 

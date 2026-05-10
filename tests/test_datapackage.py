@@ -9,9 +9,9 @@ Two tiers:
   tabular JSON / arrow / parquet; hash-count supports only md5 and
   sha256, descriptor uses sha1).
 
-* Slow (``pytest --run-slow``) — frictionless schema and row validation
+* Slow (``pytest --runslow``) — frictionless schema and row validation
   per resource. Multi-minute on flights-3m at full read; opt in via the
-  ``--run-slow`` flag and pass ``--limit-rows N`` to cap row reads
+  ``--runslow`` flag and pass ``--limit-rows N`` to cap row reads
   during iteration. Default is full read.
 
 Resources whose schema/row check is known-broken upstream (``movies``
@@ -80,6 +80,7 @@ def git_blob_sha1(path: Path) -> str:
 
 @pytest.mark.parametrize("resource", _RESOURCES, ids=_RESOURCE_IDS)
 def test_file_exists(resource: dict) -> None:
+    """Catch descriptors that point at a missing or relocated data file."""
     assert "path" in resource, (
         f"descriptor regression: resource {resource.get('name')!r} has no 'path'"
     )
@@ -89,6 +90,7 @@ def test_file_exists(resource: dict) -> None:
 
 @pytest.mark.parametrize("resource", _RESOURCES, ids=_RESOURCE_IDS)
 def test_bytes_match(resource: dict) -> None:
+    """Catch on-disk edits where `bytes` in the descriptor wasn't regenerated."""
     assert "bytes" in resource, (
         f"descriptor regression: 'bytes' missing for {resource['name']!r}"
     )
@@ -102,6 +104,12 @@ def test_bytes_match(resource: dict) -> None:
 
 @pytest.mark.parametrize("resource", _RESOURCES, ids=_RESOURCE_IDS)
 def test_sha1_matches_git_blob(resource: dict) -> None:
+    """
+    Catch on-disk edits where `hash` in the descriptor wasn't regenerated.
+
+    Uses git's blob SHA-1 so the recorded hash matches `git ls-tree` —
+    catches edits that change content without changing file size.
+    """
     declared = resource.get("hash", "")
     assert declared, f"descriptor regression: 'hash' missing for {resource['name']!r}"
     assert declared.startswith("sha1:"), (

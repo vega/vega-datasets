@@ -195,14 +195,18 @@ uv run --group dev pytest tests/
 
 # Slow tier — frictionless schema and row validation per resource.
 # Default is full read; flights-3m.parquet (~3M rows) takes minutes.
-uv run --group dev pytest tests/ --run-slow
+uv run --group dev pytest tests/ --runslow
 
-# Slow tier with a row cap — useful for quick iteration.
-uv run --group dev pytest tests/ --run-slow --limit-rows 100000
+# Slow tier with a row cap — matches what CI runs; lower for tighter iteration.
+uv run --group dev pytest tests/ --runslow --limit-rows 250000
 ```
 
-Not run in CI. The slow tier is the comprehensive validation step; the
-fast tier alone does not exercise frictionless schemas.
+CI runs the slow tier with `--limit-rows 250000`: `flights_3m`'s ~3M
+rows are sampled, every other resource is below the cap and validates
+in full. The fast tier is implicitly covered too — `npm run build`
+regenerates `datapackage.json` from on-disk data before the slow tier
+runs, so any byte/hash drift would surface either there or in the slow
+tier's schema validation.
 
 Resources whose schema/row failures are known and non-actionable (for
 example, `movies` whose schema is intentionally aspirational, or
