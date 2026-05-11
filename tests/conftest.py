@@ -1,5 +1,5 @@
 """
-Pytest config: ``--run-slow`` and ``--limit-rows`` CLI options.
+Pytest config: ``--runslow`` and ``--limit-rows`` CLI options.
 
 The ``slow`` marker is registered in ``pyproject.toml``
 (``[tool.pytest.ini_options].markers``), matching the convention used in
@@ -16,7 +16,7 @@ import pytest
 
 def pytest_addoption(parser: pytest.Parser) -> None:
     parser.addoption(
-        "--run-slow",
+        "--runslow",
         action="store_true",
         default=False,
         help="Run @pytest.mark.slow tests (frictionless schema/row validation).",
@@ -26,7 +26,7 @@ def pytest_addoption(parser: pytest.Parser) -> None:
         type=int,
         default=None,
         help=(
-            "Cap row reads in --run-slow tests at N rows per resource. "
+            "Cap row reads in --runslow tests at N rows per resource. "
             "Default is unlimited (full read). Use a small N for quick "
             "iteration; flights-3m takes minutes at full read."
         ),
@@ -41,10 +41,10 @@ def schema_limit_rows(request: pytest.FixtureRequest) -> int | None:
 def pytest_collection_modifyitems(
     config: pytest.Config, items: list[pytest.Item]
 ) -> None:
-    """Skip ``slow`` items unless ``--run-slow`` was passed."""
-    if config.getoption("--run-slow"):
+    """Skip ``slow`` items unless ``--runslow`` was passed."""
+    if config.getoption("--runslow"):
         return
-    skip_slow = pytest.mark.skip(reason="opt in with --run-slow")
+    skip_slow = pytest.mark.skip(reason="opt in with --runslow")
     for item in items:
         if "slow" in item.keywords:
             item.add_marker(skip_slow)
