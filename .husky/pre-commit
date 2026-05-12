@@ -1,0 +1,5 @@
+# Note: TOML (taplo) is intentionally not run by this hook.
+# Upstream taplo has no PyPI wheel for linux/aarch64 (tamasfe/taplo#791),
+# so requiring it pre-commit would break the hook on ARM Linux.
+# CI still enforces taplo formatting.
+npx lint-staged
