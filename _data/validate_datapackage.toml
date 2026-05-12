@@ -1,0 +1,37 @@
+# Allowlist consumed by tests/test_datapackage.py.
+#
+# Resources whose frictionless schema/row failure is known and non-actionable
+# from this repository's perspective. Each matching test_schema_and_rows[X]
+# is decorated with pytest.mark.xfail(reason=..., strict=True), so the test
+# does not fail the run today — but if the upstream issue ever resolves, the
+# test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
+#
+# Each entry must include a `resource` name (matching Resource.name in
+# datapackage.json) and a `reason`. The first line of `reason` is the
+# summary used as the xfail reason; keep it self-contained (full explanation
+# goes underneath).
+
+[[expected_failures]]
+resource = "movies"
+reason   = """
+intentional pedagogy — schema is aspirational, data has documented quirks.
+
+The descriptor's movies.json description explicitly frames the data as a
+teaching resource for data cleaning: numeric-looking titles (1776, 2012, 300)
+are stored as JSON numbers rather than strings, and release dates use
+MMM DD YYYY instead of ISO 8601. Widening the schema would defeat the
+teaching purpose and alter what downstream consumers (altair's datasets
+library, vega-lite galleries) see.
+"""
+
+[[expected_failures]]
+resource = "flights_200k_arrow"
+reason   = """
+no frictionless arrow parser (infrastructure gap, not a data issue).
+
+The shipped frictionless package has no `formats/arrow/` directory, so it
+emits `format-error: format ".arrow" is not supported`. The file itself is
+well-formed: pyarrow reads the schema and record batches, and altair
+consumes it without issue. Remove this entry once frictionless ships arrow
+support or a plugin is wired up.
+"""
