@@ -53,6 +53,6 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,ts,mjs,cjs}": "tsc --noEmit"
+    "*.py": ["uv run ruff check --fix", "uv run ruff format"]
   }
 }

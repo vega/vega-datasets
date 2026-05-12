@@ -164,6 +164,8 @@ npm run build
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
+> **Note**: `npm install` installs a pre-commit hook (via husky) that runs `uv run ruff` on staged `.py` files. Make sure `uv` is installed (see Prerequisites) or the hook will fail.
+
 ### Code Quality Checks
 
 Run these checks before submitting (using `uv run` ensures correct tool versions from `uv.lock` are used):
