@@ -202,6 +202,39 @@ uv run taplo fmt
 uv run ruff format
 ```
 
+### Validating `datapackage.json` (optional, local)
+
+After editing data files or the descriptor, you can validate the data
+package end-to-end with pytest. Two tiers:
+
+```bash
+# Fast tier — file existence, declared bytes, git-blob SHA-1.
+# Stdlib only, sub-second across all resources.
+uv run --group dev pytest tests/
+
+# Slow tier — frictionless schema and row validation per resource.
+# Default is full read; flights-3m.parquet (~3M rows) takes minutes.
+uv run --group dev pytest tests/ --runslow
+
+# Slow tier with a row cap — matches what CI runs; lower for tighter iteration.
+uv run --group dev pytest tests/ --runslow --limit-rows 250000
+```
+
+CI runs the slow tier with `--limit-rows 250000`: `flights_3m`'s ~3M
+rows are sampled, every other resource is below the cap and validates
+in full. The fast tier is implicitly covered too — `npm run build`
+regenerates `datapackage.json` from on-disk data before the slow tier
+runs, so any byte/hash drift would surface either there or in the slow
+tier's schema validation.
+
+Resources whose schema/row failures are known and non-actionable (for
+example, `movies` whose schema is intentionally aspirational, or
+`flights_200k_arrow` which frictionless can't parse) are listed in
+[`_data/validate_datapackage.toml`](_data/validate_datapackage.toml).
+The slow-tier test for each is marked `xfail(strict=True)`, so it does
+not fail the run today — but if the upstream issue ever resolves, the
+test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
+
 ## Contributing Process
 
 1. Create a branch:
