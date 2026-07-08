@@ -6,10 +6,12 @@
 # URLs to that SHA so examples.json and every spec come from the same
 # upstream snapshot. Resolved SHAs are logged at INFO for triage.
 #
-# Read-path: jsDelivr (`cdn.jsdelivr.net/gh/…`) — CDN-cached, no rate limit,
-# follows the same refs (branches/tags/SHAs) as raw.githubusercontent.com.
-# When URLs embed a commit SHA, jsDelivr caches forever with zero
-# invalidation risk since SHAs are immutable.
+# Read-path: jsDelivr (`cdn.jsdelivr.net/gh/…`) — CDN-cached, follows the
+# same refs (branches/tags/SHAs) as raw.githubusercontent.com. When URLs
+# embed a commit SHA, jsDelivr caches forever with zero invalidation risk
+# since SHAs are immutable. jsDelivr does intermittently 403 under
+# concurrent bursts; the generator falls back to raw.githubusercontent.com
+# per-file when that happens (see _get_checked in the script).
 
 [ref]
 # `main` is resolved to a SHA at script start. Change to a tag like "v6.4.2"

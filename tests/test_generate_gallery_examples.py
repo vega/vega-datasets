@@ -2,12 +2,17 @@
 
 from __future__ import annotations
 
+import asyncio
+
+import httpx
 import pytest
 
 from scripts.generate_gallery_examples import (
     _build_vegalite_examples,  # noqa: PLC2701
+    _fetch_text,  # noqa: PLC2701
     _format_refs,  # noqa: PLC2701
     _parse_altair_metadata,  # noqa: PLC2701
+    _raw_github_fallback,  # noqa: PLC2701
     assert_expected_galleries,
     assert_unique_spec_urls,
     build_example_list,
@@ -587,3 +592,87 @@ def test_build_example_list_altair_spec_url_uses_jsdelivr_with_path():
         "tests/examples_methods_syntax/scatter_plot.py"
     )
     assert scatter["example_name"] == "Scatter Plot"
+
+
+# ---------------------------------------------------------------------------
+# jsDelivr → raw.githubusercontent mirror fallback
+# ---------------------------------------------------------------------------
+
+
+def test_raw_github_fallback_translates_jsdelivr_gh_url():
+    assert (
+        _raw_github_fallback(
+            "https://cdn.jsdelivr.net/gh/vega/vega-lite@abc123/examples/specs/bar.vl.json"
+        )
+        == "https://raw.githubusercontent.com/vega/vega-lite/abc123/examples/specs/bar.vl.json"
+    )
+
+
+def test_raw_github_fallback_none_for_other_hosts():
+    assert _raw_github_fallback("https://api.github.com/repos/vega/vega") is None
+    assert (
+        _raw_github_fallback(
+            "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/cars.json"
+        )
+        is None
+    )
+
+
+def test_raw_github_fallback_none_for_malformed_gh_url():
+    # No @ref, or no path after the slug — nothing sane to mirror.
+    assert (
+        _raw_github_fallback("https://cdn.jsdelivr.net/gh/vega/vega-lite/file.json")
+        is None
+    )
+    assert (
+        _raw_github_fallback("https://cdn.jsdelivr.net/gh/vega/vega-lite@abc123")
+        is None
+    )
+
+
+def _run_fetch_with_transport(handler, url):
+    """Run _fetch_text against a mock transport; returns the body text."""
+
+    async def go():
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as session:
+            return await _fetch_text(session, url)
+
+    return asyncio.run(go())
+
+
+def test_fetch_falls_back_to_raw_github_on_jsdelivr_403():
+    jsd = "https://cdn.jsdelivr.net/gh/vega/vega@abc123/docs/examples/pie-chart.vg.json"
+    raw = "https://raw.githubusercontent.com/vega/vega/abc123/docs/examples/pie-chart.vg.json"
+    seen: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(str(request.url))
+        if str(request.url) == jsd:
+            return httpx.Response(403, text="Forbidden")
+        assert str(request.url) == raw
+        return httpx.Response(200, text='{"ok": true}')
+
+    assert _run_fetch_with_transport(handler, jsd) == '{"ok": true}'
+    assert seen == [jsd, raw]
+
+
+def test_fetch_does_not_fall_back_on_404():
+    """404 is a real miss, not a CDN flake — must propagate, not mask."""
+    jsd = "https://cdn.jsdelivr.net/gh/vega/vega@abc123/docs/examples/gone.vg.json"
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(404, text="Not found")
+
+    with pytest.raises(httpx.HTTPStatusError):
+        _run_fetch_with_transport(handler, jsd)
+
+
+def test_fetch_no_fallback_host_reraises():
+    """Transient status on a non-jsDelivr host has no mirror — propagate."""
+    url = "https://api.github.com/repos/vega/vega/commits/main"
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403, text="rate limited")
+
+    with pytest.raises(httpx.HTTPStatusError):
+        _run_fetch_with_transport(handler, url)

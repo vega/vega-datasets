@@ -40,6 +40,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 _CLIENT_TIMEOUT: Final = 30
 _ENRICH_CONCURRENCY: Final = 20
 
+# HTTP statuses treated as transient for the jsDelivr → raw.githubusercontent
+# mirror retry in _get_checked. 403 is included deliberately: jsDelivr edges
+# emit it spuriously under concurrent bursts (and cache it for 60 s).
+_TRANSIENT_STATUSES: Final = frozenset({403, 429, 500, 502, 503, 504})
+
 
 # ---------------------------------------------------------------------------
 # Types
@@ -478,6 +483,57 @@ def _parse_altair_metadata(code: str, filename: str) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
+def _raw_github_fallback(url: str) -> str | None:
+    """
+    Translate a jsDelivr ``/gh/`` URL to its raw.githubusercontent.com twin.
+
+    ``https://cdn.jsdelivr.net/gh/{owner}/{repo}@{ref}/{path}`` and
+    ``https://raw.githubusercontent.com/{owner}/{repo}/{ref}/{path}`` serve
+    byte-identical content for the same commit SHA, so the raw host is a
+    safe mirror when jsDelivr misbehaves. Returns None for URLs that aren't
+    jsDelivr ``/gh/`` (no fallback exists for those hosts).
+    """
+    prefix = "https://cdn.jsdelivr.net/gh/"
+    if not url.startswith(prefix):
+        return None
+    slug, at, ref_path = url.removeprefix(prefix).partition("@")
+    ref, slash, path = ref_path.partition("/")
+    if not (at and slash and path):
+        return None
+    return f"https://raw.githubusercontent.com/{slug}/{ref}/{path}"
+
+
+async def _get_checked(session: httpx.AsyncClient, url: str) -> httpx.Response:
+    """
+    GET ``url`` with a raised-for-status response, mirroring around jsDelivr flakes.
+
+    Under a concurrent burst jsDelivr intermittently returns 403 for
+    SHA-pinned ``/gh/`` files that are actually available, and it caches
+    that 403 at the edge for 60 s (observed 2026-07-08) — so retrying the
+    same URL within the run is futile. Instead, transient failures
+    (403/429/5xx or a transport error) on a jsDelivr URL are retried once
+    against raw.githubusercontent.com, which serves identical bytes for the
+    same SHA. Non-jsDelivr URLs and non-transient statuses raise as before.
+    """
+    try:
+        resp = await session.get(url)
+        resp.raise_for_status()
+    except (httpx.TransportError, httpx.HTTPStatusError) as err:
+        transient = isinstance(err, httpx.TransportError) or (
+            isinstance(err, httpx.HTTPStatusError)
+            and err.response.status_code in _TRANSIENT_STATUSES
+        )
+        fallback = _raw_github_fallback(url)
+        if not (transient and fallback):
+            raise
+        logger.warning(
+            "Transient failure for %s (%s); retrying via %s", url, err, fallback
+        )
+        resp = await session.get(fallback)
+        resp.raise_for_status()
+    return resp
+
+
 async def _fetch_text(session: httpx.AsyncClient, url: str) -> str:
     """
     GET ``url`` and return the response body as text.
@@ -487,8 +543,7 @@ async def _fetch_text(session: httpx.AsyncClient, url: str) -> str:
     silently truncated upstream response doesn't cascade into a parser error
     two stages downstream.
     """
-    resp = await session.get(url)
-    resp.raise_for_status()
+    resp = await _get_checked(session, url)
     if not resp.text:
         msg = f"Empty response body from {url}"
         raise RuntimeError(msg)
@@ -497,8 +552,7 @@ async def _fetch_text(session: httpx.AsyncClient, url: str) -> str:
 
 async def _fetch_json(session: httpx.AsyncClient, url: str) -> Any:
     """GET ``url`` and return parsed JSON (content-type-agnostic)."""
-    resp = await session.get(url)
-    resp.raise_for_status()
+    resp = await _get_checked(session, url)
     return resp.json()
 
 
