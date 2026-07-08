@@ -62,9 +62,10 @@ The `data/gallery-examples.json` file catalogs examples from Vega, Vega-Lite, an
 **Commands:**
 ```bash
 uv run scripts/generate_gallery_examples.py         # Regenerate the file
+npm run build                                       # Then refresh datapackage.json/md
 ```
 
-Configuration lives in `_data/gallery-examples.toml` (source URLs). Runtime is ~45 seconds (async fetching of ~400 specs).
+Configuration lives in `_data/gallery-examples.toml` (source URLs). Runtime is a few seconds (async fetching of ~400 specs). Note that `datapackage.json` records the committed git-blob hash of each data file, so commit the regenerated `data/gallery-examples.json` first, then rebuild and amend the descriptor into the same commit.
 
 ## Metadata and Documentation
 
