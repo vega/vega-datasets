@@ -99,8 +99,10 @@ class FetchedIndexes(NamedTuple):
 # Constants
 # ---------------------------------------------------------------------------
 
-# Per-gallery URL conventions. All four URL slots for each gallery live
-# here so adding a new gallery is a single-entry edit. `spec` and
+# Per-gallery URL conventions, kept in one table so the URL shapes are
+# reviewable side by side. NOTE: adding a gallery is more than an entry
+# here — it also touches _format_refs, fetch_indexes, build_example_list,
+# _SPEC_EXTRACTORS/enrich_one, and _MIN_EXPECTED_PER_GALLERY. `spec` and
 # `example_page` use str.format placeholders substituted at build time;
 # jsDelivr spec URLs pin an immutable commit SHA so the CDN caches with
 # 100 % hit rate and zero invalidation risk. See also the TOML read-path
@@ -465,7 +467,7 @@ def _parse_altair_metadata(code: str, filename: str) -> dict[str, Any]:
         # Collapse multi-line titles (rare but upstream permits them).
         title = " ".join(title_match.group("title").split())
     else:
-        title = filename.removesuffix(".py").replace("_", " ").title()
+        title = _humanize_slug(filename.removesuffix(".py"))
 
     desc_match = _DESCRIPTION_PATTERN.search(code)
     description = desc_match.group("body").strip() if desc_match else None
@@ -646,6 +648,11 @@ async def fetch_indexes(
 # ---------------------------------------------------------------------------
 
 
+def _humanize_slug(slug: str) -> str:
+    """Turn a file-ish slug (``stacked_bar-chart``) into a title (``Stacked Bar Chart``)."""
+    return slug.replace("_", " ").replace("-", " ").title()
+
+
 def _longest_wins(current: str | None, candidate: str | None) -> str | None:
     """Return whichever of the two non-empty strings is longer (stable on ties)."""
     if not candidate:
@@ -706,7 +713,7 @@ def _build_vegalite_examples(
     # is needed on the entry itself.
     for slug, entry in seen.items():
         if not entry["example_name"]:
-            entry["example_name"] = slug.replace("_", " ").replace("-", " ").title()
+            entry["example_name"] = _humanize_slug(slug)
 
     return list(seen.values())
 
@@ -725,8 +732,11 @@ def build_example_list(
     vega_urls = _GALLERY_URLS["vega"]
     altair_urls = _GALLERY_URLS["altair"]
 
-    # Vega: index is {category: [list of {name}]}
-    seen_vega: set[str] = set()
+    # Vega: index is {category: [list of {name}]}. A slug repeated under
+    # multiple categories merges its categories, mirroring the vega-lite
+    # walk (no cross-listed slug exists upstream today, but first-wins
+    # would silently drop categories if one ever appears).
+    seen_vega: dict[str, Example] = {}
     for category, items in vega_index.items():
         if not isinstance(items, list):
             continue
@@ -735,17 +745,20 @@ def build_example_list(
                 continue
             slug = item["name"]
             if slug in seen_vega:
+                entry = seen_vega[slug]
+                if category not in entry["categories"]:
+                    entry["categories"].append(category)
                 continue
-            seen_vega.add(slug)
-            examples.append({
+            seen_vega[slug] = {
                 "gallery_name": "vega",
-                "example_name": slug.replace("-", " ").replace("_", " ").title(),
+                "example_name": _humanize_slug(slug),
                 "example_url": vega_urls["example_page"].format(slug=slug),
                 "spec_url": vega_urls["spec"].format(sha=vega_sha, slug=slug),
                 "categories": [category],
                 "description": None,
                 "datasets": [],
-            })
+            }
+    examples.extend(seen_vega.values())
 
     # Altair: Trees API-filtered listing -> stubs (metadata filled during
     # enrichment). Entries have shape {"path": "tests/examples_methods_syntax/foo.py"};
@@ -756,7 +769,7 @@ def build_example_list(
         stem = name.removesuffix(".py")
         examples.append({
             "gallery_name": "altair",
-            "example_name": stem.replace("_", " ").title(),
+            "example_name": _humanize_slug(stem),
             "example_url": altair_urls["example_page"].format(stem=stem),
             "spec_url": altair_urls["spec"].format(sha=altair_sha, path=path),
             "categories": [],
@@ -904,22 +917,26 @@ def assert_expected_galleries(examples: list[dict[str, Any]]) -> None:
         raise RuntimeError(msg)
 
 
-def assert_unique_spec_urls(examples: list[dict[str, Any]]) -> None:
+def assert_unique_urls(examples: list[dict[str, Any]]) -> None:
     """
-    Enforce the spec_url primary-key invariant declared in datapackage.json.
+    Enforce the key invariants declared in datapackage.json.
 
-    Frictionless `primaryKey` is declarative only in this pipeline — this
-    check is the real enforcement and catches scraper bugs that would
-    otherwise silently emit duplicates.
+    ``example_url`` is the primary key (stable across regenerations);
+    ``spec_url`` is declared via ``uniqueKeys`` (unique within a snapshot but
+    embeds the pinned commit SHA, so it changes every regeneration). The
+    schema declarations are validation-time only — this check is the
+    generator-side enforcement and catches scraper bugs that would otherwise
+    silently emit duplicates.
     """
-    counts = Counter(ex["spec_url"] for ex in examples)
-    duplicates = sorted(u for u, n in counts.items() if n > 1)
-    if duplicates:
-        msg = (
-            f"duplicate spec_url in gallery_examples — primary key invariant "
-            f"violated: {duplicates}"
-        )
-        raise RuntimeError(msg)
+    for field in ("example_url", "spec_url"):
+        counts = Counter(ex[field] for ex in examples)
+        duplicates = sorted(u for u, n in counts.items() if n > 1)
+        if duplicates:
+            msg = (
+                f"duplicate {field} in gallery_examples — uniqueness invariant "
+                f"violated: {duplicates}"
+            )
+            raise RuntimeError(msg)
 
 
 # ---------------------------------------------------------------------------
@@ -1001,7 +1018,7 @@ async def run_pipeline() -> list[dict[str, Any]]:
 
     finalized = finalize_examples(examples)
     assert_expected_galleries(finalized)
-    assert_unique_spec_urls(finalized)
+    assert_unique_urls(finalized)
     return finalized
 
 

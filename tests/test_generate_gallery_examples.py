@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 
 import httpx
 import pytest
@@ -14,7 +15,7 @@ from scripts.generate_gallery_examples import (
     _parse_altair_metadata,  # noqa: PLC2701
     _raw_github_fallback,  # noqa: PLC2701
     assert_expected_galleries,
-    assert_unique_spec_urls,
+    assert_unique_urls,
     build_example_list,
     build_name_map,
     extract_altair_datasets,
@@ -22,6 +23,7 @@ from scripts.generate_gallery_examples import (
     extract_vegalite_datasets,
     load_config,
     normalize_dataset_reference,
+    run_pipeline,
 )
 
 # Fixture: fake resolved-refs struct matching resolve_refs() return shape.
@@ -461,23 +463,32 @@ def test_build_name_map_skips_empty_path():
 
 
 # ---------------------------------------------------------------------------
-# assert_unique_spec_urls
+# assert_unique_urls
 # ---------------------------------------------------------------------------
 
 
-def test_assert_unique_spec_urls_passes_on_unique():
-    assert_unique_spec_urls([
-        {"spec_url": "https://example.com/a"},
-        {"spec_url": "https://example.com/b"},
+def test_assert_unique_urls_passes_on_unique():
+    assert_unique_urls([
+        {"example_url": "https://g/a.html", "spec_url": "https://example.com/a"},
+        {"example_url": "https://g/b.html", "spec_url": "https://example.com/b"},
     ])
 
 
-def test_assert_unique_spec_urls_raises_on_duplicate():
-    with pytest.raises(RuntimeError, match="primary key invariant violated"):
-        assert_unique_spec_urls([
-            {"spec_url": "https://example.com/a"},
-            {"spec_url": "https://example.com/b"},
-            {"spec_url": "https://example.com/a"},
+def test_assert_unique_urls_raises_on_duplicate_spec_url():
+    with pytest.raises(RuntimeError, match=r"spec_url.*uniqueness invariant"):
+        assert_unique_urls([
+            {"example_url": "https://g/a.html", "spec_url": "https://example.com/a"},
+            {"example_url": "https://g/b.html", "spec_url": "https://example.com/b"},
+            {"example_url": "https://g/c.html", "spec_url": "https://example.com/a"},
+        ])
+
+
+def test_assert_unique_urls_raises_on_duplicate_example_url():
+    """example_url is the declared primary key; duplicates must fail."""
+    with pytest.raises(RuntimeError, match=r"example_url.*uniqueness invariant"):
+        assert_unique_urls([
+            {"example_url": "https://g/a.html", "spec_url": "https://example.com/a"},
+            {"example_url": "https://g/a.html", "spec_url": "https://example.com/b"},
         ])
 
 
@@ -676,3 +687,49 @@ def test_fetch_no_fallback_host_reraises():
 
     with pytest.raises(httpx.HTTPStatusError):
         _run_fetch_with_transport(handler, url)
+
+
+def test_build_example_list_vega_merges_categories_for_repeated_slug():
+    """A vega slug listed under two categories merges them (mirrors vega-lite)."""
+    vega_index = {
+        "Basic": [{"name": "bar"}],
+        "Advanced": [{"name": "bar"}, {"name": "pie"}],
+    }
+    examples = build_example_list({}, vega_index, [], FAKE_REFS)
+    bar = next(ex for ex in examples if ex["example_url"].endswith("/bar/"))
+    assert bar["categories"] == ["Basic", "Advanced"]
+    assert sum(ex["gallery_name"] == "vega" for ex in examples) == 2
+
+
+# ---------------------------------------------------------------------------
+# Opt-in end-to-end integration test (hits live GitHub API + CDNs)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.skipif(
+    not os.environ.get("GALLERY_INTEGRATION"),
+    reason="live-network pipeline test; opt in with GALLERY_INTEGRATION=1",
+)
+def test_run_pipeline_integration():
+    """
+    Full pipeline against live upstream galleries.
+
+    The unit tests cover the pure layer only; this is the one check that
+    exercises ref resolution, index fetching, and enrichment for real —
+    the layer where upstream restructuring or CDN behavior changes surface.
+    The pipeline's own invariants (count floors, URL uniqueness) run inside
+    run_pipeline; here we assert the output shape on top.
+    """
+    examples = asyncio.run(run_pipeline())
+    expected_fields = {
+        "gallery_name",
+        "example_name",
+        "example_url",
+        "spec_url",
+        "categories",
+        "description",
+        "datasets",
+    }
+    assert all(set(ex) == expected_fields for ex in examples)
+    referenced = {name for ex in examples for name in ex["datasets"]}
+    assert "cars" in referenced  # canary: the most-used dataset must appear

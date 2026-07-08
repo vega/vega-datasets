@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-07-08 23:00:24 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-07-08 23:11:25 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -781,9 +781,11 @@ Cross-reference mapping Vega, Vega-Lite, and Altair gallery examples
 to the vega-datasets resources they use. Each record links a gallery example to
 its datasets, categories, and source specification.
 ### schema
-    - `primaryKey` ['spec_url']
+    - `primaryKey` ['example_url']
     - `$schema` https://datapackage.org/profiles/2.0/tableschema.json
-    - `fieldsMatch` subset
+    - `uniqueKeys`
+      - [1] ['spec_url']
+    - `fieldsMatch` exact
 | name         | type   | description                                                            | constraints                               | format   |
 |:-------------|:-------|:-----------------------------------------------------------------------|:------------------------------------------|:---------|
 | gallery_name | string | Name of the gallery this example belongs to                            | {'enum': ['vega', 'vega-lite', 'altair']} |          |

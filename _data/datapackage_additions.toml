@@ -1916,10 +1916,15 @@ name  = "BSD-3-Clause"
 title = "The 3-Clause BSD License"
 path  = "https://opensource.org/license/bsd-3-clause"
 
+# primaryKey is example_url, not spec_url: spec_url embeds the commit SHA the
+# run was pinned to, so it changes on every regeneration — useless as a join
+# key across registry versions. example_url is unique and survives regens.
+# spec_url uniqueness is still enforced at runtime (uniqueKeys + generator).
 [resources.schema]
 "$schema"   = "https://datapackage.org/profiles/2.0/tableschema.json"
-primaryKey  = ["spec_url"]
-fieldsMatch = "subset"
+primaryKey  = ["example_url"]
+uniqueKeys  = [["spec_url"]]
+fieldsMatch = "exact"
 
 [[resources.schema.fields]]
 name        = "gallery_name"

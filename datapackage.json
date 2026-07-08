@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-07-08T23:00:24.371079+00:00",
+  "created": "2026-07-08T23:11:25.547645+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -1750,10 +1750,15 @@
           }
         ],
         "primaryKey": [
-          "spec_url"
+          "example_url"
         ],
         "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
-        "fieldsMatch": "subset"
+        "uniqueKeys": [
+          [
+            "spec_url"
+          ]
+        ],
+        "fieldsMatch": "exact"
       }
     },
     {
