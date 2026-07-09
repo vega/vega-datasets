@@ -3,7 +3,7 @@
     "gallery_name": "altair",
     "example_name": "2D Histogram Heatmap",
     "example_url": "https://altair-viz.github.io/gallery/histogram_heatmap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/histogram_heatmap.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/histogram_heatmap.py",
     "categories": [
       "distributions"
     ],
@@ -16,7 +16,7 @@
     "gallery_name": "altair",
     "example_name": "2D Histogram Scatter Plot",
     "example_url": "https://altair-viz.github.io/gallery/histogram_scatterplot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/histogram_scatterplot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/histogram_scatterplot.py",
     "categories": [
       "distributions"
     ],
@@ -29,7 +29,7 @@
     "gallery_name": "altair",
     "example_name": "Andrews Curves",
     "example_url": "https://altair-viz.github.io/gallery/andrews_curves.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/andrews_curves.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/andrews_curves.py",
     "categories": [
       "advanced calculations"
     ],
@@ -42,7 +42,7 @@
     "gallery_name": "altair",
     "example_name": "Annual Weather Heatmap",
     "example_url": "https://altair-viz.github.io/gallery/annual_weather_heatmap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/annual_weather_heatmap.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/annual_weather_heatmap.py",
     "categories": [
       "tables"
     ],
@@ -55,7 +55,7 @@
     "gallery_name": "altair",
     "example_name": "Anscombe's Quartet",
     "example_url": "https://altair-viz.github.io/gallery/anscombe_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/anscombe_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/anscombe_plot.py",
     "categories": [
       "case studies"
     ],
@@ -66,9 +66,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Area Chart with Gradient",
+    "example_url": "https://altair-viz.github.io/gallery/area_chart_gradient.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/area_chart_gradient.py",
+    "categories": [
+      "area charts"
+    ],
+    "description": "This example shows how to make an area chart with a gradient fill. \nFor more information about gradient options see the Vega-Lite `Gradient documentation <https://vega.github.io/vega-lite/docs/types.html#gradient>`_.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Atmospheric CO2 Concentration",
     "example_url": "https://altair-viz.github.io/gallery/co2_concentration.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/co2_concentration.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/co2_concentration.py",
     "categories": [
       "case studies"
     ],
@@ -81,7 +94,7 @@
     "gallery_name": "altair",
     "example_name": "Bar Chart Highlighting Values beyond a Threshold",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_single_threshold.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/bar_chart_with_single_threshold.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_single_threshold.py",
     "categories": [
       "bar charts"
     ],
@@ -90,9 +103,35 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Bar Chart with Highlighted Bar",
+    "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_highlighted_bar.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_highlighted_bar.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows a basic bar chart with a single bar highlighted.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Bar Chart with Highlighted Segment",
+    "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_highlighted_segment.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_highlighted_segment.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows a bar chart that highlights values beyond a threshold.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Bar Chart with Highlighting on Hover and Selection on Click",
     "example_url": "https://altair-viz.github.io/gallery/interactive_bar_select_highlight.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_bar_select_highlight.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_bar_select_highlight.py",
     "categories": [
       "interactive charts"
     ],
@@ -101,9 +140,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Bar Chart with Labels",
+    "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_labels.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_labels.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows a basic horizontal bar chart with labels created with Altair.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Bar Chart with Labels based on Measured Luminance",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_labels_measured_luminance.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/bar_chart_with_labels_measured_luminance.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_labels_measured_luminance.py",
     "categories": [
       "bar charts"
     ],
@@ -114,9 +166,48 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Bar Chart with Line at Mean",
+    "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_mean_line.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_mean_line.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows the mean value overlaid on a bar chart.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Bar Chart with Line on Dual Axis",
+    "example_url": "https://altair-viz.github.io/gallery/bar_and_line_with_dual_axis.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_and_line_with_dual_axis.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows how to combine two plots and keep their axes.\n\nFor a more polished version of this chart, see :ref:`gallery_wheat_wages`.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Bar Chart with Negative Values",
+    "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_negatives.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_negatives.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows a bar chart with both positive and negative values.",
+    "datasets": [
+      "us_employment"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Bar Chart with Range",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_with_range.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/bar_chart_with_range.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_with_range.py",
     "categories": [
       "bar charts"
     ],
@@ -127,13 +218,50 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Bar Chart with Rolling Mean",
+    "example_url": "https://altair-viz.github.io/gallery/bar_with_rolling_mean.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_with_rolling_mean.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "A bar chart overlaid with a rolling mean. In this example the average of values over the previous decade is displayed as a line.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Bar Chart with Rounded Edges",
+    "example_url": "https://altair-viz.github.io/gallery/bar_rounded.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_rounded.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows how to create a bar chart with rounded edges.",
+    "datasets": [
+      "seattle_weather"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Bar and Tick Chart",
+    "example_url": "https://altair-viz.github.io/gallery/layered_chart_bar_mark.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layered_chart_bar_mark.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "How to layer a tick chart on top of a bar chart.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Becker's Barley Faceted Plot",
     "example_url": "https://altair-viz.github.io/gallery/beckers_barley_facet.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/beckers_barley_facet.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/beckers_barley_facet.py",
     "categories": [
       "case studies"
     ],
-    "description": "The example demonstrates the faceted charts created by Richard Becker,\nWilliam Cleveland and others in the 1990s. Using the visualization technique\nwhere each row is a different site (i.e. the chart is faceted by site),\nthey identified an anomaly in a widely used agriculatural dataset,\nwhere the \"Morris\" site accidentally had the years 1931 and 1932 swapped.\nThey named this\n`\"The Morris Mistake.\" <https://www.stat.auckland.ac.nz/~ihaka/courses/120/trellis.user.pdf>`_.",
+    "description": "The example demonstrates the faceted charts created by Richard Becker,\nWilliam Cleveland and others in the 1990s. Using the visualization technique\nwhere each row is a different site (i.e. the chart is faceted by site),\nthey identified an anomaly in a widely used agriculatural dataset,\nwhere the \"Morris\" site accidentally had the years 1931 and 1932 swapped.\nThey named this\n`\"The Morris Mistake.\" <http://ml.stat.purdue.edu/stat695t/writings/Trellis.User.pdf>`_.",
     "datasets": [
       "barley"
     ]
@@ -142,20 +270,33 @@
     "gallery_name": "altair",
     "example_name": "Becker's Barley Wrapped Facet Plot",
     "example_url": "https://altair-viz.github.io/gallery/beckers_barley_wrapped_facet.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/beckers_barley_wrapped_facet.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/beckers_barley_wrapped_facet.py",
     "categories": [
       "case studies"
     ],
-    "description": "The example demonstrates the faceted charts created by Richard Becker,\nWilliam Cleveland and others in the 1990s. Using the visualization technique\nwhere each row is a different site (i.e. the chart is faceted by site),\nthey identified an anomaly in a widely used agriculatural dataset,\nwhere the \"Morris\" site accidentally had the years 1931 and 1932 swapped.\nThey named this\n`\"The Morris Mistake.\" <https://www.stat.auckland.ac.nz/~ihaka/courses/120/trellis.user.pdf>`_.",
+    "description": "The example demonstrates the faceted charts created by Richard Becker,\nWilliam Cleveland and others in the 1990s. Using the visualization technique\nwhere each row is a different site (i.e. the chart is faceted by site),\nthey identified an anomaly in a widely used agriculatural dataset,\nwhere the \"Morris\" site accidentally had the years 1931 and 1932 swapped.\nThey named this\n`\"The Morris Mistake.\" <http://ml.stat.purdue.edu/stat695t/writings/Trellis.User.pdf>`_.",
     "datasets": [
       "barley"
     ]
   },
   {
     "gallery_name": "altair",
+    "example_name": "Boxplot with Min/Max Whiskers",
+    "example_url": "https://altair-viz.github.io/gallery/boxplot.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/boxplot.py",
+    "categories": [
+      "distributions"
+    ],
+    "description": "This example shows how to make a boxplot using US Population data from 2000.  \nNote that the default value of the `extent` property is 1.5,\nwhich represents the convention of extending the whiskers\nto the furthest points within 1.5 * IQR from the first and third quartile.",
+    "datasets": [
+      "population"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Brushing Scatter Plot to Show Data on a Table",
     "example_url": "https://altair-viz.github.io/gallery/scatter_linked_table.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/scatter_linked_table.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_linked_table.py",
     "categories": [
       "scatter plots"
     ],
@@ -166,9 +307,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Bubble Plot",
+    "example_url": "https://altair-viz.github.io/gallery/bubble_plot.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bubble_plot.py",
+    "categories": [
+      "scatter plots"
+    ],
+    "description": "This example shows how to make a bubble plot.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Bump Chart",
     "example_url": "https://altair-viz.github.io/gallery/bump_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/bump_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bump_chart.py",
     "categories": [
       "line charts"
     ],
@@ -181,11 +335,11 @@
     "gallery_name": "altair",
     "example_name": "Calculate Residuals",
     "example_url": "https://altair-viz.github.io/gallery/calculate_residuals.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/calculate_residuals.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/calculate_residuals.py",
     "categories": [
       "advanced calculations"
     ],
-    "description": "A dot plot showing each movie in the database, and the difference from the average movie rating.\nThe display is sorted by year to visualize everything in sequential order. \nThe graph is for all Movies before 2019.\n\nAdapted from `Calculate Residuals <https://vega.github.io/vega-lite/examples/joinaggregate_residual_graph.html>`_.",
+    "description": "A dot plot showing each movie in the database, and the difference from the average movie rating.\nThe display is sorted by year to visualize everything in sequential order. \nThe graph is for all Movies before 2019.\nAdapted from `Calculate Residuals <https://vega.github.io/vega-lite/examples/joinaggregate_residual_graph.html>`_.",
     "datasets": [
       "movies"
     ]
@@ -194,7 +348,7 @@
     "gallery_name": "altair",
     "example_name": "Calculating Percentage of Total",
     "example_url": "https://altair-viz.github.io/gallery/percentage_of_total.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/percentage_of_total.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/percentage_of_total.py",
     "categories": [
       "bar charts"
     ],
@@ -205,7 +359,7 @@
     "gallery_name": "altair",
     "example_name": "Candlestick Chart",
     "example_url": "https://altair-viz.github.io/gallery/candlestick_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/candlestick_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/candlestick_chart.py",
     "categories": [
       "advanced calculations"
     ],
@@ -216,13 +370,27 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Choropleth Map",
+    "example_url": "https://altair-viz.github.io/gallery/choropleth.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/choropleth.py",
+    "categories": [
+      "maps"
+    ],
+    "description": "A choropleth map of unemployment rate per county in the US",
+    "datasets": [
+      "unemployment",
+      "us_10m"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Comet Chart",
     "example_url": "https://altair-viz.github.io/gallery/comet_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/comet_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/comet_chart.py",
     "categories": [
       "advanced calculations"
     ],
-    "description": "Inspired by `Zan Armstrong's comet chart <https://www.zanarmstrong.com/>`_\nthis plot uses ``mark_trail`` to visualize change of grouped data over time.\nA more elaborate example and explanation of creating comet charts in Altair\nis shown in `this blogpost <https://medium.com/de-dataverbinders/comet-charts-in-python-visualizing-statistical-mix-effects-and-simpsons-paradox-with-altair-6cd51fb58b7c>`_.",
+    "description": "Inspired by `Zan Armstrong's comet chart <https://www.zanarmstrong.com/infovisresearch>`_\nthis plot uses ``mark_trail`` to visualize change of grouped data over time.\nA more elaborate example and explanation of creating comet charts in Altair\nis shown in `this blogpost <https://medium.com/de-dataverbinders/comet-charts-in-python-visualizing-statistical-mix-effects-and-simpsons-paradox-with-altair-6cd51fb58b7c>`_.",
     "datasets": [
       "barley"
     ]
@@ -231,7 +399,7 @@
     "gallery_name": "altair",
     "example_name": "Compact Faceted Grid of Bar Charts",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_faceted_compact.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/bar_chart_faceted_compact.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_faceted_compact.py",
     "categories": [
       "bar charts"
     ],
@@ -242,7 +410,7 @@
     "gallery_name": "altair",
     "example_name": "Confidence Interval Ellipses",
     "example_url": "https://altair-viz.github.io/gallery/deviation_ellipses.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/deviation_ellipses.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/deviation_ellipses.py",
     "categories": [
       "case studies"
     ],
@@ -255,11 +423,11 @@
     "gallery_name": "altair",
     "example_name": "Connections Among U.S. Airports Interactive",
     "example_url": "https://altair-viz.github.io/gallery/airport_connections.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/airport_connections.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/airport_connections.py",
     "categories": [
       "case studies"
     ],
-    "description": "This example shows all the connections between major U.S. airports. Lookup transformations\nare used to find the coordinates of each airport and connecting airports. Connections\nare displayed on pointerover via a single selection.",
+    "description": "This example shows all the connections between major U.S. airports. Lookup transformations \nare used to find the coordinates of each airport and connecting airports. Connections \nare displayed on pointerover via a single selection.",
     "datasets": [
       "airports",
       "flights_airport",
@@ -270,7 +438,7 @@
     "gallery_name": "altair",
     "example_name": "Cumulative Count Chart",
     "example_url": "https://altair-viz.github.io/gallery/cumulative_count_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/cumulative_count_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/cumulative_count_chart.py",
     "categories": [
       "distributions"
     ],
@@ -281,9 +449,20 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Dendrogram of Hierarchical Clustering",
+    "example_url": "https://altair-viz.github.io/gallery/dendrogram.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/dendrogram.py",
+    "categories": [
+      "case studies"
+    ],
+    "description": "This is a dendrogram from the result of a hierarchical clustering. It's based on the example from\nhttps://scikit-learn.org/stable/auto_examples/cluster/plot_agglomerative_dendrogram.html",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Distributions and Medians of Likert Scale Ratings",
     "example_url": "https://altair-viz.github.io/gallery/distributions_and_medians_of_likert_scale_ratings.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/distributions_and_medians_of_likert_scale_ratings.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/distributions_and_medians_of_likert_scale_ratings.py",
     "categories": [
       "distributions"
     ],
@@ -294,7 +473,7 @@
     "gallery_name": "altair",
     "example_name": "Diverging Stacked Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/diverging_stacked_bar_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/diverging_stacked_bar_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/diverging_stacked_bar_chart.py",
     "categories": [
       "bar charts"
     ],
@@ -305,7 +484,7 @@
     "gallery_name": "altair",
     "example_name": "Donut Chart",
     "example_url": "https://altair-viz.github.io/gallery/donut_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/donut_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/donut_chart.py",
     "categories": [
       "circular plots"
     ],
@@ -314,9 +493,35 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Dot Dash Plot",
+    "example_url": "https://altair-viz.github.io/gallery/dot_dash_plot.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/dot_dash_plot.py",
+    "categories": [
+      "distributions"
+    ],
+    "description": "How to make the dot-dash plot presented in Edward Tufte's `Visual Display of Quantitative Information <https://www.edwardtufte.com/tufte/books_vdqi>`_. Based\non a JavaScript implementation by `g3o2 <https://bl.ocks.org/g3o2/bd4362574137061c243a2994ba648fb8>`_.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Empirical Cumulative Distribution Function",
+    "example_url": "https://altair-viz.github.io/gallery/empirical_cumulative_distribution_function.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/empirical_cumulative_distribution_function.py",
+    "categories": [
+      "distributions"
+    ],
+    "description": "This example shows an empirical cumulative distribution function.",
+    "datasets": [
+      "movies"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Error Bars with Confidence Interval",
     "example_url": "https://altair-viz.github.io/gallery/errorbars_with_ci.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/errorbars_with_ci.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/errorbars_with_ci.py",
     "categories": [
       "uncertainties and trends"
     ],
@@ -329,7 +534,7 @@
     "gallery_name": "altair",
     "example_name": "Error Bars with Standard Deviation",
     "example_url": "https://altair-viz.github.io/gallery/errorbars_with_std.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/errorbars_with_std.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/errorbars_with_std.py",
     "categories": [
       "uncertainties and trends"
     ],
@@ -342,7 +547,7 @@
     "gallery_name": "altair",
     "example_name": "Faceted Area Chart",
     "example_url": "https://altair-viz.github.io/gallery/area_faceted.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/area_faceted.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/area_faceted.py",
     "categories": [
       "area charts"
     ],
@@ -355,11 +560,11 @@
     "gallery_name": "altair",
     "example_name": "Faceted County-Level Choropleth Maps",
     "example_url": "https://altair-viz.github.io/gallery/maps_faceted_species.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/maps_faceted_species.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/maps_faceted_species.py",
     "categories": [
       "maps"
     ],
-    "description": "A set of maps arranged in a grid, each showing the distribution of a species' projected habitat across US counties. \nEach choropleth map uses color intensity to represent the percentage values within county boundaries.",
+    "description": "A set of maps arranged in a grid, each showing the distribution of a species' projected habitat across US counties. Each choropleth map uses color intensity to represent the percentage values within county boundaries.",
     "datasets": [
       "species",
       "us_10m"
@@ -369,7 +574,7 @@
     "gallery_name": "altair",
     "example_name": "Faceted Histogram",
     "example_url": "https://altair-viz.github.io/gallery/distributions_faceted_histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/distributions_faceted_histogram.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/distributions_faceted_histogram.py",
     "categories": [
       "distributions"
     ],
@@ -382,7 +587,7 @@
     "gallery_name": "altair",
     "example_name": "Faceted Line Chart with Cumulative Sum",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_cumsum_faceted.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_chart_with_cumsum_faceted.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_cumsum_faceted.py",
     "categories": [
       "advanced calculations"
     ],
@@ -393,9 +598,59 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Faceted Scatter Plot",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_faceted.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_faceted.py",
+    "categories": [
+      "scatter plots"
+    ],
+    "description": "A series of scatter plots, one for each country/area of origin.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Faceted Stacked Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/bar_faceted_stacked.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_faceted_stacked.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "A horizontal stacked bar chart using barley crop yield data.\nThe chart is horizontally faceted based on the year,\nand vertically faceted based on variety.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Filled Step Chart",
+    "example_url": "https://altair-viz.github.io/gallery/filled_step_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/filled_step_chart.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows Google's stock price over time as a step chart with its area filled in and its line emphasized.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Gantt Chart",
+    "example_url": "https://altair-viz.github.io/gallery/gantt_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/gantt_chart.py",
+    "categories": [
+      "advanced calculations"
+    ],
+    "description": "This example shows how to make a simple Gantt chart.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Gapminder Bubble Plot",
     "example_url": "https://altair-viz.github.io/gallery/gapminder_bubble_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/gapminder_bubble_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/gapminder_bubble_plot.py",
     "categories": [
       "case studies"
     ],
@@ -408,7 +663,7 @@
     "gallery_name": "altair",
     "example_name": "Global Deaths from Natural Disasters",
     "example_url": "https://altair-viz.github.io/gallery/natural_disasters.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/natural_disasters.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/natural_disasters.py",
     "categories": [
       "case studies"
     ],
@@ -419,9 +674,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Grouped Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/grouped_bar_chart.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows a grouped bar chart.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Grouped Bar Chart with Error Bars",
     "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart_with_error_bars.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/grouped_bar_chart_with_error_bars.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/grouped_bar_chart_with_error_bars.py",
     "categories": [
       "bar charts"
     ],
@@ -434,7 +702,7 @@
     "gallery_name": "altair",
     "example_name": "Grouped Bar Chart with xOffset",
     "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart2.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/grouped_bar_chart2.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/grouped_bar_chart2.py",
     "categories": [
       "bar charts"
     ],
@@ -445,7 +713,7 @@
     "gallery_name": "altair",
     "example_name": "Grouped Bar Chart with xOffset and overlapping bars",
     "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart_overlapping_bars.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/grouped_bar_chart_overlapping_bars.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/grouped_bar_chart_overlapping_bars.py",
     "categories": [
       "bar charts"
     ],
@@ -456,7 +724,7 @@
     "gallery_name": "altair",
     "example_name": "Grouped Points with Proportional Symbols Map",
     "example_url": "https://altair-viz.github.io/gallery/groupby-map.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/groupby-map.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/groupby-map.py",
     "categories": [
       "maps"
     ],
@@ -470,7 +738,7 @@
     "gallery_name": "altair",
     "example_name": "Heat Lane Chart",
     "example_url": "https://altair-viz.github.io/gallery/heat_lane.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/heat_lane.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/heat_lane.py",
     "categories": [
       "distributions"
     ],
@@ -483,7 +751,7 @@
     "gallery_name": "altair",
     "example_name": "Hexbin Chart",
     "example_url": "https://altair-viz.github.io/gallery/hexbins.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/hexbins.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/hexbins.py",
     "categories": [
       "tables"
     ],
@@ -496,7 +764,7 @@
     "gallery_name": "altair",
     "example_name": "Histogram with Adjustable Bin Size",
     "example_url": "https://altair-viz.github.io/gallery/interactive_bin_size.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_bin_size.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_bin_size.py",
     "categories": [
       "distributions"
     ],
@@ -509,11 +777,11 @@
     "gallery_name": "altair",
     "example_name": "Histogram with Gradient Color",
     "example_url": "https://altair-viz.github.io/gallery/histogram_gradient_color.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/histogram_gradient_color.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/histogram_gradient_color.py",
     "categories": [
       "distributions"
     ],
-    "description": "This example shows how to make a histogram with gradient color.\nThe low-high IMDB rating is represented with the color scheme `pinkyellowgreen`.",
+    "description": "This example shows how to make a histogram with gradient color. \nThe low-high IMDB rating is represented with the color scheme `pinkyellowgreen`.",
     "datasets": [
       "movies"
     ]
@@ -522,7 +790,7 @@
     "gallery_name": "altair",
     "example_name": "Histogram with Responsive Bins",
     "example_url": "https://altair-viz.github.io/gallery/histogram_responsive.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/histogram_responsive.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/histogram_responsive.py",
     "categories": [
       "distributions"
     ],
@@ -535,7 +803,7 @@
     "gallery_name": "altair",
     "example_name": "Histogram with a Global Mean Overlay",
     "example_url": "https://altair-viz.github.io/gallery/histogram_with_a_global_mean_overlay.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/histogram_with_a_global_mean_overlay.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/histogram_with_a_global_mean_overlay.py",
     "categories": [
       "distributions"
     ],
@@ -548,7 +816,7 @@
     "gallery_name": "altair",
     "example_name": "Horizon Graph",
     "example_url": "https://altair-viz.github.io/gallery/horizon_graph.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/horizon_graph.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/horizon_graph.py",
     "categories": [
       "area charts"
     ],
@@ -557,9 +825,61 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Horizontal Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/bar_chart_horizontal.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_horizontal.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example is a bar chart drawn horizontally by putting the quantitative value on the x axis.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Horizontal Grouped Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/grouped_bar_chart_horizontal.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/grouped_bar_chart_horizontal.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This example shows a horizontal grouped bar chart.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Horizontal Stacked Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/horizontal_stacked_bar_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/horizontal_stacked_bar_chart.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This is an example of a horizontal stacked bar chart using data which contains crop yields over different regions and different years in the 1930s.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Interactive Average",
+    "example_url": "https://altair-viz.github.io/gallery/selection_layer_bar_month.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/selection_layer_bar_month.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "The plot below uses an interval selection, which causes the chart to include an interactive brush\n(shown in grey). The brush selection parameterizes the red guideline, which visualizes the average\nvalue within the selected interval.",
+    "datasets": [
+      "seattle_weather"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Interactive Chart with Aggregation",
     "example_url": "https://altair-viz.github.io/gallery/interactive_aggregation.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_aggregation.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_aggregation.py",
     "categories": [
       "interactive charts"
     ],
@@ -572,7 +892,7 @@
     "gallery_name": "altair",
     "example_name": "Interactive Chart with Cross-Highlight",
     "example_url": "https://altair-viz.github.io/gallery/interactive_cross_highlight.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_cross_highlight.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_cross_highlight.py",
     "categories": [
       "interactive charts"
     ],
@@ -585,7 +905,7 @@
     "gallery_name": "altair",
     "example_name": "Interactive Crossfilter",
     "example_url": "https://altair-viz.github.io/gallery/interactive_layered_crossfilter.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_layered_crossfilter.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_layered_crossfilter.py",
     "categories": [
       "interactive charts"
     ],
@@ -598,7 +918,7 @@
     "gallery_name": "altair",
     "example_name": "Interactive Legend",
     "example_url": "https://altair-viz.github.io/gallery/interactive_legend.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_legend.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_legend.py",
     "categories": [
       "interactive charts"
     ],
@@ -609,9 +929,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Interactive Rectangular Brush",
+    "example_url": "https://altair-viz.github.io/gallery/interactive_brush.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_brush.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This example shows how to add a simple rectangular brush to a scatter plot.\nBy clicking and dragging on the plot, you can highlight points within the\nrange.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Interactive Scatter Plot and Linked Layered Histogram",
     "example_url": "https://altair-viz.github.io/gallery/scatter_with_layered_histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/scatter_with_layered_histogram.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_layered_histogram.py",
     "categories": [
       "interactive charts"
     ],
@@ -622,7 +955,7 @@
     "gallery_name": "altair",
     "example_name": "Interactive Selection of Columns",
     "example_url": "https://altair-viz.github.io/gallery/interactive_column_selection.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interactive_column_selection.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_column_selection.py",
     "categories": [
       "interactive charts"
     ],
@@ -633,7 +966,7 @@
     "gallery_name": "altair",
     "example_name": "Interval Selection on a Map",
     "example_url": "https://altair-viz.github.io/gallery/interval_selection_map_quakes.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interval_selection_map_quakes.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interval_selection_map_quakes.py",
     "categories": [
       "interactive charts"
     ],
@@ -647,7 +980,7 @@
     "gallery_name": "altair",
     "example_name": "Interval Selection with Initial Date Range",
     "example_url": "https://altair-viz.github.io/gallery/interval_selection.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/interval_selection.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interval_selection.py",
     "categories": [
       "interactive charts"
     ],
@@ -660,7 +993,7 @@
     "gallery_name": "altair",
     "example_name": "Iowa's Renewable Energy Boom",
     "example_url": "https://altair-viz.github.io/gallery/iowa_electricity.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/iowa_electricity.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/iowa_electricity.py",
     "categories": [
       "case studies"
     ],
@@ -673,7 +1006,7 @@
     "gallery_name": "altair",
     "example_name": "Isotype Grid",
     "example_url": "https://altair-viz.github.io/gallery/isotype_grid.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/isotype_grid.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/isotype_grid.py",
     "categories": [
       "advanced calculations"
     ],
@@ -684,7 +1017,7 @@
     "gallery_name": "altair",
     "example_name": "Isotype Visualization",
     "example_url": "https://altair-viz.github.io/gallery/isotype.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/isotype.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/isotype.py",
     "categories": [
       "advanced calculations"
     ],
@@ -695,7 +1028,7 @@
     "gallery_name": "altair",
     "example_name": "Isotype Visualization with Emoji",
     "example_url": "https://altair-viz.github.io/gallery/isotype_emoji.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/isotype_emoji.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/isotype_emoji.py",
     "categories": [
       "advanced calculations"
     ],
@@ -706,7 +1039,7 @@
     "gallery_name": "altair",
     "example_name": "Lasagna Plot (Dense Time-Series Heatmap)",
     "example_url": "https://altair-viz.github.io/gallery/lasagna_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/lasagna_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/lasagna_plot.py",
     "categories": [
       "tables"
     ],
@@ -719,7 +1052,7 @@
     "gallery_name": "altair",
     "example_name": "Layered Area Chart",
     "example_url": "https://altair-viz.github.io/gallery/layered_area_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/layered_area_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layered_area_chart.py",
     "categories": [
       "area charts"
     ],
@@ -732,7 +1065,7 @@
     "gallery_name": "altair",
     "example_name": "Layered Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/layered_bar_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/layered_bar_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layered_bar_chart.py",
     "categories": [
       "bar charts"
     ],
@@ -745,7 +1078,7 @@
     "gallery_name": "altair",
     "example_name": "Layered Histogram",
     "example_url": "https://altair-viz.github.io/gallery/layered_histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/layered_histogram.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layered_histogram.py",
     "categories": [
       "distributions"
     ],
@@ -756,7 +1089,7 @@
     "gallery_name": "altair",
     "example_name": "Layered chart with Dual-Axis",
     "example_url": "https://altair-viz.github.io/gallery/layered_chart_with_dual_axis.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/layered_chart_with_dual_axis.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layered_chart_with_dual_axis.py",
     "categories": [
       "advanced calculations"
     ],
@@ -767,9 +1100,20 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Line Chart with Arrows",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_arrows.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_arrows.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows a simple line chart with two types of arrow annotations.\nThe Unicode character approach is simpler, \nwhile the line plus triangle :ref:`point mark <user-guide-point-marks>` allows for greater flexibility,\nsuch as customizable arrowheads.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Line Chart with Confidence Interval Band",
     "example_url": "https://altair-viz.github.io/gallery/line_with_ci.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_with_ci.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_with_ci.py",
     "categories": [
       "uncertainties and trends"
     ],
@@ -782,7 +1126,7 @@
     "gallery_name": "altair",
     "example_name": "Line Chart with Cumulative Sum",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_cumsum.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_chart_with_cumsum.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_cumsum.py",
     "categories": [
       "line charts"
     ],
@@ -795,7 +1139,7 @@
     "gallery_name": "altair",
     "example_name": "Line Chart with Custom Legend",
     "example_url": "https://altair-viz.github.io/gallery/line_chart_with_custom_legend.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_chart_with_custom_legend.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_custom_legend.py",
     "categories": [
       "line charts"
     ],
@@ -808,7 +1152,7 @@
     "gallery_name": "altair",
     "example_name": "Line Chart with Custom Order",
     "example_url": "https://altair-viz.github.io/gallery/line_custom_order.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_custom_order.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_custom_order.py",
     "categories": [
       "line charts"
     ],
@@ -819,22 +1163,48 @@
   },
   {
     "gallery_name": "altair",
-    "example_name": "Line Chart with Datum for Color",
-    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_color_datum.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_chart_with_color_datum.py",
+    "example_name": "Line Chart with Datum",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_datum.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_datum.py",
     "categories": [
       "line charts"
     ],
-    "description": "An example of using ``repeat`` inside ``datum`` to color a multi-series line chart.\nThis is adapted from this corresponding Vega-Lite Example:\n`Repeat and Layer to Show Different Movie Measures <https://vega.github.io/vega-lite/examples/repeat_layer.html>`_.",
+    "description": "An example of using ``datum`` to highlight certain values, including a ``DateTime`` value.\nThis is adapted from two corresponding Vega-Lite Examples:\n`Highlight a Specific Value <https://vega.github.io/vega-lite/docs/datum.html#highlight-a-specific-data-value>`_.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Line Chart with Datum for Color",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_color_datum.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_color_datum.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "An example of using ``datum`` and ``repeat`` to color a multi-series line chart.\nThis is adapted from this corresponding Vega-Lite Example:\n`Repeat and Layer to Show Different Movie Measures <https://vega.github.io/vega-lite/examples/repeat_layer.html>`_.",
     "datasets": [
       "movies"
     ]
   },
   {
     "gallery_name": "altair",
+    "example_name": "Line Chart with Interpolation",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_interpolation.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_interpolation.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This chart shows a line chart with the path interpolated. A full list of interpolation methods is available `in the documentation <https://altair-viz.github.io/user_guide/generated/core/altair.LineConfig.html?highlight=interpolate#altair-lineconfig>`_.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Line Chart with Last Value Labeled",
     "example_url": "https://altair-viz.github.io/gallery/line_with_last_value_labeled.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_with_last_value_labeled.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_with_last_value_labeled.py",
     "categories": [
       "line charts"
     ],
@@ -845,9 +1215,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Line Chart with Layered Aggregates",
+    "example_url": "https://altair-viz.github.io/gallery/layer_line_color_rule.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layer_line_color_rule.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows how to make a multi-series line chart of the daily closing\nstock prices for AAPL, AMZN, GOOG, IBM, and MSFT between 2000 and 2010, along\nwith a layered rule showing the average values.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Line Chart with Logarithmic Scale",
     "example_url": "https://altair-viz.github.io/gallery/line_with_log_scale.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_with_log_scale.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_with_log_scale.py",
     "categories": [
       "line charts"
     ],
@@ -860,7 +1243,7 @@
     "gallery_name": "altair",
     "example_name": "Line Chart with Percent axis",
     "example_url": "https://altair-viz.github.io/gallery/line_percent.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/line_percent.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_percent.py",
     "categories": [
       "line charts"
     ],
@@ -871,9 +1254,59 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Line Chart with Point Markers",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_points.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_points.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This chart shows a simple line chart with points marking each value.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Line Chart with Sequence Generator",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_generator.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_generator.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This examples shows how to create multiple lines using the sequence generator.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Line Chart with Stroked Point Markers",
+    "example_url": "https://altair-viz.github.io/gallery/line_chart_with_points_stroked.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/line_chart_with_points_stroked.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows a simple line chart with points in a different color.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Line Chart with Varying Size",
+    "example_url": "https://altair-viz.github.io/gallery/trail_marker.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/trail_marker.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This is example of using the ``trail`` marker to vary the size of a line.",
+    "datasets": [
+      "wheat"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "London Tube Lines",
     "example_url": "https://altair-viz.github.io/gallery/london_tube.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/london_tube.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/london_tube.py",
     "categories": [
       "case studies"
     ],
@@ -888,7 +1321,7 @@
     "gallery_name": "altair",
     "example_name": "Mosaic Chart with Labels",
     "example_url": "https://altair-viz.github.io/gallery/mosaic_with_labels.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/mosaic_with_labels.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/mosaic_with_labels.py",
     "categories": [
       "tables"
     ],
@@ -901,7 +1334,7 @@
     "gallery_name": "altair",
     "example_name": "Multi-Line Highlight",
     "example_url": "https://altair-viz.github.io/gallery/multiline_highlight.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/multiline_highlight.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/multiline_highlight.py",
     "categories": [
       "interactive charts"
     ],
@@ -914,7 +1347,7 @@
     "gallery_name": "altair",
     "example_name": "Multi-Line Tooltip",
     "example_url": "https://altair-viz.github.io/gallery/multiline_tooltip.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/multiline_tooltip.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/multiline_tooltip.py",
     "categories": [
       "interactive charts"
     ],
@@ -925,7 +1358,7 @@
     "gallery_name": "altair",
     "example_name": "Multi-Line Tooltip (Standard)",
     "example_url": "https://altair-viz.github.io/gallery/multiline_tooltip_standard.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/multiline_tooltip_standard.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/multiline_tooltip_standard.py",
     "categories": [
       "interactive charts"
     ],
@@ -934,9 +1367,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Multi-panel Scatter Plot with Linked Brushing",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_linked_brush.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_linked_brush.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This is an example of using an interval selection to control the color of\npoints across multiple panels.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Multifeature Scatter Plot",
     "example_url": "https://altair-viz.github.io/gallery/multifeature_scatter_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/multifeature_scatter_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/multifeature_scatter_plot.py",
     "categories": [
       "scatter plots"
     ],
@@ -949,20 +1395,46 @@
     "gallery_name": "altair",
     "example_name": "Multiple Interactions",
     "example_url": "https://altair-viz.github.io/gallery/multiple_interactions.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/multiple_interactions.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/multiple_interactions.py",
     "categories": [
       "interactive charts"
     ],
-    "description": "This example shows how multiple user inputs can be layered onto a chart. The four inputs have functionality as follows:\n\n* Dropdown: Filters the movies by genre\n* Radio Buttons: Highlights certain films by Worldwide Gross\n* Mouse Drag and Scroll: Zooms the x and y scales to allow for panning\n* Checkbox: Scales the marker size of big budget films",
+    "description": "This example shows how multiple user inputs can be layered onto a chart. The four inputs have functionality as follows:\n\n* Dropdown: Filters the movies by genre\n* Radio Buttons: Highlights certain films by Worldwide Gross\n* Mouse Drag and Scroll: Zooms the x and y scales to allow for panning.",
     "datasets": [
       "movies"
     ]
   },
   {
     "gallery_name": "altair",
+    "example_name": "Multiple Series Line Chart",
+    "example_url": "https://altair-viz.github.io/gallery/multi_series_line.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/multi_series_line.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows how to make a line chart with multiple series of data.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Normalized Parallel Coordinates",
+    "example_url": "https://altair-viz.github.io/gallery/normed_parallel_coordinates.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/normed_parallel_coordinates.py",
+    "categories": [
+      "advanced calculations"
+    ],
+    "description": "A `Parallel Coordinates <https://en.wikipedia.org/wiki/Parallel_coordinates>`_\nchart is a chart that lets you visualize the individual data points by drawing\na single line for each of them.\n\nSuch a chart can be created in Altair by first transforming the data into a\nsuitable representation.\n\nThis example shows a modified parallel coordinates chart with the Penguins dataset,\nwhere the y-axis shows the value after min-max rather than the raw value. It's a\nsimplified Altair version of `the VegaLite version <https://vega.github.io/vega-lite/examples/parallel_coordinate.html>`_",
+    "datasets": [
+      "penguins"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Normalized Stacked Area Chart",
     "example_url": "https://altair-viz.github.io/gallery/normalized_stacked_area_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/normalized_stacked_area_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/normalized_stacked_area_chart.py",
     "categories": [
       "area charts"
     ],
@@ -975,7 +1447,7 @@
     "gallery_name": "altair",
     "example_name": "Normalized Stacked Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/normalized_stacked_bar_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/normalized_stacked_bar_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/normalized_stacked_bar_chart.py",
     "categories": [
       "bar charts"
     ],
@@ -986,9 +1458,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "One Dot Per Zipcode",
+    "example_url": "https://altair-viz.github.io/gallery/one_dot_per_zipcode.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/one_dot_per_zipcode.py",
+    "categories": [
+      "case studies"
+    ],
+    "description": "This example shows a geographical plot with one dot per zipcode.",
+    "datasets": [
+      "zipcodes"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Pacman Chart",
     "example_url": "https://altair-viz.github.io/gallery/pacman_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/pacman_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/pacman_chart.py",
     "categories": [
       "circular plots"
     ],
@@ -999,7 +1484,7 @@
     "gallery_name": "altair",
     "example_name": "Parallel Coordinates",
     "example_url": "https://altair-viz.github.io/gallery/parallel_coordinates.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/parallel_coordinates.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/parallel_coordinates.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1012,7 +1497,7 @@
     "gallery_name": "altair",
     "example_name": "Pie Chart",
     "example_url": "https://altair-viz.github.io/gallery/pie_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/pie_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/pie_chart.py",
     "categories": [
       "circular plots"
     ],
@@ -1023,7 +1508,7 @@
     "gallery_name": "altair",
     "example_name": "Pie Chart with Labels",
     "example_url": "https://altair-viz.github.io/gallery/pie_chart_with_labels.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/pie_chart_with_labels.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/pie_chart_with_labels.py",
     "categories": [
       "circular plots"
     ],
@@ -1032,9 +1517,23 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Point map",
+    "example_url": "https://altair-viz.github.io/gallery/point_map.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/point_map.py",
+    "categories": [
+      "maps"
+    ],
+    "description": "This is a layered map that shows the positions of airports on a background of U.S. states.",
+    "datasets": [
+      "airports",
+      "us_10m"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Polar Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/polar_bar_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/polar_bar_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/polar_bar_chart.py",
     "categories": [
       "circular plots"
     ],
@@ -1045,7 +1544,7 @@
     "gallery_name": "altair",
     "example_name": "Polynomial Fit Plot with Regression Transform",
     "example_url": "https://altair-viz.github.io/gallery/poly_fit_regression.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/poly_fit_regression.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/poly_fit_regression.py",
     "categories": [
       "uncertainties and trends"
     ],
@@ -1056,7 +1555,7 @@
     "gallery_name": "altair",
     "example_name": "Population of Falkensee from 1875 to 2014",
     "example_url": "https://altair-viz.github.io/gallery/falkensee.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/falkensee.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/falkensee.py",
     "categories": [
       "case studies"
     ],
@@ -1067,7 +1566,7 @@
     "gallery_name": "altair",
     "example_name": "Pyramid Pie Chart",
     "example_url": "https://altair-viz.github.io/gallery/pyramid.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/pyramid.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/pyramid.py",
     "categories": [
       "case studies"
     ],
@@ -1076,9 +1575,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Quantile-Quantile Plot",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_qq.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_qq.py",
+    "categories": [
+      "distributions"
+    ],
+    "description": "A quantile-quantile plot comparing input data to theoretical distributions.",
+    "datasets": [
+      "normal_2d"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Radial Chart",
     "example_url": "https://altair-viz.github.io/gallery/radial_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/radial_chart.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/radial_chart.py",
     "categories": [
       "circular plots"
     ],
@@ -1089,7 +1601,7 @@
     "gallery_name": "altair",
     "example_name": "Ranged Dot Plot",
     "example_url": "https://altair-viz.github.io/gallery/ranged_dot_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/ranged_dot_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/ranged_dot_plot.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1100,9 +1612,36 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Reorder stacked bar segments",
+    "example_url": "https://altair-viz.github.io/gallery/interactive_reorder_stacked_bars.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_reorder_stacked_bars.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This example uses a calculate transform\nto check the values of the \"site\" column\nvs the clicked values in the legend,\nand assigns a lower order (0)\nif there is a match.\nThe use of \"indexOf\" checks for equality in an array,\nwhich here allows for multiple segments to be reordered\nby holding down the shift key while clicking the legend.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Repeated Choropleth Map",
+    "example_url": "https://altair-viz.github.io/gallery/choropleth_repeat.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/choropleth_repeat.py",
+    "categories": [
+      "maps"
+    ],
+    "description": "Three choropleths representing disjoint data from the same table.",
+    "datasets": [
+      "population_engineers_hurricanes",
+      "us_10m"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Repeated Density Estimates",
     "example_url": "https://altair-viz.github.io/gallery/density_repeat.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/density_repeat.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/density_repeat.py",
     "categories": [
       "distributions"
     ],
@@ -1115,20 +1654,44 @@
     "gallery_name": "altair",
     "example_name": "Ridgeline plot",
     "example_url": "https://altair-viz.github.io/gallery/ridgeline_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/ridgeline_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/ridgeline_plot.py",
     "categories": [
       "distributions"
     ],
-    "description": "A `Ridgeline plot <https://clauswilke.com/blog/2017/09/15/goodbye-joyplots/>`_\nlets you visualize distribution of a numeric value for different\nsubsets of data (what we call \"facets\" in Altair).\n\nSuch a chart can be created in Altair by first transforming the data into a\nsuitable representation.",
+    "description": "A `Ridgeline plot <https://serialmentor.com/blog/2017/9/15/goodbye-joyplots>`_\nlets you visualize distribution of a numeric value for different\nsubsets of data (what we call \"facets\" in Altair).\n\nSuch a chart can be created in Altair by first transforming the data into a\nsuitable representation.",
     "datasets": [
       "seattle_weather"
     ]
   },
   {
     "gallery_name": "altair",
+    "example_name": "Scatter Matrix",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_matrix.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_matrix.py",
+    "categories": [
+      "scatter plots"
+    ],
+    "description": "An example of using a RepeatChart to construct a multi-panel scatter plot\nwith linked panning and zooming.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Scatter Plot and Histogram with Interval Selection",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_with_histogram.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_histogram.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This example shows how to link a scatter plot and a histogram\ntogether such that an interval selection in the histogram will\nplot the selected values in the scatter plot.\n\nNote that both subplots need to know about the `mbin` field created\nby the `transform_bin` method. In order to achieve this, the data is\nnot passed to the `Chart()` instances creating the subplots, but\ndirectly in the `hconcat()` function, which joins the two plots together.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Scatter Plot with Faceted Marginal Histograms",
     "example_url": "https://altair-viz.github.io/gallery/scatter_marginal_hist.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/scatter_marginal_hist.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_marginal_hist.py",
     "categories": [
       "distributions"
     ],
@@ -1139,9 +1702,33 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Scatter Plot with Href",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_href.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_href.py",
+    "categories": [
+      "scatter plots"
+    ],
+    "description": "This example shows a scatter plot with an ``href`` encoding constructed from\nthe car name. With this encoding, you can click on any of the points to open\na google search for the car name.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Scatter Plot with LOESS Lines",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_with_loess.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_loess.py",
+    "categories": [
+      "uncertainties and trends"
+    ],
+    "description": "This example shows how to add a trend line to a scatter plot using \nthe LOESS transform (LOcally Estimated Scatter Plot Smoothing).",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Scatter Plot with Minimap",
     "example_url": "https://altair-viz.github.io/gallery/scatter_with_minimap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/scatter_with_minimap.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_minimap.py",
     "categories": [
       "scatter plots"
     ],
@@ -1154,7 +1741,7 @@
     "gallery_name": "altair",
     "example_name": "Scatter Plot with Rolling Mean",
     "example_url": "https://altair-viz.github.io/gallery/scatter_with_rolling_mean.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/scatter_with_rolling_mean.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_rolling_mean.py",
     "categories": [
       "scatter plots"
     ],
@@ -1165,13 +1752,24 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Scatter Plot with Shaded Area",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_with_shaded_area.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_shaded_area.py",
+    "categories": [
+      "scatter plots"
+    ],
+    "description": "This example shows a scatter plot with shaded area, \nconstructed using :ref:`area mark <user-guide-area-marks>` and :ref:`rect mark <user-guide-rect-marks>`.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Scatter plot with point paths on hover and search box",
     "example_url": "https://altair-viz.github.io/gallery/scatter_point_paths_hover.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/scatter_point_paths_hover.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_point_paths_hover.py",
     "categories": [
       "interactive charts"
     ],
-    "description": "This example combines cross-sectional analysis (comparing countries at a single point in time) \nwith longitudinal analysis (tracking changes in individual countries over time), using\nan interactive visualization technique inspired by [this Vega example](https://vega.github.io/vega/examples/global-development/)\n\nKey features:\n1. Point Paths. On hover, shows data trajectories using a trail mark that\nthickens from past to present, clearly indicating the direction of time.\n2. Search Box. Implements a case-insensitive regex filter for country names,\nenabling dynamic, flexible data point selection to enhance exploratory analysis.",
+    "description": "This example combines cross-sectional analysis (comparing countries at a single point in time) \nwith longitudinal analysis (tracking changes in individual countries over time), using\nan interactive visualization technique inspired by [this Vega example](https://vega.github.io/vega/examples/global-development/).\n\nKey features:\n1. Point Paths. On hover, shows data trajectories using a trail mark that\nthickens from past to present, clearly indicating the direction of time.\n2. Search Box. Implements a case-insensitive regex filter for country names,\nenabling dynamic, flexible data point selection to enhance exploratory analysis.",
     "datasets": [
       "gapminder"
     ]
@@ -1180,7 +1778,7 @@
     "gallery_name": "altair",
     "example_name": "Seattle Weather Interactive",
     "example_url": "https://altair-viz.github.io/gallery/seattle_weather_interactive.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/seattle_weather_interactive.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/seattle_weather_interactive.py",
     "categories": [
       "case studies"
     ],
@@ -1193,7 +1791,7 @@
     "gallery_name": "altair",
     "example_name": "Selection Detail",
     "example_url": "https://altair-viz.github.io/gallery/select_detail.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/select_detail.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/select_detail.py",
     "categories": [
       "interactive charts"
     ],
@@ -1202,9 +1800,94 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Selection Histogram",
+    "example_url": "https://altair-viz.github.io/gallery/selection_histogram.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/selection_histogram.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This chart shows an example of using an interval selection to filter the\ncontents of an attached histogram, allowing the user to see the proportion\nof items in each category within the selection.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Selection zorder",
+    "example_url": "https://altair-viz.github.io/gallery/selection_zorder.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/selection_zorder.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This example shows how to bring selected points to the front/foreground\nby using a condition to change the point's (z)order\nas it is hovered over with the pointer.\nThis prevents that the selected points are obscured\nby those that are not selected.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/simple_bar_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/simple_bar_chart.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "This example shows a basic bar chart created with Altair.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Heatmap",
+    "example_url": "https://altair-viz.github.io/gallery/simple_heatmap.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/simple_heatmap.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "This example shows a simple heatmap for showing gridded data.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Histogram",
+    "example_url": "https://altair-viz.github.io/gallery/simple_histogram.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/simple_histogram.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "This example shows how to make a basic histogram, based on the vega-lite docs\nhttps://vega.github.io/vega-lite/examples/histogram.html",
+    "datasets": [
+      "movies"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Interactive Colored Scatter Plot",
+    "example_url": "https://altair-viz.github.io/gallery/interactive_scatter_plot.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/interactive_scatter_plot.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This example shows how to make an interactive scatter plot.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Line Chart",
+    "example_url": "https://altair-viz.github.io/gallery/simple_line_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/simple_line_chart.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "This chart shows the most basic line chart, made from a dataframe with two\ncolumns.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Simple Scatter Plot with Errorbars",
     "example_url": "https://altair-viz.github.io/gallery/simple_scatter_with_errorbars.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/simple_scatter_with_errorbars.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/simple_scatter_with_errorbars.py",
     "categories": [
       "uncertainties and trends"
     ],
@@ -1213,9 +1896,83 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Simple Scatter Plot with Labels",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_with_labels.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_with_labels.py",
+    "categories": [
+      "scatter plots"
+    ],
+    "description": "This example shows a basic scatter plot with labels created with Altair.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Scatter Plot with Tooltips",
+    "example_url": "https://altair-viz.github.io/gallery/scatter_tooltips.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/scatter_tooltips.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "A scatter plot of the cars dataset, with tooltips showing selected column\nvalues when you hover over points. We make the points larger so that it is\neasier to hover over them.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Stacked Area Chart",
+    "example_url": "https://altair-viz.github.io/gallery/simple_stacked_area_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/simple_stacked_area_chart.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "This example shows how to make a simple stacked area chart.",
+    "datasets": [
+      "iowa_electricity"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Simple Strip Plot",
+    "example_url": "https://altair-viz.github.io/gallery/strip_plot.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/strip_plot.py",
+    "categories": [
+      "simple charts"
+    ],
+    "description": "A simple example of how to make a strip plot.",
+    "datasets": [
+      "cars"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Slider Cutoff",
+    "example_url": "https://altair-viz.github.io/gallery/slider_cutoff.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/slider_cutoff.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "This example shows how to bind a variable parameter to a slider, and how to use the corresponding bound value to color data points.  This example is based on an example from the Altair 4 documentation for Interactions, in which the  interactivity was accomplished using a selection.  The version below has been simplified significantly through the use of a variable parameter.  Variable parameters were added in Altair 5.",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "Slope Graph",
+    "example_url": "https://altair-viz.github.io/gallery/slope_graph.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/slope_graph.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows how to make Slope Graph.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Sorted Bar Chart",
     "example_url": "https://altair-viz.github.io/gallery/bar_chart_sorted.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/bar_chart_sorted.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/bar_chart_sorted.py",
     "categories": [
       "bar charts"
     ],
@@ -1228,7 +1985,7 @@
     "gallery_name": "altair",
     "example_name": "Sorted Error Bars showing Confidence Interval",
     "example_url": "https://altair-viz.github.io/gallery/sorted_error_bars_with_ci.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/sorted_error_bars_with_ci.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/sorted_error_bars_with_ci.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1239,9 +1996,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Stacked Bar Chart",
+    "example_url": "https://altair-viz.github.io/gallery/stacked_bar_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/stacked_bar_chart.py",
+    "categories": [
+      "bar charts"
+    ],
+    "description": "This is an example of a stacked bar chart using data which contains crop yields over different regions and different years in the 1930s.",
+    "datasets": [
+      "barley"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Stacked Bar Chart with Sorted Segments",
     "example_url": "https://altair-viz.github.io/gallery/stacked_bar_chart_sorted_segments.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/stacked_bar_chart_sorted_segments.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/stacked_bar_chart_sorted_segments.py",
     "categories": [
       "bar charts"
     ],
@@ -1254,7 +2024,7 @@
     "gallery_name": "altair",
     "example_name": "Stacked Bar Chart with Text Overlay",
     "example_url": "https://altair-viz.github.io/gallery/stacked_bar_chart_with_text.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/stacked_bar_chart_with_text.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/stacked_bar_chart_with_text.py",
     "categories": [
       "bar charts"
     ],
@@ -1267,7 +2037,7 @@
     "gallery_name": "altair",
     "example_name": "Stacked Density Estimates",
     "example_url": "https://altair-viz.github.io/gallery/density_stack.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/density_stack.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/density_stack.py",
     "categories": [
       "distributions"
     ],
@@ -1280,7 +2050,7 @@
     "gallery_name": "altair",
     "example_name": "Stem and Leaf Plot",
     "example_url": "https://altair-viz.github.io/gallery/stem_and_leaf.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/stem_and_leaf.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/stem_and_leaf.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1289,9 +2059,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Step Chart",
+    "example_url": "https://altair-viz.github.io/gallery/step_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/step_chart.py",
+    "categories": [
+      "line charts"
+    ],
+    "description": "This example shows Google's stock price over time.\nThis uses the \"step-after\" interpolation scheme.\nThe full list of interpolation options includes 'linear',\n'linear-closed', 'step', 'step-before', 'step-after', 'basis',\n'basis-open', 'basis-closed', 'cardinal', 'cardinal-open',\n'cardinal-closed', 'bundle', and 'monotone'.",
+    "datasets": [
+      "stocks"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Streamgraph",
     "example_url": "https://altair-viz.github.io/gallery/streamgraph.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/streamgraph.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/streamgraph.py",
     "categories": [
       "area charts"
     ],
@@ -1304,7 +2087,7 @@
     "gallery_name": "altair",
     "example_name": "Strip Plot with Jitter",
     "example_url": "https://altair-viz.github.io/gallery/strip_plot_jitter.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/strip_plot_jitter.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/strip_plot_jitter.py",
     "categories": [
       "distributions"
     ],
@@ -1315,9 +2098,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Table Bubble Plot (Github Punch Card)",
+    "example_url": "https://altair-viz.github.io/gallery/table_bubble_plot_github.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/table_bubble_plot_github.py",
+    "categories": [
+      "distributions"
+    ],
+    "description": "This example shows github contributions by the day of week and hour of the day.",
+    "datasets": [
+      "github"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Text over a Heatmap",
     "example_url": "https://altair-viz.github.io/gallery/layered_heatmap_text.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/layered_heatmap_text.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/layered_heatmap_text.py",
     "categories": [
       "tables"
     ],
@@ -1330,7 +2126,7 @@
     "gallery_name": "altair",
     "example_name": "The U.S. Employment Crash During the Great Recession",
     "example_url": "https://altair-viz.github.io/gallery/us_employment.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/us_employment.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/us_employment.py",
     "categories": [
       "case studies"
     ],
@@ -1343,7 +2139,7 @@
     "gallery_name": "altair",
     "example_name": "Top K Items",
     "example_url": "https://altair-viz.github.io/gallery/top_k_items.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/top_k_items.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/top_k_items.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1356,7 +2152,7 @@
     "gallery_name": "altair",
     "example_name": "Top K Letters",
     "example_url": "https://altair-viz.github.io/gallery/top_k_letters.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/top_k_letters.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/top_k_letters.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1367,7 +2163,7 @@
     "gallery_name": "altair",
     "example_name": "Top-K Plot with Others",
     "example_url": "https://altair-viz.github.io/gallery/top_k_with_others.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/top_k_with_others.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/top_k_with_others.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1380,7 +2176,7 @@
     "gallery_name": "altair",
     "example_name": "U.S. State Capitals Overlaid on a Map of the U.S",
     "example_url": "https://altair-viz.github.io/gallery/us_state_capitals.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/us_state_capitals.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/us_state_capitals.py",
     "categories": [
       "case studies"
     ],
@@ -1392,9 +2188,23 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "US Income by State: Wrapped Facet",
+    "example_url": "https://altair-viz.github.io/gallery/us_incomebrackets_by_state_facet.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/us_incomebrackets_by_state_facet.py",
+    "categories": [
+      "maps"
+    ],
+    "description": "This example shows how to create a map of income in the US by state,\nfaceted over income brackets",
+    "datasets": [
+      "income",
+      "us_10m"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "US Population Pyramid Over Time",
     "example_url": "https://altair-viz.github.io/gallery/us_population_pyramid_over_time.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/us_population_pyramid_over_time.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/us_population_pyramid_over_time.py",
     "categories": [
       "case studies"
     ],
@@ -1407,7 +2217,7 @@
     "gallery_name": "altair",
     "example_name": "US Population by Age and Sex",
     "example_url": "https://altair-viz.github.io/gallery/us_population_over_time.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/us_population_over_time.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/us_population_over_time.py",
     "categories": [
       "case studies"
     ],
@@ -1420,7 +2230,7 @@
     "gallery_name": "altair",
     "example_name": "US Population: Wrapped Facet",
     "example_url": "https://altair-viz.github.io/gallery/us_population_over_time_facet.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/us_population_over_time_facet.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/us_population_over_time_facet.py",
     "categories": [
       "case studies"
     ],
@@ -1431,9 +2241,22 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Using Selection Interval with mark_area",
+    "example_url": "https://altair-viz.github.io/gallery/select_mark_area.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/select_mark_area.py",
+    "categories": [
+      "interactive charts"
+    ],
+    "description": "Because area is considered one object, just using the plain \nselector will select the entire area instead of just one part of it.\n\nThis example shows how to use two areas, one on top of the other, and a\n`transform_filter` to fake out this effect.",
+    "datasets": [
+      "unemployment_across_industries"
+    ]
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Violin Plot",
     "example_url": "https://altair-viz.github.io/gallery/violin_plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/violin_plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/violin_plot.py",
     "categories": [
       "distributions"
     ],
@@ -1444,9 +2267,20 @@
   },
   {
     "gallery_name": "altair",
+    "example_name": "Waterfall Chart",
+    "example_url": "https://altair-viz.github.io/gallery/waterfall_chart.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/waterfall_chart.py",
+    "categories": [
+      "advanced calculations"
+    ],
+    "description": "This example shows how to recreate a Vega-Lite implementation of a waterfall chart.\nOriginal inspiration is from https://vega.github.io/vega-lite/examples/waterfall_chart.html",
+    "datasets": []
+  },
+  {
+    "gallery_name": "altair",
     "example_name": "Wheat and Wages",
     "example_url": "https://altair-viz.github.io/gallery/wheat_wages.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/wheat_wages.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/wheat_wages.py",
     "categories": [
       "case studies"
     ],
@@ -1460,7 +2294,7 @@
     "gallery_name": "altair",
     "example_name": "Wilkinson Dot Plot",
     "example_url": "https://altair-viz.github.io/gallery/wilkinson-dot-plot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/wilkinson-dot-plot.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/wilkinson-dot-plot.py",
     "categories": [
       "advanced calculations"
     ],
@@ -1471,7 +2305,7 @@
     "gallery_name": "altair",
     "example_name": "Wind Vector Map",
     "example_url": "https://altair-viz.github.io/gallery/wind_vector_map.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/wind_vector_map.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/wind_vector_map.py",
     "categories": [
       "maps"
     ],
@@ -1485,12 +2319,38 @@
     "gallery_name": "altair",
     "example_name": "Window Rank Line Chart",
     "example_url": "https://altair-viz.github.io/gallery/window_rank.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_methods_syntax/window_rank.py",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/window_rank.py",
     "categories": [
       "line charts"
     ],
     "description": "This example shows the Group F rankings in the 2018 World Cup after each matchday. \nA window transformation is used to rank each after each match day, sorting by points and difference.",
     "datasets": []
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "World Map",
+    "example_url": "https://altair-viz.github.io/gallery/world_map.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/world_map.py",
+    "categories": [
+      "maps"
+    ],
+    "description": "This example shows how to create a world map using data generators for\ndifferent background layers.",
+    "datasets": [
+      "world_110m"
+    ]
+  },
+  {
+    "gallery_name": "altair",
+    "example_name": "World Projections",
+    "example_url": "https://altair-viz.github.io/gallery/world_projections.html",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/altair@48b388f140c79d29056d6ea56e519b27e2ed8838/tests/examples_arguments_syntax/world_projections.py",
+    "categories": [
+      "maps"
+    ],
+    "description": "This example shows a map of the countries of the world. \nUse the dropdown menu to compare projections. For more details on the `project` arguments, see the API of `altair.Projection <https://altair-viz.github.io/user_guide/generated/core/altair.Projection.html>`_.",
+    "datasets": [
+      "world_110m"
+    ]
   },
   {
     "gallery_name": "vega",

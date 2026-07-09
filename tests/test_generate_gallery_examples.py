@@ -505,20 +505,20 @@ def _fake_examples(counts: dict[str, int]) -> list[dict[str, str]]:
 def test_assert_expected_galleries_passes_at_floor():
     """Every gallery exactly at its floor passes."""
     assert_expected_galleries(
-        _fake_examples({"altair": 100, "vega": 80, "vega-lite": 160})
+        _fake_examples({"altair": 160, "vega": 80, "vega-lite": 160})
     )
 
 
 def test_assert_expected_galleries_raises_when_one_below_floor():
     """One gallery under its floor trips a detailed error."""
-    examples = _fake_examples({"altair": 100, "vega": 10, "vega-lite": 160})
+    examples = _fake_examples({"altair": 160, "vega": 10, "vega-lite": 160})
     with pytest.raises(RuntimeError, match=r"vega: got 10, expected >= 80"):
         assert_expected_galleries(examples)
 
 
 def test_assert_expected_galleries_raises_when_gallery_missing():
     """A missing gallery counts as zero and trips the floor check."""
-    examples = _fake_examples({"altair": 100, "vega-lite": 160})
+    examples = _fake_examples({"altair": 160, "vega-lite": 160})
     with pytest.raises(RuntimeError, match=r"vega: got 0, expected >= 80"):
         assert_expected_galleries(examples)
 
@@ -588,9 +588,9 @@ def test_build_example_list_altair_spec_url_uses_jsdelivr_with_path():
     """Altair entries derive spec_url from the full Trees API path +
     altair commit SHA. No regression to Contents API `name`-only shape."""
     altair_files = [
-        {"path": "tests/examples_methods_syntax/scatter_plot.py"},
+        {"path": "tests/examples_arguments_syntax/scatter_plot.py"},
         {
-            "path": "tests/examples_methods_syntax/__init__.py"
+            "path": "tests/examples_arguments_syntax/__init__.py"
         },  # should be present here; filtering upstream
     ]
     examples = build_example_list({}, {}, altair_files, FAKE_REFS)
@@ -600,7 +600,7 @@ def test_build_example_list_altair_spec_url_uses_jsdelivr_with_path():
     scatter = next(ex for ex in altair_entries if ex["_filename"] == "scatter_plot.py")
     assert scatter["spec_url"] == (
         "https://cdn.jsdelivr.net/gh/vega/altair@fedcba9876543210/"
-        "tests/examples_methods_syntax/scatter_plot.py"
+        "tests/examples_arguments_syntax/scatter_plot.py"
     )
     assert scatter["example_name"] == "Scatter Plot"
 

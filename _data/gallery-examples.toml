@@ -25,4 +25,8 @@ altair    = "main"
 # literal tag/branch if the ref is pinned in [ref] above).
 vega_lite_examples_url = "https://cdn.jsdelivr.net/gh/vega/vega-lite@{vega_lite_ref}/site/_data/examples.json"
 vega_examples_url      = "https://cdn.jsdelivr.net/gh/vega/vega@{vega_ref}/docs/_data/examples.json"
-altair_examples_dir    = "tests/examples_methods_syntax"
+# The published altair gallery is built from the arguments-syntax directory
+# (sphinxext/altairgallery.py iterates it as the base set); the parallel
+# examples_methods_syntax/ directory holds method-syntax variants for only a
+# subset of examples, so listing it would miss the rest of the live gallery.
+altair_examples_dir    = "tests/examples_arguments_syntax"

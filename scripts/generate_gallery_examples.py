@@ -602,7 +602,8 @@ async def fetch_indexes(
 
     vega-lite and vega indexes come via jsDelivr (URL templates in TOML
     are substituted with commit SHAs). Altair uses the GitHub Trees API
-    at the repo's tree SHA, filtered to ``tests/examples_methods_syntax/*.py``.
+    at the repo's tree SHA, filtered to ``tests/examples_arguments_syntax/*.py``
+    (the directory the published altair gallery is built from).
     The Contents API was dropped in favor of Trees API because the payload
     is ~4x smaller and composes cleanly with SHA pinning.
     """
@@ -761,7 +762,7 @@ def build_example_list(
     examples.extend(seen_vega.values())
 
     # Altair: Trees API-filtered listing -> stubs (metadata filled during
-    # enrichment). Entries have shape {"path": "tests/examples_methods_syntax/foo.py"};
+    # enrichment). Entries have shape {"path": "tests/examples_arguments_syntax/foo.py"};
     # fetch_indexes already filtered out non-blob, non-.py, and dunder files.
     for file_info in altair_files:
         path = file_info["path"]
@@ -880,10 +881,10 @@ def finalize_examples(examples: list[Example]) -> list[dict[str, Any]]:
 
 # Per-gallery count floors. Trip-wires for catastrophic regressions
 # (upstream restructuring, parser breakage), not tight estimates. Current
-# counts (2026-04): altair=117, vega=93, vega-lite=189. Bump if upstream
+# counts (2026-07): altair=187, vega=93, vega-lite=189. Bump if upstream
 # genuinely prunes a gallery; loosen if you want to tolerate more attrition.
 _MIN_EXPECTED_PER_GALLERY: Final[Mapping[str, int]] = MappingProxyType({
-    "altair": 100,
+    "altair": 160,
     "vega": 80,
     "vega-lite": 160,
 })
