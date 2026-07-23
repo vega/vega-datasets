@@ -14,7 +14,19 @@ requires-python = ">=3.12"
 version = "2.11.0"
 
 [dependency-groups]
-dev = ["ipython[kernel]>=8.30.0", "pytest>=9", "ruff>=0.14.2", "taplo>=0.9.3"]
+dev = [
+  "ipython[kernel]>=8.30.0",
+  "pytest>=9",
+  "ruff>=0.14.2",
+  "taplo>=0.9.3",
+  { include-group = "gallery-examples" },
+]
+gallery-examples = [
+  # Needed to import/run scripts/generate_gallery_examples.py; the script
+  # also declares this via PEP 723 inline deps so `uv run scripts/…` works
+  # standalone. This group lets tests + dev tooling resolve the import too.
+  "httpx>=0.27,<1",
+]
 geo-species = [
   "exactextract>=0.2.1",
   "geopandas",
@@ -31,7 +43,9 @@ geo-species = [
 markers = [
   "slow: full schema/row validation via frictionless; opt in with --runslow",
 ]
-testpaths = ["tests"]
+# Repo root on sys.path so tests can import scripts.generate_gallery_examples.
+pythonpath = ["."]
+testpaths  = ["tests"]
 
 [tool.ruff]
 extend-exclude = [
@@ -126,17 +140,23 @@ select = [
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb"      = ["ANN", "F401", "W391"]
 "*/**/*.ipynb" = ["ANN", "F401", "W391"]
+# Test files: Relax annotation and docstring requirements
+"tests/**/*.py" = ["ANN", "D"]
 
 [tool.pyright]
 enableExperimentalFeatures = true
-ignore = ["../../../**/Lib", ".venv"]
+ignore = ["../../../**/Lib"]
 include = [
   "./scripts/build_datapackage.py",
   "./scripts/flights.py",
+  "./scripts/generate_gallery_examples.py",
   "./scripts/income.py",
   "./scripts/species.py",
+  "./scripts/us-state-capitals.py",
 ]
 pythonPlatform = "All"
 pythonVersion = "3.12"
 reportUnusedExpression = "none"
 typeCheckingMode = "basic"
+venv = ".venv"
+venvPath = "."

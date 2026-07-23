@@ -1,4 +1,12 @@
 #!/usr/bin/env -S uv run
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "frictionless[json,parquet]>=5.18.0",
+#     "pandas",
+#     "polars>=1.17.1",
+# ]
+# ///
 
 """
 Generates machine-readable metadata, describing the contents of `/data/`_.
@@ -372,7 +380,9 @@ def merge_schemas(resource: Resource, *, extra: Schema) -> fl.Schema:
         if name in overrides:
             field.update(overrides[name])
         fields.append(field)
-    return fl.Schema.from_descriptor({"fields": fields})
+    merged = {k: v for k, v in cast("dict[str, Any]", extra).items() if k != "fields"}
+    merged["fields"] = fields
+    return fl.Schema.from_descriptor(merged)
 
 
 def _flatten_schema(schema: Schema, /) -> dict[str, Field]:
@@ -682,12 +692,13 @@ def write_string_overrides_ts(pkg: Package, repo_dir: Path) -> None:
     string_fields_by_csv: dict[str, list[str]] = {}
 
     for resource in pkg.resources:
-        if resource.path.endswith(".csv") and resource.schema:
+        path = resource.path
+        if path and path.endswith(".csv") and resource.schema:
             string_fields = [
                 f.name for f in resource.schema.fields if f.type == "string"
             ]
             if string_fields:
-                string_fields_by_csv[resource.path] = string_fields
+                string_fields_by_csv[path] = string_fields
 
     ts_path = repo_dir / "src" / "stringOverrides.ts"
     with ts_path.open("w", encoding="utf-8") as f:
@@ -724,6 +735,7 @@ def main(
     gh_sha1 = extract_sha(data_dir)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
+
     pkg = Package(
         resources=list(iter_resources(data_dir, overrides, gh_sha1)),
         **pkg_meta,  # type: ignore[arg-type]
