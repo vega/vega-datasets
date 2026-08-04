@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-02 13:19:39 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-07-29 03:16:06 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -132,6 +132,45 @@ Since then it has been used to demonstrate new visualization techniques, includi
 | name         | title                                                                                       |
 |:-------------|:--------------------------------------------------------------------------------------------|
 | notspecified | Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified |
+## `bird_migration`
+### path
+bird-migration.csv
+### description
+Daily migration trajectories for ten Nearctic-breeding bird species that cross the
+Atlantic Ocean during autumn migration. Each row gives the geographic center of one species'
+population on one day of the year, estimated from eBird occurrence records collected between 1950
+and 2015. Tracing a species across the year traces its annual migration: American Golden-Plover
+begins January on the Argentine pampas, reaches 70°N by late June, and returns.
+
+Because the estimates average many years, no calendar year applies to them. Following
+`seattle-weather-hourly-normals.csv`, the `date` column uses a nominal non-leap year, and `day`
+holds the day of the year alongside it.
+
+Transformed using `/scripts/bird-migration.py`, which derives the day from row order within each
+species, drops the 421 of 3650 source rows whose coordinates are `NA`, and rounds coordinates to
+four decimal places. Days with no estimate concentrate in the non-breeding season, when eBird
+coverage of South America and the Caribbean was sparse, so a species' `day` values are not
+contiguous: Connecticut Warbler is missing 172 days and Bicknell's Thrush 104, while Semipalmated
+Sandpiper, Solitary Sandpiper, and White-rumped Sandpiper are complete.
+### schema
+    
+| name    | type    | description                                                                 | categories                                                                                                                                                                                                                         |
+|:--------|:--------|:----------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| species | string  | Common name of the bird species                                             | ['American Golden-Plover', "Bicknell's Thrush", 'Blackpoll Warbler', 'Bobolink', 'Buff-breasted Sandpiper', 'Connecticut Warbler', 'Pectoral Sandpiper', 'Semipalmated Sandpiper', 'Solitary Sandpiper', 'White-rumped Sandpiper'] |
+| day     | integer | Day of the year, from 1 for January 1 to 365 for December 31                |                                                                                                                                                                                                                                    |
+| date    | date    | The same day as `day`, carrying a nominal year for use with temporal scales |                                                                                                                                                                                                                                    |
+| lon     | number  | Longitude of the population center, in degrees east                         |                                                                                                                                                                                                                                    |
+| lat     | number  | Latitude of the population center, in degrees north                         |                                                                                                                                                                                                                                    |
+### sources
+| title                                                                                                                                                                     | path                                    |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------|
+| Data from: Projected changes in prevailing winds for transatlantic migratory birds under global warming (La Sorte & Fink, Dryad)                                          | https://doi.org/10.5061/dryad.5h9c4     |
+| La Sorte, F.A. & Fink, D. (2017). Projected changes in prevailing winds for transatlantic migratory birds under global warming. Journal of Animal Ecology, 86(2), 273-284 | https://doi.org/10.1111/1365-2656.12624 |
+| eBird, Cornell Lab of Ornithology (upstream occurrence records, 1950-2015)                                                                                                | https://ebird.org                       |
+### licenses
+| name    | title                                | path                                   |
+|:--------|:-------------------------------------|:---------------------------------------|
+| CC0-1.0 | Creative Commons Zero v1.0 Universal | https://spdx.org/licenses/CC0-1.0.html |
 ## `birdstrikes`
 ### path
 birdstrikes.csv
@@ -838,15 +877,15 @@ Notes:
 | life_expect | number  | Life expectancy in years                             |                                                                                                                                                                                                                                                                   |
 | fertility   | number  | Fertility rate (average number of children per woman |                                                                                                                                                                                                                                                                   |
 ### sources
-| title                                                          | path                                                                                                                   |   version |
-|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|----------:|
-| Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   |        14 |
+| title                                                          | path                                                                                                                   | version   |
+|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:----------|
+| Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   | 14        |
 | Gapminder Foundation - Life Expectancy (Documentation)         | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
-| Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   |         7 |
+| Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   | 7         |
 | Gapminder Foundation - Population (Documentation)              | https://www.gapminder.org/data/documentation/gd003/                                                                    |           |
-| Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   |        14 |
+| Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   | 14        |
 | Gapminder Foundation - Fertility Documentation (Documentation) | https://www.gapminder.org/data/documentation/gd008/                                                                    |           |
-| Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 |         2 |
+| Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 | 2         |
 | Gapminder Foundation - Data Geographies (Documentation)        | https://www.gapminder.org/data/geo/                                                                                    |           |
 | Gapminder Data Documentation                                   | https://www.gapminder.org/data/documentation/                                                                          |           |
 ### licenses
@@ -1712,9 +1751,9 @@ in turn is a redistribution of the Census Bureau's cartographic boundary shapefi
 | TopoJSON US Atlas                            | https://github.com/topojson/us-atlas                                                        |
 | US Census Bureau Cartographic Boundary FIles | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
 ### licenses
-| name   | title                         | path                                                        |
-|:-------|:------------------------------|:------------------------------------------------------------|
-| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
+| name   | title                         | path                                                     |
+|:-------|:------------------------------|:---------------------------------------------------------|
+| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE |
 ## `us_employment`
 ### path
 us-employment.csv
@@ -1911,10 +1950,10 @@ resource for creating web-based world maps where precise boundary detail isn't r
 | TopoJSON World Atlas (Likely original source, processed from Natural Earth data) | https://github.com/topojson/world-atlas                                                  |
 | Natural Earth Data - Admin 0 Countries (1:110m)                                  | https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ |
 ### licenses
-| name     | title                            | path                                                           |
-|:---------|:---------------------------------|:---------------------------------------------------------------|
-| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
-| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
+| name     | title                            | path                                                        |
+|:---------|:---------------------------------|:------------------------------------------------------------|
+| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE |
+| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/        |
 ## `zipcodes`
 ### path
 zipcodes.csv

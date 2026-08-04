@@ -6,6 +6,9 @@ export default {
     "state",
     "country"
   ],
+  "bird-migration.csv": [
+    "species"
+  ],
   "birdstrikes.csv": [
     "Airport Name",
     "Aircraft Make Model",

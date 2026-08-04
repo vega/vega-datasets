@@ -47,6 +47,7 @@ export default {
   'wheat.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/wheat.json`,
   'world-110m.json': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/world-110m.json`,
   'airports.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/airports.csv`,
+  'bird-migration.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/bird-migration.csv`,
   'birdstrikes.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/birdstrikes.csv`,
   'co2-concentration.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/co2-concentration.csv`,
   'disasters.csv': `https://cdn.jsdelivr.net/npm/vega-datasets@${version}/data/disasters.csv`,

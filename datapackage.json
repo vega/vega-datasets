@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.2.1",
-  "created": "2026-02-02T13:19:39.437222+00:00",
+  "created": "2026-07-29T03:16:06.970186+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -220,6 +220,80 @@
           {
             "name": "site",
             "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bird_migration",
+      "type": "table",
+      "description": "Daily migration trajectories for ten Nearctic-breeding bird species that cross the\nAtlantic Ocean during autumn migration. Each row gives the geographic center of one species'\npopulation on one day of the year, estimated from eBird occurrence records collected between 1950\nand 2015. Tracing a species across the year traces its annual migration: American Golden-Plover\nbegins January on the Argentine pampas, reaches 70°N by late June, and returns.\n\nBecause the estimates average many years, no calendar year applies to them. Following\n`seattle-weather-hourly-normals.csv`, the `date` column uses a nominal non-leap year, and `day`\nholds the day of the year alongside it.\n\nTransformed using `/scripts/bird-migration.py`, which derives the day from row order within each\nspecies, drops the 421 of 3650 source rows whose coordinates are `NA`, and rounds coordinates to\nfour decimal places. Days with no estimate concentrate in the non-breeding season, when eBird\ncoverage of South America and the Caribbean was sparse, so a species' `day` values are not\ncontiguous: Connecticut Warbler is missing 172 days and Bicknell's Thrush 104, while Semipalmated\nSandpiper, Solitary Sandpiper, and White-rumped Sandpiper are complete.",
+      "licenses": [
+        {
+          "name": "CC0-1.0",
+          "title": "Creative Commons Zero v1.0 Universal",
+          "path": "https://spdx.org/licenses/CC0-1.0.html"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Data from: Projected changes in prevailing winds for transatlantic migratory birds under global warming (La Sorte & Fink, Dryad)",
+          "path": "https://doi.org/10.5061/dryad.5h9c4"
+        },
+        {
+          "title": "La Sorte, F.A. & Fink, D. (2017). Projected changes in prevailing winds for transatlantic migratory birds under global warming. Journal of Animal Ecology, 86(2), 273-284",
+          "path": "https://doi.org/10.1111/1365-2656.12624"
+        },
+        {
+          "title": "eBird, Cornell Lab of Ornithology (upstream occurrence records, 1950-2015)",
+          "path": "https://ebird.org"
+        }
+      ],
+      "path": "bird-migration.csv",
+      "scheme": "file",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "hash": "sha1:0ab41c7f87c612c36d85eabc888d102a1d1be5e1",
+      "bytes": 165944,
+      "schema": {
+        "fields": [
+          {
+            "name": "species",
+            "type": "string",
+            "description": "Common name of the bird species",
+            "categories": [
+              "American Golden-Plover",
+              "Bicknell's Thrush",
+              "Blackpoll Warbler",
+              "Bobolink",
+              "Buff-breasted Sandpiper",
+              "Connecticut Warbler",
+              "Pectoral Sandpiper",
+              "Semipalmated Sandpiper",
+              "Solitary Sandpiper",
+              "White-rumped Sandpiper"
+            ]
+          },
+          {
+            "name": "day",
+            "type": "integer",
+            "description": "Day of the year, from 1 for January 1 to 365 for December 31"
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "description": "The same day as `day`, carrying a nominal year for use with temporal scales"
+          },
+          {
+            "name": "lon",
+            "type": "number",
+            "description": "Longitude of the population center, in degrees east"
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "description": "Latitude of the population center, in degrees north"
           }
         ]
       }
