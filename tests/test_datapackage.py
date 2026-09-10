@@ -58,6 +58,9 @@ def _load_xfail_reasons() -> dict[str, str]:
 _RESOURCES = _load_resources()
 _RESOURCE_IDS = [r["name"] for r in _RESOURCES]
 _XFAIL = _load_xfail_reasons()
+_GALLERY_EXAMPLES = json.loads(
+    (DATA / "gallery-examples.json").read_text(encoding="utf-8")
+)
 
 # Sanity-check the allowlist against the live descriptor at import time.
 # A stale entry in validate_datapackage.toml is a silent maintenance hazard
@@ -122,6 +125,68 @@ def test_sha1_matches_git_blob(resource: dict) -> None:
     expected = declared.removeprefix("sha1:")
     actual = git_blob_sha1(path)
     assert expected == actual, f"declared={expected[:10]}... disk={actual[:10]}..."
+
+
+def test_gallery_dataset_references_exist() -> None:
+    """Ensure gallery dataset names remain valid Data Package join keys."""
+    resource_names = {resource["name"] for resource in _RESOURCES}
+    referenced_names = {
+        dataset for example in _GALLERY_EXAMPLES for dataset in example["datasets"]
+    }
+
+    unknown = sorted(referenced_names - resource_names)
+    assert not unknown, (
+        f"gallery-examples.json references unknown Data Package resources: {unknown}"
+    )
+
+
+def test_gallery_resource_has_documented_table_schema() -> None:
+    """Document the registry as tabular JSON in generated Data Package outputs."""
+    resource = next(r for r in _RESOURCES if r["name"] == "gallery_examples")
+    assert resource["type"] == "table"
+    assert resource["format"] == "json"
+    schema = resource["schema"]
+    fields = {field["name"]: field for field in schema["fields"]}
+    assert list(fields) == [
+        "gallery_name",
+        "example_name",
+        "example_url",
+        "spec_url",
+        "categories",
+        "description",
+        "datasets",
+    ]
+    assert schema["$schema"] == "https://datapackage.org/profiles/2.0/tableschema.json"
+    assert schema["fieldsMatch"] == "equal"
+    assert schema["primaryKey"] == ["example_url"]
+    assert fields["spec_url"]["constraints"]["unique"] is True
+    for name in ("categories", "datasets"):
+        assert fields[name]["arrayItem"] == {"type": "string"}
+    assert fields["example_url"]["description"].startswith("Stable, unique URL")
+    assert "resources[].name" in fields["datasets"]["description"]
+
+
+def test_gallery_record_shape() -> None:
+    """Keep the generated registry's internal record shape consistent."""
+    expected_fields = {
+        "gallery_name",
+        "example_name",
+        "example_url",
+        "spec_url",
+        "categories",
+        "description",
+        "datasets",
+    }
+    assert all(set(example) == expected_fields for example in _GALLERY_EXAMPLES)
+
+
+@pytest.mark.parametrize("field", ["categories", "datasets"])
+def test_gallery_list_fields_contain_strings(field: str) -> None:
+    """Ensure list-valued fields contain only their expected string values."""
+    for example in _GALLERY_EXAMPLES:
+        values = example[field]
+        assert isinstance(values, list)
+        assert all(isinstance(value, str) for value in values)
 
 
 def _slow_param(resource: dict) -> Any:  # pytest.ParameterSet; not in public API

@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-02-02 13:19:39 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-08-25 01:00:14 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -773,6 +773,42 @@ chosen divisions over the time period.
 | name     | path                                                                     |
 |:---------|:-------------------------------------------------------------------------|
 | other-pd | https://github.com/openfootball/football.json?tab=readme-ov-file#license |
+## `gallery_examples`
+### path
+gallery-examples.json
+### description
+An index of examples published in the Vega, Vega-Lite, and Altair
+galleries. Each record describes one example, links to its rendered page and source,
+lists its gallery categories, and identifies any vega-datasets resources it uses. The
+`datasets` array is empty when it uses none.
+
+The contents of `gallery-examples.json` are a snapshot of the three galleries,
+created for a particular vega-datasets release from one pinned commit per gallery.
+When a newer version of vega-datasets is released, the file may be regenerated to
+reflect examples added, removed, or updated in those galleries.
+### schema
+    - `primaryKey` ['example_url']
+    - `$schema` https://datapackage.org/profiles/2.0/tableschema.json
+    - `fieldsMatch` equal
+| name         | type   | description                                                                   | constraints                               | format   | arrayItem          |
+|:-------------|:-------|:------------------------------------------------------------------------------|:------------------------------------------|:---------|:-------------------|
+| gallery_name | string | Gallery that publishes the example                                            | {'enum': ['vega', 'vega-lite', 'altair']} |          |                    |
+| example_name | string | Human-readable example title                                                  |                                           |          |                    |
+| example_url  | string | Stable, unique URL of the rendered gallery example                            |                                           | uri      |                    |
+| spec_url     | string | Immutable, commit-pinned URL of the source specification or code              | {'unique': True}                          | uri      |                    |
+| categories   | array  | Array of category-name strings assigned by the source gallery                 |                                           |          | {'type': 'string'} |
+| description  | string | Description of what the example demonstrates, or null when unavailable        |                                           |          |                    |
+| datasets     | array  | Array of Data Package resource names (`resources[].name`) used by the example |                                           |          | {'type': 'string'} |
+### sources
+| title             | path                                       |
+|:------------------|:-------------------------------------------|
+| Vega Gallery      | https://vega.github.io/vega/examples/      |
+| Vega-Lite Gallery | https://vega.github.io/vega-lite/examples/ |
+| Altair Gallery    | https://altair-viz.github.io/gallery/      |
+### licenses
+| name         | title                    | path                                        |
+|:-------------|:-------------------------|:--------------------------------------------|
+| BSD-3-Clause | The 3-Clause BSD License | https://opensource.org/license/bsd-3-clause |
 ## `gapminder_health_income`
 ### path
 gapminder-health-income.csv
@@ -838,15 +874,15 @@ Notes:
 | life_expect | number  | Life expectancy in years                             |                                                                                                                                                                                                                                                                   |
 | fertility   | number  | Fertility rate (average number of children per woman |                                                                                                                                                                                                                                                                   |
 ### sources
-| title                                                          | path                                                                                                                   |   version |
-|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|----------:|
-| Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   |        14 |
+| title                                                          | path                                                                                                                   | version   |
+|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:----------|
+| Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   | 14        |
 | Gapminder Foundation - Life Expectancy (Documentation)         | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
-| Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   |         7 |
+| Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   | 7         |
 | Gapminder Foundation - Population (Documentation)              | https://www.gapminder.org/data/documentation/gd003/                                                                    |           |
-| Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   |        14 |
+| Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   | 14        |
 | Gapminder Foundation - Fertility Documentation (Documentation) | https://www.gapminder.org/data/documentation/gd008/                                                                    |           |
-| Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 |         2 |
+| Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 | 2         |
 | Gapminder Foundation - Data Geographies (Documentation)        | https://www.gapminder.org/data/geo/                                                                                    |           |
 | Gapminder Data Documentation                                   | https://www.gapminder.org/data/documentation/                                                                          |           |
 ### licenses
@@ -1712,9 +1748,9 @@ in turn is a redistribution of the Census Bureau's cartographic boundary shapefi
 | TopoJSON US Atlas                            | https://github.com/topojson/us-atlas                                                        |
 | US Census Bureau Cartographic Boundary FIles | https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html |
 ### licenses
-| name   | title                         | path                                                        |
-|:-------|:------------------------------|:------------------------------------------------------------|
-| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE.md |
+| name   | title                         | path                                                     |
+|:-------|:------------------------------|:---------------------------------------------------------|
+| ISC    | TopoJSON US Atlas ISC License | https://github.com/topojson/us-atlas/blob/master/LICENSE |
 ## `us_employment`
 ### path
 us-employment.csv
@@ -1911,10 +1947,10 @@ resource for creating web-based world maps where precise boundary detail isn't r
 | TopoJSON World Atlas (Likely original source, processed from Natural Earth data) | https://github.com/topojson/world-atlas                                                  |
 | Natural Earth Data - Admin 0 Countries (1:110m)                                  | https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/ |
 ### licenses
-| name     | title                            | path                                                           |
-|:---------|:---------------------------------|:---------------------------------------------------------------|
-| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE.md |
-| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/           |
+| name     | title                            | path                                                        |
+|:---------|:---------------------------------|:------------------------------------------------------------|
+| ISC      | TopoJSON World Atlas ISC License | https://github.com/topojson/world-atlas/blob/master/LICENSE |
+| other-pd | Natural Earth Data Public Domain | https://www.naturalearthdata.com/about/terms-of-use/        |
 ## `zipcodes`
 ### path
 zipcodes.csv

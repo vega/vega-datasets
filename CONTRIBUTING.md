@@ -50,6 +50,22 @@ For datasets requiring processing:
 - Ensure reproducibility with deterministic outputs and fixed random seeds when applicable
 - See `scripts/flights.py` as an example
 
+### Gallery Examples Registry
+
+The `data/gallery-examples.json` file catalogs examples from the Vega, Vega-Lite, and Altair galleries and identifies any `vega-datasets` resources each example uses.
+
+**When to regenerate:**
+
+Unlike the repository's stable example inputs, this file is a generated catalog of evolving upstream galleries. Regenerate it while preparing a `vega-datasets` release, or sooner after a material upstream change such as added, removed, renamed, or reorganized examples. Each generated file is a snapshot pinned to one upstream commit per gallery, not a continuously synchronized mirror.
+
+**Commands:**
+```bash
+uv run scripts/generate_gallery_examples.py         # Regenerate the file
+npm run build                                       # Then refresh datapackage.json/md
+```
+
+Configuration lives in `_data/gallery-examples.toml` (upstream refs and source URLs). Runtime is a few seconds: the generator fetches the three gallery indexes plus roughly 280 Vega and Vega-Lite specs; Altair publishes its dataset metadata directly in its index. Note that `datapackage.json` records the committed git-blob hash of each data file, so commit the regenerated `data/gallery-examples.json` first, then rebuild and amend the descriptor into the same commit.
+
 ## Metadata and Documentation
 
 We follow the [Data Package Standard 2.0](https://datapackage.org/) with:

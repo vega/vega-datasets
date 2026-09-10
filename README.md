@@ -28,9 +28,9 @@ npm install vega-datasets
 
 ### HTTP Direct Access
 
-You can get the data directly via HTTP served by GitHub or jsDelivr (a fast CDN):
+You can get the data directly via HTTP served by GitHub Pages or jsDelivr (a fast CDN):
 
-- GitHub: https://vega.github.io/vega-datasets/data/cars.json
+- GitHub Pages (unversioned): https://vega.github.io/vega-datasets/data/cars.json
 - jsDelivr (with fixed version, recommended): https://cdn.jsdelivr.net/npm/vega-datasets@3/data/cars.json
 
 You can find a full listing of available datasets at https://cdn.jsdelivr.net/npm/vega-datasets/data/.
@@ -99,6 +99,8 @@ Visualizations built with these datasets are showcased in several galleries:
 - [Vega-Lite Example Gallery](https://vega.github.io/vega-lite/examples/)
 - [Altair Example Gallery](https://altair-viz.github.io/gallery/index.html)
 - [Observable Vega Examples](https://observablehq.com/@vega)
+
+The [gallery-examples.json](data/gallery-examples.json) file is a generated index of examples from the Vega, Vega-Lite, and Altair galleries. Each record identifies any `vega-datasets` resources the example uses; examples that use none remain in the index with an empty `datasets` array. The file is refreshed for `vega-datasets` releases.
 
 ## Data Usage Note
 

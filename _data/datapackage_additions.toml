@@ -1888,3 +1888,83 @@ path  = "https://download.geonames.org/export/zip/"
 name  = "CC-BY-4.0"
 title = "Creative Commons Attribution 4.0 International"
 path  = "https://creativecommons.org/licenses/by/4.0/"
+
+# ==============================================================================
+# Gallery Examples Registry
+# ==============================================================================
+
+[[resources]]
+path = "gallery-examples.json"
+type = "table"
+description = """An index of examples published in the Vega, Vega-Lite, and Altair
+galleries. Each record describes one example, links to its rendered page and source,
+lists its gallery categories, and identifies any vega-datasets resources it uses. The
+`datasets` array is empty when it uses none.
+
+The contents of `gallery-examples.json` are a snapshot of the three galleries,
+created for a particular vega-datasets release from one pinned commit per gallery.
+When a newer version of vega-datasets is released, the file may be regenerated to
+reflect examples added, removed, or updated in those galleries."""
+
+[[resources.sources]]
+title = "Vega Gallery"
+path  = "https://vega.github.io/vega/examples/"
+
+[[resources.sources]]
+title = "Vega-Lite Gallery"
+path  = "https://vega.github.io/vega-lite/examples/"
+
+[[resources.sources]]
+title = "Altair Gallery"
+path  = "https://altair-viz.github.io/gallery/"
+
+[[resources.licenses]]
+name  = "BSD-3-Clause"
+title = "The 3-Clause BSD License"
+path  = "https://opensource.org/license/bsd-3-clause"
+
+[resources.schema]
+"$schema"   = "https://datapackage.org/profiles/2.0/tableschema.json"
+fieldsMatch = "equal"
+primaryKey  = ["example_url"]
+
+[[resources.schema.fields]]
+name        = "gallery_name"
+type        = "string"
+description = "Gallery that publishes the example"
+constraints = { enum = ["vega", "vega-lite", "altair"] }
+
+[[resources.schema.fields]]
+name        = "example_name"
+type        = "string"
+description = "Human-readable example title"
+
+[[resources.schema.fields]]
+name        = "example_url"
+type        = "string"
+format      = "uri"
+description = "Stable, unique URL of the rendered gallery example"
+
+[[resources.schema.fields]]
+name        = "spec_url"
+type        = "string"
+format      = "uri"
+description = "Immutable, commit-pinned URL of the source specification or code"
+constraints = { unique = true }
+
+[[resources.schema.fields]]
+name        = "categories"
+type        = "array"
+description = "Array of category-name strings assigned by the source gallery"
+arrayItem   = { type = "string" }
+
+[[resources.schema.fields]]
+name        = "description"
+type        = "string"
+description = "Description of what the example demonstrates, or null when unavailable"
+
+[[resources.schema.fields]]
+name        = "datasets"
+type        = "array"
+description = "Array of Data Package resource names (`resources[].name`) used by the example"
+arrayItem   = { type = "string" }

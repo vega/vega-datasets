@@ -50,7 +50,8 @@
     "build": "rollup -c",
     "github": "python scripts/github.py",
     "release": "release-it",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update-gallery": "uv run scripts/generate_gallery_examples.py"
   },
   "lint-staged": {
     "*.py": ["uv run ruff check --fix", "uv run ruff format"]

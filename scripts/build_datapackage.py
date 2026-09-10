@@ -291,7 +291,9 @@ class ResourceAdapter:
         }
 
     @classmethod
-    def from_path(cls, source: Path, /) -> Resource:
+    def from_path(cls, source: Path, /, *, force_table: bool = False) -> Resource:
+        if force_table:
+            return cls.from_tabular_safe(source)
         match source.suffix:
             case ".csv" | ".tsv" | ".parquet":
                 return cls.from_tabular_safe(source)
@@ -352,7 +354,9 @@ class ResourceAdapter:
         return parts
 
     @staticmethod
-    def with_extras(resource: Resource, /, **extras: Unpack[ResourceMeta]) -> Resource:
+    def with_extras(
+        resource: Resource, /, **extras: Unpack[ResourceExtras]
+    ) -> Resource:
         """Supplement inferred metadata with manually defined ``extras``."""
         if "schema" in extras:
             resource.schema = merge_schemas(resource, extra=extras.pop("schema"))
@@ -372,7 +376,13 @@ def merge_schemas(resource: Resource, *, extra: Schema) -> fl.Schema:
         if name in overrides:
             field.update(overrides[name])
         fields.append(field)
-    return fl.Schema.from_descriptor({"fields": fields})
+    merged = {
+        key: value
+        for key, value in cast("dict[str, Any]", extra).items()
+        if key != "fields"
+    }
+    merged["fields"] = fields
+    return fl.Schema.from_descriptor(merged)
 
 
 def _flatten_schema(schema: Schema, /) -> dict[str, Field]:
@@ -424,11 +434,15 @@ class Schema(TypedDict):
     fields: Sequence[Field]
 
 
-class ResourceMeta(TypedDict, total=False):
+class ResourceExtras(TypedDict, total=False):
     description: str
     sources: Sequence[Source]
     licenses: Sequence[License]
     schema: Schema
+
+
+class ResourceMeta(ResourceExtras, total=False):
+    type: Literal["table"]
 
 
 class PackageMeta(TypedDict):
@@ -582,10 +596,17 @@ def iter_resources(
             msg = f"Skipping unexpected extension {fp.suffix!r}\n\n{fp!r}"
             warnings.warn(msg, stacklevel=2)
             continue
-        resource = ResourceAdapter.from_path(fp)
         name = fp.name
-        if name in overrides:
-            resource = ResourceAdapter.with_extras(resource, **overrides[name])
+        extras = overrides.get(name, {})
+        resource = ResourceAdapter.from_path(
+            fp, force_table=extras.get("type") == "table"
+        )
+        if extras:
+            metadata = cast(
+                "ResourceExtras",
+                {key: value for key, value in extras.items() if key != "type"},
+            )
+            resource = ResourceAdapter.with_extras(resource, **metadata)
         resource.hash = gh_sha1[name]
         yield resource
 
