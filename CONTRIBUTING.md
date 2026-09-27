@@ -248,6 +248,7 @@ test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
    uv run taplo fmt --check --diff && uv run ruff check && uv run ruff format --check
    npm run build
    ```
+   Commit your data changes before `npm run build`, then amend the rebuilt `datapackage.json` into the same commit, because it records each file's committed hash.
 
 4. Commit and push:
    ```
