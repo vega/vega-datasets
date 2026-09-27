@@ -21,3 +21,11 @@ def test_pyproject_version_matches_package_json() -> None:
         (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
     )
     assert pyproject["project"]["version"] == npm["version"]
+
+
+def test_uv_lock_version_matches_package_json() -> None:
+    """`uv.lock` records the project's own version, which `uv version` also bumps."""
+    npm = json.loads((REPO_ROOT / "package.json").read_text(encoding="utf-8"))
+    lock = tomllib.loads((REPO_ROOT / "uv.lock").read_text(encoding="utf-8"))
+    (project,) = (p for p in lock["package"] if p["name"] == "vega-datasets")
+    assert project["version"] == npm["version"]
