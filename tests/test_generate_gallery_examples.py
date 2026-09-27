@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import re
 from unittest.mock import AsyncMock
 
 import httpx
@@ -13,6 +14,7 @@ import pytest
 from scripts import generate_gallery_examples as gallery_examples
 from scripts.generate_gallery_examples import (
     _build_vegalite_examples,  # noqa: PLC2701
+    _commit_from_spec_url,  # noqa: PLC2701
     _fetch_text,  # noqa: PLC2701
     _format_refs,  # noqa: PLC2701
     _raw_github_fallback,  # noqa: PLC2701
@@ -20,10 +22,13 @@ from scripts.generate_gallery_examples import (
     assert_unique_urls,
     build_example_list,
     build_name_map,
+    enrich_with_datasets,
     extract_vega_datasets,
     extract_vegalite_datasets,
+    finalize_examples,
     load_config,
     normalize_dataset_reference,
+    parse_vega_page_title,
     run_pipeline,
 )
 
@@ -479,6 +484,19 @@ def test_assert_unique_urls_raises_on_duplicate_example_url():
         ])
 
 
+def test_committed_registry_datasets_are_sorted():
+    """The published `datasets` lists follow the documented alphabetical order."""
+    examples = json.loads(
+        (gallery_examples.REPO_ROOT / "data" / "gallery-examples.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    unsorted = [
+        ex["example_url"] for ex in examples if ex["datasets"] != sorted(ex["datasets"])
+    ]
+    assert not unsorted, f"unsorted datasets lists: {unsorted[:5]}"
+
+
 def test_committed_registry_satisfies_pipeline_invariants():
     """Keep the checked-in snapshot behind the generator's safety rails."""
     examples = json.loads(
@@ -542,7 +560,6 @@ def test_load_config_parses_ref_and_sources():
     underscore→hyphen normalized keys."""
     config = load_config()
     assert set(config["refs"].keys()) == {"vega-lite", "vega", "altair"}
-    # Defaults ship as `main`; tag-pinning is a supported override.
     for ref in config["refs"].values():
         assert isinstance(ref, str) and ref
     assert "vega_lite_examples_url" in config["sources"]
@@ -722,6 +739,109 @@ def test_build_example_list_vega_merges_categories_for_repeated_slug():
     bar = next(ex for ex in examples if ex["example_url"].endswith("/bar/"))
     assert bar["categories"] == ["Basic", "Advanced"]
     assert sum(ex["gallery_name"] == "vega" for ex in examples) == 2
+
+
+# ---------------------------------------------------------------------------
+# Vega page titles, dataset order, and ref policy
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("page", "expected"),
+    [
+        (
+            "---\nlayout: example\ntitle: Airport Connections Example\n---\n",
+            "Airport Connections",
+        ),
+        ("---\ntitle: Pi Monte Carlo\nspec: pi\n---\nbody\n", "Pi Monte Carlo"),
+        ('---\ntitle: "U-District Cuisine Example"\n---\n', "U-District Cuisine"),
+        ("---\ntitle: Example Chart Gallery\n---\n", "Example Chart Gallery"),
+        ("---\nlayout: example\n---\ntitle: Not Front Matter\n", None),
+        ("no front matter\ntitle: Nope\n", None),
+        ("---\ntitle:\n---\n", None),
+        ("", None),
+    ],
+)
+def test_parse_vega_page_title(page, expected):
+    assert parse_vega_page_title(page) == expected
+
+
+def test_commit_from_spec_url():
+    url = "https://cdn.jsdelivr.net/gh/vega/vega@1234567890abcdef/docs/examples/bar.vg.json"
+    assert _commit_from_spec_url(url) == "1234567890abcdef"
+    with pytest.raises(ValueError, match="commit-pinned"):
+        _commit_from_spec_url("https://example.com/bar.vg.json")
+
+
+def _vega_example(slug: str) -> dict:
+    sha = FAKE_REFS["vega"]["commit"]
+    return {
+        "gallery_name": "vega",
+        "example_name": slug.replace("-", " ").title(),
+        "example_url": f"https://vega.github.io/vega/examples/{slug}/",
+        "spec_url": f"https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/{slug}.vg.json",
+        "categories": ["Maps"],
+        "description": None,
+        "datasets": [],
+    }
+
+
+def test_enrich_uses_vega_page_titles(monkeypatch):
+    """Vega names come from each page's front matter, read at the pinned commit."""
+    sha = FAKE_REFS["vega"]["commit"]
+    responses = {
+        f"https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/map-with-tooltip.vg.json": json.dumps({
+            "description": "A map.",
+            "data": [{"name": "t", "url": "data/world-110m.json"}],
+        }),
+        f"https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/map-with-tooltip.md": "---\ntitle: Custom Tooltip Example\n---\n",
+        f"https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/untitled.vg.json": json.dumps({
+            "data": []
+        }),
+        f"https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/untitled.md": "no front matter",
+    }
+    fake_fetch = AsyncMock(side_effect=lambda _session, url: responses[url])
+    monkeypatch.setattr(gallery_examples, "_fetch_text", fake_fetch)
+    examples = [_vega_example("map-with-tooltip"), _vega_example("untitled")]
+    asyncio.run(enrich_with_datasets(examples, None, NAME_MAP))
+
+    assert examples[0]["example_name"] == "Custom Tooltip"
+    assert examples[0]["datasets"] == ["world_110m"]
+    assert examples[0]["description"] == "A map."
+    # No title in the page: the slug-derived fallback stays.
+    assert examples[1]["example_name"] == "Untitled"
+    requested = {call.args[1] for call in fake_fetch.await_args_list}
+    assert requested == set(responses)
+
+
+def test_finalize_sorts_datasets_for_every_gallery():
+    examples = [
+        {**_vega_example("earthquakes"), "datasets": ["world_110m", "earthquakes"]},
+        {
+            "gallery_name": "vega-lite",
+            "example_name": "Lookup",
+            "example_url": "https://vega.github.io/vega-lite/examples/lookup.html",
+            "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@abc/examples/specs/lookup.vl.json",
+            "categories": ["Other"],
+            "description": None,
+            "datasets": ["lookup_people", "lookup_groups"],
+        },
+    ]
+    finalized = finalize_examples(examples)
+    assert [ex["datasets"] for ex in finalized] == [
+        ["earthquakes", "world_110m"],
+        ["lookup_groups", "lookup_people"],
+    ]
+
+
+def test_gallery_refs_follow_deploy_policy():
+    """Pin each gallery to the ref its live site deploys from (#801)."""
+    refs = load_config()["refs"]
+    assert refs["vega"] == "main"
+    for name in ("vega-lite", "altair"):
+        assert re.fullmatch(r"v\d+\.\d+\.\d+", refs[name]), (
+            f"{name} should be pinned to a release tag, got {refs[name]!r}"
+        )
 
 
 # ---------------------------------------------------------------------------

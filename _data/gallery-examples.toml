@@ -1,9 +1,16 @@
 # Upstream gallery sources consumed by scripts/generate_gallery_examples.py.
 #
-# Strategy: track each upstream repo's `main` branch because the deployed
-# vega/vega-lite/altair galleries users see are also built from main. The
-# script resolves main → commit SHA once per run and pins all subsequent
-# URLs to that SHA so examples.json and every spec come from the same
+# Policy (#801): pin each gallery to the ref its live site is built from, so
+# every `example_url` in the registry points at a page that exists.
+#
+#   Gallery    Site deploys from    Pin to
+#   Vega       main                 main
+#   Vega-Lite  release tags         the latest release tag
+#   Altair     release tags         the latest release tag
+#
+# Bump the Vega-Lite and Altair tags when those projects release, then
+# regenerate. The script resolves each ref to a commit SHA once per run and
+# pins every index and spec URL to that SHA, so one run reads one consistent
 # upstream snapshot. Resolved SHAs are logged at INFO for triage.
 #
 # Read-path: jsDelivr (`cdn.jsdelivr.net/gh/…`) — CDN-cached, follows the
@@ -14,11 +21,10 @@
 # per-file when that happens (see _get_checked in the script).
 
 [ref]
-# `main` is resolved to a SHA at script start. Change to a tag like "v6.4.2"
-# to pin a gallery to a released version instead of tracking main.
-vega_lite = "main"
+# Any branch, tag, or SHA; each is resolved to a commit SHA at script start.
+vega_lite = "v6.4.3"
 vega      = "main"
-altair    = "main"
+altair    = "v6.3.0"
 
 [sources]
 # `{…_ref}` placeholders are always substituted with the commit SHAs resolved
