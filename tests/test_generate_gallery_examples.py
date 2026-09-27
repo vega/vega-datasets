@@ -758,6 +758,7 @@ def test_build_example_list_vega_merges_categories_for_repeated_slug():
         ("---\ntitle: Example Chart Gallery\n---\n", "Example Chart Gallery"),
         ("---\nlayout: example\n---\ntitle: Not Front Matter\n", None),
         ("no front matter\ntitle: Nope\n", None),
+        ("---\ntitle: Unterminated\nlayout: example\n", None),
         ("---\ntitle:\n---\n", None),
         ("", None),
     ],

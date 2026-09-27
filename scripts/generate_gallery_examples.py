@@ -529,9 +529,11 @@ def parse_vega_page_title(page: str) -> str | None:
     lines = page.splitlines()
     if not lines or lines[0].strip() != "---":
         return None
-    for line in lines[1:]:
-        if line.strip() == "---":
-            break
+    try:
+        end = next(i for i, line in enumerate(lines[1:], 1) if line.strip() == "---")
+    except StopIteration:
+        return None  # unterminated front matter is not front matter
+    for line in lines[1:end]:
         key, sep, value = line.partition(":")
         if sep and key.strip() == "title":
             title = value.strip().strip("\"'").strip()
