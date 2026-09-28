@@ -219,12 +219,11 @@ uv run --group dev pytest tests/ --runslow
 uv run --group dev pytest tests/ --runslow --limit-rows 250000
 ```
 
-CI runs the slow tier with `--limit-rows 250000`: `flights_3m`'s ~3M
-rows are sampled, every other resource is below the cap and validates
-in full. The fast tier is implicitly covered too — `npm run build`
-regenerates `datapackage.json` from on-disk data before the slow tier
-runs, so any byte/hash drift would surface either there or in the slow
-tier's schema validation.
+CI first runs the fast tier (`tests/test_datapackage.py`) against the
+committed `datapackage.json`, so a data change committed without
+rebuilding fails there. It then runs `npm run build` and the slow tier
+with `--limit-rows 250000`: `flights_3m`'s ~3M rows are sampled, every
+other resource is below the cap and validates in full.
 
 Resources whose schema/row failures are known and non-actionable (for
 example, `movies` whose schema is intentionally aspirational, or

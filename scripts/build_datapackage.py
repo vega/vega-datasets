@@ -625,7 +625,8 @@ def git_blob_sha1(fp: Path, /) -> str:
     """
     content = fp.read_bytes()
     header = b"blob %d\0" % len(content)
-    return f"sha1:{hashlib.sha1(header + content).hexdigest()}"
+    digest = hashlib.sha1(header + content, usedforsecurity=False).hexdigest()
+    return f"sha1:{digest}"
 
 
 def read_toml(fp: Path, /) -> dict[str, Any]:
