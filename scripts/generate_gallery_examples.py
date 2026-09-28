@@ -99,6 +99,8 @@ _GALLERY_URLS: Final[Mapping[str, Mapping[str, str]]] = MappingProxyType({
         "repo": "vega/vega",
         "example_page": "https://vega.github.io/vega/examples/{slug}/",
         "spec": "https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/{slug}.vg.json",
+        # Jekyll page whose front matter carries the title the gallery displays.
+        "page_source": "https://cdn.jsdelivr.net/gh/vega/vega@{sha}/docs/examples/{slug}.md",
     }),
     "altair": MappingProxyType({
         "repo": "vega/altair",
@@ -514,6 +516,38 @@ async def fetch_indexes(
 # ---------------------------------------------------------------------------
 
 
+def parse_vega_page_title(page: str) -> str | None:
+    """
+    Return the display title from a Vega example page's Jekyll front matter.
+
+    Vega's gallery index lists only slugs, so the page title is the only
+    upstream source for a human-readable name. Pages title themselves
+    "<Name> Example"; the suffix is dropped to match the Vega-Lite and Altair
+    galleries, whose titles carry no such suffix. Returns None when the page
+    has no front matter or no title, so callers keep their fallback name.
+    """
+    lines = page.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return None
+    try:
+        end = next(i for i, line in enumerate(lines[1:], 1) if line.strip() == "---")
+    except StopIteration:
+        return None  # unterminated front matter is not front matter
+    for line in lines[1:end]:
+        key, sep, value = line.partition(":")
+        if sep and key.strip() == "title":
+            title = value.strip().strip("\"'").strip()
+            title = title.removesuffix(" Example").strip()
+            return title or None
+    return None
+
+
+def _vega_slug(example_url: str) -> str:
+    """Recover a Vega example's slug from its gallery page URL."""
+    prefix, _, suffix = _GALLERY_URLS["vega"]["example_page"].partition("{slug}")
+    return example_url.removeprefix(prefix).removesuffix(suffix)
+
+
 def _humanize_slug(slug: str) -> str:
     """Turn a file-ish slug (``stacked_bar-chart``) into a title (``Stacked Bar Chart``)."""
     return slug.replace("_", " ").replace("-", " ").title()
@@ -747,6 +781,16 @@ _SPEC_EXTRACTORS: Final = {
 }
 
 
+def _commit_from_spec_url(spec_url: str) -> str:
+    """Extract the pinned commit SHA from a jsDelivr ``/gh/{repo}@{sha}/`` URL."""
+    _, _, rest = spec_url.partition("@")
+    sha, slash, _ = rest.partition("/")
+    if not (sha and slash):
+        msg = f"spec_url is not a commit-pinned jsDelivr URL: {spec_url}"
+        raise ValueError(msg)
+    return sha
+
+
 async def enrich_with_datasets(
     examples: list[Example],
     session: httpx.AsyncClient,
@@ -763,14 +807,32 @@ async def enrich_with_datasets(
             raise ValueError(msg)
 
         async with sem:
-            text = await _fetch_text(session, example["spec_url"])
+            if gallery == "vega":
+                page_url = _GALLERY_URLS["vega"]["page_source"].format(
+                    sha=_commit_from_spec_url(example["spec_url"]),
+                    slug=_vega_slug(example["example_url"]),
+                )
+                text, page = await asyncio.gather(
+                    _fetch_text(session, example["spec_url"]),
+                    _fetch_text(session, page_url),
+                )
+                if title := parse_vega_page_title(page):
+                    example["example_name"] = title
+                else:
+                    logger.warning(
+                        "No front-matter title in %s; keeping %r",
+                        page_url,
+                        example["example_name"],
+                    )
+            else:
+                text = await _fetch_text(session, example["spec_url"])
 
         spec = json.loads(text)
         example["datasets"] = extractor(spec, name_map)
         if not example.get("description"):
             example["description"] = spec.get("description")
 
-        # Deduplicate datasets, preserve order
+        # Deduplicate; finalize_examples sorts every gallery's list.
         example["datasets"] = list(dict.fromkeys(example["datasets"]))
 
     pending = [ex for ex in examples if ex["gallery_name"] != "altair"]
@@ -797,7 +859,15 @@ async def enrich_with_datasets(
 
 
 def finalize_examples(examples: list[Example]) -> list[dict[str, Any]]:
-    """Sort deterministically and return plain JSON-serializable mappings."""
+    """
+    Sort deterministically and return plain JSON-serializable mappings.
+
+    Each ``datasets`` list is sorted alphabetically. Its order carries no
+    meaning (Altair's index is alphabetical; Vega and Vega-Lite would otherwise
+    follow declaration order), so one rule keeps regenerations diff-stable.
+    """
+    for ex in examples:
+        ex["datasets"] = sorted(ex["datasets"])
     examples.sort(key=operator.itemgetter("gallery_name", "example_name"))
     return [dict(ex) for ex in examples]
 

@@ -1966,5 +1966,5 @@ description = "Description of what the example demonstrates, or null when unavai
 [[resources.schema.fields]]
 name        = "datasets"
 type        = "array"
-description = "Array of Data Package resource names (`resources[].name`) used by the example"
+description = "Array of Data Package resource names (`resources[].name`) used by the example, sorted alphabetically; the order carries no meaning"
 arrayItem   = { type = "string" }

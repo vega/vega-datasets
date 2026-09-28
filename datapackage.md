@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-08-25 01:00:14 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-09-27 19:39:36 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -790,15 +790,15 @@ reflect examples added, removed, or updated in those galleries.
     - `primaryKey` ['example_url']
     - `$schema` https://datapackage.org/profiles/2.0/tableschema.json
     - `fieldsMatch` equal
-| name         | type   | description                                                                   | constraints                               | format   | arrayItem          |
-|:-------------|:-------|:------------------------------------------------------------------------------|:------------------------------------------|:---------|:-------------------|
-| gallery_name | string | Gallery that publishes the example                                            | {'enum': ['vega', 'vega-lite', 'altair']} |          |                    |
-| example_name | string | Human-readable example title                                                  |                                           |          |                    |
-| example_url  | string | Stable, unique URL of the rendered gallery example                            |                                           | uri      |                    |
-| spec_url     | string | Immutable, commit-pinned URL of the source specification or code              | {'unique': True}                          | uri      |                    |
-| categories   | array  | Array of category-name strings assigned by the source gallery                 |                                           |          | {'type': 'string'} |
-| description  | string | Description of what the example demonstrates, or null when unavailable        |                                           |          |                    |
-| datasets     | array  | Array of Data Package resource names (`resources[].name`) used by the example |                                           |          | {'type': 'string'} |
+| name         | type   | description                                                                                                                        | constraints                               | format   | arrayItem          |
+|:-------------|:-------|:-----------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|:---------|:-------------------|
+| gallery_name | string | Gallery that publishes the example                                                                                                 | {'enum': ['vega', 'vega-lite', 'altair']} |          |                    |
+| example_name | string | Human-readable example title                                                                                                       |                                           |          |                    |
+| example_url  | string | Stable, unique URL of the rendered gallery example                                                                                 |                                           | uri      |                    |
+| spec_url     | string | Immutable, commit-pinned URL of the source specification or code                                                                   | {'unique': True}                          | uri      |                    |
+| categories   | array  | Array of category-name strings assigned by the source gallery                                                                      |                                           |          | {'type': 'string'} |
+| description  | string | Description of what the example demonstrates, or null when unavailable                                                             |                                           |          |                    |
+| datasets     | array  | Array of Data Package resource names (`resources[].name`) used by the example, sorted alphabetically; the order carries no meaning |                                           |          | {'type': 'string'} |
 ### sources
 | title             | path                                       |
 |:------------------|:-------------------------------------------|
