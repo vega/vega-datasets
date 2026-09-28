@@ -6,7 +6,7 @@
     "release": true
   },
   "hooks": {
-    "after:bump": "npm run build"
+    "after:bump": "uv version ${version} --no-sync && npm run build"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
