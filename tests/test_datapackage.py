@@ -34,6 +34,8 @@ from typing import Any
 import pytest
 from frictionless import Checklist, Package
 
+from scripts.build_datapackage import ResourceAdapter, iter_data_dir
+
 REPO = Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
 DESCRIPTOR_PATH = REPO / "datapackage.json"
@@ -78,7 +80,8 @@ if _unknown_xfail:
 def git_blob_sha1(path: Path) -> str:
     r"""Compute git's blob SHA-1: ``sha1(b"blob {len}\0" + content)``."""
     content = path.read_bytes()
-    return hashlib.sha1(b"blob %d\0%b" % (len(content), content)).hexdigest()
+    blob = b"blob %d\0%b" % (len(content), content)
+    return hashlib.sha1(blob, usedforsecurity=False).hexdigest()
 
 
 @pytest.mark.parametrize("resource", _RESOURCES, ids=_RESOURCE_IDS)
@@ -125,6 +128,22 @@ def test_sha1_matches_git_blob(resource: dict) -> None:
     expected = declared.removeprefix("sha1:")
     actual = git_blob_sha1(path)
     assert expected == actual, f"declared={expected[:10]}... disk={actual[:10]}..."
+
+
+def test_every_data_file_is_described() -> None:
+    """
+    Catch a dataset added to ``data/`` without rebuilding the descriptor.
+
+    The per-resource tests above only visit files the descriptor already
+    lists; this checks the other direction, using the build's own notion of
+    which files become resources.
+    """
+    described = {resource["path"] for resource in _RESOURCES}
+    on_disk = {
+        fp.name for fp in iter_data_dir(DATA) if ResourceAdapter.is_supported(fp)
+    }
+    missing = sorted(on_disk - described)
+    assert not missing, f"not in datapackage.json (run `npm run build`): {missing}"
 
 
 def test_gallery_dataset_references_exist() -> None:
