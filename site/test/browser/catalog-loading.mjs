@@ -1,7 +1,9 @@
 // Compare two built revisions served with the same compression and caching policy.
-// Run without concurrent builds/tests. These are lab timings, not field INP or a
-// Lighthouse score. --baseline URL --base URL [--output report.json] [--runs 5]
-// PUPPETEER_CORE / CHROME_PATH work as in the other browser checks.
+// For prerequisites, see browser.mjs. Start each build's preview on a different port,
+// then run in a separate terminal:
+//   node site/test/browser/catalog-loading.mjs --baseline URL --base URL [--output report.json] [--runs 5]
+// Stop other builds and tests while measuring. These are lab timings, not field INP
+// or Lighthouse scores. First-activation timings are measured by chart-interactions.mjs.
 import { launchBrowser } from './browser.mjs';
 import {parseArgs} from 'node:util';
 import {writeFileSync} from 'node:fs';

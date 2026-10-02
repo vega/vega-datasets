@@ -1,11 +1,6 @@
 name: Site
 
-# Builds https://vega.github.io/vega-datasets/: the repository exactly as GitHub
-# Pages has always served it (data/, datapackage.json, rendered Markdown, …),
-# with the website on top: the home page and a page per dataset under
-# datasets/. Deploys on push to main.
-#
-# Needs Settings → Pages → Source set to "GitHub Actions".
+# Publishing requires Settings → Pages → Source → GitHub Actions.
 
 on:
   push:
@@ -30,16 +25,13 @@ jobs:
     name: Build site
 
     env:
-      # Edit links ("Add", "Edit this dataset's metadata") go to the repository that
-      # built the site: a fork's deploy to the fork, vega's to vega/vega-datasets. Set for
-      # the whole job, so the tests and the link check see what the build used.
+      # Point metadata edit links at the repository being built.
       SITE_REPO: ${{ github.repository }}
 
     steps:
       - uses: actions/checkout@v7
 
-      # First, on the pristine checkout, so the output matches the Pages builds
-      # that served this repository before the website was added.
+      # Preserve existing data and documentation URLs before installing dependencies.
       - name: Build repository pages (Jekyll)
         uses: actions/jekyll-build-pages@v1
         with:
@@ -60,12 +52,10 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      # Pages built outside vega/vega-datasets (forks) carry noindex: see Base.astro.
       - name: Build the website
         run: npm run site:build
         env:
-          # A fork's deploy is a preview: keep it out of search results (the page names
-          # vega.github.io/vega-datasets/ as canonical).
+          # Ask search engines not to index fork previews.
           SITE_NOINDEX: ${{ github.repository != 'vega/vega-datasets' && '1' || '0' }}
 
       - name: Type-check the website
@@ -74,13 +64,12 @@ jobs:
       - name: Test the website
         run: npm run site:test
 
-      # Blocks pull requests. On main it only warns, so an outage at jsDelivr or a
-      # gallery site can't hold back the deploy (which also serves data/).
+      # Fail PRs on broken links; warn on main so external outages cannot block data updates.
       - name: Check links
         run: npm run site:check-links
         continue-on-error: ${{ github.event_name != 'pull_request' }}
 
-      - name: Assemble
+      - name: Combine website and repository pages
         run: |
           mkdir pages
           cp -R _site/. pages/

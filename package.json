@@ -67,7 +67,7 @@
     "update-gallery": "uv run scripts/generate_gallery_examples.py",
     "site:build": "uv run --group site scripts/build_site_catalog.py && astro build --root site",
     "site:pages": "astro build --root site",
-    "site:dev": "astro dev --root site",
+    "site:dev": "uv run --group site scripts/build_site_catalog.py && astro dev --root site",
     "site:check": "astro check --root site",
     "site:serve": "node site/scripts/serve.mjs",
     "site:test": "vitest run --config site/vitest.config.ts --project unit",

@@ -1,5 +1,4 @@
-// The Vega Datasets website: a static site, one page per dataset, built from catalog.json
-// (scripts/build_site_catalog.py). `npm run site:build` runs both steps.
+// Build static pages from the catalog prepared by site:build or site:dev.
 import { createReadStream } from 'node:fs';
 import { pipeline } from 'node:stream';
 import path from 'node:path';
@@ -41,7 +40,6 @@ export default defineConfig({
   build: {
     format: 'directory',
     assets: 'assets',
-    // The page's CSP allows only same-origin scripts, so nothing is inlined.
     inlineStylesheets: 'never',
   },
   compressHTML: true,
@@ -49,7 +47,7 @@ export default defineConfig({
   vite: {
     plugins: [repositoryData()],
     build: {
-      // 0 keeps every script an external file (Astro inlines small ones otherwise).
+      // Keep scripts in external files to satisfy the site's Content Security Policy.
       assetsInlineLimit: 0,
       chunkSizeWarningLimit: 1200,
     },

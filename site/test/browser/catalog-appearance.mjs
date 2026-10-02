@@ -1,5 +1,8 @@
-// Build and serve first. Same PUPPETEER_CORE / CHROME_PATH overrides as the other
-// browser checks. --baseline records the old behavior without parity assertions.
+// Check chart appearance, brushing, tooltips and exports across screen sizes.
+// For prerequisites, see browser.mjs. Run `npm run site:build`, then `npm run site:serve`.
+// Leave the preview running and, in a second terminal in the project folder, run:
+//   node site/test/browser/catalog-appearance.mjs [--output report.json]
+// Add --baseline to record an older build without checking that chart geometry matches.
 import assert from 'node:assert/strict';
 import { writeFileSync } from 'node:fs';
 import { launchBrowser } from './browser.mjs';
