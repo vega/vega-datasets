@@ -9,7 +9,7 @@ node_modules
 site/dist
 site/.cache
 
-# Field Guide (Astro): generated catalog, thumbnails and type cache
+# Website (Astro): generated catalog, thumbnails and type cache
 site/generated
 site/public/thumbs
 site/.astro

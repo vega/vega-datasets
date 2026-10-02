@@ -1,4 +1,4 @@
-// Preview the built Field Guide and its public datasets on loopback. This serves
+// Preview the built website and its public datasets on loopback. This serves
 // explicit public roots, not the checkout or Jekyll's separately rendered pages.
 // Text is gzipped, directories redirect, and missing pages use the site's 404 page.
 // Usage: npm run site:serve [-- --port 8000]
@@ -90,6 +90,6 @@ export function createPreviewServer(repoRoot = repo) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const { values } = parseArgs({ options: { port: { type: 'string', default: '8000' } } });
   createPreviewServer().listen(Number(values.port), '127.0.0.1', () => {
-    console.log(`Field Guide at http://127.0.0.1:${values.port}${BASE}`);
+    console.log(`Vega Datasets at http://127.0.0.1:${values.port}${BASE}`);
   });
 }

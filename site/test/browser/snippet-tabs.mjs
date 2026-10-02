@@ -24,7 +24,7 @@ const base = `http://localhost:${args.port}/vega-datasets/`;
 function serve() {
   const child = spawn(process.execPath, [path.join(repo, 'site', 'scripts', 'serve.mjs'), '--port', args.port], { stdio: ['ignore', 'pipe', 'inherit'] });
   return new Promise((resolve, reject) => {
-    child.stdout.on('data', (b) => { if (String(b).includes('Field Guide at')) resolve(child); });
+    child.stdout.on('data', (b) => { if (String(b).includes('Vega Datasets at')) resolve(child); });
     child.on('exit', (code) => reject(new Error(`The preview server exited (${code})`)));
   });
 }

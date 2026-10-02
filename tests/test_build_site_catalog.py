@@ -1,4 +1,4 @@
-"""Offline tests for the Field Guide catalog builder (scripts/build_site_catalog.py)."""
+"""Offline tests for the website catalog builder (scripts/build_site_catalog.py)."""
 
 from __future__ import annotations
 
@@ -210,7 +210,7 @@ def test_readme_markdown() -> None:
         "# Vega Datasets",
         "[![npm](https://img.shields.io/npm/v/vega-datasets.svg)](https://npmjs.com)",
         "Intro with [cars](datapackage.md#carsjson) and [rules](CONTRIBUTING.md).",
-        "Browse the [Field Guide](https://vega.github.io/vega-datasets/).",
+        "Browse the [dataset catalog](https://vega.github.io/vega-datasets/).",
         "> [!IMPORTANT]",
         "> **Licensing**: see [the metadata](datapackage.md).",
         "Unknown anchor: [x](datapackage.md#nopejson), external [y](https://x.org/a.md).",
@@ -221,7 +221,7 @@ def test_readme_markdown() -> None:
     out = readme_markdown("\n".join(lines), {"cars.json": "cars"})
     assert out.splitlines() == [
         "Intro with [cars](datasets/cars/) and [rules](https://github.com/vega/vega-datasets/blob/main/CONTRIBUTING.md).",
-        "Browse the [Field Guide](./).",
+        "Browse the [dataset catalog](./).",
         "> **Licensing**: see [the metadata](https://github.com/vega/vega-datasets/blob/main/datapackage.md).",
         "Unknown anchor: [x](https://github.com/vega/vega-datasets/blob/main/datapackage.md#nopejson), external [y](https://x.org/a.md).",
         "```js",

@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run --group site
 """
-Build the Field Guide's catalog (``site/generated``) and thumbnails (``site/public/thumbs``).
+Build the website's catalog (``site/generated``) and thumbnails (``site/public/thumbs``).
 
 Everything describing the data comes from this checkout, so the site always
 matches the commit it was built from:
@@ -351,7 +351,7 @@ def profile_field(
     s: pl.Series, field_type: str, markers: list[str] | None = None
 ) -> dict[str, Any]:
     """
-    Summarize one column for the Field Guide.
+    Summarize one column for the website.
 
     Numbers and dates get range and a histogram; everything else (strings,
     booleans, lists) gets its most common values. Nulls count as missing, and
@@ -677,7 +677,7 @@ def build(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build the Field Guide's catalog and thumbnails."
+        description="Build the website's catalog and thumbnails."
     )
     parser.add_argument(
         "--out", type=Path, default=DEFAULT_OUT, help="where catalog.json goes"

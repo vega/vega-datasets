@@ -233,11 +233,11 @@ The slow-tier test for each is marked `xfail(strict=True)`, so it does
 not fail the run today — but if the upstream issue ever resolves, the
 test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
 
-## The Field Guide Site
+## The Website
 
-[vega.github.io/vega-datasets](https://vega.github.io/vega-datasets/) is deployed from `main` by `.github/workflows/site.yml`. It runs GitHub Pages' usual Jekyll build of the repository, so `data/`, `datapackage.json` and the other files keep their URLs, and puts the Field Guide from `site/` on top: the home page, and a page per dataset at `datasets/<name>/`. (`_config.yml` keeps `site/` out of the Jekyll build and names vega.github.io as the canonical host of the Jekyll pages.)
+[vega.github.io/vega-datasets](https://vega.github.io/vega-datasets/) is deployed from `main` by `.github/workflows/site.yml`. It runs GitHub Pages' usual Jekyll build of the repository, so `data/`, `datapackage.json` and the other files keep their URLs, and overlays the pages built from `site/`: the home page, and a page per dataset at `datasets/<name>/`. (`_config.yml` keeps `site/` out of the Jekyll build and names vega.github.io as the canonical host of the Jekyll pages.)
 
-The Field Guide is generated from `datapackage.json`, `data/` and `data/gallery-examples.json`, with sections of `README.md` for the home page's About list, so documenting a dataset (see [Metadata and Documentation](#metadata-and-documentation)) also updates its page. It is built in two steps: `scripts/build_site_catalog.py` profiles every file into `site/generated/catalog.json` and fetches the gallery thumbnails into `site/public/thumbs/`, then [Astro](https://astro.build) renders every page to static HTML in `site/dist`. Each page's content, title, description, canonical URL and schema.org JSON-LD are in its HTML; small scripts add the interactive parts.
+The website is generated from `datapackage.json`, `data/` and `data/gallery-examples.json`, with sections of `README.md` for the home page's About list, so documenting a dataset (see [Metadata and Documentation](#metadata-and-documentation)) also updates its page. It is built in two steps: `scripts/build_site_catalog.py` profiles every file into `site/generated/catalog.json` and fetches the gallery thumbnails into `site/public/thumbs/`, then [Astro](https://astro.build) renders every page to static HTML in `site/dist`. Each page's content, title, description, canonical URL and schema.org JSON-LD are in its HTML; small scripts add the interactive parts.
 
 ```bash
 npm run site:build        # catalog and thumbnails, then the pages, into site/dist

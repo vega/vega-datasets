@@ -2,7 +2,7 @@ name: Site
 
 # Builds https://vega.github.io/vega-datasets/: the repository exactly as GitHub
 # Pages has always served it (data/, datapackage.json, rendered Markdown, …),
-# with the Field Guide on top: the home page and a page per dataset under
+# with the website on top: the home page and a page per dataset under
 # datasets/. Deploys on push to main.
 #
 # Needs Settings → Pages → Source set to "GitHub Actions".
@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v7
 
       # First, on the pristine checkout, so the output matches the Pages builds
-      # that served this repository before the Field Guide.
+      # that served this repository before the website was added.
       - name: Build repository pages (Jekyll)
         uses: actions/jekyll-build-pages@v1
         with:
@@ -61,17 +61,17 @@ jobs:
         run: npm ci
 
       # Pages built outside vega/vega-datasets (forks) carry noindex: see Base.astro.
-      - name: Build the Field Guide
+      - name: Build the website
         run: npm run site:build
         env:
           # A fork's deploy is a preview: keep it out of search results (the page names
           # vega.github.io/vega-datasets/ as canonical).
           SITE_NOINDEX: ${{ github.repository != 'vega/vega-datasets' && '1' || '0' }}
 
-      - name: Type-check the Field Guide
+      - name: Type-check the website
         run: npm run site:check
 
-      - name: Test the Field Guide
+      - name: Test the website
         run: npm run site:test
 
       # Blocks pull requests. On main it only warns, so an outage at jsDelivr or a

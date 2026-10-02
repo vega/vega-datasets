@@ -1,4 +1,4 @@
-// The Field Guide: a static site, one page per dataset, built from catalog.json
+// The Vega Datasets website: a static site, one page per dataset, built from catalog.json
 // (scripts/build_site_catalog.py). `npm run site:build` runs both steps.
 import { createReadStream } from 'node:fs';
 import { pipeline } from 'node:stream';

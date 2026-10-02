@@ -5,7 +5,7 @@
 url: https://vega.github.io
 baseurl: /vega-datasets
 
-# The Field Guide's sources are built separately (npm run site:build) and copied over
+# The website's sources are built separately (npm run site:build) and copied over
 # this output. Left in, Jekyll reads their Astro frontmatter (--- … ---) as YAML front
 # matter and the build fails. These are Jekyll's own defaults, which a list here
 # replaces, plus site/.
