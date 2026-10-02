@@ -43,7 +43,7 @@
     "release-it": "^21.0.1",
     "rollup": "^4.47.1",
     "rollup-plugin-bundle-size": "^1.0.3",
-    "typescript": "^6.0.2"
+    "typescript": "^7.0.2"
   },
   "scripts": {
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
