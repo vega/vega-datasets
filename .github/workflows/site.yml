@@ -70,11 +70,12 @@ jobs:
         continue-on-error: ${{ github.event_name != 'pull_request' }}
 
       - name: Combine website and repository pages
-        run: cp -R site/dist/. _site/
+        # Keep Astro pages where filenames overlap; Jekyll's output is not writable.
+        run: rsync -r --ignore-existing _site/ site/dist/
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: _site
+          path: site/dist
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
