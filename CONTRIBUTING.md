@@ -233,6 +233,53 @@ The slow-tier test for each is marked `xfail(strict=True)`, so it does
 not fail the run today — but if the upstream issue ever resolves, the
 test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
 
+## The Field Guide Site
+
+[vega.github.io/vega-datasets](https://vega.github.io/vega-datasets/) is deployed from `main` by `.github/workflows/site.yml`. It runs GitHub Pages' usual Jekyll build of the repository, so `data/`, `datapackage.json` and the other files keep their URLs, and puts the Field Guide from `site/` on top: the home page, and a page per dataset at `datasets/<name>/`. (`_config.yml` keeps `site/` out of the Jekyll build and names vega.github.io as the canonical host of the Jekyll pages.)
+
+The Field Guide is generated from `datapackage.json`, `data/` and `data/gallery-examples.json`, with sections of `README.md` for the home page's About list, so documenting a dataset (see [Metadata and Documentation](#metadata-and-documentation)) also updates its page. It is built in two steps: `scripts/build_site_catalog.py` profiles every file into `site/generated/catalog.json` and fetches the gallery thumbnails into `site/public/thumbs/`, then [Astro](https://astro.build) renders every page to static HTML in `site/dist`. Each page's content, title, description, canonical URL and schema.org JSON-LD are in its HTML; small scripts add the interactive parts.
+
+```bash
+npm run site:build        # catalog and thumbnails, then the pages, into site/dist
+npm run site:pages        # the pages only, after a change to site/ (the catalog is kept)
+npm run site:serve        # preview at http://127.0.0.1:8000/vega-datasets/
+npm run site:dev          # Astro's dev server, reloading as you edit (after one site:build)
+npm run site:check        # type-check the pages and scripts (astro check)
+npm run site:test         # unit tests and checks of the built pages, offline (Node 24.15+)
+npm run site:check-links  # every outbound link; needs the network
+```
+
+`site/src/` is laid out by where the code runs:
+
+| Folder | What it holds |
+|---|---|
+| `lib/` | DOM-free models, used at build time and in the browser: the catalog, home and Explore models, starter-chart rules, formatting, field profiles, Markdown, the catalog chart and gapminder specs, SEO and JSON-LD |
+| `pages/`, `layouts/`, `components/` | The Astro pages, the shared page shell (`layouts/Base.astro`: head, CSP, header, footer) and their parts |
+| `client/` | The browser scripts: home filters and live catalog chart, Explore, the gapminder animation, snippets, histograms, system-color accessibility |
+| `prerender/` | Build-time only: the catalog chart drawn to SVG, density overviews of long tables, pictures of heavy maps |
+| `styles/site.css` | The stylesheet, including the rules that adapt Vega's SVG to forced colors |
+
+The site uses one light palette to limit maintenance and follows the [Vega](https://vega.github.io/vega/) and [Vega-Lite](https://vega.github.io/vega-lite/) header conventions: GitHub and Try Online, alongside Browse Datasets and Metadata Coverage. Contribution guidance belongs in the page text. These conventions were checked on 2026-10-02. Preserve [forced-colors support](https://www.w3.org/TR/css-color-adjust-1/#forced-colors-mode), including changes between light and dark system palettes, so Windows High Contrast remains usable.
+
+The home link and project disclosure have separate targets, following the [WAI navigation disclosure guidance](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/) (checked 2026-10-01). Native `details` keeps the menu usable without scripts; the enhancement adds Escape, outside-click and focus-out dismissal. The catalog keeps its static links on an initial touch, because replacing the SVG during the gesture can lose its click. Mouse/keyboard interaction or filtering loads the live chart. Mobile labels omit ranks less than a text line apart using Vega-Lite expressions, so exported charts retain the same behavior; data points remain present. The [browser tap highlight](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/-webkit-tap-highlight-color) is suppressed only on the catalog SVG, with a pressed-point stroke as feedback and keyboard focus styles preserved.
+
+The page's Content Security Policy allows only same-origin scripts and no `eval`, so charts run Vega's expression interpreter (`ast: true`, `vega-interpreter`), and tables are read with d3-dsv's `parseRows` and handed to Vega as values rather than through Vega's CSV reader, which compiles a row function. Builds with `SITE_NOINDEX=1` (site.yml sets it outside `vega/vega-datasets`) add `noindex`, so a fork's deploy stays out of search results.
+
+The preview serves `site/dist`, `data/`, and explicitly named public documents on IPv4 loopback. It does not reproduce Jekyll's separate rendered documentation pages. The preview and Astro development data middleware resolve final files within their canonical public roots; do not restore a raw-checkout fallback. Node's [listen documentation](https://nodejs.org/api/net.html#serverlistenport-host-backlog-callback) explains why an omitted host is not a localhost restriction.
+
+Home filtering loads its chart controller on demand and retries a failed index request without discarding the static cards or chart. Related chart signals share one queued evaluation; a failed operation must not poison later updates. Replacements are drawn before the previous view is finalized. This follows the documented [Vega View lifecycle and asynchronous evaluation](https://vega.github.io/vega/docs/api/view/) (Vega 6.4.0 / Vega-Lite 6.4.3, checked 2026-10-01). The small `runView` adapter exposes the documented prerun callback omitted by the installed TypeScript declarations. Keep the [skip-to-content link](https://www.w3.org/WAI/WCAG22/Techniques/general/G1) keyboard-visible and preserve text-selection fallback when the [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API) is unavailable or denied.
+
+Where to add a test:
+
+- Logic in `lib/`: a unit test in `site/test/`, next to its neighbors (`dataset.test.ts` for Explore and the dataset page's models, `home.test.ts`, `format.test.ts`, `dates.test.ts`, `markdown.test.ts`, `seo.test.ts`, `keys.test.ts`, `motion.test.ts`). Every chart the site draws is compiled and drawn from the real file there: it must compile without Vega-Lite warnings, and scatter plots must plot the file's own values.
+- What a built page says or links to: `site/test/build.test.ts`, which reads `site/dist` (so run `npm run site:build` or `site:pages` first).
+- The page shell and stylesheet (CSP, tokens, forced colors): `site/test/shell.test.ts`; chart colors in forced-colors mode: `site/test/theme.test.ts`. A test that needs a DOM starts with `// @vitest-environment jsdom`.
+- The catalog builder: `tests/test_build_site_catalog.py` (`uv run pytest tests/test_build_site_catalog.py`).
+
+A snapshot test lists the starter chart each dataset gets. If a change alters one on purpose, check the new chart and update the snapshot with `npx vitest run --config site/vitest.config.ts --project unit -u`.
+
+Browser checks in `site/test/browser/` also test rendered geometry, native pointer interactions and mobile scrolling. They run separately from `site:test`, against a built site and an installed Chrome. Install their optional driver with `npm install --no-save --package-lock=false puppeteer-core@25.12.0`, then follow the command at the top of each script. For example, with `npm run site:serve` running, use `node site/test/browser/catalog-appearance.mjs`. The shared launcher uses Puppeteer's [`channel: 'chrome'`](https://pptr.dev/guides/installation) to locate Chrome on the current platform (checked with Puppeteer 25.12.0 on 2026-10-02). Set `CHROME_PATH` for another executable, or `PUPPETEER_CORE` to a directory containing an existing `node_modules/puppeteer-core` installation. Neither the normal site build nor these checks downloads a browser. `catalog-loading.mjs` compares two separately served builds; run it without concurrent builds or tests for meaningful timings.
+
 ## Contributing Process
 
 1. Create a branch:

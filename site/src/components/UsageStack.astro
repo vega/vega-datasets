@@ -1,0 +1,16 @@
+---
+/**
+ * A flat stacked bar of example counts per gallery (Vega-Lite, Vega, Altair),
+ * scaled to `max` so cards compare. The counts are also given as text.
+ */
+import { GALLERIES, GALLERY_LABEL, type Gallery } from "../lib/catalog";
+
+interface Props {
+  counts: Record<Gallery, number>;
+  max: number;
+}
+const { counts, max } = Astro.props;
+const used = GALLERIES.filter((g) => counts[g]);
+const detail = used.map((g) => `${GALLERY_LABEL[g]} ${counts[g]}`).join(", ");
+---
+<span class="usage"><span class="stack" aria-hidden="true">{used.map((g) => <span class={`g-${g}`} data-usage-gallery={g} style={`width: ${((100 * counts[g]) / Math.max(max, 1)).toFixed(2)}%`}></span>)}</span><span class="visually-hidden" data-usage-detail>{detail && ` (${detail})`}</span></span>

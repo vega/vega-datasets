@@ -1,0 +1,36 @@
+---
+/**
+ * "In Motion" on the gapminder page: the controls and the chart's place, drawn when
+ * the site is built; client/motion.ts (loaded only here) plays the animation.
+ */
+import rows from "../../../data/gapminder.json";
+import { FIRST_YEAR, REGION, STEP_YEARS, toCountries, type GapminderRow } from "../lib/motion";
+
+const countries = toCountries(rows as GapminderRow[]);
+const frames = countries[0]?.fert.length ?? 0;
+const lastYear = FIRST_YEAR + STEP_YEARS * (frames - 1);
+const summary = `${countries.length} countries, ${FIRST_YEAR} to ${lastYear}`;
+---
+<section class="ds-sec motion" id="motion" aria-labelledby="motion-h" data-motion>
+  <div class="sec-head"><h2 id="motion-h">In Motion</h2></div>
+  <p class="sec-intro">Life expectancy against babies per woman for {summary}. Gapminder publishes a snapshot every five years; the bubbles glide between them using the easing functions new in Vega 6.4. Vega-Lite's own support for eased, interpolated animation is in review.</p>
+  <div class="motion-controls">
+    <button class="btn motion-play" type="button" aria-pressed="false">Play</button>
+    <label class="motion-scrub" for="motion-year"><input id="motion-year" type="range" min="0" max={frames - 1} step="0.01" value="0" aria-label="Year"><output for="motion-year" class="motion-year">{FIRST_YEAR}</output></label>
+  </div>
+  <div class="motion-regions" role="group" aria-label="Highlight a region">
+    <button type="button" class="chip" aria-pressed="true" data-region="">None</button>
+    {Object.values(REGION).map((r) => <button type="button" class="chip" aria-pressed="false" data-region={r}>{r}</button>)}
+  </div>
+  <div class="motion-chart" role="figure" aria-label={`Animated bubble chart of life expectancy against fertility for ${summary}. Bubble size is population.`}></div>
+  <p class="motion-note"><b>China</b> is highlighted with its full path. Select any bubble to follow that country instead.</p>
+  <div class="motion-foot">
+    <a class="btn btn-quiet" target="_blank" rel="noopener" href="https://vega.github.io/editor/" data-editor>Open This Chart in the Vega Editor</a>
+    <span class="features mono">Vega 6.4 · timer events · easeCubicInOut · interpolateLinear</span>
+    <p class="motion-status muted"><noscript>The animation needs JavaScript.</noscript></p>
+  </div>
+</section>
+
+<script>
+  import "../client/motion";
+</script>

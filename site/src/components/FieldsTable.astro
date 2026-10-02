@@ -1,0 +1,50 @@
+---
+/**
+ * A dataset's fields as a data dictionary: each field's name (with its title, and a key
+ * mark when it is the primary key), description (or a quiet "Add" link to write one) and
+ * documented metadata, its type (and format), distribution, summary and missing count;
+ * then how the table joins others.
+ */
+import type { Dataset } from "../lib/catalog";
+import { joins } from "../lib/catalog";
+import { fieldNotes, formatNote, isKey, missingNote } from "../lib/field-meta";
+import { hasDescription } from "../lib/completeness";
+import { formatCount } from "../lib/format";
+import { missingCount, profileSummary, sparkline, typeLabel } from "../lib/profile";
+import { datasetPath } from "../lib/seo";
+import Sparkline from "./Sparkline.astro";
+
+interface Props {
+  dataset: Dataset;
+  /** Where to add missing descriptions: the dataset's entry in the metadata file on GitHub. */
+  metadata: string;
+  /** Datasets with a page, so a join links only to a page that exists. */
+  names: ReadonlySet<string>;
+}
+const { dataset: d, metadata, names } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const described = d.fields.some(hasDescription);
+const fields = d.fields.map((f) => ({ f, spark: sparkline(f), miss: missingCount(f, d.rows), notes: fieldNotes(f), format: formatNote(f), key: isKey(d, f) }));
+const missing = missingNote(d);
+const links = joins(d);
+---
+<table class="dict">
+  <thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Distribution</th><th scope="col">Summary</th><th scope="col" class="f-miss">Missing</th></tr></thead>
+  <tbody>
+    {fields.map(({ f, spark, miss, notes, format, key }) => (
+      <tr>
+        <td class="f-name"><code>{f.name}</code>{key && <span class="f-key">Key</span>}{!d.fieldsInferred && !hasDescription(f) && <a class="f-add" href={metadata}>Add<span class="visually-hidden"> a description for {f.name}</span></a>}{f.title && <span class="f-title">{f.title}</span>}{f.description && <p class="f-desc">{f.description}</p>}{notes.length > 0 && <p class="f-meta">{notes.join(" · ")}</p>}</td>
+        <td class="f-type"><span class="type">{typeLabel(f)}</span>{format && <span class="f-format mono">{format}</span>}</td>
+        <td class="f-dist">{spark ? <Sparkline model={spark} /> : f.profile.kind === "nominal" ? `${formatCount(f.profile.distinct)} distinct` : ""}</td>
+        <td class={`f-sum${f.profile.kind === "nominal" ? "" : " mono"}`}>{profileSummary(f)}</td>
+        <td class={`f-miss mono${miss.any ? " any" : ""}`}><span class="phone-only">Missing </span>{miss.text}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<p class="sec-note">{d.rows !== null && `Profiled across all ${formatCount(d.rows)} rows. `}{missing && `${missing} `}{!described && "No field descriptions yet. "}{!described && <a href={metadata}>Add them</a>}</p>{links.map((j) => (
+  <p class="sec-note joins">
+    {j.self ? "Rows refer to other rows of this table: " : <>Joins with {names.has(j.resource) ? <a href={`${base}${datasetPath(j.resource)}`}>{j.resource}</a> : j.resource}: </>}
+    <code>{j.fields.join(", ")}</code> → <code>{j.referenceFields.join(", ")}</code>.
+  </p>
+))}

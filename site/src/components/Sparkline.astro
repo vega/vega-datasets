@@ -1,0 +1,26 @@
+---
+/**
+ * A field's distribution as a small histogram, drawn when the site is built. It is one
+ * stop in the tab order: arrow keys (and Home/End) step through the bins, each read out
+ * as its range and row count (client/sparkline.ts); hovering shows the same tooltip.
+ */
+import type { Sparkline } from "../lib/profile";
+import { formatCount } from "../lib/format";
+
+interface Props {
+  model: Sparkline;
+}
+const { model: m } = Astro.props;
+const total = m.bins.reduce((s, b) => s + b.count, 0);
+---
+<span class="spark-wrap" tabindex="0" role="slider" aria-label={m.label} aria-valuemin="1" aria-valuemax={m.bins.length} aria-valuenow="1" aria-valuetext={`${m.bins.length} bins, ${formatCount(total)} rows. Use the arrow keys to read each bin.`}>
+  <svg class="hist spark" viewBox={`0 0 ${m.width} ${m.height}`} width={m.width} height={m.height} aria-hidden="true" focusable="false">
+    <line x1="0" x2={m.width} y1={m.height - 0.5} y2={m.height - 0.5} class="hist-base" />
+    {m.bins.map((b) => (
+      <g class="hist-bin" data-range={b.range} data-count={b.count}>
+        <rect x={b.x} y="0" width={b.width} height={m.height} class="hit" />
+        {b.path && <path d={b.path} class="bar" />}
+      </g>
+    ))}
+  </svg>
+</span>

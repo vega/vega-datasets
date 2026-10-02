@@ -1,0 +1,111 @@
+name: Site
+
+# Builds https://vega.github.io/vega-datasets/: the repository exactly as GitHub
+# Pages has always served it (data/, datapackage.json, rendered Markdown, …),
+# with the Field Guide on top: the home page and a page per dataset under
+# datasets/. Deploys on push to main.
+#
+# Needs Settings → Pages → Source set to "GitHub Actions".
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    name: Build site
+
+    env:
+      # Edit links ("Add", "Edit this dataset's metadata") go to the repository that
+      # built the site: a fork's deploy to the fork, vega's to vega/vega-datasets. Set for
+      # the whole job, so the tests and the link check see what the build used.
+      SITE_REPO: ${{ github.repository }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      # First, on the pristine checkout, so the output matches the Pages builds
+      # that served this repository before the Field Guide.
+      - name: Build repository pages (Jekyll)
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          cache: 'npm'
+          node-version: 24
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: ">=0.5.0"
+          enable-cache: true
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      # Pages built outside vega/vega-datasets (forks) carry noindex: see Base.astro.
+      - name: Build the Field Guide
+        run: npm run site:build
+        env:
+          # A fork's deploy is a preview: keep it out of search results (the page names
+          # vega.github.io/vega-datasets/ as canonical).
+          SITE_NOINDEX: ${{ github.repository != 'vega/vega-datasets' && '1' || '0' }}
+
+      - name: Type-check the Field Guide
+        run: npm run site:check
+
+      - name: Test the Field Guide
+        run: npm run site:test
+
+      # Blocks pull requests. On main it only warns, so an outage at jsDelivr or a
+      # gallery site can't hold back the deploy (which also serves data/).
+      - name: Check links
+        run: npm run site:check-links
+        continue-on-error: ${{ github.event_name != 'pull_request' }}
+
+      - name: Assemble
+        run: |
+          mkdir pages
+          cp -R _site/. pages/
+          rm -rf pages/site
+          cp -R site/dist/. pages/
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: pages
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+
+    name: Deploy
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

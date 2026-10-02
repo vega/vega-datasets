@@ -1,0 +1,20 @@
+# GitHub Pages' Jekyll build of the repository (see .github/workflows/site.yml).
+# jekyll-seo-tag writes every page's canonical URL from these, so the rendered
+# Markdown pages (datapackage.html, CHANGELOG.html, …) name vega.github.io as
+# canonical even when a fork builds them, rather than competing with it.
+url: https://vega.github.io
+baseurl: /vega-datasets
+
+# The Field Guide's sources are built separately (npm run site:build) and copied over
+# this output. Left in, Jekyll reads their Astro frontmatter (--- … ---) as YAML front
+# matter and the build fails. These are Jekyll's own defaults, which a list here
+# replaces, plus site/.
+exclude:
+  - site/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

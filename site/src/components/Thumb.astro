@@ -1,0 +1,14 @@
+---
+/** A gallery example's thumbnail, drawn on white. */
+import { GALLERY_LABEL, type Example } from "../lib/catalog";
+
+interface Props {
+  example: Example;
+  eager?: boolean;
+  /** Empty when the surrounding link already describes the example and its destination. */
+  alt?: string;
+}
+const { example: e, eager = false } = Astro.props;
+const alt = Astro.props.alt ?? `Thumbnail of the ${GALLERY_LABEL[e.gallery]} example “${e.name}”`;
+---
+<img src={e.thumb ? `${import.meta.env.BASE_URL}${e.thumb}` : ""} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" width={e.thumbSize?.[0]} height={e.thumbSize?.[1]}>

@@ -1,0 +1,87 @@
+---
+/**
+ * Every page: the head (title, description, canonical URL, link-preview tags), the Vega
+ * family header, the footer, and the page's JSON-LD (at the end, so the head stays short).
+ * Scripts are external files only (the CSP allows nothing else); page-init.js enables
+ * the expandable lists before the stylesheet paints them.
+ */
+import "../styles/site.css";
+import { HOME_URL, jsonForScript, noindex as keepOut, REPO, SITE_NAME, STATUS_PATH, STATUS_TITLE } from "../lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  /** The page's path relative to the home page ("" for home). */
+  path: string;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { title, description, path, jsonLd = [] } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const canonical = new URL(path, HOME_URL).href;
+// Deployments other than vega/vega-datasets (forks, previews) stay out of search results.
+const noindex = keepOut(process.env);
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+{noindex && <meta name="robots" content="noindex">}
+<meta property="og:site_name" content={SITE_NAME}>
+<meta property="og:type" content="website">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#234a3b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23234a3b'/%3E%3Cpath d='M4 11h2V7H4zm3 0h2V4H7zm3 0h2V8h-2z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="sitemap" type="application/xml" href={`${base}sitemap.xml`}>
+<script is:inline src={`${base}page-init.js`}></script>
+<slot name="head" />
+</head>
+<body>
+<a class="skip-link" href="#page">Skip to content</a>
+<header class="vg-header">
+  <nav class="vg-nav" aria-label="Site">
+    <div class="vg-switcher">
+      <a class="vg-title" href={base} aria-current={path === "" ? "page" : undefined}>vega-datasets</a>
+      <details class="vg-projects">
+        <summary aria-label="Vega projects"></summary>
+        <div class="vg-switcher-menu">
+          <a href="https://vega.github.io/vega/">Vega</a>
+          <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>
+          <a href="https://altair-viz.github.io/">Altair</a>
+          <a href="https://vega.github.io/vega-lite-api/">Vega-Lite API</a>
+        </div>
+      </details>
+    </div>
+    <div class="vg-primary">
+      <a href={path === "" ? "#browse" : `${base}#browse`} data-browse aria-current={path === "" ? "page" : undefined}>Browse Datasets</a>
+      <a href={`${base}${STATUS_PATH}`} aria-current={path === STATUS_PATH ? "page" : undefined}>{STATUS_TITLE}</a>
+    </div>
+    <div class="vg-secondary">
+      <a href={REPO}>GitHub</a>
+      <a href="https://vega.github.io/editor/" data-wide>Try Online</a>
+    </div>
+  </nav>
+</header>
+<main id="page" tabindex="-1">
+  <slot />
+</main>
+<footer class="vg-footer">
+  <div class="wrap footer-row">
+    <p id="footer-note"><slot name="footer" /></p>
+    <a class="idl-logo" href="https://idl.cs.washington.edu/" title="UW Interactive Data Lab"><img src={`${base}idl-logo.png`} width="75" height="54" alt="UW Interactive Data Lab"></a>
+  </div>
+</footer>
+{jsonLd.map((ld) => <script type="application/ld+json" set:html={jsonForScript(ld)} />)}
+<script>
+  import "../client/common";
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 Vega Datasets is the centralized hub for over 70 datasets featured in the examples and documentation of Vega, Vega-Lite, Altair and related projects. A dataset catalog conforming to the [Data Package Standard v2](https://datapackage.org/blog/2024-06-26-v2-release/) provides information on data structure, sourcing, and licensing. Generation scripts document data provenance and transformation, enabling reproducibility and transparency throughout the data preparation process. Each dataset is curated to illustrate essential visualization concepts, statistical methods, or domain-specific applications.
 
-This data lives at https://github.com/vega/vega-datasets and can be accessed via CDN at https://cdn.jsdelivr.net/npm/vega-datasets.
+This data lives at https://github.com/vega/vega-datasets and can be accessed via CDN at https://cdn.jsdelivr.net/npm/vega-datasets. The [Field Guide](https://vega.github.io/vega-datasets/) shows every dataset with its fields, sources, license, and the gallery examples that use it.
 
 ## Contributing
 
@@ -80,7 +80,7 @@ Repository highlights include:
 - Statistical examples ([Anscombe's quartet](datapackage.md#anscombesjson), [iris dataset](datapackage.md#irisjson))
 - Historical records ([wheat prices](datapackage.md#wheatjson), [monarch data](datapackage.md#monarchsjson))
 
-For the complete list and details, see the [data directory](https://github.com/vega/vega-datasets/tree/main/data) or review the [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md#resources) file.
+For the complete list and details, browse the [Field Guide](https://vega.github.io/vega-datasets/), see the [data directory](https://github.com/vega/vega-datasets/tree/main/data) or review the [datapackage.md](https://github.com/vega/vega-datasets/blob/main/datapackage.md#resources) file.
 
 ## Dataset Information
 
