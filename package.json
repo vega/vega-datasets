@@ -39,7 +39,7 @@
     "@types/d3-dsv": "^3.0.7",
     "datalib": "^1.9.3",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
+    "lint-staged": "^17.6.0",
     "release-it": "^21.0.1",
     "rollup": "^4.47.1",
     "rollup-plugin-bundle-size": "^1.0.3",
