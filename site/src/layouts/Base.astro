@@ -76,7 +76,7 @@ const noindex = keepOut(process.env);
 <footer class="vg-footer">
   <div class="wrap footer-row">
     <p id="footer-note"><slot name="footer" /></p>
-    <a class="idl-logo" href="https://idl.cs.washington.edu/" title="UW Interactive Data Lab"><img src={`${base}idl-logo.png`} width="75" height="54" alt="UW Interactive Data Lab"></a>
+    <a class="idl-logo" href="https://idl.cs.washington.edu/" title="UW Interactive Data Lab"><img src={`${base}idl-logo.svg`} width="48" height="34" alt="UW Interactive Data Lab"></a>
   </div>
 </footer>
 {jsonLd.map((ld) => <script type="application/ld+json" set:html={jsonForScript(ld)} />)}

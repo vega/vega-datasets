@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -14 48 34" width="48" height="34">
+  <title>UW Interactive Data Lab</title>
+  <!-- Static mark from https://idl.uw.edu/. -->
+  <rect fill="#939597" x="-24" y="-14" height="6" width="6" />
+  <rect fill="#939597" x="-24" y="0" height="6" width="6" />
+  <rect fill="#939597" x="-24" y="7" height="6" width="6" />
+  <rect fill="#939597" x="-24" y="14" height="6" width="6" />
+  <rect fill="#652c90" x="0" y="0" height="6" width="6" />
+  <rect fill="#652c90" x="-7" y="0" height="6" width="6" />
+  <rect fill="#652c90" x="-14" y="0" height="6" width="6" />
+  <rect fill="#652c90" x="0" y="-7" height="6" width="6" />
+  <rect fill="#652c90" x="0" y="-14" height="6" width="6" />
+  <rect fill="#652c90" x="0" y="7" height="6" width="6" />
+  <rect fill="#652c90" x="0" y="14" height="6" width="6" />
+  <rect fill="#652c90" x="-14" y="7" height="6" width="6" />
+  <rect fill="#652c90" x="-14" y="14" height="6" width="6" />
+  <rect fill="#652c90" x="-7" y="14" height="6" width="6" />
+  <rect fill="#d5a928" x="11" y="-14" height="6" width="6" />
+  <rect fill="#d5a928" x="11" y="-7" height="6" width="6" />
+  <rect fill="#d5a928" x="11" y="0" height="6" width="6" />
+  <rect fill="#d5a928" x="11" y="7" height="6" width="6" />
+  <rect fill="#d5a928" x="11" y="14" height="6" width="6" />
+  <rect fill="#d5a928" x="18" y="14" height="6" width="6" />
+</svg>
