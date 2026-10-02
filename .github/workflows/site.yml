@@ -1,0 +1,100 @@
+name: Site
+
+# Publishing requires Settings → Pages → Source → GitHub Actions.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    name: Build site
+
+    env:
+      # Point metadata edit links at the repository being built.
+      SITE_REPO: ${{ github.repository }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      # Preserve existing data and documentation URLs before installing dependencies.
+      - name: Build repository pages (Jekyll)
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          cache: 'npm'
+          node-version: 24
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: ">=0.5.0"
+          enable-cache: true
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build the website
+        run: npm run site:build
+        env:
+          # Ask search engines not to index fork previews.
+          SITE_NOINDEX: ${{ github.repository != 'vega/vega-datasets' && '1' || '0' }}
+
+      - name: Type-check the website
+        run: npm run site:check
+
+      - name: Test the website
+        run: npm run site:test
+
+      # Fail PRs on broken links; warn on main so external outages cannot block data updates.
+      - name: Check links
+        run: npm run site:check-links
+        continue-on-error: ${{ github.event_name != 'pull_request' }}
+
+      - name: Combine website and repository pages
+        run: |
+          mkdir pages
+          cp -R _site/. pages/
+          rm -rf pages/site
+          cp -R site/dist/. pages/
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: pages
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+
+    name: Deploy
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

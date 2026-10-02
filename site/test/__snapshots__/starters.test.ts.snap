@@ -1,0 +1,78 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`starter chart choices 1`] = `
+"airports: circle latitude=latitude longitude=longitude color=country
+annual_precip: none
+anscombe: point x=X y=Y color=Series
+barley: line x=year y=mean(yield) color=variety
+birdstrikes: line x=yearmonth(Flight Date) y=mean(Cost Other)
+budget: bar x=count() y=Source category name
+budgets: line x=budgetYear y=mean(value)
+burtin: point x=Penicillin y=Streptomycin color=Gram_Staining
+cars: line x=Year y=mean(Miles_per_Gallon) color=Origin
+co2_concentration: line x=Date y=CO2
+countries: line x=year y=mean(fertility)
+crimea: line x=date y=wounds
+disasters: line x=Year y=mean(Deaths) color=Entity
+driving: line x=year y=mean(miles)
+earthquakes: geoshape
+ffox: none
+flare: none
+flare_dependencies: none
+flights_10k: line x=yearmonth(date) y=mean(delay)
+flights_200k_arrow: none
+flights_200k_json: point x=delay y=distance
+flights_20k: line x=yearmonth(date) y=mean(delay)
+flights_2k: line x=yearmonth(date) y=mean(delay)
+flights_3m: none
+flights_5k: line x=yearmonth(date) y=mean(delay)
+flights_airport: bar x=count y=count()
+football: bar x=count() y=division
+gallery_examples: bar x=count() y=gallery_name
+gapminder: line x=year y=mean(pop)
+gapminder_health_income: point x=income y=health color=region
+gimp: none
+github: bar x=count y=count()
+global_temp: line x=year y=mean(temp)
+icon_7zip: none
+income: point x=pct y=total color=region
+iowa_electricity: line x=year y=net_generation
+jobs: line x=year y=mean(count) color=sex
+la_riots: circle latitude=latitude longitude=longitude color=gender
+london_boroughs: geoshape
+london_centroids: point x=cx y=cy
+london_tube_lines: geoshape
+lookup_groups: bar x=count() y=person
+lookup_people: bar x=mean(height) y=name
+miserables: none
+monarchs: bar x=start x2=end y=name
+movies: line x=year(Release Date) y=mean(US Gross)
+normal_2d: point x=u y=v
+obesity: bar x=mean(rate) y=state
+ohlc: line x=date y=open
+penguins: point x=Beak Length (mm) y=Beak Depth (mm) color=Species
+platformer_terrain: point x=x y=y color=name
+political_contributions: line x=Coverage_End_Date y=Total_Receipts
+population: line x=year y=mean(people)
+population_engineers_hurricanes: point x=population y=engineers
+seattle_weather: line x=yearmonth(date) y=mean(precipitation)
+seattle_weather_hourly_normals: line x=yearmonth(date) y=mean(pressure)
+sp500: line x=date y=price
+sp500_2000: line x=year(date) y=mean(open)
+species: bar x=mean(habitat_yearround_pct) y=common_name
+stocks: line x=date y=mean(price) color=symbol
+udistrict: none
+unemployment: bar x=rate y=count()
+unemployment_across_industries: line x=yearmonth(date) y=mean(count)
+uniform_2d: point x=u y=v
+us_10m: geoshape
+us_employment: line x=month y=nonfarm
+us_state_capitals: circle latitude=lat longitude=lon
+volcano: none
+weather: line x=yearmonth(date) y=mean(precipitation) color=location
+weekly_weather: none
+wheat: line x=year y=mean(wheat)
+windvectors: circle latitude=latitude longitude=longitude
+world_110m: geoshape
+zipcodes: circle latitude=latitude longitude=longitude"
+`;

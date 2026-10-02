@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import { REPO } from "../lib/seo";
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Page Not Found · Vega Datasets" description="This page isn't part of the Vega Datasets website." path="404.html">
+  <section class="wrap load-error" aria-labelledby="nf-h">
+    <h1 id="nf-h" class="home-title">Page Not Found</h1>
+    <p>There's no page here. The <a href={base}>dataset list</a> has every dataset, and the files themselves are under <a href={`${REPO}/tree/main/data`}>data/</a>.</p>
+  </section>
+  <Fragment slot="footer">Documented in <a href={`${REPO}/blob/main/datapackage.json`}>datapackage.json</a> · Code BSD-3-Clause</Fragment>
+</Base>

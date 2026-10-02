@@ -1,0 +1,51 @@
+---
+/**
+ * The metadata coverage page, for contributors: what "fully described" means,
+ * a few calm totals, and every dataset against the checklist (components/StatusTable.astro).
+ * Linked from the site menu, dataset pages with gaps and the home page's Contribute box.
+ */
+import StatusTable from "../../components/StatusTable.astro";
+import Base from "../../layouts/Base.astro";
+import { summarize } from "../../lib/completeness";
+import { formatCount } from "../../lib/format";
+import { REPO, STATUS_PATH, STATUS_TITLE, SITE_NAME } from "../../lib/seo";
+import { catalog as c } from "../../prerender/catalog";
+import { METADATA_FILE_URL, metadataEntry } from "../../prerender/metadata-file";
+
+const base = import.meta.env.BASE_URL;
+const s = summarize(c.datasets);
+const of = (n: number, total: number) => `${formatCount(n)} of ${formatCount(total)}`;
+const description = "Which datasets in vega-datasets are fully described (title, description, source, license and field descriptions), and where to fill in the rest.";
+---
+<Base title={`${STATUS_TITLE} · ${SITE_NAME}`} description={description} path={STATUS_PATH}>
+  <div class="wrap ds-bar">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={base}>Datasets</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{STATUS_TITLE}</span>
+    </nav>
+  </div>
+
+  <header class="wrap status-head">
+    <h1>{STATUS_TITLE}</h1>
+    <p class="status-intro">A dataset is fully described when it has a title, a description, a source, a known license, and a description for every field.</p>
+    <p class="status-intro">To fill a gap, edit the dataset's entry in <a href={METADATA_FILE_URL}><code>datapackage_additions.toml</code></a> (each row links to it) as the <a href={`${REPO}/blob/main/CONTRIBUTING.md`}>contribution guidelines</a> describe.</p>
+    <p class="status-intro muted">Categories, constraints, missing-value markers and keys apply only to some datasets, so they are listed where documented but never counted as gaps.</p>
+  </header>
+
+  <section class="wrap status-body" aria-labelledby="status-h">
+    <h2 id="status-h" class="visually-hidden">Every Dataset</h2>
+    <dl class="kv status-sum">
+      <dt>Fully described</dt><dd>{of(s.complete, s.datasets)} datasets</dd>
+      <dt>Title</dt><dd>{of(s.datasets - s.missing.title, s.datasets)}</dd>
+      <dt>Description</dt><dd>{of(s.datasets - s.missing.description, s.datasets)}</dd>
+      <dt>Source</dt><dd>{of(s.datasets - s.missing.source, s.datasets)}</dd>
+      <dt>Known license</dt><dd>{of(s.datasets - s.missing.license, s.datasets)}</dd>
+      <dt>Field descriptions</dt><dd>{of(s.fields.described, s.fields.total)} fields</dd>
+    </dl>
+    <StatusTable datasets={c.datasets} entry={metadataEntry} />
+    <p class="sec-note">Sorted by number of gaps: each missing item counts once, and each field without a description counts once.</p>
+  </section>
+
+  <Fragment slot="footer">Documented in <a href={`${REPO}/blob/main/datapackage.json`}>datapackage.json</a> · Code BSD-3-Clause</Fragment>
+</Base>

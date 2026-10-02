@@ -20,6 +20,7 @@ dev = [
   "ruff>=0.14.2",
   "taplo>=0.9.3",
   { include-group = "gallery-examples" },
+  { include-group = "site" },
 ]
 gallery-examples = ["httpx>=0.28.1,<0.29"]
 geo-species = [
@@ -33,6 +34,7 @@ geo-species = [
   "setuptools",
   "tqdm",
 ]
+site = ["pillow>=11", { include-group = "gallery-examples" }]
 
 [tool.pytest.ini_options]
 markers = [
@@ -143,6 +145,7 @@ enableExperimentalFeatures = true
 ignore = ["../../../**/Lib"]
 include = [
   "./scripts/build_datapackage.py",
+  "./scripts/build_site_catalog.py",
   "./scripts/flights.py",
   "./scripts/generate_gallery_examples.py",
   "./scripts/income.py",

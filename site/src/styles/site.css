@@ -1,0 +1,766 @@
+/*
+ * The Vega Datasets site uses the tokens, type and header of
+ * vega.github.io/vega, /vega-lite and altair-viz.github.io.
+ * Colors come only from the tokens below.
+ *
+ * Gallery colors are the first slots of Vega's default categorical scheme
+ * (tableau10), always paired with the gallery's name:
+ *   Vega-Lite = blue, Vega = orange, Altair = teal.
+ */
+
+/* --- Tokens ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+  --surface: #ffffff; --surface-alt: #f8f8f8; --surface-code: #f6f6f6; --surface-pre: #f9f9f9; --surface-menu: #e2e2e2;
+  --surface-card: #ffffff;
+  --ink: #373a3c; --ink-strong: #000000; --ink-heading-4: #333333; --ink-muted: #666666; --ink-nav: #666666; --ink-faint: #aaaaaa;
+  --link: #3771ad; --rule: #cccccc; --rule-soft: #dddddd; --rule-faint: #eeeeee;
+  --button: #3771ad; --button-border: #153c63; --button-hover: #285e8e; --on-button: #ffffff;
+  --button-secondary: #ffffff; --button-secondary-border: #cccccc; --button-secondary-hover: #ebebeb;
+  --selected: #274c71; --selected-bg: #eef3f8; --selected-border: #274c71; --tab-accent: #274c71;
+  --warn-border: #e2c08d; --warn-bg: #fdf6ea; --warn-ink: #7a4a00;
+  --success: #1a7f37; --focus: #0969da; --missing: #b53e3e;
+  --chart-1: #4c78a8; --chart-2: #f58518; --chart-4: #72b7b2;
+  --motion-neutral: #c4c4c4; --motion-watermark: #eeeeee;
+  --shadow-menu: 0 0 20px 5px rgb(0 0 0 / 0.2); --shadow-pop: 0 4px 14px rgb(0 0 0 / 0.16);
+
+  /* The site's own header hue (Vega is plum, Vega-Lite blue) and its ink. */
+  --header: #234a3b; --header-ink: #eeeeee; --header-ink-active: #ffffff; --header-hover: #e5b928;
+
+  --g-vegalite: var(--chart-1); --g-vega: var(--chart-2); --g-altair: var(--chart-4);
+
+  --font-sans: "Helvetica Neue", Helvetica, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  --page-max: 1320px; --page-gutter: 20px; --header-height: 54px;
+  --radius-tag: 2px; --radius-button: 4px;
+}
+/* --ink-muted is #666, not the family sites' #777: that is 4.48:1 on white, under AA for
+   the small labels this site sets in it (#666 is 5.7:1). */
+/* --link is the family's own button blue (#3771ad, 5.1:1 on white, 4.6:1 or more on every light
+   ground here), not the family sites' steelblue #4682b4, which is 4.1:1 on white and under AA
+   for the small link text this site uses. */
+
+/* --- Base -------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: var(--header-height); }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+/* In running text a link is underlined too: its color alone doesn't set it apart from the
+   words around it (WCAG 1.4.1). Navigation, cards, buttons, tabs and chips stay plain. */
+.md a, .sec-note a, .note a, .f-desc a, .prov dd a, #footer-note a, .about-body a, .load-error a, .contribute p a, .status-intro a, .quickstart .note button.link {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em;
+}
+.md a:hover, .sec-note a:hover, .note a:hover, .f-desc a:hover, .prov dd a:hover, #footer-note a:hover, .about-body a:hover, .load-error a:hover, .contribute p a:hover, .status-intro a:hover, .quickstart .note button.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.skip-link {
+  position: fixed; top: 8px; left: var(--page-gutter); z-index: 30;
+  padding: 8px 12px; background: var(--surface); color: var(--link);
+  transform: translateY(calc(-100% - 12px));
+}
+.skip-link:focus { transform: none; }
+
+h1, h2, h3, h4 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+code, .mono { font-family: var(--font-mono); font-size: 0.85em; }
+.muted { color: var(--ink-muted); }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+/* --- Header: the Vega family bar ------------------------------------------------ */
+.vg-header { position: sticky; top: 0; z-index: 20; background: var(--header); font-size: 16px; }
+.vg-nav {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0 2em;
+  max-width: var(--page-max); margin: 0 auto; padding: 0 var(--page-gutter); min-height: var(--header-height);
+}
+.vg-header a { color: var(--header-ink); text-decoration: none; line-height: var(--header-height); }
+.vg-header a:hover, .vg-header a:focus-visible { color: var(--header-hover); }
+.vg-header a[aria-current] { color: var(--header-ink-active); font-weight: bold; }
+.vg-header :focus-visible { outline-color: var(--header-hover); }
+.vg-primary, .vg-secondary { display: flex; flex-wrap: wrap; align-items: center; gap: 0 2em; }
+.vg-secondary { margin-left: auto; }
+.vg-switcher { position: relative; display: flex; align-items: center; }
+.vg-header a.vg-title { display: inline-block; font-weight: bold; font-size: 1.4em; color: var(--header-ink); }
+.vg-projects > summary {
+  display: grid; place-items: center; width: 44px; height: 44px; margin-left: 2px;
+  list-style: none; cursor: pointer; color: var(--header-ink);
+}
+.vg-projects > summary::-webkit-details-marker { display: none; }
+.vg-projects > summary::marker { content: ""; }
+.vg-projects > summary::after {
+  content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg);
+}
+.vg-projects[open] > summary { background: rgb(255 255 255 / 0.12); }
+.vg-projects[open] > summary::after { transform: translateY(2px) rotate(225deg); }
+.vg-switcher-menu {
+  position: absolute; top: 100%; left: -20px; min-width: 190px; padding: 6px 0; display: grid; z-index: 10;
+  background: var(--surface-menu); box-shadow: var(--shadow-menu);
+}
+.vg-header .vg-switcher-menu a { color: var(--ink-nav); font-weight: 600; line-height: 44px; padding: 0 20px; }
+.vg-header .vg-switcher-menu a:hover, .vg-header .vg-switcher-menu a:focus-visible { color: var(--ink-strong); }
+
+/* --- Footer ------------------------------------------------------------------- */
+.vg-footer { border-top: 1px solid var(--rule-faint); margin-top: 48px; }
+.footer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
+.footer-row p { font-size: 0.9em; color: var(--ink-muted); }
+/* A dataset page with metadata gaps: one quiet line under the edit link, to the status page. */
+.footer-gaps { display: block; margin-top: 4px; }
+.idl-logo img { display: block; height: 40px; width: auto; }
+
+/* --- Gallery identity -------------------------------------------------------- */
+.g-vega-lite { --g: var(--g-vegalite); }
+.g-vega { --g: var(--g-vega); }
+.g-altair { --g: var(--g-altair); }
+
+.gtag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+.gdot { width: 9px; height: 9px; background: var(--g); flex: none; }
+
+/* --- Usage stack: example counts per gallery ------------------------------------ */
+.usage { display: inline-flex; }
+.stack { display: flex; height: 8px; background: var(--rule-faint); }
+.stack > span { display: block; height: 100%; background: var(--g); }
+
+/* --- Sparklines (field histograms) --------------------------------------------- */
+.hist { display: block; max-width: 100%; height: auto; overflow: visible; }
+.hist .bar { fill: var(--chart-1); }
+.hist .hit { fill: transparent; }
+/* The histogram is one tab stop; the arrow keys mark the bin they're on as .active. */
+.hist-bin:hover .bar, .hist-bin.active .bar { fill: var(--ink-strong); }
+.spark-wrap { display: block; width: max-content; max-width: 100%; }
+.hist-base { stroke: var(--rule); stroke-width: 1; }
+
+/* --- Tooltips: the hand-drawn profiles' and vega-tooltip's, one look --------------- */
+.tip, #vg-tooltip-element.vg-tooltip.custom-theme {
+  background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius-button);
+  box-shadow: 2px 2px 4px rgb(0 0 0 / 0.1); font-family: var(--font-sans); font-size: 12px; line-height: 1.4;
+}
+.tip { position: fixed; z-index: 1000; pointer-events: none; max-width: 280px; display: grid; gap: 1px; padding: 6px 8px; }
+.tip strong { color: var(--ink-strong); }
+.tip span { color: var(--ink-muted); font-family: var(--font-mono); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+#vg-tooltip-element.custom-theme td.key { color: var(--ink-muted); }
+#vg-tooltip-element.custom-theme td.value { font-family: var(--font-mono); color: var(--ink-strong); }
+
+/* Vega's SVG uses the page tokens consistently for static and live charts.
+   CSS overrides Vega's presentation attributes; the forced-colors rules below adapt
+   both kinds of chart to the viewer's system palette without redrawing the SVG. */
+:where(.catalog-chart, .explore-chart) svg .role-axis-label text,
+:where(.catalog-chart, .explore-chart) svg .role-legend-label text { fill: var(--ink-muted); }
+:where(.catalog-chart, .explore-chart) svg .role-axis-title text,
+:where(.catalog-chart, .explore-chart) svg .role-legend-title text,
+:where(.catalog-chart, .explore-chart) svg .mark-text.role-mark text { fill: var(--ink); }
+:where(.catalog-chart, .explore-chart) svg .role-axis-domain line,
+:where(.catalog-chart, .explore-chart) svg .role-axis-tick line { stroke: var(--rule); }
+:where(.catalog-chart, .explore-chart) svg .role-axis-grid line { stroke: var(--rule-faint); }
+/* An interval brush is a faint fill (brush_brush_bg) under a transparent frame (brush_brush):
+   only the fill takes the ink, or the frame covers the points it selects. */
+.catalog-chart svg [class*="brush_brush_bg"] path { fill: var(--ink); }
+.catalog-chart svg [class*="brush_brush"]:not([class*="brush_brush_bg"]) path { stroke: var(--ink-muted); }
+
+/* vega-embed actions menu */
+.vega-embed { width: 100%; }
+/* Embed injects a faded default later; keep this control visible without hover on touch. */
+.vega-embed.has-actions > details > summary { opacity: 1; }
+.vega-embed .vega-actions {
+  background: var(--surface); border: 1px solid var(--rule-soft); border-radius: var(--radius-button);
+  box-shadow: var(--shadow-pop); font-family: var(--font-sans);
+}
+.vega-embed .vega-actions a { color: var(--ink); font-family: var(--font-sans); }
+.vega-embed .vega-actions a:hover { background: var(--button-secondary-hover); color: var(--ink-strong); }
+.vega-embed .vega-actions::before, .vega-embed .vega-actions::after { display: none; }
+
+/* --- Buttons ----------------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; padding: 0 16px;
+  border-radius: var(--radius-button); border: 1px solid var(--button-secondary-border); background: var(--button-secondary);
+  color: var(--ink-heading-4); font: 15px/1 var(--font-sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.btn:hover { background: var(--button-secondary-hover); text-decoration: none; }
+.btn-primary { background: var(--button); border-color: var(--button-border); color: var(--on-button); }
+.btn-primary:hover { background: var(--button-hover); }
+.btn-quiet { border-color: transparent; background: transparent; color: var(--link); padding-inline: 0; }
+.btn-quiet:hover { background: transparent; text-decoration: underline; }
+
+/* --- Tables and lists ------------------------------------------------------------------- */
+
+.table-scroll { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+table.preview { border-collapse: collapse; font-family: var(--font-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; min-width: 100%; }
+table.preview th { font-family: var(--font-sans); font-weight: bold; color: var(--ink-strong); background: var(--surface); position: sticky; top: 0; }
+table.preview th, table.preview td { padding: 6px 13px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--rule); }
+table.preview tbody tr:nth-child(2n) td { background: var(--surface-alt); }
+table.preview tr:last-child td { border-bottom: 0; }
+
+.plain-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+
+.md > * + * { margin-top: 0.75em; }
+.md h3, .md h4, .md h5 { font-size: 1.1em; font-weight: bold; color: var(--ink-strong); margin-top: 1.1em; }
+.md blockquote { margin: 0.75em 0 0; padding: 0 15px; border-left: 4px solid var(--rule-soft); color: var(--ink-muted); }
+.md code { margin: 0 2px; padding: 0 4px; background: var(--surface-code); border: 1px solid var(--rule-soft); }
+.md ul, .md ol { padding-left: 1.2em; }
+.md pre { margin: 0.75em 0 0; padding: 8px 10px; overflow-x: auto; background: var(--surface-pre); border: 1px solid var(--rule-faint); font-size: 12.5px; line-height: 1.5; }
+.md pre code { margin: 0; padding: 0; border: 0; background: none; font-size: inherit; }
+
+.load-error { padding: 24px; display: grid; gap: 6px; max-width: 520px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Windows High Contrast and other forced-color modes replace the page's colors with the
+   user's. The usage bars and gallery keys carry data, so they keep theirs; pressed controls,
+   which a fill marked, get an outline. Vega's charts take the mode's colors from their config
+   (lib/vega-theme.ts chartConfig), since CSS can't reach a canvas and the mode leaves SVG
+   attributes alone. SVG charts here are also themed by the role-class rules above, which
+   the mode leaves alone too and which outrank the config's attributes, and the catalog
+   chart drawn when the site was built (.chart-static) has no config to redraw with: so
+   their text, rules and brush take the system colors here as well. */
+@media (forced-colors: active) {
+  .stack > span, .gdot { forced-color-adjust: none; }
+  .stack { outline: 1px solid CanvasText; }
+  .chip[aria-pressed="true"], .seg button[aria-pressed="true"], .motion-play[aria-pressed="true"] {
+    outline: 2px solid Highlight; outline-offset: -2px;
+  }
+  .hist-bin.active .bar { fill: Highlight; }
+  /* On the cells: the sticky name cell would paint over an outline on the row. */
+  table.status tbody tr:target > * { border-block: 2px solid Highlight; }
+  /* !important: the mode's colors must beat every theming rule above, however specific
+     (.mark-text.role-mark text, the dataset labels, outranks a plain "svg text"). */
+  :is(.catalog-chart, .explore-chart) svg text { fill: CanvasText !important; }
+  :is(.catalog-chart, .explore-chart) svg :is(.role-axis-domain, .role-axis-tick) line { stroke: CanvasText !important; }
+  :is(.catalog-chart, .explore-chart) svg .role-axis-grid line { stroke: GrayText !important; }
+  .catalog-chart svg [class*="brush_brush_bg"] path { fill: Highlight !important; }
+  .catalog-chart svg [class*="brush_brush"]:not([class*="brush_brush_bg"]) path { stroke: Highlight !important; }
+  .catalog-chart svg .mark-symbol path:active,
+  .catalog-chart svg .mark-symbol a:active path { stroke: Highlight !important; }
+}
+
+/* --- Layout ------------------------------------------------------------------------ */
+.wrap { max-width: var(--page-max); margin: 0 auto; padding-inline: var(--page-gutter); }
+#page { outline: none; }
+
+/* --- Dataset page -------------------------------------------------------------------- */
+.phone-only { display: none; }
+.ds-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 18px; font-size: 14px; }
+.crumbs { display: flex; gap: 8px; color: var(--ink-muted); }
+.crumbs [aria-current] { color: var(--ink); }
+.stepper { display: flex; gap: 16px; align-items: center; }
+.stepper .mono { font-size: 12px; color: var(--ink-muted); }
+.step { text-decoration: none; }
+
+.ds-head { display: flex; flex-direction: column; gap: 14px; padding-top: 20px; }
+.ds-name { font-family: var(--font-mono); font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: var(--ink-strong); overflow-wrap: anywhere; }
+.ds-title { font-size: 18px; line-height: 1.4; color: var(--ink-muted); max-width: 46em; }
+.lede { font-size: 1.3em; font-weight: 300; line-height: 1.5; max-width: 46em; }
+.body-md { max-width: 66ch; font-size: 15px; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--ink); white-space: nowrap;
+  border: 1px solid var(--rule); border-radius: var(--radius-tag); padding: 2px 8px; background: var(--surface);
+}
+.badge.warn { border-color: var(--warn-border); background: var(--warn-bg); color: var(--warn-ink); }
+.badge-dots { display: inline-flex; }
+.badge-dots .gdot + .gdot { margin-left: -3px; }
+
+.ds-body { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: start; padding-top: 24px; }
+.ds-main { display: flex; flex-direction: column; gap: 36px; min-width: 0; }
+.section-nav { position: sticky; top: var(--header-height); z-index: 5; background: var(--surface); }
+a.tab, a.tab:hover { text-decoration: none; display: inline-block; }
+.section-nav .tab[aria-current] { color: var(--ink-strong); font-weight: bold; border-bottom-color: var(--tab-accent); }
+.tab .n { font: 12px var(--font-mono); color: var(--ink-muted); margin-left: 4px; font-weight: normal; }
+.ds-sec { display: flex; flex-direction: column; gap: 12px; min-width: 0; scroll-margin-top: calc(var(--header-height) + 56px); }
+.ds-sec h2 { font-size: 22px; font-weight: 500; color: var(--ink-strong); }
+.ds-sec h2:focus { outline: none; }
+.sec-meta { font-size: 13px; color: var(--ink-muted); }
+.sec-note { font-size: 13px; color: var(--ink-muted); }
+.sec-foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.sec-foot .btn { flex: none; }
+
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: var(--radius-button); overflow: hidden; }
+.seg button {
+  appearance: none; border: 0; border-right: 1px solid var(--rule); background: var(--surface); font: 13px var(--font-sans);
+  color: var(--ink); padding: 6px 12px; cursor: pointer;
+}
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--button); color: var(--on-button); }
+
+/* Fields: a data dictionary */
+.dict { border-collapse: collapse; width: 100%; font-size: 14px; }
+.dict th { text-align: left; font-weight: bold; font-size: 12.5px; color: var(--ink-muted); border-bottom: 1px solid var(--rule); padding: 8px 12px 8px 0; }
+.dict td { border-bottom: 1px solid var(--rule-faint); padding: 10px 12px 10px 0; vertical-align: middle; }
+/* Long unbroken values (URLs, list literals) wrap instead of widening the table past its column. */
+.f-sum { overflow-wrap: anywhere; }
+.f-name { overflow-wrap: break-word; }
+.dict code { padding: 0 4px; background: var(--surface-code); border: 1px solid var(--rule-soft); color: var(--ink); font-size: 13px; }
+.f-desc { margin-top: 4px; font-size: 13px; color: var(--ink-muted); max-width: 44ch; }
+/* Schema metadata, when it is filled in: quiet, under the name and beside the type. */
+.f-title { display: block; margin-top: 4px; font-size: 13.5px; color: var(--ink); max-width: 44ch; }
+.f-key { margin-left: 6px; font: 11px var(--font-mono); color: var(--ink-muted); border: 1px solid var(--rule); border-radius: var(--radius-tag); padding: 0 4px; white-space: nowrap; }
+.f-meta { margin-top: 4px; font-size: 12.5px; color: var(--ink-muted); max-width: 44ch; }
+.f-format { display: block; margin-top: 4px; font-size: 11.5px; color: var(--ink-muted); white-space: nowrap; }
+.joins code { font-size: 12.5px; }
+.type {
+  font: 11.5px var(--font-mono); color: var(--ink-heading-4); background: var(--surface-code);
+  border: 1px solid var(--rule-soft); padding: 1px 6px; border-radius: var(--radius-tag); white-space: nowrap;
+}
+.f-dist { width: 136px; font-size: 12.5px; color: var(--ink-muted); }
+.f-sum { font-size: 13.5px; }
+.f-sum.mono { font-size: 12.5px; }
+.dict th.f-miss, .f-miss { text-align: right; white-space: nowrap; padding-right: 0; }
+/* Missing values are part of these example datasets; present their counts as neutral metadata. */
+td.f-miss { font-size: 12.5px; color: var(--ink-muted); }
+.spark { display: block; }
+/* A field without a description: a quiet link to its dataset's entry in the metadata file. */
+.f-add {
+  margin-left: 8px; font-size: 12px; color: var(--ink-muted); white-space: nowrap;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em;
+}
+.f-add:hover { color: var(--link); }
+
+/* --- Metadata coverage page ---------------------------------------------------------- */
+.status-head { display: flex; flex-direction: column; gap: 10px; padding-top: 20px; }
+.status-head h1 { font-size: 40px; font-weight: 400; line-height: 1.1; color: var(--ink-strong); }
+.status-intro { max-width: 66ch; font-size: 15px; }
+.status-body { display: flex; flex-direction: column; gap: 16px; padding-top: 28px; }
+.kv.status-sum { grid-template-columns: 150px minmax(0, 1fr); max-width: 420px; }
+/* Positioned, so the visually hidden words in its cells (absolutely positioned) scroll with it
+   instead of widening the page. */
+.status-scroll { position: relative; }
+table.status { border-collapse: collapse; min-width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+table.status th, table.status td { padding: 7px 12px; text-align: left; white-space: nowrap; vertical-align: top; border-bottom: 1px solid var(--rule-faint); }
+table.status thead th { font-size: 12.5px; color: var(--ink-muted); border-bottom-color: var(--rule); }
+table.status tbody tr:last-child > * { border-bottom: 0; }
+/* The dataset's name stays in view while the table scrolls sideways. */
+table.status tbody th { position: sticky; left: 0; background: var(--surface); font: 13px var(--font-mono); }
+table.status .st-num { text-align: right; }
+.st-ok, .st-note, .st-info { color: var(--ink-muted); }
+.st-gap { color: var(--ink-strong); }
+.st-na { color: var(--ink-faint); }
+table.status td.st-info { white-space: normal; min-width: 16em; }
+/* The row a dataset page's footer links to. */
+table.status tbody tr:target > * { background: var(--selected-bg); }
+
+/* Explore */
+/* vega-embed puts each .vega-bind straight into the element passed as `bind`. */
+.binds { display: flex; gap: 18px; font-size: 13px; }
+/* One row at every width: a select holding a long field name narrows (and clips it) rather
+   than wrap onto a second row the page didn't reserve. The open list and the tooltip show it in full. */
+.binds .vega-bind { flex: 0 1 auto; min-width: 0; }
+.binds .vega-bind label { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.binds .vega-bind-name { color: var(--ink-muted); line-height: 18px; }
+/* The pickers' row, held before vega-embed fills it (one row of 32px selects; on a phone, names over 44px selects). */
+.binds[data-reserve] { min-height: 32px; }
+.binds select {
+  height: 32px; border: 1px solid var(--rule); border-radius: var(--radius-button); background: var(--surface);
+  color: var(--ink); font: 13px var(--font-mono); padding: 0 6px;
+  min-width: 0; max-width: 100%; text-overflow: ellipsis;
+}
+/* The height the chart draws at (--chart-h, --chart-h-phone: measured when the site is built), held
+   before it draws; a chart waiting for its button shows the button in the middle of that space. */
+.explore-chart { position: relative; min-height: var(--chart-h, 0); }
+.explore-view.pending { position: absolute; inset: 0; visibility: hidden; }
+@media (max-width: 640px) { .explore-chart { min-height: var(--chart-h-phone, var(--chart-h, 0)); } }
+.explore-chart > .btn.draw:only-child { position: absolute; inset: 0; margin: auto; width: fit-content; height: fit-content; }
+/* A heavy map's picture from the build, until the reader draws the live map. */
+.explore-chart .chart-preview { display: block; max-width: 100%; height: auto; }
+.explore-chart .chart-preview + .btn { margin-top: 12px; }
+.chart-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.chart-foot .btn { flex: none; }
+.chart-caption { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--ink-muted); }
+.features { font-size: 12px; color: var(--ink-muted); }
+
+/* Preview */
+.ds-image { margin: 0; }
+.ds-image img { max-width: 200px; image-rendering: pixelated; border: 1px solid var(--rule-soft); }
+
+/* Examples */
+.ex-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.ex { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+/* Gallery thumbnails are drawn on white. overflow: hidden lets aspect-ratio hold for
+   tall thumbnails (it otherwise grows to fit its content). */
+.ex-thumb { display: block; aspect-ratio: 4 / 3; overflow: hidden; margin-bottom: 2px; padding: 6px; background: #ffffff; outline: 1px solid var(--rule-soft); outline-offset: -1px; }
+.ex-thumb:hover { outline: 2px solid var(--link); }
+.ex-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.ex-name { display: flex; gap: 6px; align-items: baseline; color: var(--ink-strong); font-size: 14px; text-decoration: none; }
+.ex-name:hover { text-decoration: underline; }
+.ex-name .gdot { flex: none; }
+.ex-links { font-size: 12.5px; padding-left: 15px; }
+.ex-links a { display: inline-block; padding: 6px 0; }
+.shelf-empty { padding: 20px; border: 1px dashed var(--rule); display: grid; gap: 6px; max-width: 60ch; }
+.shelf-empty p:first-child { font-size: 17px; color: var(--ink-strong); }
+
+/* Provenance and the rail's key-value lists */
+.kv { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 8px 12px; margin: 0; font-size: 14px; }
+.kv dt { color: var(--ink-muted); }
+.kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.kv.prov { grid-template-columns: 140px minmax(0, 1fr); }
+.kv code { padding: 0 4px; background: var(--surface-code); border: 1px solid var(--rule-soft); color: var(--ink); }
+
+/* Rail */
+.ds-rail { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.rail-box { border: 1px solid var(--rule-soft); background: var(--surface-card); padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.rail-box h3 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); font-weight: bold; }
+.rail-use .tabs { margin: 0 -4px; }
+.rail-use .tab { padding: 8px; font-size: 14px; }
+/* Long URLs and code lines wrap at hyphens and spaces first; mid-word only when a piece can't fit. */
+.rail-use .snippet { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+.rail-stack .usage, .rail-stack .stack { display: flex; width: 100%; height: 10px; }
+.rail-usage { display: grid; grid-template-columns: auto 1fr auto; gap: 6px 8px; align-items: center; font-size: 14px; }
+.rail-usage .mono { font-size: 12px; color: var(--ink); }
+
+/* In motion */
+.motion-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.motion-play { min-width: 84px; }
+.motion-scrub { display: flex; align-items: center; gap: 12px; flex: 1 1 260px; min-width: 0; }
+.motion-scrub input { flex: 1; min-width: 0; accent-color: var(--button); }
+.motion-year { font-family: var(--font-mono); font-size: 14px; font-variant-numeric: tabular-nums; min-width: 4ch; }
+.motion-regions { display: flex; flex-wrap: wrap; gap: 6px; }
+.motion-regions .chip {
+  font: 13px var(--font-sans); padding: 5px 10px; border-radius: var(--radius-button); border: 1px solid var(--rule);
+  background: var(--surface); color: var(--ink); cursor: pointer;
+}
+.motion-regions .chip[aria-pressed="true"] { background: var(--selected-bg); border-color: var(--selected-border); color: var(--selected); }
+.motion-chart { width: 100%; min-width: 0; overflow: hidden; min-height: 300px; background: var(--surface); border: 1px solid var(--rule-soft); padding: 12px 8px 4px; }
+.motion-note { font-size: 14px; }
+.motion-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+
+/* --- Controls shared by the pages: tabs, snippets, chips, link buttons ----------------- */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--rule); }
+.tab {
+  appearance: none; border: 0; background: none; font: 15px var(--font-sans); color: var(--ink-nav);
+  padding: 10px 14px; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer;
+}
+.tab:hover { color: var(--ink-strong); }
+.tab[aria-selected="true"] { color: var(--ink-strong); font-weight: bold; border-bottom-color: var(--tab-accent); }
+.snippet {
+  position: relative; margin: 0; background: var(--surface-pre); border: 1px solid var(--rule-faint);
+  padding: 12px; font: 12.5px/1.5 var(--font-mono); color: var(--ink); white-space: pre; overflow-x: auto;
+}
+.snippet code { font: inherit; }
+.snippets .snippet { border-top: 0; padding-right: 72px; min-height: 48px; }
+/* The panels share one grid cell, so the box is as tall as its tallest panel and switching
+   tabs never moves the page; a hidden panel keeps its space but isn't shown or reachable. */
+.snippets { display: grid; grid-template-columns: minmax(0, 1fr); }
+.snippets > .snippet[role="tabpanel"] { grid-row: 3; grid-column: 1; }
+.snippets-compact > .snippet[role="tabpanel"] { grid-row: 2; }
+.snippets-compact .tabs { flex-wrap: wrap; gap: 0; }
+.snippets-compact .tab { padding-inline: 10px; }
+/* The URL, above the tools' tabs: every tool uses it. */
+.snippets > .snippet-url { margin-bottom: 8px; border-top: 1px solid var(--rule-faint); }
+/* !important: beats the global [hidden] rule, which would drop the panel's space. */
+.snippets > .snippet[hidden] { display: block !important; visibility: hidden; }
+/* Long URLs wrap rather than scroll (how far they reach depends on the monospace font). */
+.quickstart .snippet { white-space: pre-wrap; overflow-wrap: anywhere; }
+.copy-btn {
+  position: absolute; top: 8px; right: 8px; appearance: none; border: 1px solid var(--button-secondary-border);
+  border-radius: var(--radius-button); background: var(--surface); font: 12px var(--font-sans); color: var(--ink-heading-4);
+  padding: 4px 8px; cursor: pointer;
+}
+.copy-btn:hover { background: var(--button-secondary-hover); }
+.copy-btn[data-copied] { border-color: var(--success); color: var(--success); }
+button.link { appearance: none; border: 0; background: none; padding: 0; font: inherit; color: var(--link); cursor: pointer; }
+button.link:hover { text-decoration: underline; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); border-radius: var(--radius-button);
+  background: var(--surface); font: 13px var(--font-sans); color: var(--ink); padding: 5px 10px; cursor: pointer; white-space: nowrap;
+}
+.chip .n { font: 12px var(--font-mono); color: var(--ink-muted); }
+.chip[aria-pressed="true"] { border-color: var(--selected-border); background: var(--selected-bg); color: var(--selected); }
+.chip .gtag { font-size: inherit; color: inherit; }
+.format-swatch { display: inline-block; flex: none; width: 9px; height: 9px; border-radius: 50%; forced-color-adjust: none; }
+.format-key { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+.format-key > span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* --- Home page ----------------------------------------------------------------------- */
+.home-heading { padding-top: 24px; padding-bottom: 22px; }
+.home-title { margin: 0 0 8px; font-size: 34px; font-weight: 300; line-height: 1.2; color: var(--ink-strong); }
+.home-title b { font-weight: bold; }
+.home-lead { max-width: 64ch; font-size: 18px; line-height: 1.5; }
+
+/* Two rows of curated examples, with stable image slots and persistent dataset labels.
+   The charts were drawn on white, so only their captions follow the site's theme. */
+.showcase {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px;
+  list-style: none; margin: 0; padding: 0;
+}
+.showcase li { min-width: 0; }
+.showcase a {
+  display: flex; flex-direction: column; height: 100%; border: 1px solid var(--rule-soft);
+  background: var(--surface-card); color: var(--ink); text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.showcase a:is(:hover, :focus-visible) { border-color: var(--link); background: var(--surface-alt); }
+.showcase a:is(:hover, :focus-visible) .showcase-name { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+.showcase img { display: block; width: 100%; height: 116px; object-fit: contain; padding: 6px; background: #ffffff; }
+.showcase-caption { display: flex; flex: 1; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-top: 1px solid var(--rule-soft); }
+.showcase-name { min-width: 0; overflow-wrap: anywhere; font-size: 12px; line-height: 1.5; }
+.showcase-arrow { flex: none; color: var(--ink-muted); font-size: 14px; }
+
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; padding-top: 24px; align-items: center; }
+.intro-text { display: flex; flex-direction: column; gap: 12px; }
+.intro .lead { font-size: 15px; line-height: 1.5; color: var(--ink-muted); }
+.release { font-size: 13px; color: var(--ink-muted); white-space: pre-wrap; }
+.lead-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.quickstart-link { padding: 8px 0; font-size: 14px; white-space: nowrap; }
+.quickstart { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 32px; margin-top: 24px; }
+.quickstart-intro { display: flex; flex-direction: column; align-items: start; gap: 12px; }
+.quickstart-intro h3 { font-size: 20px; color: var(--ink-strong); }
+.quickstart-intro p { max-width: 44ch; font-size: 15px; }
+#quickstart { scroll-margin-top: var(--header-height); }
+.quickstart .note { margin-top: 8px; font-size: 13px; color: var(--ink-muted); }
+.quickstart .note code { margin: 0 1px; padding: 0 4px; background: var(--surface-code); border: 1px solid var(--rule-soft); color: var(--ink); }
+
+.browse, .use, .about { padding-top: 48px; }
+.browse { display: flex; flex-direction: column; gap: 16px; }
+.browse h2, .use h2, .about h2 { font-size: 28px; font-weight: 500; color: var(--ink-strong); }
+.use h2 { border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+.status { font-size: 13px; color: var(--ink-muted); white-space: pre-wrap; text-align: right; }
+.catalog-figure { min-width: 0; margin: 0 0 12px; }
+.usage-scope { margin-bottom: 8px; font-size: 13px; color: var(--ink-muted); }
+.catalog-chart { position: relative; container: catalog / inline-size; }
+/* SVG's delegated handlers can make the browser highlight the entire chart on tap.
+   Keep feedback on the linked mark, without suppressing keyboard focus or scrolling. */
+.catalog-chart svg { -webkit-tap-highlight-color: transparent; }
+.catalog-chart svg .mark-symbol path:active,
+.catalog-chart svg .mark-symbol a:active path { stroke: var(--focus); stroke-width: 3; }
+/* The chart as the build drew it, until the live one replaces it (client/catalog-chart.ts). */
+.chart-static svg, .chart-live svg.marks { display: block; width: 100%; height: auto; }
+.chart-static { display: none; padding-right: 38px; }
+.catalog-chart .chart-live { width: 100%; }
+.chart-live.pending { position: absolute; inset: 0; visibility: hidden; }
+.chart-note { margin-top: 4px; font-size: 13px; color: var(--ink-muted); text-align: center; }
+
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 4px; }
+.filters input[type="search"] {
+  width: 360px; max-width: 100%; height: 36px; border: 1px solid var(--rule); border-radius: var(--radius-button);
+  background: var(--surface); color: var(--ink); font: 15px var(--font-sans); padding: 0 10px;
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.chip-group { display: flex; align-items: center; gap: 6px; }
+.chip-label { font-size: 13px; color: var(--ink-muted); margin-right: 2px; }
+.sort { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-muted); }
+.sort select {
+  height: 32px; border: 1px solid var(--rule); border-radius: var(--radius-button); background: var(--surface);
+  color: var(--ink); font: 14px var(--font-sans);
+}
+
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card {
+  display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--rule-soft);
+  background: var(--surface-card); color: var(--ink); text-decoration: none;
+}
+.card:hover { outline: 2px solid var(--link); outline-offset: -1px; text-decoration: none; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.card-head .mono { font-size: 13px; color: var(--ink-muted); }
+.card-name { font: bold 15px var(--font-mono); color: var(--ink-strong); overflow-wrap: anywhere; }
+.card-desc {
+  font-size: 14px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-foot { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--ink-muted); }
+.card-usage { display: flex; align-items: center; gap: 10px; }
+.card-usage .mono { font-size: 12px; color: var(--ink); }
+.card .stack { width: 120px; }
+.cards-empty { color: var(--ink-muted); }
+/* Long lists show their first items, and the page's script expands them; without scripts
+   (no `js` class from page-init.js) everything shows and the controls that need a script hide. */
+html.js .cards:not([data-managed]):not([data-expanded]) > .card:nth-child(n+10) { display: none; }
+html.js .ex-grid:not([data-managed]) > .ex:nth-child(n+9) { display: none; }
+html:not(.js) :is(.filters, .browse-foot .more, #examples .seg, #examples .more, .motion-controls, .motion-regions, .explore) { display: none; }
+.browse-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 16px; }
+.gallery-key { display: flex; flex-wrap: wrap; gap: 16px; }
+.gallery-key .gtag { color: var(--ink-muted); }
+
+.use-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 16px; }
+.use-grid > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.use-grid h3 { font-size: 17px; color: var(--ink-strong); }
+.use-grid p, .use-link { font-size: 14px; }
+.use-grid .snippet { font-size: 12px; }
+
+.about { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 20px 40px; align-items: start; }
+.about > h2 { grid-column: 1 / -1; }
+.about-list { min-width: 0; border: 1px solid var(--rule-soft); border-radius: var(--radius-button); }
+.about-item { scroll-margin-top: 16px; }
+.about-item + .about-item { border-top: 1px solid var(--rule-soft); }
+.about-item summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 24px;
+  min-height: 76px; padding: 18px 20px; color: var(--ink-strong);
+  border-radius: var(--radius-button); transition: background-color 160ms ease;
+}
+.about-item summary::-webkit-details-marker { display: none; }
+.about-item summary::marker { content: ""; }
+.about-item summary:hover { background: var(--surface-alt); }
+.about-item summary:focus-visible { outline-offset: -3px; background: var(--surface-alt); }
+.about-label { display: grid; gap: 4px; min-width: 0; flex: 1; }
+.about-title { font-size: 16px; font-weight: 600; line-height: 1.4; }
+.about-item .hint { font-size: 14px; line-height: 1.5; color: var(--ink-muted); }
+.about-item summary::after {
+  content: ""; flex: none; width: 8px; height: 8px; margin: 0 4px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  color: var(--ink-muted); transform: rotate(-45deg); transition: transform 220ms ease;
+}
+.about-item[open] > summary::after { transform: rotate(45deg); }
+.about-body { padding: 0 52px 20px 20px; font-size: 15px; line-height: 1.65; max-width: 74ch; overflow-wrap: anywhere; }
+
+/* Native details owns state, keyboard behavior and hidden content. The grid track
+   follows the content's natural height (including reflow); no measured heights or
+   JS animation state. Older browsers keep the ordinary disclosure behavior. */
+@supports selector(details::details-content) and (transition-behavior: allow-discrete) {
+  .about-item::details-content {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows 220ms ease, content-visibility 220ms allow-discrete;
+  }
+  .about-item[open]::details-content { grid-template-rows: 1fr; }
+  .about-panel { min-height: 0; overflow: hidden; }
+  /* Anchor navigation opens before scrolling, without a second layout shift. */
+  .about-item.about-reveal::details-content { transition: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-item::details-content, .about-item summary, .about-item summary::after { transition: none; }
+}
+.contribute { border: 1px solid var(--rule-soft); border-radius: var(--radius-button); background: var(--surface-alt); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.contribute h3 { font-size: 17px; color: var(--ink-strong); }
+.contribute p, .contribute a { font-size: 14px; }
+
+/* --- Narrow screens ------------------------------------------------------------------ */
+@media (max-width: 900px) {
+  body { font-size: 15px; }
+  .vg-header { position: static; }
+  html { scroll-padding-top: 0; }
+  .ds-body { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .ds-rail { order: -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .section-nav { top: 0; }
+  .ds-sec { scroll-margin-top: 56px; }
+  .ex-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .showcase { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .showcase > li:nth-child(n+7) { display: none; }
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .quickstart { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Keep the two main destinations together below the title and GitHub on small screens. */
+@media (max-width: 760px) {
+  .vg-nav { padding: 6px 16px 8px; gap: 2px 18px; min-height: 0; }
+  .vg-primary, .vg-secondary { display: contents; }
+  .vg-header a { line-height: 28px; font-size: 15px; }
+  .vg-header a.vg-title { font-size: 19px; line-height: 40px; padding: 0; }
+  .vg-nav::after { content: ""; order: 2; flex-basis: 100%; }
+  .vg-primary a { order: 3; }
+  .vg-secondary a { order: 1; margin-left: auto; }
+  .vg-secondary a[data-wide] { display: none; }
+  .vg-switcher-menu { left: -16px; }
+}
+@media (max-width: 640px) {
+  .wrap { padding-inline: 16px; }
+  .lede { font-size: 1.15em; }
+  .wide-only, .chip-label, .use-link { display: none; }
+
+  .home-heading { padding-top: 20px; padding-bottom: 18px; }
+  .home-title { font-size: 30px; line-height: 1.15; }
+  .home-lead { font-size: 16px; }
+  .showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .showcase > li:nth-child(n+5) { display: none; }
+  .intro { grid-template-columns: minmax(0, 1fr); padding-top: 20px; gap: 20px; }
+  .lead-buttons { gap: 8px; }
+  .lead-buttons .btn { min-height: 44px; }
+  .browse-foot .more { min-height: 44px; width: 100%; }
+  .tab { padding: 12px 10px; font-size: 14px; }
+  .snippets .snippet { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+  .copy-btn { min-height: 32px; }
+
+  .browse, .use, .about { padding-top: 36px; }
+  .browse { gap: 12px; }
+  .browse h2, .use h2, .about h2 { font-size: 24px; }
+  /* The legend sits above the plot, so the plot can use the width vega-embed keeps for its menu
+     (vega-embed injects its own style after this sheet, hence the extra class). */
+  .browse .catalog-chart .vega-embed.has-actions { padding-right: 0; }
+  .chart-static { padding-right: 0; }
+  html.js .cards:not([data-managed]):not([data-expanded]) > .card:nth-child(n+5) { display: none; }
+  .filters input[type="search"] { width: 100%; height: 44px; font-size: 16px; }
+  .chip-row { flex-wrap: wrap; }
+  .chip-group { flex-wrap: wrap; }
+  .gallery-scope .chip-label { display: block; flex-basis: 100%; }
+  .chip { min-height: 44px; }
+  .sort { margin-left: 0; }
+  .sort select { height: 36px; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .card-foot { flex-direction: row; justify-content: space-between; align-items: center; }
+  .card-size, .card-ex { display: none; }
+  .card .stack { width: 80px; }
+  .use-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .about-item summary { padding: 16px; gap: 16px; }
+  .about-body { padding: 0 16px 20px; }
+  .contribute { padding: 16px; }
+
+  .phone-only { display: revert; }
+  .ds-bar { padding-top: 8px; }
+  .crumbs a { line-height: 44px; }
+  .stepper { gap: 4px; }
+  .step { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; font-size: 18px; }
+  .ds-head { padding-top: 8px; gap: 12px; }
+  .ds-name { font-size: 40px; }
+  .lede { font-size: 17px; }
+  .badges { gap: 6px; }
+  .ds-body { padding-top: 16px; }
+  .ds-main { gap: 32px; }
+  .rail-use { padding: 12px; }
+  .rail-use .tab { padding: 10px 8px; }
+  .rail-use .btn { min-height: 44px; }
+
+  .section-nav { overflow-x: auto; margin: 0 -16px; padding: 0 12px; scrollbar-width: none; }
+  .section-nav .tab { flex: none; padding: 13px 10px; font-size: 14px; }
+
+  /* Fields: one block per field */
+  .dict thead { display: none; }
+  /* Two equal columns: a long name or description no longer squeezes the summary beside it. */
+  .dict tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px 12px; padding: 12px 0; border-bottom: 1px solid var(--rule-faint); }
+  .dict td { padding: 0; border: 0; }
+  .f-name { grid-column: 1; }
+  .f-type { grid-column: 2; justify-self: end; }
+  .f-dist { width: auto; }
+  .dict td.f-miss { grid-column: 1 / -1; text-align: left; }
+  .dict td.f-miss:not(.any) { display: none; }
+
+  /* Headings with a control under them: the rule goes under the heading */
+  .explore .sec-head, #examples .sec-head { display: grid; justify-content: stretch; gap: 12px; border-bottom: 0; padding-bottom: 0; }
+  .explore .sec-head h2, #examples .sec-head h2 { border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+  .explore .seg { display: grid; grid-template-columns: 1fr 1fr; }
+  #examples .seg { display: grid; grid-template-columns: repeat(4, auto); }
+  .seg button { min-height: 40px; padding: 0 8px; }
+  .binds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .binds .vega-bind label { flex-direction: column; align-items: stretch; gap: 2px; }
+  .binds select { height: 44px; }
+  .binds[data-reserve] { min-height: 64px; }
+  .chart-foot, .sec-foot { flex-direction: column; align-items: stretch; gap: 12px; }
+  .chart-foot .btn, .sec-foot .btn { min-height: 44px; }
+
+  .ex-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .ex-name { font-size: 13.5px; }
+  .kv.prov { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .kv.prov dd { margin-bottom: 8px; }
+  .f-add { display: inline-block; line-height: 24px; }
+
+  .status-head { padding-top: 8px; }
+  .status-head h1 { font-size: 30px; }
+  .kv.status-sum { grid-template-columns: 140px minmax(0, 1fr); }
+  .status-scroll { margin-inline: -16px; border-inline: 0; }
+}

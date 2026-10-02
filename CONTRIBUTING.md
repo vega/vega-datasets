@@ -233,6 +233,53 @@ The slow-tier test for each is marked `xfail(strict=True)`, so it does
 not fail the run today — but if the upstream issue ever resolves, the
 test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
 
+## The Website
+
+The [website](https://vega.github.io/vega-datasets/) is built from this repository's datasets, metadata, and `README.md`. Complete the [development setup](#development-setup) first, using Node 24.15 or later and `uv`. Preparing the site requires internet access.
+
+### Preview your changes
+
+Open a terminal in the project folder—the folder containing `package.json`—then run:
+
+```sh
+npm run site:dev
+```
+
+Open the web address shown in the terminal. Keep the terminal open while using the preview. Changes to website pages and styles appear automatically.
+
+After changing a dataset or `_data/datapackage_additions.toml`:
+
+1. Return to the terminal and press **Ctrl+C** to stop the preview. If prompted to confirm, enter **Y**.
+2. Run these commands, one at a time:
+
+   ```sh
+   npm run build
+   npm run site:dev
+   ```
+
+3. Refresh the page in your browser.
+
+The first command updates the dataset metadata. The second prepares the website and starts the preview again. If you only changed `README.md`, stop the preview and run `npm run site:dev` again.
+
+### Build and check
+
+Stop the preview, then run:
+
+```sh
+npm run site:build        # Build the website files in site/dist
+npm run site:check        # Check types in pages and scripts
+npm run site:test         # Run the site tests, including checks of the built pages
+npm run site:check-links  # Check external links; requires internet access
+```
+
+To view the completed build, run `npm run site:serve`. Generated site files are ignored by Git.
+
+Site tests are in `site/test/`; catalog builder tests are in `tests/test_build_site_catalog.py`. Optional browser checks require Chrome and `puppeteer-core`. See [browser setup](site/test/browser/browser.mjs) and the instructions at the top of each check in `site/test/browser/`.
+
+### Publishing
+
+The workflow in `.github/workflows/site.yml` builds and checks pull requests without publishing them. Publishing runs from `main` and requires **Settings → Pages → Source → GitHub Actions**. It combines Astro and Jekyll output to preserve existing data and documentation URLs. Fork sites ask search engines not to index them.
+
 ## Contributing Process
 
 1. Create a branch:

@@ -31,19 +31,32 @@
     "d3-dsv": "^3.0.1"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@release-it/conventional-changelog": "^12.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/d3-dsv": "^3.0.7",
+    "@types/node": "^24.19.1",
+    "astro": "^7.3.5",
     "datalib": "^1.9.3",
     "husky": "^9.1.7",
+    "jsdom": "^30.1.1",
     "lint-staged": "^17.6.0",
+    "lz-string": "^1.5.0",
+    "marked": "^18.0.14",
     "release-it": "^21.0.1",
     "rollup": "^4.47.1",
     "rollup-plugin-bundle-size": "^1.0.3",
-    "typescript": "^6.0.2"
+    "sharp": "^0.35.5",
+    "smol-toml": "^1.9.0",
+    "typescript": "^6.0.2",
+    "vega": "^6.4.0",
+    "vega-embed": "^7.3.0",
+    "vega-interpreter": "^2.3.2",
+    "vega-lite": "^6.4.3",
+    "vitest": "^5.0.2"
   },
   "scripts": {
     "prebuild": "./scripts/make-url-index.sh > src/urls.ts && ./scripts/build_datapackage.py",
@@ -51,7 +64,14 @@
     "github": "python scripts/github.py",
     "release": "release-it",
     "prepare": "husky",
-    "update-gallery": "uv run scripts/generate_gallery_examples.py"
+    "update-gallery": "uv run scripts/generate_gallery_examples.py",
+    "site:build": "uv run --group site scripts/build_site_catalog.py && astro build --root site",
+    "site:pages": "astro build --root site",
+    "site:dev": "uv run --group site scripts/build_site_catalog.py && astro dev --root site",
+    "site:check": "astro check --root site",
+    "site:serve": "node site/scripts/serve.mjs",
+    "site:test": "vitest run --config site/vitest.config.ts --project unit",
+    "site:check-links": "vitest run --config site/vitest.config.ts --project links"
   },
   "lint-staged": {
     "*.py": ["uv run ruff check --fix", "uv run ruff format"]
