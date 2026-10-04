@@ -432,6 +432,7 @@ class Schema(TypedDict):
 
 
 class ResourceExtras(TypedDict, total=False):
+    title: str
     description: str
     sources: Sequence[Source]
     licenses: Sequence[License]

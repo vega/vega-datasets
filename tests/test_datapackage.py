@@ -3,8 +3,8 @@ Validate every resource in datapackage.json against its on-disk file.
 
 Two tiers:
 
-* Default — stdlib-only file existence, byte size, and git-blob SHA-1
-  against the descriptor. Sub-second across all 70+ resources. Covers
+* Default — resource title length and source agreement, file existence,
+  byte size, and git-blob SHA-1 against the descriptor. Covers
   what frictionless-py doesn't today (byte-count returns ``None`` for
   tabular JSON / arrow / parquet; hash-count supports only md5 and
   sha256, descriptor uses sha1).
@@ -39,7 +39,9 @@ from scripts.build_datapackage import ResourceAdapter, iter_data_dir
 REPO = Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
 DESCRIPTOR_PATH = REPO / "datapackage.json"
+ADDITIONS_PATH = REPO / "_data" / "datapackage_additions.toml"
 ALLOWLIST_PATH = REPO / "_data" / "validate_datapackage.toml"
+MAX_RESOURCE_TITLE_LENGTH = 80
 
 
 def _load_resources() -> list[dict]:
@@ -59,6 +61,9 @@ def _load_xfail_reasons() -> dict[str, str]:
 
 _RESOURCES = _load_resources()
 _RESOURCE_IDS = [r["name"] for r in _RESOURCES]
+_SOURCE_RESOURCES = tomllib.loads(ADDITIONS_PATH.read_text(encoding="utf-8"))[
+    "resources"
+]
 _XFAIL = _load_xfail_reasons()
 _GALLERY_EXAMPLES = json.loads(
     (DATA / "gallery-examples.json").read_text(encoding="utf-8")
@@ -82,6 +87,47 @@ def git_blob_sha1(path: Path) -> str:
     content = path.read_bytes()
     blob = b"blob %d\0%b" % (len(content), content)
     return hashlib.sha1(blob, usedforsecurity=False).hexdigest()
+
+
+@pytest.mark.parametrize(
+    ("filename", "resource"),
+    [
+        pytest.param(path.name, resource, id=f"{path.name}:{resource['path']}")
+        for path, resources in (
+            (ADDITIONS_PATH, _SOURCE_RESOURCES),
+            (DESCRIPTOR_PATH, _RESOURCES),
+        )
+        for resource in resources
+    ],
+)
+def test_resource_title_length(filename: str, resource: dict) -> None:
+    """Keep resource titles concise for the catalog."""
+    if "title" not in resource:
+        return
+    title = resource["title"]
+    context = f"{filename}: {resource['path']}"
+    assert isinstance(title, str), f"{context}: resource title must be a string"
+    assert len(title) <= MAX_RESOURCE_TITLE_LENGTH, (
+        f"{context}: title has {len(title)} characters; "
+        f"maximum is {MAX_RESOURCE_TITLE_LENGTH}."
+    )
+
+
+def test_resource_titles_match_source() -> None:
+    """Catch title edits made without rebuilding the descriptor."""
+    expected = {
+        resource["path"]: resource["title"]
+        for resource in _SOURCE_RESOURCES
+        if "title" in resource
+    }
+    actual = {
+        resource["path"]: resource["title"]
+        for resource in _RESOURCES
+        if "title" in resource
+    }
+    assert actual == expected, (
+        "Resource titles differ between TOML and JSON (run `npm run build`)."
+    )
 
 
 @pytest.mark.parametrize("resource", _RESOURCES, ids=_RESOURCE_IDS)

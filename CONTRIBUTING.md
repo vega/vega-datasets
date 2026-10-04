@@ -87,6 +87,7 @@ For each dataset, add an entry to `_data/datapackage_additions.toml`:
 ```toml
 [[resources]] # Path: example.json
 path = "example.json"
+title = "Example measurements by location"
 description = """Detailed description of the dataset"""
 
 # Schema section for documenting data fields/columns
@@ -123,10 +124,16 @@ path = "https://example.com/license-url"
 title = "Human-readable license name"
 ```
 
+#### Resource Titles
+
+Resource titles are optional plain text. Aim for **60 characters**; the repository
+limit is **80**, including spaces and punctuation. Put additional detail in
+`description`.
+
 #### How the Metadata System Works
 
 - **Automatic Inference**: For tabular files (CSV, TSV, JSON, Parquet, Arrow), the system automatically detects column names and data types
-- **Manual Additions**: Use the TOML file to add descriptions, categories, source information, and licenses
+- **Manual Additions**: Use the TOML file to add titles, descriptions, categories, source information, and licenses
 - **Field Matching**: When documenting columns in `resources.schema.fields`, ensure the `name` field exactly matches the column name in your dataset
 - **Precedence**: Your manual definitions in the TOML file will override any automatically inferred values
 - **Complete Examples**: See existing entries in `_data/datapackage_additions.toml` for reference on documenting various types of datasets
@@ -203,12 +210,12 @@ uv run ruff format
 
 ### Validating `datapackage.json` (optional, local)
 
-After editing data files or the descriptor, you can validate the data
+After editing source metadata, data files or the descriptor, you can validate the data
 package end-to-end with pytest. Two tiers:
 
 ```bash
-# Fast tier — file existence, declared bytes, git-blob SHA-1.
-# Stdlib only, sub-second across all resources.
+# Fast tier — resource title length and source agreement, file existence,
+# declared bytes and git-blob SHA-1. No row validation.
 uv run --group dev pytest tests/
 
 # Slow tier — frictionless schema and row validation per resource.
@@ -220,8 +227,8 @@ uv run --group dev pytest tests/ --runslow --limit-rows 250000
 ```
 
 CI first runs the fast tier (`tests/test_datapackage.py`) against the
-committed `datapackage.json`, so a data change committed without
-rebuilding fails there. It then runs `npm run build` and the slow tier
+committed `datapackage.json`, so a data change or resource title edit committed
+without rebuilding fails there. It then runs `npm run build` and the slow tier
 with `--limit-rows 250000`: `flights_3m`'s ~3M rows are sampled, every
 other resource is below the cap and validates in full.
 
