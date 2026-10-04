@@ -81,11 +81,12 @@ describe('Use This Dataset snippets', () => {
     expect(JSON.parse(`{${vega.code}}`).data[0].format).toEqual({ type: 'csv', parse: 'auto' });
   });
 
-  test('files that are not tables give their URL to Altair and JavaScript', () => {
-    const s = Object.fromEntries(useSnippets(ds('gimp')).map((x) => [x.name, x.code]));
+  test.each(['gimp', 'ffox', 'icon_7zip'])('%s gives its image URL directly to JavaScript', (name) => {
+    const d = ds(name);
+    const s = Object.fromEntries(useSnippets(d).map((x) => [x.name, x.code]));
     expect(Object.keys(s)).toEqual(['Altair', 'JavaScript']);
-    expect(s.JavaScript).toContain("data['gimp.png'].url");
-    expect(s.Altair).toContain('url = data.gimp.url');
+    expect(s.JavaScript).toBe(`const url = ${JSON.stringify(d.url)};`);
+    expect(s.Altair).toContain(`url = data.${name}.url`);
   });
 
   test('TopoJSON names its object for Vega-Lite and Vega', () => {

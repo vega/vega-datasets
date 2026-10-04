@@ -71,7 +71,9 @@ export function useSnippets(d: Dataset): Snippet[] {
     const parsed = d.format === "json" || d.format === "csv";
     out.push({
       name: "JavaScript",
-      code: `import data from 'vega-datasets';\n\n${parsed ?`const ${v} = await data['${d.file}']();` : `const url = data['${d.file}'].url;`}`,
+      code: d.kind === "file"
+        ? `const url = ${JSON.stringify(d.url)};`
+        : `import data from 'vega-datasets';\n\n${parsed ?`const ${v} = await data['${d.file}']();` : `const url = data['${d.file}'].url;`}`,
     });
   }
   return out;
