@@ -47,5 +47,8 @@ jobs:
 
       - run: npm run build
 
+      - name: Check packed package exports
+        run: npm pack --dry-run --json --foreground-scripts=false | node scripts/check-package-exports.mjs
+
       - name: Validate datapackage
         run: uv run pytest tests/ -v --runslow --limit-rows 250000
