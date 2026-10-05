@@ -48,18 +48,15 @@ const noindex = keepOut(process.env);
 <a class="skip-link" href="#page">Skip to content</a>
 <header class="vg-header">
   <nav class="vg-nav" aria-label="Site">
-    <div class="vg-switcher">
-      <a class="vg-title" href={base} aria-current={path === "" ? "page" : undefined}>vega-datasets</a>
-      <details class="vg-projects">
-        <summary aria-label="Vega projects"></summary>
-        <div class="vg-switcher-menu">
-          <a href="https://vega.github.io/vega/">Vega</a>
-          <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>
-          <a href="https://altair-viz.github.io/">Altair</a>
-          <a href="https://vega.github.io/vega-lite-api/">Vega-Lite API</a>
-        </div>
-      </details>
-    </div>
+    <details class="vg-projects">
+      <summary><span class="vg-title">vega-datasets</span></summary>
+      <div class="vg-switcher-menu">
+        <a href="https://vega.github.io/vega/">Vega</a>
+        <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>
+        <a href="https://altair-viz.github.io/">Altair</a>
+        <a href="https://vega.github.io/vega-lite-api/">Vega-Lite API</a>
+      </div>
+    </details>
     <div class="vg-primary">
       <a href={path === "" ? "#browse" : `${base}#browse`} data-browse aria-current={path === "" ? "page" : undefined}>Browse Datasets</a>
       <a href={`${base}${STATUS_PATH}`} aria-current={path === STATUS_PATH ? "page" : undefined}>{STATUS_TITLE}</a>
