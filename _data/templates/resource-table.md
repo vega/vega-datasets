@@ -1,5 +1,9 @@
-## `{{ resource.name }}`{% if resource.title %} {{ resource.title }}{% endif %}
+## `{{ resource.name }}`
 
+{% if resource.title %}
+{{ resource.title }}
+
+{% endif %}
 {% if resource.path %}
 ### path
 {{ resource.path }}
