@@ -95,25 +95,27 @@ code, .mono { font-family: var(--font-mono); font-size: 0.85em; }
 .vg-header :focus-visible { outline-color: var(--header-hover); }
 .vg-primary, .vg-secondary { display: flex; flex-wrap: wrap; align-items: center; gap: 0 2em; }
 .vg-secondary { margin-left: auto; }
-.vg-switcher { position: relative; display: flex; align-items: center; }
-.vg-header a.vg-title { display: inline-block; font-weight: bold; font-size: 1.4em; color: var(--header-ink); }
+.vg-projects { position: relative; margin-left: -20px; }
+.vg-title { font-weight: bold; font-size: 1.4em; }
 .vg-projects > summary {
-  display: grid; place-items: center; width: 44px; height: 44px; margin-left: 2px;
+  display: flex; align-items: center; gap: 20px; height: var(--header-height); padding: 0 20px;
   list-style: none; cursor: pointer; color: var(--header-ink);
 }
 .vg-projects > summary::-webkit-details-marker { display: none; }
 .vg-projects > summary::marker { content: ""; }
 .vg-projects > summary::after {
-  content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor;
+  content: ""; flex: none; width: 7px; height: 7px; border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg);
 }
-.vg-projects[open] > summary { background: rgb(255 255 255 / 0.12); }
+.vg-projects[open] > summary { background: var(--surface-menu); color: var(--ink-nav); }
+.vg-projects[open] > summary:hover { color: var(--ink-strong); }
+.vg-projects[open] :focus-visible { outline-color: var(--focus); }
 .vg-projects[open] > summary::after { transform: translateY(2px) rotate(225deg); }
 .vg-switcher-menu {
-  position: absolute; top: 100%; left: -20px; min-width: 190px; padding: 6px 0; display: grid; z-index: 10;
+  position: absolute; top: 100%; left: 0; min-width: 100%; display: grid; z-index: 10;
   background: var(--surface-menu); box-shadow: var(--shadow-menu);
 }
-.vg-header .vg-switcher-menu a { color: var(--ink-nav); font-weight: 600; line-height: 44px; padding: 0 20px; }
+.vg-header .vg-switcher-menu a { color: var(--ink-nav); font-size: 1.2em; font-weight: 600; line-height: var(--header-height); padding: 0 20px; }
 .vg-header .vg-switcher-menu a:hover, .vg-header .vg-switcher-menu a:focus-visible { color: var(--ink-strong); }
 
 /* --- Footer ------------------------------------------------------------------- */
@@ -662,12 +664,14 @@ html:not(.js) :is(.filters, .browse-foot .more, #examples .seg, #examples .more,
   .vg-nav { padding: 6px 16px 8px; gap: 2px 18px; min-height: 0; }
   .vg-primary, .vg-secondary { display: contents; }
   .vg-header a { line-height: 28px; font-size: 15px; }
-  .vg-header a.vg-title { font-size: 19px; line-height: 40px; padding: 0; }
+  .vg-title { font-size: 19px; }
   .vg-nav::after { content: ""; order: 2; flex-basis: 100%; }
   .vg-primary a { order: 3; }
   .vg-secondary a { order: 1; margin-left: auto; }
   .vg-secondary a[data-wide] { display: none; }
-  .vg-switcher-menu { left: -16px; }
+  .vg-projects { margin-left: -16px; }
+  .vg-projects > summary { height: 44px; padding-inline: 16px; }
+  .vg-header .vg-switcher-menu a { line-height: 44px; padding-inline: 16px; }
 }
 @media (max-width: 640px) {
   .wrap { padding-inline: 16px; }
