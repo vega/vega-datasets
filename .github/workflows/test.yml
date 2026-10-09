@@ -39,6 +39,9 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - name: Check TypeScript types
+        run: npm run test:types
+
       # `npm run build` rewrites datapackage.json, so the later pytest run only
       # sees the regenerated descriptor. Check the committed one first so a
       # stale descriptor (a forgotten rebuild, or a CRLF re-save) fails CI.
