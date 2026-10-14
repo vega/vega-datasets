@@ -1,0 +1,37 @@
+# Upstream gallery sources consumed by scripts/generate_gallery_examples.py.
+#
+# Policy (#801): pin each gallery to the ref its live site is built from, so
+# every `example_url` in the registry points at a page that exists.
+#
+#   Gallery    Site deploys from    Pin to
+#   Vega       main                 main
+#   Vega-Lite  release tags         the latest release tag
+#   Altair     release tags         the latest release tag
+#
+# Bump the Vega-Lite and Altair tags when those projects release, then
+# regenerate. The script resolves each ref to a commit SHA once per run and
+# pins every index and spec URL to that SHA, so one run reads one consistent
+# upstream snapshot. Resolved SHAs are logged at INFO for triage.
+#
+# Read-path: jsDelivr (`cdn.jsdelivr.net/gh/…`) — CDN-cached, follows the
+# same refs (branches/tags/SHAs) as raw.githubusercontent.com. When URLs
+# embed a commit SHA, jsDelivr caches forever with zero invalidation risk
+# since SHAs are immutable. jsDelivr does intermittently 403 under
+# concurrent bursts; the generator falls back to raw.githubusercontent.com
+# per-file when that happens (see _get_checked in the script).
+
+[ref]
+# Any branch, tag, or SHA; each is resolved to a commit SHA at script start.
+vega_lite = "v6.5.0"
+vega      = "main"
+altair    = "v6.3.0"
+
+[sources]
+# `{…_ref}` placeholders are always substituted with the commit SHAs resolved
+# from [ref], whether the configured values are branches, tags, or SHAs.
+vega_lite_examples_url = "https://cdn.jsdelivr.net/gh/vega/vega-lite@{vega_lite_ref}/site/_data/examples.json"
+vega_examples_url      = "https://cdn.jsdelivr.net/gh/vega/vega@{vega_ref}/docs/_data/examples.json"
+# Altair publishes one record per rendered gallery page. Its index treats the
+# arguments/attribute-syntax file as the canonical source; method-syntax files
+# are alternate code presentations for a subset of those same pages.
+altair_examples_url = "https://cdn.jsdelivr.net/gh/vega/altair@{altair_ref}/_data/examples.json"

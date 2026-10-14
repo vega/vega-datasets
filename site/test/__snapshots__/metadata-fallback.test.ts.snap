@@ -1,0 +1,683 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`bars of a measure by category > starter and Explore specs match the code before the metadata 1`] = `
+"{
+ "modes": [
+  "starter"
+ ],
+ "starter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": 480,
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "y": {
+    "field": "grade",
+    "type": "nominal",
+    "sort": "-x"
+   },
+   "x": {
+    "field": "hp",
+    "type": "quantitative",
+    "aggregate": "mean"
+   }
+  }
+ },
+ "chart": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": "container",
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "y": {
+    "field": "grade",
+    "type": "nominal",
+    "sort": "-x"
+   },
+   "x": {
+    "field": "hp",
+    "type": "quantitative",
+    "aggregate": "mean"
+   }
+  },
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  }
+ },
+ "scatter": null
+}"
+`;
+
+exports[`category counts > starter and Explore specs match the code before the metadata 1`] = `
+"{
+ "modes": [
+  "starter"
+ ],
+ "starter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": 480,
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "y": {
+    "field": "grade",
+    "type": "nominal",
+    "sort": "-x"
+   },
+   "x": {
+    "aggregate": "count",
+    "type": "quantitative"
+   }
+  }
+ },
+ "chart": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": "container",
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "y": {
+    "field": "grade",
+    "type": "nominal",
+    "sort": "-x"
+   },
+   "x": {
+    "aggregate": "count",
+    "type": "quantitative"
+   }
+  },
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  }
+ },
+ "scatter": null
+}"
+`;
+
+exports[`histogram > starter and Explore specs match the code before the metadata 1`] = `
+"{
+ "modes": [
+  "starter"
+ ],
+ "starter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": 480,
+  "height": 260,
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "x": {
+    "field": "hp",
+    "type": "quantitative",
+    "bin": {
+     "maxbins": 30
+    }
+   },
+   "y": {
+    "aggregate": "count",
+    "type": "quantitative"
+   }
+  }
+ },
+ "chart": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": "container",
+  "height": 260,
+  "mark": {
+   "type": "bar",
+   "tooltip": true
+  },
+  "encoding": {
+   "x": {
+    "field": "hp",
+    "type": "quantitative",
+    "bin": {
+     "maxbins": 30
+    }
+   },
+   "y": {
+    "aggregate": "count",
+    "type": "quantitative"
+   }
+  },
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  }
+ },
+ "scatter": null
+}"
+`;
+
+exports[`scatter plot colored by a category > starter and Explore specs match the code before the metadata 1`] = `
+"{
+ "modes": [
+  "scatter"
+ ],
+ "starter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": 480,
+  "height": 360,
+  "mark": {
+   "type": "point",
+   "tooltip": true,
+   "opacity": 0.8
+  },
+  "encoding": {
+   "x": {
+    "field": "hp",
+    "type": "quantitative",
+    "scale": {
+     "zero": false
+    }
+   },
+   "y": {
+    "field": "mpg",
+    "type": "quantitative",
+    "scale": {
+     "zero": false
+    }
+   },
+   "color": {
+    "field": "grade",
+    "type": "nominal"
+   }
+  }
+ },
+ "chart": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": "container",
+  "height": 360,
+  "mark": {
+   "type": "point",
+   "tooltip": true,
+   "opacity": 0.8
+  },
+  "encoding": {
+   "x": {
+    "field": "hp",
+    "type": "quantitative",
+    "scale": {
+     "zero": false
+    }
+   },
+   "y": {
+    "field": "mpg",
+    "type": "quantitative",
+    "scale": {
+     "zero": false
+    }
+   },
+   "color": {
+    "field": "grade",
+    "type": "nominal"
+   }
+  },
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  }
+ },
+ "scatter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Two measures of fixture from vega-datasets, picked with the x and y menus.",
+  "width": "container",
+  "height": 380,
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  },
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "params": [
+   {
+    "name": "xField",
+    "value": "mpg",
+    "bind": {
+     "input": "select",
+     "options": [
+      "hp",
+      "mpg"
+     ],
+     "name": "x "
+    }
+   },
+   {
+    "name": "yField",
+    "value": "hp",
+    "bind": {
+     "input": "select",
+     "options": [
+      "hp",
+      "mpg"
+     ],
+     "name": "y "
+    }
+   }
+  ],
+  "layer": [
+   {
+    "transform": [
+     {
+      "calculate": "toNumber(datum[xField])",
+      "as": "x"
+     },
+     {
+      "calculate": "toNumber(datum[yField])",
+      "as": "y"
+     },
+     {
+      "filter": "isValid(datum.x) && isValid(datum.y) && isFinite(datum.x) && isFinite(datum.y)"
+     }
+    ],
+    "params": [
+     {
+      "name": "zoom",
+      "select": "interval",
+      "bind": "scales"
+     },
+     {
+      "name": "pick",
+      "select": {
+       "type": "point",
+       "fields": [
+        "grade"
+       ]
+      },
+      "bind": "legend"
+     }
+    ],
+    "mark": {
+     "type": "point",
+     "opacity": 0.8
+    },
+    "encoding": {
+     "x": {
+      "field": "x",
+      "type": "quantitative",
+      "scale": {
+       "zero": false
+      },
+      "axis": {
+       "title": null
+      }
+     },
+     "y": {
+      "field": "y",
+      "type": "quantitative",
+      "scale": {
+       "zero": false
+      },
+      "axis": {
+       "title": null
+      }
+     },
+     "color": {
+      "field": "grade",
+      "type": "nominal"
+     },
+     "opacity": {
+      "condition": {
+       "param": "pick",
+       "empty": true,
+       "value": 0.8
+      },
+      "value": 0.08
+     },
+     "tooltip": [
+      {
+       "field": "x",
+       "type": "quantitative",
+       "title": "x"
+      },
+      {
+       "field": "y",
+       "type": "quantitative",
+       "title": "y"
+      },
+      {
+       "field": "grade",
+       "type": "nominal"
+      }
+     ]
+    }
+   },
+   {
+    "data": {
+     "values": [
+      {}
+     ]
+    },
+    "mark": {
+     "type": "text",
+     "text": {
+      "expr": "xField"
+     },
+     "fontWeight": "bold",
+     "fontSize": 11,
+     "clip": false,
+     "x": {
+      "expr": "width / 2"
+     },
+     "y": {
+      "expr": "height + 32"
+     },
+     "align": "center",
+     "baseline": "top"
+    }
+   },
+   {
+    "data": {
+     "values": [
+      {}
+     ]
+    },
+    "mark": {
+     "type": "text",
+     "text": {
+      "expr": "yField"
+     },
+     "fontWeight": "bold",
+     "fontSize": 11,
+     "clip": false,
+     "x": 0,
+     "y": -10,
+     "align": "left",
+     "baseline": "bottom"
+    }
+   }
+  ]
+ }
+}"
+`;
+
+exports[`time series colored by a series > starter and Explore specs match the code before the metadata 1`] = `
+"{
+ "modes": [
+  "scatter",
+  "time"
+ ],
+ "starter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": 640,
+  "height": 300,
+  "mark": {
+   "type": "line",
+   "interpolate": "monotone",
+   "tooltip": true
+  },
+  "encoding": {
+   "x": {
+    "field": "when",
+    "type": "temporal"
+   },
+   "y": {
+    "field": "hp",
+    "type": "quantitative",
+    "aggregate": "mean"
+   },
+   "color": {
+    "field": "origin",
+    "type": "nominal"
+   }
+  }
+ },
+ "chart": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Starter chart for fixture from vega-datasets. Edit freely.",
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "width": "container",
+  "height": 300,
+  "mark": {
+   "type": "line",
+   "interpolate": "monotone",
+   "tooltip": true
+  },
+  "encoding": {
+   "x": {
+    "field": "when",
+    "type": "temporal"
+   },
+   "y": {
+    "field": "hp",
+    "type": "quantitative",
+    "aggregate": "mean"
+   },
+   "color": {
+    "field": "origin",
+    "type": "nominal"
+   }
+  },
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  }
+ },
+ "scatter": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Two measures of fixture from vega-datasets, picked with the x and y menus.",
+  "width": "container",
+  "height": 380,
+  "autosize": {
+   "type": "fit-x",
+   "contains": "padding"
+  },
+  "data": {
+   "url": "https://vega.github.io/vega-datasets/data/fixture.csv"
+  },
+  "params": [
+   {
+    "name": "xField",
+    "value": "mpg",
+    "bind": {
+     "input": "select",
+     "options": [
+      "hp",
+      "mpg"
+     ],
+     "name": "x "
+    }
+   },
+   {
+    "name": "yField",
+    "value": "hp",
+    "bind": {
+     "input": "select",
+     "options": [
+      "hp",
+      "mpg"
+     ],
+     "name": "y "
+    }
+   }
+  ],
+  "layer": [
+   {
+    "transform": [
+     {
+      "calculate": "toNumber(datum[xField])",
+      "as": "x"
+     },
+     {
+      "calculate": "toNumber(datum[yField])",
+      "as": "y"
+     },
+     {
+      "filter": "isValid(datum.x) && isValid(datum.y) && isFinite(datum.x) && isFinite(datum.y)"
+     }
+    ],
+    "params": [
+     {
+      "name": "zoom",
+      "select": "interval",
+      "bind": "scales"
+     },
+     {
+      "name": "pick",
+      "select": {
+       "type": "point",
+       "fields": [
+        "grade"
+       ]
+      },
+      "bind": "legend"
+     }
+    ],
+    "mark": {
+     "type": "point",
+     "opacity": 0.8
+    },
+    "encoding": {
+     "x": {
+      "field": "x",
+      "type": "quantitative",
+      "scale": {
+       "zero": false
+      },
+      "axis": {
+       "title": null
+      }
+     },
+     "y": {
+      "field": "y",
+      "type": "quantitative",
+      "scale": {
+       "zero": false
+      },
+      "axis": {
+       "title": null
+      }
+     },
+     "color": {
+      "field": "grade",
+      "type": "nominal"
+     },
+     "opacity": {
+      "condition": {
+       "param": "pick",
+       "empty": true,
+       "value": 0.8
+      },
+      "value": 0.08
+     },
+     "tooltip": [
+      {
+       "field": "x",
+       "type": "quantitative",
+       "title": "x"
+      },
+      {
+       "field": "y",
+       "type": "quantitative",
+       "title": "y"
+      },
+      {
+       "field": "grade",
+       "type": "nominal"
+      },
+      {
+       "field": "when",
+       "type": "temporal"
+      }
+     ]
+    }
+   },
+   {
+    "data": {
+     "values": [
+      {}
+     ]
+    },
+    "mark": {
+     "type": "text",
+     "text": {
+      "expr": "xField"
+     },
+     "fontWeight": "bold",
+     "fontSize": 11,
+     "clip": false,
+     "x": {
+      "expr": "width / 2"
+     },
+     "y": {
+      "expr": "height + 32"
+     },
+     "align": "center",
+     "baseline": "top"
+    }
+   },
+   {
+    "data": {
+     "values": [
+      {}
+     ]
+    },
+    "mark": {
+     "type": "text",
+     "text": {
+      "expr": "yField"
+     },
+     "fontWeight": "bold",
+     "fontSize": 11,
+     "clip": false,
+     "x": 0,
+     "y": -10,
+     "align": "left",
+     "baseline": "bottom"
+    }
+   }
+  ]
+ }
+}"
+`;

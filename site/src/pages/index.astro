@@ -1,0 +1,172 @@
+---
+/**
+ * The home page: what vega-datasets is, how to load it, and every dataset as a card,
+ * filtered by search, chips and the catalog chart's brush (client/home.ts). The chart is
+ * drawn to SVG at build time, so it shows before any script runs.
+ */
+import { staticChart } from "../prerender/chart-svg";
+import { catalog as c } from "../prerender/catalog";
+import { lightToken } from "../prerender/tokens";
+import DatasetCard from "../components/DatasetCard.astro";
+import SnippetTabs from "../components/SnippetTabs.astro";
+import Thumb from "../components/Thumb.astro";
+import Base from "../layouts/Base.astro";
+import { GALLERIES, GALLERY_LABEL } from "../lib/catalog";
+import { catalogSpec } from "../lib/catalog-chart";
+import { CATALOG_LAYOUTS } from "../lib/catalog-layout";
+import { useSnippets } from "../lib/dataset-model";
+import { formatBytes, formatCount } from "../lib/format";
+import { chartRows, FORMAT_COLORS, FORMAT_GROUPS, homeCounts, listDatasets, NO_FILTERS, readmeSection, showcase, SORT_LABEL, SORT_NOTE, type Sort } from "../lib/home-model";
+import { markdownToHtml } from "../lib/markdown";
+import { catalogJsonLd, datasetPath, HOME_DESCRIPTION, HOME_TITLE, REPO, STATUS_PATH, STATUS_TITLE } from "../lib/seo";
+
+const counts = homeCounts(c);
+const max = Math.max(...c.datasets.map((d) => d.usedBy.length), 1);
+const major = c.package.version.split(".")[0];
+/** The Quick Start loads cars, the most used dataset. */
+const cars = c.dataset("cars")!;
+const list = listDatasets(c, NO_FILTERS);
+
+// CSS chooses a reference drawing before any script runs. The live view uses the
+// same reference layout; neither renderer reflows at the scaled container width.
+const rows = chartRows(c, formatBytes);
+const monoFont = lightToken("--font-mono");
+const charts = await Promise.all(CATALOG_LAYOUTS.map((layout) => staticChart(catalogSpec(rows, {
+  brush: false, height: layout.height, labels: layout.labels, monoFont, layout,
+}))));
+// Derive the CSS breakpoints from the same table as the live controller.
+const chartCSS = CATALOG_LAYOUTS.map((layout, i) => {
+  const lower = i ? `(width > ${CATALOG_LAYOUTS[i - 1]!.maxWidth}px)` : "";
+  const upper = Number.isFinite(layout.maxWidth) ? `(width <= ${layout.maxWidth}px)` : "";
+  return `@container catalog (${[lower, upper].filter(Boolean).join(" and ")}) { .chart-static[data-layout="${i}"] { display: block; } }`;
+}).join("\n");
+
+const readmeItems: [string, string, string, string][] = [
+  ["about-metadata", "Metadata", "Data Package v2: schema, sources, licenses", "Dataset Information"],
+  ["about-versioning", "Versioning", "Semantic versioning, applied to data", "Versioning"],
+  ["about-use", "Intended Use", "Teaching and demos. Some flaws are deliberate.", "Data Usage Note"],
+  ["about-gallery", "Gallery Index", `All ${formatCount(counts.examples)} examples, mapped to their data. It's a dataset too.`, "Example Galleries"],
+];
+const about = readmeItems.flatMap(([id, title, hint, heading]) => {
+  const md = readmeSection(c.readme, heading);
+  return md === null ? [] : [{ id, title, hint, html: markdownToHtml(md) }];
+});
+---
+<Base title={HOME_TITLE} description={HOME_DESCRIPTION} path="" jsonLd={catalogJsonLd(c)}>
+  <header class="wrap home-heading">
+    <h1 class="home-title"><b>Vega Datasets</b></h1>
+    <p class="home-lead">Explore the data behind {formatCount(counts.examplesWithData)} examples from the Vega, Vega-Lite and Altair galleries.</p>
+  </header>
+  <nav class="wrap" aria-label="Featured datasets">
+    <ul class="showcase">
+      {showcase(c).map((p, i) => (
+        <li>
+          <a href={`${import.meta.env.BASE_URL}${datasetPath(p.dataset)}`} aria-label={`${p.dataset}: ${p.example.name}. Explore dataset`}>
+            <Thumb example={p.example} eager={i < 4} alt="" />
+            <span class="showcase-caption">
+              <span class="showcase-name mono">{p.dataset.split("_").map((word, index) => <Fragment>{index > 0 && <Fragment>_<wbr /></Fragment>}{word}</Fragment>)}</span>
+              <span class="showcase-arrow" aria-hidden="true">→</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <section class="wrap intro" aria-label="Introduction">
+    <div class="intro-text">
+      <p class="lead">{formatCount(counts.datasets)} datasets · Documented fields, sources and licenses</p>
+      <p class="release mono">Release {c.package.version}  ·  Data Package v2<span class="wide-only">  ·  BSD-3-Clause code</span></p>
+    </div>
+    <div class="lead-buttons">
+      <a class="btn btn-primary" href="#browse" data-browse>Browse Datasets</a>
+      <a class="btn" href={REPO}>View on GitHub</a>
+      <a class="quickstart-link" href="#quickstart">Quickstart <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <section class="wrap browse" id="browse" aria-labelledby="browse-h">
+    <div class="sec-head"><h2 id="browse-h">Datasets</h2><span class="status mono" aria-live="polite">{SORT_NOTE.used}</span></div>
+    <div class="filters">
+      <label class="visually-hidden" for="home-q">Search datasets</label>
+      <input type="search" id="home-q" placeholder="Search by name, field or description" autocomplete="off">
+      <div class="chip-row">
+        <div class="chip-group" role="group" aria-label="Format"><span class="chip-label">Format</span>
+          {FORMAT_GROUPS.map((g) => <button class="chip" type="button" aria-pressed="false" data-format={g}><span class="format-swatch" style={`background-color: ${FORMAT_COLORS[g]}`} aria-hidden="true"></span>{g}<span class="n">{formatCount(counts.formats[g])}</span></button>)}
+        </div>
+        <div class="chip-group gallery-scope" role="group" aria-label="Count examples in"><span class="chip-label">Count examples in</span>
+          {GALLERIES.map((g) => <button class="chip" type="button" aria-pressed="false" data-gallery={g}><span class={`gtag g-${g}`}><span class="gdot" aria-hidden="true"></span>{GALLERY_LABEL[g]}</span></button>)}
+        </div>
+      </div>
+      <label class="sort" for="home-sort">Sort<select id="home-sort">{(Object.keys(SORT_LABEL) as Sort[]).map((s) => <option value={s}>{SORT_LABEL[s]}</option>)}</select></label>
+    </div>
+    <noscript><div class="format-key" aria-label="Chart formats">{FORMAT_GROUPS.map((g) => <span><span class="format-swatch" style={`background-color: ${FORMAT_COLORS[g]}`} aria-hidden="true"></span>{g}</span>)}</div></noscript>
+    <style is:inline set:html={chartCSS} />
+    <figure class="catalog-figure">
+      <p class="usage-scope" data-usage-scope aria-live="polite">Gallery examples across all three libraries</p>
+      <div class="catalog-chart" data-chart>
+        {charts.map((chart, i) => <div class="chart-static" data-layout={i} set:html={chart.svg} />)}
+      </div>
+      <figcaption class="chart-note">
+        <span class="wide-only">Drag to filter datasets. Click a point to open it.</span><span class="phone-only">Tap a point to open its dataset.</span>
+      </figcaption>
+    </figure>
+    <div class="cards">
+      {list.map((d) => <DatasetCard catalog={c} dataset={d} max={max} />)}
+    </div>
+    <p class="cards-empty" hidden>No dataset matches.</p>
+    <div class="browse-foot">
+      <div class="gallery-key">{GALLERIES.map((g) => <span class={`gtag g-${g}`}><span class="gdot" aria-hidden="true"></span>{GALLERY_LABEL[g]}</span>)}</div>
+      <button class="btn more" type="button">Show All {formatCount(list.length)} Datasets</button>
+    </div>
+  </section>
+
+  <section class="wrap use" id="quickstart" aria-labelledby="use-h">
+    <h2 id="use-h">Use the Data</h2>
+    <div class="quickstart">
+      <div class="quickstart-intro">
+        <h3>Quickstart with cars</h3>
+        <p>Copy a data URL or a snippet for your tool to get started with the cars dataset.</p>
+        <a href={`${import.meta.env.BASE_URL}${datasetPath(cars.name)}`}>Explore the cars dataset <span aria-hidden="true">→</span></a>
+      </div>
+      <div>
+        <SnippetTabs id="qs" url={cars.url} snippets={useSnippets(cars)} urlTab />
+        <p class="note">The <code>@{major}</code> URL tracks {major}.x releases, so it gets fixes without breaking changes. To lock a version, use <code>@{c.package.version}</code>. <a href="#about-versioning" data-open-details>Versioning</a></p>
+      </div>
+    </div>
+    <div class="use-grid">
+      <div><h3>Load by URL</h3><p>Every file has a CDN URL. Publish with the versioned jsDelivr link.</p><a class="use-link" href={`${REPO}#http-direct-access`}>URL Patterns</a></div>
+      <div><h3>Import in JavaScript</h3><pre class="snippet"><code>npm install vega-datasets</code></pre><a class="use-link" href={`${REPO}#using-esm-import`}>ESM Example</a></div>
+      <div><h3>Reference in a Spec</h3><pre class="snippet"><code>"data": {"{"}"url": ".../cars.json"{"}"}</code></pre><a class="use-link" href={`${REPO}#in-vegavega-lite-specifications`}>Vega-Lite Example</a></div>
+      <div><h3>Load in Python</h3><pre class="snippet"><code>from altair.datasets import data</code></pre><a class="use-link" href={`${REPO}#language-interfaces`}>Julia and Observable</a></div>
+    </div>
+  </section>
+
+  <section class="wrap about" aria-labelledby="about-h">
+    <h2 id="about-h">About the Collection</h2>
+    <div class="about-list">
+      <details class="about-item" id="about-licensing" open>
+        <summary><span class="about-label"><span class="about-title">Licensing</span><span class="hint">Each dataset keeps its source's license</span></span></summary>
+        <div class="about-panel"><div class="about-body">Code is BSD-3-Clause. Each dataset keeps its source's license, recorded in its metadata and shown on its page. Check the source's terms before reuse.</div></div>
+      </details>
+      {about.map((a) => (
+        <details class="about-item" id={a.id}>
+          <summary><span class="about-label"><span class="about-title">{a.title}</span><span class="hint">{a.hint}</span></span></summary>
+          <div class="about-panel"><div class="about-body md" set:html={a.html} /></div>
+        </details>
+      ))}
+    </div>
+    <aside class="contribute" aria-labelledby="contribute-h">
+      <h3 id="contribute-h">Contribute</h3>
+      <p>Add a dataset, document one, or fix an error. Existing files rarely change: Vega, Vega-Lite and the Vega Editor test against them.</p>
+      <p>See the <a href={`${REPO}/blob/main/CONTRIBUTING.md`}>contribution guidelines</a> to get started.</p>
+      <a href={`${import.meta.env.BASE_URL}${STATUS_PATH}`}>{STATUS_TITLE}</a>
+    </aside>
+  </section>
+
+  <Fragment slot="footer">Documented in <a href={`${REPO}/blob/main/datapackage.json`}>datapackage.json</a> · Code BSD-3-Clause</Fragment>
+</Base>
+
+<script>
+  import "../client/home";
+</script>

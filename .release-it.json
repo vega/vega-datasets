@@ -3,15 +3,16 @@
     "commitMessage": "chore: release v${version}"
   },
   "github": {
-    "release": true
+    "release": true,
+    "draft": true,
+    "autoGenerate": true
   },
   "hooks": {
-    "after:bump": "npm run build"
+    "after:bump": "uv version ${version} --no-sync && npm run build"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": "angular",
-      "infile": "CHANGELOG.md"
+      "preset": "angular"
     }
   }
 }

@@ -1,0 +1,329 @@
+---
+/**
+ * A dataset's page: what it is, its fields, a live chart, a preview, the gallery
+ * examples that use it and where it comes from, with a rail for loading it. Everything
+ * but the charts is in the HTML; client/dataset.ts and client/explore.ts add the rest.
+ */
+import type { GetStaticPaths } from "astro";
+import { catalog as c } from "../../prerender/catalog";
+import { metadataEntry } from "../../prerender/metadata-file";
+import FieldsTable from "../../components/FieldsTable.astro";
+import SnippetTabs from "../../components/SnippetTabs.astro";
+import Thumb from "../../components/Thumb.astro";
+import UsageStack from "../../components/UsageStack.astro";
+import MotionSection from "../../components/MotionSection.astro";
+import Base from "../../layouts/Base.astro";
+import { type Dataset, type Gallery, GALLERIES, GALLERY_LABEL, licenseFamily } from "../../lib/catalog";
+import { fileName, formatDescription, interleave, isReleased, linkText, sizeDescription, useSnippets } from "../../lib/dataset-model";
+import { bothValuesNote, chartFeatures, defaultAxes, exploreModes, hasDensity, MODE_LABEL, scatterFields, scatterSpec, starterChart } from "../../lib/explore-model";
+import { BAND_POLICY, densityCaption, densityPageSpec, densitySpec, drawPointsLabel, hasMapPreview, tableBand } from "../../lib/large-data";
+import { densityOf } from "../../prerender/density";
+import { mapPreview } from "../../prerender/map-preview";
+import { drawnChart } from "../../prerender/chart-svg";
+import { FORMAT_LABEL, formatBytes, formatCount, plural } from "../../lib/format";
+import { markdownToHtml } from "../../lib/markdown";
+import { hasMotion } from "../../lib/motion";
+import { editorUrl, starterSpec } from "../../lib/starter";
+import { breadcrumbJsonLd, datasetJsonLd, datasetMetaDescription, datasetPath, datasetTitle, jsonForScript, REPO, STATUS_PATH, statusRowId } from "../../lib/seo";
+import { completeness } from "../../lib/completeness";
+
+export const getStaticPaths = (() => c.datasets.map((d) => ({ params: { name: d.name }, props: { d } }))) satisfies GetStaticPaths;
+
+const { d } = Astro.props as { d: Dataset };
+const base = import.meta.env.BASE_URL;
+const page = (name: string) => `${base}${datasetPath(name)}`;
+/** The dataset's entry in the metadata file, on the repository that built the site. */
+const METADATA = metadataEntry(d);
+const EXAMPLES_SHOWN = 8;
+const PREVIEW_ROWS = 5;
+/** The Explore column's width (px) at a 1360 px window and on a 390 px phone. */
+const EXPLORE_WIDTH = { wide: 880, phone: 358 };
+/** Other charts of files above this size draw only when asked (the large-data policy covers scatter plots and maps). */
+const AUTO_LOAD_BYTES = 3e6;
+
+// Neighbors, for the stepper.
+const i = c.datasets.indexOf(d);
+const n = c.datasets.length;
+const prev = c.datasets[(i - 1 + n) % n]!;
+const next = c.datasets[(i + 1) % n]!;
+
+// Head
+const [lede = "", ...rest] = (d.description || "No description recorded.").trim().split(/\n\s*\n/);
+const usage = c.usage(d);
+const examples = d.usedBy.length;
+const license = licenseFamily(d);
+// Metadata gaps show quietly where they occur; the footer counts them and links to the status page.
+const { gaps } = completeness(d);
+
+// Sections, in page order (the section nav links to the ones that exist).
+const names = new Set(c.datasets.map((x) => x.name));
+
+const modes = exploreModes(d);
+const sf = scatterFields(d);
+const axes = sf ? defaultAxes(sf) : null;
+const first = modes[0];
+// The large-data policy (lib/large-data.ts), for a scatter plot: whether the points draw by
+// themselves, on a desktop-class device only (the client decides), or when asked; and
+// whether they may zoom (a band that allows it only on desktop-class devices shows the
+// hint until the client knows the device).
+const band = first === "scatter" ? tableBand(d) : null;
+const policy = band ? BAND_POLICY[band] : null;
+const zoomable = !policy || policy.zoom !== "never";
+const specFor = (mode: string, phone: boolean) =>
+  mode === "scatter" && sf && axes ? scatterSpec(d, sf, { ...axes, zoom: !phone && zoomable, height: phone ? 300 : 380 }) : (starterChart(d) ?? starterSpec(d)!);
+const wideSpec = first ? specFor(first, false) : null;
+const phoneSpec = first ? specFor(first, true) : null;
+const pointsButton = band === "canvas" || band === "on-request";
+const bigFile = !band && (d.bytes ?? 0) > AUTO_LOAD_BYTES;
+// Long tables open on a density overview binned now; heavy maps on a picture drawn now.
+const grid = hasDensity(d) && axes ? densityOf(d, axes) : null;
+const density = grid ? { grid, spec: densitySpec(d, grid, 380), page: densityPageSpec(d, grid, 380) } : null;
+const mapPic = hasMapPreview(d) ? await mapPreview(d) : null;
+// The height Explore's chart draws at, on a wide screen and a phone (the column's width
+// at 1360 and 390 px), reserved so nothing moves when it arrives. A map's picture holds its own place.
+const reserve = wideSpec && phoneSpec && !mapPic
+  ? {
+      wide: await drawnChart(density ? densityPageSpec(d, density.grid, 380) : wideSpec, EXPLORE_WIDTH.wide),
+      phone: await drawnChart(density ? densityPageSpec(d, density.grid, 300) : phoneSpec, EXPLORE_WIDTH.phone),
+    }
+  : null;
+// The scatter caption's count for the default fields, so the caption doesn't grow when the chart draws.
+const plotted = reserve?.wide.plotted ?? null;
+const countNote = plotted === null ? null : bothValuesNote(d, plotted);
+const color = sf?.color ? ` the legend to isolate ${/^[aeiou]/i.test(sf.color.name) ? "an" : "a"} ${sf.color.name.toLowerCase()}.` : "";
+
+const motion = hasMotion(d);
+const preview = d.preview && d.preview.rows.length ? d.preview : null;
+const shown = preview ? preview.rows.slice(0, PREVIEW_ROWS) : [];
+
+const all = interleave(c.examplesFor(d));
+const choices: [Gallery | null, string][] = [
+  [null, `All ${formatCount(all.length)}`],
+  ...GALLERIES.filter((g) => usage[g]).map((g) => [g, `${GALLERY_LABEL[g]} ${formatCount(usage[g])}`] as [Gallery, string]),
+];
+
+const sections: { id: string; title: string; count?: number }[] = [
+  ...(d.fields.length ? [{ id: "fields", title: "Fields", count: d.fields.length }] : []),
+  ...(modes.length ? [{ id: "explore", title: "Explore" }] : []),
+  ...(motion ? [{ id: "motion", title: "In Motion" }] : []),
+  ...(d.image || preview ? [{ id: "preview", title: "Preview" }] : []),
+  { id: "examples", title: "Examples", ...(examples ? { count: examples } : {}) },
+  { id: "provenance", title: "Provenance" },
+];
+
+const firstSource = d.sources[0];
+const licenseTitle = d.licenses[0]?.title?.replace(/\.\s*$/, "");
+const licensePath = d.licenses[0]?.path;
+const notSpecified = license === "Not specified";
+
+// What the page's scripts need: the dataset without its preview rows.
+const { preview: _preview, ...clientData } = d;
+const title = datasetTitle(d);
+---
+<Base title={title} description={datasetMetaDescription(d)} path={datasetPath(d.name)} jsonLd={[datasetJsonLd(c, d), breadcrumbJsonLd(d)]}>
+  <Fragment slot="head">
+    <link rel="prev" href={page(prev.name)}>
+    <link rel="next" href={page(next.name)}>
+  </Fragment>
+
+  <div class="wrap ds-bar">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={base} class="wide-only">Datasets</a>
+      <span class="wide-only" aria-hidden="true">/</span>
+      <span class="wide-only" aria-current="page">{d.name}</span>
+      <a href={base} class="phone-only">‹ All Datasets</a>
+    </nav>
+    <nav class="stepper" aria-label="Neighboring datasets">
+      <a class="step" href={page(prev.name)} data-step="prev" aria-label={`Previous dataset: ${prev.name}`}>‹<span class="wide-only"> {prev.name}</span></a>
+      <span class="mono"><span class="wide-only">{i + 1} of {n}</span><span class="phone-only">{i + 1} / {n}</span></span>
+      <a class="step" href={page(next.name)} data-step="next" aria-label={`Next dataset: ${next.name}`}><span class="wide-only">{next.name} </span>›</a>
+    </nav>
+  </div>
+
+  <header class="wrap ds-head">
+    <h1 class="ds-name">{d.name}</h1>{d.title && <p class="ds-title">{d.title}</p>}
+    <div class="lede md" set:html={markdownToHtml(lede)} />
+    {rest.length > 0 && <div class="md body-md" set:html={markdownToHtml(rest.join("\n\n"))} />}
+    <div class="badges">
+      <span class="badge">{FORMAT_LABEL[d.format] ?? d.format}</span>
+      {d.rows !== null && <span class="badge">{plural(d.rows, "row")}</span>}
+      {d.fields.length > 0 && <span class="badge">{plural(d.fields.length, "field")}</span>}
+      <span class="badge">{formatBytes(d.bytes)}</span>
+      {examples > 0 && (
+        <span class="badge">
+          <span class="badge-dots wide-only">{GALLERIES.filter((g) => usage[g]).map((g) => <span class={`gdot g-${g}`} aria-hidden="true"></span>)}</span>
+          <span class="wide-only">{plural(examples, "gallery example")}</span>
+          <span class="phone-only">{plural(examples, "example")}</span>
+        </span>
+      )}
+      {notSpecified && <span class="badge warn">License not specified</span>}
+    </div>
+  </header>
+
+  <div class="wrap ds-body">
+    <div class="ds-main">
+      <nav class="tabs section-nav" aria-label="Sections">
+        {sections.map((s) => <a class="tab" href={`#${s.id}`}>{s.title}{s.count !== undefined && <span class="n">{s.count}</span>}</a>)}
+      </nav>
+
+      {d.fields.length > 0 && (
+        <section class="ds-sec" id="fields" aria-labelledby="fields-h">
+          <div class="sec-head"><h2 id="fields-h">Fields</h2></div>
+          <FieldsTable dataset={d} metadata={METADATA} names={names} />
+        </section>
+      )}
+
+      {wideSpec && phoneSpec && first && (
+        <section class="ds-sec explore" id="explore" aria-labelledby="explore-h" data-explore data-density={density ? "" : undefined}>
+          <div class="sec-head">
+            <h2 id="explore-h">Explore</h2>
+            {modes.length > 1 && (
+              <div class="seg" role="group" aria-label="Chart">
+                {modes.map((m, k) => <button type="button" aria-pressed={k === 0 ? "true" : "false"} data-mode={m}>{MODE_LABEL[m]}</button>)}
+              </div>
+            )}
+          </div>
+          <div class="binds" data-reserve={first === "scatter" && !density ? "" : undefined} hidden={first !== "scatter" || density ? true : undefined}></div>
+          <div class="explore-chart" style={reserve ? `--chart-h: ${reserve.wide.height}px; --chart-h-phone: ${reserve.phone.height}px` : undefined}>
+            {mapPic && <img class="chart-preview" src={`${base}previews/${d.name}.webp`} width={mapPic.width} height={mapPic.height} alt={`The ${d.name} map, as the starter chart draws it`}>}
+            {mapPic && <button class="btn draw" type="button">Draw the Live Map ({formatBytes(d.bytes)})</button>}
+            {pointsButton && !mapPic && <button class="btn draw" type="button" data-auto-draw={policy?.autoDraw}>{drawPointsLabel(d)}</button>}
+            {bigFile && !density && !mapPic && <button class="btn draw" type="button">Draw Chart ({formatBytes(d.bytes)})</button>}
+          </div>
+          <div class="chart-foot">
+            <div class="chart-caption">
+              {density
+                ? <span class="hint">{densityCaption(density.grid)}</span>
+                : first === "scatter" && sf
+                ? <span class="hint" data-plotted={plotted ?? undefined}><span class="wide-only">Pick two fields.{zoomable && " Scroll to zoom, drag to pan."}{color && ` Click${color}`}{countNote && ` ${countNote}`}</span><span class="phone-only">Pick two fields.{color && ` Tap${color}`}{countNote && ` ${countNote}`}</span></span>
+                : <span class="hint" hidden></span>}
+              {density
+                ? <span class="features mono">{chartFeatures(density.page).join(" · ")}</span>
+                : <span class="features mono"><span class="wide-only">{chartFeatures(wideSpec).join(" · ")}</span><span class="phone-only">{chartFeatures(phoneSpec).join(" · ")}</span></span>}
+            </div>
+            {density && <button class="btn" type="button" data-draw-all>{drawPointsLabel(d)}</button>}
+            <a class="btn btn-primary" target="_blank" rel="noopener" href={editorUrl(density ? density.spec : wideSpec)} data-editor>Open This Chart in the Vega Editor</a>
+          </div>
+        </section>
+      )}
+
+      {motion && <MotionSection />}
+
+      {d.image ? (
+        <section class="ds-sec" id="preview" aria-labelledby="preview-h">
+          <div class="sec-head"><h2 id="preview-h">Preview</h2></div>
+          <figure class="ds-image"><img src={`${base}${d.image}`} alt={`The ${d.name} image`}></figure>
+        </section>
+      ) : preview && (
+        <section class="ds-sec" id="preview" aria-labelledby="preview-h">
+          <div class="sec-head"><h2 id="preview-h">Preview</h2><span class="mono sec-meta"><span class="wide-only">First {shown.length} of {formatCount(d.rows ?? shown.length)} rows</span><span class="phone-only">{shown.length} of {formatCount(d.rows ?? shown.length)} rows</span></span></div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label={`First rows of ${d.name}`}>
+            <table class="preview">
+              <thead><tr>{preview.columns.map((col) => <th scope="col">{col}</th>)}</tr></thead>
+              <tbody>{shown.map((r) => <tr>{r.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+            </table>
+          </div>
+          {preview.columns.length > 4 && <p class="sec-note phone-only">Scroll sideways for all {preview.columns.length} fields.</p>}
+        </section>
+      )}
+
+      <section class="ds-sec" id="examples" aria-labelledby="examples-h" data-examples>
+        <div class="sec-head">
+          <h2 id="examples-h">Examples</h2>
+          {choices.length > 2 && (
+            <div class="seg" role="group" aria-label="Filter by gallery">
+              {choices.map(([g, label]) => <button type="button" aria-pressed={g === null ? "true" : "false"} data-gallery={g ?? ""}>{label}</button>)}
+            </div>
+          )}
+        </div>
+        {all.length === 0 ? (
+          <div class="shelf-empty">
+            <p>Not yet seen in any gallery.</p>
+            <p class="muted">This dataset is published and documented but no Vega, Vega-Lite or Altair example uses it. A new example would be a welcome contribution.</p>
+          </div>
+        ) : (
+          <>
+            <ul class="ex-grid">
+              {all.map((e) => (
+                <li class="ex" data-gallery={e.gallery}>
+                  <a class="ex-thumb" href={e.url} target="_blank" rel="noopener" aria-label={`${e.name} in the gallery`} tabindex="-1"><Thumb example={e} /></a>
+                  <a class="ex-name" href={e.url} target="_blank" rel="noopener"><span class={`gdot g-${e.gallery}`} aria-hidden="true"></span>{e.name}</a>
+                  <span class="ex-links">
+                    {e.gallery === "altair"
+                      ? <a href={e.source} target="_blank" rel="noopener">Python Source</a>
+                      : e.editor
+                        ? <a href={e.editor} target="_blank" rel="noopener">Open in Vega Editor</a>
+                        : <a href={e.source} target="_blank" rel="noopener">Spec</a>}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <div class="sec-foot">
+              <p class="sec-note">Vega and Vega-Lite examples open in the Editor with this dataset loaded. Altair examples link to their Python source.</p>
+              {all.length > EXAMPLES_SHOWN && <button class="btn more" type="button">Show All {formatCount(all.length)} Examples</button>}
+            </div>
+          </>
+        )}
+      </section>
+
+      <section class="ds-sec" id="provenance" aria-labelledby="provenance-h">
+        <div class="sec-head"><h2 id="provenance-h">Provenance</h2></div>
+        <dl class="kv prov">
+          <dt>Source</dt>
+          <dd>
+            {d.sources.length === 0 ? <p class="muted">No source recorded.</p> : (
+              <ul class="plain-list">{d.sources.map((s) => <li>{s.path ? <a href={s.path} target="_blank" rel="noopener">{s.title}</a> : s.title}</li>)}</ul>
+            )}
+          </dd>
+          <dt>License</dt>
+          <dd>
+            {notSpecified ? (
+              <p>Not specified.{licenseTitle && ` ${licenseTitle}`}{licensePath && <> (<a href={licensePath} target="_blank" rel="noopener">{linkText(licensePath)}</a>)</>}{(licenseTitle || licensePath) && "."} Check the source's terms before reuse.</p>
+            ) : (
+              <ul class="plain-list">{d.licenses.map((l) => <li>{l.path ? <a href={l.path} target="_blank" rel="noopener">{l.title ?? l.name}</a> : (l.title ?? l.name)}{l.title && l.title !== l.name && <span class="muted"> ({l.name})</span>}</li>)}</ul>
+            )}
+          </dd>
+          <dt>File</dt>
+          <dd><code>data/{d.file}</code>{d.bytes !== null ? ` · ${formatCount(d.bytes)} bytes · ` : " · "}<a href={`${REPO}/blob/main/data/${d.file}`}>View on GitHub</a></dd>
+        </dl>
+      </section>
+    </div>
+
+    <aside class="ds-rail" aria-label="Using this dataset">
+      <div class="rail-box rail-use">
+        <h3>Use This Dataset</h3>
+        <SnippetTabs id="use" url={d.url} snippets={useSnippets(d)} />
+        {/* The site's own copy: browsers ignore `download` on other origins (jsDelivr) and open the file instead. */}
+        <a class="btn" href={`${base}data/${d.file}`} download={fileName(d)}>Download {fileName(d)}</a>
+      </div>
+      <div class="rail-box wide-only">
+        <h3>At a Glance</h3>
+        <dl class="kv">
+          <dt>Format</dt><dd>{formatDescription(d)}</dd>
+          <dt>Size</dt><dd>{sizeDescription(d)}</dd>
+          <dt>Source</dt><dd>{firstSource ? (firstSource.path ? <a href={firstSource.path} target="_blank" rel="noopener">{firstSource.title}</a> : firstSource.title) : "Not recorded"}{d.sources.length > 1 && ` and ${d.sources.length - 1} more`}</dd>
+          <dt>License</dt><dd>{license}</dd>
+          <dt>Release</dt><dd>{isReleased(d) ? `v${c.package.version}` : "Not yet released"}</dd>
+        </dl>
+      </div>
+      <div class="rail-box wide-only">
+        <h3>Used in the Galleries</h3>
+        {examples ? (
+          <>
+            <div class="rail-stack"><UsageStack counts={usage} max={examples} /></div>
+            <div class="rail-usage">{GALLERIES.map((g) => <><span class={`gdot g-${g}`} aria-hidden="true"></span><span>{GALLERY_LABEL[g]}</span><span class="mono">{formatCount(usage[g])}</span></>)}</div>
+          </>
+        ) : <p class="muted">Not used in a gallery example yet.</p>}
+      </div>
+    </aside>
+  </div>
+
+  <script type="application/json" id="dataset-data" set:html={jsonForScript(clientData)} />
+  {density && <script type="application/json" id="density-data" set:html={jsonForScript(density.grid)} />}
+
+  <Fragment slot="footer">Spot an error? <a href={METADATA}>Edit this dataset's metadata</a> on GitHub.{gaps > 0 && <span class="footer-gaps">This dataset has <a href={`${base}${STATUS_PATH}#${statusRowId(d.name)}`}>{plural(gaps, "metadata gap")}</a>.</span>}</Fragment>
+</Base>
+
+<script>
+  import "../../client/dataset";
+</script>

@@ -1,0 +1,55 @@
+---
+/**
+ * Every dataset against the metadata checklist (lib/completeness.ts), most gaps first:
+ * each row links to the dataset's page and to its entry in the metadata file, and has the
+ * id `ds-<name>` (the dataset page's footer links to it). Properties that apply
+ * only where they fit are listed as documented, never as gaps.
+ */
+import type { Dataset } from "../lib/catalog";
+import { byGaps, CHECK_LABEL, CHECKS, completeness, sourcesUnlinked } from "../lib/completeness";
+import { formatCount } from "../lib/format";
+import { datasetPath, statusRowId } from "../lib/seo";
+
+interface Props {
+  datasets: Dataset[];
+  /** Each dataset's entry in the metadata file on GitHub. */
+  entry: (d: Dataset) => string;
+}
+const { datasets, entry } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const rows = byGaps(datasets.map((dataset) => ({ dataset, status: completeness(dataset) })));
+---
+<div class="table-scroll status-scroll" tabindex="0" role="region" aria-label="Metadata coverage of every dataset">
+  <table class="status">
+    <thead>
+      <tr>
+        <th scope="col">Dataset</th>
+        <th scope="col" class="st-num">Gaps</th>
+        {CHECKS.map((c) => <th scope="col">{CHECK_LABEL[c]}</th>)}
+        <th scope="col">Field Descriptions</th>
+        <th scope="col">Also Documented</th>
+        <th scope="col"><span class="visually-hidden">Metadata entry</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(({ dataset: d, status: s }) => (
+        <tr id={statusRowId(d.name)}>
+          <th scope="row"><a href={`${base}${datasetPath(d.name)}`}>{d.name}</a></th>
+          <td class="st-num">{formatCount(s.gaps)}</td>
+          {CHECKS.map((c) => (
+            <td class={s.has[c] ? "st-ok" : "st-gap"}>
+              {s.has[c]
+                ? <><span aria-hidden="true">✓</span><span class="visually-hidden">Yes</span>{c === "source" && sourcesUnlinked(d) && <span class="st-note"> (no link)</span>}</>
+                : c === "license" ? "Not specified" : "Missing"}
+            </td>
+          ))}
+          <td class={s.fields ? (s.fields.undescribed.length ? "st-gap" : "st-ok") : "st-na"}>
+            {s.fields ? `${formatCount(s.fields.total - s.fields.undescribed.length)} of ${formatCount(s.fields.total)}` : <><span aria-hidden="true">–</span><span class="visually-hidden">No fields</span></>}
+          </td>
+          <td class="st-info">{s.documented.length ? s.documented.join(", ") : <><span aria-hidden="true">–</span><span class="visually-hidden">None</span></>}</td>
+          <td><a href={entry(d)}>Edit<span class="visually-hidden"> the {d.name} entry</span></a></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

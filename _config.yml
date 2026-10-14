@@ -1,0 +1,14 @@
+# Use the upstream URL as the canonical address for existing documentation pages.
+url: https://vega.github.io
+baseurl: /vega-datasets
+
+# Jekyll cannot parse Astro files. Exclude site/ alongside Jekyll's default exclusions.
+exclude:
+  - site/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

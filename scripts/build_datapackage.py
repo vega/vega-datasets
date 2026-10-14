@@ -27,15 +27,13 @@ Related
 
 from __future__ import annotations
 
-import contextlib
 import copy
 import datetime as dt
-import io
+import hashlib
 import json
 import logging
 import os
 import re
-import subprocess as sp
 import tomllib
 import warnings
 from collections.abc import Mapping, Sequence
@@ -107,7 +105,6 @@ type PythonDataType = (
 )
 
 type OutputFormat = Literal["json", "yaml", "md"]
-type OneOrSeq[T] = T | Sequence[T]
 
 ADDITIONS_TOML: LiteralString = "datapackage_additions.toml"
 NPM_PACKAGE: Literal["package.json"] = "package.json"
@@ -291,7 +288,9 @@ class ResourceAdapter:
         }
 
     @classmethod
-    def from_path(cls, source: Path, /) -> Resource:
+    def from_path(cls, source: Path, /, *, force_table: bool = False) -> Resource:
+        if force_table:
+            return cls.from_tabular_safe(source)
         match source.suffix:
             case ".csv" | ".tsv" | ".parquet":
                 return cls.from_tabular_safe(source)
@@ -352,7 +351,9 @@ class ResourceAdapter:
         return parts
 
     @staticmethod
-    def with_extras(resource: Resource, /, **extras: Unpack[ResourceMeta]) -> Resource:
+    def with_extras(
+        resource: Resource, /, **extras: Unpack[ResourceExtras]
+    ) -> Resource:
         """Supplement inferred metadata with manually defined ``extras``."""
         if "schema" in extras:
             resource.schema = merge_schemas(resource, extra=extras.pop("schema"))
@@ -372,7 +373,13 @@ def merge_schemas(resource: Resource, *, extra: Schema) -> fl.Schema:
         if name in overrides:
             field.update(overrides[name])
         fields.append(field)
-    return fl.Schema.from_descriptor({"fields": fields})
+    merged = {
+        key: value
+        for key, value in cast("dict[str, Any]", extra).items()
+        if key != "fields"
+    }
+    merged["fields"] = fields
+    return fl.Schema.from_descriptor(merged)
 
 
 def _flatten_schema(schema: Schema, /) -> dict[str, Field]:
@@ -424,11 +431,16 @@ class Schema(TypedDict):
     fields: Sequence[Field]
 
 
-class ResourceMeta(TypedDict, total=False):
+class ResourceExtras(TypedDict, total=False):
+    title: str
     description: str
     sources: Sequence[Source]
     licenses: Sequence[License]
     schema: Schema
+
+
+class ResourceMeta(ResourceExtras, total=False):
+    type: Literal["table"]
 
 
 class PackageMeta(TypedDict):
@@ -565,7 +577,7 @@ def iter_data_dir(data_root: Path, /) -> Iterator[Path]:
 
 
 def iter_resources(
-    root: Path, /, overrides: dict[str, ResourceMeta], gh_sha1: Mapping[str, str]
+    root: Path, /, overrides: dict[str, ResourceMeta]
 ) -> Iterator[Resource]:
     """
     Yield all parseable resources, constructing with the most appropriate ``Resource`` class.
@@ -582,75 +594,40 @@ def iter_resources(
             msg = f"Skipping unexpected extension {fp.suffix!r}\n\n{fp!r}"
             warnings.warn(msg, stacklevel=2)
             continue
-        resource = ResourceAdapter.from_path(fp)
         name = fp.name
-        if name in overrides:
-            resource = ResourceAdapter.with_extras(resource, **overrides[name])
-        resource.hash = gh_sha1[name]
+        extras = overrides.get(name, {})
+        resource = ResourceAdapter.from_path(
+            fp, force_table=extras.get("type") == "table"
+        )
+        if extras:
+            metadata = cast(
+                "ResourceExtras",
+                {key: value for key, value in extras.items() if key != "type"},
+            )
+            resource = ResourceAdapter.with_extras(resource, **metadata)
+        resource.hash = git_blob_sha1(fp)
         yield resource
 
 
-def run_check[T: (str, bytes)](
-    args: OneOrSeq[str | Path], /, into: type[T] = str
-) -> sp.CompletedProcess[T]:
-    """
-    Run a command in a `subprocess`_, capturing its output.
+def git_blob_sha1(fp: Path, /) -> str:
+    r"""
+    Compute the `git blob`_ SHA-1 of ``fp``'s current contents.
 
-    Parameters
-    ----------
-    args
-        Argument(s) that comprise the command.
-    into
-        Decode (``str``) stdout or keep encoded (``bytes``).
+    For a file checked out under the repository's ``eol=lf`` attributes, this
+    is the object name ``git ls-tree`` reports once the file is committed.
+    Hashing the bytes on disk keeps `Resource.hash`_ consistent with the rest
+    of the metadata (``bytes``, schema), which is also read from the working
+    tree, so the build no longer depends on the data being committed first.
 
-    .. _subprocess:
-        https://docs.python.org/3/library/subprocess.html#subprocess.run
-    """
-    msg = str(args) if isinstance(args, str | Path) else " ".join(str(c) for c in args)
-    msg = f"Running command:\n    >>> {msg}"
-    logger.info(msg)
-    try:
-        return sp.run(args, check=True, capture_output=True, text=into is str)
-    except sp.CalledProcessError as err:
-        out = err.stderr
-        msg = f"{err.returncode}: {out.decode() if into is bytes else out}"
-        err.add_note(msg)
-        raise
-
-
-def extract_sha(source: str | Path, /) -> Mapping[str, str]:
-    """
-    Get dataset hashes for the current branch via `ls-files`_.
-
-    Parameters
-    ----------
-    source
-        Directory containing datasets.
-
-    Returns
-    -------
-    Mapping from `Resource.path`_ to `Resource.hash`_.
-
-    .. _ls-files:
-        https://git-scm.com/docs/git-ls-files
-    .. _Resource.path:
-        https://datapackage.org/standard/data-resource/#path-or-data
+    .. _git blob:
+        https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
     .. _Resource.hash:
         https://datapackage.org/standard/data-resource/#hash
     """
-    COLUMNS = "path", "sha"
-    SHA = "sha1:%(objectname)"
-    PATH = "%(path)"
-    CMD_LS_FILES = ("git", "ls-tree", _current_branch(), f"--format={PATH},{SHA}")
-    with contextlib.chdir(Path(source)):
-        buf = io.BytesIO(run_check(CMD_LS_FILES, into=bytes).stdout)
-    return dict(pl.read_csv(buf, has_header=False, new_columns=COLUMNS).iter_rows())
-
-
-def _current_branch(*, ci_env_var: str = "GITHUB_SHA") -> str:
-    """Uses ``ci_env_var`` when run in a GitHub Action."""
-    CMD = "git", "branch", "--show-current"
-    return os.environ.get(ci_env_var) or run_check(CMD).stdout.rstrip()
+    content = fp.read_bytes()
+    header = b"blob %d\0" % len(content)
+    digest = hashlib.sha1(header + content, usedforsecurity=False).hexdigest()
+    return f"sha1:{digest}"
 
 
 def read_toml(fp: Path, /) -> dict[str, Any]:
@@ -721,11 +698,10 @@ def main(
     ResourceAdapter.multi_format_bases = identify_multi_format_datasets(data_dir)
 
     pkg_meta = extract_package_metadata(npm_package, sources)
-    gh_sha1 = extract_sha(data_dir)
     msg = f"Collecting resources for '{pkg_meta['name']}@{pkg_meta['version']}' ..."
     logger.info(msg)
     pkg = Package(
-        resources=list(iter_resources(data_dir, overrides, gh_sha1)),
+        resources=list(iter_resources(data_dir, overrides)),
         **pkg_meta,  # type: ignore[arg-type]
     )
     msg = f"Collected {len(pkg.resources)} resources"

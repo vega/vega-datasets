@@ -6,3 +6,10 @@ node_modules
 .venv
 */**/*.ipynb
 .claude/
+site/dist
+site/.cache
+
+# Website (Astro): generated catalog, thumbnails and type cache
+site/generated
+site/public/thumbs
+site/.astro

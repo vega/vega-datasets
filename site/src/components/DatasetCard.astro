@@ -1,0 +1,30 @@
+---
+/** A dataset in the home page's list: name, format, summary, size and gallery use. */
+import type { Catalog, Dataset } from "../lib/catalog";
+import { FORMAT_LABEL, formatBytes, formatCount, plural } from "../lib/format";
+import { plainSummary } from "../lib/home-model";
+import { datasetPath } from "../lib/seo";
+import UsageStack from "./UsageStack.astro";
+
+interface Props {
+  catalog: Catalog;
+  dataset: Dataset;
+  max: number;
+}
+const { catalog, dataset: d, max } = Astro.props;
+const n = d.usedBy.length;
+const geo = d.format === "topojson" || d.format === "geojson";
+---
+<a class="card" href={`${import.meta.env.BASE_URL}${datasetPath(d.name)}`} data-name={d.name}>
+  <div class="card-head"><span class="card-name">{d.name}</span><span class="mono">{FORMAT_LABEL[d.format] ?? d.format}</span></div>
+  <p class="card-desc">{d.title ?? plainSummary(d.description)}</p>
+  <div class="card-foot">
+    <div class="card-meta mono">
+      {d.rows !== null && <span>{plural(d.rows, "row")}</span>}
+      {d.rows !== null && d.fields.length > 0 && <span>{plural(d.fields.length, "field")}</span>}
+      {geo && <span>Geographic</span>}
+      <span class="card-size">{formatBytes(d.bytes)}</span>
+    </div>
+    <span class="card-usage"><UsageStack counts={catalog.usage(d)} max={max} /><span class="mono"><span data-usage-count>{formatCount(n)}</span><span class="card-ex">{n === 1 ? " example" : " examples"}</span></span></span>
+  </div>
+</a>

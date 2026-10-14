@@ -27,7 +27,7 @@ function autoType(object: Record<string, any>, skipFields?: Set<string>) {
 }
 
 const data: {
-  [key in Name]: () => Promise<any | any[] | string> & { url: string };
+  [key in Name]: (() => Promise<any | any[] | string>) & { url: string };
 } & { version: string } = { version } as any;
 
 for (const name of Object.keys(urls) as Name[]) {

@@ -1,0 +1,32 @@
+---
+/**
+ * How to load a file: its URL, which every tool uses, then one tab per tool (ARIA tabs,
+ * one panel per snippet). The first panel shows without scripts; client/snippets.ts adds
+ * switching (arrows, Home, End), Copy, and remembers the reader's tool across pages.
+ */
+import type { Snippet } from "../lib/dataset-model";
+
+interface Props {
+  /** Prefixes the element ids. */
+  id: string;
+  url: string;
+  snippets: Snippet[];
+  /** A compact quickstart can offer the URL as a tab instead of a separate block. */
+  urlTab?: boolean;
+}
+const { id, url, snippets, urlTab = false } = Astro.props;
+const tabs = urlTab ? [{ name: "URL", code: url }, ...snippets] : snippets;
+---
+<div class:list={["snippets", { "snippets-compact": urlTab }]} data-snippets>
+  {!urlTab && <pre class="snippet snippet-url" data-snippet-url aria-label="URL"><code>{url}</code></pre>}
+  {tabs.length > 0 && (
+    <div class="tabs" role="tablist" aria-label={urlTab ? "Load data" : "Tool"}>
+      {tabs.map((s, i) => (
+        <button class="tab" role="tab" type="button" id={`${id}-tab-${i}`} data-tool={s.name === "URL" ? undefined : s.name} aria-controls={`${id}-panel-${i}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>{s.name}</button>
+      ))}
+    </div>
+  )}
+  {tabs.map((s, i) => (
+    <pre class="snippet" role="tabpanel" id={`${id}-panel-${i}`} aria-labelledby={`${id}-tab-${i}`} tabindex="0" hidden={i !== 0}><code>{s.code}</code></pre>
+  ))}
+</div>

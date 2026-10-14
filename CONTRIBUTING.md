@@ -50,6 +50,22 @@ For datasets requiring processing:
 - Ensure reproducibility with deterministic outputs and fixed random seeds when applicable
 - See `scripts/flights.py` as an example
 
+### Gallery Examples Registry
+
+The `data/gallery-examples.json` file catalogs examples from the Vega, Vega-Lite, and Altair galleries and identifies any `vega-datasets` resources each example uses.
+
+**When to regenerate:**
+
+Unlike the repository's stable example inputs, this file is a generated catalog of evolving upstream galleries. Regenerate it while preparing a `vega-datasets` release, or sooner after a material upstream change such as added, removed, renamed, or reorganized examples. Each generated file is a snapshot pinned to one upstream commit per gallery, not a continuously synchronized mirror.
+
+**Commands:**
+```bash
+uv run scripts/generate_gallery_examples.py         # Regenerate the file
+npm run build                                       # Then refresh datapackage.json/md
+```
+
+Configuration lives in `_data/gallery-examples.toml` (upstream refs and source URLs). Each gallery is pinned to the ref its live site is built from: Vega to `main`, and Vega-Lite and Altair to their latest release tags. When either project releases, bump its tag and regenerate. Runtime is a few seconds: the generator fetches the three gallery indexes plus roughly 280 Vega and Vega-Lite specs; Altair publishes its dataset metadata directly in its index.
+
 ## Metadata and Documentation
 
 We follow the [Data Package Standard 2.0](https://datapackage.org/) with:
@@ -71,6 +87,7 @@ For each dataset, add an entry to `_data/datapackage_additions.toml`:
 ```toml
 [[resources]] # Path: example.json
 path = "example.json"
+title = "Example measurements by location"
 description = """Detailed description of the dataset"""
 
 # Schema section for documenting data fields/columns
@@ -107,10 +124,16 @@ path = "https://example.com/license-url"
 title = "Human-readable license name"
 ```
 
+#### Resource Titles
+
+Resource titles are optional plain text. Aim for **60 characters**; the repository
+limit is **80**, including spaces and punctuation. Put additional detail in
+`description`.
+
 #### How the Metadata System Works
 
 - **Automatic Inference**: For tabular files (CSV, TSV, JSON, Parquet, Arrow), the system automatically detects column names and data types
-- **Manual Additions**: Use the TOML file to add descriptions, categories, source information, and licenses
+- **Manual Additions**: Use the TOML file to add titles, descriptions, categories, source information, and licenses
 - **Field Matching**: When documenting columns in `resources.schema.fields`, ensure the `name` field exactly matches the column name in your dataset
 - **Precedence**: Your manual definitions in the TOML file will override any automatically inferred values
 - **Complete Examples**: See existing entries in `_data/datapackage_additions.toml` for reference on documenting various types of datasets
@@ -187,12 +210,12 @@ uv run ruff format
 
 ### Validating `datapackage.json` (optional, local)
 
-After editing data files or the descriptor, you can validate the data
+After editing source metadata, data files or the descriptor, you can validate the data
 package end-to-end with pytest. Two tiers:
 
 ```bash
-# Fast tier — file existence, declared bytes, git-blob SHA-1.
-# Stdlib only, sub-second across all resources.
+# Fast tier — resource title length and source agreement, file existence,
+# declared bytes and git-blob SHA-1. No row validation.
 uv run --group dev pytest tests/
 
 # Slow tier — frictionless schema and row validation per resource.
@@ -203,12 +226,11 @@ uv run --group dev pytest tests/ --runslow
 uv run --group dev pytest tests/ --runslow --limit-rows 250000
 ```
 
-CI runs the slow tier with `--limit-rows 250000`: `flights_3m`'s ~3M
-rows are sampled, every other resource is below the cap and validates
-in full. The fast tier is implicitly covered too — `npm run build`
-regenerates `datapackage.json` from on-disk data before the slow tier
-runs, so any byte/hash drift would surface either there or in the slow
-tier's schema validation.
+CI first runs the fast tier (`tests/test_datapackage.py`) against the
+committed `datapackage.json`, so a data change or resource title edit committed
+without rebuilding fails there. It then runs `npm run build` and the slow tier
+with `--limit-rows 250000`: `flights_3m`'s ~3M rows are sampled, every
+other resource is below the cap and validates in full.
 
 Resources whose schema/row failures are known and non-actionable (for
 example, `movies` whose schema is intentionally aspirational, or
@@ -217,6 +239,53 @@ example, `movies` whose schema is intentionally aspirational, or
 The slow-tier test for each is marked `xfail(strict=True)`, so it does
 not fail the run today — but if the upstream issue ever resolves, the
 test flips XFAIL → XPASS and the run fails, prompting allowlist removal.
+
+## The Website
+
+The [website](https://vega.github.io/vega-datasets/) is built from this repository's datasets, metadata, and `README.md`. Complete the [development setup](#development-setup) first, using Node 24.15 or later and `uv`. Preparing the site requires internet access.
+
+### Preview your changes
+
+Open a terminal in the project folder—the folder containing `package.json`—then run:
+
+```sh
+npm run site:dev
+```
+
+Open the web address shown in the terminal. Keep the terminal open while using the preview. Changes to website pages and styles appear automatically.
+
+After changing a dataset or `_data/datapackage_additions.toml`:
+
+1. Return to the terminal and press **Ctrl+C** to stop the preview. If prompted to confirm, enter **Y**.
+2. Run these commands, one at a time:
+
+   ```sh
+   npm run build
+   npm run site:dev
+   ```
+
+3. Refresh the page in your browser.
+
+The first command updates the dataset metadata. The second prepares the website and starts the preview again. If you only changed `README.md`, stop the preview and run `npm run site:dev` again.
+
+### Build and check
+
+Stop the preview, then run:
+
+```sh
+npm run site:build        # Build the website files in site/dist
+npm run site:check        # Check types in pages and scripts
+npm run site:test         # Run the site tests, including checks of the built pages
+npm run site:check-links  # Check external links; requires internet access
+```
+
+To view the completed build, run `npm run site:serve`. Generated site files are ignored by Git.
+
+Site tests are in `site/test/`; catalog builder tests are in `tests/test_build_site_catalog.py`. Optional browser checks require Chrome and `puppeteer-core`. See [browser setup](site/test/browser/browser.mjs) and the instructions at the top of each check in `site/test/browser/`.
+
+### Publishing
+
+The workflow in `.github/workflows/site.yml` builds and checks pull requests without publishing them. Publishing runs from `main` and requires **Settings → Pages → Source → GitHub Actions**. It combines Astro and Jekyll output to preserve existing data and documentation URLs. Fork sites ask search engines not to index them.
 
 ## Contributing Process
 

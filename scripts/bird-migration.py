@@ -8,8 +8,11 @@ CC0-1.0. It holds, for each of ten Nearctic-breeding migratory bird species, the
 geographic center of the species' population, estimated from eBird occurrence records
 collected between 1950 and 2015.
 
-Dryad requires an interactive download, so this script takes the already-downloaded
-`centroids.txt` as an argument rather than fetching it.
+Dryad is the canonical citation, but its downloads are gated by a browser anti-bot
+challenge and a token-gated API. By default this script fetches `centroids.txt` from
+Dryad's official Zenodo mirror, created through the 2021 Dryad-Zenodo partnership.
+An optional source path permits offline use. Both paths verify the source SHA-256
+before converting. Run `uv run scripts/bird-migration.py` to regenerate the dataset.
 
 Three things about the source need repair before the data is usable:
 
@@ -26,8 +29,9 @@ Three things about the source need repair before the data is usable:
    no estimate, concentrated in the non-breeding season when eBird coverage of South
    America and the Caribbean was sparse. This script drops those rows, so a species'
    day values are not contiguous. Connecticut Warbler loses 172 days, Bicknell's Thrush
-   104, Bobolink 73, and Buff-breasted Sandpiper 66; the three Calidris sandpipers and
-   Solitary Sandpiper lose none.
+   104, Bobolink 73, Buff-breasted Sandpiper 66, American Golden-Plover 3, Blackpoll
+   Warbler 2, and Pectoral Sandpiper 1; Semipalmated, White-rumped, and Solitary
+   Sandpipers are complete.
 
 3. Coordinates carry fifteen significant figures, far past what a population centroid
    estimate supports. This script rounds to four decimal places, roughly 11 m.
@@ -44,18 +48,32 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+import hashlib
+import io
 import sys
 from collections import Counter
 from pathlib import Path
 
+import niquests
+
+SOURCE_URL = "https://zenodo.org/records/4988406/files/centroids.txt?download=1"
+SOURCE_SHA256 = "32e9162a3d36dcc5a65f176a1d5fe195198fed56de70855ce19102d8a9d5ef66"
 DAYS_IN_YEAR = 365
 NOMINAL_YEAR = 2015  # last year of the 1950-2015 source window; not a leap year
 COORD_PRECISION = 4
 
 
-def convert(source: Path, dest: Path) -> None:
-    with source.open(newline="", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f, delimiter="\t"))
+def convert(source: Path | None, dest: Path) -> None:
+    if source is None:
+        response = niquests.get(SOURCE_URL, timeout=60)
+        response.raise_for_status()
+        content = response.content
+    else:
+        content = source.read_bytes()
+    digest = hashlib.sha256(content).hexdigest()
+    if digest != SOURCE_SHA256:
+        sys.exit(f"source SHA-256 mismatch: expected {SOURCE_SHA256}, got {digest}")
+    rows = list(csv.DictReader(io.StringIO(content.decode("utf-8")), delimiter="\t"))
 
     counts = Counter(row["species"] for row in rows)
     if bad := {s: n for s, n in counts.items() if n != DAYS_IN_YEAR}:
@@ -107,7 +125,12 @@ def _block_count(values: list[str]) -> int:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("source", type=Path, help="centroids.txt downloaded from Dryad")
+    parser.add_argument(
+        "source",
+        type=Path,
+        nargs="?",
+        help="local centroids.txt (default: fetch Zenodo mirror)",
+    )
     parser.add_argument(
         "--dest",
         type=Path,

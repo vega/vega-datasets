@@ -18,10 +18,10 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           cache: 'npm'
-          node-version: 20
+          node-version: 24
 
       - uses: astral-sh/setup-uv@v7
         with:
@@ -38,6 +38,15 @@ jobs:
 
       - name: Install Node dependencies
         run: npm ci
+
+      - name: Check TypeScript types
+        run: npm run test:types
+
+      # `npm run build` rewrites datapackage.json, so the later pytest run only
+      # sees the regenerated descriptor. Check the committed one first so a
+      # stale descriptor (a forgotten rebuild, or a CRLF re-save) fails CI.
+      - name: Validate committed datapackage
+        run: uv run pytest tests/test_datapackage.py
 
       - run: npm run build
 

@@ -3,8 +3,8 @@ Validate every resource in datapackage.json against its on-disk file.
 
 Two tiers:
 
-* Default — stdlib-only file existence, byte size, and git-blob SHA-1
-  against the descriptor. Sub-second across all 70+ resources. Covers
+* Default — resource title length and source agreement, file existence,
+  byte size, and git-blob SHA-1 against the descriptor. Covers
   what frictionless-py doesn't today (byte-count returns ``None`` for
   tabular JSON / arrow / parquet; hash-count supports only md5 and
   sha256, descriptor uses sha1).
@@ -34,10 +34,14 @@ from typing import Any
 import pytest
 from frictionless import Checklist, Package
 
+from scripts.build_datapackage import ResourceAdapter, iter_data_dir
+
 REPO = Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
 DESCRIPTOR_PATH = REPO / "datapackage.json"
+ADDITIONS_PATH = REPO / "_data" / "datapackage_additions.toml"
 ALLOWLIST_PATH = REPO / "_data" / "validate_datapackage.toml"
+MAX_RESOURCE_TITLE_LENGTH = 80
 
 
 def _load_resources() -> list[dict]:
@@ -57,7 +61,13 @@ def _load_xfail_reasons() -> dict[str, str]:
 
 _RESOURCES = _load_resources()
 _RESOURCE_IDS = [r["name"] for r in _RESOURCES]
+_SOURCE_RESOURCES = tomllib.loads(ADDITIONS_PATH.read_text(encoding="utf-8"))[
+    "resources"
+]
 _XFAIL = _load_xfail_reasons()
+_GALLERY_EXAMPLES = json.loads(
+    (DATA / "gallery-examples.json").read_text(encoding="utf-8")
+)
 
 # Sanity-check the allowlist against the live descriptor at import time.
 # A stale entry in validate_datapackage.toml is a silent maintenance hazard
@@ -75,7 +85,49 @@ if _unknown_xfail:
 def git_blob_sha1(path: Path) -> str:
     r"""Compute git's blob SHA-1: ``sha1(b"blob {len}\0" + content)``."""
     content = path.read_bytes()
-    return hashlib.sha1(b"blob %d\0%b" % (len(content), content)).hexdigest()
+    blob = b"blob %d\0%b" % (len(content), content)
+    return hashlib.sha1(blob, usedforsecurity=False).hexdigest()
+
+
+@pytest.mark.parametrize(
+    ("filename", "resource"),
+    [
+        pytest.param(path.name, resource, id=f"{path.name}:{resource['path']}")
+        for path, resources in (
+            (ADDITIONS_PATH, _SOURCE_RESOURCES),
+            (DESCRIPTOR_PATH, _RESOURCES),
+        )
+        for resource in resources
+    ],
+)
+def test_resource_title_length(filename: str, resource: dict) -> None:
+    """Keep resource titles concise for the catalog."""
+    if "title" not in resource:
+        return
+    title = resource["title"]
+    context = f"{filename}: {resource['path']}"
+    assert isinstance(title, str), f"{context}: resource title must be a string"
+    assert len(title) <= MAX_RESOURCE_TITLE_LENGTH, (
+        f"{context}: title has {len(title)} characters; "
+        f"maximum is {MAX_RESOURCE_TITLE_LENGTH}."
+    )
+
+
+def test_resource_titles_match_source() -> None:
+    """Catch title edits made without rebuilding the descriptor."""
+    expected = {
+        resource["path"]: resource["title"]
+        for resource in _SOURCE_RESOURCES
+        if "title" in resource
+    }
+    actual = {
+        resource["path"]: resource["title"]
+        for resource in _RESOURCES
+        if "title" in resource
+    }
+    assert actual == expected, (
+        "Resource titles differ between TOML and JSON (run `npm run build`)."
+    )
 
 
 @pytest.mark.parametrize("resource", _RESOURCES, ids=_RESOURCE_IDS)
@@ -122,6 +174,84 @@ def test_sha1_matches_git_blob(resource: dict) -> None:
     expected = declared.removeprefix("sha1:")
     actual = git_blob_sha1(path)
     assert expected == actual, f"declared={expected[:10]}... disk={actual[:10]}..."
+
+
+def test_every_data_file_is_described() -> None:
+    """
+    Catch a dataset added to ``data/`` without rebuilding the descriptor.
+
+    The per-resource tests above only visit files the descriptor already
+    lists; this checks the other direction, using the build's own notion of
+    which files become resources.
+    """
+    described = {resource["path"] for resource in _RESOURCES}
+    on_disk = {
+        fp.name for fp in iter_data_dir(DATA) if ResourceAdapter.is_supported(fp)
+    }
+    missing = sorted(on_disk - described)
+    assert not missing, f"not in datapackage.json (run `npm run build`): {missing}"
+
+
+def test_gallery_dataset_references_exist() -> None:
+    """Ensure gallery dataset names remain valid Data Package join keys."""
+    resource_names = {resource["name"] for resource in _RESOURCES}
+    referenced_names = {
+        dataset for example in _GALLERY_EXAMPLES for dataset in example["datasets"]
+    }
+
+    unknown = sorted(referenced_names - resource_names)
+    assert not unknown, (
+        f"gallery-examples.json references unknown Data Package resources: {unknown}"
+    )
+
+
+def test_gallery_resource_has_documented_table_schema() -> None:
+    """Document the registry as tabular JSON in generated Data Package outputs."""
+    resource = next(r for r in _RESOURCES if r["name"] == "gallery_examples")
+    assert resource["type"] == "table"
+    assert resource["format"] == "json"
+    schema = resource["schema"]
+    fields = {field["name"]: field for field in schema["fields"]}
+    assert list(fields) == [
+        "gallery_name",
+        "example_name",
+        "example_url",
+        "spec_url",
+        "categories",
+        "description",
+        "datasets",
+    ]
+    assert schema["$schema"] == "https://datapackage.org/profiles/2.0/tableschema.json"
+    assert schema["fieldsMatch"] == "equal"
+    assert schema["primaryKey"] == ["example_url"]
+    assert fields["spec_url"]["constraints"]["unique"] is True
+    for name in ("categories", "datasets"):
+        assert fields[name]["arrayItem"] == {"type": "string"}
+    assert fields["example_url"]["description"].startswith("Stable, unique URL")
+    assert "resources[].name" in fields["datasets"]["description"]
+
+
+def test_gallery_record_shape() -> None:
+    """Keep the generated registry's internal record shape consistent."""
+    expected_fields = {
+        "gallery_name",
+        "example_name",
+        "example_url",
+        "spec_url",
+        "categories",
+        "description",
+        "datasets",
+    }
+    assert all(set(example) == expected_fields for example in _GALLERY_EXAMPLES)
+
+
+@pytest.mark.parametrize("field", ["categories", "datasets"])
+def test_gallery_list_fields_contain_strings(field: str) -> None:
+    """Ensure list-valued fields contain only their expected string values."""
+    for example in _GALLERY_EXAMPLES:
+        values = example[field]
+        assert isinstance(values, list)
+        assert all(isinstance(value, str) for value in values)
 
 
 def _slow_param(resource: dict) -> Any:  # pytest.ParameterSet; not in public API
