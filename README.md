@@ -123,11 +123,13 @@ For development setup:
 npm install
 ```
 
-For releasing:
+For releasing (maintainers with npm publish rights):
 
 ```bash
 npm run release
 ```
+
+The script picks the next version from the pull request titles since the last release, updates `package.json` and `pyproject.toml`, rebuilds, tags, and publishes to npm. It then creates a draft [GitHub release](https://github.com/vega/vega-datasets/releases) whose notes GitHub generates from the merged pull requests, grouped by the labels that CI adds from each title (see [`.github/release.yml`](.github/release.yml)). Edit the draft, adding a short summary and combining related entries, and then publish it.
 
 ## License
 

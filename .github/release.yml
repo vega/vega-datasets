@@ -1,0 +1,26 @@
+# Groups GitHub's generated release notes by label. The "Label PR from title"
+# job in workflows/check-pr.yml labels each pull request from its Conventional
+# Commits type. A PR goes in the first category whose labels it has.
+changelog:
+  exclude:
+    labels:
+      - dependencies
+  categories:
+    - title: Breaking
+      labels:
+        - breaking
+    - title: Enhancements
+      labels:
+        - enhancement
+    - title: Bug Fixes
+      labels:
+        - bug
+    - title: Documentation
+      labels:
+        - documentation
+    - title: Maintenance
+      labels:
+        - maintenance
+    - title: Other Changes
+      labels:
+        - "*"

@@ -1,4 +1,4 @@
-<!-- PR titles follow Conventional Commits (e.g. `feat: add ... dataset`); CI checks this. -->
+<!-- PR titles follow Conventional Commits (e.g. `feat: add ... dataset`); CI checks this and labels the PR for the release notes. -->
 
 Please see [CONTRIBUTING.md](https://github.com/vega/vega-datasets/blob/main/CONTRIBUTING.md), and:
 - [ ] Document new or changed datasets in `_data/datapackage_additions.toml` (description, sources, license).
