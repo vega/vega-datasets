@@ -22,7 +22,7 @@
 
 [ref]
 # Any branch, tag, or SHA; each is resolved to a commit SHA at script start.
-vega_lite = "v6.4.3"
+vega_lite = "v6.5.0"
 vega      = "main"
 altair    = "v6.3.0"
 
