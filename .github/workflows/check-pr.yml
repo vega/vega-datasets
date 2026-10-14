@@ -24,52 +24,19 @@ jobs:
     needs: main
     runs-on: ubuntu-latest
     permissions:
-      # issues: write lets the job create a missing label before adding it.
-      issues: write
       pull-requests: write
     steps:
       - uses: actions/github-script@v9
         with:
           script: |
-            // Label the PR by its Conventional Commits type so that
-            // .github/release.yml can group GitHub's generated release notes.
-            const labelsByType = {
-              feat: 'enhancement',
-              perf: 'enhancement',
-              fix: 'bug',
-              docs: 'documentation',
-              build: 'maintenance',
-              chore: 'maintenance',
-              ci: 'maintenance',
-              refactor: 'maintenance',
-              style: 'maintenance',
-              test: 'maintenance',
+            // Used by .github/release.yml to group the release notes.
+            const labels = {
+              feat: 'enhancement', perf: 'enhancement', fix: 'bug', docs: 'documentation',
+              build: 'maintenance', chore: 'maintenance', ci: 'maintenance',
+              refactor: 'maintenance', style: 'maintenance', test: 'maintenance',
             };
-
-            function labelFor(title) {
-              const match = /^(\w+)(?:\([^)]*\))?(!)?: /.exec(title);
-              if (!match) return undefined;
-              return match[2] ? 'breaking' : labelsByType[match[1]];
-            }
-
-            const { owner, repo } = context.repo;
-            const pr = context.payload.pull_request;
-            const current = new Set(pr.labels.map((l) => l.name));
-            const label = labelFor(pr.title);
-
-            // When the title's type changes, drop the label the old title gave.
-            const previousTitle = context.payload.changes?.title?.from;
-            const previous = previousTitle === undefined ? undefined : labelFor(previousTitle);
-            if (previous && previous !== label && current.has(previous)) {
-              await github.rest.issues.removeLabel({ owner, repo, issue_number: pr.number, name: previous });
-            }
-
-            if (label && !current.has(label)) {
-              try {
-                await github.rest.issues.getLabel({ owner, repo, name: label });
-              } catch (error) {
-                if (error.status !== 404) throw error;
-                await github.rest.issues.createLabel({ owner, repo, name: label });
-              }
-              await github.rest.issues.addLabels({ owner, repo, issue_number: pr.number, labels: [label] });
+            const [, type, breaking] = /^(\w+)(?:\([^)]*\))?(!)?: /.exec(context.payload.pull_request.title) ?? [];
+            const label = breaking ? 'breaking' : labels[type];
+            if (label) {
+              await github.rest.issues.addLabels({ ...context.repo, issue_number: context.issue.number, labels: [label] });
             }
