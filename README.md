@@ -129,6 +129,8 @@ For releasing:
 npm run release
 ```
 
+This publishes to npm and creates a draft GitHub release with notes generated from the merged pull requests. Edit the draft, then publish it.
+
 ## License
 
 The repository code is licensed under the BSD-3-Clause License. Note that individual datasets have distinct licensing terms as specified in their metadata.

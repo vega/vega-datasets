@@ -1,5 +1,7 @@
 # Changelog
 
+Release notes for v3.3.0 and later are on [GitHub Releases](https://github.com/vega/vega-datasets/releases). This file covers earlier releases.
+
 ## [3.2.1](https://github.com/vega/vega-datasets/compare/v3.2.0...v3.2.1) (2025-08-21)
 
 

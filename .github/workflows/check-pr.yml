@@ -18,3 +18,25 @@ jobs:
       - uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  label:
+    name: Label PR from title
+    needs: main
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/github-script@v9
+        with:
+          script: |
+            // Used by .github/release.yml to group the release notes.
+            const labels = {
+              feat: 'enhancement', perf: 'enhancement', fix: 'bug', docs: 'documentation',
+              build: 'maintenance', chore: 'maintenance', ci: 'maintenance',
+              refactor: 'maintenance', style: 'maintenance', test: 'maintenance',
+            };
+            const [, type, breaking] = /^(\w+)(?:\([^)]*\))?(!)?: /.exec(context.payload.pull_request.title) ?? [];
+            const label = breaking ? 'breaking' : labels[type];
+            if (label) {
+              await github.rest.issues.addLabels({ ...context.repo, issue_number: context.issue.number, labels: [label] });
+            }
