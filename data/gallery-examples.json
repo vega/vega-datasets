@@ -2367,7 +2367,7 @@
     "gallery_name": "vega",
     "example_name": "Airport Connections",
     "example_url": "https://vega.github.io/vega/examples/airport-connections/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/airport-connections.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/airport-connections.vg.json",
     "categories": [
       "Network Diagrams"
     ],
@@ -2382,7 +2382,7 @@
     "gallery_name": "vega",
     "example_name": "Annual Precipitation",
     "example_url": "https://vega.github.io/vega/examples/annual-precipitation/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/annual-precipitation.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/annual-precipitation.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -2396,7 +2396,7 @@
     "gallery_name": "vega",
     "example_name": "Annual Temperature",
     "example_url": "https://vega.github.io/vega/examples/annual-temperature/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/annual-temperature.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/annual-temperature.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -2409,7 +2409,7 @@
     "gallery_name": "vega",
     "example_name": "Arc Diagram",
     "example_url": "https://vega.github.io/vega/examples/arc-diagram/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/arc-diagram.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/arc-diagram.vg.json",
     "categories": [
       "Network Diagrams"
     ],
@@ -2422,7 +2422,7 @@
     "gallery_name": "vega",
     "example_name": "Area Chart",
     "example_url": "https://vega.github.io/vega/examples/area-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/area-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/area-chart.vg.json",
     "categories": [
       "Line & Area Charts"
     ],
@@ -2433,7 +2433,7 @@
     "gallery_name": "vega",
     "example_name": "Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/bar-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/bar-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/bar-chart.vg.json",
     "categories": [
       "Bar Charts"
     ],
@@ -2444,7 +2444,7 @@
     "gallery_name": "vega",
     "example_name": "Bar and Line Chart",
     "example_url": "https://vega.github.io/vega/examples/bar-line-toggle/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/bar-line-toggle.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/bar-line-toggle.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2455,7 +2455,7 @@
     "gallery_name": "vega",
     "example_name": "Barley Trellis Plot",
     "example_url": "https://vega.github.io/vega/examples/barley-trellis-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/barley-trellis-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/barley-trellis-plot.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -2468,7 +2468,7 @@
     "gallery_name": "vega",
     "example_name": "Beeswarm Plot",
     "example_url": "https://vega.github.io/vega/examples/beeswarm-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/beeswarm-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/beeswarm-plot.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -2481,7 +2481,7 @@
     "gallery_name": "vega",
     "example_name": "Binned Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/binned-scatter-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/binned-scatter-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/binned-scatter-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2494,7 +2494,7 @@
     "gallery_name": "vega",
     "example_name": "Box Plot",
     "example_url": "https://vega.github.io/vega/examples/box-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/box-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/box-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2507,7 +2507,7 @@
     "gallery_name": "vega",
     "example_name": "Brushing Scatter Plots",
     "example_url": "https://vega.github.io/vega/examples/brushing-scatter-plots/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/brushing-scatter-plots.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/brushing-scatter-plots.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2520,7 +2520,7 @@
     "gallery_name": "vega",
     "example_name": "Budget Forecasts",
     "example_url": "https://vega.github.io/vega/examples/budget-forecasts/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/budget-forecasts.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/budget-forecasts.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -2533,7 +2533,7 @@
     "gallery_name": "vega",
     "example_name": "Calendar",
     "example_url": "https://vega.github.io/vega/examples/calendar-view/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/calendar-view.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/calendar-view.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -2546,7 +2546,7 @@
     "gallery_name": "vega",
     "example_name": "Circle Packing",
     "example_url": "https://vega.github.io/vega/examples/circle-packing/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/circle-packing.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/circle-packing.vg.json",
     "categories": [
       "Tree Diagrams"
     ],
@@ -2559,7 +2559,7 @@
     "gallery_name": "vega",
     "example_name": "Clock",
     "example_url": "https://vega.github.io/vega/examples/clock/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/clock.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/clock.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -2570,7 +2570,7 @@
     "gallery_name": "vega",
     "example_name": "Connected Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/connected-scatter-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/connected-scatter-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/connected-scatter-plot.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -2583,7 +2583,7 @@
     "gallery_name": "vega",
     "example_name": "Contour Plot",
     "example_url": "https://vega.github.io/vega/examples/contour-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/contour-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/contour-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2596,7 +2596,7 @@
     "gallery_name": "vega",
     "example_name": "County Unemployment",
     "example_url": "https://vega.github.io/vega/examples/county-unemployment/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/county-unemployment.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/county-unemployment.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -2610,7 +2610,7 @@
     "gallery_name": "vega",
     "example_name": "Crossfilter Flights",
     "example_url": "https://vega.github.io/vega/examples/crossfilter-flights/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/crossfilter-flights.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/crossfilter-flights.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2623,7 +2623,7 @@
     "gallery_name": "vega",
     "example_name": "Custom Tooltip",
     "example_url": "https://vega.github.io/vega/examples/map-with-tooltip/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/map-with-tooltip.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/map-with-tooltip.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2637,7 +2637,7 @@
     "gallery_name": "vega",
     "example_name": "Density Heatmaps",
     "example_url": "https://vega.github.io/vega/examples/density-heatmaps/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/density-heatmaps.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/density-heatmaps.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -2650,7 +2650,7 @@
     "gallery_name": "vega",
     "example_name": "Distortion Comparison",
     "example_url": "https://vega.github.io/vega/examples/distortion-comparison/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/distortion-comparison.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/distortion-comparison.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -2663,7 +2663,7 @@
     "gallery_name": "vega",
     "example_name": "Donut Chart",
     "example_url": "https://vega.github.io/vega/examples/donut-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/donut-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/donut-chart.vg.json",
     "categories": [
       "Circular Charts"
     ],
@@ -2674,7 +2674,7 @@
     "gallery_name": "vega",
     "example_name": "Dorling Cartogram",
     "example_url": "https://vega.github.io/vega/examples/dorling-cartogram/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/dorling-cartogram.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/dorling-cartogram.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -2688,7 +2688,7 @@
     "gallery_name": "vega",
     "example_name": "Dot Plot",
     "example_url": "https://vega.github.io/vega/examples/dot-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/dot-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/dot-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2699,7 +2699,7 @@
     "gallery_name": "vega",
     "example_name": "Earthquakes",
     "example_url": "https://vega.github.io/vega/examples/earthquakes/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/earthquakes.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/earthquakes.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -2713,7 +2713,7 @@
     "gallery_name": "vega",
     "example_name": "Edge Bundling",
     "example_url": "https://vega.github.io/vega/examples/edge-bundling/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/edge-bundling.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/edge-bundling.vg.json",
     "categories": [
       "Network Diagrams"
     ],
@@ -2727,7 +2727,7 @@
     "gallery_name": "vega",
     "example_name": "Error Bars",
     "example_url": "https://vega.github.io/vega/examples/error-bars/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/error-bars.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/error-bars.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -2740,7 +2740,7 @@
     "gallery_name": "vega",
     "example_name": "Falkensee Population",
     "example_url": "https://vega.github.io/vega/examples/falkensee-population/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/falkensee-population.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/falkensee-population.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -2751,7 +2751,7 @@
     "gallery_name": "vega",
     "example_name": "Flight Passengers",
     "example_url": "https://vega.github.io/vega/examples/flight-passengers/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/flight-passengers.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/flight-passengers.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -2762,7 +2762,7 @@
     "gallery_name": "vega",
     "example_name": "Force Directed Layout",
     "example_url": "https://vega.github.io/vega/examples/force-directed-layout/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/force-directed-layout.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/force-directed-layout.vg.json",
     "categories": [
       "Network Diagrams"
     ],
@@ -2775,7 +2775,7 @@
     "gallery_name": "vega",
     "example_name": "Global Development",
     "example_url": "https://vega.github.io/vega/examples/global-development/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/global-development.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/global-development.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2788,7 +2788,7 @@
     "gallery_name": "vega",
     "example_name": "Grouped Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/grouped-bar-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/grouped-bar-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/grouped-bar-chart.vg.json",
     "categories": [
       "Bar Charts"
     ],
@@ -2799,7 +2799,7 @@
     "gallery_name": "vega",
     "example_name": "Heatmap",
     "example_url": "https://vega.github.io/vega/examples/heatmap/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/heatmap.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/heatmap.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -2812,7 +2812,7 @@
     "gallery_name": "vega",
     "example_name": "Histogram",
     "example_url": "https://vega.github.io/vega/examples/histogram/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/histogram.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/histogram.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2825,7 +2825,7 @@
     "gallery_name": "vega",
     "example_name": "Histogram Null Values",
     "example_url": "https://vega.github.io/vega/examples/histogram-null-values/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/histogram-null-values.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/histogram-null-values.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2838,7 +2838,7 @@
     "gallery_name": "vega",
     "example_name": "Horizon Graph",
     "example_url": "https://vega.github.io/vega/examples/horizon-graph/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/horizon-graph.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/horizon-graph.vg.json",
     "categories": [
       "Line & Area Charts"
     ],
@@ -2849,7 +2849,7 @@
     "gallery_name": "vega",
     "example_name": "Hypothetical Outcome Plots (HOPs)",
     "example_url": "https://vega.github.io/vega/examples/hypothetical-outcome-plots/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/hypothetical-outcome-plots.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/hypothetical-outcome-plots.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -2860,7 +2860,7 @@
     "gallery_name": "vega",
     "example_name": "Interactive Legend",
     "example_url": "https://vega.github.io/vega/examples/interactive-legend/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/interactive-legend.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/interactive-legend.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2873,7 +2873,7 @@
     "gallery_name": "vega",
     "example_name": "Job Voyager",
     "example_url": "https://vega.github.io/vega/examples/job-voyager/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/job-voyager.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/job-voyager.vg.json",
     "categories": [
       "Line & Area Charts"
     ],
@@ -2886,7 +2886,7 @@
     "gallery_name": "vega",
     "example_name": "Labeled Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/labeled-scatter-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/labeled-scatter-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/labeled-scatter-plot.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -2899,7 +2899,7 @@
     "gallery_name": "vega",
     "example_name": "Labelled Donut Chart",
     "example_url": "https://vega.github.io/vega/examples/donut-chart-labelled/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/donut-chart-labelled.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/donut-chart-labelled.vg.json",
     "categories": [
       "Circular Charts"
     ],
@@ -2910,7 +2910,7 @@
     "gallery_name": "vega",
     "example_name": "Line Chart",
     "example_url": "https://vega.github.io/vega/examples/line-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/line-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/line-chart.vg.json",
     "categories": [
       "Line & Area Charts"
     ],
@@ -2921,7 +2921,7 @@
     "gallery_name": "vega",
     "example_name": "Loess Regression",
     "example_url": "https://vega.github.io/vega/examples/loess-regression/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/loess-regression.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/loess-regression.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -2934,7 +2934,7 @@
     "gallery_name": "vega",
     "example_name": "Nested Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/nested-bar-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/nested-bar-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/nested-bar-chart.vg.json",
     "categories": [
       "Bar Charts"
     ],
@@ -2945,7 +2945,7 @@
     "gallery_name": "vega",
     "example_name": "Overview Plus Detail",
     "example_url": "https://vega.github.io/vega/examples/overview-plus-detail/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/overview-plus-detail.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/overview-plus-detail.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2958,7 +2958,7 @@
     "gallery_name": "vega",
     "example_name": "Packed Bubble Chart",
     "example_url": "https://vega.github.io/vega/examples/packed-bubble-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/packed-bubble-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/packed-bubble-chart.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -2969,7 +2969,7 @@
     "gallery_name": "vega",
     "example_name": "Pacman",
     "example_url": "https://vega.github.io/vega/examples/pacman/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/pacman.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/pacman.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -2980,7 +2980,7 @@
     "gallery_name": "vega",
     "example_name": "Parallel Coordinates",
     "example_url": "https://vega.github.io/vega/examples/parallel-coordinates/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/parallel-coordinates.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/parallel-coordinates.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -2993,7 +2993,7 @@
     "gallery_name": "vega",
     "example_name": "Parallel Coordinates (Interactive)",
     "example_url": "https://vega.github.io/vega/examples/parallel-coordinates-interactive/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/parallel-coordinates-interactive.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/parallel-coordinates-interactive.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -3006,7 +3006,7 @@
     "gallery_name": "vega",
     "example_name": "Pi Monte Carlo",
     "example_url": "https://vega.github.io/vega/examples/pi-monte-carlo/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/pi-monte-carlo.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/pi-monte-carlo.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3017,7 +3017,7 @@
     "gallery_name": "vega",
     "example_name": "Pie Chart",
     "example_url": "https://vega.github.io/vega/examples/pie-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/pie-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/pie-chart.vg.json",
     "categories": [
       "Circular Charts"
     ],
@@ -3028,7 +3028,7 @@
     "gallery_name": "vega",
     "example_name": "Platformer",
     "example_url": "https://vega.github.io/vega/examples/platformer/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/platformer.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/platformer.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3041,7 +3041,7 @@
     "gallery_name": "vega",
     "example_name": "Population Pyramid",
     "example_url": "https://vega.github.io/vega/examples/population-pyramid/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/population-pyramid.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/population-pyramid.vg.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3054,7 +3054,7 @@
     "gallery_name": "vega",
     "example_name": "Probability Density",
     "example_url": "https://vega.github.io/vega/examples/probability-density/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/probability-density.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/probability-density.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3067,7 +3067,7 @@
     "gallery_name": "vega",
     "example_name": "Projections",
     "example_url": "https://vega.github.io/vega/examples/projections/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/projections.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/projections.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -3080,7 +3080,7 @@
     "gallery_name": "vega",
     "example_name": "Quantile Dot Plot",
     "example_url": "https://vega.github.io/vega/examples/quantile-dot-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/quantile-dot-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/quantile-dot-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3091,7 +3091,7 @@
     "gallery_name": "vega",
     "example_name": "Quantile-Quantile Plot",
     "example_url": "https://vega.github.io/vega/examples/quantile-quantile-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/quantile-quantile-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/quantile-quantile-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3105,7 +3105,7 @@
     "gallery_name": "vega",
     "example_name": "Radar Chart",
     "example_url": "https://vega.github.io/vega/examples/radar-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/radar-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/radar-chart.vg.json",
     "categories": [
       "Circular Charts"
     ],
@@ -3116,7 +3116,7 @@
     "gallery_name": "vega",
     "example_name": "Radial Plot",
     "example_url": "https://vega.github.io/vega/examples/radial-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/radial-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/radial-plot.vg.json",
     "categories": [
       "Circular Charts"
     ],
@@ -3127,7 +3127,7 @@
     "gallery_name": "vega",
     "example_name": "Radial Tree Layout",
     "example_url": "https://vega.github.io/vega/examples/radial-tree-layout/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/radial-tree-layout.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/radial-tree-layout.vg.json",
     "categories": [
       "Tree Diagrams"
     ],
@@ -3140,7 +3140,7 @@
     "gallery_name": "vega",
     "example_name": "Regression",
     "example_url": "https://vega.github.io/vega/examples/regression/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/regression.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/regression.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -3153,7 +3153,7 @@
     "gallery_name": "vega",
     "example_name": "Reorderable Matrix",
     "example_url": "https://vega.github.io/vega/examples/reorderable-matrix/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/reorderable-matrix.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/reorderable-matrix.vg.json",
     "categories": [
       "Network Diagrams"
     ],
@@ -3166,7 +3166,7 @@
     "gallery_name": "vega",
     "example_name": "Rotating Globe",
     "example_url": "https://vega.github.io/vega/examples/earthquakes-globe/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/earthquakes-globe.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/earthquakes-globe.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3180,7 +3180,7 @@
     "gallery_name": "vega",
     "example_name": "Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/scatter-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/scatter-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/scatter-plot.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -3193,7 +3193,7 @@
     "gallery_name": "vega",
     "example_name": "Scatter Plot Null Values",
     "example_url": "https://vega.github.io/vega/examples/scatter-plot-null-values/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/scatter-plot-null-values.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/scatter-plot-null-values.vg.json",
     "categories": [
       "Scatter Plots"
     ],
@@ -3206,7 +3206,7 @@
     "gallery_name": "vega",
     "example_name": "Serpentine Timeline",
     "example_url": "https://vega.github.io/vega/examples/serpentine-timeline/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/serpentine-timeline.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/serpentine-timeline.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3217,7 +3217,7 @@
     "gallery_name": "vega",
     "example_name": "Stacked Area Chart",
     "example_url": "https://vega.github.io/vega/examples/stacked-area-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/stacked-area-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/stacked-area-chart.vg.json",
     "categories": [
       "Line & Area Charts"
     ],
@@ -3228,7 +3228,7 @@
     "gallery_name": "vega",
     "example_name": "Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega/examples/stacked-bar-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/stacked-bar-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/stacked-bar-chart.vg.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3239,7 +3239,7 @@
     "gallery_name": "vega",
     "example_name": "Stock Index Chart",
     "example_url": "https://vega.github.io/vega/examples/stock-index-chart/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/stock-index-chart.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/stock-index-chart.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3252,7 +3252,7 @@
     "gallery_name": "vega",
     "example_name": "Sunburst",
     "example_url": "https://vega.github.io/vega/examples/sunburst/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/sunburst.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/sunburst.vg.json",
     "categories": [
       "Tree Diagrams"
     ],
@@ -3265,7 +3265,7 @@
     "gallery_name": "vega",
     "example_name": "Table with a Scrollbar",
     "example_url": "https://vega.github.io/vega/examples/table-scrollbar/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/table-scrollbar.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/table-scrollbar.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3276,7 +3276,7 @@
     "gallery_name": "vega",
     "example_name": "Time Units",
     "example_url": "https://vega.github.io/vega/examples/time-units/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/time-units.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/time-units.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3289,7 +3289,7 @@
     "gallery_name": "vega",
     "example_name": "Timelines",
     "example_url": "https://vega.github.io/vega/examples/timelines/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/timelines.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/timelines.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3300,7 +3300,7 @@
     "gallery_name": "vega",
     "example_name": "Top-K Plot",
     "example_url": "https://vega.github.io/vega/examples/top-k-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/top-k-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/top-k-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3313,7 +3313,7 @@
     "gallery_name": "vega",
     "example_name": "Top-K Plot With Others",
     "example_url": "https://vega.github.io/vega/examples/top-k-plot-with-others/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/top-k-plot-with-others.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/top-k-plot-with-others.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3326,7 +3326,7 @@
     "gallery_name": "vega",
     "example_name": "Tree Layout",
     "example_url": "https://vega.github.io/vega/examples/tree-layout/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/tree-layout.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/tree-layout.vg.json",
     "categories": [
       "Tree Diagrams"
     ],
@@ -3339,7 +3339,7 @@
     "gallery_name": "vega",
     "example_name": "Treemap",
     "example_url": "https://vega.github.io/vega/examples/treemap/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/treemap.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/treemap.vg.json",
     "categories": [
       "Tree Diagrams"
     ],
@@ -3352,7 +3352,7 @@
     "gallery_name": "vega",
     "example_name": "U-District Cuisine",
     "example_url": "https://vega.github.io/vega/examples/u-district-cuisine/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/u-district-cuisine.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/u-district-cuisine.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3365,7 +3365,7 @@
     "gallery_name": "vega",
     "example_name": "Violin Plot",
     "example_url": "https://vega.github.io/vega/examples/violin-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/violin-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/violin-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3378,7 +3378,7 @@
     "gallery_name": "vega",
     "example_name": "Volcano Contours",
     "example_url": "https://vega.github.io/vega/examples/volcano-contours/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/volcano-contours.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/volcano-contours.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -3391,7 +3391,7 @@
     "gallery_name": "vega",
     "example_name": "Warming Stripes",
     "example_url": "https://vega.github.io/vega/examples/warming-stripes/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/warming-stripes.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/warming-stripes.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3404,7 +3404,7 @@
     "gallery_name": "vega",
     "example_name": "Watch",
     "example_url": "https://vega.github.io/vega/examples/watch/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/watch.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/watch.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3415,7 +3415,7 @@
     "gallery_name": "vega",
     "example_name": "Weekly Temperature",
     "example_url": "https://vega.github.io/vega/examples/weekly-temperature/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/weekly-temperature.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/weekly-temperature.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3428,7 +3428,7 @@
     "gallery_name": "vega",
     "example_name": "Wheat Plot",
     "example_url": "https://vega.github.io/vega/examples/wheat-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/wheat-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/wheat-plot.vg.json",
     "categories": [
       "Distributions"
     ],
@@ -3441,7 +3441,7 @@
     "gallery_name": "vega",
     "example_name": "Wheat and Wages",
     "example_url": "https://vega.github.io/vega/examples/wheat-and-wages/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/wheat-and-wages.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/wheat-and-wages.vg.json",
     "categories": [
       "Custom Designs"
     ],
@@ -3455,7 +3455,7 @@
     "gallery_name": "vega",
     "example_name": "Wind Vectors",
     "example_url": "https://vega.github.io/vega/examples/wind-vectors/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/wind-vectors.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/wind-vectors.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -3468,7 +3468,7 @@
     "gallery_name": "vega",
     "example_name": "Word Cloud",
     "example_url": "https://vega.github.io/vega/examples/word-cloud/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/word-cloud.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/word-cloud.vg.json",
     "categories": [
       "Other Chart Types"
     ],
@@ -3479,7 +3479,7 @@
     "gallery_name": "vega",
     "example_name": "World Map",
     "example_url": "https://vega.github.io/vega/examples/world-map/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/world-map.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/world-map.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -3492,7 +3492,7 @@
     "gallery_name": "vega",
     "example_name": "Zoomable Binned Plot",
     "example_url": "https://vega.github.io/vega/examples/zoomable-binned-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/zoomable-binned-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/zoomable-binned-plot.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3505,7 +3505,7 @@
     "gallery_name": "vega",
     "example_name": "Zoomable Circle Packing",
     "example_url": "https://vega.github.io/vega/examples/zoomable-circle-packing/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/zoomable-circle-packing.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/zoomable-circle-packing.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3518,7 +3518,7 @@
     "gallery_name": "vega",
     "example_name": "Zoomable Scatter Plot",
     "example_url": "https://vega.github.io/vega/examples/zoomable-scatter-plot/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/zoomable-scatter-plot.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/zoomable-scatter-plot.vg.json",
     "categories": [
       "Interaction Techniques"
     ],
@@ -3531,7 +3531,7 @@
     "gallery_name": "vega",
     "example_name": "Zoomable World Map",
     "example_url": "https://vega.github.io/vega/examples/zoomable-world-map/",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@b570ef375a28b6ac9c2f8ee10ceae6bb2df12517/docs/examples/zoomable-world-map.vg.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega@fdd9ab9d4faf48553c8dfdbcaf7284f485504aaf/docs/examples/zoomable-world-map.vg.json",
     "categories": [
       "Geographic Maps"
     ],
@@ -3544,7 +3544,7 @@
     "gallery_name": "vega-lite",
     "example_name": "1D Strip Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/tick_dot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/tick_dot.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/tick_dot.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -3557,7 +3557,7 @@
     "gallery_name": "vega-lite",
     "example_name": "2D Histogram Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_binned_heatmap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/rect_binned_heatmap.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/rect_binned_heatmap.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots",
       "Table-based Plots"
@@ -3571,7 +3571,7 @@
     "gallery_name": "vega-lite",
     "example_name": "2D Histogram Scatterplot",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_binned.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle_binned.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle_binned.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots",
       "Scatter & Strip Plots"
@@ -3585,7 +3585,7 @@
     "gallery_name": "vega-lite",
     "example_name": "A Bar Chart Encoding Color Names in the Data",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_color_disabled_scale.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_color_disabled_scale.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_color_disabled_scale.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3596,7 +3596,7 @@
     "gallery_name": "vega-lite",
     "example_name": "A comet chart showing changes between between two states",
     "example_url": "https://vega.github.io/vega-lite/examples/trail_comet.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trail_comet.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trail_comet.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -3609,7 +3609,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Aggregate Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_aggregate.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_aggregate.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_aggregate.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3622,7 +3622,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Aggregate Bar Chart (Sorted)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_aggregate_sort_by_encoding.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_aggregate_sort_by_encoding.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_aggregate_sort_by_encoding.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3635,7 +3635,7 @@
     "gallery_name": "vega-lite",
     "example_name": "An interactive scatter plot of global health statistics by country and year.",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_global_development.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_global_development.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_global_development.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -3648,7 +3648,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Annual Weather Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_heatmap_weather.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/rect_heatmap_weather.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/rect_heatmap_weather.vl.json",
     "categories": [
       "Table-based Plots"
     ],
@@ -3661,7 +3661,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Area Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/area.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area.vl.json",
     "categories": [
       "Area Charts & Streamgraphs"
     ],
@@ -3674,7 +3674,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Area Chart with Gradient",
     "example_url": "https://vega.github.io/vega-lite/examples/area_gradient.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_gradient.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_gradient.vl.json",
     "categories": [
       "Area Charts & Streamgraphs"
     ],
@@ -3687,7 +3687,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Area Chart with Overlaying Lines and Point Markers",
     "example_url": "https://vega.github.io/vega-lite/examples/area_overlay.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_overlay.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_overlay.vl.json",
     "categories": [
       "Area Charts & Streamgraphs"
     ],
@@ -3700,7 +3700,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Area Chart with Rectangular Brush",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_area_brush.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_area_brush.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_area_brush.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -3713,7 +3713,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart Highlighting Values beyond a Threshold",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_annotations.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_bar_annotations.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_bar_annotations.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -3724,7 +3724,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart Showing Argmax Value",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_argmax.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_argmax.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_argmax.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -3737,7 +3737,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart showing Initials of Month Names",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_month_temporal_initial.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_month_temporal_initial.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_month_temporal_initial.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3750,7 +3750,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Highlighting on Hover and Selection on Click",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_bar_select_highlight.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_bar_select_highlight.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_bar_select_highlight.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -3761,7 +3761,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Label Overlays",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_labels_grey.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_bar_labels_grey.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_bar_labels_grey.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3774,7 +3774,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with Negative Values and a Zero-Baseline",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_negative.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_negative.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_negative.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3785,7 +3785,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with a Minimap",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_count_minimap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_count_minimap.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_count_minimap.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -3798,7 +3798,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with a Spacing-Saving Y-Axis",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_axis_space_saving.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_axis_space_saving.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_axis_space_saving.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3811,7 +3811,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bar Chart with bars center-aligned with time unit ticks",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_month_temporal_band_center.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_month_temporal_band_center.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_month_temporal_band_center.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -3824,7 +3824,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Becker's Barley Trellis Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_barley.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_barley.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_barley.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -3837,7 +3837,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Box Plot with Min/Max Whiskers",
     "example_url": "https://vega.github.io/vega-lite/examples/boxplot_minmax_2D_vertical.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/boxplot_minmax_2D_vertical.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/boxplot_minmax_2D_vertical.vl.json",
     "categories": [
       "Box Plots"
     ],
@@ -3850,7 +3850,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Box Plot with Pre-Calculated Summaries",
     "example_url": "https://vega.github.io/vega-lite/examples/boxplot_preaggregated.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/boxplot_preaggregated.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/boxplot_preaggregated.vl.json",
     "categories": [
       "Box Plots"
     ],
@@ -3861,7 +3861,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Brushing Scatter Plot to show data on a table",
     "example_url": "https://vega.github.io/vega-lite/examples/brush_table.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/brush_table.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/brush_table.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -3874,7 +3874,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bubble Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/point_bubble.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_bubble.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_bubble.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -3887,7 +3887,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bubble Plot (Gapminder)",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_bubble_health_income.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle_bubble_health_income.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle_bubble_health_income.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -3900,7 +3900,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bubble Plot (Natural Disasters)",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_natural_disasters.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle_natural_disasters.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle_natural_disasters.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -3913,7 +3913,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bullet Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/facet_bullet.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/facet_bullet.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/facet_bullet.vl.json",
     "categories": [
       "Other Layered Plots"
     ],
@@ -3924,7 +3924,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Bump Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line_bump.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_bump.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_bump.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -3935,7 +3935,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Calculate Difference from Annual Average",
     "example_url": "https://vega.github.io/vega-lite/examples/joinaggregate_mean_difference_by_year.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/joinaggregate_mean_difference_by_year.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/joinaggregate_mean_difference_by_year.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -3948,7 +3948,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Calculate Difference from Average",
     "example_url": "https://vega.github.io/vega-lite/examples/joinaggregate_mean_difference.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/joinaggregate_mean_difference.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/joinaggregate_mean_difference.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -3961,7 +3961,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Calculate Residuals",
     "example_url": "https://vega.github.io/vega-lite/examples/joinaggregate_residual_graph.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/joinaggregate_residual_graph.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/joinaggregate_residual_graph.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -3974,7 +3974,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Candlestick Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_candlestick.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_candlestick.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_candlestick.vl.json",
     "categories": [
       "Other Layered Plots"
     ],
@@ -3987,7 +3987,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Carbon Dioxide in the Atmosphere",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_co2_concentration.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_line_co2_concentration.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_line_co2_concentration.vl.json",
     "categories": [
       "Line Charts",
       "Labeling & Annotation"
@@ -4001,7 +4001,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Change zorder on hover",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_type_point_zorder.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/selection_type_point_zorder.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/selection_type_point_zorder.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4014,7 +4014,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Choropleth of Unemployment Rate per County",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_choropleth.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_choropleth.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_choropleth.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -4028,7 +4028,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Colored Scatterplot",
     "example_url": "https://vega.github.io/vega-lite/examples/point_color_with_shape.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_color_with_shape.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_color_with_shape.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -4041,7 +4041,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Compact Trellis Grid of Bar Charts",
     "example_url": "https://vega.github.io/vega-lite/examples/facet_grid_bar.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/facet_grid_bar.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/facet_grid_bar.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -4052,7 +4052,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Comparative Likert Scale Ratings",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_layer_voyager_result.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/concat_layer_voyager_result.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/concat_layer_voyager_result.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -4063,7 +4063,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Connected Scatterplot (Lines with Custom Paths)",
     "example_url": "https://vega.github.io/vega-lite/examples/connected_scatterplot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/connected_scatterplot.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/connected_scatterplot.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4076,7 +4076,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Connections among Major U.S. Airports.",
     "example_url": "https://vega.github.io/vega-lite/examples/airport_connections.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/airport_connections.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/airport_connections.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -4091,7 +4091,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Crossfilter (Filter)",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_crossfilter.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_crossfilter.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_crossfilter.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -4104,7 +4104,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Crossfilter (Highlight)",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_layered_crossfilter.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_layered_crossfilter.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_layered_crossfilter.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -4117,7 +4117,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Cumulative Frequency Distribution",
     "example_url": "https://vega.github.io/vega-lite/examples/area_cumulative_freq.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_cumulative_freq.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_cumulative_freq.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots",
       "Advanced Calculations"
@@ -4131,7 +4131,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Density Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/area_density.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_density.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_density.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -4144,7 +4144,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Discretizing scales",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_bar_scales_discretize.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/concat_bar_scales_discretize.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/concat_bar_scales_discretize.vl.json",
     "categories": [
       "Repeat & Concatenation"
     ],
@@ -4155,7 +4155,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Distributions and Medians of Likert Scale Ratings",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_likert.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_likert.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_likert.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -4166,7 +4166,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Diverging Stacked Bar Chart (Population Pyramid)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_diverging_stack_population_pyramid.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_diverging_stack_population_pyramid.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_diverging_stack_population_pyramid.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4179,7 +4179,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Diverging Stacked Bar Chart (with Neutral Parts)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_diverging_stack_transform.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_diverging_stack_transform.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_diverging_stack_transform.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4190,7 +4190,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Donut Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_donut.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/arc_donut.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/arc_donut.vl.json",
     "categories": [
       "Circular Plots"
     ],
@@ -4201,7 +4201,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Dot Plot with Jittering",
     "example_url": "https://vega.github.io/vega-lite/examples/point_offset_random.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_offset_random.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_offset_random.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -4214,7 +4214,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Drawing Sine and Cosine Curves with the Sequence Generator",
     "example_url": "https://vega.github.io/vega-lite/examples/sequence_line_fold.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/sequence_line_fold.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/sequence_line_fold.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4225,7 +4225,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Dynamic Color Legend",
     "example_url": "https://vega.github.io/vega-lite/examples/dynamic_color_legend.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/dynamic_color_legend.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/dynamic_color_legend.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4238,7 +4238,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Earthquakes Example",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_geo_earthquakes.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_geo_earthquakes.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_geo_earthquakes.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -4252,7 +4252,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Error Bars Showing Confidence Interval",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_errorbar_ci.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_point_errorbar_ci.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_point_errorbar_ci.vl.json",
     "categories": [
       "Error Bars & Error Bands"
     ],
@@ -4265,7 +4265,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Error Bars Showing Standard Deviation",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_errorbar_stdev.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_point_errorbar_stdev.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_point_errorbar_stdev.vl.json",
     "categories": [
       "Error Bars & Error Bands"
     ],
@@ -4278,7 +4278,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Faceted County-Level Species Habitat Maps",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_geo_facet_species.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_geo_facet_species.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_geo_facet_species.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -4292,7 +4292,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Faceted Density Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/area_density_facet.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_density_facet.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_density_facet.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -4305,7 +4305,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Filtering Top-K Items",
     "example_url": "https://vega.github.io/vega-lite/examples/window_top_k.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/window_top_k.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/window_top_k.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -4316,7 +4316,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Focus + Context - Smooth Histogram Zooming",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_bin_extent.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_bin_extent.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_bin_extent.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4329,7 +4329,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Gantt Chart (Ranged Bar Marks)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_gantt.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_gantt.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_gantt.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4340,7 +4340,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Grouped Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_grouped.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_grouped.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_grouped.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4351,7 +4351,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Grouped Bar Chart (Multiple Measure with Repeat)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_grouped_repeated.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_grouped_repeated.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4364,7 +4364,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Heat Lane Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_heatlane.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_heatlane.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_heatlane.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4377,7 +4377,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/histogram.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/histogram.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -4390,7 +4390,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Histogram (from Binned Data)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_binned_data.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_binned_data.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_binned_data.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -4401,7 +4401,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Histogram with Full-Height Hover Targets for Tooltip",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_histogram_full_height_hover.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_histogram_full_height_hover.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_histogram_full_height_hover.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4414,7 +4414,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Histogram with a Global Mean Overlay",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_histogram_global_mean.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_histogram_global_mean.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_histogram_global_mean.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -4427,7 +4427,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Horizon Graph",
     "example_url": "https://vega.github.io/vega-lite/examples/area_horizon.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_horizon.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_horizon.vl.json",
     "categories": [
       "Area Charts & Streamgraphs",
       "Other Layered Plots"
@@ -4439,7 +4439,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Horizontal Bar Chart with Negative Values and Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_negative_horizontal_label.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_negative_horizontal_label.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_negative_horizontal_label.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4450,7 +4450,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Horizontal Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_h.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_bar_h.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_bar_h.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4463,7 +4463,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Horizontally Repeated Charts",
     "example_url": "https://vega.github.io/vega-lite/examples/repeat_histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/repeat_histogram.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/repeat_histogram.vl.json",
     "categories": [
       "Repeat & Concatenation"
     ],
@@ -4476,7 +4476,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Image-based Scatter Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/scatter_image.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/scatter_image.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/scatter_image.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -4491,7 +4491,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Income in the U.S. by State, Faceted over Income Brackets",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_trellis.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_trellis.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_trellis.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -4505,7 +4505,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Interactive Average",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_layer_bar_month.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/selection_layer_bar_month.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/selection_layer_bar_month.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4518,7 +4518,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Interactive Dashboard with Cross Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_concat_layer.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_concat_layer.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_concat_layer.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -4531,7 +4531,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Interactive Index Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_index_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_index_chart.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_index_chart.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4544,7 +4544,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Interactive Legend",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_legend.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_legend.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_legend.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4557,7 +4557,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Interactive Scatterplot Matrix",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_splom.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_splom.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_splom.vl.json",
     "categories": [
       "Repeat & Concatenation",
       "Interactive Multi-View Displays"
@@ -4571,7 +4571,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Isotype Dot Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/isotype_bar_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/isotype_bar_chart.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/isotype_bar_chart.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -4582,7 +4582,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Isotype Dot Plot with Emoji",
     "example_url": "https://vega.github.io/vega-lite/examples/isotype_bar_chart_emoji.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/isotype_bar_chart_emoji.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/isotype_bar_chart_emoji.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -4593,7 +4593,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Isotype Grid",
     "example_url": "https://vega.github.io/vega-lite/examples/isotype_grid.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/isotype_grid.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/isotype_grid.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -4604,7 +4604,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Lasagna Plot (Dense Time-Series Heatmap)",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_lasagna.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/rect_lasagna.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/rect_lasagna.vl.json",
     "categories": [
       "Table-based Plots"
     ],
@@ -4617,7 +4617,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Layered Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_layered_transparent.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_layered_transparent.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_layered_transparent.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -4630,7 +4630,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Layered Histogram and Cumulative Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_cumulative_histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_cumulative_histogram.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_cumulative_histogram.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots",
       "Advanced Calculations"
@@ -4644,7 +4644,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Layered Plot with Dual-Axis",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_dual_axis.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_dual_axis.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_dual_axis.vl.json",
     "categories": [
       "Other Layered Plots"
     ],
@@ -4657,7 +4657,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Layering Averages over Raw Values",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_mean_point_raw.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_line_mean_point_raw.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_line_mean_point_raw.vl.json",
     "categories": [
       "Advanced Calculations",
       "Labeling & Annotation"
@@ -4671,7 +4671,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Layering Rolling Averages over Raw Values",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_rolling_mean_point_raw.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_line_rolling_mean_point_raw.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_line_rolling_mean_point_raw.vl.json",
     "categories": [
       "Advanced Calculations",
       "Labeling & Annotation"
@@ -4685,7 +4685,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Layering text over heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_text_heatmap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_text_heatmap.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_text_heatmap.vl.json",
     "categories": [
       "Table-based Plots",
       "Labeling & Annotation"
@@ -4699,7 +4699,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4712,7 +4712,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart to Show Benchmarking Results",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_window.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_line_window.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_line_window.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -4723,7 +4723,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Conditional Axis Properties",
     "example_url": "https://vega.github.io/vega-lite/examples/line_conditional_axis.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_conditional_axis.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_conditional_axis.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4736,7 +4736,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Confidence Interval Band",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_line_errorband_ci.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_line_errorband_ci.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_line_errorband_ci.vl.json",
     "categories": [
       "Error Bars & Error Bands"
     ],
@@ -4749,7 +4749,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Highlighted Rectangles",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_falkensee.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_falkensee.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_falkensee.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -4760,7 +4760,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Markers and Invalid Values",
     "example_url": "https://vega.github.io/vega-lite/examples/line_skip_invalid_mid_overlay.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_skip_invalid_mid_overlay.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_skip_invalid_mid_overlay.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4771,7 +4771,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Monotone Interpolation",
     "example_url": "https://vega.github.io/vega-lite/examples/line_monotone.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_monotone.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_monotone.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4784,7 +4784,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Point Markers",
     "example_url": "https://vega.github.io/vega-lite/examples/line_overlay.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_overlay.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_overlay.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4797,7 +4797,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Stroked Point Markers",
     "example_url": "https://vega.github.io/vega-lite/examples/line_overlay_stroked.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_overlay_stroked.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_overlay_stroked.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4810,7 +4810,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Chart with Varying Size (using the trail mark)",
     "example_url": "https://vega.github.io/vega-lite/examples/trail_color.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trail_color.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trail_color.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4823,7 +4823,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line Charts Showing Ranks Over Time",
     "example_url": "https://vega.github.io/vega-lite/examples/window_rank.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/window_rank.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/window_rank.vl.json",
     "categories": [
       "Line Charts",
       "Advanced Calculations"
@@ -4835,7 +4835,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line between Airports in the U.S.",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_line.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_line.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_line.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -4849,7 +4849,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line chart with a dashed part",
     "example_url": "https://vega.github.io/vega-lite/examples/line_dashed_part.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_dashed_part.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_dashed_part.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4860,7 +4860,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Line chart with varying stroke dash",
     "example_url": "https://vega.github.io/vega-lite/examples/line_strokedash.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_strokedash.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_strokedash.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4873,7 +4873,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Linear Regression",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_line_regression.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_point_line_regression.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_point_line_regression.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -4886,7 +4886,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Loess Regression",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_point_line_loess.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_point_line_loess.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_point_line_loess.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -4899,7 +4899,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Log-scaled Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram_log.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/histogram_log.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/histogram_log.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -4910,7 +4910,7 @@
     "gallery_name": "vega-lite",
     "example_name": "London Tube Lines",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_layer_line_london.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_layer_line_london.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_layer_line_london.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -4925,7 +4925,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Marginal Histograms",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_marginal_histograms.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/concat_marginal_histograms.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/concat_marginal_histograms.vl.json",
     "categories": [
       "Repeat & Concatenation"
     ],
@@ -4938,7 +4938,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Mean overlay over precipitation chart",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_precipitation_mean.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_precipitation_mean.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_precipitation_mean.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -4951,7 +4951,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Mosaic Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_mosaic_labelled_with_offset.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/rect_mosaic_labelled_with_offset.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/rect_mosaic_labelled_with_offset.vl.json",
     "categories": [
       "Table-based Plots"
     ],
@@ -4964,7 +4964,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line_color.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_color.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_color.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4977,7 +4977,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Halo Stroke",
     "example_url": "https://vega.github.io/vega-lite/examples/line_color_halo.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_color_halo.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_color_halo.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -4990,7 +4990,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_multi_line_label.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_multi_line_label.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_multi_line_label.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5003,7 +5003,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Tooltip",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_multi_line_tooltip.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_multi_line_tooltip.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_multi_line_tooltip.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5016,7 +5016,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with Tooltip via Pivot",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_multi_line_pivot_tooltip.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_multi_line_pivot_tooltip.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_multi_line_pivot_tooltip.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5029,7 +5029,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with an Interactive Line Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_line_hover.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_line_hover.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_line_hover.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5042,7 +5042,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Multi Series Line Chart with an Interactive Point Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_line_point_hover.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_line_point_hover.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_line_point_hover.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5055,7 +5055,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Nested View Concatenation Aligned with Axis `minExtent`",
     "example_url": "https://vega.github.io/vega-lite/examples/nested_concat_align.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/nested_concat_align.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/nested_concat_align.vl.json",
     "categories": [
       "Repeat & Concatenation"
     ],
@@ -5068,7 +5068,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Non-linear Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram_nonlinear.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/histogram_nonlinear.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/histogram_nonlinear.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -5079,7 +5079,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Normalized (Percentage) Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_normalize.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_bar_normalize.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_bar_normalize.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -5092,7 +5092,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Normalized (Percentage) Stacked Bar Chart With Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_h_normalized_labeled.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_bar_h_normalized_labeled.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_bar_h_normalized_labeled.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -5105,7 +5105,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Normalized Stacked Area Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_area_normalize.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_area_normalize.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_area_normalize.vl.json",
     "categories": [
       "Area Charts & Streamgraphs"
     ],
@@ -5118,7 +5118,7 @@
     "gallery_name": "vega-lite",
     "example_name": "One Dot per Airport in the U.S. Overlayed on Geoshape",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_layer.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_layer.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_layer.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -5132,7 +5132,7 @@
     "gallery_name": "vega-lite",
     "example_name": "One Dot per Zipcode in the U.S.",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_circle.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_circle.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_circle.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -5145,7 +5145,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Overview and Detail",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_overview_detail.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_overview_detail.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_overview_detail.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -5158,7 +5158,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Paintbrush Highlight",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_paintbrush.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_paintbrush.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_paintbrush.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5171,7 +5171,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Parallel Coordinate Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/parallel_coordinate.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/parallel_coordinate.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/parallel_coordinate.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5184,7 +5184,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Pie Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_pie.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/arc_pie.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/arc_pie.vl.json",
     "categories": [
       "Circular Plots"
     ],
@@ -5195,7 +5195,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Pie Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_arc_label.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_arc_label.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_arc_label.vl.json",
     "categories": [
       "Circular Plots"
     ],
@@ -5206,7 +5206,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Pie Chart with percentage_tooltip",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_pie_normalize_tooltip.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/arc_pie_normalize_tooltip.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/arc_pie_normalize_tooltip.vl.json",
     "categories": [
       "Circular Plots"
     ],
@@ -5217,7 +5217,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Population Pyramid",
     "example_url": "https://vega.github.io/vega-lite/examples/concat_population_pyramid.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/concat_population_pyramid.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/concat_population_pyramid.vl.json",
     "categories": [
       "Repeat & Concatenation"
     ],
@@ -5230,7 +5230,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Projection explorer",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_params_projections.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_params_projections.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_params_projections.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -5243,7 +5243,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Pyramid Pie Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_pie_pyramid.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/arc_pie_pyramid.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/arc_pie_pyramid.vl.json",
     "categories": [
       "Circular Plots"
     ],
@@ -5254,7 +5254,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Quantile-Quantile Plot (QQ Plot)",
     "example_url": "https://vega.github.io/vega-lite/examples/point_quantile_quantile.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_quantile_quantile.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_quantile_quantile.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5267,7 +5267,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Query Widgets",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_query_widgets.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_query_widgets.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_query_widgets.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5280,7 +5280,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Radial Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/arc_radial.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/arc_radial.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/arc_radial.vl.json",
     "categories": [
       "Circular Plots"
     ],
@@ -5291,7 +5291,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Ranged Dot Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_ranged_dot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_ranged_dot.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_ranged_dot.vl.json",
     "categories": [
       "Other Layered Plots"
     ],
@@ -5304,7 +5304,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Rectangular Brush",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_brush.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_brush.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_brush.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5317,7 +5317,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Relative Bar Chart (Calculate Percentage of Total)",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_percent_of_total.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_percent_of_total.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_percent_of_total.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots",
       "Advanced Calculations"
@@ -5329,7 +5329,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Relative Frequency Histogram",
     "example_url": "https://vega.github.io/vega-lite/examples/histogram_rel_freq.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/histogram_rel_freq.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/histogram_rel_freq.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -5342,7 +5342,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Repeat and Layer to Show Different Movie Measures",
     "example_url": "https://vega.github.io/vega-lite/examples/repeat_layer.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/repeat_layer.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/repeat_layer.vl.json",
     "categories": [
       "Line Charts",
       "Repeat & Concatenation"
@@ -5356,7 +5356,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Responsive Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_size_responsive.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_size_responsive.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_size_responsive.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -5369,7 +5369,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Rules (line segments) Connecting SEA to every Airport Reachable via Direct Flights",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_rule.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_rule.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_rule.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -5384,7 +5384,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatter Plot with Text Marks",
     "example_url": "https://vega.github.io/vega-lite/examples/text_scatterplot_colored.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/text_scatterplot_colored.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/text_scatterplot_colored.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -5397,7 +5397,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot",
     "example_url": "https://vega.github.io/vega-lite/examples/point_2d.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_2d.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_2d.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -5410,7 +5410,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot Pan & Zoom",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_translate_scatterplot_drag.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/selection_translate_scatterplot_drag.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/selection_translate_scatterplot_drag.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5423,7 +5423,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with External Links and Tooltips",
     "example_url": "https://vega.github.io/vega-lite/examples/point_href.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_href.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_href.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5436,7 +5436,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with Filled Circles",
     "example_url": "https://vega.github.io/vega-lite/examples/circle.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -5449,7 +5449,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with Mean and Standard Deviation Overlay",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_scatter_errorband_1D_stdev_global_mean.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_scatter_errorband_1D_stdev_global_mean.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_scatter_errorband_1D_stdev_global_mean.vl.json",
     "categories": [
       "Error Bars & Error Bands"
     ],
@@ -5462,7 +5462,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Scatterplot with Null Values in Grey",
     "example_url": "https://vega.github.io/vega-lite/examples/point_invalid_color.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_invalid_color.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_invalid_color.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -5475,7 +5475,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Search Input",
     "example_url": "https://vega.github.io/vega-lite/examples/param_search_input.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/param_search_input.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/param_search_input.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5488,7 +5488,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Seattle Weather Exploration",
     "example_url": "https://vega.github.io/vega-lite/examples/interactive_seattle_weather.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/interactive_seattle_weather.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/interactive_seattle_weather.vl.json",
     "categories": [
       "Interactive Multi-View Displays"
     ],
@@ -5501,7 +5501,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Selectable Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/selection_heatmap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/selection_heatmap.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/selection_heatmap.vl.json",
     "categories": [
       "Interactive Charts"
     ],
@@ -5512,7 +5512,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Simple Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/bar.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -5523,7 +5523,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Simple Bar Chart with Labels",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_labels.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_bar_labels.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_bar_labels.vl.json",
     "categories": [
       "Bar Charts",
       "Labeling & Annotation"
@@ -5535,7 +5535,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Simple Bar Chart with Labels and Emojis",
     "example_url": "https://vega.github.io/vega-lite/examples/layer_bar_fruit.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/layer_bar_fruit.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/layer_bar_fruit.vl.json",
     "categories": [
       "Labeling & Annotation"
     ],
@@ -5546,7 +5546,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Slope Graph",
     "example_url": "https://vega.github.io/vega-lite/examples/line_slope.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_slope.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_slope.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -5559,7 +5559,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Stacked Area Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_area.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_area.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_area.vl.json",
     "categories": [
       "Area Charts & Streamgraphs"
     ],
@@ -5572,7 +5572,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_weather.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_bar_weather.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_bar_weather.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -5585,7 +5585,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Stacked Bar Chart with Rounded Corners",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_bar_count_corner_radius_mark.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_bar_count_corner_radius_mark.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_bar_count_corner_radius_mark.vl.json",
     "categories": [
       "Bar Charts"
     ],
@@ -5598,7 +5598,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Stacked Density Estimates",
     "example_url": "https://vega.github.io/vega-lite/examples/area_density_stacked.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/area_density_stacked.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/area_density_stacked.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -5611,7 +5611,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Step Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/line_step.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/line_step.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/line_step.vl.json",
     "categories": [
       "Line Charts"
     ],
@@ -5624,7 +5624,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Streamgraph",
     "example_url": "https://vega.github.io/vega-lite/examples/stacked_area_stream.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/stacked_area_stream.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/stacked_area_stream.vl.json",
     "categories": [
       "Area Charts & Streamgraphs"
     ],
@@ -5637,7 +5637,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Strip Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/tick_strip.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/tick_strip.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/tick_strip.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -5650,7 +5650,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Strip plot with custom axis tick labels",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_custom_tick_labels.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle_custom_tick_labels.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle_custom_tick_labels.vl.json",
     "categories": [
       "Scatter & Strip Plots"
     ],
@@ -5663,7 +5663,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Table Bubble Plot (Github Punch Card)",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_github_punchcard.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle_github_punchcard.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle_github_punchcard.vl.json",
     "categories": [
       "Table-based Plots"
     ],
@@ -5676,7 +5676,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Table Heatmap",
     "example_url": "https://vega.github.io/vega-lite/examples/rect_heatmap.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/rect_heatmap.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/rect_heatmap.vl.json",
     "categories": [
       "Table-based Plots"
     ],
@@ -5689,7 +5689,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Ternary chart",
     "example_url": "https://vega.github.io/vega-lite/examples/ternary.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/ternary.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/ternary.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5700,7 +5700,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Three Choropleths Representing Disjoint Data from the Same Table",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_repeat.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_repeat.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_repeat.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -5714,7 +5714,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Top-K Plot with \"Others\"",
     "example_url": "https://vega.github.io/vega-lite/examples/window_top_k_others.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/window_top_k_others.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/window_top_k_others.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5727,7 +5727,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Area",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_area.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_area.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_area.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5740,7 +5740,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Area Plot Showing Annual Temperatures in Seattle",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_area_seattle.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_area_seattle.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_area_seattle.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5753,7 +5753,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_bar.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_bar.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_bar.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5766,7 +5766,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Histograms",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_bar_histogram.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_bar_histogram.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_bar_histogram.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5779,7 +5779,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Scatter Plot (wrapped)",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_scatter.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_scatter.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_scatter.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5792,7 +5792,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Scatter Plot Showing Anscombe's Quartet",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_anscombe.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_anscombe.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_anscombe.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5805,7 +5805,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Trellis Stacked Bar Chart",
     "example_url": "https://vega.github.io/vega-lite/examples/trellis_stacked_bar.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/trellis_stacked_bar.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/trellis_stacked_bar.vl.json",
     "categories": [
       "Faceting (Trellis Plot / Small Multiples)"
     ],
@@ -5818,7 +5818,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Tukey Box Plot (1.5 IQR)",
     "example_url": "https://vega.github.io/vega-lite/examples/boxplot_2D_vertical.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/boxplot_2D_vertical.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/boxplot_2D_vertical.vl.json",
     "categories": [
       "Box Plots"
     ],
@@ -5831,7 +5831,7 @@
     "gallery_name": "vega-lite",
     "example_name": "U.S. State Capitals Overlayed on a Map of U.S.",
     "example_url": "https://vega.github.io/vega-lite/examples/geo_text.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/geo_text.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/geo_text.vl.json",
     "categories": [
       "Maps (Geographic Displays)"
     ],
@@ -5845,7 +5845,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Using the lookup transform to combine data",
     "example_url": "https://vega.github.io/vega-lite/examples/lookup.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/lookup.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/lookup.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5859,7 +5859,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Using window transform to impute missing values by averaging the previous and next values.",
     "example_url": "https://vega.github.io/vega-lite/examples/window_impute_null.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/window_impute_null.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/window_impute_null.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5870,7 +5870,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Vertical Concatenation",
     "example_url": "https://vega.github.io/vega-lite/examples/vconcat_weather.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/vconcat_weather.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/vconcat_weather.vl.json",
     "categories": [
       "Repeat & Concatenation"
     ],
@@ -5883,7 +5883,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Waterfall Chart of Monthly Profit and Loss",
     "example_url": "https://vega.github.io/vega-lite/examples/waterfall_chart.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/waterfall_chart.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/waterfall_chart.vl.json",
     "categories": [
       "Advanced Calculations"
     ],
@@ -5894,7 +5894,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Weekly Weather Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/bar_layered_weather.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/bar_layered_weather.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/bar_layered_weather.vl.json",
     "categories": [
       "Other Layered Plots"
     ],
@@ -5907,7 +5907,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Wheat and Wages Example",
     "example_url": "https://vega.github.io/vega-lite/examples/wheat_wages.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/wheat_wages.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/wheat_wages.vl.json",
     "categories": [
       "Other Layered Plots"
     ],
@@ -5921,7 +5921,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Wilkinson Dot Plot",
     "example_url": "https://vega.github.io/vega-lite/examples/circle_wilkinson_dotplot.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/circle_wilkinson_dotplot.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/circle_wilkinson_dotplot.vl.json",
     "categories": [
       "Histograms, Density Plots, and Dot Plots"
     ],
@@ -5932,7 +5932,7 @@
     "gallery_name": "vega-lite",
     "example_name": "Wind Vector Map",
     "example_url": "https://vega.github.io/vega-lite/examples/point_angle_windvector.html",
-    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@f4bb2188709204860329aff2aeaf678c0280c315/examples/specs/point_angle_windvector.vl.json",
+    "spec_url": "https://cdn.jsdelivr.net/gh/vega/vega-lite@e415f441845e198629f2049b46849ddcfdbf6596/examples/specs/point_angle_windvector.vl.json",
     "categories": [
       "Table-based Plots"
     ],
