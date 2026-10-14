@@ -1,16 +1,23 @@
 changelog:
-  exclude:
-    labels: [dependencies]
   categories:
     - title: Breaking
-      labels: [breaking]
+      labels:
+        - breaking
+    - title: Deprecation
+      labels:
+        - deprecation
     - title: Enhancements
-      labels: [enhancement]
+      labels:
+        - enhancement
     - title: Bug Fixes
-      labels: [bug]
+      labels:
+        - bug
     - title: Documentation
-      labels: [documentation]
+      labels:
+        - documentation
     - title: Maintenance
-      labels: [maintenance]
+      labels:
+        - maintenance
     - title: Other Changes
-      labels: ["*"]
+      labels:
+        - "*"
