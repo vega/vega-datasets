@@ -303,7 +303,7 @@ test('link text is the file name, or the host', () => {
 describe('overviews drawn when the site is built', () => {
   test('tables over 50,000 rows open on a density overview; maps of over 1,000 shapes or points on a picture', () => {
     expect(catalog.datasets.filter(hasDensity).map((d) => d.name)).toEqual(['flights_200k_json']);
-    expect(catalog.datasets.filter(hasMapPreview).map((d) => d.name).sort()).toEqual(['airports', 'earthquakes', 'us_10m', 'windvectors', 'zipcodes']);
+    expect(catalog.datasets.filter(hasMapPreview).map((d) => d.name).sort()).toEqual(['airports', 'bird_migration', 'earthquakes', 'us_10m', 'windvectors', 'zipcodes']);
   });
 
   test('the density overview compiles without warnings, from the Editor spec or from the bins', () => {

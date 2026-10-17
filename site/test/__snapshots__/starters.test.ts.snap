@@ -5,6 +5,7 @@ exports[`starter chart choices 1`] = `
 annual_precip: none
 anscombe: point x=X y=Y color=Series
 barley: line x=year y=mean(yield) color=variety
+bird_migration: circle latitude=lat longitude=lon color=species
 birdstrikes: line x=yearmonth(Flight Date) y=mean(Cost Other)
 budget: bar x=count() y=Source category name
 budgets: line x=budgetYear y=mean(value)

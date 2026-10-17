@@ -1,5 +1,5 @@
 # vega-datasets
-`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-10-14 00:45:21 [UTC]
+`3.2.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-10-14 02:32:18 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -147,6 +147,50 @@ Since then it has been used to demonstrate new visualization techniques, includi
 | name         | title                                                                                       |
 |:-------------|:--------------------------------------------------------------------------------------------|
 | notspecified | Dataset collected by Minnesota Agricultural Experiment Station - license status unspecified |
+## `bird_migration`
+
+Daily bird migration population centers
+
+### path
+bird-migration.csv
+### description
+Daily migration trajectories for ten bird species that breed in North America and cross the
+Atlantic Ocean during autumn migration. Each row gives the geographic center of one species'
+population on one day of the year, estimated from eBird occurrence records collected between 1950
+and 2015. Tracing a species across the year traces its annual migration: American Golden-Plover
+begins January on the Argentine pampas, reaches 70°N by late June, and returns.
+
+Because the estimates average many years, no calendar year applies to them. Following
+`seattle-weather-hourly-normals.csv`, the `date` column uses a nominal non-leap year, and `day`
+holds the day of the year alongside it.
+
+Transformed using `/scripts/bird-migration.py`, which downloads the source from Dryad's official
+Zenodo mirror and verifies its SHA-256 before conversion. It derives the day from row order within each
+species, drops the 421 of 3650 source rows whose coordinates are `NA`, and rounds coordinates to
+four decimal places. Days with no estimate concentrate in the non-breeding season, when eBird
+coverage of South America and the Caribbean was sparse, so a species' `day` values are not
+contiguous: Connecticut Warbler is missing 172 days and Bicknell's Thrush 104, while Semipalmated
+Sandpiper, Solitary Sandpiper, and White-rumped Sandpiper are complete.
+### schema
+    
+| name    | type    | description                                                                 | categories                                                                                                                                                                                                                         |
+|:--------|:--------|:----------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| species | string  | Common name of the bird species                                             | ['American Golden-Plover', "Bicknell's Thrush", 'Blackpoll Warbler', 'Bobolink', 'Buff-breasted Sandpiper', 'Connecticut Warbler', 'Pectoral Sandpiper', 'Semipalmated Sandpiper', 'Solitary Sandpiper', 'White-rumped Sandpiper'] |
+| day     | integer | Day of the year, from 1 for January 1 to 365 for December 31                |                                                                                                                                                                                                                                    |
+| date    | date    | The same day as `day`, carrying a nominal year for use with temporal scales |                                                                                                                                                                                                                                    |
+| lon     | number  | Longitude of the population center, in degrees east                         |                                                                                                                                                                                                                                    |
+| lat     | number  | Latitude of the population center, in degrees north                         |                                                                                                                                                                                                                                    |
+### sources
+| title                                                                                                                                                                     | path                                                               |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|
+| Data from: Projected changes in prevailing winds for transatlantic migratory birds under global warming (La Sorte & Fink, Dryad)                                          | https://doi.org/10.5061/dryad.5h9c4                                |
+| La Sorte, F.A. & Fink, D. (2017). Projected changes in prevailing winds for transatlantic migratory birds under global warming. Journal of Animal Ecology, 86(2), 273-284 | https://doi.org/10.1111/1365-2656.12624                            |
+| eBird, Cornell Lab of Ornithology (upstream occurrence records, 1950-2015)                                                                                                | https://ebird.org                                                  |
+| eBird Data Access Terms of Use (upstream occurrence records)                                                                                                              | https://www.birds.cornell.edu/home/ebird-data-access-terms-of-use/ |
+### licenses
+| name    | title                                | path                                   |
+|:--------|:-------------------------------------|:---------------------------------------|
+| CC0-1.0 | Creative Commons Zero v1.0 Universal | https://spdx.org/licenses/CC0-1.0.html |
 ## `birdstrikes`
 
 FAA aircraft wildlife strike reports
