@@ -34,7 +34,7 @@ geo-species = [
   "setuptools",
   "tqdm",
 ]
-site = ["pillow>=11", { include-group = "gallery-examples" }]
+site = ["pillow>=13.0.0", { include-group = "gallery-examples" }]
 
 [tool.pytest.ini_options]
 markers = [
