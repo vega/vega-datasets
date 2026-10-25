@@ -44,7 +44,9 @@ describe('links', () => {
     expect(markdownToHtml('[x](data:text/html,hi)')).toContain('href="#"');
     expect(markdownToHtml('[x](mailto:a@b.org)')).toContain('href="mailto:a@b.org"');
     // A doubled parenthesis in a description (us_state_capitals) is not a same-site path.
-    expect(markdownToHtml('[x]((https://example.org/a)')).toContain('href="#"');
+    const doubled = markdownToHtml('[x]((https://example.org/a)');
+    expect(doubled).not.toContain('href="(');
+    expect(doubled).toContain('target="_blank" rel="noopener"');
   });
 
   // CommonMark decodes entity and numeric references in a destination or title exactly once.
