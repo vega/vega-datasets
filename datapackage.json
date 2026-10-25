@@ -20,7 +20,7 @@
     }
   ],
   "version": "3.3.0",
-  "created": "2026-10-25T14:35:09.704337+00:00",
+  "created": "2026-10-25T14:49:52.848936+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -3918,7 +3918,7 @@
       "name": "us_state_capitals",
       "type": "table",
       "title": "U.S. state capitals and capitol building locations",
-      "description": "Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. \nIncludes latitude, longitude, state name, and capital city name for all 50 U.S. states. \nCities are represented as point locations of their capitol buildings using coordinates in the \nWGS84 geographic coordinate system.\n\nAccording to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))\n> \"Map services and data downloaded from The National Map are free and in the public domain. \n> There are no restrictions; however, we request that the following acknowledgment statement \n> of the originating agency be included in products and data derived from our map services \n> when citing, copying, or reprinting: Map services and data available from U.S. \n> Geological Survey, National Geospatial Program.\"\n",
+      "description": "Geographical coordinates and names of U.S. state capitals, transformed using `scripts/us-state-capitals.py`. \nIncludes latitude, longitude, state name, and capital city name for all 50 U.S. states. \nCities are represented as point locations of their capitol buildings using coordinates in the \nWGS84 geographic coordinate system.\n\nAccording to [USGS](https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map)\n> \"Map services and data downloaded from The National Map are free and in the public domain. \n> There are no restrictions; however, we request that the following acknowledgment statement \n> of the originating agency be included in products and data derived from our map services \n> when citing, copying, or reprinting: Map services and data available from U.S. \n> Geological Survey, National Geospatial Program.\"\n",
       "licenses": [
         {
           "name": "other-pd",
