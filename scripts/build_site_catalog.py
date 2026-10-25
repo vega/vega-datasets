@@ -263,7 +263,7 @@ def read_table(
             separator="\t" if fmt == "tsv" else ",",
             infer_schema=False,
             truncate_ragged_lines=True,
-            missing_utf8_is_empty_string=keep_empty,
+            empty_string_is_null=not keep_empty,
         )
     if fmt == "parquet":
         return pl.read_parquet(path)

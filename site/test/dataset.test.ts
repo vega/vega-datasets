@@ -30,7 +30,6 @@ const catalog = loadCatalog();
 const ds = (name: string) => catalog.dataset(name)!;
 
 
-const snippetNames = (name: string) => useSnippets(ds(name)).map((s) => s.name);
 
 /**
  * Vega-Lite 6.4.3 warns this for a fit autosize with a step-sized height even when the fit
@@ -98,10 +97,11 @@ describe('Use This Dataset snippets', () => {
   });
 
   test('files not yet on npm skip the npm and Altair loaders', () => {
-    const unreleased = catalog.datasets.filter((d) => !isReleased(d));
-    expect(unreleased.length).toBeGreaterThan(0);
-    for (const d of unreleased) expect(snippetNames(d.name)).not.toContain('JavaScript');
-    for (const d of unreleased) expect(snippetNames(d.name)).not.toContain('Altair');
+    const unreleased = { ...ds('cars'), url: 'https://vega.github.io/vega-datasets/data/cars.json' };
+    expect(isReleased(unreleased)).toBe(false);
+    const names = useSnippets(unreleased).map((s) => s.name);
+    expect(names).not.toContain('JavaScript');
+    expect(names).not.toContain('Altair');
   });
 });
 

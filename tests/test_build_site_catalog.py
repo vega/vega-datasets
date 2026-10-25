@@ -412,7 +412,7 @@ def test_profile_counts_documented_missing_values() -> None:
     assert (p["missing"], p["distinct"]) == (2, 2)
     # Typed columns (Parquet, Arrow) keep their type.
     typed = pl.Series("t", [1, -1, 5], dtype=pl.Int64)
-    assert profile_field(typed, "integer", ["-1"])["min"] == 1.0
+    assert profile_field(typed, "integer", ["-1"])["min"] == 1
 
 
 def test_field_missing_values_replace_the_schema_list_not_extend_it(

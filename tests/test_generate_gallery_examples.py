@@ -13,11 +13,11 @@ import pytest
 
 from scripts import generate_gallery_examples as gallery_examples
 from scripts.generate_gallery_examples import (
-    _build_vegalite_examples,  # noqa: PLC2701
-    _commit_from_spec_url,  # noqa: PLC2701
-    _fetch_text,  # noqa: PLC2701
-    _format_refs,  # noqa: PLC2701
-    _raw_github_fallback,  # noqa: PLC2701
+    _build_vegalite_examples,  # ruff: ignore[import-private-name]
+    _commit_from_spec_url,  # ruff: ignore[import-private-name]
+    _fetch_text,  # ruff: ignore[import-private-name]
+    _format_refs,  # ruff: ignore[import-private-name]
+    _raw_github_fallback,  # ruff: ignore[import-private-name]
     assert_expected_galleries,
     assert_unique_urls,
     build_example_list,

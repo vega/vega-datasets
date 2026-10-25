@@ -176,7 +176,7 @@ def render_markdown_patch(path: str, data: dict[str, Any]) -> str:
     ------------
     Render any JSON-like object as Markdown, using jinja2 template.
     """
-    import jinja2  # noqa: PLC0415
+    import jinja2  # ruff: ignore[import-outside-top-level]
 
     # Create environ
     default_dir: Path = Path(fl_markdown.__file__).parent / "../../assets/templates"
