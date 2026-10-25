@@ -1869,7 +1869,7 @@ Includes latitude, longitude, state name, and capital city name for all 50 U.S. 
 Cities are represented as point locations of their capitol buildings using coordinates in the 
 WGS84 geographic coordinate system.
 
-According to [USGS]((https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map))
+According to [USGS](https://www.usgs.gov/faqs/what-are-terms-uselicensing-map-services-and-data-national-map)
 > "Map services and data downloaded from The National Map are free and in the public domain. 
 > There are no restrictions; however, we request that the following acknowledgment statement 
 > of the originating agency be included in products and data derived from our map services 
