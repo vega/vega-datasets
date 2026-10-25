@@ -1,6 +1,6 @@
 {
   "name": "vega-datasets",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "Common repository for example datasets used by Vega related projects.",
   "license": "BSD-3-Clause",
   "type": "module",
@@ -75,6 +75,9 @@
     "site:check-links": "vitest run --config site/vitest.config.ts --project links"
   },
   "lint-staged": {
-    "*.py": ["uv run ruff check --fix", "uv run ruff format"]
+    "*.py": [
+      "uv run ruff check --fix",
+      "uv run ruff format"
+    ]
   }
 }
