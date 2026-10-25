@@ -19,8 +19,8 @@
       "path": "https://github.com/vega/vega-datasets/graphs/contributors"
     }
   ],
-  "version": "3.3.0",
-  "created": "2026-10-25T14:49:52.848936+00:00",
+  "version": "3.3.1",
+  "created": "2026-10-25T14:51:58.477148+00:00",
   "resources": [
     {
       "name": "icon_7zip",
@@ -1816,6 +1816,7 @@
         }
       },
       "schema": {
+        "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
         "fields": [
           {
             "name": "gallery_name",
@@ -1871,11 +1872,10 @@
             }
           }
         ],
+        "fieldsMatch": "equal",
         "primaryKey": [
           "example_url"
-        ],
-        "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
-        "fieldsMatch": "equal"
+        ]
       }
     },
     {

@@ -1,5 +1,5 @@
 # vega-datasets
-`3.3.0` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-10-25 14:49:52 [UTC]
+`3.3.1` | [GitHub](git+http://github.com/vega/vega-datasets.git) | 2026-10-25 14:51:58 [UTC]
 
 Common repository for example datasets used by Vega related projects. 
 BSD-3-Clause license applies only to package code and infrastructure. Users should verify their use of datasets 
@@ -918,9 +918,9 @@ created for a particular vega-datasets release from one pinned commit per galler
 When a newer version of vega-datasets is released, the file may be regenerated to
 reflect examples added, removed, or updated in those galleries.
 ### schema
-    - `primaryKey` ['example_url']
     - `$schema` https://datapackage.org/profiles/2.0/tableschema.json
     - `fieldsMatch` equal
+    - `primaryKey` ['example_url']
 | name         | type   | description                                                                                                                        | constraints                               | format   | arrayItem          |
 |:-------------|:-------|:-----------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|:---------|:-------------------|
 | gallery_name | string | Gallery that publishes the example                                                                                                 | {'enum': ['vega', 'vega-lite', 'altair']} |          |                    |
@@ -1011,15 +1011,15 @@ Notes:
 | life_expect | number  | Life expectancy in years                             |                                                                                                                                                                                                                                                                   |
 | fertility   | number  | Fertility rate (average number of children per woman |                                                                                                                                                                                                                                                                   |
 ### sources
-| title                                                          | path                                                                                                                   | version   |
-|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:----------|
-| Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   | 14        |
+| title                                                          | path                                                                                                                   |   version |
+|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|----------:|
+| Gapminder Foundation - Life Expectancy (Data)                  | https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit?gid=176703676#gid=176703676   |        14 |
 | Gapminder Foundation - Life Expectancy (Documentation)         | https://www.gapminder.org/data/documentation/gd004/                                                                    |           |
-| Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   | 7         |
+| Gapminder Foundation - Population (Data)                       | https://docs.google.com/spreadsheets/d/1c1luQNdpH90tNbMIeU7jD__59wQ0bdIGRFpbMm8ZBTk/edit?gid=176703676#gid=176703676   |         7 |
 | Gapminder Foundation - Population (Documentation)              | https://www.gapminder.org/data/documentation/gd003/                                                                    |           |
-| Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   | 14        |
+| Gapminder Foundation - Fertility (Data)                        | https://docs.google.com/spreadsheets/d/1aLtIpAWvDGGa9k2XXEz6hZugWn0wCd5nmzaRPPjbYNA/edit?gid=176703676#gid=176703676   |        14 |
 | Gapminder Foundation - Fertility Documentation (Documentation) | https://www.gapminder.org/data/documentation/gd008/                                                                    |           |
-| Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 | 2         |
+| Gapminder Foundation - Data Geographies (Data)                 | https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/edit?gid=1597424158#gid=1597424158 |         2 |
 | Gapminder Foundation - Data Geographies (Documentation)        | https://www.gapminder.org/data/geo/                                                                                    |           |
 | Gapminder Data Documentation                                   | https://www.gapminder.org/data/documentation/                                                                          |           |
 ### licenses
