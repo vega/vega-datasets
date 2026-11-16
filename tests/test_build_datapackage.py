@@ -2,15 +2,70 @@
 
 from __future__ import annotations
 
+import json
 import subprocess as sp
+from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 
 import pytest
+import yaml
+from frictionless import Package
 
-from scripts.build_datapackage import ResourceAdapter, git_blob_sha1, iter_resources
+from scripts.build_datapackage import (
+    ResourceAdapter,
+    git_blob_sha1,
+    iter_resources,
+    write_package,
+)
 
 if TYPE_CHECKING:
-    from pathlib import Path
+    from typing import Literal
+
+
+@pytest.mark.parametrize("filename", ["7zip.png", "ffox.png", "gimp.png"])
+@pytest.mark.parametrize("output_format", ["json", "yaml"])
+def test_image_descriptor_has_no_resource_type(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    filename: str,
+    output_format: Literal["json", "yaml"],
+) -> None:
+    """Generic images omit the unsupported v2 resource type in every export."""
+    data_dir = Path(__file__).resolve().parent.parent / "data"
+    monkeypatch.chdir(data_dir)
+    image_path = Path(filename)
+    resource = ResourceAdapter.from_path(image_path)
+    assert resource.type == "file"
+    write_package(Package(resources=[resource]), tmp_path, output_format)
+    text = (tmp_path / f"datapackage.{output_format}").read_text(encoding="utf-8")
+    package = json.loads(text) if output_format == "json" else yaml.safe_load(text)
+    descriptor = package["resources"][0]
+    assert "type" not in descriptor
+    assert descriptor["path"] == filename
+    assert descriptor["format"] == "png"
+    assert descriptor["mediatype"] == "image/png"
+    assert descriptor["bytes"] == image_path.stat().st_size
+    # Omitting descriptor metadata must preserve the image reader and validation.
+    assert resource.type == "file"
+    assert resource.read_file() == image_path.read_bytes()
+    assert resource.validate().valid
+
+
+@pytest.mark.parametrize("output_format", ["json", "yaml"])
+def test_package_export_keeps_table_and_json_types(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    output_format: Literal["json", "yaml"],
+) -> None:
+    """The binary-resource correction does not change other resource kinds."""
+    monkeypatch.chdir(Path(__file__).resolve().parent.parent / "data")
+    resources = [
+        ResourceAdapter.from_path(Path(f)) for f in ("cars.json", "miserables.json")
+    ]
+    write_package(Package(resources=resources), tmp_path, output_format)
+    text = (tmp_path / f"datapackage.{output_format}").read_text(encoding="utf-8")
+    package = json.loads(text) if output_format == "json" else yaml.safe_load(text)
+    assert [r["type"] for r in package["resources"]] == ["table", "json"]
 
 
 @pytest.mark.parametrize(

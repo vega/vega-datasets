@@ -8,6 +8,7 @@ from io import BytesIO
 from typing import TYPE_CHECKING
 
 import polars as pl
+import pytest
 from PIL import Image
 
 from scripts.build_site_catalog import (
@@ -100,6 +101,17 @@ def test_data_url_prefers_the_released_cdn_file() -> None:
     assert data_url("new.json", "3", released) == (
         "https://vega.github.io/vega-datasets/data/new.json"
     )
+
+
+@pytest.mark.parametrize("filename", ["7zip.png", "ffox.png", "gimp.png"])
+def test_build_dataset_accepts_untyped_images(tmp_path: Path, filename: str) -> None:
+    resource = {"name": "icon", "format": "png", "path": filename}
+    url = f"https://example.com/{filename}"
+    expected = build_dataset({**resource, "type": "file"}, [], url, tmp_path)
+    actual = build_dataset(resource, [], url, tmp_path)
+    assert actual == expected
+    assert actual["kind"] == "file"
+    assert actual["image"].startswith("thumbs/data/")
 
 
 def test_profile_quantitative() -> None:

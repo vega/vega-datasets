@@ -42,7 +42,6 @@ from pathlib import Path
 from typing import (
     TYPE_CHECKING,
     Any,
-    Concatenate,
     LiteralString,
     NotRequired,
     Required,
@@ -53,6 +52,7 @@ from typing import (
 
 import frictionless as fl
 import polars as pl
+from frictionless import helpers as fl_helpers
 from frictionless.fields import (
     AnyField,
     ArrayField,
@@ -84,7 +84,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
 type ResourceConstructor = Callable[..., Resource]
-type PackageMethod[**P] = Callable[Concatenate[Package, P], Any]
 type PythonDataType = (
     type[
         int
@@ -641,17 +640,22 @@ def read_json(fp: Path, /) -> Any:
 
 def write_package(pkg: Package, repo_dir: Path, *formats: OutputFormat) -> None:
     """Write the final datapackage in one or more formats."""
-    configs: dict[OutputFormat, tuple[str, PackageMethod[str]]] = {
-        "json": (".json", partial(Package.to_json)),
-        "yaml": (".yaml", partial(Package.to_yaml)),
-        "md": (".md", partial(Package.to_markdown, table=True)),
+    descriptor = pkg.to_dict()
+    for resource in descriptor.get("resources", []):
+        # Generic binary resources have no type in the Data Package v2 schema.
+        if resource.get("type") == "file":
+            del resource["type"]
+    configs: dict[OutputFormat, tuple[str, Callable[[], str]]] = {
+        "json": (".json", partial(fl_helpers.to_json, descriptor)),
+        "yaml": (".yaml", partial(fl_helpers.to_yaml, descriptor)),
+        "md": (".md", partial(pkg.to_markdown, table=True)),
     }
     for fmt in formats:
         postfix, fn = configs[fmt]
         p = (repo_dir / f"{DATAPACKAGE}{postfix}").as_posix()
         msg = f"Writing {p!r}"
         logger.info(msg)
-        fn(pkg, p)
+        Path(p).write_text(fn(), encoding="utf-8")
 
 
 def write_string_overrides_ts(pkg: Package, repo_dir: Path) -> None:

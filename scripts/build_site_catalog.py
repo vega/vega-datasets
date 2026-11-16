@@ -510,7 +510,7 @@ def build_dataset(
         "file": resource["path"],
         "url": url,
         "format": fmt,
-        "kind": resource["type"],
+        "kind": resource.get("type", "file"),
         "bytes": resource.get("bytes"),
         "description": resource.get("description", ""),
         "licenses": resource.get("licenses", []),
@@ -533,7 +533,7 @@ def build_dataset(
     )
     df = (
         read_table(path, fmt, keep_empty=declared)
-        if resource["type"] == "table"
+        if resource.get("type") == "table"
         else None
     )
     if df is None:
