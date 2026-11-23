@@ -20,11 +20,10 @@
     }
   ],
   "version": "3.3.1",
-  "created": "2026-10-25T14:51:58.477148+00:00",
+  "created": "2026-11-23T15:20:06.515111+00:00",
   "resources": [
     {
       "name": "icon_7zip",
-      "type": "file",
       "title": "7-Zip application icon",
       "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
       "licenses": [
@@ -1215,7 +1214,6 @@
     },
     {
       "name": "ffox",
-      "type": "file",
       "title": "Firefox application icon",
       "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
       "licenses": [
@@ -2061,7 +2059,6 @@
     },
     {
       "name": "gimp",
-      "type": "file",
       "title": "GIMP application icon",
       "description": "Application icon from open-source software project. Used in [Image-based Scatter Plot example](https://vega.github.io/vega-lite/examples/scatter_image.html).",
       "licenses": [

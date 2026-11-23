@@ -53,6 +53,22 @@ def test_iter_resources_hashes_working_tree(
     assert resource.hash == git_blob_sha1(fp)
 
 
+def test_image_resource_omits_nonstandard_file_type(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Binary resources omit the ``type: file`` value disallowed by Data Package v2."""
+    monkeypatch.chdir(tmp_path)
+    # Resource inference only needs a recognizable PNG header for this metadata test.
+    fp = tmp_path / "fixture.png"
+    fp.write_bytes(b"\x89PNG\r\n\x1a\n")
+
+    resource = ResourceAdapter.from_path(fp).to_dict()
+
+    assert "type" not in resource
+    assert resource["format"] == "png"
+    assert resource["mediatype"] == "image/png"
+
+
 def test_with_extras_keeps_standard_table_schema_properties(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

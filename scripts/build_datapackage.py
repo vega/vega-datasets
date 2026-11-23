@@ -322,7 +322,11 @@ class ResourceAdapter:
 
     @classmethod
     def from_image(cls, source: Path, /) -> Resource:
-        return cls.infer_as(source, Resource)
+        resource = cls.infer_as(source, Resource)
+        # Data Package v2 only defines a type value for tabular resources.
+        # Untyped resources represent non-specific files such as images.
+        resource.type = None
+        return resource
 
     @classmethod
     def from_json(cls, source: Path, /) -> Resource:
